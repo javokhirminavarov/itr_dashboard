@@ -1,0 +1,96 @@
+:root {
+  --accent: #2F6DB5;
+  --ink: #1A1726;
+  --ink-soft: #5A5E6B;
+  --paper: #F7F8FA;
+  --surface: #FFFFFF;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 56px 24px 72px;
+}
+
+.beat {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 40px 40px 32px;
+  box-shadow: 0 1px 2px rgba(26, 23, 38, 0.06), 0 8px 24px rgba(26, 23, 38, 0.05);
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.action-title {
+  margin: 0 0 28px;
+  font-size: 24px;
+  font-weight: 650;
+  line-height: 1.28;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 34em;
+}
+
+.chart {
+  width: 100%;
+}
+
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Chart typography — kept in CSS so SVG text inherits the system stack */
+.chart svg text { font-family: inherit; }
+
+.cat-label {
+  font-size: 12.5px;
+  fill: var(--ink);
+}
+
+.val-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.source {
+  margin: 26px 0 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.chart-error {
+  font-size: 14px;
+  color: #B23A3A;
+}
+
+@media (max-width: 560px) {
+  main { padding: 32px 14px 48px; }
+  .beat { padding: 26px 20px 22px; }
+  .action-title { font-size: 20px; }
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "commodity": "New Psychoactive Substances",
+    "section": "Drugs",
+    "ecomPct": 81.9,
+    "sourcePath": "Drugs/New Psychoactive Substances/ecom"
+  },
+  {
+    "commodity": "IPR products trafficking",
+    "section": "IPR, Health and Safety",
+    "ecomPct": 68.2,
+    "sourcePath": "IPR, Health and Safety/IPR products trafficking/ecom"
+  },
+  {
+    "commodity": "Medical products trafficking",
+    "section": "IPR, Health and Safety",
+    "ecomPct": 65.1,
+    "sourcePath": "IPR, Health and Safety/Medical products trafficking/ecom"
+  },
+  {
+    "commodity": "Flora",
+    "section": "Environmental Crime",
+    "ecomPct": 64.2,
+    "sourcePath": "Environmental Crime/Flora/ecom"
+  },
+  {
+    "commodity": "Cannabis",
+    "section": "Drugs",
+    "ecomPct": 62.6,
+    "sourcePath": "Drugs/Cannabis/ecom"
+  },
+  {
+    "commodity": "Psychotropic substances",
+    "section": "Drugs",
+    "ecomPct": 57.5,
+    "sourcePath": "Drugs/Psychotropic substances/ecom"
+  },
+  {
+    "commodity": "Khat",
+    "section": "Drugs",
+    "ecomPct": 55,
+    "sourcePath": "Drugs/Khat/ecom"
+  },
+  {
+    "commodity": "Opioids and Opiates",
+    "section": "Drugs",
+    "ecomPct": 34.4,
+    "sourcePath": "Drugs/Opioids and Opiates/ecom"
+  },
+  {
+    "commodity": "Cocaine",
+    "section": "Drugs",
+    "ecomPct": 32.1,
+    "sourcePath": "Drugs/Cocaine/ecom"
+  },
+  {
+    "commodity": "Weapons, ammunition and tactical equipment",
+    "section": "Security",
+    "ecomPct": 27.1,
+    "sourcePath": "Security/Weapons, ammunition and tactical equipment/ecom"
+  },
+  {
+    "commodity": "Fauna",
+    "section": "Environmental Crime",
+    "ecomPct": 20.1,
+    "sourcePath": "Environmental Crime/Fauna/ecom"
+  },
+  {
+    "commodity": "Explosives and precursors",
+    "section": "Security",
+    "ecomPct": 18.5,
+    "sourcePath": "Security/Explosives and precursors/ecom"
+  },
+  {
+    "commodity": "Tobacco products trafficking",
+    "section": "Revenue",
+    "ecomPct": 6,
+    "sourcePath": "Revenue/Tobacco products trafficking/ecom"
+  },
+  {
+    "commodity": "Gemstones trafficking",
+    "section": "AML/CTF",
+    "ecomPct": 5,
+    "sourcePath": "AML/CTF/Gemstones trafficking/ecom"
+  },
+  {
+    "commodity": "Cash smuggling",
+    "section": "AML/CTF",
+    "ecomPct": 1,
+    "sourcePath": "AML/CTF/Cash smuggling/ecom"
+  },
+  {
+    "commodity": "Unmanned aerial systems (UAS)",
+    "section": "Security",
+    "ecomPct": 0.8,
+    "sourcePath": "Security/Unmanned aerial systems (UAS)/ecom"
+  },
+  {
+    "commodity": "ODS & HFCs",
+    "section": "Environmental Crime",
+    "ecomPct": 0.6,
+    "sourcePath": "Environmental Crime/ODS & HFCs/ecom"
+  },
+  {
+    "commodity": "Alcohol products trafficking",
+    "section": "Revenue",
+    "ecomPct": 0.5,
+    "sourcePath": "Revenue/Alcohol products trafficking/ecom"
+  },
+  {
+    "commodity": "Gold trafficking",
+    "section": "AML/CTF",
+    "ecomPct": 0.4,
+    "sourcePath": "AML/CTF/Gold trafficking/ecom"
+  },
+  {
+    "commodity": "Waste",
+    "section": "Environmental Crime",
+    "ecomPct": 0.2,
+    "sourcePath": "Environmental Crime/Waste/ecom"
+  },
+  {
+    "commodity": "Other hazardous materials",
+    "section": "Environmental Crime",
+    "ecomPct": 0,
+    "sourcePath": "Environmental Crime/Other hazardous materials/ecom"
+  }
+]
