@@ -159,23 +159,25 @@
     var inner = GRAPHIC.parentNode; // .graphic-inner
 
     // ---- annotations (beat 4) --------------------------------------------
+    // Anchored to the chart (.graphic), not the whole .graphic-inner, so the
+    // cards float over the bars and can never ride up over the caption above
+    // the chart (which wraps to two lines on narrower columns). Vertical
+    // positions live in CSS (.anno:nth-child) so they stay responsive.
     var annoWrap = document.createElement("div");
     annoWrap.className = "annotations";
     annoWrap.setAttribute("aria-hidden", "true");
     var wanted = ["Urogenital agents", "Gun silencers", "E-cigarettes"];
-    var tops = [8, 34, 60];
-    wanted.forEach(function (label, k) {
+    wanted.forEach(function (label) {
       var e = null;
       for (var j = 0; j < extremes.length; j++) if (extremes[j].label === label) { e = extremes[j]; break; }
       if (!e) return;
       var card = document.createElement("div");
       card.className = "anno";
-      card.style.top = tops[k] + "%";
       card.innerHTML = "<b>" + fmtPct(e.ecomPct) + "</b>" + esc(e.label) +
         "<br><small>" + esc(e.note || e.parent) + "</small>";
       annoWrap.appendChild(card);
     });
-    inner.appendChild(annoWrap);
+    GRAPHIC.appendChild(annoWrap);
 
     // ---- choropleth (beat 6) ---------------------------------------------
     var mapWrap = buildMap(world, regions, iso2reg);

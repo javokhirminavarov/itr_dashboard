@@ -224,6 +224,12 @@ body {
   transform: translateX(16px);
   transition: opacity 0.45s ease, transform 0.45s ease;
 }
+/* Stacked down the right of the chart. Percentages are of the chart (.graphic),
+   which sits below the caption, so the cards spread over the bars without ever
+   reaching the caption. */
+.anno:nth-child(1) { top: 4%; }
+.anno:nth-child(2) { top: 38%; }
+.anno:nth-child(3) { top: 63%; }
 .anno b {
   display: block;
   font-size: 18px;
@@ -235,6 +241,28 @@ body {
 .annotations.show .anno { opacity: 1; transform: translateX(0); }
 .annotations.show .anno:nth-child(2) { transition-delay: 0.1s; }
 .annotations.show .anno:nth-child(3) { transition-delay: 0.2s; }
+
+/* On narrower columns the chart is shorter while the text cards wrap taller, so
+   compact the cards and pack the stack tighter to keep all three within the
+   chart — no card overruns the box or collides with its neighbour. */
+@media (max-width: 1120px) {
+  .anno {
+    max-width: 46%;
+    padding: 6px 9px;
+    font-size: 11px;
+    line-height: 1.22;
+  }
+  .anno b { font-size: 15px; line-height: 1.05; }
+  .anno small { font-size: 10.5px; }
+  .anno:nth-child(1) { top: 3%; }
+  .anno:nth-child(2) { top: 34%; }
+  .anno:nth-child(3) { top: 60%; }
+}
+/* In the tightest windows — the narrow two-column band and small phones — even
+   the compact cards can't all fit with the secondary note, so drop the note
+   (keeping the headline share + label) rather than let the cards overlap. */
+@media (min-width: 821px) and (max-width: 1010px) { .anno small { display: none; } }
+@media (max-width: 500px) { .anno small { display: none; } }
 
 /* ================================================================= */
 /* BEAT 6 — choropleth map + legend (built by JS)                    */
