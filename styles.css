@@ -104,12 +104,12 @@ body {
 /* SCROLLY LAYOUT — sticky graphic + narration column                */
 /* ================================================================= */
 .scrolly {
-  max-width: 1180px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 24px 8vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 56px;
   align-items: start;
 }
 
@@ -131,7 +131,7 @@ body {
   background: var(--surface);
   border: 1px solid var(--hairline);
   border-radius: 12px;
-  padding: 22px 22px 18px;
+  padding: 28px 28px 24px;
   box-shadow: 0 1px 2px rgba(26, 23, 38, 0.05), 0 10px 30px rgba(26, 23, 38, 0.05);
 }
 
@@ -269,7 +269,7 @@ body {
 /* ================================================================= */
 .mapwrap {
   position: absolute;
-  inset: 22px 22px 18px;
+  inset: 28px 28px 24px;
   display: flex;
   flex-direction: column;
   justify-content: center;
