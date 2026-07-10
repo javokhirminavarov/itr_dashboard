@@ -130,6 +130,27 @@ Returns an HTML card: a big value, a label, an optional YoY delta and sub-line.
 { value, label, sub?, delta?(number %), deltaLabel?, accent? }
 ```
 
+### `volumeProfile(opts)` — sub-category volume table
+A compact, minimal-chrome data table: **sub-category × (seizures / total /
+per-seizure)**. Returns a wrapper `<div>` holding a `<table>`. Numeric columns are
+right-aligned with `tabular-nums`; a faint single-hue accent bar sits behind the
+"total" column for at-a-glance magnitude (every cell keeps its direct value, so
+identity is never colour-alone). Rows sort by total descending by default; a
+footer sums the columns. Each row binds the shared tooltip (adds share-of-volume).
+Built once here and reused by Revenue, Environmental Crime and Security.
+```
+{ data:[{label,seizures,total,perSeiz}], label?, seizures?, total?, perSeiz?,
+  seizFmt?(=fmt.int), totalFmt?(=fmt.int), perFmt?(=fmt.int), unit?,
+  catLabel?, totalLabel?, perLabel?, topN?, otherLabel?, sort?(=true),
+  showTotal?(=true), bar?(=true), ariaLabel? }
+```
+`unit` (e.g. `"pieces"`, `"t"`) is appended to the total header and tooltip. Pass
+`totalFmt:fmt.dec`/`perFmt:fmt.dec` for one-decimal quantities (tonnes); the IPR
+piece counts use the integer default. `sort:false` preserves the caller's order.
+When `topN` truncates, the tail is folded into an explicit **"Other (k)"** row (not
+silently dropped), so the visible rows always reconcile to the footer — the footer
+sums **every** sub-category, shown or not.
+
 ---
 
 ## Adding a section (Phases B–F)
@@ -139,3 +160,29 @@ Returns an HTML card: a big value, a label, an optional YoY delta and sub-line.
 3. Compose cards from the components above — do **not** hand-author SVG. Feed each
    component the section's arrays and reuse `ITR.fmt` / `ITR.palette` unchanged.
 4. Every figure keeps a `Source:` line and one-decimal discipline.
+
+### Reusable **stream-section** scaffold (IPR now, Revenue next)
+
+IPR and Revenue are structural twins — a two-stream section with an identical JSON
+shape (`totals / totalsPrev / split / streamOrder / perStream / regional`). Rather
+than hand-build each, `explore.js` has one generic renderer (`renderStreamSection`
+→ `streamOverview` / `streamFlow`) driven entirely by a `STREAM_CFG` entry:
+
+```js
+STREAM_CFG.iprhs = {
+  id, dataKey, label, drillKey, subtitle,
+  qty: { unit: "pieces" },                       // quantity unit + formatting
+  regionalKeys: { composition:[k0,k1], reporting:[k0,k1] },  // which region keys map to each stream
+  streams: [{ name, slug, label }, { name, slug, label }]
+};
+```
+
+The **overview** pools across the two streams (composition donut, reporting-admins
+and composition by region, top-10 reporters, seizures & quantity by sub-category,
+volume-profile table, operational panels, e-commerce hbar, conveyance-by-direction,
+regional-flow heatgrid, involvement choropleth). Each **sub-flow** reads one stream
+directly (reporters, sub-commodity seizures/quantity, volume profile, e-commerce by
+sub-commodity, conveyance, flows, involvement, operational panels). Adding Revenue is
+a new `STREAM_CFG.revenue` entry (its region keys are `s0/s1`, `a0/a1`) plus flipping
+`live:true` — **no renderer changes**. Optional per-stream cards (Revenue's `departures`
+hbar) render automatically when the data carries them.

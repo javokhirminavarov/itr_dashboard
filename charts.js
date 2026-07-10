@@ -534,6 +534,100 @@
     return h("div", { class: "c-kpi" }, kids);
   }
 
+  /* =================================================================
+     9 · VOLUME PROFILE — a compact data table:
+         sub-category × (seizures / total / per-seizure). One-decimal
+         where a value is a rate, integer counts with thousands
+         separators, tabular-nums, minimal chrome. A faint single-hue
+         magnitude bar sits behind the "total" column to aid scanning;
+         every cell keeps its direct value, so identity is never
+         colour-alone. Structural twin of `operPanels` in spirit —
+         reused verbatim by Revenue, Environmental Crime and Security.
+        opts: { data:[{label,seizures,total,perSeiz}], label?, seizures?,
+                total?, perSeiz?, seizFmt?, totalFmt?, perFmt?, unit?,
+                catLabel?, totalLabel?, perLabel?, topN?, sort?(=true),
+                showTotal?(=true), bar?(=true), ariaLabel? }
+     ================================================================= */
+  function volumeProfile(opts) {
+    var all = opts.data.slice();
+    var getL = accessor(opts.label,    "en");
+    var getS = accessor(opts.seizures, "seizures");
+    var getT = accessor(opts.total,    "qty");
+    var getP = accessor(opts.perSeiz,  "perSeiz");
+    var sf = opts.seizFmt  || fmt.int;
+    var tf = opts.totalFmt || fmt.int;
+    var pf = opts.perFmt   || fmt.int;
+    var unit = opts.unit || "";
+    var withBar = opts.bar !== false;
+    if (opts.sort !== false) all.sort(function (a, b) { return getT(b) - getT(a); });
+
+    // full totals — the footer reports EVERY sub-category, not just the shown ones
+    var sumS = 0, sumT = 0;
+    all.forEach(function (d) { sumS += +getS(d) || 0; sumT += +getT(d) || 0; });
+
+    // display rows; when topN truncates, the tail folds into an explicit
+    // "Other" row so the visible rows still reconcile to the footer total
+    // (no silent truncation).
+    var rows;
+    if (opts.topN && all.length > opts.topN) {
+      rows = all.slice(0, opts.topN).map(function (d) {
+        return { en: getL(d), s: +getS(d) || 0, t: +getT(d) || 0, p: getP(d) };
+      });
+      var tail = all.slice(opts.topN), oS = 0, oT = 0;
+      tail.forEach(function (d) { oS += +getS(d) || 0; oT += +getT(d) || 0; });
+      rows.push({ en: (opts.otherLabel || "Other") + " (" + tail.length + ")",
+        s: oS, t: oT, p: oS > 0 ? Math.round(oT / oS) : null });
+    } else {
+      rows = all.map(function (d) { return { en: getL(d), s: +getS(d) || 0, t: +getT(d) || 0, p: getP(d) }; });
+    }
+    // `rows` are now normalized {en,s,t,p}; read them directly below.
+    var maxT = Math.max.apply(null, rows.map(function (d) { return d.t; }).concat([0])) || 1;
+
+    var thead = h("thead", {}, h("tr", {}, [
+      h("th", { scope: "col", text: opts.catLabel || "Sub-category" }),
+      h("th", { scope: "col", class: "num", text: "Seizures" }),
+      h("th", { scope: "col", class: "num", text: opts.totalLabel || ("Total" + (unit ? " (" + unit + ")" : "")) }),
+      h("th", { scope: "col", class: "num", text: opts.perLabel || "Per seizure" })
+    ]));
+
+    var tbody = h("tbody", {});
+    rows.forEach(function (d) {
+      var name = d.en, s = d.s, t = d.t, p = d.p;
+      var totCell = h("td", { class: "num c-vp-total" });
+      if (withBar) totCell.appendChild(h("span", { class: "c-vp-bar",
+        style: "width:" + (t / maxT * 100).toFixed(1) + "%" }));
+      totCell.appendChild(h("span", { class: "c-vp-num", text: tf(t) }));
+      var tr = h("tr", {}, [
+        h("td", { class: "c-vp-cat", text: name }),
+        h("td", { class: "num", text: sf(s) }),
+        totCell,
+        h("td", { class: "num", text: p == null ? "–" : pf(p) })
+      ]);
+      tip.bind(tr, (function (name, s, t, p) { return function () {
+        return tipRows(name, [
+          ["Seizures", sf(s)],
+          [(unit ? "Total (" + unit + ")" : "Total"), tf(t)],
+          ["Per seizure", p == null ? "–" : pf(p)],
+          ["Share of volume", fmt.pct(t / (sumT || 1) * 100)]
+        ]);
+      }; })(name, s, t, p));
+      tbody.appendChild(tr);
+    });
+
+    var kids = [thead, tbody];
+    if (opts.showTotal !== false) {
+      kids.push(h("tfoot", {}, h("tr", {}, [
+        h("td", { class: "c-vp-cat", text: "All sub-categories" }),
+        h("td", { class: "num", text: sf(sumS) }),
+        h("td", { class: "num", text: tf(sumT) }),
+        h("td", { class: "num", text: sumS > 0 ? pf(Math.round(sumT / sumS)) : "–" })
+      ])));
+    }
+    var table = h("table", { class: "c-vp", role: "table",
+      "aria-label": (opts.ariaLabel || "Volume profile table") }, kids);
+    return h("div", { class: "c-vp-wrap" }, table);
+  }
+
   /* ---- small internals -------------------------------------------- */
   function accessor(spec, dflt) {
     if (typeof spec === "function") return spec;
@@ -556,7 +650,7 @@
     fmt: fmt, palette: PALETTE, catColor: catColor, ramp: ramp, tip: tip,
     hbar: hbar, groupedYoY: groupedYoY, donut: donut, donutB: donutB,
     stackedBar: stackedBar, choropleth: choropleth, heatGrid: heatGrid,
-    operPanels: operPanels, kpi: kpi,
+    operPanels: operPanels, kpi: kpi, volumeProfile: volumeProfile,
     // low-level helpers exposed for the app assembler
     _h: h, _svg: svg, _esc: esc, _lbl: lbl
   };

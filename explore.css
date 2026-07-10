@@ -242,6 +242,30 @@ a:hover { text-decoration: underline; }
   letter-spacing: 0.01em;
 }
 
+/* volume-profile table */
+.c-vp-wrap { width: 100%; overflow-x: auto; }
+.c-vp { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.c-vp th, .c-vp td { padding: 7px 10px; text-align: left; }
+.c-vp thead th {
+  font-size: 11px; font-weight: 650; color: var(--ink-soft);
+  border-bottom: 1px solid var(--hairline); white-space: nowrap;
+}
+.c-vp .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.c-vp tbody td { border-bottom: 1px solid var(--hairline-2); color: var(--ink); }
+.c-vp tbody tr { cursor: default; }
+.c-vp tbody tr:hover { background: var(--accent-pale); }
+.c-vp-cat { color: var(--ink); }
+.c-vp-total { position: relative; }
+.c-vp-bar {
+  position: absolute; left: 6px; top: 5px; bottom: 5px;
+  background: rgba(47, 109, 181, 0.13); border-radius: 3px; z-index: 0;
+}
+.c-vp-num { position: relative; z-index: 1; }
+.c-vp tfoot td {
+  padding-top: 9px; border-top: 1px solid var(--hairline);
+  font-weight: 650; color: var(--ink);
+}
+
 /* ================================================================= */
 /* COMING SOON PLACEHOLDER                                            */
 /* ================================================================= */
