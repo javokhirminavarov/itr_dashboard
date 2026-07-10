@@ -1,0 +1,222 @@
+{
+  "ov": {
+    "intro": {
+      "en": "Drugs remain the most reported typology in the CEN: 67,757 cases across 146 administrations in 2025, up 43.3% from 47,280 in 2024. The expansion is broad-based but uneven, and reflects both the persistence of established trafficking flows and the growing capacity of Customs services to detect, document and report drug interceptions, particularly in the postal channel.",
+      "fr": "Les stupéfiants restent la typologie la plus déclarée au CEN : 67 757 affaires sur 146 administrations en 2025, en hausse de 43,3 % par rapport aux 47 280 de 2024. L'expansion est large mais inégale, et reflète à la fois la persistance des flux établis et la capacité croissante des douanes à détecter, documenter et déclarer les interceptions, en particulier dans le canal postal."
+    },
+    "comp": {
+      "en": "Cannabis remains by far the most intercepted substance, confirming its role as the structural backbone of global drug enforcement. The synthetic families, psychotropic substances and NPS combined, now account for 34.3% of seizures, a sign of the ongoing shift towards laboratory-produced narcotics that travel well through small parcels.",
+      "fr": "Le cannabis reste de loin la substance la plus interceptée, confirmant son rôle d'ossature de la lutte mondiale. Les familles synthétiques, psychotropes et NSP réunies, représentent désormais 34,3 % des saisies, signe du basculement continu vers des drogues produites en laboratoire qui circulent bien en petits colis."
+    },
+    "byCat": {
+      "en": "Every category grew except opioids, which declined marginally (-3.1%). The largest absolute increases concern cannabis (+12,887 cases), NPS (+3,817) and psychotropic substances (+3,290), while khat (+120.3%) and NPS (+108.2%) more than doubled in a single reporting year, signalling a substantial enforcement and reporting shift rather than necessarily a rise in consumption.",
+      "fr": "Toutes les catégories progressent sauf les opioïdes, en léger recul (-3,1 %). Les plus fortes hausses absolues concernent le cannabis (+12 887 affaires), les NSP (+3 817) et les psychotropes (+3 290), tandis que le khat (+120,3 %) et les NSP (+108,2 %) ont plus que doublé en un an, signe d'un changement d'effort et de déclaration plus que d'une hausse de consommation."
+    },
+    "qty": {
+      "en": "A total of 1,288.3 tonnes were seized in 2025 (+11.9%), but the picture diverges sharply by category. NPS doubled in cases yet halved in quantity (-50.9%), a fragmentation towards small postal consignments, while opioids fell on both indicators. Cocaine (+73.6%) and psychotropic substances (+32.0%) surged in volume, driven by bulk maritime seizures rather than a broader case base.",
+      "fr": "1 288,3 tonnes ont été saisies en 2025 (+11,9 %), mais le tableau diverge fortement selon les catégories. Les NSP doublent en affaires mais sont divisées par deux en quantité (-50,9 %), signe d'une fragmentation vers de petits envois postaux, tandis que les opioïdes reculent sur les deux. La cocaïne (+73,6 %) et les psychotropes (+32,0 %) bondissent en volume, portés par des saisies maritimes massives plus que par un élargissement des affaires."
+    },
+    "direction": {
+      "en": "Across all administrations, 62.2% of cases are import, 19.1% export, 14.7% transit and 4.1% internal, confirming that enforcement remains anchored at the point of arrival. Profiles vary widely: Germany is the only top reporter where transit dominates, the United States shows a balanced export-import pattern as a redistribution platform, and Brazil is unique in being mostly internal.",
+      "fr": "Toutes administrations confondues, 62,2 % des affaires sont en importation, 19,1 % en exportation, 14,7 % en transit et 4,1 % en interne, ce qui confirme une lutte ancrée à l'arrivée. Les profils varient fortement : l'Allemagne est le seul grand rapporteur où le transit domine, les États-Unis montrent un équilibre export-import de plateforme de redistribution, et le Brésil se distingue par un profil surtout interne."
+    },
+    "detection": {
+      "en": "Drug enforcement is the most operationally mature typology in the CEN. Risk profiling alone drives 78.3% of detections, far above any other typology, ahead of routine control (17.3%). This confirms that interceptions are increasingly the result of systematic, data-driven targeting rather than opportunistic discovery, the fruit of advance passenger and cargo information systems.",
+      "fr": "La lutte antidrogue est la typologie la plus mature du CEN. Le profilage de risque porte à lui seul 78,3 % des détections, loin devant toute autre typologie et devant le contrôle de routine (17,3 %). Cela confirme que les interceptions résultent de plus en plus d'un ciblage systématique fondé sur les données plutôt que de découvertes fortuites, fruit des systèmes d'information préalable sur les passagers et le fret."
+    },
+    "heat": {
+      "en": "Case counts and quantities follow two different geographies. Western Europe and North America together account for over 80% of cases, driven by detection capacity, with Western Europe posting the largest year-on-year rise. Quantities tell another story: East and Southern Africa and South America record large tonnages from a handful of major maritime interceptions rather than a broad caseload.",
+      "fr": "Les affaires et les quantités suivent deux géographies distinctes. L'Europe occidentale et l'Amérique du Nord totalisent plus de 80 % des affaires, portées par la capacité de détection, l'Europe occidentale signant la plus forte hausse annuelle. Les quantités racontent autre chose : l'Afrique orientale et australe et l'Amérique du Sud enregistrent de gros tonnages issus de quelques grandes interceptions maritimes plus que d'un large volume d'affaires."
+    },
+    "flows": {
+      "en": "Interregional movements account for 66.4% of cases against 33.6% intraregional, confirming that drug trafficking is a globalized phenomenon. The transatlantic axis dominates, but in an unexpected direction: North America to Western Europe (14,809 cases) outweighs the reverse by 5.2 to 1, pointing to a substantial flow of synthetic substances and psychotropic medications towards the European market.",
+      "fr": "Les mouvements interrégionaux représentent 66,4 % des affaires contre 33,6 % en intrarégional, ce qui confirme un phénomène mondialisé. L'axe transatlantique domine, mais dans un sens inattendu : Amérique du Nord vers Europe occidentale (14 809 affaires) l'emporte sur l'inverse dans un rapport de 5,2 à 1, signe d'un flux substantiel de substances synthétiques et de médicaments psychotropes vers le marché européen."
+    },
+    "map": {
+      "en": "Drug trafficking reaches far beyond the perimeter of active reporting: 212 administrations appear in the 2025 data against only 146 that submit their own seizures, a 66-country gap concentrated in Africa, Central Asia and the Pacific. The United States alone records over 40% of instances, ahead of Denmark, Germany, France and the United Kingdom, while a long tail of 104 countries records fewer than 50 instances.",
+      "fr": "Le trafic dépasse largement le périmètre des rapporteurs actifs : 212 administrations apparaissent dans les données 2025 contre seulement 146 qui déclarent leurs propres saisies, un écart de 66 pays concentré en Afrique, en Asie centrale et dans le Pacifique. Les États-Unis concentrent à eux seuls plus de 40 % des occurrences, devant le Danemark, l'Allemagne, la France et le Royaume-Uni, tandis qu'une longue traîne de 104 pays compte moins de 50 occurrences."
+    },
+    "oper": {
+      "en": "The operational profile has shifted markedly towards postal and e-commerce channels. Mail-centre seizures rose from 20.3% to 32.5% of cases and in-mail concealment now leads at 50.9%, while in-baggage smuggling fell by six points. E-commerce drives 59.9% of cases, a structurally mature share, splitting enforcement into two paradigms: a postal channel for synthetic and semi-synthetic substances and a traditional bulk channel for cocaine and refined opioids.",
+      "fr": "Le profil opérationnel a nettement basculé vers les canaux postaux et l'e-commerce. Les saisies en centre de tri passent de 20,3 % à 32,5 % des affaires et la dissimulation dans le courrier domine désormais à 50,9 %, tandis que la contrebande dans les bagages perd six points. L'e-commerce porte 59,9 % des affaires, part structurellement mature, scindant la lutte en deux paradigmes : un canal postal pour les substances synthétiques et semi-synthétiques et un canal de gros traditionnel pour la cocaïne et les opioïdes raffinés."
+    }
+  },
+  "lead": {
+    "cannabis": {
+      "en": "Cannabis is the largest drug category in the CEN, both in cases and in quantity. In 2025 Customs registered 34,708 cases (37,058 seizures) across 124 countries, up 59.1%, while quantity rose only marginally to 548.8 tonnes (+3.5%). It represents 51.2% of all drug cases and 42.6% of quantities, but the surge in cases is not matched by volume, pointing to two distinct geographies that must be read separately.",
+      "fr": "Le cannabis est la plus grande catégorie du CEN, en affaires comme en quantité. En 2025, les douanes enregistrent 34 708 affaires (37 058 saisies) dans 124 pays, en hausse de 59,1 %, tandis que la quantité ne progresse que marginalement à 548,8 tonnes (+3,5 %). Il représente 51,2 % des affaires et 42,6 % des quantités, mais la flambée des affaires ne s'accompagne pas du volume, signe de deux géographies à lire séparément."
+    },
+    "psy": {
+      "en": "Psychotropic substances rank second in case volume and form the most chemically diverse category in the CEN. In 2025 Customs registered 16,360 cases (18,216 seizures) across 98 countries, up 25.1%, with quantity rising to 186.8 tonnes (+32.1%). They represent 24.1% of all drug cases and 14.5% of quantities, and like cannabis conceal two distinct trafficking geographies behind their simultaneous growth.",
+      "fr": "Les substances psychotropes arrivent en deuxième en affaires et forment la catégorie la plus diverse chimiquement du CEN. En 2025, les douanes enregistrent 16 360 affaires (18 216 saisies) dans 98 pays, en hausse de 25,1 %, la quantité montant à 186,8 tonnes (+32,1 %). Elles représentent 24,1 % des affaires et 14,5 % des quantités et, comme le cannabis, dissimulent deux géographies de trafic derrière leur croissance simultanée."
+    },
+    "nps": {
+      "en": "NPS display the single most striking paradox of 2025: a doubling of cases combined with a halving of quantities. Customs registered 7,721 cases (+108.8%) across 62 countries, while quantity fell from 167.9 to 82.4 tonnes (-50.9%). At 11.4% of cases but only 6.4% of quantities, NPS are a low-weight, high-frequency commodity whose flows have reoriented towards fragmented, e-commerce-driven postal shipments.",
+      "fr": "Les NSP présentent le paradoxe le plus frappant de 2025 : un doublement des affaires combiné à un quasi-doublement à la baisse des quantités. Les douanes enregistrent 7 721 affaires (+108,8 %) dans 62 pays, tandis que la quantité chute de 167,9 à 82,4 tonnes (-50,9 %). À 11,4 % des affaires mais seulement 6,4 % des quantités, les NSP sont un produit de faible poids et de forte fréquence, dont les flux se sont réorientés vers des envois postaux fragmentés portés par l'e-commerce."
+    },
+    "coc": {
+      "en": "Cocaine retains its position as a high-quantity, geographically structured commodity. In 2025 Customs registered 7,613 cases (8,074 seizures) across 101 countries, a marginal +4.1%, while quantity rose sharply from 230.4 to 400.1 tonnes (+73.7%). At 11.2% of cases but 31.1% of quantities, cocaine is strongly over-represented in volume and, unlike synthetic categories, shows a consistent geography between cases and quantity.",
+      "fr": "La cocaïne conserve son statut de produit de gros volume et géographiquement structuré. En 2025, les douanes enregistrent 7 613 affaires (8 074 saisies) dans 101 pays, soit +4,1 % marginal, tandis que la quantité bondit de 230,4 à 400,1 tonnes (+73,7 %). À 11,2 % des affaires mais 31,1 % des quantités, la cocaïne est fortement surreprésentée en volume et, contrairement aux catégories synthétiques, montre une géographie cohérente entre affaires et quantité."
+    },
+    "opo": {
+      "en": "Opioids and opiates show a coherent profile between cases and quantities, with both declining marginally. Customs registered 2,120 cases (2,523 seizures) across 77 countries (-3.2%) and 24.3 tonnes (-3.0%). At 3.1% of cases and 1.9% of quantities, they remain a small share of the caseload, the only category to decline on both indicators, a trajectory that contrasts with the global opioid-crisis narrative.",
+      "fr": "Les opioïdes et opiacés montrent un profil cohérent entre affaires et quantités, les deux reculant légèrement. Les douanes enregistrent 2 120 affaires (2 523 saisies) dans 77 pays (-3,2 %) et 24,3 tonnes (-3,0 %). À 3,1 % des affaires et 1,9 % des quantités, ils restent une faible part du total, seule catégorie en recul sur les deux indicateurs, trajectoire qui contraste avec le récit mondial de la crise des opioïdes."
+    },
+    "khat": {
+      "en": "Khat is the smallest category tracked in the CEN, at 1.5% of seizures, and follows an atomisation pattern: cases more than doubled (467 to 1,029, +120.3%) while quantity fell from 56.8 to 45.9 tonnes (-19.2%). Heavily concentrated in the European Region, it is marked by a structural shift from fresh to dried khat, driven by the very short shelf life of the fresh product.",
+      "fr": "Le khat est la plus petite catégorie suivie au CEN, à 1,5 % des saisies, et suit un schéma d'atomisation : les affaires plus que doublent (467 à 1 029, +120,3 %) tandis que la quantité recule de 56,8 à 45,9 tonnes (-19,2 %). Fortement concentré dans la région Europe, il est marqué par une bascule structurelle du khat frais vers le séché, dictée par la très courte conservation du produit frais."
+    }
+  },
+  "fig": {
+    "cannabis": {
+      "reporters": {
+        "en": "The United States leads with 10,421 cases, ahead of Denmark (5,135) and Germany (4,581), whose dramatic rises (+670% and +871%) reflect a major intensification of postal screening rather than larger markets. Western Europe (56.7%) and North America (30.0%) together hold 86.8% of cannabis cases, a higher concentration than any other category.",
+        "fr": "Les États-Unis dominent avec 10 421 affaires, devant le Danemark (5 135) et l'Allemagne (4 581), dont les hausses spectaculaires (+670 % et +871 %) reflètent une forte intensification du filtrage postal plus que des marchés plus grands. Europe occidentale (56,7 %) et Amérique du Nord (30,0 %) totalisent 86,8 % des affaires, la plus forte concentration de toutes les catégories."
+      },
+      "subSeiz": {
+        "en": "Herbal cannabis dominates seizures at 79.3%, but resin grows fastest (+86.1% versus +63% for herbal), a signal worth monitoring as it may mark a partial revival of the historical Moroccan resin corridors alongside dominant US herbal flows.",
+        "fr": "L'herbe domine les saisies à 79,3 %, mais la résine progresse le plus vite (+86,1 % contre +63 % pour l'herbe), signal à surveiller car il peut marquer un renouveau partiel des corridors historiques de résine marocaine, parallèlement aux flux d'herbe américains dominants."
+      },
+      "subQty": {
+        "en": "By quantity the picture inverts: herbal leads (366.8 t) but declines (-12.8%), while resin rises to 144.1 t (+58.3%) and now holds 26.3% of cannabis volume. Plants and oils also more than double, marking a redistribution towards processed forms moving through postal flows.",
+        "fr": "En quantité le tableau s'inverse : l'herbe domine (366,8 t) mais recule (-12,8 %), tandis que la résine monte à 144,1 t (+58,3 %) et détient 26,3 % du volume. Plantes et huiles plus que doublent aussi, marquant une redistribution vers des formes transformées circulant par voie postale."
+      },
+      "oper": {
+        "en": "The profile reflects a dual structure: airports (42.5%) and mail centres (29.1%) lead locations, in-mail concealment dominates (49.9%) and risk profiling drives 80.5% of detections. E-commerce powers 62.6% of cases, the second highest after NPS, confirming online retail as the primary channel for derivatives entering Europe.",
+        "fr": "Le profil reflète une structure double : aéroports (42,5 %) et centres de tri (29,1 %) en tête des lieux, dissimulation dans le courrier dominante (49,9 %) et profilage de risque à 80,5 % des détections. L'e-commerce porte 62,6 % des affaires, deuxième part après les NSP, confirmant la vente en ligne comme principal canal des dérivés entrant en Europe."
+      }
+    },
+    "psy": {
+      "reporters": {
+        "en": "Denmark leads by case count with 4,971 cases (+356%), well ahead of the United States (3,044) and Germany (1,143). The presence of three Gulf states, Oman, the UAE and Saudi Arabia, plus the Republic of Korea, is distinctive: Western Europe holds 51.9% of cases, North America 18.6% and the Middle East 12.3%.",
+        "fr": "Le Danemark domine en affaires avec 4 971 affaires (+356 %), loin devant les États-Unis (3 044) et l'Allemagne (1 143). La présence de trois États du Golfe, Oman, les Émirats et l'Arabie saoudite, plus la République de Corée, est distinctive : l'Europe occidentale détient 51,9 % des affaires, l'Amérique du Nord 18,6 % et le Moyen-Orient 12,3 %."
+      },
+      "subSeiz": {
+        "en": "The market is fragmented and chemically diverse. Methamphetamine leads seizures (20.9%) but declines, while psilocybin surges (+130%) and zopiclone explodes (+795%). Five prescription medicines feature in the top 10, confirming the structural weight of diverted pharmaceuticals alongside synthetic stimulants and psychedelics.",
+        "fr": "Le marché est fragmenté et chimiquement divers. La méthamphétamine domine les saisies (20,9 %) mais recule, tandis que la psilocybine bondit (+130 %) et le zopiclone explose (+795 %). Cinq médicaments sur ordonnance figurent dans le top 10, confirmant le poids structurel des produits pharmaceutiques détournés aux côtés des stimulants synthétiques et des psychédéliques."
+      },
+      "subQty": {
+        "en": "By quantity, methamphetamine alone is 57.2% of the total (106.9 t), confirming its role as the principal high-volume synthetic stimulant. Nitrous oxide surges to 35.7 t (+365.5%), reflecting the rise of recreational use, particularly in Europe.",
+        "fr": "En quantité, la méthamphétamine représente à elle seule 57,2 % du total (106,9 t), confirmant son rôle de principal stimulant synthétique de gros volume. Le protoxyde d'azote bondit à 35,7 t (+365,5 %), reflet de l'essor de l'usage récréatif, en particulier en Europe."
+      },
+      "oper": {
+        "en": "The profile is markedly postal: mail centres (41.5%) surpass airports (33.5%), an inversion of the global drug profile, with in-mail concealment at 51.9% and regular mail at 46.2% of conveyances. Import dominates at 78.4%, confirming the role of psychotropics as a destination-market commodity, and e-commerce powers 57.5% of cases.",
+        "fr": "Le profil est nettement postal : les centres de tri (41,5 %) dépassent les aéroports (33,5 %), inversion du profil global, avec la dissimulation dans le courrier à 51,9 % et le courrier ordinaire à 46,2 % des acheminements. L'importation domine à 78,4 %, confirmant le rôle de produit de marché de destination, et l'e-commerce porte 57,5 % des affaires."
+      }
+    },
+    "nps": {
+      "reporters": {
+        "en": "Denmark dominates with 2,699 cases, a staggering rise from 132 in 2024 (+1,944%), ahead of the United States (2,156) and Germany (764). The concentration is the highest of any category, Western Europe 61.0% and North America 27.9%, anchored in jurisdictions with mature mail-centre detection rather than large physical markets.",
+        "fr": "Le Danemark domine avec 2 699 affaires, hausse vertigineuse depuis 132 en 2024 (+1 944 %), devant les États-Unis (2 156) et l'Allemagne (764). La concentration est la plus forte de toutes les catégories, Europe occidentale 61,0 % et Amérique du Nord 27,9 %, ancrée dans des juridictions au filtrage postal mature plus que dans de grands marchés physiques."
+      },
+      "subSeiz": {
+        "en": "Synthetic cannabinoids surge to 2,568 seizures (+623%), overtaking ketamine and tryptamines (both ~1,899). The rebalancing among the three leaders, plus the jump in other NPS (+282%), reflects the chemical diversity of the market and the rapid emergence of new structures year on year.",
+        "fr": "Les cannabinoïdes de synthèse bondissent à 2 568 saisies (+623 %), dépassant la kétamine et les tryptamines (toutes deux ~1 899). Le rééquilibrage entre les trois têtes, plus le bond des autres NSP (+282 %), reflète la diversité chimique du marché et l'émergence rapide de nouvelles structures d'une année sur l'autre."
+      },
+      "subQty": {
+        "en": "By quantity the profile is radically different: plant-based substances jump to 53% of NPS volume, while kratom collapses from 145,002 kg to 1,143 kg (-99%). This near-disappearance, driven by exceptional 2024 bulk seizures that did not recur, explains much of the global quantity decline.",
+        "fr": "En quantité le profil est radicalement différent : les substances végétales bondissent à 53 % du volume NSP, tandis que le kratom s'effondre de 145 002 kg à 1 143 kg (-99 %). Cette quasi-disparition, due à des saisies massives exceptionnelles en 2024 non reconduites, explique l'essentiel de la baisse mondiale des quantités."
+      },
+      "oper": {
+        "en": "NPS are the most postal and e-commerce-centric category of all: 81.9% of cases linked to e-commerce, 78.0% concealed in mail, 70.2% conveyed by regular mail and 88.7% detected through risk profiling, every indicator the highest recorded. This convergence is the structural explanation for the cases-up, quantity-down paradox.",
+        "fr": "Les NSP sont la catégorie la plus liée au postal et à l'e-commerce : 81,9 % des affaires liées à l'e-commerce, 78,0 % dissimulées dans le courrier, 70,2 % acheminées par courrier ordinaire et 88,7 % détectées par profilage, chaque indicateur étant le plus élevé enregistré. Cette convergence est l'explication structurelle du paradoxe affaires en hausse, quantité en baisse."
+      }
+    },
+    "coc": {
+      "reporters": {
+        "en": "The United States leads with 2,187 cases, ahead of France (1,232) and the Netherlands (660). Western Europe holds 45.0% of cases, North America 28.8% and South America 15.2%, a South American share far above any other category, confirming the Andean region as both production zone and active enforcement area.",
+        "fr": "Les États-Unis dominent avec 2 187 affaires, devant la France (1 232) et les Pays-Bas (660). L'Europe occidentale détient 45,0 % des affaires, l'Amérique du Nord 28,8 % et l'Amérique du Sud 15,2 %, part sud-américaine bien supérieure à toute autre catégorie, confirmant la région andine comme zone de production et d'action."
+      },
+      "subSeiz": {
+        "en": "Refined cocaine dominates seizures at 84.9% (+9.3%), ahead of coca leaves (10.5%). The most striking shift is cocaine base, surging +702.9%, signalling intensified enforcement near production zones where the intermediate form is seized closer to laboratories.",
+        "fr": "La cocaïne raffinée domine les saisies à 84,9 % (+9,3 %), devant les feuilles de coca (10,5 %). Le changement le plus frappant est la cocaïne base, en hausse de +702,9 %, signe d'une action intensifiée près des zones de production où la forme intermédiaire est saisie au plus près des laboratoires."
+      },
+      "subQty": {
+        "en": "By quantity, refined cocaine alone is 97.6% of the total (390 t, +78%), a structurally homogeneous commodity that contrasts sharply with the chemical diversity of psychotropics or NPS. Cocaine base rises to 4.4 t (+244%), consistent with seizures near producing countries.",
+        "fr": "En quantité, la cocaïne raffinée représente à elle seule 97,6 % du total (390 t, +78 %), produit structurellement homogène qui contraste fortement avec la diversité chimique des psychotropes ou des NSP. La cocaïne base monte à 4,4 t (+244 %), cohérent avec des saisies près des pays producteurs."
+      },
+      "oper": {
+        "en": "Cocaine stands apart from postal categories: airports lead (42.2%) but seaports reach 11.8% and vessel concealment 11.4%, the highest maritime shares of any category. E-commerce touches only 32.1% of cases, the lowest among major drugs, confirming cocaine as a wholesale commodity moved by freight, containers and human couriers.",
+        "fr": "La cocaïne se distingue des catégories postales : les aéroports dominent (42,2 %) mais les ports atteignent 11,8 % et la dissimulation par navire 11,4 %, les parts maritimes les plus élevées de toutes les catégories. L'e-commerce ne touche que 32,1 % des affaires, le plus bas des grandes drogues, confirmant la cocaïne comme produit de gros déplacé par fret, conteneurs et passeurs."
+      }
+    },
+    "opo": {
+      "reporters": {
+        "en": "Reporting is anchored in destination markets but unusually balanced: the United States leads (752 cases) ahead of Denmark (212) and the Republic of Korea (188). North America holds 35.6% of cases, Western Europe 34.3% and Asia-Pacific 15.4%, an even spread that reflects the global nature of opioid consumption.",
+        "fr": "La déclaration est ancrée dans les marchés de destination mais inhabituellement équilibrée : les États-Unis dominent (752 affaires) devant le Danemark (212) et la République de Corée (188). L'Amérique du Nord détient 35,6 % des affaires, l'Europe occidentale 34,3 % et l'Asie-Pacifique 15,4 %, répartition régulière qui reflète la nature mondiale de la consommation d'opioïdes."
+      },
+      "subSeiz": {
+        "en": "Fentanyl leads seizures (30.6%), overtaking heroin for the first time in CEN history, though it declines from its 2024 peak. The eight subcommodities are relatively balanced, spanning natural opiates, semi-synthetic and synthetic opioids, while tapentadol (+670%) and other opioids (+1,213%) point to emerging prescription streams.",
+        "fr": "Le fentanyl domine les saisies (30,6 %), dépassant l'héroïne pour la première fois dans l'histoire du CEN, bien qu'il recule de son pic de 2024. Les huit sous-produits sont relativement équilibrés, des opiacés naturels aux opioïdes semi-synthétiques et synthétiques, tandis que le tapentadol (+670 %) et les autres opioïdes (+1 213 %) signalent des flux de médicaments émergents."
+      },
+      "subQty": {
+        "en": "By quantity, heroin reclaims dominance at 31.5% (7.6 t, +76.7%), ahead of fentanyl at 26.1% (6.3 t, -49%); together they are 57.6% of opioid volume. The rebalancing returns this traditional opiate to the top after fentanyl led both dimensions in 2024.",
+        "fr": "En quantité, l'héroïne redevient dominante à 31,5 % (7,6 t, +76,7 %), devant le fentanyl à 26,1 % (6,3 t, -49 %) ; ensemble ils pèsent 57,6 % du volume. Le rééquilibrage ramène cet opiacé traditionnel en tête après que le fentanyl ait dominé les deux dimensions en 2024."
+      },
+      "oper": {
+        "en": "The profile balances passenger and freight channels: airports (34.8%), land boundaries (24.2%) and mail centres (17.3%) all feature, with conveyance spread across air, vehicle, mail and courier. E-commerce accounts for 34.4% of cases, below the drug average, consistent with opioids as a partly commercial-freight commodity.",
+        "fr": "Le profil équilibre voyageurs et fret : aéroports (34,8 %), frontières terrestres (24,2 %) et centres de tri (17,3 %) coexistent, l'acheminement se répartissant entre air, véhicule, courrier et messagerie. L'e-commerce représente 34,4 % des affaires, sous la moyenne, cohérent avec un produit en partie de fret commercial."
+      }
+    },
+    "khat": {
+      "reporters": {
+        "en": "The 2025 data records a clear inversion within khat: fresh khat quantity collapses (-77.7%, from 51.6% to 14.2% of the mix) while dried khat rises (+62.8%) and unspecified khat now holds 50.9%. The substitution from fresh to dried is the structural signature of the year, driven by the 24 to 48 hour shelf life of fresh khat.",
+        "fr": "Les données 2025 enregistrent une inversion nette au sein du khat : la quantité de khat frais s'effondre (-77,7 %, de 51,6 % à 14,2 % du mix) tandis que le khat séché monte (+62,8 %) et le khat non spécifié détient désormais 50,9 %. La substitution du frais vers le séché est la signature structurelle de l'année, dictée par la conservation de 24 à 48 heures du khat frais."
+      },
+      "subSeiz": {
+        "en": "By seizure count, unspecified khat leads (46.8%), ahead of dried (32.5%) and fresh (20.8%), confirming the same fresh-to-dried trajectory: dried and unspecified product travels far better through mail and freight than perishable fresh khat.",
+        "fr": "En nombre de saisies, le khat non spécifié domine (46,8 %), devant le séché (32,5 %) et le frais (20,8 %), confirmant la même trajectoire : le produit séché et non spécifié circule bien mieux par courrier et fret que le khat frais périssable."
+      },
+      "subQty": {
+        "en": "Dried and unspecified khat together now hold most of the volume as fresh khat recedes, a quantity mix that mirrors the operational shift towards postal and freight channels suited to a longer-lived product.",
+        "fr": "Le khat séché et non spécifié concentrent désormais l'essentiel du volume, le frais reculant, un mix de quantité qui épouse la bascule opérationnelle vers les canaux postaux et de fret adaptés à un produit de plus longue conservation."
+      },
+      "oper": {
+        "en": "Airports (49.9%) and mail centres (33.9%) lead, with air the main conveyance (38.6%). Direction is mostly import (62.0%) but transit reaches 27.9%, the highest of any drug category, and e-commerce powers 55.0% of cases, rising alongside the shift to dried product.",
+        "fr": "Aéroports (49,9 %) et centres de tri (33,9 %) dominent, l'air étant le principal acheminement (38,6 %). La direction est surtout importation (62,0 %) mais le transit atteint 27,9 %, le plus élevé de toutes les catégories, et l'e-commerce porte 55,0 % des affaires, en hausse avec la bascule vers le produit séché."
+      }
+    }
+  },
+  "spot": {
+    "cannabis": {
+      "title": {
+        "en": "Spotlight: the United States to United Kingdom corridor",
+        "fr": "Focus : le corridor États-Unis vers Royaume-Uni"
+      },
+      "body": {
+        "en": "The United States is the largest single departure country (16,278 cases) and the United Kingdom the largest destination (5,163), reflecting the export of US legal-market cannabis derivatives towards the UK retail market through e-commerce and parcel logistics.",
+        "fr": "Les États-Unis sont le premier pays de départ (16 278 affaires) et le Royaume-Uni la première destination (5 163), reflet de l'export de dérivés de cannabis des marchés légaux américains vers le marché britannique via l'e-commerce et la logistique postale."
+      }
+    },
+    "psy": {
+      "title": {
+        "en": "Spotlight: a Middle East and North Africa destination cluster",
+        "fr": "Focus : un pôle de destination Moyen-Orient et Afrique du Nord"
+      },
+      "body": {
+        "en": "Oman, the UAE and Saudi Arabia, alongside the Republic of Korea, make MENA the highest psychotropic concentration of any region (12.4%), targeting diverted prescription medicines such as pregabalin, tramadol and captagon.",
+        "fr": "Oman, les Émirats arabes unis et l'Arabie saoudite, avec la République de Corée, font de la zone MENA la plus forte concentration de psychotropes (12,4 %), visant des médicaments détournés comme la prégabaline, le tramadol et le captagon."
+      }
+    },
+    "nps": {
+      "title": {
+        "en": "Spotlight: Tanzania, the NPS quantity epicentre",
+        "fr": "Focus : la Tanzanie, épicentre des quantités de NSP"
+      },
+      "body": {
+        "en": "Tanzania alone records 42,531 kg in 2025, 51% of the global NPS quantity, driven by one or more large maritime interceptions of plant-based NPS, though it does not appear among the top reporting countries by case count.",
+        "fr": "La Tanzanie enregistre à elle seule 42 531 kg en 2025, soit 51 % de la quantité mondiale de NSP, portée par une ou plusieurs grandes interceptions maritimes de NSP d'origine végétale, alors qu'elle n'apparaît pas parmi les premiers pays rapporteurs en affaires."
+      }
+    },
+    "coc": {
+      "title": {
+        "en": "Spotlight: Antwerp and Rotterdam as European entry points",
+        "fr": "Focus : Anvers et Rotterdam, portes d'entrée européennes"
+      },
+      "body": {
+        "en": "Belgium (56 t) and the Netherlands (19 t) together account for 75 tonnes seized, about 19% of the global volume, reflecting the role of the Antwerp-Rotterdam port complex in maritime cocaine flows from South America.",
+        "fr": "La Belgique (56 t) et les Pays-Bas (19 t) totalisent 75 tonnes saisies, environ 19 % du volume mondial, reflet du rôle du complexe portuaire Anvers-Rotterdam dans les flux maritimes de cocaïne venus d'Amérique du Sud."
+      }
+    }
+  }
+}

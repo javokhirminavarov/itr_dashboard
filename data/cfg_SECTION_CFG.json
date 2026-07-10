@@ -1,0 +1,161 @@
+[
+  {
+    "code": "AML/CTF",
+    "en": "AML/CTF",
+    "fr": "LBC/FT",
+    "col": "#8B0434",
+    "prev": "#E83A45",
+    "flows": [
+      {
+        "code": "Cash smuggling",
+        "en": "Cash smuggling",
+        "fr": "Contrebande d'espèces"
+      },
+      {
+        "code": "Gold trafficking",
+        "en": "Gold trafficking",
+        "fr": "Trafic d'or"
+      },
+      {
+        "code": "Gemstones trafficking",
+        "en": "Gemstones trafficking",
+        "fr": "Trafic de pierres précieuses"
+      }
+    ]
+  },
+  {
+    "code": "Drugs",
+    "en": "Drugs",
+    "fr": "Stupéfiants",
+    "col": "#F89E36",
+    "prev": "#FEC828",
+    "flows": [
+      {
+        "code": "Cannabis",
+        "en": "Cannabis",
+        "fr": "Cannabis"
+      },
+      {
+        "code": "Cocaine",
+        "en": "Cocaine",
+        "fr": "Cocaïne"
+      },
+      {
+        "code": "Opioids and Opiates",
+        "en": "Opioids and opiates",
+        "fr": "Opioïdes et opiacés"
+      },
+      {
+        "code": "Psychotropic substances",
+        "en": "Psychotropic substances",
+        "fr": "Substances psychotropes"
+      },
+      {
+        "code": "New Psychoactive Substances",
+        "en": "New psychoactive substances",
+        "fr": "Nouvelles substances psychoactives"
+      },
+      {
+        "code": "Khat",
+        "en": "Khat",
+        "fr": "Khat"
+      }
+    ]
+  },
+  {
+    "code": "Environmental Crime",
+    "en": "Environmental Crime",
+    "fr": "Criminalité environnementale",
+    "col": "#5B9743",
+    "prev": "#A8C97A",
+    "flows": [
+      {
+        "code": "Fauna",
+        "en": "Fauna",
+        "fr": "Faune"
+      },
+      {
+        "code": "Flora",
+        "en": "Flora",
+        "fr": "Flore"
+      },
+      {
+        "code": "Waste",
+        "en": "Waste",
+        "fr": "Déchets"
+      },
+      {
+        "code": "ODS & HFCs",
+        "en": "ODS & HFCs",
+        "fr": "SAO et HFC"
+      },
+      {
+        "code": "Other hazardous materials",
+        "en": "Other hazardous materials",
+        "fr": "Autres matières dangereuses"
+      }
+    ]
+  },
+  {
+    "code": "IPR, Health and Safety",
+    "en": "IPR, Health and Safety",
+    "fr": "DPI, santé et sécurité",
+    "col": "#7D375C",
+    "prev": "#BF3980",
+    "flows": [
+      {
+        "code": "IPR products trafficking",
+        "en": "IPR products",
+        "fr": "Produits portant atteinte aux DPI"
+      },
+      {
+        "code": "Medical products trafficking",
+        "en": "Medical products",
+        "fr": "Produits médicaux"
+      }
+    ]
+  },
+  {
+    "code": "Revenue",
+    "en": "Revenue",
+    "fr": "Recettes",
+    "col": "#2E5280",
+    "prev": "#398CCB",
+    "flows": [
+      {
+        "code": "Tobacco products trafficking",
+        "en": "Tobacco products",
+        "fr": "Produits du tabac"
+      },
+      {
+        "code": "Alcohol products trafficking",
+        "en": "Alcohol products",
+        "fr": "Produits alcoolisés"
+      }
+    ]
+  },
+  {
+    "code": "Security",
+    "en": "Security",
+    "fr": "Sécurité",
+    "col": "#5E2D91",
+    "prev": "#C4A8E0",
+    "flows": [
+      {
+        "code": "Weapons, ammunition and tactical equipment",
+        "en": "Weapons, ammunition & tactical equipment",
+        "fr": "Armes, munitions et équipements tactiques"
+      },
+      {
+        "code": "Explosives and precursors",
+        "en": "Explosives and precursors",
+        "fr": "Explosifs et précurseurs"
+      },
+      {
+        "code": "Unmanned aerial systems (UAS)",
+        "en": "Unmanned aerial systems (UAS)",
+        "fr": "Systèmes aériens sans pilote (UAS)"
+      }
+    ]
+  }
+]

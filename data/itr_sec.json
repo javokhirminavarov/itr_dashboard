@@ -1,0 +1,3512 @@
+{
+  "totals": {
+    "cases": 5510,
+    "seizures": 10875,
+    "admins": 81
+  },
+  "totalsPrev": {
+    "cases": 6323,
+    "seizures": 12194
+  },
+  "streamOrder": [
+    "Weapons, ammunition and tactical equipment",
+    "Explosives and precursors",
+    "Unmanned aerial systems (UAS)"
+  ],
+  "split": [
+    {
+      "en": "Weapons, ammunition and tactical equipment",
+      "fr": "Armes, munitions et équipements tactiques",
+      "cases": 4639,
+      "seizures": 9910,
+      "admins": 68
+    },
+    {
+      "en": "Explosives and precursors",
+      "fr": "Explosifs et précurseurs",
+      "cases": 232,
+      "seizures": 312,
+      "admins": 41
+    },
+    {
+      "en": "Unmanned aerial systems (UAS)",
+      "fr": "Systèmes aériens sans pilote (UAS)",
+      "cases": 653,
+      "seizures": 653,
+      "admins": 7
+    }
+  ],
+  "perStream": {
+    "Weapons, ammunition and tactical equipment": {
+      "fr": "Armes, munitions et équipements tactiques",
+      "totals": {
+        "cases": 4639,
+        "seizures": 9910,
+        "admins": 68,
+        "pieces": 5580372
+      },
+      "reporters": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 2276,
+          "prev": 3596
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 651,
+          "prev": 1
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "curr": 386,
+          "prev": 625
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 178,
+          "prev": 0
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "curr": 130,
+          "prev": 39
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "curr": 116,
+          "prev": 244
+        },
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "curr": 86,
+          "prev": 100
+        },
+        {
+          "en": "Mexico",
+          "fr": "Mexique",
+          "curr": 73,
+          "prev": 77
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 70,
+          "prev": 121
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "curr": 59,
+          "prev": 194
+        }
+      ],
+      "departures": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 947,
+          "prev": 947
+        },
+        {
+          "en": "China",
+          "fr": "Chine",
+          "curr": 215,
+          "prev": 215
+        },
+        {
+          "en": "Ukraine",
+          "fr": "Ukraine",
+          "curr": 158,
+          "prev": 158
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 111,
+          "prev": 111
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 92,
+          "prev": 92
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "curr": 84,
+          "prev": 84
+        },
+        {
+          "en": "Belgium",
+          "fr": "Belgique",
+          "curr": 75,
+          "prev": 75
+        },
+        {
+          "en": "Mexico",
+          "fr": "Mexique",
+          "curr": 64,
+          "prev": 64
+        },
+        {
+          "en": "Czech Rep.",
+          "fr": "Rép. Tchèque",
+          "curr": 62,
+          "prev": 62
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 59,
+          "prev": 59
+        }
+      ],
+      "detection": [
+        {
+          "en": "Risk profiling",
+          "fr": "Profilage de risque",
+          "pct": 79.6
+        },
+        {
+          "en": "Routine control",
+          "fr": "Contrôle de routine",
+          "pct": 18.2
+        },
+        {
+          "en": "Random selection",
+          "fr": "Sélection aléatoire",
+          "pct": 1.1
+        },
+        {
+          "en": "Intelligence",
+          "fr": "Renseignement",
+          "pct": 0.7
+        },
+        {
+          "en": "Investigation",
+          "fr": "Enquête",
+          "pct": 0.4
+        }
+      ],
+      "direction": [
+        {
+          "en": "Import",
+          "fr": "Importation",
+          "pct": 69.4
+        },
+        {
+          "en": "Export",
+          "fr": "Exportation",
+          "pct": 18.9
+        },
+        {
+          "en": "Transit",
+          "fr": "Transit",
+          "pct": 9.7
+        },
+        {
+          "en": "Internal",
+          "fr": "Interne",
+          "pct": 1.9
+        }
+      ],
+      "flows": {
+        "regions": [
+          "NAM",
+          "WE",
+          "ECE",
+          "CAR",
+          "ME",
+          "A/P",
+          "SA",
+          "CAM",
+          "ESA",
+          "CIS",
+          "NA",
+          "WA",
+          "CA"
+        ],
+        "matrix": [
+          [
+            34,
+            54,
+            20,
+            403,
+            11,
+            32,
+            31,
+            118,
+            15,
+            15,
+            1,
+            12,
+            1
+          ],
+          [
+            10,
+            494,
+            30,
+            3,
+            14,
+            1,
+            0,
+            0,
+            1,
+            2,
+            10,
+            1,
+            0
+          ],
+          [
+            14,
+            166,
+            199,
+            0,
+            8,
+            3,
+            0,
+            0,
+            1,
+            7,
+            4,
+            0,
+            1
+          ],
+          [
+            59,
+            1,
+            0,
+            22,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            4,
+            5,
+            0,
+            192,
+            0,
+            0,
+            0,
+            2,
+            0,
+            6,
+            1,
+            0
+          ],
+          [
+            81,
+            174,
+            6,
+            1,
+            53,
+            14,
+            3,
+            0,
+            3,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            14,
+            0,
+            1,
+            0,
+            0,
+            37,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            5,
+            1,
+            0,
+            4,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            4,
+            0,
+            6,
+            7,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            1,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            7,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5
+          ]
+        ]
+      },
+      "involvement": {
+        "map": [
+          {
+            "iso": "USA",
+            "cases": 2517
+          },
+          {
+            "iso": "DNK",
+            "cases": 651
+          },
+          {
+            "iso": "IRL",
+            "cases": 392
+          },
+          {
+            "iso": "MEX",
+            "cases": 357
+          },
+          {
+            "iso": "FRA",
+            "cases": 282
+          },
+          {
+            "iso": "CHN",
+            "cases": 218
+          },
+          {
+            "iso": "POL",
+            "cases": 184
+          },
+          {
+            "iso": "UKR",
+            "cases": 173
+          },
+          {
+            "iso": "GBR",
+            "cases": 141
+          },
+          {
+            "iso": "SAU",
+            "cases": 131
+          },
+          {
+            "iso": "OMN",
+            "cases": 128
+          },
+          {
+            "iso": "ARE",
+            "cases": 111
+          },
+          {
+            "iso": "DEU",
+            "cases": 104
+          },
+          {
+            "iso": "HND",
+            "cases": 102
+          },
+          {
+            "iso": "DOM",
+            "cases": 96
+          },
+          {
+            "iso": "TUR",
+            "cases": 87
+          },
+          {
+            "iso": "BEL",
+            "cases": 77
+          },
+          {
+            "iso": "CZE",
+            "cases": 65
+          },
+          {
+            "iso": "MDA",
+            "cases": 64
+          },
+          {
+            "iso": "NLD",
+            "cases": 58
+          },
+          {
+            "iso": "SWE",
+            "cases": 54
+          },
+          {
+            "iso": "ROU",
+            "cases": 47
+          },
+          {
+            "iso": "ARG",
+            "cases": 41
+          },
+          {
+            "iso": "CAN",
+            "cases": 40
+          },
+          {
+            "iso": "HRV",
+            "cases": 39
+          },
+          {
+            "iso": "JOR",
+            "cases": 39
+          },
+          {
+            "iso": "ITA",
+            "cases": 36
+          },
+          {
+            "iso": "SRB",
+            "cases": 35
+          },
+          {
+            "iso": "BIH",
+            "cases": 34
+          },
+          {
+            "iso": "ESP",
+            "cases": 32
+          },
+          {
+            "iso": "SVK",
+            "cases": 31
+          },
+          {
+            "iso": "GRC",
+            "cases": 28
+          },
+          {
+            "iso": "KWT",
+            "cases": 28
+          },
+          {
+            "iso": "BRA",
+            "cases": 25
+          },
+          {
+            "iso": "JPN",
+            "cases": 25
+          },
+          {
+            "iso": "HKG",
+            "cases": 24
+          },
+          {
+            "iso": "RUS",
+            "cases": 22
+          },
+          {
+            "iso": "ZAF",
+            "cases": 21
+          },
+          {
+            "iso": "BGR",
+            "cases": 21
+          },
+          {
+            "iso": "QAT",
+            "cases": 20
+          },
+          {
+            "iso": "PRY",
+            "cases": 20
+          },
+          {
+            "iso": "EGY",
+            "cases": 20
+          },
+          {
+            "iso": "AUT",
+            "cases": 19
+          },
+          {
+            "iso": "HUN",
+            "cases": 17
+          },
+          {
+            "iso": "PAK",
+            "cases": 17
+          },
+          {
+            "iso": "CHE",
+            "cases": 17
+          },
+          {
+            "iso": "ISR",
+            "cases": 16
+          },
+          {
+            "iso": "CUW",
+            "cases": 16
+          },
+          {
+            "iso": "KOR",
+            "cases": 15
+          },
+          {
+            "iso": "THA",
+            "cases": 15
+          },
+          {
+            "iso": "IND",
+            "cases": 15
+          },
+          {
+            "iso": "JAM",
+            "cases": 13
+          },
+          {
+            "iso": "BHS",
+            "cases": 13
+          },
+          {
+            "iso": "BHR",
+            "cases": 13
+          },
+          {
+            "iso": "KAZ",
+            "cases": 12
+          },
+          {
+            "iso": "YEM",
+            "cases": 12
+          },
+          {
+            "iso": "AZE",
+            "cases": 12
+          },
+          {
+            "iso": "GTM",
+            "cases": 12
+          },
+          {
+            "iso": "ECU",
+            "cases": 11
+          },
+          {
+            "iso": "MNG",
+            "cases": 11
+          },
+          {
+            "iso": "TWN",
+            "cases": 9
+          },
+          {
+            "iso": "LCA",
+            "cases": 9
+          },
+          {
+            "iso": "PAN",
+            "cases": 9
+          },
+          {
+            "iso": "IRN",
+            "cases": 9
+          },
+          {
+            "iso": "CHL",
+            "cases": 9
+          },
+          {
+            "iso": "LBN",
+            "cases": 9
+          },
+          {
+            "iso": "MAR",
+            "cases": 9
+          },
+          {
+            "iso": "CRI",
+            "cases": 8
+          },
+          {
+            "iso": "NOR",
+            "cases": 8
+          },
+          {
+            "iso": "NPL",
+            "cases": 8
+          },
+          {
+            "iso": "SYR",
+            "cases": 8
+          },
+          {
+            "iso": "KOS",
+            "cases": 8
+          },
+          {
+            "iso": "PRT",
+            "cases": 7
+          },
+          {
+            "iso": "NGA",
+            "cases": 7
+          },
+          {
+            "iso": "COL",
+            "cases": 7
+          },
+          {
+            "iso": "SUR",
+            "cases": 7
+          },
+          {
+            "iso": "IRQ",
+            "cases": 7
+          },
+          {
+            "iso": "MUS",
+            "cases": 7
+          },
+          {
+            "iso": "MKD",
+            "cases": 7
+          },
+          {
+            "iso": "AUS",
+            "cases": 6
+          },
+          {
+            "iso": "VEN",
+            "cases": 6
+          },
+          {
+            "iso": "MYS",
+            "cases": 6
+          },
+          {
+            "iso": "BOL",
+            "cases": 6
+          },
+          {
+            "iso": "ALB",
+            "cases": 6
+          },
+          {
+            "iso": "NAM",
+            "cases": 6
+          },
+          {
+            "iso": "VIR",
+            "cases": 5
+          },
+          {
+            "iso": "GHA",
+            "cases": 5
+          },
+          {
+            "iso": "GEO",
+            "cases": 5
+          },
+          {
+            "iso": "LBR",
+            "cases": 5
+          },
+          {
+            "iso": "PHL",
+            "cases": 5
+          },
+          {
+            "iso": "URY",
+            "cases": 5
+          },
+          {
+            "iso": "TTO",
+            "cases": 4
+          },
+          {
+            "iso": "CUB",
+            "cases": 4
+          },
+          {
+            "iso": "CMR",
+            "cases": 4
+          },
+          {
+            "iso": "HTI",
+            "cases": 4
+          },
+          {
+            "iso": "GUY",
+            "cases": 4
+          },
+          {
+            "iso": "BLZ",
+            "cases": 4
+          },
+          {
+            "iso": "SLV",
+            "cases": 4
+          },
+          {
+            "iso": "DMA",
+            "cases": 4
+          },
+          {
+            "iso": "KEN",
+            "cases": 4
+          },
+          {
+            "iso": "MNE",
+            "cases": 4
+          },
+          {
+            "iso": "LTU",
+            "cases": 4
+          },
+          {
+            "iso": "FIN",
+            "cases": 3
+          },
+          {
+            "iso": "SGP",
+            "cases": 3
+          },
+          {
+            "iso": "ARM",
+            "cases": 3
+          },
+          {
+            "iso": "MDG",
+            "cases": 3
+          },
+          {
+            "iso": "ISL",
+            "cases": 2
+          },
+          {
+            "iso": "VCT",
+            "cases": 2
+          },
+          {
+            "iso": "LAO",
+            "cases": 2
+          },
+          {
+            "iso": "KGZ",
+            "cases": 2
+          },
+          {
+            "iso": "PER",
+            "cases": 2
+          },
+          {
+            "iso": "GNQ",
+            "cases": 2
+          },
+          {
+            "iso": "TCD",
+            "cases": 2
+          },
+          {
+            "iso": "TZA",
+            "cases": 2
+          },
+          {
+            "iso": "MLI",
+            "cases": 2
+          },
+          {
+            "iso": "GIN",
+            "cases": 2
+          },
+          {
+            "iso": "VGB",
+            "cases": 2
+          },
+          {
+            "iso": "LVA",
+            "cases": 2
+          },
+          {
+            "iso": "BFA",
+            "cases": 2
+          },
+          {
+            "iso": "COG",
+            "cases": 2
+          },
+          {
+            "iso": "SVN",
+            "cases": 2
+          },
+          {
+            "iso": "FSM",
+            "cases": 1
+          },
+          {
+            "iso": "IDN",
+            "cases": 1
+          },
+          {
+            "iso": "PNG",
+            "cases": 1
+          },
+          {
+            "iso": "NZL",
+            "cases": 1
+          },
+          {
+            "iso": "KHM",
+            "cases": 1
+          },
+          {
+            "iso": "ZWE",
+            "cases": 1
+          },
+          {
+            "iso": "MOZ",
+            "cases": 1
+          },
+          {
+            "iso": "MRT",
+            "cases": 1
+          },
+          {
+            "iso": "AND",
+            "cases": 1
+          },
+          {
+            "iso": "AFG",
+            "cases": 1
+          },
+          {
+            "iso": "SEN",
+            "cases": 1
+          },
+          {
+            "iso": "GMB",
+            "cases": 1
+          },
+          {
+            "iso": "CYP",
+            "cases": 1
+          },
+          {
+            "iso": "TGO",
+            "cases": 1
+          },
+          {
+            "iso": "AGO",
+            "cases": 1
+          },
+          {
+            "iso": "LBY",
+            "cases": 1
+          },
+          {
+            "iso": "NER",
+            "cases": 1
+          },
+          {
+            "iso": "LIE",
+            "cases": 1
+          },
+          {
+            "iso": "SXM",
+            "cases": 1
+          },
+          {
+            "iso": "BRB",
+            "cases": 1
+          },
+          {
+            "iso": "KNA",
+            "cases": 1
+          }
+        ],
+        "countriesInvolved": 142,
+        "top5": [
+          {
+            "iso": "USA",
+            "cases": 2517
+          },
+          {
+            "iso": "DNK",
+            "cases": 651
+          },
+          {
+            "iso": "IRL",
+            "cases": 392
+          },
+          {
+            "iso": "MEX",
+            "cases": 357
+          },
+          {
+            "iso": "FRA",
+            "cases": 282
+          }
+        ],
+        "top5sum": 4199
+      },
+      "buckets": [
+        {
+          "en": "Weapons type",
+          "fr": "Type d'arme",
+          "cases": 2703,
+          "seizures": 4038,
+          "casesPrev": 2668,
+          "seizuresPrev": 4263
+        },
+        {
+          "en": "Ammunition",
+          "fr": "Munitions",
+          "cases": 1768,
+          "seizures": 3171,
+          "casesPrev": 1635,
+          "seizuresPrev": 2813
+        },
+        {
+          "en": "Firearm parts and components",
+          "fr": "Pièces et composants d'armes à feu",
+          "cases": 1700,
+          "seizures": 2701,
+          "casesPrev": 2953,
+          "seizuresPrev": 4392
+        }
+      ],
+      "weaponsType": [
+        {
+          "en": "Semi-automatic pistol",
+          "fr": "Pistolet semi-automatique",
+          "curr": 1521,
+          "prev": 1801,
+          "qty": 3239,
+          "qtyPrev": 7356
+        },
+        {
+          "en": "Bladed weapon",
+          "fr": "Arme blanche",
+          "curr": 802,
+          "prev": 518,
+          "qty": 5510,
+          "qtyPrev": 48821
+        },
+        {
+          "en": "Rifle",
+          "fr": "Fusil",
+          "curr": 335,
+          "prev": 424,
+          "qty": 766,
+          "qtyPrev": 586
+        },
+        {
+          "en": "Assault rifle",
+          "fr": "Fusil d'assaut",
+          "curr": 256,
+          "prev": 91,
+          "qty": 592,
+          "qtyPrev": 168
+        },
+        {
+          "en": "Blunt force weapon",
+          "fr": "Arme contondante",
+          "curr": 202,
+          "prev": 34,
+          "qty": 445,
+          "qtyPrev": 186
+        },
+        {
+          "en": "Air gun",
+          "fr": "Arme à air comprimé",
+          "curr": 175,
+          "prev": 228,
+          "qty": 1211067,
+          "qtyPrev": 15049
+        },
+        {
+          "en": "Revolver",
+          "fr": "Revolver",
+          "curr": 171,
+          "prev": 118,
+          "qty": 932,
+          "qtyPrev": 140
+        },
+        {
+          "en": "Shotgun",
+          "fr": "Fusil de chasse",
+          "curr": 142,
+          "prev": 196,
+          "qty": 448,
+          "qtyPrev": 2707
+        },
+        {
+          "en": "Stun device",
+          "fr": "Dispositif paralysant",
+          "curr": 111,
+          "prev": 205,
+          "qty": 4607,
+          "qtyPrev": 5938
+        },
+        {
+          "en": "Pepper spray",
+          "fr": "Bombe lacrymogène",
+          "curr": 102,
+          "prev": 220,
+          "qty": 200,
+          "qtyPrev": 473
+        }
+      ],
+      "ammunition": [
+        {
+          "en": "Conventional ammunition",
+          "fr": "Munitions classiques",
+          "curr": 2750,
+          "prev": 2526,
+          "qty": 615755,
+          "qtyPrev": 1094585
+        },
+        {
+          "en": "Projectiles",
+          "fr": "Projectiles",
+          "curr": 192,
+          "prev": 137,
+          "qty": 91141,
+          "qtyPrev": 188369
+        },
+        {
+          "en": "Other ammunition",
+          "fr": "Autres munitions",
+          "curr": 174,
+          "prev": 48,
+          "qty": 3541913,
+          "qtyPrev": 167494
+        },
+        {
+          "en": "Shell casings",
+          "fr": "Douilles",
+          "curr": 46,
+          "prev": 85,
+          "qty": 635,
+          "qtyPrev": 148903
+        },
+        {
+          "en": "Pellets",
+          "fr": "Plombs",
+          "curr": 3,
+          "prev": 1,
+          "qty": 521,
+          "qtyPrev": 4000
+        }
+      ],
+      "parts": [
+        {
+          "en": "Magazine",
+          "fr": "Chargeur",
+          "curr": 1341,
+          "prev": 1854,
+          "qty": 8119,
+          "qtyPrev": 11911
+        },
+        {
+          "en": "Receiver",
+          "fr": "Carcasse",
+          "curr": 554,
+          "prev": 129,
+          "qty": 2487,
+          "qtyPrev": 511
+        },
+        {
+          "en": "Silencer",
+          "fr": "Silencieux",
+          "curr": 328,
+          "prev": 677,
+          "qty": 577,
+          "qtyPrev": 2178
+        },
+        {
+          "en": "Aiming device",
+          "fr": "Dispositif de visée",
+          "curr": 200,
+          "prev": 385,
+          "qty": 20455,
+          "qtyPrev": 1213
+        },
+        {
+          "en": "Other parts of SALW",
+          "fr": "Autres pièces d'ALPC",
+          "curr": 122,
+          "prev": 76,
+          "qty": 62991,
+          "qtyPrev": 8322
+        },
+        {
+          "en": "Barrel",
+          "fr": "Canon",
+          "curr": 98,
+          "prev": 76,
+          "qty": 277,
+          "qtyPrev": 388
+        },
+        {
+          "en": "Scope",
+          "fr": "Lunette de visée",
+          "curr": 30,
+          "prev": 23,
+          "qty": 620,
+          "qtyPrev": 23
+        },
+        {
+          "en": "Slide",
+          "fr": "Glissière",
+          "curr": 6,
+          "prev": 8,
+          "qty": 8,
+          "qtyPrev": 13
+        },
+        {
+          "en": "Breech block",
+          "fr": "Bloc de culasse",
+          "curr": 4,
+          "prev": 0,
+          "qty": 34,
+          "qtyPrev": 0
+        },
+        {
+          "en": "Bolt",
+          "fr": "Verrou",
+          "curr": 4,
+          "prev": 1149,
+          "qty": 656,
+          "qtyPrev": 18355
+        }
+      ],
+      "locByCommodity": {
+        "commodities": [
+          "Conventional ammunition",
+          "Semi-automatic pistol",
+          "Magazine",
+          "Bladed weapon",
+          "Receiver",
+          "Rifle",
+          "Silencer",
+          "Assault rifle",
+          "Blunt force weapon",
+          "Aiming device"
+        ],
+        "categories": [
+          "Land boundary",
+          "Airport",
+          "Inland",
+          "Seaport",
+          "Mail Centre",
+          "Express Courier"
+        ],
+        "rows": [
+          {
+            "en": "Conventional ammunition",
+            "fr": "Munitions classiques",
+            "parts": {
+              "Land boundary": 58.9,
+              "Airport": 7.8,
+              "Inland": 13.1,
+              "Seaport": 14.6,
+              "Mail Centre": 0.5,
+              "Express Courier": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Semi-automatic pistol",
+            "fr": "Pistolet semi-automatique",
+            "parts": {
+              "Land boundary": 43.5,
+              "Airport": 10,
+              "Inland": 23.9,
+              "Seaport": 13,
+              "Mail Centre": 0.3,
+              "Express Courier": 0.3
+            },
+            "total": 100
+          },
+          {
+            "en": "Magazine",
+            "fr": "Chargeur",
+            "parts": {
+              "Land boundary": 60.3,
+              "Airport": 10.1,
+              "Inland": 4.4,
+              "Seaport": 16.2,
+              "Mail Centre": 1,
+              "Express Courier": 0.2
+            },
+            "total": 100
+          },
+          {
+            "en": "Bladed weapon",
+            "fr": "Arme blanche",
+            "parts": {
+              "Land boundary": 2.4,
+              "Airport": 3.4,
+              "Inland": 2.5,
+              "Seaport": 6.2,
+              "Mail Centre": 32,
+              "Express Courier": 0.1
+            },
+            "total": 100
+          },
+          {
+            "en": "Receiver",
+            "fr": "Carcasse",
+            "parts": {
+              "Land boundary": 6.5,
+              "Airport": 83.9,
+              "Inland": 0.2,
+              "Seaport": 1.4,
+              "Mail Centre": 0,
+              "Express Courier": 0.4
+            },
+            "total": 100
+          },
+          {
+            "en": "Rifle",
+            "fr": "Fusil",
+            "parts": {
+              "Land boundary": 37.6,
+              "Airport": 14,
+              "Inland": 20.9,
+              "Seaport": 17,
+              "Mail Centre": 0.6,
+              "Express Courier": 0.6
+            },
+            "total": 100
+          },
+          {
+            "en": "Silencer",
+            "fr": "Silencieux",
+            "parts": {
+              "Land boundary": 0.6,
+              "Airport": 97.9,
+              "Inland": 0.3,
+              "Seaport": 0.3,
+              "Mail Centre": 0.3,
+              "Express Courier": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Assault rifle",
+            "fr": "Fusil d'assaut",
+            "parts": {
+              "Land boundary": 48.8,
+              "Airport": 2.3,
+              "Inland": 34.8,
+              "Seaport": 12.1,
+              "Mail Centre": 0,
+              "Express Courier": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Blunt force weapon",
+            "fr": "Arme contondante",
+            "parts": {
+              "Land boundary": 6.4,
+              "Airport": 6.9,
+              "Inland": 5,
+              "Seaport": 0,
+              "Mail Centre": 27.2,
+              "Express Courier": 0.5
+            },
+            "total": 100
+          },
+          {
+            "en": "Aiming device",
+            "fr": "Dispositif de visée",
+            "parts": {
+              "Land boundary": 38,
+              "Airport": 24.5,
+              "Inland": 1.5,
+              "Seaport": 17,
+              "Mail Centre": 6,
+              "Express Courier": 0
+            },
+            "total": 100
+          }
+        ]
+      },
+      "convByCommodity": {
+        "commodities": [
+          "Conventional ammunition",
+          "Semi-automatic pistol",
+          "Magazine",
+          "Bladed weapon",
+          "Receiver",
+          "Rifle",
+          "Silencer",
+          "Assault rifle",
+          "Blunt force weapon",
+          "Aiming device"
+        ],
+        "categories": [
+          "Vehicle",
+          "Vessel",
+          "Regular Mail",
+          "Air",
+          "Express courier",
+          "Pedestrian"
+        ],
+        "rows": [
+          {
+            "en": "Conventional ammunition",
+            "fr": "Munitions classiques",
+            "parts": {
+              "Vehicle": 68.6,
+              "Vessel": 15.8,
+              "Regular Mail": 1.9,
+              "Air": 4.7,
+              "Express courier": 1.6,
+              "Pedestrian": 2
+            },
+            "total": 100
+          },
+          {
+            "en": "Semi-automatic pistol",
+            "fr": "Pistolet semi-automatique",
+            "parts": {
+              "Vehicle": 60.1,
+              "Vessel": 14.2,
+              "Regular Mail": 2.2,
+              "Air": 3.3,
+              "Express courier": 5.1,
+              "Pedestrian": 0.8
+            },
+            "total": 100
+          },
+          {
+            "en": "Magazine",
+            "fr": "Chargeur",
+            "parts": {
+              "Vehicle": 61.9,
+              "Vessel": 17.8,
+              "Regular Mail": 5.1,
+              "Air": 3.3,
+              "Express courier": 3,
+              "Pedestrian": 1
+            },
+            "total": 100
+          },
+          {
+            "en": "Bladed weapon",
+            "fr": "Arme blanche",
+            "parts": {
+              "Vehicle": 6.7,
+              "Vessel": 1.4,
+              "Regular Mail": 32,
+              "Air": 3.4,
+              "Express courier": 0.1,
+              "Pedestrian": 0.2
+            },
+            "total": 100
+          },
+          {
+            "en": "Receiver",
+            "fr": "Carcasse",
+            "parts": {
+              "Vehicle": 6.3,
+              "Vessel": 1.4,
+              "Regular Mail": 21.8,
+              "Air": 20.2,
+              "Express courier": 42.2,
+              "Pedestrian": 0.4
+            },
+            "total": 100
+          },
+          {
+            "en": "Rifle",
+            "fr": "Fusil",
+            "parts": {
+              "Vehicle": 42.1,
+              "Vessel": 14.6,
+              "Regular Mail": 4.5,
+              "Air": 4.5,
+              "Express courier": 6,
+              "Pedestrian": 0.3
+            },
+            "total": 100
+          },
+          {
+            "en": "Silencer",
+            "fr": "Silencieux",
+            "parts": {
+              "Vehicle": 0.6,
+              "Vessel": 0.3,
+              "Regular Mail": 71.6,
+              "Air": 17.7,
+              "Express courier": 8.8,
+              "Pedestrian": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Assault rifle",
+            "fr": "Fusil d'assaut",
+            "parts": {
+              "Vehicle": 59,
+              "Vessel": 7.8,
+              "Regular Mail": 2,
+              "Air": 2,
+              "Express courier": 0.4,
+              "Pedestrian": 0.8
+            },
+            "total": 100
+          },
+          {
+            "en": "Blunt force weapon",
+            "fr": "Arme contondante",
+            "parts": {
+              "Vehicle": 6.4,
+              "Vessel": 0,
+              "Regular Mail": 28.2,
+              "Air": 4.5,
+              "Express courier": 1.5,
+              "Pedestrian": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Aiming device",
+            "fr": "Dispositif de visée",
+            "parts": {
+              "Vehicle": 39.5,
+              "Vessel": 17,
+              "Regular Mail": 12,
+              "Air": 11.5,
+              "Express courier": 7,
+              "Pedestrian": 0
+            },
+            "total": 100
+          }
+        ]
+      },
+      "concByCommodity": {
+        "commodities": [
+          "Conventional ammunition",
+          "Semi-automatic pistol",
+          "Magazine",
+          "Bladed weapon",
+          "Receiver",
+          "Rifle",
+          "Silencer",
+          "Assault rifle",
+          "Blunt force weapon",
+          "Aiming device"
+        ],
+        "categories": [
+          "In transport",
+          "In mail",
+          "In baggage",
+          "Not concealed",
+          "In freight",
+          "On the person"
+        ],
+        "rows": [
+          {
+            "en": "Conventional ammunition",
+            "fr": "Munitions classiques",
+            "parts": {
+              "In transport": 46.9,
+              "In mail": 3.3,
+              "In baggage": 8,
+              "Not concealed": 10.5,
+              "In freight": 4.5,
+              "On the person": 3.7
+            },
+            "total": 100
+          },
+          {
+            "en": "Semi-automatic pistol",
+            "fr": "Pistolet semi-automatique",
+            "parts": {
+              "In transport": 42.8,
+              "In mail": 6.4,
+              "In baggage": 5.1,
+              "Not concealed": 7.2,
+              "In freight": 3.6,
+              "On the person": 2.9
+            },
+            "total": 100
+          },
+          {
+            "en": "Magazine",
+            "fr": "Chargeur",
+            "parts": {
+              "In transport": 43.9,
+              "In mail": 6.6,
+              "In baggage": 6.5,
+              "Not concealed": 6.7,
+              "In freight": 5,
+              "On the person": 2.8
+            },
+            "total": 100
+          },
+          {
+            "en": "Bladed weapon",
+            "fr": "Arme blanche",
+            "parts": {
+              "In transport": 5.1,
+              "In mail": 32.2,
+              "In baggage": 3.1,
+              "Not concealed": 0.6,
+              "In freight": 0.9,
+              "On the person": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Receiver",
+            "fr": "Carcasse",
+            "parts": {
+              "In transport": 5.4,
+              "In mail": 65.5,
+              "In baggage": 1.4,
+              "Not concealed": 5.1,
+              "In freight": 4.2,
+              "On the person": 0.4
+            },
+            "total": 100
+          },
+          {
+            "en": "Rifle",
+            "fr": "Fusil",
+            "parts": {
+              "In transport": 21.8,
+              "In mail": 6.9,
+              "In baggage": 4.8,
+              "Not concealed": 9.6,
+              "In freight": 3,
+              "On the person": 0.3
+            },
+            "total": 100
+          },
+          {
+            "en": "Silencer",
+            "fr": "Silencieux",
+            "parts": {
+              "In transport": 0.6,
+              "In mail": 83.8,
+              "In baggage": 0.6,
+              "Not concealed": 3.4,
+              "In freight": 0,
+              "On the person": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Assault rifle",
+            "fr": "Fusil d'assaut",
+            "parts": {
+              "In transport": 53.5,
+              "In mail": 2.3,
+              "In baggage": 3.5,
+              "Not concealed": 1.2,
+              "In freight": 7,
+              "On the person": 1.2
+            },
+            "total": 100
+          },
+          {
+            "en": "Blunt force weapon",
+            "fr": "Arme contondante",
+            "parts": {
+              "In transport": 4,
+              "In mail": 29.7,
+              "In baggage": 3.5,
+              "Not concealed": 0.5,
+              "In freight": 0.5,
+              "On the person": 0.5
+            },
+            "total": 100
+          },
+          {
+            "en": "Aiming device",
+            "fr": "Dispositif de visée",
+            "parts": {
+              "In transport": 27,
+              "In mail": 14.5,
+              "In baggage": 11,
+              "Not concealed": 16,
+              "In freight": 4.5,
+              "On the person": 1
+            },
+            "total": 100
+          }
+        ]
+      },
+      "commerceByCommodity": {
+        "commodities": [
+          "Conventional ammunition",
+          "Semi-automatic pistol",
+          "Magazine",
+          "Bladed weapon",
+          "Receiver",
+          "Rifle",
+          "Silencer",
+          "Assault rifle",
+          "Blunt force weapon",
+          "Aiming device"
+        ],
+        "categories": [
+          "non-e-commerce",
+          "e-commerce"
+        ],
+        "rows": [
+          {
+            "en": "Conventional ammunition",
+            "fr": "Munitions classiques",
+            "parts": {
+              "non-e-commerce": 96.3,
+              "e-commerce": 3.7
+            },
+            "total": 100
+          },
+          {
+            "en": "Semi-automatic pistol",
+            "fr": "Pistolet semi-automatique",
+            "parts": {
+              "non-e-commerce": 92.6,
+              "e-commerce": 7.4
+            },
+            "total": 100
+          },
+          {
+            "en": "Magazine",
+            "fr": "Chargeur",
+            "parts": {
+              "non-e-commerce": 91.8,
+              "e-commerce": 8.2
+            },
+            "total": 100
+          },
+          {
+            "en": "Bladed weapon",
+            "fr": "Arme blanche",
+            "parts": {
+              "non-e-commerce": 67.7,
+              "e-commerce": 32.3
+            },
+            "total": 100
+          },
+          {
+            "en": "Receiver",
+            "fr": "Carcasse",
+            "parts": {
+              "non-e-commerce": 30.5,
+              "e-commerce": 69.5
+            },
+            "total": 100
+          },
+          {
+            "en": "Rifle",
+            "fr": "Fusil",
+            "parts": {
+              "non-e-commerce": 89.3,
+              "e-commerce": 10.7
+            },
+            "total": 100
+          },
+          {
+            "en": "Silencer",
+            "fr": "Silencieux",
+            "parts": {
+              "non-e-commerce": 14.9,
+              "e-commerce": 85.1
+            },
+            "total": 100
+          },
+          {
+            "en": "Assault rifle",
+            "fr": "Fusil d'assaut",
+            "parts": {
+              "non-e-commerce": 97.7,
+              "e-commerce": 2.3
+            },
+            "total": 100
+          },
+          {
+            "en": "Blunt force weapon",
+            "fr": "Arme contondante",
+            "parts": {
+              "non-e-commerce": 69.8,
+              "e-commerce": 30.2
+            },
+            "total": 100
+          },
+          {
+            "en": "Aiming device",
+            "fr": "Dispositif de visée",
+            "parts": {
+              "non-e-commerce": 81,
+              "e-commerce": 19
+            },
+            "total": 100
+          }
+        ]
+      }
+    },
+    "Explosives and precursors": {
+      "fr": "Explosifs et précurseurs",
+      "totals": {
+        "cases": 232,
+        "seizures": 312,
+        "admins": 41,
+        "pieces": 1752379
+      },
+      "reporters": [
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 52,
+          "prev": 0
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "curr": 52,
+          "prev": 64
+        },
+        {
+          "en": "Burkina Faso",
+          "fr": "Burkina Faso",
+          "curr": 23,
+          "prev": 29
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "curr": 17,
+          "prev": 3
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "curr": 15,
+          "prev": 43
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 14,
+          "prev": 14
+        },
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "curr": 6,
+          "prev": 6
+        },
+        {
+          "en": "Niger",
+          "fr": "Niger",
+          "curr": 5,
+          "prev": 12
+        },
+        {
+          "en": "Montenegro",
+          "fr": "Monténégro",
+          "curr": 4,
+          "prev": 0
+        },
+        {
+          "en": "North Macedonia (Rep. of)",
+          "fr": "Macédoine du Nord",
+          "curr": 4,
+          "prev": 2
+        }
+      ],
+      "departures": [
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "curr": 37,
+          "prev": 37
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 24,
+          "prev": 24
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 18,
+          "prev": 18
+        },
+        {
+          "en": "Burkina Faso",
+          "fr": "Burkina Faso",
+          "curr": 17,
+          "prev": 17
+        },
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "curr": 12,
+          "prev": 12
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "curr": 9,
+          "prev": 9
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 8,
+          "prev": 8
+        },
+        {
+          "en": "Ghana",
+          "fr": "Ghana",
+          "curr": 5,
+          "prev": 5
+        },
+        {
+          "en": "Togo",
+          "fr": "Togo",
+          "curr": 5,
+          "prev": 5
+        },
+        {
+          "en": "Niger",
+          "fr": "Niger",
+          "curr": 4,
+          "prev": 4
+        }
+      ],
+      "detection": [
+        {
+          "en": "Risk profiling",
+          "fr": "Profilage de risque",
+          "pct": 54.3
+        },
+        {
+          "en": "Routine control",
+          "fr": "Contrôle de routine",
+          "pct": 37.1
+        },
+        {
+          "en": "Intelligence",
+          "fr": "Renseignement",
+          "pct": 5.6
+        },
+        {
+          "en": "Random selection",
+          "fr": "Sélection aléatoire",
+          "pct": 2.2
+        },
+        {
+          "en": "Investigation",
+          "fr": "Enquête",
+          "pct": 0.9
+        }
+      ],
+      "direction": [
+        {
+          "en": "Import",
+          "fr": "Importation",
+          "pct": 82.3
+        },
+        {
+          "en": "Internal",
+          "fr": "Interne",
+          "pct": 9.9
+        },
+        {
+          "en": "Export",
+          "fr": "Exportation",
+          "pct": 4.3
+        },
+        {
+          "en": "Transit",
+          "fr": "Transit",
+          "pct": 3.4
+        }
+      ],
+      "flows": {
+        "regions": [
+          "WE",
+          "ECE",
+          "WA",
+          "ME",
+          "A/P",
+          "CIS",
+          "ESA",
+          "CA",
+          "NAM",
+          "SA",
+          "CAR",
+          "NA",
+          "CAM"
+        ],
+        "matrix": [
+          [
+            48,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1
+          ],
+          [
+            40,
+            8,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            35,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            30,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            6,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            3,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "involvement": {
+        "map": [
+          {
+            "iso": "DNK",
+            "cases": 52
+          },
+          {
+            "iso": "IRL",
+            "cases": 52
+          },
+          {
+            "iso": "POL",
+            "cases": 37
+          },
+          {
+            "iso": "FRA",
+            "cases": 25
+          },
+          {
+            "iso": "BFA",
+            "cases": 25
+          },
+          {
+            "iso": "OMN",
+            "cases": 19
+          },
+          {
+            "iso": "ARE",
+            "cases": 19
+          },
+          {
+            "iso": "SAU",
+            "cases": 18
+          },
+          {
+            "iso": "ROU",
+            "cases": 18
+          },
+          {
+            "iso": "DEU",
+            "cases": 18
+          },
+          {
+            "iso": "KWT",
+            "cases": 5
+          },
+          {
+            "iso": "GBR",
+            "cases": 5
+          },
+          {
+            "iso": "CHN",
+            "cases": 5
+          },
+          {
+            "iso": "GHA",
+            "cases": 5
+          },
+          {
+            "iso": "NER",
+            "cases": 5
+          },
+          {
+            "iso": "TGO",
+            "cases": 5
+          },
+          {
+            "iso": "USA",
+            "cases": 4
+          },
+          {
+            "iso": "SRB",
+            "cases": 4
+          },
+          {
+            "iso": "MNE",
+            "cases": 4
+          },
+          {
+            "iso": "JOR",
+            "cases": 4
+          },
+          {
+            "iso": "BEN",
+            "cases": 4
+          },
+          {
+            "iso": "MLI",
+            "cases": 4
+          },
+          {
+            "iso": "MKD",
+            "cases": 4
+          },
+          {
+            "iso": "RUS",
+            "cases": 4
+          },
+          {
+            "iso": "CMR",
+            "cases": 3
+          },
+          {
+            "iso": "AZE",
+            "cases": 3
+          },
+          {
+            "iso": "BEL",
+            "cases": 3
+          },
+          {
+            "iso": "ITA",
+            "cases": 2
+          },
+          {
+            "iso": "EGY",
+            "cases": 2
+          },
+          {
+            "iso": "IRN",
+            "cases": 2
+          },
+          {
+            "iso": "NGA",
+            "cases": 2
+          },
+          {
+            "iso": "ZWE",
+            "cases": 2
+          },
+          {
+            "iso": "CIV",
+            "cases": 2
+          },
+          {
+            "iso": "KOS",
+            "cases": 2
+          },
+          {
+            "iso": "SVK",
+            "cases": 2
+          },
+          {
+            "iso": "UGA",
+            "cases": 2
+          },
+          {
+            "iso": "BLR",
+            "cases": 2
+          },
+          {
+            "iso": "ISR",
+            "cases": 1
+          },
+          {
+            "iso": "NLD",
+            "cases": 1
+          },
+          {
+            "iso": "ZAF",
+            "cases": 1
+          },
+          {
+            "iso": "CHE",
+            "cases": 1
+          },
+          {
+            "iso": "UKR",
+            "cases": 1
+          },
+          {
+            "iso": "PAK",
+            "cases": 1
+          },
+          {
+            "iso": "ASM",
+            "cases": 1
+          },
+          {
+            "iso": "IND",
+            "cases": 1
+          },
+          {
+            "iso": "BHR",
+            "cases": 1
+          },
+          {
+            "iso": "MOZ",
+            "cases": 1
+          },
+          {
+            "iso": "TUR",
+            "cases": 1
+          },
+          {
+            "iso": "ALB",
+            "cases": 1
+          },
+          {
+            "iso": "SYR",
+            "cases": 1
+          },
+          {
+            "iso": "CHL",
+            "cases": 1
+          },
+          {
+            "iso": "ESP",
+            "cases": 1
+          },
+          {
+            "iso": "DOM",
+            "cases": 1
+          },
+          {
+            "iso": "ARG",
+            "cases": 1
+          },
+          {
+            "iso": "PRY",
+            "cases": 1
+          },
+          {
+            "iso": "HND",
+            "cases": 1
+          },
+          {
+            "iso": "AUS",
+            "cases": 1
+          },
+          {
+            "iso": "BWA",
+            "cases": 1
+          },
+          {
+            "iso": "YEM",
+            "cases": 1
+          },
+          {
+            "iso": "BDI",
+            "cases": 1
+          },
+          {
+            "iso": "MEX",
+            "cases": 1
+          },
+          {
+            "iso": "KEN",
+            "cases": 1
+          },
+          {
+            "iso": "GUM",
+            "cases": 1
+          },
+          {
+            "iso": "GTM",
+            "cases": 1
+          },
+          {
+            "iso": "MNG",
+            "cases": 1
+          },
+          {
+            "iso": "FIN",
+            "cases": 1
+          },
+          {
+            "iso": "CZE",
+            "cases": 1
+          },
+          {
+            "iso": "NOR",
+            "cases": 1
+          },
+          {
+            "iso": "TJK",
+            "cases": 1
+          },
+          {
+            "iso": "KGZ",
+            "cases": 1
+          }
+        ],
+        "countriesInvolved": 70,
+        "top5": [
+          {
+            "iso": "DNK",
+            "cases": 52
+          },
+          {
+            "iso": "IRL",
+            "cases": 52
+          },
+          {
+            "iso": "POL",
+            "cases": 37
+          },
+          {
+            "iso": "FRA",
+            "cases": 25
+          },
+          {
+            "iso": "BFA",
+            "cases": 25
+          }
+        ],
+        "top5sum": 191
+      },
+      "commodity": [
+        {
+          "en": "Fireworks and pyrotechnics",
+          "fr": "Feux d'artifice et articles pyrotechniques",
+          "curr": 216,
+          "prev": 165,
+          "qty": 1234114,
+          "qtyPrev": 1444347
+        },
+        {
+          "en": "Civilian explosives",
+          "fr": "Explosifs civils",
+          "curr": 21,
+          "prev": 16,
+          "qty": 94498,
+          "qtyPrev": 35822
+        },
+        {
+          "en": "Detonators",
+          "fr": "Détonateurs",
+          "curr": 17,
+          "prev": 25,
+          "qty": 271185,
+          "qtyPrev": 52094
+        },
+        {
+          "en": "Other explosive precursors",
+          "fr": "Autres précurseurs d'explosifs",
+          "curr": 13,
+          "prev": 41,
+          "qty": 314,
+          "qtyPrev": 21
+        },
+        {
+          "en": "Detonator cord",
+          "fr": "Cordeau détonant",
+          "curr": 12,
+          "prev": 21,
+          "qty": 1208,
+          "qtyPrev": 6717
+        },
+        {
+          "en": "Other explosive components",
+          "fr": "Autres composants d'explosifs",
+          "curr": 8,
+          "prev": 5,
+          "qty": 5720,
+          "qtyPrev": 403
+        },
+        {
+          "en": "Aluminium compounds",
+          "fr": "Composés d'aluminium",
+          "curr": 5,
+          "prev": 2,
+          "qty": 75,
+          "qtyPrev": 0
+        },
+        {
+          "en": "Military explosives",
+          "fr": "Explosifs militaires",
+          "curr": 4,
+          "prev": 3,
+          "qty": 144373,
+          "qtyPrev": 8
+        },
+        {
+          "en": "Ammonium nitrate",
+          "fr": "Nitrate d'ammonium",
+          "curr": 3,
+          "prev": 0,
+          "qty": 0,
+          "qtyPrev": 0
+        },
+        {
+          "en": "Safety fuse",
+          "fr": "Mèche de sûreté",
+          "curr": 2,
+          "prev": 0,
+          "qty": 0,
+          "qtyPrev": 0
+        }
+      ],
+      "locByCommodity": {
+        "commodities": [
+          "Fireworks and pyrotechnics",
+          "Civilian explosives",
+          "Detonators",
+          "Other explosive precursors",
+          "Detonator cord",
+          "Other explosive components",
+          "Aluminium compounds",
+          "Military explosives"
+        ],
+        "categories": [
+          "Mail Centre",
+          "Land boundary",
+          "Inland",
+          "Seaport",
+          "Airport",
+          "Rail"
+        ],
+        "rows": [
+          {
+            "en": "Fireworks and pyrotechnics",
+            "fr": "Feux d'artifice et articles pyrotechniques",
+            "parts": {
+              "Mail Centre": 37.5,
+              "Land boundary": 18.5,
+              "Inland": 4.6,
+              "Seaport": 9.7,
+              "Airport": 4.6,
+              "Rail": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Civilian explosives",
+            "fr": "Explosifs civils",
+            "parts": {
+              "Mail Centre": 4.8,
+              "Land boundary": 9.5,
+              "Inland": 85.7,
+              "Seaport": 0,
+              "Airport": 0,
+              "Rail": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Detonators",
+            "fr": "Détonateurs",
+            "parts": {
+              "Mail Centre": 0,
+              "Land boundary": 29.4,
+              "Inland": 70.6,
+              "Seaport": 0,
+              "Airport": 0,
+              "Rail": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Other explosive precursors",
+            "fr": "Autres précurseurs d'explosifs",
+            "parts": {
+              "Mail Centre": 0,
+              "Land boundary": 46.2,
+              "Inland": 7.7,
+              "Seaport": 15.4,
+              "Airport": 7.7,
+              "Rail": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Detonator cord",
+            "fr": "Cordeau détonant",
+            "parts": {
+              "Mail Centre": 0,
+              "Land boundary": 25,
+              "Inland": 75,
+              "Seaport": 0,
+              "Airport": 0,
+              "Rail": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Other explosive components",
+            "fr": "Autres composants d'explosifs",
+            "parts": {
+              "Mail Centre": 0,
+              "Land boundary": 87.5,
+              "Inland": 0,
+              "Seaport": 12.5,
+              "Airport": 0,
+              "Rail": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Aluminium compounds",
+            "fr": "Composés d'aluminium",
+            "parts": {
+              "Mail Centre": 40,
+              "Land boundary": 0,
+              "Inland": 40,
+              "Seaport": 20,
+              "Airport": 0,
+              "Rail": 0
+            },
+            "total": 100
+          },
+          {
+            "en": "Military explosives",
+            "fr": "Explosifs militaires",
+            "parts": {
+              "Mail Centre": 0,
+              "Land boundary": 25,
+              "Inland": 25,
+              "Seaport": 50,
+              "Airport": 0,
+              "Rail": 0
+            },
+            "total": 100
+          }
+        ]
+      }
+    },
+    "Unmanned aerial systems (UAS)": {
+      "fr": "Systèmes aériens sans pilote (UAS)",
+      "totals": {
+        "cases": 653,
+        "seizures": 653,
+        "admins": 7,
+        "pieces": 975
+      },
+      "reporters": [
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 641,
+          "prev": 419
+        },
+        {
+          "en": "Egypt",
+          "fr": "Égypte",
+          "curr": 6,
+          "prev": 0
+        },
+        {
+          "en": "Montenegro",
+          "fr": "Monténégro",
+          "curr": 2,
+          "prev": 3
+        },
+        {
+          "en": "Guinea",
+          "fr": "Guinée",
+          "curr": 1,
+          "prev": 0
+        },
+        {
+          "en": "Niger",
+          "fr": "Niger",
+          "curr": 1,
+          "prev": 0
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "curr": 1,
+          "prev": 0
+        },
+        {
+          "en": "Union of Myanmar (Rep. of the)",
+          "fr": "Myanmar (La Rép. de l'Union du)",
+          "curr": 1,
+          "prev": 0
+        }
+      ],
+      "departures": [
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "curr": 112,
+          "prev": 112
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "curr": 54,
+          "prev": 54
+        },
+        {
+          "en": "Qatar",
+          "fr": "Qatar",
+          "curr": 52,
+          "prev": 52
+        },
+        {
+          "en": "Thailand",
+          "fr": "Thaïlande",
+          "curr": 47,
+          "prev": 47
+        },
+        {
+          "en": "India",
+          "fr": "Inde",
+          "curr": 46,
+          "prev": 46
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 36,
+          "prev": 36
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 30,
+          "prev": 30
+        },
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "curr": 27,
+          "prev": 27
+        },
+        {
+          "en": "Kuwait",
+          "fr": "Koweït",
+          "curr": 19,
+          "prev": 19
+        },
+        {
+          "en": "China",
+          "fr": "Chine",
+          "curr": 19,
+          "prev": 19
+        }
+      ],
+      "detection": [
+        {
+          "en": "Routine control",
+          "fr": "Contrôle de routine",
+          "pct": 99.1
+        },
+        {
+          "en": "Intelligence",
+          "fr": "Renseignement",
+          "pct": 0.9
+        }
+      ],
+      "direction": [
+        {
+          "en": "Import",
+          "fr": "Importation",
+          "pct": 87.1
+        },
+        {
+          "en": "Export",
+          "fr": "Exportation",
+          "pct": 12.6
+        },
+        {
+          "en": "Internal",
+          "fr": "Interne",
+          "pct": 0.2
+        },
+        {
+          "en": "Transit",
+          "fr": "Transit",
+          "pct": 0.2
+        }
+      ],
+      "flows": {
+        "regions": [
+          "ME",
+          "A/P",
+          "WE",
+          "ECE",
+          "CIS",
+          "ESA",
+          "NAM",
+          "NA",
+          "WA",
+          "SA",
+          "CA",
+          "CAR"
+        ],
+        "matrix": [
+          [
+            216,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            180,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            154,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            62,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            7,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            6,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "involvement": {
+        "map": [
+          {
+            "iso": "OMN",
+            "cases": 641
+          },
+          {
+            "iso": "ARE",
+            "cases": 112
+          },
+          {
+            "iso": "TUR",
+            "cases": 54
+          },
+          {
+            "iso": "QAT",
+            "cases": 52
+          },
+          {
+            "iso": "THA",
+            "cases": 47
+          },
+          {
+            "iso": "IND",
+            "cases": 46
+          },
+          {
+            "iso": "DEU",
+            "cases": 36
+          },
+          {
+            "iso": "FRA",
+            "cases": 30
+          },
+          {
+            "iso": "ITA",
+            "cases": 27
+          },
+          {
+            "iso": "CHN",
+            "cases": 19
+          },
+          {
+            "iso": "KWT",
+            "cases": 19
+          },
+          {
+            "iso": "GBR",
+            "cases": 16
+          },
+          {
+            "iso": "CHE",
+            "cases": 14
+          },
+          {
+            "iso": "SAU",
+            "cases": 13
+          },
+          {
+            "iso": "YEM",
+            "cases": 12
+          },
+          {
+            "iso": "MYS",
+            "cases": 10
+          },
+          {
+            "iso": "IDN",
+            "cases": 9
+          },
+          {
+            "iso": "NLD",
+            "cases": 9
+          },
+          {
+            "iso": "PAK",
+            "cases": 8
+          },
+          {
+            "iso": "IRN",
+            "cases": 6
+          },
+          {
+            "iso": "CZE",
+            "cases": 6
+          },
+          {
+            "iso": "BGD",
+            "cases": 6
+          },
+          {
+            "iso": "PHL",
+            "cases": 6
+          },
+          {
+            "iso": "TZA",
+            "cases": 6
+          },
+          {
+            "iso": "EGY",
+            "cases": 6
+          },
+          {
+            "iso": "ESP",
+            "cases": 5
+          },
+          {
+            "iso": "BEL",
+            "cases": 5
+          },
+          {
+            "iso": "SGP",
+            "cases": 5
+          },
+          {
+            "iso": "RUS",
+            "cases": 5
+          },
+          {
+            "iso": "USA",
+            "cases": 4
+          },
+          {
+            "iso": "VNM",
+            "cases": 3
+          },
+          {
+            "iso": "POL",
+            "cases": 3
+          },
+          {
+            "iso": "MDV",
+            "cases": 3
+          },
+          {
+            "iso": "LKA",
+            "cases": 3
+          },
+          {
+            "iso": "BHR",
+            "cases": 3
+          },
+          {
+            "iso": "CAF",
+            "cases": 2
+          },
+          {
+            "iso": "DNK",
+            "cases": 2
+          },
+          {
+            "iso": "SWE",
+            "cases": 2
+          },
+          {
+            "iso": "AUS",
+            "cases": 2
+          },
+          {
+            "iso": "CAN",
+            "cases": 2
+          },
+          {
+            "iso": "PRK",
+            "cases": 2
+          },
+          {
+            "iso": "IRQ",
+            "cases": 2
+          },
+          {
+            "iso": "ROU",
+            "cases": 2
+          },
+          {
+            "iso": "BRA",
+            "cases": 2
+          },
+          {
+            "iso": "KAZ",
+            "cases": 2
+          },
+          {
+            "iso": "ASM",
+            "cases": 2
+          },
+          {
+            "iso": "MEX",
+            "cases": 2
+          },
+          {
+            "iso": "MNE",
+            "cases": 2
+          },
+          {
+            "iso": "JOR",
+            "cases": 2
+          },
+          {
+            "iso": "COM",
+            "cases": 1
+          },
+          {
+            "iso": "LBN",
+            "cases": 1
+          },
+          {
+            "iso": "NZL",
+            "cases": 1
+          },
+          {
+            "iso": "MMR",
+            "cases": 1
+          },
+          {
+            "iso": "ETH",
+            "cases": 1
+          },
+          {
+            "iso": "MLI",
+            "cases": 1
+          },
+          {
+            "iso": "SYR",
+            "cases": 1
+          },
+          {
+            "iso": "KOR",
+            "cases": 1
+          },
+          {
+            "iso": "ARM",
+            "cases": 1
+          },
+          {
+            "iso": "BIH",
+            "cases": 1
+          },
+          {
+            "iso": "COL",
+            "cases": 1
+          },
+          {
+            "iso": "CIV",
+            "cases": 1
+          },
+          {
+            "iso": "GIN",
+            "cases": 1
+          },
+          {
+            "iso": "IRL",
+            "cases": 1
+          },
+          {
+            "iso": "ALB",
+            "cases": 1
+          },
+          {
+            "iso": "BGR",
+            "cases": 1
+          },
+          {
+            "iso": "NPL",
+            "cases": 1
+          },
+          {
+            "iso": "AUT",
+            "cases": 1
+          },
+          {
+            "iso": "GRC",
+            "cases": 1
+          },
+          {
+            "iso": "NER",
+            "cases": 1
+          },
+          {
+            "iso": "BEN",
+            "cases": 1
+          },
+          {
+            "iso": "MDA",
+            "cases": 1
+          },
+          {
+            "iso": "ISR",
+            "cases": 1
+          }
+        ],
+        "countriesInvolved": 72,
+        "top5": [
+          {
+            "iso": "OMN",
+            "cases": 641
+          },
+          {
+            "iso": "ARE",
+            "cases": 112
+          },
+          {
+            "iso": "TUR",
+            "cases": 54
+          },
+          {
+            "iso": "QAT",
+            "cases": 52
+          },
+          {
+            "iso": "THA",
+            "cases": 47
+          }
+        ],
+        "top5sum": 906
+      },
+      "commodity": [
+        {
+          "en": "Drone",
+          "fr": "Drone",
+          "curr": 636,
+          "prev": 417,
+          "qty": 880,
+          "qtyPrev": 743
+        },
+        {
+          "en": "Communication and control systems",
+          "fr": "Systèmes de communication et de contrôle",
+          "curr": 16,
+          "prev": 16,
+          "qty": 94,
+          "qtyPrev": 166
+        },
+        {
+          "en": "Counter-UAS devices",
+          "fr": "Dispositifs anti-UAS",
+          "curr": 1,
+          "prev": 0,
+          "qty": 1,
+          "qtyPrev": 0
+        }
+      ]
+    }
+  },
+  "regional": {
+    "regions": [
+      "A/P",
+      "AMS",
+      "ESA",
+      "EUR",
+      "MENA",
+      "WCA"
+    ],
+    "compositionSeiz": [
+      {
+        "region": "A/P",
+        "s0": 87.9,
+        "s1": 9.1,
+        "s2": 3
+      },
+      {
+        "region": "AMS",
+        "s0": 99.8,
+        "s1": 0.2,
+        "s2": 0
+      },
+      {
+        "region": "ESA",
+        "s0": 79.3,
+        "s1": 20.7,
+        "s2": 0
+      },
+      {
+        "region": "EUR",
+        "s0": 92.2,
+        "s1": 7.6,
+        "s2": 0.1
+      },
+      {
+        "region": "MENA",
+        "s0": 33.8,
+        "s1": 3.9,
+        "s2": 62.4
+      },
+      {
+        "region": "WCA",
+        "s0": 24,
+        "s1": 73.3,
+        "s2": 2.7
+      }
+    ],
+    "reporting": [
+      {
+        "region": "A/P",
+        "a0": 3,
+        "a1": 3,
+        "a2": 1
+      },
+      {
+        "region": "AMS",
+        "a0": 15,
+        "a1": 6,
+        "a2": 0
+      },
+      {
+        "region": "ESA",
+        "a0": 5,
+        "a1": 5,
+        "a2": 0
+      },
+      {
+        "region": "EUR",
+        "a0": 25,
+        "a1": 14,
+        "a2": 2
+      },
+      {
+        "region": "MENA",
+        "a0": 10,
+        "a1": 6,
+        "a2": 2
+      },
+      {
+        "region": "WCA",
+        "a0": 8,
+        "a1": 6,
+        "a2": 2
+      }
+    ]
+  }
+}

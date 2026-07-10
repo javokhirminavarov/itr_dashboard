@@ -1,0 +1,2916 @@
+{
+  "totals": {
+    "cases": 34236,
+    "seizures": 40744,
+    "admins": 120
+  },
+  "totalsPrev": {
+    "cases": 50457,
+    "seizures": 57320
+  },
+  "streamOrder": [
+    "Tobacco products trafficking",
+    "Alcohol products trafficking"
+  ],
+  "split": [
+    {
+      "en": "Tobacco products trafficking",
+      "fr": "Produits du tabac",
+      "cases": 31571,
+      "seizures": 36803,
+      "admins": 113
+    },
+    {
+      "en": "Alcohol products trafficking",
+      "fr": "Produits alcoolisés",
+      "cases": 2765,
+      "seizures": 3941,
+      "admins": 52
+    }
+  ],
+  "perStream": {
+    "Tobacco products trafficking": {
+      "fr": "Produits du tabac",
+      "qtyUnit": "kg",
+      "totals": {
+        "cases": 31571,
+        "seizures": 36803,
+        "admins": 113,
+        "qty": 9662054
+      },
+      "reporters": [
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "curr": 17812,
+          "prev": 23190
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "curr": 2551,
+          "prev": 2681
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 1284,
+          "prev": 37
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "curr": 1230,
+          "prev": 8870
+        },
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "curr": 1229,
+          "prev": 1512
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "curr": 1057,
+          "prev": 4673
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 913,
+          "prev": 1073
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "curr": 893,
+          "prev": 243
+        },
+        {
+          "en": "Slovakia",
+          "fr": "Slovaquie",
+          "curr": 667,
+          "prev": 715
+        },
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "curr": 365,
+          "prev": 424
+        }
+      ],
+      "commodity": [
+        {
+          "en": "Cigarettes",
+          "fr": "Cigarettes",
+          "curr": 22487,
+          "prev": 33141
+        },
+        {
+          "en": "Smokeless tobacco",
+          "fr": "Tabac sans fumée",
+          "curr": 7048,
+          "prev": 10851
+        },
+        {
+          "en": "E-cigarettes",
+          "fr": "Cigarettes électroniques",
+          "curr": 2171,
+          "prev": 1065
+        },
+        {
+          "en": "Hand rolling and pipe tobacco",
+          "fr": "Tabac à rouler et à pipe",
+          "curr": 2001,
+          "prev": 3633
+        },
+        {
+          "en": "Water-pipe tobacco",
+          "fr": "Tabac à pipe à eau",
+          "curr": 1537,
+          "prev": 3581
+        },
+        {
+          "en": "Raw tobacco",
+          "fr": "Tabac brut",
+          "curr": 456,
+          "prev": 114
+        },
+        {
+          "en": "Cigars, cheroots and cigarillos",
+          "fr": "Cigares, cheroots et cigarillos",
+          "curr": 340,
+          "prev": 470
+        },
+        {
+          "en": "Tobacco components and accessories",
+          "fr": "Composants et accessoires du tabac",
+          "curr": 285,
+          "prev": 429
+        },
+        {
+          "en": "Smoking tobacco",
+          "fr": "Tabac à fumer",
+          "curr": 246,
+          "prev": 256
+        },
+        {
+          "en": "Other tobacco products",
+          "fr": "Autres produits du tabac",
+          "curr": 149,
+          "prev": 53
+        }
+      ],
+      "qtyByCommodity": [
+        {
+          "en": "Smokeless tobacco",
+          "fr": "Tabac sans fumée",
+          "curr": 3303814,
+          "prev": 714026
+        },
+        {
+          "en": "Tobacco components and accessories",
+          "fr": "Composants et accessoires du tabac",
+          "curr": 2467239,
+          "prev": 1601392
+        },
+        {
+          "en": "Cigarettes",
+          "fr": "Cigarettes",
+          "curr": 2224026,
+          "prev": 3465258
+        },
+        {
+          "en": "E-cigarettes",
+          "fr": "Cigarettes électroniques",
+          "curr": 673888,
+          "prev": 256064
+        },
+        {
+          "en": "Raw tobacco",
+          "fr": "Tabac brut",
+          "curr": 440378,
+          "prev": 381398
+        },
+        {
+          "en": "Hand rolling and pipe tobacco",
+          "fr": "Tabac à rouler et à pipe",
+          "curr": 365776,
+          "prev": 377182
+        },
+        {
+          "en": "Smoking tobacco",
+          "fr": "Tabac à fumer",
+          "curr": 94246,
+          "prev": 282647
+        },
+        {
+          "en": "Water-pipe tobacco",
+          "fr": "Tabac à pipe à eau",
+          "curr": 60899,
+          "prev": 468566
+        },
+        {
+          "en": "Other tobacco products",
+          "fr": "Autres produits du tabac",
+          "curr": 31027,
+          "prev": 38838
+        },
+        {
+          "en": "Cigars, cheroots and cigarillos",
+          "fr": "Cigares, cheroots et cigarillos",
+          "curr": 704,
+          "prev": 2824
+        }
+      ],
+      "qtyTable": [
+        {
+          "en": "Tobacco components and accessories",
+          "fr": "Composants et accessoires du tabac",
+          "seizures": 285,
+          "qty": 2467239,
+          "perSeiz": 8657
+        },
+        {
+          "en": "Raw tobacco",
+          "fr": "Tabac brut",
+          "seizures": 456,
+          "qty": 440377,
+          "perSeiz": 966
+        },
+        {
+          "en": "Smokeless tobacco",
+          "fr": "Tabac sans fumée",
+          "seizures": 7048,
+          "qty": 3303813,
+          "perSeiz": 469
+        },
+        {
+          "en": "Smoking tobacco",
+          "fr": "Tabac à fumer",
+          "seizures": 246,
+          "qty": 94245,
+          "perSeiz": 383
+        },
+        {
+          "en": "E-cigarettes",
+          "fr": "Cigarettes électroniques",
+          "seizures": 2171,
+          "qty": 673888,
+          "perSeiz": 310
+        },
+        {
+          "en": "Other tobacco products",
+          "fr": "Autres produits du tabac",
+          "seizures": 149,
+          "qty": 31026,
+          "perSeiz": 208
+        },
+        {
+          "en": "Hand rolling and pipe tobacco",
+          "fr": "Tabac à rouler et à pipe",
+          "seizures": 2001,
+          "qty": 365776,
+          "perSeiz": 183
+        },
+        {
+          "en": "Cigarettes",
+          "fr": "Cigarettes",
+          "seizures": 22487,
+          "qty": 2224026,
+          "perSeiz": 99
+        },
+        {
+          "en": "Water-pipe tobacco",
+          "fr": "Tabac à pipe à eau",
+          "seizures": 1537,
+          "qty": 60899,
+          "perSeiz": 40
+        },
+        {
+          "en": "Cigars, cheroots and cigarillos",
+          "fr": "Cigares, cheroots et cigarillos",
+          "seizures": 340,
+          "qty": 703,
+          "perSeiz": 2
+        },
+        {
+          "en": "Heated tobacco products",
+          "fr": "Produits du tabac à chauffer",
+          "seizures": 83,
+          "qty": 57,
+          "perSeiz": 1
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 13970
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 11559
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 2051
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 1837
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 1697
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 120
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 16281
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 10762
+          },
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 1710
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 404
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des marchés",
+            "cases": 328
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 323
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 254
+          }
+        ],
+        "detection": [
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 75.9
+          },
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 21.2
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 1.3
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 1.1
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 0.5
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 88.1
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 5.6
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 3.7
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 2.5
+          }
+        ],
+        "conveyance": [
+          {
+            "en": "Air",
+            "fr": "Voie aérienne",
+            "curr": 13952,
+            "prev": 13952
+          },
+          {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "curr": 13520,
+            "prev": 13520
+          },
+          {
+            "en": "Regular Mail",
+            "fr": "Courrier ordinaire",
+            "curr": 1610,
+            "prev": 1610
+          },
+          {
+            "en": "Pedestrian",
+            "fr": "Piéton",
+            "curr": 554,
+            "prev": 554
+          },
+          {
+            "en": "Vessel",
+            "fr": "Navire",
+            "curr": 394,
+            "prev": 394
+          },
+          {
+            "en": "Express courier",
+            "fr": "Messagerie express",
+            "curr": 263,
+            "prev": 263
+          },
+          {
+            "en": "Rail Train",
+            "fr": "Train",
+            "curr": 158,
+            "prev": 158
+          }
+        ]
+      },
+      "ecom": 6,
+      "ecomByCommodity": [
+        {
+          "en": "Raw tobacco",
+          "fr": "Tabac brut",
+          "pct": 64.7
+        },
+        {
+          "en": "E-cigarettes",
+          "fr": "Cigarettes électroniques",
+          "pct": 63.8
+        },
+        {
+          "en": "Smoking tobacco",
+          "fr": "Tabac à fumer",
+          "pct": 33
+        },
+        {
+          "en": "Cigars, cheroots and cigarillos",
+          "fr": "Cigares, cheroots et cigarillos",
+          "pct": 30.9
+        },
+        {
+          "en": "Other tobacco products",
+          "fr": "Autres produits du tabac",
+          "pct": 6.6
+        },
+        {
+          "en": "Hand rolling and pipe tobacco",
+          "fr": "Tabac à rouler et à pipe",
+          "pct": 5.4
+        },
+        {
+          "en": "Water-pipe tobacco",
+          "fr": "Tabac à pipe à eau",
+          "pct": 2.3
+        },
+        {
+          "en": "Smokeless tobacco",
+          "fr": "Tabac sans fumée",
+          "pct": 1.9
+        },
+        {
+          "en": "Cigarettes",
+          "fr": "Cigarettes",
+          "pct": 1.1
+        },
+        {
+          "en": "Tobacco components and accessories",
+          "fr": "Composants et accessoires du tabac",
+          "pct": 0
+        }
+      ],
+      "convByDirection": [
+        {
+          "conv": "Air",
+          "Import": 93.7,
+          "Transit": 3.5,
+          "Internal": 0.2,
+          "Export": 2.6
+        },
+        {
+          "conv": "Vehicle",
+          "Import": 91.1,
+          "Transit": 3.9,
+          "Internal": 2.3,
+          "Export": 2.6
+        },
+        {
+          "conv": "Regular Mail",
+          "Import": 53.6,
+          "Transit": 32,
+          "Internal": 13,
+          "Export": 1.4
+        },
+        {
+          "conv": "Pedestrian",
+          "Import": 91.5,
+          "Transit": 4.5,
+          "Internal": 3.4,
+          "Export": 0.5
+        },
+        {
+          "conv": "Vessel",
+          "Import": 83,
+          "Transit": 5.3,
+          "Internal": 6.9,
+          "Export": 4.8
+        },
+        {
+          "conv": "Express courier",
+          "Import": 52.9,
+          "Transit": 1.5,
+          "Internal": 42.6,
+          "Export": 3
+        }
+      ],
+      "departures": [
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "curr": 6015,
+          "prev": 6015
+        },
+        {
+          "en": "Kuwait",
+          "fr": "Koweït",
+          "curr": 5854,
+          "prev": 5854
+        },
+        {
+          "en": "Egypt",
+          "fr": "Égypte",
+          "curr": 1769,
+          "prev": 1769
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "curr": 1626,
+          "prev": 1626
+        },
+        {
+          "en": "India",
+          "fr": "Inde",
+          "curr": 1292,
+          "prev": 1292
+        },
+        {
+          "en": "Bangladesh",
+          "fr": "Bangladesh",
+          "curr": 1124,
+          "prev": 1124
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 1049,
+          "prev": 1049
+        },
+        {
+          "en": "Yemen",
+          "fr": "Yémen",
+          "curr": 1018,
+          "prev": 1018
+        },
+        {
+          "en": "Bahrain",
+          "fr": "Bahreïn",
+          "curr": 877,
+          "prev": 877
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 693,
+          "prev": 693
+        }
+      ],
+      "flows": {
+        "regions": [
+          "ME",
+          "WE",
+          "ECE",
+          "A/P",
+          "NA",
+          "CIS",
+          "ESA",
+          "SA",
+          "WA",
+          "CAR",
+          "NAM",
+          "CA",
+          "CAM"
+        ],
+        "matrix": [
+          [
+            14832,
+            521,
+            83,
+            89,
+            15,
+            2,
+            51,
+            0,
+            1,
+            1,
+            6,
+            1,
+            0
+          ],
+          [
+            14,
+            2471,
+            39,
+            3,
+            9,
+            1,
+            10,
+            1,
+            0,
+            1,
+            3,
+            0,
+            0
+          ],
+          [
+            64,
+            2566,
+            1619,
+            0,
+            0,
+            35,
+            2,
+            0,
+            1,
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            3093,
+            382,
+            61,
+            75,
+            1,
+            26,
+            49,
+            3,
+            0,
+            15,
+            35,
+            2,
+            0
+          ],
+          [
+            1336,
+            683,
+            105,
+            0,
+            3,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            29,
+            157,
+            322,
+            0,
+            0,
+            40,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            143,
+            49,
+            1,
+            0,
+            0,
+            0,
+            152,
+            0,
+            0,
+            0,
+            0,
+            4,
+            0
+          ],
+          [
+            0,
+            36,
+            2,
+            0,
+            0,
+            0,
+            0,
+            178,
+            0,
+            1,
+            0,
+            0,
+            0
+          ],
+          [
+            26,
+            115,
+            5,
+            2,
+            43,
+            0,
+            6,
+            1,
+            35,
+            0,
+            0,
+            4,
+            0
+          ],
+          [
+            19,
+            24,
+            5,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            15,
+            8,
+            0,
+            0
+          ],
+          [
+            2,
+            45,
+            3,
+            0,
+            0,
+            0,
+            1,
+            4,
+            0,
+            19,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            6,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            10,
+            0,
+            4,
+            0,
+            0,
+            2
+          ]
+        ]
+      },
+      "involvement": {
+        "map": [
+          {
+            "iso": "SAU",
+            "cases": 18072
+          },
+          {
+            "iso": "ARE",
+            "cases": 6388
+          },
+          {
+            "iso": "KWT",
+            "cases": 5868
+          },
+          {
+            "iso": "AUT",
+            "cases": 2554
+          },
+          {
+            "iso": "EGY",
+            "cases": 1788
+          },
+          {
+            "iso": "TUR",
+            "cases": 1716
+          },
+          {
+            "iso": "GBR",
+            "cases": 1563
+          },
+          {
+            "iso": "OMN",
+            "cases": 1422
+          },
+          {
+            "iso": "FRA",
+            "cases": 1394
+          },
+          {
+            "iso": "DNK",
+            "cases": 1309
+          },
+          {
+            "iso": "IND",
+            "cases": 1294
+          },
+          {
+            "iso": "IRL",
+            "cases": 1291
+          },
+          {
+            "iso": "ITA",
+            "cases": 1291
+          },
+          {
+            "iso": "BGD",
+            "cases": 1208
+          },
+          {
+            "iso": "BHR",
+            "cases": 1082
+          },
+          {
+            "iso": "POL",
+            "cases": 1033
+          },
+          {
+            "iso": "YEM",
+            "cases": 1019
+          },
+          {
+            "iso": "DEU",
+            "cases": 920
+          },
+          {
+            "iso": "SVK",
+            "cases": 835
+          },
+          {
+            "iso": "QAT",
+            "cases": 562
+          },
+          {
+            "iso": "PAK",
+            "cases": 484
+          },
+          {
+            "iso": "JOR",
+            "cases": 453
+          },
+          {
+            "iso": "UKR",
+            "cases": 387
+          },
+          {
+            "iso": "ALB",
+            "cases": 383
+          },
+          {
+            "iso": "RUS",
+            "cases": 370
+          },
+          {
+            "iso": "ROU",
+            "cases": 343
+          },
+          {
+            "iso": "ESP",
+            "cases": 318
+          },
+          {
+            "iso": "MDA",
+            "cases": 303
+          },
+          {
+            "iso": "BGR",
+            "cases": 290
+          },
+          {
+            "iso": "CHN",
+            "cases": 283
+          },
+          {
+            "iso": "NLD",
+            "cases": 276
+          },
+          {
+            "iso": "BEL",
+            "cases": 265
+          },
+          {
+            "iso": "CHE",
+            "cases": 250
+          },
+          {
+            "iso": "SWE",
+            "cases": 232
+          },
+          {
+            "iso": "GRC",
+            "cases": 186
+          },
+          {
+            "iso": "ARG",
+            "cases": 183
+          },
+          {
+            "iso": "IRQ",
+            "cases": 169
+          },
+          {
+            "iso": "IRN",
+            "cases": 165
+          },
+          {
+            "iso": "ETH",
+            "cases": 162
+          },
+          {
+            "iso": "SDN",
+            "cases": 155
+          },
+          {
+            "iso": "CZE",
+            "cases": 146
+          },
+          {
+            "iso": "AZE",
+            "cases": 133
+          },
+          {
+            "iso": "CIV",
+            "cases": 131
+          },
+          {
+            "iso": "ARM",
+            "cases": 130
+          },
+          {
+            "iso": "USA",
+            "cases": 129
+          },
+          {
+            "iso": "MAR",
+            "cases": 129
+          },
+          {
+            "iso": "ZAF",
+            "cases": 127
+          },
+          {
+            "iso": "MUS",
+            "cases": 112
+          },
+          {
+            "iso": "ZWE",
+            "cases": 109
+          },
+          {
+            "iso": "HRV",
+            "cases": 101
+          },
+          {
+            "iso": "TUN",
+            "cases": 97
+          },
+          {
+            "iso": "BLR",
+            "cases": 92
+          },
+          {
+            "iso": "HUN",
+            "cases": 80
+          },
+          {
+            "iso": "MNE",
+            "cases": 76
+          },
+          {
+            "iso": "SRB",
+            "cases": 75
+          },
+          {
+            "iso": "THA",
+            "cases": 72
+          },
+          {
+            "iso": "PRY",
+            "cases": 67
+          },
+          {
+            "iso": "BIH",
+            "cases": 63
+          },
+          {
+            "iso": "IDN",
+            "cases": 55
+          },
+          {
+            "iso": "MKD",
+            "cases": 53
+          },
+          {
+            "iso": "LBN",
+            "cases": 51
+          },
+          {
+            "iso": "ISR",
+            "cases": 46
+          },
+          {
+            "iso": "LUX",
+            "cases": 46
+          },
+          {
+            "iso": "VNM",
+            "cases": 44
+          },
+          {
+            "iso": "UZB",
+            "cases": 44
+          },
+          {
+            "iso": "AFG",
+            "cases": 44
+          },
+          {
+            "iso": "SYR",
+            "cases": 43
+          },
+          {
+            "iso": "NGA",
+            "cases": 37
+          },
+          {
+            "iso": "LVA",
+            "cases": 36
+          },
+          {
+            "iso": "GEO",
+            "cases": 35
+          },
+          {
+            "iso": "DOM",
+            "cases": 32
+          },
+          {
+            "iso": "GIN",
+            "cases": 31
+          },
+          {
+            "iso": "SGP",
+            "cases": 28
+          },
+          {
+            "iso": "SVN",
+            "cases": 27
+          },
+          {
+            "iso": "DZA",
+            "cases": 27
+          },
+          {
+            "iso": "JPN",
+            "cases": 26
+          },
+          {
+            "iso": "KOR",
+            "cases": 26
+          },
+          {
+            "iso": "BRA",
+            "cases": 25
+          },
+          {
+            "iso": "CUB",
+            "cases": 25
+          },
+          {
+            "iso": "GIB",
+            "cases": 25
+          },
+          {
+            "iso": "MEX",
+            "cases": 24
+          },
+          {
+            "iso": "NOR",
+            "cases": 24
+          },
+          {
+            "iso": "LTU",
+            "cases": 22
+          },
+          {
+            "iso": "CYP",
+            "cases": 22
+          },
+          {
+            "iso": "MNG",
+            "cases": 22
+          },
+          {
+            "iso": "TWN",
+            "cases": 20
+          },
+          {
+            "iso": "HKG",
+            "cases": 19
+          },
+          {
+            "iso": "ATG",
+            "cases": 19
+          },
+          {
+            "iso": "PHL",
+            "cases": 18
+          },
+          {
+            "iso": "KHM",
+            "cases": 17
+          },
+          {
+            "iso": "PRT",
+            "cases": 17
+          },
+          {
+            "iso": "PAN",
+            "cases": 15
+          },
+          {
+            "iso": "MYS",
+            "cases": 15
+          },
+          {
+            "iso": "AUS",
+            "cases": 14
+          },
+          {
+            "iso": "BOL",
+            "cases": 14
+          },
+          {
+            "iso": "COD",
+            "cases": 13
+          },
+          {
+            "iso": "CHL",
+            "cases": 12
+          },
+          {
+            "iso": "MLT",
+            "cases": 12
+          },
+          {
+            "iso": "HTI",
+            "cases": 12
+          },
+          {
+            "iso": "GMB",
+            "cases": 12
+          },
+          {
+            "iso": "NER",
+            "cases": 12
+          },
+          {
+            "iso": "UGA",
+            "cases": 12
+          },
+          {
+            "iso": "NPL",
+            "cases": 12
+          },
+          {
+            "iso": "PER",
+            "cases": 11
+          },
+          {
+            "iso": "NAM",
+            "cases": 11
+          },
+          {
+            "iso": "KOS",
+            "cases": 11
+          },
+          {
+            "iso": "KEN",
+            "cases": 11
+          },
+          {
+            "iso": "SEN",
+            "cases": 10
+          },
+          {
+            "iso": "AGO",
+            "cases": 10
+          },
+          {
+            "iso": "LKA",
+            "cases": 10
+          },
+          {
+            "iso": "MMR",
+            "cases": 10
+          },
+          {
+            "iso": "URY",
+            "cases": 10
+          },
+          {
+            "iso": "KAZ",
+            "cases": 9
+          },
+          {
+            "iso": "GHA",
+            "cases": 9
+          },
+          {
+            "iso": "SDS",
+            "cases": 9
+          },
+          {
+            "iso": "BRB",
+            "cases": 9
+          },
+          {
+            "iso": "EST",
+            "cases": 8
+          },
+          {
+            "iso": "FIN",
+            "cases": 7
+          },
+          {
+            "iso": "MOZ",
+            "cases": 6
+          },
+          {
+            "iso": "MAC",
+            "cases": 6
+          },
+          {
+            "iso": "FLK",
+            "cases": 6
+          },
+          {
+            "iso": "SLE",
+            "cases": 6
+          },
+          {
+            "iso": "LBR",
+            "cases": 5
+          },
+          {
+            "iso": "TGO",
+            "cases": 4
+          },
+          {
+            "iso": "MRT",
+            "cases": 4
+          },
+          {
+            "iso": "GAB",
+            "cases": 4
+          },
+          {
+            "iso": "CMR",
+            "cases": 4
+          },
+          {
+            "iso": "MDG",
+            "cases": 4
+          },
+          {
+            "iso": "COL",
+            "cases": 4
+          },
+          {
+            "iso": "PSX",
+            "cases": 4
+          },
+          {
+            "iso": "BFA",
+            "cases": 4
+          },
+          {
+            "iso": "ECU",
+            "cases": 4
+          },
+          {
+            "iso": "CAN",
+            "cases": 3
+          },
+          {
+            "iso": "SUR",
+            "cases": 3
+          },
+          {
+            "iso": "MDV",
+            "cases": 3
+          },
+          {
+            "iso": "AND",
+            "cases": 3
+          },
+          {
+            "iso": "GNB",
+            "cases": 3
+          },
+          {
+            "iso": "BRN",
+            "cases": 3
+          },
+          {
+            "iso": "KGZ",
+            "cases": 3
+          },
+          {
+            "iso": "LBY",
+            "cases": 3
+          },
+          {
+            "iso": "ISL",
+            "cases": 3
+          },
+          {
+            "iso": "TKM",
+            "cases": 2
+          },
+          {
+            "iso": "COG",
+            "cases": 2
+          },
+          {
+            "iso": "NZL",
+            "cases": 2
+          },
+          {
+            "iso": "LSO",
+            "cases": 2
+          },
+          {
+            "iso": "ERI",
+            "cases": 2
+          },
+          {
+            "iso": "TJK",
+            "cases": 2
+          },
+          {
+            "iso": "TZA",
+            "cases": 2
+          },
+          {
+            "iso": "GRL",
+            "cases": 1
+          },
+          {
+            "iso": "VEN",
+            "cases": 1
+          },
+          {
+            "iso": "SXM",
+            "cases": 1
+          },
+          {
+            "iso": "BEN",
+            "cases": 1
+          },
+          {
+            "iso": "PNG",
+            "cases": 1
+          },
+          {
+            "iso": "CUW",
+            "cases": 1
+          },
+          {
+            "iso": "PYF",
+            "cases": 1
+          },
+          {
+            "iso": "ZMB",
+            "cases": 1
+          },
+          {
+            "iso": "GNQ",
+            "cases": 1
+          },
+          {
+            "iso": "MLI",
+            "cases": 1
+          },
+          {
+            "iso": "BWA",
+            "cases": 1
+          },
+          {
+            "iso": "GTM",
+            "cases": 1
+          },
+          {
+            "iso": "SYC",
+            "cases": 1
+          },
+          {
+            "iso": "VIR",
+            "cases": 1
+          },
+          {
+            "iso": "CAF",
+            "cases": 1
+          },
+          {
+            "iso": "DMA",
+            "cases": 1
+          },
+          {
+            "iso": "TLS",
+            "cases": 1
+          },
+          {
+            "iso": "HND",
+            "cases": 1
+          },
+          {
+            "iso": "FRO",
+            "cases": 1
+          },
+          {
+            "iso": "BHS",
+            "cases": 1
+          },
+          {
+            "iso": "SLV",
+            "cases": 1
+          },
+          {
+            "iso": "GUM",
+            "cases": 1
+          },
+          {
+            "iso": "CPV",
+            "cases": 1
+          },
+          {
+            "iso": "BLZ",
+            "cases": 1
+          }
+        ],
+        "countriesInvolved": 172,
+        "top5": [
+          {
+            "iso": "SAU",
+            "cases": 18072
+          },
+          {
+            "iso": "ARE",
+            "cases": 6388
+          },
+          {
+            "iso": "KWT",
+            "cases": 5868
+          },
+          {
+            "iso": "AUT",
+            "cases": 2554
+          },
+          {
+            "iso": "EGY",
+            "cases": 1788
+          }
+        ],
+        "top5sum": 34670
+      }
+    },
+    "Alcohol products trafficking": {
+      "fr": "Produits alcoolisés",
+      "qtyUnit": "Litres",
+      "totals": {
+        "cases": 2765,
+        "seizures": 3941,
+        "admins": 52,
+        "qty": 1987170
+      },
+      "reporters": [
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "curr": 629,
+          "prev": 1153
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 437,
+          "prev": 0
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "curr": 389,
+          "prev": 1
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 301,
+          "prev": 222
+        },
+        {
+          "en": "Slovakia",
+          "fr": "Slovaquie",
+          "curr": 233,
+          "prev": 434
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "curr": 116,
+          "prev": 132
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "curr": 103,
+          "prev": 143
+        },
+        {
+          "en": "Bangladesh",
+          "fr": "Bangladesh",
+          "curr": 81,
+          "prev": 69
+        },
+        {
+          "en": "Greece",
+          "fr": "Grèce",
+          "curr": 68,
+          "prev": 0
+        },
+        {
+          "en": "Argentina",
+          "fr": "Argentine",
+          "curr": 59,
+          "prev": 25
+        }
+      ],
+      "commodity": [
+        {
+          "en": "Whisky",
+          "fr": "Whisky",
+          "curr": 972,
+          "prev": 906
+        },
+        {
+          "en": "Alcohol",
+          "fr": "Alcool",
+          "curr": 781,
+          "prev": 644
+        },
+        {
+          "en": "Beer",
+          "fr": "Bière",
+          "curr": 608,
+          "prev": 667
+        },
+        {
+          "en": "Vodka",
+          "fr": "Vodka",
+          "curr": 572,
+          "prev": 501
+        },
+        {
+          "en": "Wine",
+          "fr": "Vin",
+          "curr": 316,
+          "prev": 362
+        },
+        {
+          "en": "Liqueur",
+          "fr": "Liqueur",
+          "curr": 270,
+          "prev": 268
+        },
+        {
+          "en": "Undenatured ethyl alcohol",
+          "fr": "Alcool éthylique non dénaturé",
+          "curr": 264,
+          "prev": 124
+        },
+        {
+          "en": "Grape distilled spirits",
+          "fr": "Eaux-de-vie de raisin",
+          "curr": 149,
+          "prev": 204
+        },
+        {
+          "en": "Other alcohol",
+          "fr": "Autre alcool",
+          "curr": 9,
+          "prev": 15
+        }
+      ],
+      "qtyByCommodity": [
+        {
+          "en": "Liqueur",
+          "fr": "Liqueur",
+          "curr": 717352,
+          "prev": 281904
+        },
+        {
+          "en": "Whisky",
+          "fr": "Whisky",
+          "curr": 347511,
+          "prev": 203071
+        },
+        {
+          "en": "Beer",
+          "fr": "Bière",
+          "curr": 342404,
+          "prev": 470129
+        },
+        {
+          "en": "Alcohol",
+          "fr": "Alcool",
+          "curr": 291680,
+          "prev": 78009
+        },
+        {
+          "en": "Vodka",
+          "fr": "Vodka",
+          "curr": 81843,
+          "prev": 67723
+        },
+        {
+          "en": "Wine",
+          "fr": "Vin",
+          "curr": 70924,
+          "prev": 205396
+        },
+        {
+          "en": "Undenatured ethyl alcohol",
+          "fr": "Alcool éthylique non dénaturé",
+          "curr": 62821,
+          "prev": 85153
+        },
+        {
+          "en": "Other alcohol",
+          "fr": "Autre alcool",
+          "curr": 57697,
+          "prev": 11585
+        },
+        {
+          "en": "Grape distilled spirits",
+          "fr": "Eaux-de-vie de raisin",
+          "curr": 14937,
+          "prev": 6558
+        }
+      ],
+      "qtyTable": [
+        {
+          "en": "Other alcohol",
+          "fr": "Autre alcool",
+          "seizures": 9,
+          "qty": 57696,
+          "perSeiz": 6411
+        },
+        {
+          "en": "Liqueur",
+          "fr": "Liqueur",
+          "seizures": 270,
+          "qty": 717352,
+          "perSeiz": 2657
+        },
+        {
+          "en": "Beer",
+          "fr": "Bière",
+          "seizures": 608,
+          "qty": 342404,
+          "perSeiz": 563
+        },
+        {
+          "en": "Alcohol",
+          "fr": "Alcool",
+          "seizures": 781,
+          "qty": 291680,
+          "perSeiz": 373
+        },
+        {
+          "en": "Whisky",
+          "fr": "Whisky",
+          "seizures": 972,
+          "qty": 347511,
+          "perSeiz": 358
+        },
+        {
+          "en": "Undenatured ethyl alcohol",
+          "fr": "Alcool éthylique non dénaturé",
+          "seizures": 264,
+          "qty": 62820,
+          "perSeiz": 238
+        },
+        {
+          "en": "Wine",
+          "fr": "Vin",
+          "seizures": 316,
+          "qty": 70924,
+          "perSeiz": 224
+        },
+        {
+          "en": "Vodka",
+          "fr": "Vodka",
+          "seizures": 572,
+          "qty": 81843,
+          "perSeiz": 143
+        },
+        {
+          "en": "Grape distilled spirits",
+          "fr": "Eaux-de-vie de raisin",
+          "seizures": 149,
+          "qty": 14937,
+          "perSeiz": 100
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 1303
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 703
+          },
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 368
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 244
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 10
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 7
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 949
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 675
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 198
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des marchés",
+            "cases": 94
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 81
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 42
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 37
+          }
+        ],
+        "detection": [
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 66
+          },
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 23.2
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 5.4
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 3.9
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 1.6
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 71.4
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 20.4
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 5.9
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 2.3
+          }
+        ],
+        "conveyance": [
+          {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "curr": 1459,
+            "prev": 1459
+          },
+          {
+            "en": "Air",
+            "fr": "Voie aérienne",
+            "curr": 369,
+            "prev": 369
+          },
+          {
+            "en": "Pedestrian",
+            "fr": "Piéton",
+            "curr": 93,
+            "prev": 93
+          },
+          {
+            "en": "Vessel",
+            "fr": "Navire",
+            "curr": 67,
+            "prev": 67
+          },
+          {
+            "en": "Regular Mail",
+            "fr": "Courrier ordinaire",
+            "curr": 11,
+            "prev": 11
+          },
+          {
+            "en": "Rail Train",
+            "fr": "Train",
+            "curr": 7,
+            "prev": 7
+          },
+          {
+            "en": "Express courier",
+            "fr": "Messagerie express",
+            "curr": 1,
+            "prev": 1
+          }
+        ]
+      },
+      "ecom": 0.5,
+      "ecomByCommodity": [
+        {
+          "en": "Beer",
+          "fr": "Bière",
+          "pct": 1.1
+        },
+        {
+          "en": "Liqueur",
+          "fr": "Liqueur",
+          "pct": 1
+        },
+        {
+          "en": "Whisky",
+          "fr": "Whisky",
+          "pct": 0.6
+        },
+        {
+          "en": "Wine",
+          "fr": "Vin",
+          "pct": 0.4
+        },
+        {
+          "en": "Alcohol",
+          "fr": "Alcool",
+          "pct": 0.2
+        },
+        {
+          "en": "Vodka",
+          "fr": "Vodka",
+          "pct": 0
+        },
+        {
+          "en": "Undenatured ethyl alcohol",
+          "fr": "Alcool éthylique non dénaturé",
+          "pct": 0
+        },
+        {
+          "en": "Grape distilled spirits",
+          "fr": "Eaux-de-vie de raisin",
+          "pct": 0
+        },
+        {
+          "en": "Other alcohol",
+          "fr": "Autre alcool",
+          "pct": 0
+        }
+      ],
+      "convByDirection": [
+        {
+          "conv": "Vehicle",
+          "Import": 77.3,
+          "Transit": 8.3,
+          "Internal": 12.6,
+          "Export": 1.8
+        },
+        {
+          "conv": "Air",
+          "Import": 82.1,
+          "Transit": 0.5,
+          "Internal": 11.4,
+          "Export": 6
+        },
+        {
+          "conv": "Pedestrian",
+          "Import": 98.9,
+          "Transit": 0,
+          "Internal": 1.1,
+          "Export": 0
+        },
+        {
+          "conv": "Vessel",
+          "Import": 97,
+          "Transit": 1.5,
+          "Internal": 0,
+          "Export": 1.5
+        },
+        {
+          "conv": "Regular Mail",
+          "Import": 0,
+          "Transit": 0,
+          "Internal": 100,
+          "Export": 0
+        },
+        {
+          "conv": "Rail Train",
+          "Import": 100,
+          "Transit": 0,
+          "Internal": 0,
+          "Export": 0
+        }
+      ],
+      "departures": [
+        {
+          "en": "Bahrain",
+          "fr": "Bahreïn",
+          "curr": 403,
+          "prev": 403
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "curr": 311,
+          "prev": 311
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 179,
+          "prev": 179
+        },
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "curr": 173,
+          "prev": 173
+        },
+        {
+          "en": "Ukraine",
+          "fr": "Ukraine",
+          "curr": 155,
+          "prev": 155
+        },
+        {
+          "en": "Andorra",
+          "fr": "Andorre",
+          "curr": 142,
+          "prev": 142
+        },
+        {
+          "en": "India",
+          "fr": "Inde",
+          "curr": 100,
+          "prev": 100
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "curr": 84,
+          "prev": 84
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 77,
+          "prev": 77
+        },
+        {
+          "en": "Mozambique",
+          "fr": "Mozambique",
+          "curr": 74,
+          "prev": 74
+        }
+      ],
+      "flows": {
+        "regions": [
+          "ME",
+          "ECE",
+          "WE",
+          "ESA",
+          "A/P",
+          "SA",
+          "WA",
+          "CIS",
+          "CA",
+          "NA",
+          "CAR",
+          "NAM",
+          "CAM"
+        ],
+        "matrix": [
+          [
+            785,
+            1,
+            0,
+            1,
+            3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            36,
+            607,
+            35,
+            0,
+            0,
+            0,
+            0,
+            15,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            16,
+            61,
+            292,
+            0,
+            2,
+            0,
+            0,
+            5,
+            0,
+            2,
+            0,
+            1,
+            0
+          ],
+          [
+            6,
+            0,
+            2,
+            142,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            61,
+            0,
+            2,
+            2,
+            86,
+            3,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            0,
+            1,
+            65,
+            0,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            9,
+            20,
+            0,
+            0,
+            27,
+            0,
+            8,
+            6,
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            12,
+            2,
+            0,
+            2,
+            0,
+            0,
+            17,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            17,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            16,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            11,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            1
+          ]
+        ]
+      },
+      "involvement": {
+        "map": [
+          {
+            "iso": "SAU",
+            "cases": 632
+          },
+          {
+            "iso": "FRA",
+            "cases": 516
+          },
+          {
+            "iso": "ROU",
+            "cases": 408
+          },
+          {
+            "iso": "BHR",
+            "cases": 406
+          },
+          {
+            "iso": "OMN",
+            "cases": 306
+          },
+          {
+            "iso": "SVK",
+            "cases": 234
+          },
+          {
+            "iso": "GBR",
+            "cases": 193
+          },
+          {
+            "iso": "ARE",
+            "cases": 186
+          },
+          {
+            "iso": "UKR",
+            "cases": 156
+          },
+          {
+            "iso": "AND",
+            "cases": 144
+          },
+          {
+            "iso": "ZAF",
+            "cases": 135
+          },
+          {
+            "iso": "IND",
+            "cases": 100
+          },
+          {
+            "iso": "MOZ",
+            "cases": 92
+          },
+          {
+            "iso": "BGD",
+            "cases": 81
+          },
+          {
+            "iso": "GRC",
+            "cases": 71
+          },
+          {
+            "iso": "POL",
+            "cases": 71
+          },
+          {
+            "iso": "ARG",
+            "cases": 60
+          },
+          {
+            "iso": "RUS",
+            "cases": 55
+          },
+          {
+            "iso": "TUR",
+            "cases": 38
+          },
+          {
+            "iso": "CIV",
+            "cases": 33
+          },
+          {
+            "iso": "MDA",
+            "cases": 32
+          },
+          {
+            "iso": "ALB",
+            "cases": 30
+          },
+          {
+            "iso": "SRB",
+            "cases": 27
+          },
+          {
+            "iso": "NAM",
+            "cases": 27
+          },
+          {
+            "iso": "BEL",
+            "cases": 27
+          },
+          {
+            "iso": "CHN",
+            "cases": 26
+          },
+          {
+            "iso": "AGO",
+            "cases": 25
+          },
+          {
+            "iso": "ITA",
+            "cases": 24
+          },
+          {
+            "iso": "NLD",
+            "cases": 24
+          },
+          {
+            "iso": "GHA",
+            "cases": 23
+          },
+          {
+            "iso": "URY",
+            "cases": 22
+          },
+          {
+            "iso": "AZE",
+            "cases": 21
+          },
+          {
+            "iso": "ZWE",
+            "cases": 21
+          },
+          {
+            "iso": "NGA",
+            "cases": 21
+          },
+          {
+            "iso": "HRV",
+            "cases": 21
+          },
+          {
+            "iso": "MNE",
+            "cases": 19
+          },
+          {
+            "iso": "IRN",
+            "cases": 19
+          },
+          {
+            "iso": "BOL",
+            "cases": 19
+          },
+          {
+            "iso": "QAT",
+            "cases": 16
+          },
+          {
+            "iso": "EGY",
+            "cases": 15
+          },
+          {
+            "iso": "CMR",
+            "cases": 13
+          },
+          {
+            "iso": "ESP",
+            "cases": 11
+          },
+          {
+            "iso": "LTU",
+            "cases": 11
+          },
+          {
+            "iso": "LUX",
+            "cases": 11
+          },
+          {
+            "iso": "BIH",
+            "cases": 10
+          },
+          {
+            "iso": "MAR",
+            "cases": 9
+          },
+          {
+            "iso": "BRA",
+            "cases": 9
+          },
+          {
+            "iso": "CAF",
+            "cases": 9
+          },
+          {
+            "iso": "GEO",
+            "cases": 8
+          },
+          {
+            "iso": "JOR",
+            "cases": 8
+          },
+          {
+            "iso": "USA",
+            "cases": 8
+          },
+          {
+            "iso": "DEU",
+            "cases": 8
+          },
+          {
+            "iso": "HUN",
+            "cases": 7
+          },
+          {
+            "iso": "CHE",
+            "cases": 7
+          },
+          {
+            "iso": "ETH",
+            "cases": 6
+          },
+          {
+            "iso": "TKM",
+            "cases": 6
+          },
+          {
+            "iso": "IRL",
+            "cases": 6
+          },
+          {
+            "iso": "MLI",
+            "cases": 6
+          },
+          {
+            "iso": "BGR",
+            "cases": 6
+          },
+          {
+            "iso": "COG",
+            "cases": 5
+          },
+          {
+            "iso": "COD",
+            "cases": 5
+          },
+          {
+            "iso": "ECU",
+            "cases": 5
+          },
+          {
+            "iso": "THA",
+            "cases": 4
+          },
+          {
+            "iso": "JPN",
+            "cases": 4
+          },
+          {
+            "iso": "LVA",
+            "cases": 4
+          },
+          {
+            "iso": "MMR",
+            "cases": 4
+          },
+          {
+            "iso": "CHL",
+            "cases": 4
+          },
+          {
+            "iso": "LBN",
+            "cases": 4
+          },
+          {
+            "iso": "BFA",
+            "cases": 4
+          },
+          {
+            "iso": "PRT",
+            "cases": 4
+          },
+          {
+            "iso": "KAZ",
+            "cases": 4
+          },
+          {
+            "iso": "HKG",
+            "cases": 3
+          },
+          {
+            "iso": "SEN",
+            "cases": 3
+          },
+          {
+            "iso": "ARM",
+            "cases": 3
+          },
+          {
+            "iso": "SWE",
+            "cases": 3
+          },
+          {
+            "iso": "CZE",
+            "cases": 3
+          },
+          {
+            "iso": "NOR",
+            "cases": 3
+          },
+          {
+            "iso": "PRY",
+            "cases": 3
+          },
+          {
+            "iso": "GUY",
+            "cases": 3
+          },
+          {
+            "iso": "PHL",
+            "cases": 2
+          },
+          {
+            "iso": "YEM",
+            "cases": 2
+          },
+          {
+            "iso": "TTO",
+            "cases": 2
+          },
+          {
+            "iso": "PAN",
+            "cases": 2
+          },
+          {
+            "iso": "GMB",
+            "cases": 2
+          },
+          {
+            "iso": "TGO",
+            "cases": 2
+          },
+          {
+            "iso": "GNQ",
+            "cases": 2
+          },
+          {
+            "iso": "MKD",
+            "cases": 2
+          },
+          {
+            "iso": "IRQ",
+            "cases": 2
+          },
+          {
+            "iso": "SUR",
+            "cases": 2
+          },
+          {
+            "iso": "FIN",
+            "cases": 2
+          },
+          {
+            "iso": "MNG",
+            "cases": 1
+          },
+          {
+            "iso": "SLE",
+            "cases": 1
+          },
+          {
+            "iso": "CUB",
+            "cases": 1
+          },
+          {
+            "iso": "COM",
+            "cases": 1
+          },
+          {
+            "iso": "MDG",
+            "cases": 1
+          },
+          {
+            "iso": "AUS",
+            "cases": 1
+          },
+          {
+            "iso": "AFG",
+            "cases": 1
+          },
+          {
+            "iso": "BEN",
+            "cases": 1
+          },
+          {
+            "iso": "HND",
+            "cases": 1
+          },
+          {
+            "iso": "NIC",
+            "cases": 1
+          },
+          {
+            "iso": "NPL",
+            "cases": 1
+          },
+          {
+            "iso": "MAC",
+            "cases": 1
+          },
+          {
+            "iso": "PER",
+            "cases": 1
+          },
+          {
+            "iso": "GIN",
+            "cases": 1
+          },
+          {
+            "iso": "ERI",
+            "cases": 1
+          },
+          {
+            "iso": "PAK",
+            "cases": 1
+          },
+          {
+            "iso": "SYR",
+            "cases": 1
+          },
+          {
+            "iso": "CAN",
+            "cases": 1
+          },
+          {
+            "iso": "KOS",
+            "cases": 1
+          },
+          {
+            "iso": "FLK",
+            "cases": 1
+          },
+          {
+            "iso": "MUS",
+            "cases": 1
+          },
+          {
+            "iso": "MEX",
+            "cases": 1
+          },
+          {
+            "iso": "GUM",
+            "cases": 1
+          },
+          {
+            "iso": "JAM",
+            "cases": 1
+          },
+          {
+            "iso": "KWT",
+            "cases": 1
+          },
+          {
+            "iso": "UZB",
+            "cases": 1
+          },
+          {
+            "iso": "DNK",
+            "cases": 1
+          },
+          {
+            "iso": "BLR",
+            "cases": 1
+          }
+        ],
+        "countriesInvolved": 118,
+        "top5": [
+          {
+            "iso": "SAU",
+            "cases": 632
+          },
+          {
+            "iso": "FRA",
+            "cases": 516
+          },
+          {
+            "iso": "ROU",
+            "cases": 408
+          },
+          {
+            "iso": "BHR",
+            "cases": 406
+          },
+          {
+            "iso": "OMN",
+            "cases": 306
+          }
+        ],
+        "top5sum": 2268
+      }
+    }
+  },
+  "regional": {
+    "regions": [
+      "A/P",
+      "AMS",
+      "ESA",
+      "EUR",
+      "MENA",
+      "WCA"
+    ],
+    "composition": [
+      {
+        "region": "A/P",
+        "s0": 66.1,
+        "s1": 33.9
+      },
+      {
+        "region": "AMS",
+        "s0": 77.3,
+        "s1": 22.7
+      },
+      {
+        "region": "ESA",
+        "s0": 61,
+        "s1": 39
+      },
+      {
+        "region": "EUR",
+        "s0": 88.5,
+        "s1": 11.5
+      },
+      {
+        "region": "MENA",
+        "s0": 95.4,
+        "s1": 4.6
+      },
+      {
+        "region": "WCA",
+        "s0": 75.4,
+        "s1": 24.6
+      }
+    ],
+    "reporting": [
+      {
+        "region": "A/P",
+        "a0": 15,
+        "a1": 4
+      },
+      {
+        "region": "AMS",
+        "a0": 14,
+        "a1": 8
+      },
+      {
+        "region": "ESA",
+        "a0": 11,
+        "a1": 6
+      },
+      {
+        "region": "EUR",
+        "a0": 44,
+        "a1": 19
+      },
+      {
+        "region": "MENA",
+        "a0": 11,
+        "a1": 7
+      },
+      {
+        "region": "WCA",
+        "a0": 13,
+        "a1": 8
+      }
+    ]
+  }
+}

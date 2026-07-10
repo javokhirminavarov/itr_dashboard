@@ -1,0 +1,182 @@
+{
+  "Drugs": [
+    {
+      "tag": {
+        "en": "Opioids",
+        "fr": "Opioïdes"
+      },
+      "t": {
+        "en": "Fentanyl overtakes heroin in seizures",
+        "fr": "Le fentanyl dépasse l'héroïne en saisies"
+      },
+      "x": {
+        "en": "For the second consecutive year, fentanyl led opioid seizures at 30.6% (772) against 24.7% for heroin (623). Heroin nonetheless returned to first place by quantity (7.6 against 6.3 tonnes). Smaller, more potent fentanyl shipments demand detection calibrated beyond weight alone.",
+        "fr": "Pour la deuxième année consécutive, le fentanyl a dominé les saisies d'opioïdes à 30,6 % (772) contre 24,7 % pour l'héroïne (623). L'héroïne est toutefois redevenue première en quantité (7,6 contre 6,3 tonnes). Des envois de fentanyl plus petits et plus puissants exigent une détection qui ne repose plus sur le seul poids."
+      }
+    },
+    {
+      "tag": {
+        "en": "NPS",
+        "fr": "NPS"
+      },
+      "t": {
+        "en": "NPS becomes a postal phenomenon",
+        "fr": "Les NPS deviennent un phénomène postal"
+      },
+      "x": {
+        "en": "New psychoactive substances doubled to 7,721 cases (+108.8%), with 70.2% regular mail, 78.9% in-mail concealment, 88.7% risk-profiling detection and 81.9% e-commerce. The profile mirrors IPR products and calls for postal risk profiling rather than airport interdiction alone.",
+        "fr": "Les nouvelles substances psychoactives ont doublé à 7 721 affaires (+108,8 %), avec 70,2 % par courrier ordinaire, 78,9 % de dissimulation dans le courrier, 88,7 % de détection par profilage de risque et 81,9 % d'e-commerce. Le profil rejoint celui des produits DPI et appelle un profilage postal plutôt que la seule interception aéroportuaire."
+      }
+    }
+  ],
+  "AML/CTF": [
+    {
+      "tag": {
+        "en": "Cash",
+        "fr": "Espèces"
+      },
+      "t": {
+        "en": "Cash smuggling dominates the section",
+        "fr": "La contrebande d'espèces domine la section"
+      },
+      "x": {
+        "en": "Cash smuggling accounted for 95.5% of seizures, ahead of gold (4.2%) and gemstones (0.3%). The euro and the US dollar together made up nearly 60% of cash seizures, with Italy, Germany, Saudi Arabia, the United States and Poland leading the reporting.",
+        "fr": "La contrebande d'espèces a représenté 95,5 % des saisies, devant l'or (4,2 %) et les pierres précieuses (0,3 %). L'euro et le dollar américain réunis ont constitué près de 60 % des saisies d'espèces, l'Italie, l'Allemagne, l'Arabie saoudite, les États-Unis et la Pologne étant en tête des déclarations."
+      }
+    },
+    {
+      "tag": {
+        "en": "Gold",
+        "fr": "Or"
+      },
+      "t": {
+        "en": "Gold shifts towards bars",
+        "fr": "L'or se déplace vers les lingots"
+      },
+      "x": {
+        "en": "Gold trafficking showed a structurally different profile, dominated by passenger interceptions at airports, with a marked rebalancing towards bars (38.8%) alongside jewellery, reflecting evolving concealment and value-transfer methods.",
+        "fr": "Le trafic d'or a présenté un profil structurellement différent, dominé par les interceptions de passagers dans les aéroports, avec un rééquilibrage marqué vers les lingots (38,8 %) aux côtés des bijoux, traduisant l'évolution des méthodes de dissimulation et de transfert de valeur."
+      }
+    }
+  ],
+  "Environmental Crime": [
+    {
+      "tag": {
+        "en": "Ivory",
+        "fr": "Ivoire"
+      },
+      "t": {
+        "en": "Ivory laundering enters the antique trade",
+        "fr": "Le blanchiment d'ivoire infiltre le marché des antiquités"
+      },
+      "x": {
+        "en": "Elephant cases rose 29.5% to 180 cases. Of seizures, 74.7% involved worked ivory declared as antiques or jewellery, against 23.1% for raw tusks, often with fabricated CITES certificates. Detection now requires documentary verification alongside species identification.",
+        "fr": "Les affaires liées aux éléphants ont progressé de 29,5 % à 180 affaires. Parmi les saisies, 74,7 % portaient sur de l'ivoire travaillé déclaré comme antiquités ou bijoux, contre 23,1 % pour les défenses brutes, souvent avec de faux certificats CITES. La détection exige désormais une vérification documentaire en plus de l'identification des espèces."
+      }
+    },
+    {
+      "tag": {
+        "en": "Fauna",
+        "fr": "Faune"
+      },
+      "t": {
+        "en": "Marine species lead, bear cases surge",
+        "fr": "Les espèces marines en tête, flambée des cas d'ours"
+      },
+      "x": {
+        "en": "Fauna remained the largest stream at 56% of environmental seizures, with marine species leading the fauna profile. Bear-related seizures rose sharply to 60 (+97%). E-commerce was reported in around 24% of environmental cases.",
+        "fr": "La faune est restée le premier flux avec 56 % des saisies environnementales, les espèces marines dominant ce profil. Les saisies liées aux ours ont fortement augmenté à 60 (+97 %). L'e-commerce a été signalé dans environ 24 % des affaires environnementales."
+      }
+    }
+  ],
+  "IPR, Health and Safety": [
+    {
+      "tag": {
+        "en": "Operation STOP IV",
+        "fr": "Opération STOP IV"
+      },
+      "t": {
+        "en": "Coordinated response to online medicines",
+        "fr": "Réponse coordonnée aux médicaments en ligne"
+      },
+      "x": {
+        "en": "Operation STOP IV (1,066 cases, 119 administrations) illustrates the operational response to e-commerce-driven trafficking of medical products. Urogenital agents accounted for 48% of medical seizures, with 91% e-commerce penetration reflecting online distribution.",
+        "fr": "L'opération STOP IV (1 066 affaires, 119 administrations) illustre la réponse opérationnelle au trafic de produits médicaux porté par l'e-commerce. Les agents urogénitaux ont représenté 48 % des saisies médicales, avec une pénétration e-commerce de 91 % reflétant la distribution en ligne."
+      }
+    },
+    {
+      "tag": {
+        "en": "Operation FRONPIAS",
+        "fr": "Opération FRONPIAS"
+      },
+      "t": {
+        "en": "Targeting counterfeits in the Americas",
+        "fr": "Cibler la contrefaçon dans les Amériques"
+      },
+      "x": {
+        "en": "Operation FRONPIAS in the Americas (332 cases, 14 administrations) targeted counterfeit goods trafficked through online marketplaces and express courier networks, a primary driver of the region's high e-commerce share.",
+        "fr": "L'opération FRONPIAS dans les Amériques (332 affaires, 14 administrations) a ciblé les produits de contrefaçon écoulés via les places de marché en ligne et les réseaux de fret express, principal moteur de la forte part e-commerce de la région."
+      }
+    }
+  ],
+  "Revenue": [
+    {
+      "tag": {
+        "en": "Tobacco",
+        "fr": "Tabac"
+      },
+      "t": {
+        "en": "An intra-Middle East tobacco corridor",
+        "fr": "Un corridor tabac intra-Moyen-Orient"
+      },
+      "x": {
+        "en": "Tobacco accounted for 92.2% of Revenue cases (31,571), with Saudi Arabia alone reporting 56% of all tobacco cases and MENA accounting for 63% of the section. The intra-Middle East corridor recorded 14,859 cases, trafficked primarily through bulk physical transport.",
+        "fr": "Le tabac a représenté 92,2 % des affaires de Recettes (31 571), l'Arabie saoudite déclarant à elle seule 56 % de toutes les affaires de tabac et la région MENA 63 % de la section. Le corridor intra-Moyen-Orient a enregistré 14 859 affaires, écoulées principalement par transport physique en vrac."
+      }
+    },
+    {
+      "tag": {
+        "en": "Emerging products",
+        "fr": "Produits émergents"
+      },
+      "t": {
+        "en": "E-cigarettes and raw tobacco surge",
+        "fr": "Flambée des e-cigarettes et du tabac brut"
+      },
+      "x": {
+        "en": "Cigarettes remained the leading subcategory (22,487 seizures), but e-cigarette seizures more than doubled (+104%) and raw tobacco quadrupled (+300%). Illicit alcohol seizures also more than doubled (+113%), pointing to public health risks linked to methanol.",
+        "fr": "Les cigarettes sont restées la première sous-catégorie (22 487 saisies), mais les saisies d'e-cigarettes ont plus que doublé (+104 %) et le tabac brut a quadruplé (+300 %). Les saisies d'alcool illicite ont également plus que doublé (+113 %), pointant des risques sanitaires liés au méthanol."
+      }
+    }
+  ],
+  "Security": [
+    {
+      "tag": {
+        "en": "UAS",
+        "fr": "Drones (UAS)"
+      },
+      "t": {
+        "en": "UAS emerges as a distinct category",
+        "fr": "Les drones (UAS), nouvelle catégorie"
+      },
+      "x": {
+        "en": "Unmanned aerial systems reached 11.9% of Security cases (653), with 23.6% of cases linked to e-commerce as restricted drones and tactical equipment are ordered online. UAS requires technical, case-by-case assessment rather than high-volume postal enforcement.",
+        "fr": "Les systèmes aériens sans pilote ont atteint 11,9 % des affaires de Sécurité (653), dont 23,6 % liées à l'e-commerce, drones réglementés et équipements tactiques commandés en ligne. Les UAS exigent une évaluation technique au cas par cas plutôt qu'une logique postale de masse."
+      }
+    },
+    {
+      "tag": {
+        "en": "Weapons",
+        "fr": "Armes"
+      },
+      "t": {
+        "en": "Risk profiling drives weapons detection",
+        "fr": "Le profilage de risque pilote la détection des armes"
+      },
+      "x": {
+        "en": "The United States alone accounted for 49.1% of weapons cases in 2025. Risk profiling drove 79.6% of weapons detections, with airport and e-commerce concealment concentrated on compact components such as silencers (98% airport, 85% e-commerce) and receivers.",
+        "fr": "Les États-Unis ont représenté à eux seuls 49,1 % des affaires d'armes en 2025. Le profilage de risque a porté 79,6 % des détections d'armes, la dissimulation en aéroport et via l'e-commerce se concentrant sur des composants compacts comme les silencieux (98 % aéroport, 85 % e-commerce) et les carcasses."
+      }
+    }
+  ]
+}

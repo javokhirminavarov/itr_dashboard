@@ -1,0 +1,3838 @@
+{
+  "totals": {
+    "cases": 67757,
+    "seizures": 75270,
+    "admins": 146,
+    "quantity_t": 1288.3
+  },
+  "composition": [
+    {
+      "en": "Cannabis",
+      "fr": "Cannabis",
+      "seizures": 37058
+    },
+    {
+      "en": "Psychotropic substances",
+      "fr": "Substances psychotropes",
+      "seizures": 18216
+    },
+    {
+      "en": "New Psychoactive Substances",
+      "fr": "Nouvelles substances psychoactives",
+      "seizures": 8315
+    },
+    {
+      "en": "Cocaine",
+      "fr": "Cocaïne",
+      "seizures": 8074
+    },
+    {
+      "en": "Opioids and Opiates",
+      "fr": "Opioïdes et opiacés",
+      "seizures": 2523
+    },
+    {
+      "en": "Khat",
+      "fr": "Khat",
+      "seizures": 1084
+    }
+  ],
+  "byCategorySeiz": [
+    {
+      "en": "Cannabis",
+      "fr": "Cannabis",
+      "curr": 37058,
+      "prev": 22855
+    },
+    {
+      "en": "Psychotropic substances",
+      "fr": "Substances psychotropes",
+      "curr": 18216,
+      "prev": 14627
+    },
+    {
+      "en": "New Psychoactive Substances",
+      "fr": "Nouvelles substances psychoactives",
+      "curr": 8315,
+      "prev": 3822
+    },
+    {
+      "en": "Cocaine",
+      "fr": "Cocaïne",
+      "curr": 8074,
+      "prev": 7596
+    },
+    {
+      "en": "Opioids and Opiates",
+      "fr": "Opioïdes et opiacés",
+      "curr": 2523,
+      "prev": 2729
+    },
+    {
+      "en": "Khat",
+      "fr": "Khat",
+      "curr": 1084,
+      "prev": 469
+    }
+  ],
+  "byCategoryQty": [
+    {
+      "en": "Cannabis",
+      "fr": "Cannabis",
+      "curr": 548.8,
+      "prev": 530.1
+    },
+    {
+      "en": "Cocaine",
+      "fr": "Cocaïne",
+      "curr": 400.1,
+      "prev": 230.4
+    },
+    {
+      "en": "Psychotropic substances",
+      "fr": "Substances psychotropes",
+      "curr": 186.8,
+      "prev": 141.5
+    },
+    {
+      "en": "New Psychoactive Substances",
+      "fr": "Nouvelles substances psychoactives",
+      "curr": 82.4,
+      "prev": 167.9
+    },
+    {
+      "en": "Khat",
+      "fr": "Khat",
+      "curr": 45.9,
+      "prev": 56.8
+    },
+    {
+      "en": "Opioids and Opiates",
+      "fr": "Opioïdes et opiacés",
+      "curr": 24.3,
+      "prev": 25.1
+    }
+  ],
+  "direction": [
+    {
+      "en": "United States",
+      "fr": "États-Unis",
+      "Export": 8030,
+      "Import": 7216,
+      "Internal": 0,
+      "Transit": 3129
+    },
+    {
+      "en": "Denmark",
+      "fr": "Danemark",
+      "Export": 322,
+      "Import": 11234,
+      "Internal": 133,
+      "Transit": 1296
+    },
+    {
+      "en": "Germany",
+      "fr": "Allemagne",
+      "Export": 1914,
+      "Import": 2338,
+      "Internal": 39,
+      "Transit": 2725
+    },
+    {
+      "en": "France",
+      "fr": "France",
+      "Export": 195,
+      "Import": 3756,
+      "Internal": 361,
+      "Transit": 1639
+    },
+    {
+      "en": "Spain",
+      "fr": "Espagne",
+      "Export": 440,
+      "Import": 1613,
+      "Internal": 49,
+      "Transit": 14
+    },
+    {
+      "en": "Netherlands",
+      "fr": "Pays-Bas",
+      "Export": 55,
+      "Import": 1208,
+      "Internal": 1,
+      "Transit": 327
+    },
+    {
+      "en": "Brazil",
+      "fr": "Brésil",
+      "Export": 204,
+      "Import": 143,
+      "Internal": 1146,
+      "Transit": 0
+    },
+    {
+      "en": "Sweden",
+      "fr": "Suède",
+      "Export": 336,
+      "Import": 976,
+      "Internal": 142,
+      "Transit": 0
+    },
+    {
+      "en": "Ireland",
+      "fr": "Irlande",
+      "Export": 33,
+      "Import": 1291,
+      "Internal": 1,
+      "Transit": 0
+    },
+    {
+      "en": "Austria",
+      "fr": "Autriche",
+      "Export": 21,
+      "Import": 985,
+      "Internal": 150,
+      "Transit": 89
+    }
+  ],
+  "detection": [
+    {
+      "en": "Risk profiling",
+      "fr": "Profilage de risque",
+      "pct": 78.4
+    },
+    {
+      "en": "Routine control",
+      "fr": "Contrôle de routine",
+      "pct": 17.3
+    },
+    {
+      "en": "Intelligence",
+      "fr": "Renseignement",
+      "pct": 2.2
+    },
+    {
+      "en": "Investigation",
+      "fr": "Enquête",
+      "pct": 1.5
+    },
+    {
+      "en": "Random selection",
+      "fr": "Sélection aléatoire",
+      "pct": 0.7
+    }
+  ],
+  "heatRegionCat": {
+    "regions": [
+      "A/P",
+      "CA",
+      "CAM",
+      "CAR",
+      "CIS",
+      "ECE",
+      "ESA",
+      "ME",
+      "NA",
+      "NAM",
+      "SA",
+      "WA",
+      "WE"
+    ],
+    "cats": [
+      {
+        "en": "Cannabis",
+        "fr": "Cannabis"
+      },
+      {
+        "en": "Psychotropic substances",
+        "fr": "Substances psychotropes"
+      },
+      {
+        "en": "New Psychoactive Substances",
+        "fr": "Nouvelles substances psychoactives"
+      },
+      {
+        "en": "Cocaine",
+        "fr": "Cocaïne"
+      },
+      {
+        "en": "Opioids and Opiates",
+        "fr": "Opioïdes et opiacés"
+      },
+      {
+        "en": "Khat",
+        "fr": "Khat"
+      }
+    ],
+    "cases": [
+      [
+        957,
+        1226,
+        314,
+        218,
+        309,
+        2
+      ],
+      [
+        9,
+        12,
+        0,
+        4,
+        1,
+        0
+      ],
+      [
+        19,
+        1,
+        0,
+        150,
+        0,
+        0
+      ],
+      [
+        229,
+        80,
+        102,
+        61,
+        7,
+        0
+      ],
+      [
+        203,
+        382,
+        14,
+        7,
+        63,
+        0
+      ],
+      [
+        580,
+        422,
+        158,
+        111,
+        90,
+        16
+      ],
+      [
+        188,
+        36,
+        7,
+        41,
+        24,
+        10
+      ],
+      [
+        815,
+        1997,
+        7,
+        135,
+        61,
+        29
+      ],
+      [
+        100,
+        20,
+        0,
+        15,
+        3,
+        0
+      ],
+      [
+        10391,
+        2946,
+        2132,
+        2084,
+        656,
+        174
+      ],
+      [
+        1249,
+        439,
+        189,
+        1127,
+        9,
+        0
+      ],
+      [
+        147,
+        77,
+        2,
+        48,
+        18,
+        2
+      ],
+      [
+        19412,
+        8243,
+        4485,
+        3233,
+        663,
+        796
+      ]
+    ],
+    "qty": [
+      [
+        16.2,
+        10.6,
+        3.2,
+        4.8,
+        0.9,
+        0
+      ],
+      [
+        7,
+        0.1,
+        0,
+        0.4,
+        0,
+        0
+      ],
+      [
+        0.8,
+        0,
+        0,
+        54.5,
+        0,
+        0
+      ],
+      [
+        4.7,
+        1.2,
+        0.4,
+        8.7,
+        1.5,
+        0
+      ],
+      [
+        4.6,
+        0.6,
+        0.3,
+        2.3,
+        1.2,
+        0
+      ],
+      [
+        20.4,
+        14.6,
+        2.4,
+        14.9,
+        2.5,
+        2.9
+      ],
+      [
+        79.6,
+        7.1,
+        42.5,
+        2.9,
+        1.8,
+        4.2
+      ],
+      [
+        3,
+        13.5,
+        0.1,
+        0.6,
+        0.2,
+        1.3
+      ],
+      [
+        38.4,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        99.8,
+        86.3,
+        10.6,
+        34.7,
+        7.2,
+        20.2
+      ],
+      [
+        25.2,
+        0.5,
+        0.4,
+        120,
+        0,
+        0
+      ],
+      [
+        12.5,
+        8.9,
+        7.7,
+        2.8,
+        3.9,
+        0
+      ],
+      [
+        236.6,
+        43.1,
+        14.9,
+        152.5,
+        5.1,
+        17.3
+      ]
+    ]
+  },
+  "heatFlows": {
+    "regions": [
+      "A/P",
+      "CA",
+      "CAM",
+      "CAR",
+      "CIS",
+      "ECE",
+      "ESA",
+      "ME",
+      "NA",
+      "NAM",
+      "SA",
+      "UNK",
+      "WA",
+      "WE"
+    ],
+    "matrix": [
+      [
+        1756,
+        1,
+        0,
+        2,
+        182,
+        277,
+        33,
+        1583,
+        2,
+        301,
+        48,
+        54,
+        26,
+        2308
+      ],
+      [
+        4,
+        9,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        15,
+        0,
+        0,
+        1,
+        14
+      ],
+      [
+        27,
+        0,
+        12,
+        5,
+        0,
+        7,
+        2,
+        1,
+        0,
+        198,
+        13,
+        6,
+        1,
+        124
+      ],
+      [
+        135,
+        1,
+        0,
+        54,
+        0,
+        12,
+        6,
+        8,
+        0,
+        1811,
+        30,
+        42,
+        2,
+        784
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        92,
+        13,
+        0,
+        7,
+        1,
+        1,
+        0,
+        14,
+        0,
+        38
+      ],
+      [
+        39,
+        0,
+        0,
+        1,
+        37,
+        229,
+        1,
+        87,
+        0,
+        76,
+        20,
+        57,
+        1,
+        954
+      ],
+      [
+        116,
+        5,
+        2,
+        0,
+        0,
+        23,
+        65,
+        77,
+        0,
+        120,
+        5,
+        20,
+        9,
+        270
+      ],
+      [
+        39,
+        1,
+        0,
+        0,
+        5,
+        23,
+        16,
+        693,
+        5,
+        17,
+        0,
+        1,
+        0,
+        80
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        2,
+        4,
+        1,
+        214,
+        17,
+        1,
+        0,
+        28,
+        2,
+        269
+      ],
+      [
+        1116,
+        3,
+        13,
+        521,
+        181,
+        245,
+        24,
+        104,
+        2,
+        369,
+        300,
+        1839,
+        30,
+        14809
+      ],
+      [
+        265,
+        3,
+        14,
+        43,
+        16,
+        87,
+        34,
+        22,
+        5,
+        1280,
+        2111,
+        50,
+        6,
+        1735
+      ],
+      [
+        17,
+        0,
+        32,
+        201,
+        4,
+        118,
+        2,
+        14,
+        4,
+        1411,
+        98,
+        1984,
+        0,
+        2715
+      ],
+      [
+        31,
+        16,
+        0,
+        1,
+        1,
+        9,
+        3,
+        31,
+        15,
+        6,
+        1,
+        0,
+        195,
+        119
+      ],
+      [
+        905,
+        1,
+        11,
+        105,
+        122,
+        808,
+        58,
+        311,
+        34,
+        2853,
+        183,
+        1200,
+        18,
+        15191
+      ]
+    ]
+  },
+  "involvement": [
+    {
+      "iso": "USA",
+      "cases": 29015
+    },
+    {
+      "iso": "DNK",
+      "cases": 13114
+    },
+    {
+      "iso": "DEU",
+      "cases": 9915
+    },
+    {
+      "iso": "FRA",
+      "cases": 7800
+    },
+    {
+      "iso": "GBR",
+      "cases": 7582
+    },
+    {
+      "iso": "NLD",
+      "cases": 7517
+    },
+    {
+      "iso": "ESP",
+      "cases": 5328
+    },
+    {
+      "iso": "CZE",
+      "cases": 3056
+    },
+    {
+      "iso": "THA",
+      "cases": 2523
+    },
+    {
+      "iso": "MEX",
+      "cases": 2227
+    },
+    {
+      "iso": "BRA",
+      "cases": 2012
+    },
+    {
+      "iso": "SWE",
+      "cases": 1972
+    },
+    {
+      "iso": "CAN",
+      "cases": 1962
+    },
+    {
+      "iso": "BEL",
+      "cases": 1868
+    },
+    {
+      "iso": "PER",
+      "cases": 1829
+    },
+    {
+      "iso": "ITA",
+      "cases": 1791
+    },
+    {
+      "iso": "IRL",
+      "cases": 1758
+    },
+    {
+      "iso": "IND",
+      "cases": 1583
+    },
+    {
+      "iso": "AUT",
+      "cases": 1510
+    },
+    {
+      "iso": "CHE",
+      "cases": 1199
+    },
+    {
+      "iso": "ARE",
+      "cases": 1128
+    },
+    {
+      "iso": "SAU",
+      "cases": 1065
+    },
+    {
+      "iso": "KOR",
+      "cases": 998
+    },
+    {
+      "iso": "POL",
+      "cases": 996
+    },
+    {
+      "iso": "AUS",
+      "cases": 996
+    },
+    {
+      "iso": "OMN",
+      "cases": 971
+    },
+    {
+      "iso": "CHL",
+      "cases": 850
+    },
+    {
+      "iso": "JPN",
+      "cases": 734
+    },
+    {
+      "iso": "BGD",
+      "cases": 699
+    },
+    {
+      "iso": "TUR",
+      "cases": 681
+    },
+    {
+      "iso": "SUR",
+      "cases": 533
+    },
+    {
+      "iso": "ISR",
+      "cases": 513
+    },
+    {
+      "iso": "CHN",
+      "cases": 467
+    },
+    {
+      "iso": "COL",
+      "cases": 466
+    },
+    {
+      "iso": "NOR",
+      "cases": 429
+    },
+    {
+      "iso": "ARG",
+      "cases": 424
+    },
+    {
+      "iso": "NZL",
+      "cases": 413
+    },
+    {
+      "iso": "ZAF",
+      "cases": 403
+    },
+    {
+      "iso": "PRT",
+      "cases": 389
+    },
+    {
+      "iso": "IRN",
+      "cases": 381
+    },
+    {
+      "iso": "ARM",
+      "cases": 355
+    },
+    {
+      "iso": "HUN",
+      "cases": 348
+    },
+    {
+      "iso": "HKG",
+      "cases": 343
+    },
+    {
+      "iso": "BOL",
+      "cases": 332
+    },
+    {
+      "iso": "PAK",
+      "cases": 301
+    },
+    {
+      "iso": "EGY",
+      "cases": 293
+    },
+    {
+      "iso": "BHR",
+      "cases": 281
+    },
+    {
+      "iso": "GRC",
+      "cases": 278
+    },
+    {
+      "iso": "MAR",
+      "cases": 276
+    },
+    {
+      "iso": "IDN",
+      "cases": 265
+    },
+    {
+      "iso": "ECU",
+      "cases": 261
+    },
+    {
+      "iso": "RUS",
+      "cases": 255
+    },
+    {
+      "iso": "MYS",
+      "cases": 252
+    },
+    {
+      "iso": "DOM",
+      "cases": 245
+    },
+    {
+      "iso": "PRY",
+      "cases": 241
+    },
+    {
+      "iso": "PAN",
+      "cases": 229
+    },
+    {
+      "iso": "PHL",
+      "cases": 226
+    },
+    {
+      "iso": "QAT",
+      "cases": 217
+    },
+    {
+      "iso": "FIN",
+      "cases": 185
+    },
+    {
+      "iso": "VNM",
+      "cases": 177
+    },
+    {
+      "iso": "GUY",
+      "cases": 167
+    },
+    {
+      "iso": "GRL",
+      "cases": 162
+    },
+    {
+      "iso": "GTM",
+      "cases": 162
+    },
+    {
+      "iso": "MLT",
+      "cases": 160
+    },
+    {
+      "iso": "SVK",
+      "cases": 158
+    },
+    {
+      "iso": "KEN",
+      "cases": 147
+    },
+    {
+      "iso": "ROU",
+      "cases": 145
+    },
+    {
+      "iso": "RWA",
+      "cases": 143
+    },
+    {
+      "iso": "MMR",
+      "cases": 141
+    },
+    {
+      "iso": "JOR",
+      "cases": 133
+    },
+    {
+      "iso": "NGA",
+      "cases": 131
+    },
+    {
+      "iso": "ISL",
+      "cases": 128
+    },
+    {
+      "iso": "CYP",
+      "cases": 123
+    },
+    {
+      "iso": "BGR",
+      "cases": 122
+    },
+    {
+      "iso": "UKR",
+      "cases": 119
+    },
+    {
+      "iso": "CRI",
+      "cases": 117
+    },
+    {
+      "iso": "GEO",
+      "cases": 111
+    },
+    {
+      "iso": "JAM",
+      "cases": 105
+    },
+    {
+      "iso": "LKA",
+      "cases": 104
+    },
+    {
+      "iso": "SRB",
+      "cases": 100
+    },
+    {
+      "iso": "VIR",
+      "cases": 98
+    },
+    {
+      "iso": "HRV",
+      "cases": 90
+    },
+    {
+      "iso": "SEN",
+      "cases": 84
+    },
+    {
+      "iso": "SLE",
+      "cases": 81
+    },
+    {
+      "iso": "AZE",
+      "cases": 76
+    },
+    {
+      "iso": "LUX",
+      "cases": 75
+    },
+    {
+      "iso": "YEM",
+      "cases": 75
+    },
+    {
+      "iso": "LTU",
+      "cases": 70
+    },
+    {
+      "iso": "TTO",
+      "cases": 69
+    },
+    {
+      "iso": "LCA",
+      "cases": 68
+    },
+    {
+      "iso": "BRB",
+      "cases": 67
+    },
+    {
+      "iso": "GMB",
+      "cases": 66
+    },
+    {
+      "iso": "SYR",
+      "cases": 65
+    },
+    {
+      "iso": "KHM",
+      "cases": 62
+    },
+    {
+      "iso": "SVN",
+      "cases": 61
+    },
+    {
+      "iso": "MDV",
+      "cases": 61
+    },
+    {
+      "iso": "KAZ",
+      "cases": 57
+    },
+    {
+      "iso": "TWN",
+      "cases": 57
+    },
+    {
+      "iso": "LVA",
+      "cases": 55
+    },
+    {
+      "iso": "MLI",
+      "cases": 54
+    },
+    {
+      "iso": "ETH",
+      "cases": 54
+    },
+    {
+      "iso": "GIN",
+      "cases": 53
+    },
+    {
+      "iso": "SGP",
+      "cases": 50
+    },
+    {
+      "iso": "FRO",
+      "cases": 50
+    },
+    {
+      "iso": "SLV",
+      "cases": 42
+    },
+    {
+      "iso": "GHA",
+      "cases": 41
+    },
+    {
+      "iso": "LBR",
+      "cases": 41
+    },
+    {
+      "iso": "KWT",
+      "cases": 40
+    },
+    {
+      "iso": "BFA",
+      "cases": 40
+    },
+    {
+      "iso": "UZB",
+      "cases": 40
+    },
+    {
+      "iso": "LBN",
+      "cases": 36
+    },
+    {
+      "iso": "ATG",
+      "cases": 36
+    },
+    {
+      "iso": "UGA",
+      "cases": 35
+    },
+    {
+      "iso": "MUS",
+      "cases": 35
+    },
+    {
+      "iso": "ALB",
+      "cases": 34
+    },
+    {
+      "iso": "ABW",
+      "cases": 33
+    },
+    {
+      "iso": "SXM",
+      "cases": 32
+    },
+    {
+      "iso": "BIH",
+      "cases": 32
+    },
+    {
+      "iso": "URY",
+      "cases": 31
+    },
+    {
+      "iso": "CMR",
+      "cases": 29
+    },
+    {
+      "iso": "LAO",
+      "cases": 27
+    },
+    {
+      "iso": "AFG",
+      "cases": 26
+    },
+    {
+      "iso": "MKD",
+      "cases": 25
+    },
+    {
+      "iso": "COD",
+      "cases": 23
+    },
+    {
+      "iso": "GRD",
+      "cases": 22
+    },
+    {
+      "iso": "TUN",
+      "cases": 22
+    },
+    {
+      "iso": "MNG",
+      "cases": 22
+    },
+    {
+      "iso": "BLZ",
+      "cases": 21
+    },
+    {
+      "iso": "NPL",
+      "cases": 20
+    },
+    {
+      "iso": "BLR",
+      "cases": 20
+    },
+    {
+      "iso": "TZA",
+      "cases": 20
+    },
+    {
+      "iso": "MNE",
+      "cases": 20
+    },
+    {
+      "iso": "GNB",
+      "cases": 20
+    },
+    {
+      "iso": "CIV",
+      "cases": 19
+    },
+    {
+      "iso": "EST",
+      "cases": 18
+    },
+    {
+      "iso": "LBY",
+      "cases": 18
+    },
+    {
+      "iso": "AGO",
+      "cases": 17
+    },
+    {
+      "iso": "CUW",
+      "cases": 16
+    },
+    {
+      "iso": "MDA",
+      "cases": 16
+    },
+    {
+      "iso": "BHS",
+      "cases": 16
+    },
+    {
+      "iso": "TJK",
+      "cases": 16
+    },
+    {
+      "iso": "IRQ",
+      "cases": 15
+    },
+    {
+      "iso": "COG",
+      "cases": 15
+    },
+    {
+      "iso": "SWZ",
+      "cases": 14
+    },
+    {
+      "iso": "BEN",
+      "cases": 14
+    },
+    {
+      "iso": "VGB",
+      "cases": 13
+    },
+    {
+      "iso": "CUB",
+      "cases": 13
+    },
+    {
+      "iso": "KOS",
+      "cases": 13
+    },
+    {
+      "iso": "SYC",
+      "cases": 12
+    },
+    {
+      "iso": "ZWE",
+      "cases": 12
+    },
+    {
+      "iso": "KGZ",
+      "cases": 11
+    },
+    {
+      "iso": "HND",
+      "cases": 10
+    },
+    {
+      "iso": "VCT",
+      "cases": 10
+    },
+    {
+      "iso": "PRI",
+      "cases": 10
+    },
+    {
+      "iso": "SLB",
+      "cases": 9
+    },
+    {
+      "iso": "TGO",
+      "cases": 9
+    },
+    {
+      "iso": "GUM",
+      "cases": 8
+    },
+    {
+      "iso": "MAC",
+      "cases": 8
+    },
+    {
+      "iso": "HTI",
+      "cases": 8
+    },
+    {
+      "iso": "MRT",
+      "cases": 8
+    },
+    {
+      "iso": "MDG",
+      "cases": 8
+    },
+    {
+      "iso": "NER",
+      "cases": 8
+    },
+    {
+      "iso": "BMU",
+      "cases": 7
+    },
+    {
+      "iso": "VEN",
+      "cases": 7
+    },
+    {
+      "iso": "AND",
+      "cases": 7
+    },
+    {
+      "iso": "DMA",
+      "cases": 6
+    },
+    {
+      "iso": "PYF",
+      "cases": 6
+    },
+    {
+      "iso": "NIC",
+      "cases": 6
+    },
+    {
+      "iso": "GAB",
+      "cases": 5
+    },
+    {
+      "iso": "ZMB",
+      "cases": 5
+    },
+    {
+      "iso": "NAM",
+      "cases": 5
+    },
+    {
+      "iso": "BTN",
+      "cases": 5
+    },
+    {
+      "iso": "KNA",
+      "cases": 5
+    },
+    {
+      "iso": "CYM",
+      "cases": 5
+    },
+    {
+      "iso": "MNP",
+      "cases": 4
+    },
+    {
+      "iso": "CPV",
+      "cases": 4
+    },
+    {
+      "iso": "SDN",
+      "cases": 4
+    },
+    {
+      "iso": "TLS",
+      "cases": 4
+    },
+    {
+      "iso": "TCA",
+      "cases": 3
+    },
+    {
+      "iso": "DZA",
+      "cases": 3
+    },
+    {
+      "iso": "BDI",
+      "cases": 3
+    },
+    {
+      "iso": "MOZ",
+      "cases": 3
+    },
+    {
+      "iso": "AIA",
+      "cases": 3
+    },
+    {
+      "iso": "FJI",
+      "cases": 2
+    },
+    {
+      "iso": "LSO",
+      "cases": 2
+    },
+    {
+      "iso": "ASM",
+      "cases": 2
+    },
+    {
+      "iso": "COM",
+      "cases": 2
+    },
+    {
+      "iso": "BRN",
+      "cases": 2
+    },
+    {
+      "iso": "CAF",
+      "cases": 2
+    },
+    {
+      "iso": "DJI",
+      "cases": 2
+    },
+    {
+      "iso": "SOM",
+      "cases": 1
+    },
+    {
+      "iso": "GNQ",
+      "cases": 1
+    },
+    {
+      "iso": "PLW",
+      "cases": 1
+    },
+    {
+      "iso": "ERI",
+      "cases": 1
+    },
+    {
+      "iso": "TCD",
+      "cases": 1
+    },
+    {
+      "iso": "PSX",
+      "cases": 1
+    },
+    {
+      "iso": "LIE",
+      "cases": 1
+    },
+    {
+      "iso": "TKM",
+      "cases": 1
+    },
+    {
+      "iso": "VAT",
+      "cases": 1
+    },
+    {
+      "iso": "PRK",
+      "cases": 1
+    },
+    {
+      "iso": "MCO",
+      "cases": 1
+    },
+    {
+      "iso": "NCL",
+      "cases": 1
+    },
+    {
+      "iso": "FLK",
+      "cases": 1
+    }
+  ],
+  "operational": {
+    "location": [
+      {
+        "en": "Airport",
+        "fr": "Aéroport",
+        "cases": 27502
+      },
+      {
+        "en": "Mail Centre",
+        "fr": "Centre postal",
+        "cases": 21995
+      },
+      {
+        "en": "Inland",
+        "fr": "Interieur",
+        "cases": 6964
+      },
+      {
+        "en": "Land boundary",
+        "fr": "Frontière terrestre",
+        "cases": 4539
+      },
+      {
+        "en": "Express Courier",
+        "fr": "Messagerie express",
+        "cases": 3235
+      },
+      {
+        "en": "Seaport",
+        "fr": "Port maritime",
+        "cases": 2097
+      },
+      {
+        "en": "Unknown",
+        "fr": "Inconnu",
+        "cases": 1258
+      },
+      {
+        "en": "Rail",
+        "fr": "Voie ferrée",
+        "cases": 99
+      },
+      {
+        "en": "High seas",
+        "fr": "Haute mer",
+        "cases": 36
+      },
+      {
+        "en": "River",
+        "fr": "Voie fluviale",
+        "cases": 25
+      },
+      {
+        "en": "Border of free trade zone",
+        "fr": "Frontière de zone franche",
+        "cases": 7
+      }
+    ],
+    "concealment": [
+      {
+        "en": "In mail",
+        "fr": "Dans le courrier",
+        "cases": 34471
+      },
+      {
+        "en": "Unknown",
+        "fr": "Inconnu",
+        "cases": 11452
+      },
+      {
+        "en": "In baggage",
+        "fr": "Dans les bagages",
+        "cases": 8328
+      },
+      {
+        "en": "In transport",
+        "fr": "Dans le moyen de transport",
+        "cases": 4753
+      },
+      {
+        "en": "In express courier",
+        "fr": "En messagerie express",
+        "cases": 3323
+      },
+      {
+        "en": "In freight",
+        "fr": "Dans le fret",
+        "cases": 3130
+      },
+      {
+        "en": "On the person",
+        "fr": "Sur la personne",
+        "cases": 1430
+      },
+      {
+        "en": "Not concealed",
+        "fr": "Non dissimulé",
+        "cases": 494
+      },
+      {
+        "en": "In premises",
+        "fr": "Dans des locaux",
+        "cases": 355
+      },
+      {
+        "en": "Recovered from sea/beach",
+        "fr": "Récupéré en mer ou sur plage",
+        "cases": 18
+      },
+      {
+        "en": "On market places",
+        "fr": "Sur des places de marche",
+        "cases": 3
+      }
+    ],
+    "direction": [
+      {
+        "en": "Import",
+        "fr": "Importation",
+        "pct": 62.2
+      },
+      {
+        "en": "Export",
+        "fr": "Exportation",
+        "pct": 19.1
+      },
+      {
+        "en": "Transit",
+        "fr": "Transit",
+        "pct": 14.7
+      },
+      {
+        "en": "Internal",
+        "fr": "Interne",
+        "pct": 4.1
+      }
+    ],
+    "detection": [
+      {
+        "en": "Risk profiling",
+        "fr": "Profilage de risque",
+        "pct": 78.4
+      },
+      {
+        "en": "Routine control",
+        "fr": "Contrôle de routine",
+        "pct": 17.3
+      },
+      {
+        "en": "Intelligence",
+        "fr": "Renseignement",
+        "pct": 2.2
+      },
+      {
+        "en": "Investigation",
+        "fr": "Enquête",
+        "pct": 1.5
+      },
+      {
+        "en": "Random selection",
+        "fr": "Sélection aléatoire",
+        "pct": 0.7
+      }
+    ]
+  },
+  "perDrug": {
+    "Cannabis": {
+      "fr": "Cannabis",
+      "totals": {
+        "cases": 34708,
+        "seizures": 37058,
+        "quantity_t": 548.8
+      },
+      "reporters": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 10421,
+          "prev": 10216
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 5135,
+          "prev": 667
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 4581,
+          "prev": 472
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 3865,
+          "prev": 0
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "curr": 1763,
+          "prev": 1131
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "curr": 991,
+          "prev": 855
+        },
+        {
+          "en": "Brazil",
+          "fr": "Brésil",
+          "curr": 835,
+          "prev": 678
+        },
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "curr": 710,
+          "prev": 1559
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "curr": 675,
+          "prev": 497
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "curr": 507,
+          "prev": 520
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Herbal",
+          "fr": "Herbe",
+          "curr": 29371,
+          "prev": 18012
+        },
+        {
+          "en": "Resin",
+          "fr": "Résine",
+          "curr": 4917,
+          "prev": 2642
+        },
+        {
+          "en": "Liquid/oil",
+          "fr": "Liquide/huile",
+          "curr": 2348,
+          "prev": 1910
+        },
+        {
+          "en": "Plants",
+          "fr": "Plantes",
+          "curr": 422,
+          "prev": 291
+        }
+      ],
+      "subQty": [
+        {
+          "en": "Herbal",
+          "fr": "Herbe",
+          "curr": 366.8,
+          "prev": 420.7
+        },
+        {
+          "en": "Resin",
+          "fr": "Résine",
+          "curr": 144.1,
+          "prev": 91
+        },
+        {
+          "en": "Plants",
+          "fr": "Plantes",
+          "curr": 24.4,
+          "prev": 11
+        },
+        {
+          "en": "Liquid/oil",
+          "fr": "Liquide/huile",
+          "curr": 13.5,
+          "prev": 7.4
+        }
+      ],
+      "topQty": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "qty": 99.8
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "qty": 66
+        },
+        {
+          "en": "Namibia",
+          "fr": "Namibie",
+          "qty": 60.6
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "qty": 52.4
+        },
+        {
+          "en": "Morocco",
+          "fr": "Maroc",
+          "qty": 37.8
+        },
+        {
+          "en": "Belgium",
+          "fr": "Belgique",
+          "qty": 34.4
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "qty": 25.1
+        },
+        {
+          "en": "Brazil",
+          "fr": "Brésil",
+          "qty": 19.3
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "qty": 17.3
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "qty": 13.9
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 14760
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 10107
+          },
+          {
+            "en": "Inland",
+            "fr": "Interieur",
+            "cases": 4426
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 2308
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 1243
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 953
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 846
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 35
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 13
+          },
+          {
+            "en": "High seas",
+            "fr": "Haute mer",
+            "cases": 12
+          },
+          {
+            "en": "Border of free trade zone",
+            "fr": "Frontière de zone franche",
+            "cases": 5
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 17315
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 7425
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 3837
+          },
+          {
+            "en": "In express courier",
+            "fr": "En messagerie express",
+            "cases": 2444
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans le moyen de transport",
+            "cases": 1608
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 1151
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 458
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 238
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 214
+          },
+          {
+            "en": "Recovered from sea/beach",
+            "fr": "Récupéré en mer ou sur plage",
+            "cases": 16
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des places de marche",
+            "cases": 2
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 49.6
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 26.1
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 19.5
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 4.8
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 80.5
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 15.5
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 1.7
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 1.4
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 0.8
+          }
+        ]
+      }
+    },
+    "Psychotropic substances": {
+      "fr": "Substances psychotropes",
+      "totals": {
+        "cases": 16360,
+        "seizures": 18216,
+        "quantity_t": 186.8
+      },
+      "reporters": [
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 4971,
+          "prev": 1091
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 3044,
+          "prev": 4078
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 1143,
+          "prev": 271
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "curr": 820,
+          "prev": 505
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 748,
+          "prev": 1229
+        },
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "curr": 656,
+          "prev": 751
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "curr": 497,
+          "prev": 493
+        },
+        {
+          "en": "Korea, Rep. of",
+          "fr": "Corée (Rép. de)",
+          "curr": 481,
+          "prev": 487
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "curr": 373,
+          "prev": 631
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 370,
+          "prev": 0
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Methamphetamine",
+          "fr": "Méthamphétamine",
+          "curr": 3804,
+          "prev": 4618
+        },
+        {
+          "en": "Psilocybin",
+          "fr": "Psilocybine",
+          "curr": 3254,
+          "prev": 1415
+        },
+        {
+          "en": "Other psy drugs",
+          "fr": "Autres psychotropes",
+          "curr": 2401,
+          "prev": 1463
+        },
+        {
+          "en": "MDMA (ecstasy)",
+          "fr": "MDMA (ecstasy)",
+          "curr": 1729,
+          "prev": 1557
+        },
+        {
+          "en": "Amphetamine",
+          "fr": "Amphétamine",
+          "curr": 1164,
+          "prev": 735
+        },
+        {
+          "en": "Lyrica(Pregabalin)",
+          "fr": "Lyrica (prégabaline)",
+          "curr": 1013,
+          "prev": 1373
+        },
+        {
+          "en": "Zopiclone",
+          "fr": "Zopiclone",
+          "curr": 788,
+          "prev": 88
+        },
+        {
+          "en": "Alprazolam",
+          "fr": "Alprazolam",
+          "curr": 690,
+          "prev": 478
+        }
+      ],
+      "subQty": [
+        {
+          "en": "Methamphetamine",
+          "fr": "Méthamphétamine",
+          "curr": 106.9,
+          "prev": 102.1
+        },
+        {
+          "en": "Nitrous oxide",
+          "fr": "Protoxyde d'azote",
+          "curr": 35.7,
+          "prev": 7.7
+        },
+        {
+          "en": "Other psy drugs",
+          "fr": "Autres psychotropes",
+          "curr": 9.6,
+          "prev": 3.3
+        },
+        {
+          "en": "Amphetamine",
+          "fr": "Amphétamine",
+          "curr": 9,
+          "prev": 5.3
+        },
+        {
+          "en": "Captagon",
+          "fr": "Captagon",
+          "curr": 6.4,
+          "prev": 6.3
+        },
+        {
+          "en": "MDMA (ecstasy)",
+          "fr": "MDMA (ecstasy)",
+          "curr": 5.6,
+          "prev": 5.1
+        },
+        {
+          "en": "Methaqualone (mandrax)",
+          "fr": "Méthaqualone (mandrax)",
+          "curr": 5.2,
+          "prev": 0
+        },
+        {
+          "en": "Lyrica(Pregabalin)",
+          "fr": "Lyrica (prégabaline)",
+          "curr": 2.8,
+          "prev": 5.8
+        }
+      ],
+      "topQty": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "qty": 86.3
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "qty": 19.6
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "qty": 15.8
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "qty": 13.5
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "qty": 10.1
+        },
+        {
+          "en": "Nigeria",
+          "fr": "Nigéria",
+          "qty": 8.2
+        },
+        {
+          "en": "Namibia",
+          "fr": "Namibie",
+          "qty": 4.1
+        },
+        {
+          "en": "Indonesia",
+          "fr": "Indonésie",
+          "qty": 3
+        },
+        {
+          "en": "Australia",
+          "fr": "Australie",
+          "qty": 2.5
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "qty": 2.4
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 6796
+          },
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 5478
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 1970
+          },
+          {
+            "en": "Inland",
+            "fr": "Interieur",
+            "cases": 1052
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 524
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 257
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 216
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 41
+          },
+          {
+            "en": "High seas",
+            "fr": "Haute mer",
+            "cases": 18
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 7
+          },
+          {
+            "en": "Border of free trade zone",
+            "fr": "Frontière de zone franche",
+            "cases": 1
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 8487
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 2973
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans le moyen de transport",
+            "cases": 1560
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 1444
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 990
+          },
+          {
+            "en": "In express courier",
+            "fr": "En messagerie express",
+            "cases": 473
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 244
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 98
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 88
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des places de marche",
+            "cases": 2
+          },
+          {
+            "en": "Recovered from sea/beach",
+            "fr": "Récupéré en mer ou sur plage",
+            "cases": 1
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 78.4
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 11.1
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 6.8
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 3.7
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 73.2
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 22.3
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 3.1
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.8
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 0.7
+          }
+        ]
+      }
+    },
+    "New Psychoactive Substances": {
+      "fr": "Nouvelles substances psychoactives",
+      "totals": {
+        "cases": 7721,
+        "seizures": 8315,
+        "quantity_t": 82.4
+      },
+      "reporters": [
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 2699,
+          "prev": 132
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 2156,
+          "prev": 1868
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 764,
+          "prev": 68
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 436,
+          "prev": 0
+        },
+        {
+          "en": "Israel",
+          "fr": "Israël",
+          "curr": 163,
+          "prev": 63
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "curr": 147,
+          "prev": 104
+        },
+        {
+          "en": "Chile",
+          "fr": "Chili",
+          "curr": 137,
+          "prev": 19
+        },
+        {
+          "en": "Japan",
+          "fr": "Japon",
+          "curr": 134,
+          "prev": 146
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "curr": 111,
+          "prev": 136
+        },
+        {
+          "en": "Mexico",
+          "fr": "Mexique",
+          "curr": 108,
+          "prev": 139
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Synthetic cannabinoids",
+          "fr": "Cannabinoïdes de synthèse",
+          "curr": 2568,
+          "prev": 355
+        },
+        {
+          "en": "Ketamine and related substances",
+          "fr": "Kétamine et substances apparentées",
+          "curr": 1899,
+          "prev": 1095
+        },
+        {
+          "en": "Tryptamines",
+          "fr": "Tryptamines",
+          "curr": 1899,
+          "prev": 1363
+        },
+        {
+          "en": "Synthetic cathinones",
+          "fr": "Cathinones de synthèse",
+          "curr": 727,
+          "prev": 460
+        },
+        {
+          "en": "Plant-based substances",
+          "fr": "Substances d'origine végétale",
+          "curr": 535,
+          "prev": 324
+        },
+        {
+          "en": "Other NPS substances",
+          "fr": "Autres substances NPS",
+          "curr": 531,
+          "prev": 139
+        },
+        {
+          "en": "Phenethylamines",
+          "fr": "Phénéthylamines",
+          "curr": 147,
+          "prev": 81
+        },
+        {
+          "en": "Kratom",
+          "fr": "Kratom",
+          "curr": 8,
+          "prev": 2
+        }
+      ],
+      "subQty": [
+        {
+          "en": "Plant-based substances",
+          "fr": "Substances d'origine végétale",
+          "curr": 43.8,
+          "prev": 0.8
+        },
+        {
+          "en": "Ketamine and related substances",
+          "fr": "Kétamine et substances apparentées",
+          "curr": 13.9,
+          "prev": 4.8
+        },
+        {
+          "en": "Other NPS substances",
+          "fr": "Autres substances NPS",
+          "curr": 8.7,
+          "prev": 0.6
+        },
+        {
+          "en": "Tryptamines",
+          "fr": "Tryptamines",
+          "curr": 6.4,
+          "prev": 12.4
+        },
+        {
+          "en": "Synthetic cannabinoids",
+          "fr": "Cannabinoïdes de synthèse",
+          "curr": 5.8,
+          "prev": 0.4
+        },
+        {
+          "en": "Synthetic cathinones",
+          "fr": "Cathinones de synthèse",
+          "curr": 2.4,
+          "prev": 3.7
+        },
+        {
+          "en": "Kratom",
+          "fr": "Kratom",
+          "curr": 1.1,
+          "prev": 145
+        },
+        {
+          "en": "Phenethylamines",
+          "fr": "Phénéthylamines",
+          "curr": 0.3,
+          "prev": 0.1
+        }
+      ],
+      "topQty": [
+        {
+          "en": "Tanzania",
+          "fr": "Tanzanie",
+          "qty": 42.5
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "qty": 10.6
+        },
+        {
+          "en": "Nigeria",
+          "fr": "Nigéria",
+          "qty": 6.2
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "qty": 3.1
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "qty": 2.7
+        },
+        {
+          "en": "Switzerland",
+          "fr": "Suisse",
+          "qty": 2.4
+        },
+        {
+          "en": "Norway",
+          "fr": "Norvège",
+          "qty": 2
+        },
+        {
+          "en": "Australia",
+          "fr": "Australie",
+          "qty": 1.9
+        },
+        {
+          "en": "Guinea",
+          "fr": "Guinée",
+          "qty": 1.5
+        },
+        {
+          "en": "Belgium",
+          "fr": "Belgique",
+          "qty": 1.2
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 3797
+          },
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 3081
+          },
+          {
+            "en": "Inland",
+            "fr": "Interieur",
+            "cases": 406
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 191
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 137
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 57
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 43
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 6
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 2
+          },
+          {
+            "en": "Border of free trade zone",
+            "fr": "Frontière de zone franche",
+            "cases": 1
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 6019
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 630
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 307
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 299
+          },
+          {
+            "en": "In express courier",
+            "fr": "En messagerie express",
+            "cases": 201
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans le moyen de transport",
+            "cases": 98
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 97
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 45
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 24
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des places de marche",
+            "cases": 1
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 81.2
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 10.4
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 6.8
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 1.7
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 88.7
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 8.6
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 1.8
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.5
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 0.4
+          }
+        ]
+      }
+    },
+    "Cocaine": {
+      "fr": "Cocaïne",
+      "totals": {
+        "cases": 7613,
+        "seizures": 8074,
+        "quantity_t": 400.1
+      },
+      "reporters": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 2187,
+          "prev": 3033
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 1232,
+          "prev": 0
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "curr": 660,
+          "prev": 1412
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 336,
+          "prev": 155
+        },
+        {
+          "en": "Chile",
+          "fr": "Chili",
+          "curr": 325,
+          "prev": 36
+        },
+        {
+          "en": "Brazil",
+          "fr": "Brésil",
+          "curr": 283,
+          "prev": 394
+        },
+        {
+          "en": "Peru",
+          "fr": "Pérou",
+          "curr": 242,
+          "prev": 40
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 236,
+          "prev": 33
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "curr": 211,
+          "prev": 186
+        },
+        {
+          "en": "Belgium",
+          "fr": "Belgique",
+          "curr": 160,
+          "prev": 189
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Cocaine",
+          "fr": "Cocaïne",
+          "curr": 6855,
+          "prev": 6271
+        },
+        {
+          "en": "Coca leaves",
+          "fr": "Feuilles de coca",
+          "curr": 845,
+          "prev": 1178
+        },
+        {
+          "en": "Cocaine base",
+          "fr": "Cocaïne base",
+          "curr": 281,
+          "prev": 35
+        },
+        {
+          "en": "Cocaine solution",
+          "fr": "Solution de cocaïne",
+          "curr": 60,
+          "prev": 67
+        },
+        {
+          "en": "Crack",
+          "fr": "Crack",
+          "curr": 32,
+          "prev": 40
+        },
+        {
+          "en": "Coca plants",
+          "fr": "Plants de coca",
+          "curr": 1,
+          "prev": 5
+        }
+      ],
+      "subQty": [
+        {
+          "en": "Cocaine",
+          "fr": "Cocaïne",
+          "curr": 390.3,
+          "prev": 219.9
+        },
+        {
+          "en": "Coca leaves",
+          "fr": "Feuilles de coca",
+          "curr": 5,
+          "prev": 4.9
+        },
+        {
+          "en": "Cocaine base",
+          "fr": "Cocaïne base",
+          "curr": 4.4,
+          "prev": 1.3
+        },
+        {
+          "en": "Cocaine solution",
+          "fr": "Solution de cocaïne",
+          "curr": 0.4,
+          "prev": 4.3
+        },
+        {
+          "en": "Crack",
+          "fr": "Crack",
+          "curr": 0,
+          "prev": 0.1
+        },
+        {
+          "en": "Coca plants",
+          "fr": "Plants de coca",
+          "curr": 0,
+          "prev": 0
+        }
+      ],
+      "topQty": [
+        {
+          "en": "Belgium",
+          "fr": "Belgique",
+          "qty": 55.9
+        },
+        {
+          "en": "Panama",
+          "fr": "Panama",
+          "qty": 46.8
+        },
+        {
+          "en": "Colombia",
+          "fr": "Colombie",
+          "qty": 40.2
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "qty": 34.6
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "qty": 30.7
+        },
+        {
+          "en": "Ecuador",
+          "fr": "Équateur",
+          "qty": 30.4
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "qty": 27.7
+        },
+        {
+          "en": "Peru",
+          "fr": "Pérou",
+          "qty": 20.6
+        },
+        {
+          "en": "Brazil",
+          "fr": "Brésil",
+          "qty": 19.9
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "qty": 18.7
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 3210
+          },
+          {
+            "en": "Inland",
+            "fr": "Interieur",
+            "cases": 1193
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 1046
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 983
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 902
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 124
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 119
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 26
+          },
+          {
+            "en": "High seas",
+            "fr": "Haute mer",
+            "cases": 7
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 3
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 2067
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 1956
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans le moyen de transport",
+            "cases": 1452
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 844
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 542
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 479
+          },
+          {
+            "en": "In express courier",
+            "fr": "En messagerie express",
+            "cases": 125
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 80
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 65
+          },
+          {
+            "en": "Recovered from sea/beach",
+            "fr": "Récupéré en mer ou sur plage",
+            "cases": 2
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des places de marche",
+            "cases": 1
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 63.6
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 16.3
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 13.7
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 6.3
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 71
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 21.1
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 4
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 3.5
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 0.4
+          }
+        ]
+      }
+    },
+    "Opioids and Opiates": {
+      "fr": "Opioïdes et opiacés",
+      "totals": {
+        "cases": 2120,
+        "seizures": 2523,
+        "quantity_t": 24.3
+      },
+      "reporters": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 752,
+          "prev": 1046
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 212,
+          "prev": 36
+        },
+        {
+          "en": "Korea, Rep. of",
+          "fr": "Corée (Rép. de)",
+          "curr": 188,
+          "prev": 207
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 155,
+          "prev": 35
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "curr": 103,
+          "prev": 89
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 102,
+          "prev": 0
+        },
+        {
+          "en": "Bangladesh",
+          "fr": "Bangladesh",
+          "curr": 65,
+          "prev": 81
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "curr": 59,
+          "prev": 60
+        },
+        {
+          "en": "Armenia",
+          "fr": "Arménie",
+          "curr": 51,
+          "prev": 67
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "curr": 49,
+          "prev": 22
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Fentanyl",
+          "fr": "Fentanyl",
+          "curr": 772,
+          "prev": 1084
+        },
+        {
+          "en": "Heroin",
+          "fr": "Héroïne",
+          "curr": 623,
+          "prev": 603
+        },
+        {
+          "en": "Codeine",
+          "fr": "Codéine",
+          "curr": 263,
+          "prev": 153
+        },
+        {
+          "en": "Morphine",
+          "fr": "Morphine",
+          "curr": 200,
+          "prev": 408
+        },
+        {
+          "en": "Oxycodone",
+          "fr": "Oxycodone",
+          "curr": 192,
+          "prev": 142
+        },
+        {
+          "en": "Opium",
+          "fr": "Opium",
+          "curr": 171,
+          "prev": 239
+        },
+        {
+          "en": "Other opioids and opiates",
+          "fr": "Autres opioïdes et opiacés",
+          "curr": 105,
+          "prev": 8
+        },
+        {
+          "en": "Methadone",
+          "fr": "Méthadone",
+          "curr": 81,
+          "prev": 61
+        }
+      ],
+      "subQty": [
+        {
+          "en": "Heroin",
+          "fr": "Héroïne",
+          "curr": 7.6,
+          "prev": 4.3
+        },
+        {
+          "en": "Fentanyl",
+          "fr": "Fentanyl",
+          "curr": 6.3,
+          "prev": 12.4
+        },
+        {
+          "en": "Codeine",
+          "fr": "Codéine",
+          "curr": 2.7,
+          "prev": 0.1
+        },
+        {
+          "en": "Poppy straw",
+          "fr": "Paille de pavot",
+          "curr": 2.4,
+          "prev": 5.8
+        },
+        {
+          "en": "Opium",
+          "fr": "Opium",
+          "curr": 2.1,
+          "prev": 0.9
+        },
+        {
+          "en": "Tapentadol",
+          "fr": "Tapentadol",
+          "curr": 1.4,
+          "prev": 0.3
+        },
+        {
+          "en": "Other opioids and opiates",
+          "fr": "Autres opioïdes et opiacés",
+          "curr": 1.3,
+          "prev": 0
+        },
+        {
+          "en": "Morphine",
+          "fr": "Morphine",
+          "curr": 0.5,
+          "prev": 1.1
+        }
+      ],
+      "topQty": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "qty": 7.1
+        },
+        {
+          "en": "Ghana",
+          "fr": "Ghana",
+          "qty": 3.9
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "qty": 2.5
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "qty": 2.2
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "qty": 1.8
+        },
+        {
+          "en": "Mexico",
+          "fr": "Mexique",
+          "qty": 1.5
+        },
+        {
+          "en": "Azerbaijan",
+          "fr": "Azerbaïdjan",
+          "qty": 0.9
+        },
+        {
+          "en": "Belgium",
+          "fr": "Belgique",
+          "qty": 0.7
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "qty": 0.6
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "qty": 0.5
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 737
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 513
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 366
+          },
+          {
+            "en": "Inland",
+            "fr": "Interieur",
+            "cases": 287
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 132
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 48
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 28
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 8
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 1
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 565
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans le moyen de transport",
+            "cases": 429
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 395
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 259
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 166
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 139
+          },
+          {
+            "en": "In express courier",
+            "fr": "En messagerie express",
+            "cases": 122
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 24
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 21
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 76.9
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 10.7
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 9.7
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 2.7
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 72
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 20.8
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 5.5
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 1
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.7
+          }
+        ]
+      }
+    },
+    "Khat": {
+      "fr": "Khat",
+      "totals": {
+        "cases": 1029,
+        "seizures": 1084,
+        "quantity_t": 45.9
+      },
+      "reporters": [
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 211,
+          "prev": 24
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 174,
+          "prev": 106
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "curr": 169,
+          "prev": 14
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 145,
+          "prev": 0
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "curr": 107,
+          "prev": 47
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 82,
+          "prev": 0
+        },
+        {
+          "en": "Finland",
+          "fr": "Finlande",
+          "curr": 32,
+          "prev": 16
+        },
+        {
+          "en": "Norway",
+          "fr": "Norvège",
+          "curr": 26,
+          "prev": 21
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "curr": 22,
+          "prev": 22
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "curr": 12,
+          "prev": 10
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Khat",
+          "fr": "Khat",
+          "curr": 507,
+          "prev": 248
+        },
+        {
+          "en": "Dried Khat",
+          "fr": "Khat séché",
+          "curr": 352,
+          "prev": 112
+        },
+        {
+          "en": "Fresh Khat",
+          "fr": "Khat frais",
+          "curr": 225,
+          "prev": 109
+        }
+      ],
+      "subQty": [
+        {
+          "en": "Khat",
+          "fr": "Khat",
+          "curr": 23.4,
+          "prev": 17.7
+        },
+        {
+          "en": "Dried Khat",
+          "fr": "Khat séché",
+          "curr": 16,
+          "prev": 9.8
+        },
+        {
+          "en": "Fresh Khat",
+          "fr": "Khat frais",
+          "curr": 6.5,
+          "prev": 29.3
+        }
+      ],
+      "topQty": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "qty": 20.2
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "qty": 4.1
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "qty": 3.8
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "qty": 3.5
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "qty": 2.8
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "qty": 2.2
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "qty": 2
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "qty": 1.7
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "qty": 1.2
+        },
+        {
+          "en": "Norway",
+          "fr": "Norvège",
+          "qty": 1
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 513
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 349
+          },
+          {
+            "en": "Inland",
+            "fr": "Interieur",
+            "cases": 116
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 38
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 9
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 3
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 1
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 533
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 192
+          },
+          {
+            "en": "Unknown",
+            "fr": "Inconnu",
+            "cases": 120
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 94
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 47
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans le moyen de transport",
+            "cases": 28
+          },
+          {
+            "en": "In express courier",
+            "fr": "En messagerie express",
+            "cases": 13
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 1
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 1
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 62
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 27.9
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 9.1
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 1
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 76.5
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 22.2
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 0.7
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 0.6
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.1
+          }
+        ]
+      }
+    }
+  },
+  "catOrder": [
+    "Cannabis",
+    "Psychotropic substances",
+    "New Psychoactive Substances",
+    "Cocaine",
+    "Opioids and Opiates",
+    "Khat"
+  ]
+}

@@ -1,0 +1,2008 @@
+{
+  "AML/CTF": {
+    "__all__": {
+      "ecom": 1,
+      "quantity": {
+        "value": 462841731,
+        "en": "US Dollar",
+        "fr": "Dollar américain"
+      },
+      "countries": [
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "v": 3352
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 1646
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 1050
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 689
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "v": 506
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 484
+        }
+      ],
+      "routes": [
+        {
+          "from": "Germany",
+          "to": "Türkiye",
+          "v": 467
+        },
+        {
+          "from": "Italy",
+          "to": "Egypt",
+          "v": 464
+        },
+        {
+          "from": "Italy",
+          "to": "China",
+          "v": 341
+        },
+        {
+          "from": "Italy",
+          "to": "Morocco",
+          "v": 306
+        },
+        {
+          "from": "Türkiye",
+          "to": "Italy",
+          "v": 247
+        }
+      ],
+      "detect": {
+        "Routine control": 61,
+        "Random selection": 2,
+        "Intelligence": 2,
+        "Investigation": 1,
+        "Risk profiling": 34
+      }
+    },
+    "Cash smuggling": {
+      "ecom": 1,
+      "quantity": {
+        "value": 462841731,
+        "en": "US Dollar",
+        "fr": "Dollar américain"
+      },
+      "countries": [
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "v": 3352
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 1646
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 1050
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 687
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "v": 504
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 484
+        }
+      ],
+      "routes": [
+        {
+          "from": "Germany",
+          "to": "Türkiye",
+          "v": 464
+        },
+        {
+          "from": "Italy",
+          "to": "Egypt",
+          "v": 464
+        },
+        {
+          "from": "Italy",
+          "to": "China",
+          "v": 341
+        },
+        {
+          "from": "Italy",
+          "to": "Morocco",
+          "v": 306
+        },
+        {
+          "from": "Türkiye",
+          "to": "Italy",
+          "v": 247
+        }
+      ],
+      "detect": {
+        "Routine control": 61,
+        "Random selection": 2,
+        "Intelligence": 1,
+        "Investigation": 2,
+        "Risk profiling": 35
+      }
+    },
+    "Gemstones trafficking": {
+      "ecom": 5,
+      "quantity": {
+        "value": 31318.4,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "v": 9
+        },
+        {
+          "en": "Azerbaijan",
+          "fr": "Azerbaïdjan",
+          "v": 8
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "v": 8
+        },
+        {
+          "en": "Jordan",
+          "fr": "Jordanie",
+          "v": 2
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 2
+        },
+        {
+          "en": "Union of Myanmar (Rep. of the)",
+          "fr": "Myanmar (La Rép. de l'Union du)",
+          "v": 2
+        }
+      ],
+      "routes": [
+        {
+          "from": "South Africa",
+          "to": "Hong Kong, China",
+          "v": 6
+        },
+        {
+          "from": "Türkiye",
+          "to": "Azerbaijan",
+          "v": 5
+        },
+        {
+          "from": "Türkiye",
+          "to": "Unknown",
+          "v": 4
+        },
+        {
+          "from": "Unknown",
+          "to": "Türkiye",
+          "v": 3
+        },
+        {
+          "from": "United Arab Emirates",
+          "to": "Azerbaijan",
+          "v": 3
+        }
+      ],
+      "detect": {
+        "Routine control": 55,
+        "Random selection": 12,
+        "Intelligence": 15,
+        "Risk profiling": 18
+      }
+    },
+    "Gold trafficking": {
+      "ecom": 0.4,
+      "quantity": {
+        "value": 19873.1,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Bangladesh",
+          "fr": "Bangladesh",
+          "v": 130
+        },
+        {
+          "en": "Japan",
+          "fr": "Japon",
+          "v": 70
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "v": 65
+        },
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "v": 32
+        },
+        {
+          "en": "India",
+          "fr": "Inde",
+          "v": 27
+        },
+        {
+          "en": "Azerbaijan",
+          "fr": "Azerbaïdjan",
+          "v": 23
+        }
+      ],
+      "routes": [
+        {
+          "from": "Saudi Arabia",
+          "to": "Bangladesh",
+          "v": 53
+        },
+        {
+          "from": "United Arab Emirates",
+          "to": "Bangladesh",
+          "v": 34
+        },
+        {
+          "from": "Unknown",
+          "to": "Türkiye",
+          "v": 28
+        },
+        {
+          "from": "China",
+          "to": "Japan",
+          "v": 24
+        },
+        {
+          "from": "Hong Kong, China",
+          "to": "Japan",
+          "v": 13
+        }
+      ],
+      "detect": {
+        "Routine control": 68,
+        "Random selection": 2,
+        "Intelligence": 21,
+        "Investigation": 0,
+        "Risk profiling": 9
+      }
+    }
+  },
+  "Drugs": {
+    "__all__": {
+      "ecom": 59.9,
+      "quantity": {
+        "value": 1288350,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 18375
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 12985
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 7016
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 5951
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "v": 2116
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "v": 1591
+        }
+      ],
+      "routes": [
+        {
+          "from": "United States",
+          "to": "United Kingdom",
+          "v": 4192
+        },
+        {
+          "from": "Czech Rep.",
+          "to": "Denmark",
+          "v": 2513
+        },
+        {
+          "from": "Netherlands",
+          "to": "Denmark",
+          "v": 2116
+        },
+        {
+          "from": "United States",
+          "to": "France",
+          "v": 2093
+        },
+        {
+          "from": "Unknown",
+          "to": "Unknown",
+          "v": 1984
+        }
+      ],
+      "detect": {
+        "Routine control": 17,
+        "Random selection": 1,
+        "Intelligence": 2,
+        "Investigation": 2,
+        "Risk profiling": 78
+      }
+    },
+    "Cannabis": {
+      "ecom": 62.6,
+      "quantity": {
+        "value": 548773.6,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 10421
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 5135
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 4581
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 3865
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "v": 1763
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "v": 991
+        }
+      ],
+      "routes": [
+        {
+          "from": "United States",
+          "to": "United Kingdom",
+          "v": 4154
+        },
+        {
+          "from": "United States",
+          "to": "France",
+          "v": 1766
+        },
+        {
+          "from": "United States",
+          "to": "Unknown",
+          "v": 1686
+        },
+        {
+          "from": "United States",
+          "to": "Germany",
+          "v": 1669
+        },
+        {
+          "from": "United States",
+          "to": "Netherlands",
+          "v": 1594
+        }
+      ],
+      "detect": {
+        "Routine control": 16,
+        "Random selection": 1,
+        "Intelligence": 1,
+        "Investigation": 2,
+        "Risk profiling": 81
+      }
+    },
+    "New Psychoactive Substances": {
+      "ecom": 81.9,
+      "quantity": {
+        "value": 82426.5,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 2699
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 2156
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 764
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 436
+        },
+        {
+          "en": "Israel",
+          "fr": "Israël",
+          "v": 163
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "v": 147
+        }
+      ],
+      "routes": [
+        {
+          "from": "Czech Rep.",
+          "to": "Denmark",
+          "v": 1442
+        },
+        {
+          "from": "Germany",
+          "to": "United States",
+          "v": 758
+        },
+        {
+          "from": "Netherlands",
+          "to": "United States",
+          "v": 704
+        },
+        {
+          "from": "Peru",
+          "to": "United States",
+          "v": 348
+        },
+        {
+          "from": "Netherlands",
+          "to": "Denmark",
+          "v": 322
+        }
+      ],
+      "detect": {
+        "Routine control": 9,
+        "Random selection": 0,
+        "Intelligence": 2,
+        "Investigation": 1,
+        "Risk profiling": 89
+      }
+    },
+    "Psychotropic substances": {
+      "ecom": 57.5,
+      "quantity": {
+        "value": 186806.7,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 4971
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 3044
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 1143
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "v": 820
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "v": 748
+        },
+        {
+          "en": "United Arab Emirates",
+          "fr": "Émirats Arabes Unis",
+          "v": 656
+        }
+      ],
+      "routes": [
+        {
+          "from": "Netherlands",
+          "to": "Denmark",
+          "v": 1674
+        },
+        {
+          "from": "Mexico",
+          "to": "United States",
+          "v": 972
+        },
+        {
+          "from": "United Kingdom",
+          "to": "Denmark",
+          "v": 777
+        },
+        {
+          "from": "Unknown",
+          "to": "Sweden",
+          "v": 530
+        },
+        {
+          "from": "Unknown",
+          "to": "United States",
+          "v": 467
+        }
+      ],
+      "detect": {
+        "Routine control": 22,
+        "Random selection": 1,
+        "Intelligence": 3,
+        "Investigation": 1,
+        "Risk profiling": 73
+      }
+    },
+    "Opioids and Opiates": {
+      "ecom": 34.4,
+      "quantity": {
+        "value": 24311.1,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 752
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 212
+        },
+        {
+          "en": "Korea, Rep. of",
+          "fr": "Corée (Rép. de)",
+          "v": 188
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 155
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "v": 103
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 102
+        }
+      ],
+      "routes": [
+        {
+          "from": "Mexico",
+          "to": "United States",
+          "v": 302
+        },
+        {
+          "from": "Unknown",
+          "to": "United States",
+          "v": 190
+        },
+        {
+          "from": "China",
+          "to": "Korea, Rep. of",
+          "v": 101
+        },
+        {
+          "from": "Unknown",
+          "to": "Unknown",
+          "v": 100
+        },
+        {
+          "from": "Unknown",
+          "to": "Sweden",
+          "v": 75
+        }
+      ],
+      "detect": {
+        "Routine control": 21,
+        "Random selection": 1,
+        "Intelligence": 6,
+        "Investigation": 1,
+        "Risk profiling": 72
+      }
+    },
+    "Cocaine": {
+      "ecom": 32.1,
+      "quantity": {
+        "value": 400105.4,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 2187
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 1232
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "v": 660
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 336
+        },
+        {
+          "en": "Chile",
+          "fr": "Chili",
+          "v": 325
+        },
+        {
+          "en": "Brazil",
+          "fr": "Brésil",
+          "v": 283
+        }
+      ],
+      "routes": [
+        {
+          "from": "Peru",
+          "to": "United States",
+          "v": 663
+        },
+        {
+          "from": "Mexico",
+          "to": "United States",
+          "v": 470
+        },
+        {
+          "from": "Suriname",
+          "to": "Netherlands",
+          "v": 421
+        },
+        {
+          "from": "Unknown",
+          "to": "United States",
+          "v": 372
+        },
+        {
+          "from": "Martinique",
+          "to": "France",
+          "v": 291
+        }
+      ],
+      "detect": {
+        "Routine control": 21,
+        "Random selection": 0,
+        "Intelligence": 4,
+        "Investigation": 4,
+        "Risk profiling": 71
+      }
+    },
+    "Khat": {
+      "ecom": 55,
+      "quantity": {
+        "value": 45926.7,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 211
+        },
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 174
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "v": 169
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 145
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "v": 107
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 82
+        }
+      ],
+      "routes": [
+        {
+          "from": "France",
+          "to": "Denmark",
+          "v": 84
+        },
+        {
+          "from": "Unknown",
+          "to": "Sweden",
+          "v": 55
+        },
+        {
+          "from": "Israel",
+          "to": "United States",
+          "v": 53
+        },
+        {
+          "from": "Sweden",
+          "to": "Unknown",
+          "v": 44
+        },
+        {
+          "from": "Rwanda",
+          "to": "Canada",
+          "v": 42
+        }
+      ],
+      "detect": {
+        "Routine control": 22,
+        "Random selection": 1,
+        "Intelligence": 1,
+        "Investigation": 0,
+        "Risk profiling": 76
+      }
+    }
+  },
+  "Environmental Crime": {
+    "__all__": {
+      "ecom": 23.9,
+      "quantity": {
+        "value": 1756783.5,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 1247
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 263
+        },
+        {
+          "en": "Hungary",
+          "fr": "Hongrie",
+          "v": 213
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 198
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "v": 183
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "v": 162
+        }
+      ],
+      "routes": [
+        {
+          "from": "Thailand",
+          "to": "Germany",
+          "v": 274
+        },
+        {
+          "from": "Ukraine",
+          "to": "Poland",
+          "v": 102
+        },
+        {
+          "from": "Unknown",
+          "to": "Romania",
+          "v": 91
+        },
+        {
+          "from": "Unknown",
+          "to": "France",
+          "v": 91
+        },
+        {
+          "from": "Mozambique",
+          "to": "South Africa",
+          "v": 84
+        }
+      ],
+      "detect": {
+        "Routine control": 32,
+        "Random selection": 8,
+        "Intelligence": 6,
+        "Investigation": 1,
+        "Risk profiling": 53
+      }
+    },
+    "Fauna": {
+      "ecom": 20.1,
+      "quantity": {
+        "value": 250155.3,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 863
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 240
+        },
+        {
+          "en": "Hungary",
+          "fr": "Hongrie",
+          "v": 180
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 112
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "v": 100
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "v": 96
+        }
+      ],
+      "routes": [
+        {
+          "from": "Thailand",
+          "to": "Germany",
+          "v": 129
+        },
+        {
+          "from": "Unknown",
+          "to": "France",
+          "v": 91
+        },
+        {
+          "from": "Ukraine",
+          "to": "Poland",
+          "v": 77
+        },
+        {
+          "from": "Australia",
+          "to": "Germany",
+          "v": 63
+        },
+        {
+          "from": "Unknown",
+          "to": "Spain",
+          "v": 49
+        }
+      ],
+      "detect": {
+        "Routine control": 28,
+        "Random selection": 3,
+        "Intelligence": 4,
+        "Investigation": 1,
+        "Risk profiling": 63
+      }
+    },
+    "Flora": {
+      "ecom": 64.2,
+      "quantity": {
+        "value": 65384.1,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 385
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "v": 88
+        },
+        {
+          "en": "Czech Rep.",
+          "fr": "Rép. Tchèque",
+          "v": 65
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "v": 42
+        },
+        {
+          "en": "Hungary",
+          "fr": "Hongrie",
+          "v": 33
+        },
+        {
+          "en": "Peru",
+          "fr": "Pérou",
+          "v": 26
+        }
+      ],
+      "routes": [
+        {
+          "from": "Thailand",
+          "to": "Germany",
+          "v": 146
+        },
+        {
+          "from": "United States",
+          "to": "Austria",
+          "v": 59
+        },
+        {
+          "from": "Vietnam",
+          "to": "Czech Rep.",
+          "v": 54
+        },
+        {
+          "from": "United States",
+          "to": "Germany",
+          "v": 43
+        },
+        {
+          "from": "Indonesia",
+          "to": "Germany",
+          "v": 27
+        }
+      ],
+      "detect": {
+        "Routine control": 26,
+        "Random selection": 3,
+        "Intelligence": 3,
+        "Investigation": 0,
+        "Risk profiling": 69
+      }
+    },
+    "Waste": {
+      "ecom": 0.2,
+      "quantity": {
+        "value": 15644407.6,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "v": 136
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "v": 44
+        },
+        {
+          "en": "Gambia",
+          "fr": "Gambie",
+          "v": 32
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "v": 28
+        },
+        {
+          "en": "Belgium",
+          "fr": "Belgique",
+          "v": 27
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 27
+        }
+      ],
+      "routes": [
+        {
+          "from": "Mozambique",
+          "to": "South Africa",
+          "v": 78
+        },
+        {
+          "from": "Zimbabwe",
+          "to": "South Africa",
+          "v": 51
+        },
+        {
+          "from": "Bosnia and Herzegovina",
+          "to": "Bosnia and Herzegovina",
+          "v": 20
+        },
+        {
+          "from": "United Kingdom",
+          "to": "Türkiye",
+          "v": 14
+        },
+        {
+          "from": "Ukraine",
+          "to": "Poland",
+          "v": 13
+        }
+      ],
+      "detect": {
+        "Routine control": 36,
+        "Random selection": 25,
+        "Intelligence": 13,
+        "Investigation": 1,
+        "Risk profiling": 24
+      }
+    },
+    "Other hazardous materials": {
+      "ecom": 0,
+      "quantity": {
+        "value": 437978.8,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "v": 77
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 44
+        },
+        {
+          "en": "Namibia",
+          "fr": "Namibie",
+          "v": 39
+        },
+        {
+          "en": "Burkina Faso",
+          "fr": "Burkina Faso",
+          "v": 21
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "v": 19
+        },
+        {
+          "en": "Bulgaria",
+          "fr": "Bulgarie",
+          "v": 18
+        }
+      ],
+      "routes": [
+        {
+          "from": "Unknown",
+          "to": "Romania",
+          "v": 52
+        },
+        {
+          "from": "Angola",
+          "to": "Namibia",
+          "v": 39
+        },
+        {
+          "from": "Russian Federation",
+          "to": "Poland",
+          "v": 18
+        },
+        {
+          "from": "Türkiye",
+          "to": "Bulgaria",
+          "v": 13
+        },
+        {
+          "from": "Poland",
+          "to": "Russian Federation",
+          "v": 12
+        }
+      ],
+      "detect": {
+        "Routine control": 59,
+        "Random selection": 21,
+        "Intelligence": 15,
+        "Investigation": 0,
+        "Risk profiling": 5
+      }
+    },
+    "ODS & HFCs": {
+      "ecom": 0.6,
+      "quantity": {
+        "value": 255752.2,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Croatia",
+          "fr": "Croatie",
+          "v": 52
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "v": 48
+        },
+        {
+          "en": "Gambia",
+          "fr": "Gambie",
+          "v": 22
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 14
+        },
+        {
+          "en": "Bulgaria",
+          "fr": "Bulgarie",
+          "v": 11
+        },
+        {
+          "en": "Uganda",
+          "fr": "Ouganda",
+          "v": 6
+        }
+      ],
+      "routes": [
+        {
+          "from": "Unknown",
+          "to": "Romania",
+          "v": 31
+        },
+        {
+          "from": "Unknown",
+          "to": "Unknown",
+          "v": 17
+        },
+        {
+          "from": "Bosnia and Herzegovina",
+          "to": "Croatia",
+          "v": 12
+        },
+        {
+          "from": "Serbia",
+          "to": "Croatia",
+          "v": 10
+        },
+        {
+          "from": "Ukraine",
+          "to": "Poland",
+          "v": 7
+        }
+      ],
+      "detect": {
+        "Routine control": 66,
+        "Random selection": 14,
+        "Intelligence": 4,
+        "Investigation": 2,
+        "Risk profiling": 14
+      }
+    }
+  },
+  "IPR, Health and Safety": {
+    "__all__": {
+      "ecom": 67.8,
+      "quantity": {
+        "value": 650327769,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 23385
+        },
+        {
+          "en": "Chile",
+          "fr": "Chili",
+          "v": 3352
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "v": 3229
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "v": 2087
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 1845
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "v": 996
+        }
+      ],
+      "routes": [
+        {
+          "from": "China",
+          "to": "United States",
+          "v": 8402
+        },
+        {
+          "from": "Hong Kong, China",
+          "to": "United States",
+          "v": 5899
+        },
+        {
+          "from": "China",
+          "to": "Austria",
+          "v": 3065
+        },
+        {
+          "from": "China",
+          "to": "Chile",
+          "v": 2724
+        },
+        {
+          "from": "India",
+          "to": "United States",
+          "v": 2125
+        }
+      ],
+      "detect": {
+        "Routine control": 16,
+        "Random selection": 2,
+        "Intelligence": 1,
+        "Investigation": 1,
+        "Risk profiling": 81
+      }
+    },
+    "IPR products trafficking": {
+      "ecom": 68.2,
+      "quantity": {
+        "value": 116803436,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 20606
+        },
+        {
+          "en": "Chile",
+          "fr": "Chili",
+          "v": 3322
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "v": 3229
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "v": 2083
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "v": 1833
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "v": 996
+        }
+      ],
+      "routes": [
+        {
+          "from": "China",
+          "to": "United States",
+          "v": 8396
+        },
+        {
+          "from": "Hong Kong, China",
+          "to": "United States",
+          "v": 5709
+        },
+        {
+          "from": "China",
+          "to": "Austria",
+          "v": 3065
+        },
+        {
+          "from": "China",
+          "to": "Chile",
+          "v": 2723
+        },
+        {
+          "from": "China",
+          "to": "Spain",
+          "v": 1409
+        }
+      ],
+      "detect": {
+        "Routine control": 15,
+        "Random selection": 1,
+        "Intelligence": 0,
+        "Investigation": 1,
+        "Risk profiling": 84
+      }
+    },
+    "Medical products trafficking": {
+      "ecom": 65.1,
+      "quantity": {
+        "value": 533524333,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 2783
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "v": 553
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 335
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "v": 304
+        },
+        {
+          "en": "Cote d'Ivoire",
+          "fr": "Côte d'Ivoire",
+          "v": 203
+        },
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "v": 188
+        }
+      ],
+      "routes": [
+        {
+          "from": "India",
+          "to": "United States",
+          "v": 2000
+        },
+        {
+          "from": "Unknown",
+          "to": "Denmark",
+          "v": 313
+        },
+        {
+          "from": "Honduras",
+          "to": "United States",
+          "v": 305
+        },
+        {
+          "from": "Unknown",
+          "to": "Sweden",
+          "v": 250
+        },
+        {
+          "from": "Sweden",
+          "to": "Unknown",
+          "v": 215
+        }
+      ],
+      "detect": {
+        "Routine control": 20,
+        "Random selection": 5,
+        "Intelligence": 6,
+        "Investigation": 2,
+        "Risk profiling": 66
+      }
+    }
+  },
+  "Revenue": {
+    "__all__": {
+      "ecom": 5.6,
+      "quantity": {
+        "value": 9662054.5,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "v": 18441
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "v": 2551
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 1284
+        },
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "v": 1245
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "v": 1230
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "v": 1188
+        }
+      ],
+      "routes": [
+        {
+          "from": "Kuwait",
+          "to": "Saudi Arabia",
+          "v": 5813
+        },
+        {
+          "from": "United Arab Emirates",
+          "to": "Saudi Arabia",
+          "v": 5314
+        },
+        {
+          "from": "Bahrain",
+          "to": "Saudi Arabia",
+          "v": 1245
+        },
+        {
+          "from": "India",
+          "to": "Saudi Arabia",
+          "v": 1139
+        },
+        {
+          "from": "Bangladesh",
+          "to": "Saudi Arabia",
+          "v": 1095
+        }
+      ],
+      "detect": {
+        "Routine control": 75,
+        "Random selection": 1,
+        "Intelligence": 2,
+        "Investigation": 1,
+        "Risk profiling": 21
+      }
+    },
+    "Alcohol products trafficking": {
+      "ecom": 0.5,
+      "quantity": {
+        "value": 1987170.3,
+        "en": "Litres",
+        "fr": "Litres"
+      },
+      "countries": [
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "v": 629
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 437
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "v": 389
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "v": 301
+        },
+        {
+          "en": "Slovakia",
+          "fr": "Slovaquie",
+          "v": 233
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "v": 116
+        }
+      ],
+      "routes": [
+        {
+          "from": "Bahrain",
+          "to": "Saudi Arabia",
+          "v": 401
+        },
+        {
+          "from": "Romania",
+          "to": "Romania",
+          "v": 286
+        },
+        {
+          "from": "Oman",
+          "to": "Oman",
+          "v": 173
+        },
+        {
+          "from": "Unknown",
+          "to": "France",
+          "v": 154
+        },
+        {
+          "from": "Ukraine",
+          "to": "Slovakia",
+          "v": 150
+        }
+      ],
+      "detect": {
+        "Routine control": 66,
+        "Random selection": 4,
+        "Intelligence": 5,
+        "Investigation": 2,
+        "Risk profiling": 23
+      }
+    },
+    "Tobacco products trafficking": {
+      "ecom": 6,
+      "quantity": {
+        "value": 9662054.5,
+        "en": "kg",
+        "fr": "kg"
+      },
+      "countries": [
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "v": 17812
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "v": 2551
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 1284
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "v": 1230
+        },
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "v": 1229
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "v": 1057
+        }
+      ],
+      "routes": [
+        {
+          "from": "Kuwait",
+          "to": "Saudi Arabia",
+          "v": 5813
+        },
+        {
+          "from": "United Arab Emirates",
+          "to": "Saudi Arabia",
+          "v": 5230
+        },
+        {
+          "from": "India",
+          "to": "Saudi Arabia",
+          "v": 1126
+        },
+        {
+          "from": "Bangladesh",
+          "to": "Saudi Arabia",
+          "v": 1095
+        },
+        {
+          "from": "Yemen",
+          "to": "Saudi Arabia",
+          "v": 1003
+        }
+      ],
+      "detect": {
+        "Routine control": 76,
+        "Random selection": 0,
+        "Intelligence": 1,
+        "Investigation": 1,
+        "Risk profiling": 21
+      }
+    }
+  },
+  "Security": {
+    "__all__": {
+      "ecom": 23.6,
+      "quantity": {
+        "value": 7333726,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 2277
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "v": 725
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 701
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "v": 432
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 179
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 130
+        }
+      ],
+      "routes": [
+        {
+          "from": "Unknown",
+          "to": "United States",
+          "v": 1171
+        },
+        {
+          "from": "United States",
+          "to": "Mexico",
+          "v": 291
+        },
+        {
+          "from": "Unknown",
+          "to": "Denmark",
+          "v": 277
+        },
+        {
+          "from": "Unknown",
+          "to": "Unknown",
+          "v": 260
+        },
+        {
+          "from": "United States",
+          "to": "Unknown",
+          "v": 216
+        }
+      ],
+      "detect": {
+        "Routine control": 28,
+        "Random selection": 1,
+        "Intelligence": 1,
+        "Investigation": 0,
+        "Risk profiling": 69
+      }
+    },
+    "Weapons, ammunition and tactical equipment": {
+      "ecom": 27.1,
+      "quantity": {
+        "value": 5580372,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "v": 2276
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 651
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "v": 386
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "v": 178
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "v": 130
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "v": 116
+        }
+      ],
+      "routes": [
+        {
+          "from": "Unknown",
+          "to": "United States",
+          "v": 1170
+        },
+        {
+          "from": "United States",
+          "to": "Mexico",
+          "v": 291
+        },
+        {
+          "from": "Unknown",
+          "to": "Denmark",
+          "v": 264
+        },
+        {
+          "from": "Unknown",
+          "to": "Unknown",
+          "v": 260
+        },
+        {
+          "from": "United States",
+          "to": "Unknown",
+          "v": 216
+        }
+      ],
+      "detect": {
+        "Routine control": 18,
+        "Random selection": 1,
+        "Intelligence": 1,
+        "Investigation": 0,
+        "Risk profiling": 80
+      }
+    },
+    "Unmanned aerial systems (UAS)": {
+      "ecom": 0.8,
+      "quantity": {
+        "value": 975,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "v": 641
+        },
+        {
+          "en": "Egypt",
+          "fr": "Égypte",
+          "v": 6
+        },
+        {
+          "en": "Montenegro",
+          "fr": "Monténégro",
+          "v": 2
+        },
+        {
+          "en": "Guinea",
+          "fr": "Guinée",
+          "v": 1
+        },
+        {
+          "en": "Niger",
+          "fr": "Niger",
+          "v": 1
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "v": 1
+        }
+      ],
+      "routes": [
+        {
+          "from": "United Arab Emirates",
+          "to": "Oman",
+          "v": 109
+        },
+        {
+          "from": "Türkiye",
+          "to": "Oman",
+          "v": 54
+        },
+        {
+          "from": "Qatar",
+          "to": "Oman",
+          "v": 52
+        },
+        {
+          "from": "Thailand",
+          "to": "Oman",
+          "v": 47
+        },
+        {
+          "from": "India",
+          "to": "Oman",
+          "v": 46
+        }
+      ],
+      "detect": {
+        "Routine control": 99,
+        "Intelligence": 1
+      }
+    },
+    "Explosives and precursors": {
+      "ecom": 18.5,
+      "quantity": {
+        "value": 1752379,
+        "en": "pieces",
+        "fr": "pièces"
+      },
+      "countries": [
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "v": 52
+        },
+        {
+          "en": "Ireland",
+          "fr": "Irlande",
+          "v": 52
+        },
+        {
+          "en": "Burkina Faso",
+          "fr": "Burkina Faso",
+          "v": 23
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "v": 17
+        },
+        {
+          "en": "Saudi Arabia",
+          "fr": "Arabie Saoudite",
+          "v": 15
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "v": 14
+        }
+      ],
+      "routes": [
+        {
+          "from": "France",
+          "to": "Ireland",
+          "v": 22
+        },
+        {
+          "from": "Poland",
+          "to": "Ireland",
+          "v": 19
+        },
+        {
+          "from": "Poland",
+          "to": "Denmark",
+          "v": 17
+        },
+        {
+          "from": "Burkina Faso",
+          "to": "Burkina Faso",
+          "v": 15
+        },
+        {
+          "from": "Germany",
+          "to": "Denmark",
+          "v": 14
+        }
+      ],
+      "detect": {
+        "Routine control": 37,
+        "Random selection": 2,
+        "Intelligence": 6,
+        "Investigation": 1,
+        "Risk profiling": 54
+      }
+    }
+  }
+}

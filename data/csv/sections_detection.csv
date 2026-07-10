@@ -1,0 +1,31 @@
+section,admins,method,pct
+AML/CTF,87,Routine control,61
+AML/CTF,87,Random selection,2
+AML/CTF,87,Intelligence,2
+AML/CTF,87,Investigation,1
+AML/CTF,87,Risk profiling,34
+Drugs,146,Routine control,17
+Drugs,146,Random selection,1
+Drugs,146,Intelligence,2
+Drugs,146,Investigation,2
+Drugs,146,Risk profiling,78
+Environmental Crime,123,Routine control,32
+Environmental Crime,123,Random selection,8
+Environmental Crime,123,Intelligence,6
+Environmental Crime,123,Investigation,1
+Environmental Crime,123,Risk profiling,53
+"IPR, Health and Safety",110,Routine control,16
+"IPR, Health and Safety",110,Random selection,2
+"IPR, Health and Safety",110,Intelligence,1
+"IPR, Health and Safety",110,Investigation,1
+"IPR, Health and Safety",110,Risk profiling,81
+Revenue,120,Routine control,75
+Revenue,120,Random selection,1
+Revenue,120,Intelligence,2
+Revenue,120,Investigation,1
+Revenue,120,Risk profiling,21
+Security,81,Routine control,28
+Security,81,Random selection,1
+Security,81,Intelligence,1
+Security,81,Investigation,0
+Security,81,Risk profiling,69

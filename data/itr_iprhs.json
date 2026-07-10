@@ -1,0 +1,2993 @@
+{
+  "totals": {
+    "cases": 42011,
+    "seizures": 82596,
+    "admins": 110
+  },
+  "totalsPrev": {
+    "cases": 37953,
+    "seizures": 81035
+  },
+  "streamOrder": [
+    "IPR products trafficking",
+    "Medical products trafficking"
+  ],
+  "split": [
+    {
+      "en": "IPR products trafficking",
+      "fr": "Produits IPR",
+      "cases": 35759,
+      "seizures": 74389,
+      "admins": 80
+    },
+    {
+      "en": "Medical products trafficking",
+      "fr": "Produits médicaux",
+      "cases": 6267,
+      "seizures": 8207,
+      "admins": 83
+    }
+  ],
+  "perStream": {
+    "IPR products trafficking": {
+      "fr": "Produits IPR",
+      "totals": {
+        "cases": 35759,
+        "seizures": 74389,
+        "admins": 80,
+        "pieces": 116803436
+      },
+      "reporters": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 20606,
+          "prev": 16957
+        },
+        {
+          "en": "Chile",
+          "fr": "Chili",
+          "curr": 3322,
+          "prev": 9
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "curr": 3229,
+          "prev": 4891
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "curr": 2083,
+          "prev": 1295
+        },
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 1833,
+          "prev": 1496
+        },
+        {
+          "en": "Netherlands",
+          "fr": "Pays-Bas",
+          "curr": 996,
+          "prev": 963
+        },
+        {
+          "en": "Mexico",
+          "fr": "Mexique",
+          "curr": 685,
+          "prev": 335
+        },
+        {
+          "en": "Luxembourg",
+          "fr": "Luxembourg",
+          "curr": 440,
+          "prev": 401
+        },
+        {
+          "en": "Slovakia",
+          "fr": "Slovaquie",
+          "curr": 398,
+          "prev": 495
+        },
+        {
+          "en": "Hungary",
+          "fr": "Hongrie",
+          "curr": 265,
+          "prev": 302
+        }
+      ],
+      "commodity": [
+        {
+          "en": "Accessories",
+          "fr": "Accessoires",
+          "curr": 23320,
+          "prev": 22604
+        },
+        {
+          "en": "Clothing",
+          "fr": "Vêtements",
+          "curr": 16698,
+          "prev": 20241
+        },
+        {
+          "en": "Footwear",
+          "fr": "Chaussures",
+          "curr": 9918,
+          "prev": 11436
+        },
+        {
+          "en": "Other IPR products",
+          "fr": "Autres produits IPR",
+          "curr": 8493,
+          "prev": 3296
+        },
+        {
+          "en": "Watches",
+          "fr": "Montres",
+          "curr": 7783,
+          "prev": 5765
+        },
+        {
+          "en": "Electronic appliances",
+          "fr": "Appareils électroniques",
+          "curr": 1770,
+          "prev": 2278
+        },
+        {
+          "en": "Mobile phones and accessories",
+          "fr": "Téléphones et accessoires",
+          "curr": 1517,
+          "prev": 1012
+        },
+        {
+          "en": "Games and toys",
+          "fr": "Jeux et jouets",
+          "curr": 1494,
+          "prev": 1019
+        },
+        {
+          "en": "Toiletries/cosmetics",
+          "fr": "Produits de toilette et cosmétiques",
+          "curr": 1418,
+          "prev": 1286
+        },
+        {
+          "en": "Transportation and spare parts",
+          "fr": "Transport et pièces détachées",
+          "curr": 1342,
+          "prev": 883
+        }
+      ],
+      "qtyByCommodity": [
+        {
+          "en": "Other IPR products",
+          "fr": "Autres produits IPR",
+          "curr": 76436066,
+          "prev": 26741110
+        },
+        {
+          "en": "Clothing",
+          "fr": "Vêtements",
+          "curr": 9933649,
+          "prev": 3570549
+        },
+        {
+          "en": "Games and toys",
+          "fr": "Jeux et jouets",
+          "curr": 8197692,
+          "prev": 2123176
+        },
+        {
+          "en": "Accessories",
+          "fr": "Accessoires",
+          "curr": 5676959,
+          "prev": 6969336
+        },
+        {
+          "en": "Toiletries/cosmetics",
+          "fr": "Produits de toilette et cosmétiques",
+          "curr": 4766520,
+          "prev": 4142783
+        },
+        {
+          "en": "Footwear",
+          "fr": "Chaussures",
+          "curr": 3412542,
+          "prev": 1704095
+        },
+        {
+          "en": "Foodstuff",
+          "fr": "Produits alimentaires",
+          "curr": 2238659,
+          "prev": 454760
+        },
+        {
+          "en": "Mobile phones and accessories",
+          "fr": "Téléphones et accessoires",
+          "curr": 1992874,
+          "prev": 737535
+        },
+        {
+          "en": "Electronic appliances",
+          "fr": "Appareils électroniques",
+          "curr": 1943934,
+          "prev": 828535
+        },
+        {
+          "en": "Transportation and spare parts",
+          "fr": "Transport et pièces détachées",
+          "curr": 1068772,
+          "prev": 395673
+        }
+      ],
+      "qtyTable": [
+        {
+          "en": "Foodstuff",
+          "fr": "Produits alimentaires",
+          "seizures": 88,
+          "qty": 2238659,
+          "perSeiz": 25439
+        },
+        {
+          "en": "Other IPR products",
+          "fr": "Autres produits IPR",
+          "seizures": 8493,
+          "qty": 76436066,
+          "perSeiz": 9000
+        },
+        {
+          "en": "Games and toys",
+          "fr": "Jeux et jouets",
+          "seizures": 1494,
+          "qty": 8197692,
+          "perSeiz": 5487
+        },
+        {
+          "en": "Toiletries/cosmetics",
+          "fr": "Produits de toilette et cosmétiques",
+          "seizures": 1418,
+          "qty": 4766520,
+          "perSeiz": 3361
+        },
+        {
+          "en": "Textiles other than clothing (towels, bed sheets etc.)",
+          "fr": "Textiles autres que vêtements (serviettes, draps, etc.)",
+          "seizures": 133,
+          "qty": 275254,
+          "perSeiz": 2070
+        },
+        {
+          "en": "Mobile phones and accessories",
+          "fr": "Téléphones et accessoires",
+          "seizures": 1517,
+          "qty": 1992874,
+          "perSeiz": 1314
+        },
+        {
+          "en": "Electronic appliances",
+          "fr": "Appareils électroniques",
+          "seizures": 1770,
+          "qty": 1943934,
+          "perSeiz": 1098
+        },
+        {
+          "en": "Computers and accessories",
+          "fr": "Ordinateurs et accessoires",
+          "seizures": 359,
+          "qty": 298360,
+          "perSeiz": 831
+        },
+        {
+          "en": "Transportation and spare parts",
+          "fr": "Transport et pièces détachées",
+          "seizures": 1342,
+          "qty": 1068772,
+          "perSeiz": 796
+        },
+        {
+          "en": "Clothing",
+          "fr": "Vêtements",
+          "seizures": 16698,
+          "qty": 9933649,
+          "perSeiz": 595
+        },
+        {
+          "en": "Building material",
+          "fr": "Matériaux de construction",
+          "seizures": 11,
+          "qty": 5553,
+          "perSeiz": 505
+        },
+        {
+          "en": "Medicine and Pharmaceutical Products",
+          "fr": "Médicaments et produits pharmaceutiques",
+          "seizures": 13,
+          "qty": 4671,
+          "perSeiz": 359
+        },
+        {
+          "en": "Pesticides",
+          "fr": "Pesticides",
+          "seizures": 4,
+          "qty": 1434,
+          "perSeiz": 358
+        },
+        {
+          "en": "Footwear",
+          "fr": "Chaussures",
+          "seizures": 9918,
+          "qty": 3412542,
+          "perSeiz": 344
+        },
+        {
+          "en": "Accessories",
+          "fr": "Accessoires",
+          "seizures": 23320,
+          "qty": 5676959,
+          "perSeiz": 243
+        },
+        {
+          "en": "Audiovisual products",
+          "fr": "Produits audiovisuels",
+          "seizures": 28,
+          "qty": 6717,
+          "perSeiz": 240
+        },
+        {
+          "en": "Watches",
+          "fr": "Montres",
+          "seizures": 7783,
+          "qty": 543780,
+          "perSeiz": 70
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 23855
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 5741
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 3423
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 867
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 592
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 197
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 20341
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 4825
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 4614
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 631
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 591
+          },
+          {
+            "en": "In express courier",
+            "fr": "Dans la messagerie express",
+            "cases": 582
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des marchés",
+            "cases": 409
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 83.6
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 14.8
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 0.9
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.5
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 0.2
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 89.9
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 8.4
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 1.3
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 0.4
+          }
+        ],
+        "conveyance": [
+          {
+            "en": "Express courier",
+            "fr": "Messagerie express",
+            "curr": 15006,
+            "prev": 15006
+          },
+          {
+            "en": "Regular Mail",
+            "fr": "Courrier ordinaire",
+            "curr": 8682,
+            "prev": 8682
+          },
+          {
+            "en": "Air",
+            "fr": "Voie aérienne",
+            "curr": 5952,
+            "prev": 5952
+          },
+          {
+            "en": "Vessel",
+            "fr": "Navire",
+            "curr": 3314,
+            "prev": 3314
+          },
+          {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "curr": 913,
+            "prev": 913
+          },
+          {
+            "en": "Pedestrian",
+            "fr": "Piéton",
+            "curr": 33,
+            "prev": 33
+          },
+          {
+            "en": "Rail Train",
+            "fr": "Train",
+            "curr": 29,
+            "prev": 29
+          }
+        ]
+      },
+      "ecom": 68.2,
+      "ecomByCommodity": [
+        {
+          "en": "Accessories",
+          "fr": "Accessoires",
+          "pct": 78
+        },
+        {
+          "en": "Footwear",
+          "fr": "Chaussures",
+          "pct": 75.2
+        },
+        {
+          "en": "Clothing",
+          "fr": "Vêtements",
+          "pct": 73.9
+        },
+        {
+          "en": "Watches",
+          "fr": "Montres",
+          "pct": 73.8
+        },
+        {
+          "en": "Electronic appliances",
+          "fr": "Appareils électroniques",
+          "pct": 60.7
+        },
+        {
+          "en": "Mobile phones and accessories",
+          "fr": "Téléphones et accessoires",
+          "pct": 55.6
+        },
+        {
+          "en": "Transportation and spare parts",
+          "fr": "Transport et pièces détachées",
+          "pct": 55.5
+        },
+        {
+          "en": "Other IPR products",
+          "fr": "Autres produits IPR",
+          "pct": 42.2
+        },
+        {
+          "en": "Games and toys",
+          "fr": "Jeux et jouets",
+          "pct": 29.2
+        },
+        {
+          "en": "Toiletries/cosmetics",
+          "fr": "Produits de toilette et cosmétiques",
+          "pct": 20.7
+        }
+      ],
+      "convByDirection": [
+        {
+          "conv": "Express courier",
+          "Import": 89.1,
+          "Transit": 10.7,
+          "Internal": 0.2,
+          "Export": 0
+        },
+        {
+          "conv": "Regular Mail",
+          "Import": 97.7,
+          "Transit": 0.7,
+          "Internal": 1.2,
+          "Export": 0.4
+        },
+        {
+          "conv": "Air",
+          "Import": 92.2,
+          "Transit": 6.8,
+          "Internal": 0.4,
+          "Export": 0.6
+        },
+        {
+          "conv": "Vessel",
+          "Import": 92.6,
+          "Transit": 5.8,
+          "Internal": 1.4,
+          "Export": 0.3
+        },
+        {
+          "conv": "Vehicle",
+          "Import": 61.4,
+          "Transit": 21.2,
+          "Internal": 13.7,
+          "Export": 3.6
+        },
+        {
+          "conv": "Pedestrian",
+          "Import": 69.7,
+          "Transit": 0,
+          "Internal": 30.3,
+          "Export": 0
+        }
+      ],
+      "flows": {
+        "regions": [
+          "A/P",
+          "NAM",
+          "WE",
+          "SA",
+          "ECE",
+          "CAR",
+          "ME",
+          "ESA",
+          "CAM",
+          "CIS",
+          "WA",
+          "NA",
+          "CA"
+        ],
+        "matrix": [
+          [
+            168,
+            16286,
+            6897,
+            3597,
+            648,
+            822,
+            48,
+            205,
+            254,
+            1,
+            7,
+            84,
+            2
+          ],
+          [
+            11,
+            158,
+            39,
+            46,
+            1,
+            36,
+            3,
+            0,
+            4,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            925,
+            335,
+            55,
+            43,
+            8,
+            5,
+            1,
+            0,
+            0,
+            3,
+            5,
+            0
+          ],
+          [
+            4,
+            390,
+            84,
+            416,
+            0,
+            8,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            467,
+            801,
+            11,
+            626,
+            5,
+            9,
+            1,
+            0,
+            3,
+            0,
+            3,
+            0
+          ],
+          [
+            2,
+            220,
+            4,
+            13,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            381,
+            124,
+            0,
+            6,
+            2,
+            38,
+            15,
+            0,
+            0,
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            20,
+            2,
+            3,
+            0,
+            0,
+            0,
+            114,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            21,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            233,
+            5,
+            0,
+            9,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            131,
+            52,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            3,
+            0,
+            4
+          ],
+          [
+            0,
+            16,
+            62,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            9,
+            0
+          ],
+          [
+            0,
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4
+          ]
+        ]
+      },
+      "involvement": {
+        "map": [
+          {
+            "iso": "USA",
+            "cases": 20699
+          },
+          {
+            "iso": "CHN",
+            "cases": 18741
+          },
+          {
+            "iso": "HKG",
+            "cases": 7797
+          },
+          {
+            "iso": "CHL",
+            "cases": 3378
+          },
+          {
+            "iso": "AUT",
+            "cases": 3265
+          },
+          {
+            "iso": "ESP",
+            "cases": 2352
+          },
+          {
+            "iso": "DEU",
+            "cases": 1986
+          },
+          {
+            "iso": "NLD",
+            "cases": 1126
+          },
+          {
+            "iso": "TUR",
+            "cases": 999
+          },
+          {
+            "iso": "MEX",
+            "cases": 897
+          },
+          {
+            "iso": "GBR",
+            "cases": 882
+          },
+          {
+            "iso": "COL",
+            "cases": 701
+          },
+          {
+            "iso": "POL",
+            "cases": 681
+          },
+          {
+            "iso": "PHL",
+            "cases": 654
+          },
+          {
+            "iso": "MYS",
+            "cases": 552
+          },
+          {
+            "iso": "KOR",
+            "cases": 460
+          },
+          {
+            "iso": "ARE",
+            "cases": 451
+          },
+          {
+            "iso": "PER",
+            "cases": 444
+          },
+          {
+            "iso": "LUX",
+            "cases": 441
+          },
+          {
+            "iso": "SVK",
+            "cases": 428
+          },
+          {
+            "iso": "ITA",
+            "cases": 335
+          },
+          {
+            "iso": "THA",
+            "cases": 309
+          },
+          {
+            "iso": "FRA",
+            "cases": 296
+          },
+          {
+            "iso": "HUN",
+            "cases": 284
+          },
+          {
+            "iso": "ZAF",
+            "cases": 270
+          },
+          {
+            "iso": "BRA",
+            "cases": 256
+          },
+          {
+            "iso": "KAZ",
+            "cases": 235
+          },
+          {
+            "iso": "CAN",
+            "cases": 213
+          },
+          {
+            "iso": "PRT",
+            "cases": 175
+          },
+          {
+            "iso": "IND",
+            "cases": 168
+          },
+          {
+            "iso": "SGP",
+            "cases": 156
+          },
+          {
+            "iso": "SRB",
+            "cases": 149
+          },
+          {
+            "iso": "JPN",
+            "cases": 145
+          },
+          {
+            "iso": "ROU",
+            "cases": 141
+          },
+          {
+            "iso": "UKR",
+            "cases": 133
+          },
+          {
+            "iso": "GTM",
+            "cases": 119
+          },
+          {
+            "iso": "BEL",
+            "cases": 115
+          },
+          {
+            "iso": "ARG",
+            "cases": 113
+          },
+          {
+            "iso": "NGA",
+            "cases": 111
+          },
+          {
+            "iso": "VNM",
+            "cases": 92
+          },
+          {
+            "iso": "DOM",
+            "cases": 90
+          },
+          {
+            "iso": "SAU",
+            "cases": 82
+          },
+          {
+            "iso": "BGR",
+            "cases": 81
+          },
+          {
+            "iso": "DZA",
+            "cases": 73
+          },
+          {
+            "iso": "ECU",
+            "cases": 73
+          },
+          {
+            "iso": "MAR",
+            "cases": 73
+          },
+          {
+            "iso": "BOL",
+            "cases": 72
+          },
+          {
+            "iso": "MOZ",
+            "cases": 72
+          },
+          {
+            "iso": "GRC",
+            "cases": 66
+          },
+          {
+            "iso": "KOS",
+            "cases": 63
+          },
+          {
+            "iso": "HND",
+            "cases": 60
+          },
+          {
+            "iso": "SLV",
+            "cases": 55
+          },
+          {
+            "iso": "TWN",
+            "cases": 54
+          },
+          {
+            "iso": "SEN",
+            "cases": 53
+          },
+          {
+            "iso": "CHE",
+            "cases": 51
+          },
+          {
+            "iso": "IRQ",
+            "cases": 48
+          },
+          {
+            "iso": "MKD",
+            "cases": 45
+          },
+          {
+            "iso": "PAK",
+            "cases": 45
+          },
+          {
+            "iso": "BGD",
+            "cases": 41
+          },
+          {
+            "iso": "LTU",
+            "cases": 40
+          },
+          {
+            "iso": "QAT",
+            "cases": 40
+          },
+          {
+            "iso": "ALB",
+            "cases": 40
+          },
+          {
+            "iso": "URY",
+            "cases": 40
+          },
+          {
+            "iso": "CZE",
+            "cases": 39
+          },
+          {
+            "iso": "EGY",
+            "cases": 32
+          },
+          {
+            "iso": "SWE",
+            "cases": 32
+          },
+          {
+            "iso": "HRV",
+            "cases": 31
+          },
+          {
+            "iso": "TTO",
+            "cases": 31
+          },
+          {
+            "iso": "IDN",
+            "cases": 31
+          },
+          {
+            "iso": "BWA",
+            "cases": 31
+          },
+          {
+            "iso": "PAN",
+            "cases": 30
+          },
+          {
+            "iso": "JOR",
+            "cases": 30
+          },
+          {
+            "iso": "MDA",
+            "cases": 29
+          },
+          {
+            "iso": "CRI",
+            "cases": 29
+          },
+          {
+            "iso": "PRY",
+            "cases": 29
+          },
+          {
+            "iso": "ZWE",
+            "cases": 28
+          },
+          {
+            "iso": "GHA",
+            "cases": 23
+          },
+          {
+            "iso": "CYP",
+            "cases": 23
+          },
+          {
+            "iso": "KWT",
+            "cases": 20
+          },
+          {
+            "iso": "VEN",
+            "cases": 20
+          },
+          {
+            "iso": "HTI",
+            "cases": 20
+          },
+          {
+            "iso": "AUS",
+            "cases": 19
+          },
+          {
+            "iso": "MUS",
+            "cases": 16
+          },
+          {
+            "iso": "MLT",
+            "cases": 16
+          },
+          {
+            "iso": "AGO",
+            "cases": 16
+          },
+          {
+            "iso": "BIH",
+            "cases": 15
+          },
+          {
+            "iso": "ISR",
+            "cases": 14
+          },
+          {
+            "iso": "RUS",
+            "cases": 13
+          },
+          {
+            "iso": "GUY",
+            "cases": 12
+          },
+          {
+            "iso": "PRK",
+            "cases": 12
+          },
+          {
+            "iso": "MNE",
+            "cases": 12
+          },
+          {
+            "iso": "CMR",
+            "cases": 12
+          },
+          {
+            "iso": "ABW",
+            "cases": 12
+          },
+          {
+            "iso": "JAM",
+            "cases": 12
+          },
+          {
+            "iso": "NAM",
+            "cases": 11
+          },
+          {
+            "iso": "KEN",
+            "cases": 11
+          },
+          {
+            "iso": "DNK",
+            "cases": 11
+          },
+          {
+            "iso": "PRI",
+            "cases": 11
+          },
+          {
+            "iso": "LVA",
+            "cases": 8
+          },
+          {
+            "iso": "GEO",
+            "cases": 8
+          },
+          {
+            "iso": "VIR",
+            "cases": 8
+          },
+          {
+            "iso": "FIN",
+            "cases": 7
+          },
+          {
+            "iso": "GIN",
+            "cases": 7
+          },
+          {
+            "iso": "KHM",
+            "cases": 7
+          },
+          {
+            "iso": "LAO",
+            "cases": 7
+          },
+          {
+            "iso": "MRT",
+            "cases": 7
+          },
+          {
+            "iso": "BLZ",
+            "cases": 6
+          },
+          {
+            "iso": "IRL",
+            "cases": 6
+          },
+          {
+            "iso": "LCA",
+            "cases": 5
+          },
+          {
+            "iso": "BRB",
+            "cases": 5
+          },
+          {
+            "iso": "GRD",
+            "cases": 5
+          },
+          {
+            "iso": "TZA",
+            "cases": 5
+          },
+          {
+            "iso": "COD",
+            "cases": 5
+          },
+          {
+            "iso": "NIC",
+            "cases": 5
+          },
+          {
+            "iso": "GUM",
+            "cases": 5
+          },
+          {
+            "iso": "NOR",
+            "cases": 4
+          },
+          {
+            "iso": "LKA",
+            "cases": 4
+          },
+          {
+            "iso": "RWA",
+            "cases": 4
+          },
+          {
+            "iso": "UGA",
+            "cases": 4
+          },
+          {
+            "iso": "IRN",
+            "cases": 4
+          },
+          {
+            "iso": "TGO",
+            "cases": 4
+          },
+          {
+            "iso": "TUN",
+            "cases": 4
+          },
+          {
+            "iso": "BEN",
+            "cases": 3
+          },
+          {
+            "iso": "LBN",
+            "cases": 3
+          },
+          {
+            "iso": "ETH",
+            "cases": 3
+          },
+          {
+            "iso": "ARM",
+            "cases": 3
+          },
+          {
+            "iso": "CYM",
+            "cases": 3
+          },
+          {
+            "iso": "BHS",
+            "cases": 3
+          },
+          {
+            "iso": "SVN",
+            "cases": 3
+          },
+          {
+            "iso": "KNA",
+            "cases": 2
+          },
+          {
+            "iso": "EST",
+            "cases": 2
+          },
+          {
+            "iso": "CUB",
+            "cases": 2
+          },
+          {
+            "iso": "NZL",
+            "cases": 2
+          },
+          {
+            "iso": "BLR",
+            "cases": 2
+          },
+          {
+            "iso": "MNG",
+            "cases": 2
+          },
+          {
+            "iso": "TCA",
+            "cases": 2
+          },
+          {
+            "iso": "SUR",
+            "cases": 2
+          },
+          {
+            "iso": "MAC",
+            "cases": 2
+          },
+          {
+            "iso": "ATG",
+            "cases": 2
+          },
+          {
+            "iso": "CUW",
+            "cases": 2
+          },
+          {
+            "iso": "SXM",
+            "cases": 2
+          },
+          {
+            "iso": "LBR",
+            "cases": 2
+          },
+          {
+            "iso": "LBY",
+            "cases": 2
+          },
+          {
+            "iso": "ASM",
+            "cases": 1
+          },
+          {
+            "iso": "UZB",
+            "cases": 1
+          },
+          {
+            "iso": "AZE",
+            "cases": 1
+          },
+          {
+            "iso": "ZMB",
+            "cases": 1
+          },
+          {
+            "iso": "DMA",
+            "cases": 1
+          },
+          {
+            "iso": "ATA",
+            "cases": 1
+          },
+          {
+            "iso": "MWI",
+            "cases": 1
+          },
+          {
+            "iso": "GAB",
+            "cases": 1
+          },
+          {
+            "iso": "YEM",
+            "cases": 1
+          },
+          {
+            "iso": "SDN",
+            "cases": 1
+          },
+          {
+            "iso": "SYR",
+            "cases": 1
+          },
+          {
+            "iso": "MDG",
+            "cases": 1
+          },
+          {
+            "iso": "CIV",
+            "cases": 1
+          },
+          {
+            "iso": "MCO",
+            "cases": 1
+          },
+          {
+            "iso": "OMN",
+            "cases": 1
+          },
+          {
+            "iso": "GNQ",
+            "cases": 1
+          },
+          {
+            "iso": "LSO",
+            "cases": 1
+          }
+        ],
+        "countriesInvolved": 160,
+        "top5": [
+          {
+            "iso": "USA",
+            "cases": 20699
+          },
+          {
+            "iso": "CHN",
+            "cases": 18741
+          },
+          {
+            "iso": "HKG",
+            "cases": 7797
+          },
+          {
+            "iso": "CHL",
+            "cases": 3378
+          },
+          {
+            "iso": "AUT",
+            "cases": 3265
+          }
+        ],
+        "top5sum": 53880
+      }
+    },
+    "Medical products trafficking": {
+      "fr": "Produits médicaux",
+      "totals": {
+        "cases": 6267,
+        "seizures": 8207,
+        "admins": 83,
+        "pieces": 533524333
+      },
+      "reporters": [
+        {
+          "en": "United States",
+          "fr": "États-Unis",
+          "curr": 2783,
+          "prev": 2877
+        },
+        {
+          "en": "Sweden",
+          "fr": "Suède",
+          "curr": 553,
+          "prev": 158
+        },
+        {
+          "en": "Denmark",
+          "fr": "Danemark",
+          "curr": 335,
+          "prev": 1074
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "curr": 304,
+          "prev": 310
+        },
+        {
+          "en": "Cote d'Ivoire",
+          "fr": "Côte d'Ivoire",
+          "curr": 203,
+          "prev": 160
+        },
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "curr": 188,
+          "prev": 129
+        },
+        {
+          "en": "Bangladesh",
+          "fr": "Bangladesh",
+          "curr": 159,
+          "prev": 190
+        },
+        {
+          "en": "Oman",
+          "fr": "Oman",
+          "curr": 153,
+          "prev": 108
+        },
+        {
+          "en": "Togo",
+          "fr": "Togo",
+          "curr": 110,
+          "prev": 87
+        },
+        {
+          "en": "Cameroon",
+          "fr": "Cameroun",
+          "curr": 94,
+          "prev": 72
+        }
+      ],
+      "commodity": [
+        {
+          "en": "Urogenital Agents",
+          "fr": "Agents urogénitaux",
+          "curr": 2729,
+          "prev": 3177
+        },
+        {
+          "en": "Metabolic Agents",
+          "fr": "Agents métaboliques",
+          "curr": 1290,
+          "prev": 1194
+        },
+        {
+          "en": "Nervous System Agents",
+          "fr": "Agents du système nerveux",
+          "curr": 1208,
+          "prev": 1362
+        },
+        {
+          "en": "Hormone Agents",
+          "fr": "Agents hormonaux",
+          "curr": 571,
+          "prev": 750
+        },
+        {
+          "en": "Anti-Infective Agents",
+          "fr": "Anti-infectieux",
+          "curr": 462,
+          "prev": 495
+        },
+        {
+          "en": "Health Supplements",
+          "fr": "Compléments alimentaires",
+          "curr": 444,
+          "prev": 419
+        },
+        {
+          "en": "Dermatological Agents",
+          "fr": "Agents dermatologiques",
+          "curr": 310,
+          "prev": 311
+        },
+        {
+          "en": "Respiratory System Agents",
+          "fr": "Agents du système respiratoire",
+          "curr": 290,
+          "prev": 423
+        },
+        {
+          "en": "Medical Devices",
+          "fr": "Dispositifs médicaux",
+          "curr": 211,
+          "prev": 134
+        },
+        {
+          "en": "Musculo-skeletal Agents",
+          "fr": "Agents musculo-squelettiques",
+          "curr": 205,
+          "prev": 221
+        }
+      ],
+      "qtyByCommodity": [
+        {
+          "en": "Nervous System Agents",
+          "fr": "Agents du système nerveux",
+          "curr": 137438904,
+          "prev": 64034251
+        },
+        {
+          "en": "Anti-Infective Agents",
+          "fr": "Anti-infectieux",
+          "curr": 107968307,
+          "prev": 119673693
+        },
+        {
+          "en": "Respiratory System Agents",
+          "fr": "Agents du système respiratoire",
+          "curr": 73587219,
+          "prev": 26704185
+        },
+        {
+          "en": "Musculo-skeletal Agents",
+          "fr": "Agents musculo-squelettiques",
+          "curr": 60426164,
+          "prev": 26160830
+        },
+        {
+          "en": "Health Supplements",
+          "fr": "Compléments alimentaires",
+          "curr": 49649516,
+          "prev": 61406033
+        },
+        {
+          "en": "Dermatological Agents",
+          "fr": "Agents dermatologiques",
+          "curr": 43211272,
+          "prev": 191732756
+        },
+        {
+          "en": "Urogenital Agents",
+          "fr": "Agents urogénitaux",
+          "curr": 17918278,
+          "prev": 11678381
+        },
+        {
+          "en": "Medical Devices",
+          "fr": "Dispositifs médicaux",
+          "curr": 17164724,
+          "prev": 28707106
+        },
+        {
+          "en": "Gastrointestinal agents",
+          "fr": "Agents gastro-intestinaux",
+          "curr": 7640029,
+          "prev": 7382350
+        },
+        {
+          "en": "Immunological Agents",
+          "fr": "Agents immunologiques",
+          "curr": 6615033,
+          "prev": 71928
+        }
+      ],
+      "qtyTable": [
+        {
+          "en": "Immunological Agents",
+          "fr": "Agents immunologiques",
+          "seizures": 10,
+          "qty": 6615033,
+          "perSeiz": 661503
+        },
+        {
+          "en": "Musculo-skeletal Agents",
+          "fr": "Agents musculo-squelettiques",
+          "seizures": 205,
+          "qty": 60426164,
+          "perSeiz": 294762
+        },
+        {
+          "en": "Respiratory System Agents",
+          "fr": "Agents du système respiratoire",
+          "seizures": 290,
+          "qty": 73587219,
+          "perSeiz": 253749
+        },
+        {
+          "en": "Anti-Infective Agents",
+          "fr": "Anti-infectieux",
+          "seizures": 462,
+          "qty": 107968307,
+          "perSeiz": 233698
+        },
+        {
+          "en": "Dermatological Agents",
+          "fr": "Agents dermatologiques",
+          "seizures": 310,
+          "qty": 43211272,
+          "perSeiz": 139391
+        },
+        {
+          "en": "Nervous System Agents",
+          "fr": "Agents du système nerveux",
+          "seizures": 1208,
+          "qty": 137438904,
+          "perSeiz": 113774
+        },
+        {
+          "en": "Health Supplements",
+          "fr": "Compléments alimentaires",
+          "seizures": 444,
+          "qty": 49649516,
+          "perSeiz": 111823
+        },
+        {
+          "en": "Gastrointestinal agents",
+          "fr": "Agents gastro-intestinaux",
+          "seizures": 83,
+          "qty": 7640029,
+          "perSeiz": 92049
+        },
+        {
+          "en": "Medical Devices",
+          "fr": "Dispositifs médicaux",
+          "seizures": 211,
+          "qty": 17164724,
+          "perSeiz": 81349
+        },
+        {
+          "en": "Psychotherapeutic Agents",
+          "fr": "Agents psychothérapeutiques",
+          "seizures": 89,
+          "qty": 5553229,
+          "perSeiz": 62396
+        },
+        {
+          "en": "Blood Agents",
+          "fr": "Agents sanguins",
+          "seizures": 17,
+          "qty": 315375,
+          "perSeiz": 18551
+        },
+        {
+          "en": "Cardiovascular agents",
+          "fr": "Agents cardiovasculaires",
+          "seizures": 59,
+          "qty": 1086838,
+          "perSeiz": 18421
+        },
+        {
+          "en": "Urogenital Agents",
+          "fr": "Agents urogénitaux",
+          "seizures": 2729,
+          "qty": 17918278,
+          "perSeiz": 6566
+        },
+        {
+          "en": "Veterinary Agents",
+          "fr": "Agents vétérinaires",
+          "seizures": 58,
+          "qty": 236208,
+          "perSeiz": 4073
+        },
+        {
+          "en": "Ear and Eye Agents",
+          "fr": "Agents auriculaires et oculaires",
+          "seizures": 13,
+          "qty": 52697,
+          "perSeiz": 4054
+        },
+        {
+          "en": "Hormone Agents",
+          "fr": "Agents hormonaux",
+          "seizures": 571,
+          "qty": 1458142,
+          "perSeiz": 2554
+        },
+        {
+          "en": "Metabolic Agents",
+          "fr": "Agents métaboliques",
+          "seizures": 1290,
+          "qty": 3095198,
+          "perSeiz": 2399
+        },
+        {
+          "en": "Hair Loss Agents",
+          "fr": "Agents contre la chute des cheveux",
+          "seizures": 9,
+          "qty": 11637,
+          "perSeiz": 1293
+        },
+        {
+          "en": "Vaccines",
+          "fr": "Vaccins",
+          "seizures": 9,
+          "qty": 8866,
+          "perSeiz": 985
+        },
+        {
+          "en": "Anti-Cancer Agents",
+          "fr": "Agents anticancéreux",
+          "seizures": 139,
+          "qty": 86301,
+          "perSeiz": 621
+        },
+        {
+          "en": "Mixed classes by dominant medicine",
+          "fr": "Classes mixtes selon le médicament dominant",
+          "seizures": 1,
+          "qty": 396,
+          "perSeiz": 396
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 3644
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 970
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 770
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 603
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 128
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 93
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 3508
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 1198
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 503
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 154
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 151
+          },
+          {
+            "en": "In express courier",
+            "fr": "Dans la messagerie express",
+            "cases": 93
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 75
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 66.3
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 19.7
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 6.3
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 5.3
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 2.4
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 85.8
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 7.5
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 4.6
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 2.2
+          }
+        ],
+        "conveyance": [
+          {
+            "en": "Regular Mail",
+            "fr": "Courrier ordinaire",
+            "curr": 3205,
+            "prev": 3205
+          },
+          {
+            "en": "Air",
+            "fr": "Voie aérienne",
+            "curr": 964,
+            "prev": 964
+          },
+          {
+            "en": "Vehicle",
+            "fr": "Véhicule",
+            "curr": 904,
+            "prev": 904
+          },
+          {
+            "en": "Express courier",
+            "fr": "Messagerie express",
+            "curr": 722,
+            "prev": 722
+          },
+          {
+            "en": "Pedestrian",
+            "fr": "Piéton",
+            "curr": 196,
+            "prev": 196
+          },
+          {
+            "en": "Vessel",
+            "fr": "Navire",
+            "curr": 84,
+            "prev": 84
+          },
+          {
+            "en": "Rail Train",
+            "fr": "Train",
+            "curr": 4,
+            "prev": 4
+          }
+        ]
+      },
+      "ecom": 65.1,
+      "ecomByCommodity": [
+        {
+          "en": "Urogenital Agents",
+          "fr": "Agents urogénitaux",
+          "pct": 91
+        },
+        {
+          "en": "Metabolic Agents",
+          "fr": "Agents métaboliques",
+          "pct": 77
+        },
+        {
+          "en": "Nervous System Agents",
+          "fr": "Agents du système nerveux",
+          "pct": 63.3
+        },
+        {
+          "en": "Hormone Agents",
+          "fr": "Agents hormonaux",
+          "pct": 52.1
+        },
+        {
+          "en": "Anti-Infective Agents",
+          "fr": "Anti-infectieux",
+          "pct": 19.7
+        },
+        {
+          "en": "Musculo-skeletal Agents",
+          "fr": "Agents musculo-squelettiques",
+          "pct": 16.5
+        },
+        {
+          "en": "Health Supplements",
+          "fr": "Compléments alimentaires",
+          "pct": 15.9
+        },
+        {
+          "en": "Dermatological Agents",
+          "fr": "Agents dermatologiques",
+          "pct": 10.2
+        },
+        {
+          "en": "Medical Devices",
+          "fr": "Dispositifs médicaux",
+          "pct": 7.5
+        },
+        {
+          "en": "Respiratory System Agents",
+          "fr": "Agents du système respiratoire",
+          "pct": 3.6
+        }
+      ],
+      "convByDirection": [
+        {
+          "conv": "Regular Mail",
+          "Import": 91.4,
+          "Transit": 0.1,
+          "Internal": 2.5,
+          "Export": 6
+        },
+        {
+          "conv": "Air",
+          "Import": 79.1,
+          "Transit": 0.5,
+          "Internal": 0.8,
+          "Export": 19.5
+        },
+        {
+          "conv": "Vehicle",
+          "Import": 68,
+          "Transit": 12.8,
+          "Internal": 13.9,
+          "Export": 5.2
+        },
+        {
+          "conv": "Express courier",
+          "Import": 97.2,
+          "Transit": 0.7,
+          "Internal": 0.4,
+          "Export": 1.7
+        },
+        {
+          "conv": "Pedestrian",
+          "Import": 91.8,
+          "Transit": 0.5,
+          "Internal": 3.1,
+          "Export": 4.6
+        },
+        {
+          "conv": "Vessel",
+          "Import": 85.7,
+          "Transit": 3.6,
+          "Internal": 3.6,
+          "Export": 7.1
+        }
+      ],
+      "flows": {
+        "regions": [
+          "A/P",
+          "NAM",
+          "WE",
+          "WA",
+          "ESA",
+          "ECE",
+          "CAM",
+          "ME",
+          "CA",
+          "SA",
+          "NA",
+          "CIS",
+          "CAR"
+        ],
+        "matrix": [
+          [
+            186,
+            2203,
+            298,
+            22,
+            65,
+            30,
+            0,
+            167,
+            11,
+            11,
+            0,
+            11,
+            1
+          ],
+          [
+            2,
+            1,
+            17,
+            0,
+            2,
+            5,
+            0,
+            2,
+            0,
+            7,
+            0,
+            1,
+            1
+          ],
+          [
+            0,
+            18,
+            182,
+            0,
+            11,
+            26,
+            0,
+            4,
+            4,
+            29,
+            3,
+            2,
+            0
+          ],
+          [
+            7,
+            2,
+            66,
+            316,
+            10,
+            1,
+            0,
+            8,
+            112,
+            0,
+            67,
+            0,
+            1
+          ],
+          [
+            0,
+            7,
+            4,
+            1,
+            229,
+            0,
+            0,
+            6,
+            10,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            8,
+            89,
+            1,
+            1,
+            113,
+            0,
+            9,
+            1,
+            1,
+            2,
+            10,
+            0
+          ],
+          [
+            0,
+            478,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0,
+            9,
+            0,
+            0,
+            1
+          ],
+          [
+            0,
+            48,
+            10,
+            1,
+            1,
+            15,
+            0,
+            65,
+            0,
+            0,
+            2,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            82,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            5,
+            16,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            86,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            21,
+            3,
+            0,
+            8,
+            0,
+            0
+          ],
+          [
+            0,
+            2,
+            6,
+            0,
+            0,
+            22,
+            0,
+            1,
+            0,
+            0,
+            0,
+            23,
+            0
+          ],
+          [
+            1,
+            17,
+            8,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            2
+          ]
+        ]
+      },
+      "involvement": {
+        "map": [
+          {
+            "iso": "USA",
+            "cases": 2827
+          },
+          {
+            "iso": "IND",
+            "cases": 2526
+          },
+          {
+            "iso": "SWE",
+            "cases": 560
+          },
+          {
+            "iso": "DNK",
+            "cases": 335
+          },
+          {
+            "iso": "ZAF",
+            "cases": 316
+          },
+          {
+            "iso": "HND",
+            "cases": 305
+          },
+          {
+            "iso": "CIV",
+            "cases": 213
+          },
+          {
+            "iso": "ZWE",
+            "cases": 206
+          },
+          {
+            "iso": "HKG",
+            "cases": 205
+          },
+          {
+            "iso": "ITA",
+            "cases": 194
+          },
+          {
+            "iso": "BGD",
+            "cases": 174
+          },
+          {
+            "iso": "SLV",
+            "cases": 156
+          },
+          {
+            "iso": "NGA",
+            "cases": 154
+          },
+          {
+            "iso": "OMN",
+            "cases": 153
+          },
+          {
+            "iso": "TGO",
+            "cases": 124
+          },
+          {
+            "iso": "GHA",
+            "cases": 116
+          },
+          {
+            "iso": "CMR",
+            "cases": 112
+          },
+          {
+            "iso": "TUR",
+            "cases": 107
+          },
+          {
+            "iso": "FRA",
+            "cases": 97
+          },
+          {
+            "iso": "GBR",
+            "cases": 96
+          },
+          {
+            "iso": "PRT",
+            "cases": 95
+          },
+          {
+            "iso": "KOR",
+            "cases": 94
+          },
+          {
+            "iso": "ARE",
+            "cases": 93
+          },
+          {
+            "iso": "IRL",
+            "cases": 87
+          },
+          {
+            "iso": "GAB",
+            "cases": 87
+          },
+          {
+            "iso": "ARG",
+            "cases": 76
+          },
+          {
+            "iso": "POL",
+            "cases": 75
+          },
+          {
+            "iso": "CHN",
+            "cases": 73
+          },
+          {
+            "iso": "CZE",
+            "cases": 70
+          },
+          {
+            "iso": "MAR",
+            "cases": 67
+          },
+          {
+            "iso": "SRB",
+            "cases": 67
+          },
+          {
+            "iso": "ROU",
+            "cases": 66
+          },
+          {
+            "iso": "BRA",
+            "cases": 64
+          },
+          {
+            "iso": "QAT",
+            "cases": 61
+          },
+          {
+            "iso": "RUS",
+            "cases": 60
+          },
+          {
+            "iso": "HRV",
+            "cases": 57
+          },
+          {
+            "iso": "DEU",
+            "cases": 50
+          },
+          {
+            "iso": "JOR",
+            "cases": 50
+          },
+          {
+            "iso": "BEN",
+            "cases": 46
+          },
+          {
+            "iso": "CHL",
+            "cases": 43
+          },
+          {
+            "iso": "BFA",
+            "cases": 43
+          },
+          {
+            "iso": "HUN",
+            "cases": 42
+          },
+          {
+            "iso": "UKR",
+            "cases": 39
+          },
+          {
+            "iso": "GRC",
+            "cases": 37
+          },
+          {
+            "iso": "MLI",
+            "cases": 35
+          },
+          {
+            "iso": "BHR",
+            "cases": 33
+          },
+          {
+            "iso": "NER",
+            "cases": 33
+          },
+          {
+            "iso": "EGY",
+            "cases": 28
+          },
+          {
+            "iso": "MKD",
+            "cases": 28
+          },
+          {
+            "iso": "THA",
+            "cases": 26
+          },
+          {
+            "iso": "SEN",
+            "cases": 25
+          },
+          {
+            "iso": "COL",
+            "cases": 24
+          },
+          {
+            "iso": "BIH",
+            "cases": 21
+          },
+          {
+            "iso": "COD",
+            "cases": 21
+          },
+          {
+            "iso": "SAU",
+            "cases": 20
+          },
+          {
+            "iso": "BOL",
+            "cases": 19
+          },
+          {
+            "iso": "GIN",
+            "cases": 19
+          },
+          {
+            "iso": "NLD",
+            "cases": 19
+          },
+          {
+            "iso": "KOS",
+            "cases": 19
+          },
+          {
+            "iso": "GTM",
+            "cases": 18
+          },
+          {
+            "iso": "ESP",
+            "cases": 17
+          },
+          {
+            "iso": "CAF",
+            "cases": 17
+          },
+          {
+            "iso": "COG",
+            "cases": 16
+          },
+          {
+            "iso": "NAM",
+            "cases": 16
+          },
+          {
+            "iso": "IRN",
+            "cases": 16
+          },
+          {
+            "iso": "AGO",
+            "cases": 15
+          },
+          {
+            "iso": "DOM",
+            "cases": 15
+          },
+          {
+            "iso": "GMB",
+            "cases": 15
+          },
+          {
+            "iso": "MNE",
+            "cases": 14
+          },
+          {
+            "iso": "SVN",
+            "cases": 14
+          },
+          {
+            "iso": "MDA",
+            "cases": 13
+          },
+          {
+            "iso": "BEL",
+            "cases": 13
+          },
+          {
+            "iso": "MYS",
+            "cases": 13
+          },
+          {
+            "iso": "KAZ",
+            "cases": 12
+          },
+          {
+            "iso": "CHE",
+            "cases": 12
+          },
+          {
+            "iso": "AZE",
+            "cases": 11
+          },
+          {
+            "iso": "ETH",
+            "cases": 11
+          },
+          {
+            "iso": "KGZ",
+            "cases": 11
+          },
+          {
+            "iso": "MMR",
+            "cases": 11
+          },
+          {
+            "iso": "SVK",
+            "cases": 10
+          },
+          {
+            "iso": "BGR",
+            "cases": 10
+          },
+          {
+            "iso": "PAN",
+            "cases": 10
+          },
+          {
+            "iso": "MEX",
+            "cases": 9
+          },
+          {
+            "iso": "GUM",
+            "cases": 9
+          },
+          {
+            "iso": "PHL",
+            "cases": 8
+          },
+          {
+            "iso": "PER",
+            "cases": 8
+          },
+          {
+            "iso": "ALB",
+            "cases": 8
+          },
+          {
+            "iso": "ISR",
+            "cases": 7
+          },
+          {
+            "iso": "CAN",
+            "cases": 7
+          },
+          {
+            "iso": "AUT",
+            "cases": 7
+          },
+          {
+            "iso": "TUN",
+            "cases": 7
+          },
+          {
+            "iso": "MLT",
+            "cases": 7
+          },
+          {
+            "iso": "AUS",
+            "cases": 7
+          },
+          {
+            "iso": "URY",
+            "cases": 7
+          },
+          {
+            "iso": "SYR",
+            "cases": 6
+          },
+          {
+            "iso": "MAC",
+            "cases": 6
+          },
+          {
+            "iso": "PAK",
+            "cases": 6
+          },
+          {
+            "iso": "MRT",
+            "cases": 6
+          },
+          {
+            "iso": "LUX",
+            "cases": 5
+          },
+          {
+            "iso": "BLR",
+            "cases": 5
+          },
+          {
+            "iso": "GEO",
+            "cases": 5
+          },
+          {
+            "iso": "CUB",
+            "cases": 5
+          },
+          {
+            "iso": "ZMB",
+            "cases": 4
+          },
+          {
+            "iso": "LBN",
+            "cases": 4
+          },
+          {
+            "iso": "KWT",
+            "cases": 4
+          },
+          {
+            "iso": "SGP",
+            "cases": 4
+          },
+          {
+            "iso": "LKA",
+            "cases": 4
+          },
+          {
+            "iso": "PRY",
+            "cases": 4
+          },
+          {
+            "iso": "MOZ",
+            "cases": 4
+          },
+          {
+            "iso": "LVA",
+            "cases": 3
+          },
+          {
+            "iso": "DZA",
+            "cases": 3
+          },
+          {
+            "iso": "TCD",
+            "cases": 3
+          },
+          {
+            "iso": "LBY",
+            "cases": 3
+          },
+          {
+            "iso": "ECU",
+            "cases": 3
+          },
+          {
+            "iso": "IDN",
+            "cases": 3
+          },
+          {
+            "iso": "TZA",
+            "cases": 3
+          },
+          {
+            "iso": "LBR",
+            "cases": 3
+          },
+          {
+            "iso": "JPN",
+            "cases": 2
+          },
+          {
+            "iso": "ISL",
+            "cases": 2
+          },
+          {
+            "iso": "KEN",
+            "cases": 2
+          },
+          {
+            "iso": "SWZ",
+            "cases": 2
+          },
+          {
+            "iso": "NPL",
+            "cases": 2
+          },
+          {
+            "iso": "BLZ",
+            "cases": 2
+          },
+          {
+            "iso": "SLE",
+            "cases": 2
+          },
+          {
+            "iso": "LTU",
+            "cases": 2
+          },
+          {
+            "iso": "HTI",
+            "cases": 2
+          },
+          {
+            "iso": "GNQ",
+            "cases": 1
+          },
+          {
+            "iso": "VIR",
+            "cases": 1
+          },
+          {
+            "iso": "PRK",
+            "cases": 1
+          },
+          {
+            "iso": "LAO",
+            "cases": 1
+          },
+          {
+            "iso": "FIN",
+            "cases": 1
+          },
+          {
+            "iso": "CRI",
+            "cases": 1
+          },
+          {
+            "iso": "CYP",
+            "cases": 1
+          },
+          {
+            "iso": "RWA",
+            "cases": 1
+          },
+          {
+            "iso": "GNB",
+            "cases": 1
+          },
+          {
+            "iso": "ARM",
+            "cases": 1
+          },
+          {
+            "iso": "UGA",
+            "cases": 1
+          },
+          {
+            "iso": "IRQ",
+            "cases": 1
+          },
+          {
+            "iso": "TWN",
+            "cases": 1
+          },
+          {
+            "iso": "TTO",
+            "cases": 1
+          },
+          {
+            "iso": "PNG",
+            "cases": 1
+          },
+          {
+            "iso": "LSO",
+            "cases": 1
+          },
+          {
+            "iso": "UZB",
+            "cases": 1
+          },
+          {
+            "iso": "NOR",
+            "cases": 1
+          },
+          {
+            "iso": "EST",
+            "cases": 1
+          }
+        ],
+        "countriesInvolved": 145,
+        "top5": [
+          {
+            "iso": "USA",
+            "cases": 2827
+          },
+          {
+            "iso": "IND",
+            "cases": 2526
+          },
+          {
+            "iso": "SWE",
+            "cases": 560
+          },
+          {
+            "iso": "DNK",
+            "cases": 335
+          },
+          {
+            "iso": "ZAF",
+            "cases": 316
+          }
+        ],
+        "top5sum": 6564
+      }
+    }
+  },
+  "regional": {
+    "regions": [
+      "A/P",
+      "AMS",
+      "ESA",
+      "EUR",
+      "MENA",
+      "WCA"
+    ],
+    "composition": [
+      {
+        "region": "A/P",
+        "iprPct": 47.8,
+        "medPct": 52.2
+      },
+      {
+        "region": "AMS",
+        "iprPct": 89.4,
+        "medPct": 10.6
+      },
+      {
+        "region": "ESA",
+        "iprPct": 51,
+        "medPct": 49
+      },
+      {
+        "region": "EUR",
+        "iprPct": 85.1,
+        "medPct": 14.9
+      },
+      {
+        "region": "MENA",
+        "iprPct": 28.8,
+        "medPct": 71.2
+      },
+      {
+        "region": "WCA",
+        "iprPct": 2.1,
+        "medPct": 97.9
+      }
+    ],
+    "reporting": [
+      {
+        "region": "A/P",
+        "iprAdmins": 11,
+        "medAdmins": 7
+      },
+      {
+        "region": "AMS",
+        "iprAdmins": 18,
+        "medAdmins": 12
+      },
+      {
+        "region": "ESA",
+        "iprAdmins": 8,
+        "medAdmins": 4
+      },
+      {
+        "region": "EUR",
+        "iprAdmins": 30,
+        "medAdmins": 33
+      },
+      {
+        "region": "MENA",
+        "iprAdmins": 5,
+        "medAdmins": 8
+      },
+      {
+        "region": "WCA",
+        "iprAdmins": 6,
+        "medAdmins": 18
+      }
+    ]
+  }
+}

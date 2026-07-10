@@ -1,0 +1,179 @@
+{
+  "AML/CTF": {
+    "admins": 87,
+    "flows": {
+      "Cash smuggling": {
+        "s": 11710,
+        "p": 15222,
+        "c": 10034
+      },
+      "Gemstones trafficking": {
+        "s": 41,
+        "p": 114,
+        "c": 40
+      },
+      "Gold trafficking": {
+        "s": 510,
+        "p": 1052,
+        "c": 484
+      }
+    },
+    "detect": {
+      "Routine control": 61,
+      "Random selection": 2,
+      "Intelligence": 2,
+      "Investigation": 1,
+      "Risk profiling": 34
+    }
+  },
+  "Drugs": {
+    "admins": 146,
+    "flows": {
+      "Cannabis": {
+        "s": 37058,
+        "p": 22855,
+        "c": 34708
+      },
+      "New Psychoactive Substances": {
+        "s": 8315,
+        "p": 3822,
+        "c": 7721
+      },
+      "Psychotropic substances": {
+        "s": 18216,
+        "p": 14627,
+        "c": 16360
+      },
+      "Opioids and Opiates": {
+        "s": 2523,
+        "p": 2729,
+        "c": 2120
+      },
+      "Cocaine": {
+        "s": 8074,
+        "p": 7596,
+        "c": 7613
+      },
+      "Khat": {
+        "s": 1084,
+        "p": 469,
+        "c": 1029
+      }
+    },
+    "detect": {
+      "Routine control": 17,
+      "Random selection": 1,
+      "Intelligence": 2,
+      "Investigation": 2,
+      "Risk profiling": 78
+    }
+  },
+  "Environmental Crime": {
+    "admins": 123,
+    "flows": {
+      "Fauna": {
+        "s": 2705,
+        "p": 2636,
+        "c": 2323
+      },
+      "Flora": {
+        "s": 872,
+        "p": 691,
+        "c": 838
+      },
+      "Waste": {
+        "s": 729,
+        "p": 899,
+        "c": 604
+      },
+      "Other hazardous materials": {
+        "s": 312,
+        "p": 291,
+        "c": 294
+      },
+      "ODS & HFCs": {
+        "s": 185,
+        "p": 147,
+        "c": 166
+      }
+    },
+    "detect": {
+      "Routine control": 32,
+      "Random selection": 8,
+      "Intelligence": 6,
+      "Investigation": 1,
+      "Risk profiling": 53
+    }
+  },
+  "IPR, Health and Safety": {
+    "admins": 110,
+    "flows": {
+      "IPR products trafficking": {
+        "s": 74389,
+        "p": 72114,
+        "c": 35759
+      },
+      "Medical products trafficking": {
+        "s": 8207,
+        "p": 8921,
+        "c": 6267
+      }
+    },
+    "detect": {
+      "Routine control": 16,
+      "Random selection": 2,
+      "Intelligence": 1,
+      "Investigation": 1,
+      "Risk profiling": 81
+    }
+  },
+  "Revenue": {
+    "admins": 120,
+    "flows": {
+      "Alcohol products trafficking": {
+        "s": 3941,
+        "p": 3691,
+        "c": 2765
+      },
+      "Tobacco products trafficking": {
+        "s": 36803,
+        "p": 53629,
+        "c": 31571
+      }
+    },
+    "detect": {
+      "Routine control": 75,
+      "Random selection": 1,
+      "Intelligence": 2,
+      "Investigation": 1,
+      "Risk profiling": 21
+    }
+  },
+  "Security": {
+    "admins": 81,
+    "flows": {
+      "Weapons, ammunition and tactical equipment": {
+        "s": 9910,
+        "p": 11468,
+        "c": 4639
+      },
+      "Unmanned aerial systems (UAS)": {
+        "s": 653,
+        "p": 434,
+        "c": 653
+      },
+      "Explosives and precursors": {
+        "s": 312,
+        "p": 292,
+        "c": 232
+      }
+    },
+    "detect": {
+      "Routine control": 28,
+      "Random selection": 1,
+      "Intelligence": 1,
+      "Investigation": 0,
+      "Risk profiling": 69
+    }
+  }
+}
