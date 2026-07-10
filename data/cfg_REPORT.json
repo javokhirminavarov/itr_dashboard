@@ -1,0 +1,461 @@
+{
+  "global": {
+    "introTpl": {
+      "en": [
+        "The {yr} edition of the Illicit Trade Report consolidates seizure data reported to the WCO Customs Enforcement Network by {adm} Customs administrations across the six WCO regions. A total of {cases} cases and {seiz} individual seizures were recorded in {yr}, marking a substantial year-on-year increase across most thematic sections. The aggregate growth reflects two parallel dynamics: a genuine intensification of enforcement activity in several jurisdictions, and an expansion of CEN reporting coverage as new administrations join the system or improve their data submission practices. As with all annual reporting cycles, {yr} figures should be considered provisional pending continued data validation.",
+        "The geographic distribution of {yr} cases is markedly concentrated. {r1} ({cd1}) led with {c1} cases ({p1}%) reported by {a1} administrations, {r2} ({cd2}) recorded {c2} cases ({p2}%) from {a2} administrations, and {r3} ({cd3}) contributed {c3} cases ({p3}%) from {a3} administrations. Together, these three regions accounted for {top3}% of all ITR cases globally. The lower volumes recorded in {r4} ({p4}%), {r5} ({p5}%) and {r6} ({p6}%) reflect differences in reporting infrastructure and enforcement capacity rather than necessarily lower trafficking intensity."
+      ],
+      "fr": [
+        "L'édition {yr} du Rapport sur les trafics illicites consolide les données de saisie déclarées au Réseau douanier de lutte contre la fraude (CEN) de l'OMD par {adm} administrations douanières dans les six régions de l'OMD. Au total, {cases} affaires et {seiz} saisies individuelles ont été enregistrées en {yr}, marquant une hausse annuelle substantielle dans la plupart des sections thématiques. Cette croissance globale reflète deux dynamiques parallèles : une intensification réelle de l'action répressive dans plusieurs juridictions, et un élargissement de la couverture de déclaration du CEN à mesure que de nouvelles administrations rejoignent le système ou améliorent leurs pratiques de transmission. Comme à chaque cycle annuel, les chiffres {yr} doivent être considérés comme provisoires, dans l'attente de la poursuite de la validation des données.",
+        "La répartition géographique des affaires {yr} est très concentrée. {r1} ({cd1}) arrive en tête avec {c1} affaires ({p1} %) déclarées par {a1} administrations, {r2} ({cd2}) enregistre {c2} affaires ({p2} %) déclarées par {a2} administrations, et {r3} ({cd3}) contribue à hauteur de {c3} affaires ({p3} %) déclarées par {a3} administrations. Ensemble, ces trois régions représentent {top3} % de toutes les affaires de l'ITR au niveau mondial. Les volumes plus faibles enregistrés en {r4} ({p4} %), {r5} ({p5} %) et {r6} ({p6} %) reflètent des différences d'infrastructure de déclaration et de capacité répressive plutôt que, nécessairement, une intensité de trafic moindre."
+      ]
+    }
+  },
+  "shifts": [
+    {
+      "sec": "Drugs",
+      "t": {
+        "en": "Fentanyl overtakes heroin in seizures, but heroin reclaims quantity dominance",
+        "fr": "Le fentanyl dépasse l'héroïne en saisies, mais l'héroïne reprend la primauté en quantité"
+      },
+      "x": {
+        "en": "For the second consecutive year, fentanyl overtakes heroin at the commodity level in the CEN database, accounting for 30.6% of opioid seizures (772) against 24.7% for heroin (623) in 2025. The 2025 quantity profile, however, reverses the 2024 trajectory: heroin returns to the dominant position in tonnes seized (7.6 against 6.3 tonnes), after fentanyl had exceeded heroin on both dimensions in 2024 (12.5 against 4.3 tonnes). Fentanyl shipments are smaller, more potent and harder to detect by weight alone, delivering lethal doses measurable in micrograms. Risk profiles calibrated for heroin bulk are insufficient, and detection must adapt to smaller seizure weights with higher impact potential.",
+        "fr": "Pour la deuxième année consécutive, le fentanyl dépasse l'héroïne au niveau de la marchandise dans la base CEN, avec 30,6 % des saisies d'opioïdes (772) contre 24,7 % pour l'héroïne (623) en 2025. Le profil en quantité 2025 inverse toutefois la trajectoire de 2024 : l'héroïne retrouve la première place en tonnes saisies (7,6 contre 6,3 tonnes), après que le fentanyl eut dépassé l'héroïne sur les deux dimensions en 2024 (12,5 contre 4,3 tonnes). Les envois de fentanyl sont plus petits, plus puissants et plus difficiles à détecter au seul poids, des doses létales se mesurant en microgrammes. Les profils de risque calibrés pour les volumes d'héroïne sont insuffisants, et la détection doit s'adapter à des poids de saisie plus faibles au potentiel d'impact plus élevé."
+      }
+    },
+    {
+      "sec": "Drugs",
+      "t": {
+        "en": "NPS is now structurally a postal phenomenon",
+        "fr": "Les NSP sont désormais structurellement un phénomène postal"
+      },
+      "x": {
+        "en": "New psychoactive substances (NPS) seizures doubled to 7,721 cases (+108.8%). The enforcement profile is without parallel in the Drugs section: 70.2% regular mail conveyance (cases), 78.9% in-mail concealment (seizures), 49.2% mail centre location type (cases), 88.7% risk-profiling detection (cases) and 81.9% e-commerce (cases). These figures are structurally identical to IPR products. NPS enforcement requires postal risk-profiling tools, postal operator partnerships and advance electronic data from shippers, rather than airport narcotics interdiction teams alone.",
+        "fr": "Les saisies de nouvelles substances psychoactives (NSP) ont doublé à 7 721 affaires (+108,8 %). Le profil répressif est sans équivalent dans la section Stupéfiants : 70,2 % par courrier ordinaire (affaires), 78,9 % de dissimulation dans le courrier (saisies), 49,2 % en centre courrier comme type de lieu (affaires), 88,7 % de détection par profilage de risque (affaires) et 81,9 % d'e-commerce (affaires). Ces valeurs sont structurellement identiques à celles des produits portant atteinte aux DPI. La réponse exige des outils de profilage postal, des partenariats avec les opérateurs postaux et des données électroniques anticipées des expéditeurs, et non les seules équipes d'interception aéroportuaire."
+      }
+    },
+    {
+      "sec": "E-commerce",
+      "t": {
+        "en": "E-commerce accounts for 44.8% of all ITR cases globally",
+        "fr": "L'e-commerce représente 44,8 % de toutes les affaires de l'ITR au niveau mondial"
+      },
+      "x": {
+        "en": "E-commerce now accounts for 44.8% of all ITR cases globally, establishing it as a structural cross-section logistics channel rather than a section-specific phenomenon. Market penetration varies markedly across categories: IPR 68.2% of cases, medical products 65.1%, cannabis 62.6%, psychotropic substances 57.5%, khat 55.0%, environmental crime 23.9% and security 23.6%. The parcel and postal delivery infrastructure of global online commerce also functions as a logistics channel for illicit trade across multiple ITR sections. Postal risk profiling is no longer a specialist function: it is a core Customs competency required across most commodity sections.",
+        "fr": "L'e-commerce représente désormais 44,8 % de toutes les affaires de l'ITR au niveau mondial, ce qui en fait un canal logistique transversal structurel et non un phénomène propre à une section. La pénétration varie fortement selon les catégories : DPI 68,2 % des affaires, produits médicaux 65,1 %, cannabis 62,6 %, substances psychotropes 57,5 %, khat 55,0 %, criminalité environnementale 23,9 % et sécurité 23,6 %. L'infrastructure de colis et de livraison postale du commerce en ligne mondial fonctionne aussi comme un canal logistique pour les trafics illicites dans plusieurs sections de l'ITR. Le profilage postal n'est plus une fonction de spécialiste : c'est une compétence douanière centrale, requise dans la plupart des sections de marchandises."
+      }
+    },
+    {
+      "sec": "Environmental Crime",
+      "t": {
+        "en": "Ivory laundering has infiltrated the legitimate antique trade",
+        "fr": "Le blanchiment d'ivoire a infiltré le marché légitime des antiquités"
+      },
+      "x": {
+        "en": "Elephant cases rose 29.5% year-on-year to 180 cases and 186 seizures. Of those seizures, 74.7% (139) involved derivative products, worked ivory declared as antiques, jewellery or decorative objects, against only 23.1% (43) for unworked raw tusks. Criminal networks increasingly process raw ivory into worked items and falsely present them as antique or heritage objects, using fabricated or misleading CITES certificates to simulate compliance. Detection now requires documentary verification expertise alongside species identification, mirroring the falsified pharmaceuticals challenge in the medical products section: the contraband is embedded within legitimate trade documentation.",
+        "fr": "Les affaires liées aux éléphants ont progressé de 29,5 % sur un an, à 180 affaires et 186 saisies. Parmi ces saisies, 74,7 % (139) portaient sur des produits dérivés, ivoire travaillé déclaré comme antiquités, bijoux ou objets décoratifs, contre seulement 23,1 % (43) pour les défenses brutes non travaillées. Les réseaux criminels transforment de plus en plus l'ivoire brut en objets travaillés et les présentent faussement comme des antiquités ou des objets de patrimoine, à l'aide de certificats CITES falsifiés ou trompeurs simulant la conformité. La détection exige désormais une expertise de vérification documentaire en plus de l'identification des espèces, à l'image du défi des produits pharmaceutiques falsifiés dans la section des produits médicaux : la contrebande est dissimulée au sein de documents commerciaux légitimes."
+      }
+    },
+    {
+      "sec": "Security",
+      "t": {
+        "en": "UAS emerges as a distinct security enforcement category",
+        "fr": "Les UAS émergent comme une catégorie distincte de la lutte en matière de sécurité"
+      },
+      "x": {
+        "en": "Unmanned aerial systems (UAS) accounted for 11.9% of cases (653 cases) in 2025. E-commerce channels accounted for 23.6% of all cases, with restricted drone models and tactical equipment ordered online and delivered through mail and courier networks. The challenge spans regulatory compliance (frequency, altitude, range specifications) and security risk (modified or military-specification systems). UAS should be viewed as an emerging, product-specific area of Security enforcement requiring technical awareness and case-by-case assessment, rather than a predominantly high-volume postal-channel issue.",
+        "fr": "Les systèmes aériens sans pilote (UAS) représentent 11,9 % des affaires (653 affaires) en 2025. Les canaux d'e-commerce comptent pour 23,6 % de l'ensemble des affaires, drones réglementés et équipements tactiques étant commandés en ligne et acheminés par les réseaux postaux et de messagerie. Le défi recouvre à la fois la conformité réglementaire (fréquence, altitude, spécifications de portée) et le risque de sécurité (systèmes modifiés ou de spécification militaire). Les UAS doivent être vus comme un domaine émergent et spécifique de la lutte en matière de sécurité, exigeant une compétence technique et une évaluation au cas par cas, plutôt qu'un enjeu postal de masse."
+      }
+    }
+  ],
+  "ecommerce": {
+    "sharePct": 44.8,
+    "cases": 73371,
+    "headline": {
+      "en": "In 2025, e-commerce channels accounted for 73,371 cases globally, 44.8% of all ITR cases. This near parity between online and physical trade reflects a structural transformation that cuts across every section and region.",
+      "fr": "En 2025, les canaux d'e-commerce ont représenté 73 371 affaires au niveau mondial, soit 44,8 % de l'ensemble des affaires de l'ITR. Cette quasi-parité entre commerce en ligne et commerce physique traduit une transformation structurelle qui traverse toutes les sections et toutes les régions."
+    },
+    "byRegion": [
+      {
+        "code": "AMS",
+        "v": 68
+      },
+      {
+        "code": "EUR",
+        "v": 45.4
+      },
+      {
+        "code": "A/P",
+        "v": 27.9
+      },
+      {
+        "code": "ESA",
+        "v": 22.7
+      },
+      {
+        "code": "MENA",
+        "v": 1.5
+      },
+      {
+        "code": "WCA",
+        "v": 0.6
+      }
+    ],
+    "byCommodity": [
+      {
+        "en": "NPS (drugs)",
+        "fr": "NPS (stupéfiants)",
+        "v": 82.7
+      },
+      {
+        "en": "IPR products",
+        "fr": "Produits DPI",
+        "v": 68.2
+      },
+      {
+        "en": "Medical products",
+        "fr": "Produits médicaux",
+        "v": 65.1
+      },
+      {
+        "en": "Cannabis",
+        "fr": "Cannabis",
+        "v": 62.6
+      },
+      {
+        "en": "Psychotropic substances",
+        "fr": "Substances psychotropes",
+        "v": 57.5
+      },
+      {
+        "en": "Khat",
+        "fr": "Khat",
+        "v": 55
+      },
+      {
+        "en": "Environmental Crime",
+        "fr": "Criminalité environnementale",
+        "v": 23.9
+      },
+      {
+        "en": "Security",
+        "fr": "Sécurité",
+        "v": 23.6
+      }
+    ],
+    "note": {
+      "en": "Regional variation is considerable: the Americas reach 68.0% while MENA and West and Central Africa, dominated by bulk tobacco and lower postal infrastructure, sit at 1.5% and 0.6%. E-commerce is a primary challenge wherever parcel and postal networks carry the bulk of seized goods.",
+      "fr": "La variation régionale est forte : les Amériques atteignent 68,0 % tandis que la région MENA et l'Afrique occidentale et centrale, dominées par le tabac en vrac et une moindre infrastructure postale, se situent à 1,5 % et 0,6 %. L'e-commerce est un défi majeur partout où les réseaux de colis et postaux concentrent l'essentiel des marchandises saisies."
+    }
+  },
+  "intro": {
+    "blocks": [
+      {
+        "h": {
+          "en": "General overview",
+          "fr": "Vue générale"
+        },
+        "p": {
+          "en": "The Illicit Trade Report is the World Customs Organization's flagship annual publication on illicit trafficking trends observed through Customs enforcement activities. It draws primarily on seizure data voluntarily submitted by WCO Members to the Customs Enforcement Network (CEN), including seizures reported during joint operations through CENcomm. By consolidating interdictions across all commodity types and regions into a single analytical framework, it offers a uniquely Customs-led perspective: the moment of interdiction at borders, ports, and postal and express courier channels.",
+          "fr": "Le Rapport sur les trafics illicites est la publication annuelle phare de l'Organisation mondiale des douanes sur les tendances du trafic illicite observées à travers les activités douanières de lutte contre la fraude. Il s'appuie principalement sur les données de saisie transmises volontairement par les Membres de l'OMD au Réseau douanier de lutte contre la fraude (CEN), y compris les saisies déclarées lors d'opérations conjointes via CENcomm. En consolidant les interceptions de toutes les marchandises et régions dans un cadre unique, il offre une perspective proprement douanière : le moment de l'interception aux frontières, dans les ports et dans les circuits postaux et de fret express."
+        }
+      },
+      {
+        "h": {
+          "en": "Objectives",
+          "fr": "Objectifs"
+        },
+        "p": {
+          "en": "The Report fulfils two core objectives: raising awareness of the most significant illicit trade risks and enforcement challenges faced by Customs administrations globally, and contributing to knowledge through data analysis, operational intelligence and case-based evidence to support strategy, policy, capacity building and enforcement priorities.",
+          "fr": "Le Rapport poursuit deux objectifs : sensibiliser aux risques de commerce illicite et aux défis de lutte contre la fraude les plus importants auxquels font face les administrations douanières, et enrichir la connaissance par l'analyse de données, le renseignement opérationnel et les éléments tirés d'affaires concrètes, au service de la stratégie, des politiques, du renforcement des capacités et des priorités d'action."
+        }
+      },
+      {
+        "h": {
+          "en": "Key enforcement priorities",
+          "fr": "Priorités de lutte contre la fraude"
+        },
+        "p": {
+          "en": "The 2025 edition focuses on six strategic enforcement areas in which Customs plays a critical role: AML/CTF, Drugs, Environmental Crime, IPR Health and Safety, Revenue, and Security. Each is presented as a chapter analysing reporting countries, commodity breakdown, trafficking methods, flow direction and regional distribution. Given its growing role, e-commerce is examined as a dedicated subsection within most chapters.",
+          "fr": "L'édition 2025 se concentre sur six domaines stratégiques où la douane joue un rôle déterminant : LBC/FT, Stupéfiants, Criminalité environnementale, DPI santé et sécurité, Recettes et Sécurité. Chacun fait l'objet d'un chapitre analysant les pays rapporteurs, la ventilation par marchandise, les méthodes de trafic, le sens des flux et la distribution régionale. Compte tenu de son rôle croissant, l'e-commerce est traité en sous-section dédiée dans la plupart des chapitres."
+        }
+      },
+      {
+        "h": {
+          "en": "Data sources and methodology",
+          "fr": "Sources de données et méthodologie"
+        },
+        "p": {
+          "en": "The analysis is based primarily on the CEN, one of the world's largest Customs-led repositories of seizure and offence records. This edition draws on offences recorded during 2025 and validated in the CEN up to 31 March 2026, compared with 2024 where relevant. As validation is ongoing, 2025 figures are provisional. A seizure is any interdiction action recorded in the CEN; one case may involve several seizures. A harmonized unit conversion methodology is applied to support consistent quantitative analysis.",
+          "fr": "L'analyse repose principalement sur le CEN, l'un des plus vastes répertoires douaniers de saisies et d'infractions au monde. Cette édition porte sur les infractions enregistrées en 2025 et validées dans le CEN jusqu'au 31 mars 2026, comparées à 2024 le cas échéant. La validation étant en cours, les chiffres 2025 sont provisoires. Une saisie est toute action d'interception enregistrée dans le CEN ; une même affaire peut comporter plusieurs saisies. Une méthodologie harmonisée de conversion des unités est appliquée pour assurer la cohérence des analyses quantitatives."
+        }
+      },
+      {
+        "h": {
+          "en": "The role of RILOs",
+          "fr": "Le rôle des BRLR"
+        },
+        "p": {
+          "en": "A cornerstone of the CEN's reliability is the network of Regional Intelligence Liaison Offices (RILOs). Operating across the six WCO regions, they validate submissions, provide feedback on data quality and develop regional intelligence products, remaining a core element of the WCO's strategic intelligence capability against transnational criminal organizations.",
+          "fr": "La fiabilité du CEN repose notamment sur le réseau des Bureaux régionaux de liaison chargés du renseignement (BRLR). Présents dans les six régions de l'OMD, ils valident les déclarations, signalent les enjeux de qualité des données et élaborent des produits de renseignement régionaux, demeurant un élément central de la capacité de renseignement stratégique de l'OMD face aux organisations criminelles transnationales."
+        }
+      },
+      {
+        "h": {
+          "en": "Classification and harmonization",
+          "fr": "Classification et harmonisation"
+        },
+        "p": {
+          "en": "Seizure data submitted to the CEN are recorded in a wide variety of units depending on the commodity type, the reporting administration and the period of entry. To ensure consistency and analytical reliability, a harmonized conversion methodology has been systematically applied to the data underlying this report. The complete set of conversion rules, assumptions and harmonization decisions is provided in Annex 1 of the full PDF report.",
+          "fr": "Les données de saisie transmises au CEN sont enregistrées dans une grande variété d'unités selon le type de marchandise, l'administration rapportrice et la période de saisie. Pour garantir la cohérence et la fiabilité des analyses, une méthodologie de conversion harmonisée a été appliquée systématiquement aux données qui sous-tendent ce rapport. L'ensemble des règles de conversion, hypothèses et décisions d'harmonisation figure à l'Annexe 1 du rapport PDF complet."
+        }
+      },
+      {
+        "h": {
+          "en": "Regional analysis framework",
+          "fr": "Cadre d'analyse régional"
+        },
+        "p": {
+          "en": "The report applies two distinct regional frameworks depending on the analytical objective. For seizure statistics and reporting coverage, it refers to the six WCO institutional regions, ensuring consistency with other WCO publications. For the analysis of trafficking routes, including departure and destination patterns, it applies a more granular geographic framework aligned with the operational perimeters of the RILOs, since the institutional groupings do not always reflect the operational realities of cross-border illicit trade. This finer framework allows corridors to be identified and described with greater precision.",
+          "fr": "Le rapport applique deux cadres régionaux distincts selon l'objectif d'analyse. Pour les statistiques de saisies et la couverture déclarative, il s'appuie sur les six régions institutionnelles de l'OMD, par cohérence avec les autres publications de l'OMD. Pour l'analyse des routes de trafic, départs et destinations, il applique un découpage géographique plus fin aligné sur les périmètres opérationnels des BRLR, car les regroupements institutionnels ne reflètent pas toujours les réalités opérationnelles du commerce illicite transfrontalier. Ce cadre plus fin permet d'identifier et de décrire les corridors avec davantage de précision."
+        }
+      },
+      {
+        "h": {
+          "en": "Limitations",
+          "fr": "Limites"
+        },
+        "p": {
+          "en": "The findings describe the illicit trade patterns captured by the CEN as of 31 March 2026; they are not a complete measurement of global illicit trade. Because submission to the CEN is voluntary, the dataset has variability and gaps that can affect year-on-year comparisons. It also reflects mainly seizures made by Customs authorities and generally does not include interdictions carried out by other law enforcement bodies or the military, particularly in illicit arms trafficking. These limits should be kept in mind when reading the analysis.",
+          "fr": "Les conclusions décrivent les schémas de commerce illicite saisis par le CEN au 31 mars 2026 ; elles ne constituent pas une mesure exhaustive du commerce illicite mondial. La transmission au CEN étant volontaire, le jeu de données présente une variabilité et des lacunes qui peuvent affecter les comparaisons d'une année sur l'autre. Il reflète en outre principalement les saisies réalisées par les autorités douanières et n'inclut généralement pas les interceptions effectuées par d'autres services répressifs ou par l'armée, en particulier pour le trafic d'armes. Ces limites doivent être gardées à l'esprit à la lecture de l'analyse."
+        }
+      }
+    ]
+  },
+  "globalTrends": {
+    "lead": {
+      "en": "Before the thematic sections, this chapter gives a cross-sectional view of the data underlying the ITR 2025, before any sectoral breakdown. It is structured around three dimensions: the geographic distribution of cases across the six WCO regions, the composition of seizures by section within each region, and the role of e-commerce. Seizure volumes and reporting coverage are presented using the WCO's six institutional regions; non-member administrations are excluded.",
+      "fr": "Avant les sections thématiques, ce chapitre offre une vue transversale des données qui sous-tendent l'ITR 2025, avant toute ventilation par section. Il s'articule autour de trois dimensions : la distribution géographique des affaires entre les six régions OMD, la composition des saisies par section au sein de chaque région, et le rôle de l'e-commerce. Les volumes et la couverture déclarative sont présentés selon les six régions institutionnelles de l'OMD ; les administrations non membres sont exclues."
+    },
+    "fig1cap": {
+      "en": "Figure 1. Cases reported to the CEN by WCO region",
+      "fr": "Figure 1. Affaires déclarées au CEN par région OMD"
+    },
+    "fig1note": {
+      "en": "The distribution reveals a marked geographic concentration. Europe, the Americas and the Middle East and North Africa together accounted for 95.3% of all cases. This concentration should be interpreted with caution: the lower volumes in Asia/Pacific, East and Southern Africa and West and Central Africa reflect differences in reporting infrastructure and enforcement capacity rather than necessarily lower trafficking intensity.",
+      "fr": "La distribution révèle une forte concentration géographique. L'Europe, les Amériques et le Moyen-Orient et l'Afrique du Nord ont représenté ensemble 95,3 % des affaires. Cette concentration doit être interprétée avec prudence : les volumes plus faibles en Asie/Pacifique, en Afrique orientale et australe et en Afrique occidentale et centrale traduisent des différences de couverture déclarative et de capacité plutôt qu'un moindre niveau de trafic."
+    },
+    "fig2cap": {
+      "en": "Figure 2. Distribution of seizures by WCO region and ITR section",
+      "fr": "Figure 2. Distribution des saisies par région OMD et section ITR"
+    },
+    "fig2note": {
+      "en": "The commodity composition varies substantially across regions. Drugs dominate in Europe and Asia/Pacific, IPR and health and safety drive the Americas, revenue offences define MENA, and environmental crime registers most prominently in East and Southern Africa and West and Central Africa. No two regions share the same enforcement profile, which underscores the importance of analysing regional data separately rather than relying on global aggregates.",
+      "fr": "La composition par marchandise varie fortement d'une région à l'autre. Les stupéfiants dominent en Europe et en Asie/Pacifique, les DPI et la santé et sécurité portent les Amériques, les recettes définissent la zone MENA, et la criminalité environnementale ressort surtout en Afrique orientale et australe et en Afrique occidentale et centrale. Aucune région ne partage le même profil, ce qui souligne l'importance d'analyser les données région par région plutôt que par agrégats globaux."
+    },
+    "fig3cap": {
+      "en": "Figure 3. E-commerce share of cases by WCO region",
+      "fr": "Figure 3. Part de l'e-commerce dans les affaires par région OMD"
+    },
+    "fig3note": {
+      "en": "E-commerce accounted for 44.8% of all cases globally, a near parity between online and physical channels. Regional variation is considerable: the Americas reached 68.0%, driven by counterfeit goods trafficked through online marketplaces, while MENA (1.5%) and West and Central Africa (0.6%) remained low, reflecting bulk physical trafficking of tobacco and limited postal enforcement infrastructure.",
+      "fr": "L'e-commerce a représenté 44,8 % de l'ensemble des affaires, soit une quasi-parité entre canaux en ligne et physiques. La variation régionale est forte : les Amériques atteignent 68,0 %, portées par les contrefaçons écoulées sur les places de marché en ligne, tandis que la zone MENA (1,5 %) et l'Afrique occidentale et centrale (0,6 %) restent faibles, reflet d'un trafic physique de gros du tabac et d'infrastructures postales limitées."
+    },
+    "conclusion": {
+      "en": "Three structural observations emerge and frame the sections that follow. Geographic concentration: Europe, the Americas and MENA together accounted for 95.3% of all cases. Commodity specialization: no two regions share the same enforcement profile. The structural role of e-commerce: at 44.8% of cases globally, online channels are central wherever parcel and postal networks carry the bulk of seized goods.",
+      "fr": "Trois observations structurelles se dégagent et cadrent les sections suivantes. La concentration géographique : l'Europe, les Amériques et la zone MENA totalisent 95,3 % des affaires. La spécialisation par marchandise : aucune région ne partage le même profil. Le rôle structurel de l'e-commerce : à 44,8 % des affaires, les canaux en ligne sont centraux partout où les réseaux postaux et de colis concentrent les marchandises saisies."
+    }
+  },
+  "secSummaries": [
+    {
+      "sec": "AML/CTF",
+      "x": {
+        "en": "The AML/CTF section recorded 10,538 cases and 12,261 seizures from 87 reporting administrations in 2025. Cash smuggling dominated overwhelmingly with 95.5% of seizures, followed by gold trafficking (4.2%) and gemstones trafficking (0.3%). Italy, Germany, Saudi Arabia, the United States and Poland led cash reporting in 2025, reflecting expanded CEN coverage, and the euro and the US dollar together accounted for nearly 60% of cash seizures. Gold trafficking presented a structurally different profile, dominated by passenger interceptions at airports, with a significant rebalancing towards bars (38.8%) alongside jewellery (42.6%), pointing to a more structured typology associated with money laundering and tax arbitrage. The South Caucasus corridor and Southern Africa to Asia outflows emerged as priority areas for gemstones enforcement intelligence.",
+        "fr": "La section LBC/FT enregistre 10 538 affaires et 12 261 saisies déclarées par 87 administrations en 2025. La contrebande d'espèces domine très largement, avec 95,5 % des saisies, devant le trafic d'or (4,2 %) et le trafic de pierres précieuses (0,3 %). L'Italie, l'Allemagne, l'Arabie saoudite, les États-Unis et la Pologne sont en tête des déclarations d'espèces en 2025, reflétant l'élargissement de la couverture du CEN, et l'euro et le dollar américain représentent ensemble près de 60 % des saisies d'espèces. Le trafic d'or présente un profil structurellement différent, dominé par les interceptions de passagers dans les aéroports, avec un rééquilibrage marqué vers les lingots (38,8 %) aux côtés des bijoux (42,6 %), signe d'une typologie plus structurée associée au blanchiment et à l'arbitrage fiscal. Le corridor du Caucase du Sud et les flux d'Afrique australe vers l'Asie apparaissent comme des priorités de renseignement pour la répression du trafic de pierres précieuses."
+      }
+    },
+    {
+      "sec": "Drugs",
+      "x": {
+        "en": "Drugs remain the most reported contraband type in the CEN, with 67,757 cases across 146 administrations in 2025, a year-on-year increase of 43.3%. The total quantity seized increased moderately to 1,288.3 tonnes (+11.9%). Cannabis dominated with 50.6% of cases (34,299) and 548.8 tonnes (+3.5%). Psychotropic substances ranked second with 23.4% of cases (15,881) and 186.8 tonnes (+32.0%). New psychoactive substances doubled in case count (+108.2%) to 7,410 cases, but quantities halved to 82.4 tonnes (-50.9%), the most striking cases-versus-quantity paradox of the chapter, reflecting a fragmentation of NPS flows towards smaller parcel-based consignments. Cocaine reached 400.1 tonnes (+73.6%) across 7,234 cases. Opioids and opiates remained stable, with cases declining marginally (-3.1%) and quantities slightly down at 24.3 tonnes (-3.2%); within this category, fentanyl overtakes heroin in seizures (30.6% against 24.7%) for the second consecutive year, while heroin reclaims quantity dominance (7.6 against 6.3 tonnes). The structural signal of 2025 is the consolidation of e-commerce and postal channels as the dominant mode of drug trafficking captured by the CEN: 59.9% of cases involve e-commerce, rising to 82.7% for NPS, 63.1% for cannabis and 58.1% for psychotropic substances.",
+        "fr": "Les stupéfiants restent le type de contrebande le plus déclaré dans le CEN, avec 67 757 affaires sur 146 administrations en 2025, en hausse de 43,3 % sur un an. La quantité totale saisie augmente modérément à 1 288,3 tonnes (+11,9 %). Le cannabis domine avec 50,6 % des affaires (34 299) et 548,8 tonnes (+3,5 %). Les substances psychotropes arrivent en deuxième position avec 23,4 % des affaires (15 881) et 186,8 tonnes (+32,0 %). Les nouvelles substances psychoactives doublent en nombre d'affaires (+108,2 %) à 7 410 affaires, mais leurs quantités sont divisées par deux, à 82,4 tonnes (-50,9 %), le paradoxe affaires/quantité le plus marquant du chapitre, reflétant une fragmentation des flux de NSP vers de plus petits envois en colis. La cocaïne atteint 400,1 tonnes (+73,6 %) sur 7 234 affaires. Les opioïdes et opiacés restent stables, les affaires reculant légèrement (-3,1 %) et les quantités diminuant un peu, à 24,3 tonnes (-3,2 %) ; au sein de cette catégorie, le fentanyl dépasse l'héroïne en saisies (30,6 % contre 24,7 %) pour la deuxième année consécutive, tandis que l'héroïne reprend la primauté en quantité (7,6 contre 6,3 tonnes). Le signal structurel de 2025 est la consolidation des canaux d'e-commerce et postaux comme mode dominant du trafic de stupéfiants capté par le CEN : 59,9 % des affaires impliquent l'e-commerce, jusqu'à 82,7 % pour les NSP, 63,1 % pour le cannabis et 58,1 % pour les substances psychotropes."
+      }
+    },
+    {
+      "sec": "Environmental Crime",
+      "x": {
+        "en": "Environmental crime registered 4,803 environmentally sensitive commodity seizures from 123 administrations in 2025, a 3% increase on 2024. Fauna remained the largest stream at 56% of seizures (2,705), followed by waste (729), flora (872), other hazardous materials (312), and ozone-depleting substances and hydrofluorocarbons (185). Marine species led the fauna profile with 1,232 seizures, driven primarily by coral interceptions at European borders. Ivory and other elephant parts rose 30% to 186 seizures, with 74.7% of seizures concerning derivative products, worked ivory declared as antiques or jewellery, reflecting a growing trend of ivory laundering through misrepresentation within the antique and decorative goods sector. Flora seizures grew 26%, with strong increases in orchids (+106%), succulents (+300%) and agarwood (+130%). HCFCs surged 308% to 98 seizures, with 107 tonnes intercepted at land borders, and bears recorded 60 seizures (+97%). E-commerce was reported in 24% of environmental cases overall but reached 65% for flora trafficking, underscoring the relevance of postal risk profiling for plant-based commodities.",
+        "fr": "La criminalité environnementale enregistre 4 803 saisies de marchandises sensibles pour l'environnement, déclarées par 123 administrations en 2025, soit une hausse de 3 % par rapport à 2024. La faune reste le principal flux, à 56 % des saisies (2 705), suivie des déchets (729), de la flore (872), des autres matières dangereuses (312) et des substances appauvrissant la couche d'ozone et hydrofluorocarbures (185). Les espèces marines dominent le profil faune avec 1 232 saisies, portées principalement par les interceptions de corail aux frontières européennes. L'ivoire et autres parties d'éléphant progressent de 30 % à 186 saisies, dont 74,7 % portent sur des produits dérivés, ivoire travaillé déclaré comme antiquités ou bijoux, reflétant une tendance croissante au blanchiment d'ivoire par fausse déclaration dans le secteur des antiquités et des objets décoratifs. Les saisies de flore augmentent de 26 %, avec de fortes hausses pour les orchidées (+106 %), les succulentes (+300 %) et le bois d'agar (+130 %). Les HCFC bondissent de 308 % à 98 saisies, avec 107 tonnes interceptées aux frontières terrestres, et les ours totalisent 60 saisies (+97 %). L'e-commerce est signalé dans 24 % des affaires environnementales au global, mais atteint 65 % pour le trafic de flore, soulignant la pertinence du profilage postal pour les marchandises d'origine végétale."
+      }
+    },
+    {
+      "sec": "IPR, Health and Safety",
+      "x": {
+        "en": "The IPR, Health and Safety section recorded 42,026 cases and 82,596 seizures from 110 administrations in 2025, a 10.7% increase on 2024. IPR products dominated with 35,759 cases (85.1%) and 74,389 seizures, while medical products accounted for 6,267 cases (14.9%) and 8,207 seizures. The United States and Chile alone reported 67% of IPR cases, with North America and Western Europe receiving 83% of all cases. Apparel-related goods (accessories, clothing, footwear and watches) formed 78% of seizures, with watches growing 35% year-on-year. The single corridor from Asia/Pacific to North America accounted for 48% of IPR cases. The structural separation between IPR and medical products is also geographic: the Americas and Europe are dominated by IPR, while West and Central Africa (98%) and MENA (71%) are dominated by medical products. Urogenital agents accounted for 48% of medical seizures, with 91% e-commerce penetration, reflecting the online distribution of erectile dysfunction medicines. Operation FRONPIAS in the Americas (332 cases, 14 administrations) and Operation STOP IV (1,066 cases, 119 administrations) illustrate the operational response to e-commerce-driven counterfeit and falsified products trafficking.",
+        "fr": "La section DPI, santé et sécurité enregistre 42 026 affaires et 82 596 saisies déclarées par 110 administrations en 2025, en hausse de 10,7 % sur 2024. Les produits portant atteinte aux DPI dominent avec 35 759 affaires (85,1 %) et 74 389 saisies, tandis que les produits médicaux représentent 6 267 affaires (14,9 %) et 8 207 saisies. Les États-Unis et le Chili déclarent à eux seuls 67 % des affaires DPI, l'Amérique du Nord et l'Europe occidentale recevant 83 % de l'ensemble des affaires. L'habillement et les accessoires (accessoires, vêtements, chaussures et montres) constituent 78 % des saisies, les montres progressant de 35 % sur un an. Le seul corridor Asie/Pacifique vers Amérique du Nord concentre 48 % des affaires DPI. La séparation structurelle entre DPI et produits médicaux est aussi géographique : les Amériques et l'Europe sont dominées par les DPI, tandis que l'Afrique occidentale et centrale (98 %) et le Moyen-Orient et Afrique du Nord (71 %) sont dominés par les produits médicaux. Les agents urogénitaux représentent 48 % des saisies médicales, avec 91 % de pénétration de l'e-commerce, reflétant la distribution en ligne de médicaments contre les troubles de l'érection. L'opération FRONPIAS dans les Amériques (332 affaires, 14 administrations) et l'opération STOP IV (1 066 affaires, 119 administrations) illustrent la réponse opérationnelle au trafic de produits contrefaisants et falsifiés porté par l'e-commerce."
+      }
+    },
+    {
+      "sec": "Revenue",
+      "x": {
+        "en": "The Revenue section reported 34,236 cases and 40,744 seizures from 120 administrations in 2025, a contraction of 32.2% in cases largely driven by tobacco reporting changes. Tobacco accounted for 92.2% of cases (31,571), with Saudi Arabia alone reporting 56% of all tobacco cases and the Middle East and North Africa accounting for 63% of the section. Cigarettes remained the leading subcategory (22,487 seizures), but e-cigarette seizures more than doubled (+104%) and raw tobacco quadrupled (+300%). The intra-Middle East corridor recorded 14,859 cases, equivalent to 47% of all global tobacco cases. Routine control drove 76% of tobacco detections, in sharp contrast with the risk-profiling pattern observed in IPR and medical product enforcement. Alcohol products trafficking was structurally different: broadly stable year-on-year at 2,765 cases, dominated by overland conveyance (53% vehicle, 47% land boundary), with virtually no e-commerce footprint (0.5%). Three intraregional corridors defined the alcohol routes (Middle East, Eastern and Central Europe, Western Europe). Undenatured ethyl alcohol seizures more than doubled (+113%), pointing to public health risks linked to methanol-contaminated counterfeit spirits documented in 2024 and 2025 outbreaks.",
+        "fr": "La section Recettes déclare 34 236 affaires et 40 744 saisies, déclarées par 120 administrations en 2025, soit un recul de 32,2 % des affaires, largement dû à des changements de déclaration sur le tabac. Le tabac représente 92,2 % des affaires (31 571), l'Arabie saoudite déclarant à elle seule 56 % de toutes les affaires de tabac et le Moyen-Orient et Afrique du Nord pesant 63 % de la section. Les cigarettes restent la première sous-catégorie (22 487 saisies), mais les saisies de cigarettes électroniques plus que doublent (+104 %) et le tabac brut quadruple (+300 %). Le corridor intra-Moyen-Orient enregistre 14 859 affaires, soit 47 % de toutes les affaires de tabac au niveau mondial. Le contrôle de routine porte 76 % des détections de tabac, en net contraste avec le profilage de risque observé dans la répression des DPI et des produits médicaux. Le trafic de produits alcoolisés est structurellement différent : globalement stable sur un an à 2 765 affaires, dominé par l'acheminement terrestre (53 % par véhicule, 47 % par frontière terrestre), avec une empreinte e-commerce quasi nulle (0,5 %). Trois corridors intrarégionaux définissent les routes de l'alcool (Moyen-Orient, Europe orientale et centrale, Europe occidentale). Les saisies d'alcool éthylique non dénaturé plus que doublent (+113 %), pointant des risques de santé publique liés aux spiritueux contrefaits contaminés au méthanol, documentés lors d'épisodes en 2024 et 2025."
+      }
+    },
+    {
+      "sec": "Security",
+      "x": {
+        "en": "The Security section captured weapons trafficking as its dominant stream, with 86.9% of cases over 2024 and 2025, alongside emerging streams covering explosives and unmanned aerial systems (UAS). The United States alone accounted for 49.1% of weapons cases in 2025, generating a strong dependency between United States reporting trends and aggregate weapons figures. Two structurally distinct trafficking profiles emerged within the weapons subflow: a ground-based profile centred on land border vehicle inspections for ammunition, magazines, pistols and assault rifles, and an air-postal profile centred on regular mail concealment for compact components such as silencers (98% airport, 85% e-commerce) and receivers (84% airport, 69% e-commerce). Risk profiling drove 79.6% of weapons detections, indicating that interceptions are predominantly the result of structured proactive targeting rather than routine inspection. UAS emerged as a distinct enforcement category, accounting for 11.9% of cases (653 cases), with 23.6% of cases linked to e-commerce. Modified or military-specification drone systems are increasingly intercepted in mail and courier networks, requiring product-specific knowledge alongside traditional security risk assessment.",
+        "fr": "La section Sécurité a pour flux dominant le trafic d'armes, avec 86,9 % des affaires sur 2024 et 2025, aux côtés de flux émergents couvrant les explosifs et les systèmes aériens sans pilote (UAS). Les États-Unis représentent à eux seuls 49,1 % des affaires d'armes en 2025, créant une forte dépendance entre les tendances de déclaration américaines et les chiffres agrégés sur les armes. Deux profils de trafic structurellement distincts émergent au sein du sous-flux des armes : un profil terrestre centré sur l'inspection des véhicules aux frontières terrestres pour les munitions, chargeurs, pistolets et fusils d'assaut, et un profil aéro-postal centré sur la dissimulation dans le courrier ordinaire de composants compacts comme les silencieux (98 % aéroport, 85 % e-commerce) et les carcasses (84 % aéroport, 69 % e-commerce). Le profilage de risque porte 79,6 % des détections d'armes, indiquant que les interceptions résultent surtout d'un ciblage proactif structuré plutôt que d'un contrôle de routine. Les UAS émergent comme une catégorie distincte, représentant 11,9 % des affaires (653 affaires), 23,6 % des affaires étant liées à l'e-commerce. Des systèmes de drones modifiés ou de spécification militaire sont de plus en plus interceptés dans les réseaux postaux et de messagerie, exigeant une connaissance spécifique des produits en plus de l'évaluation classique du risque de sécurité."
+      }
+    }
+  ],
+  "aml": {
+    "lead": {
+      "en": "This chapter analyses the three AML/CTF trafficking streams captured through the CEN: cash smuggling, gold trafficking and gemstones trafficking. Together they map the movement of value across borders, from high-volume currency flows detected at airports and land crossings to the smaller but structurally significant gold and gemstone corridors that link Asia, the Middle East and Africa.",
+      "fr": "Ce chapitre analyse les trois flux AML/CTF saisis par le CEN : la contrebande d'espèces, le trafic d'or et le trafic de pierres précieuses. Ensemble, ils cartographient le mouvement de la valeur à travers les frontières, des flux de devises de fort volume détectés dans les aéroports et aux passages terrestres aux corridors d'or et de pierres, plus réduits mais structurellement importants, qui relient l'Asie, le Moyen-Orient et l'Afrique."
+    },
+    "comp": {
+      "en": "The AML/CTF section recorded 10,538 cases and 12,261 seizures across 87 administrations. Cash smuggling overwhelmingly dominates with 95.5% of seizures, ahead of gold (4.2%) and gemstones (0.3%), confirming that physical currency movement remains the principal money-laundering vector intercepted at borders, while gold and gemstones, though marginal in count, carry disproportionate value and signal more organized laundering schemes.",
+      "fr": "La section AML/CTF a enregistré 10 538 affaires et 12 261 saisies sur 87 administrations. La contrebande d'espèces domine très largement avec 95,5 % des saisies, devant l'or (4,2 %) et les pierres précieuses (0,3 %), ce qui confirme que le déplacement physique de devises reste le principal vecteur de blanchiment intercepté aux frontières, tandis que l'or et les pierres, marginaux en nombre, portent une valeur disproportionnée et signalent des schémas de blanchiment plus organisés."
+    },
+    "reporters": {
+      "en": "The top 10 administrations account for 87.2% of cases, a high concentration that reflects where border cash controls are most systematically applied. Italy remained the leading reporter despite a sharp decline, Germany emerged as the second contributor and France entered the top 10, a reshuffling that reflects expanded CEN coverage in Western Europe rather than a genuine geographic shift in trafficking.",
+      "fr": "Les 10 premières administrations représentent 87,2 % des affaires, forte concentration qui reflète les endroits où les contrôles d'espèces aux frontières sont les plus systématiques. L'Italie reste le premier rapporteur malgré une forte baisse, l'Allemagne devient le deuxième contributeur et la France entre dans le top 10, un rebattement qui traduit une couverture élargie du CEN en Europe occidentale plus qu'un véritable déplacement géographique du trafic."
+    },
+    "cashLead": {
+      "en": "Cash smuggling is the backbone of the chapter: in 2025, 79 administrations reported 10,034 cases and 11,710 seizures involving 91 distinct currencies. The breadth of currencies reflects the global reach of cash movement, but a small set of major reserve currencies concentrates most of the volume and value, as the following figures show.",
+      "fr": "La contrebande d'espèces est l'ossature du chapitre : en 2025, 79 administrations ont déclaré 10 034 affaires et 11 710 saisies portant sur 91 devises distinctes. La diversité des devises reflète la portée mondiale des mouvements d'espèces, mais un petit ensemble de grandes monnaies de réserve concentre l'essentiel du volume et de la valeur, comme le montrent les figures suivantes."
+    },
+    "currencies": {
+      "en": "The euro was by far the most frequently seized currency (69.0% of the top five), ahead of the US dollar (21.7%), together forming the core of intercepted cash. The Saudi riyal rose in frequency even as its total value declined, a sign of more numerous but smaller seizures, while the top five currencies together represented 90.3% of genuine cash seizures, underlining how concentrated the cash trade is around a handful of reserve currencies.",
+      "fr": "L'euro est de loin la devise la plus fréquemment saisie (69,0 % du top cinq), devant le dollar US (21,7 %), formant ensemble le cœur des espèces interceptées. Le riyal saoudien progresse en fréquence alors même que sa valeur totale recule, signe de saisies plus nombreuses mais plus petites, tandis que les cinq premières devises totalisent 90,3 % des saisies authentiques, ce qui souligne la concentration du commerce d'espèces autour de quelques monnaies de réserve."
+    },
+    "conveyance": {
+      "en": "Air was the dominant conveyance for euro and US dollar seizures and carried the highest total value, consistent with high-value cash moving with travellers through airports. Vehicles ranked second, reflecting land-border enforcement along regional corridors, while regular mail showed a notable US dollar value despite few seizures, a reminder that postal channels occasionally carry concentrated high-value consignments.",
+      "fr": "La voie aérienne est le principal mode d'acheminement pour l'euro et le dollar US et concentre la plus forte valeur totale, cohérent avec des espèces de forte valeur circulant avec les voyageurs dans les aéroports. Les véhicules arrivent en deuxième, reflet de la lutte aux frontières terrestres le long des corridors régionaux, tandis que le courrier ordinaire affiche une valeur notable en dollars US malgré peu de saisies, rappel que les canaux postaux portent parfois des envois concentrés de forte valeur."
+    },
+    "direction": {
+      "en": "Export dominated at 52.4% of cases, ahead of import (40.1%), transit (5.6%) and internal (2.0%), confirming that cash controls catch value chiefly as it leaves a jurisdiction. Profiles vary sharply by country: Saudi Arabia showed an almost exclusively export profile, pointing to outbound value flows, while France was the most balanced across all four directions, reflecting its position at the crossroads of multiple European corridors.",
+      "fr": "L'exportation domine à 52,4 % des affaires, devant l'importation (40,1 %), le transit (5,6 %) et l'interne (2,0 %), ce qui confirme que les contrôles d'espèces saisissent la valeur surtout à la sortie d'une juridiction. Les profils varient fortement selon les pays : l'Arabie saoudite présente un profil presque exclusivement à l'export, signe de flux de valeur sortants, tandis que la France est la plus équilibrée sur les quatre directions, reflet de sa position au carrefour de plusieurs corridors européens."
+    },
+    "detection": {
+      "en": "Routine control drove 60.9% of cases and risk profiling 35.3%; together they covered 96.2% of detections. This contrasts sharply with drug enforcement, where risk profiling dominates, and confirms that cash interception remains predominantly a systematic border-screening function rather than an intelligence-led one, leaving room to strengthen targeting as data sharing matures.",
+      "fr": "Le contrôle de routine porte 60,9 % des affaires et le profilage de risque 35,3 % ; ensemble ils couvrent 96,2 % des détections. Cela contraste nettement avec la lutte antidrogue, où le profilage domine, et confirme que l'interception des espèces relève avant tout d'un filtrage systématique aux frontières plus que du renseignement, avec une marge pour renforcer le ciblage à mesure que le partage de données se développe."
+    },
+    "goldLead": {
+      "en": "Gold trafficking is the largest non-cash typology, with 484 cases reported by 35 administrations. Eight of the top 10 reporting countries are in Asia or the Middle East, pointing to a continuous Asian and West Asian corridor where gold serves both as a store of value and as a laundering instrument, often moving towards established refining and trading hubs.",
+      "fr": "Le trafic d'or est la plus importante typologie hors espèces, avec 484 affaires déclarées par 35 administrations. Huit des 10 premiers pays rapporteurs se situent en Asie ou au Moyen-Orient, signe d'un corridor continu asiatique et ouest-asiatique où l'or sert à la fois de réserve de valeur et d'instrument de blanchiment, circulant souvent vers des pôles établis de raffinage et de négoce."
+    },
+    "goldProfile": {
+      "en": "Airports concentrate 74% of gold seizures and travellers carry most of it, in baggage (62%) or on the person (22%), the signature of passenger-borne value movement. Imports account for 82.6% of cases, indicating detection at destination, while jewellery (42.6%) and bars (38.8%) are now nearly balanced, a shift towards a more structured, laundering-oriented typology rather than opportunistic personal carriage.",
+      "fr": "Les aéroports concentrent 74 % des saisies d'or et les voyageurs en transportent l'essentiel, dans les bagages (62 %) ou sur la personne (22 %), signature d'un déplacement de valeur par passagers. Les importations représentent 82,6 % des affaires, signe d'une détection à destination, tandis que bijoux (42,6 %) et lingots (38,8 %) sont désormais presque à parité, évolution vers une typologie plus structurée et orientée blanchiment plutôt qu'un transport personnel opportuniste."
+    },
+    "gemsLead": {
+      "en": "Gemstones trafficking is the smallest typology, with 40 cases from 18 administrations. Türkiye, Azerbaijan and South Africa together account for 62.5% of cases, reflecting a South Caucasus corridor and a Southern Africa to Asia outflow. Coloured and semi-precious stones, not diamonds, dominate the caseload, and detection is largely reactive, with routine control at 55%, underlining how little systematic targeting this low-volume, high-value stream currently receives.",
+      "fr": "Le trafic de pierres précieuses est la plus petite typologie, avec 40 affaires sur 18 administrations. La Turquie, l'Azerbaïdjan et l'Afrique du Sud totalisent 62,5 % des affaires, reflet d'un corridor du Caucase du Sud et d'un flux de l'Afrique australe vers l'Asie. Les pierres de couleur et semi-précieuses, non les diamants, dominent, et la détection reste largement réactive, le contrôle de routine atteignant 55 %, ce qui souligne le faible ciblage systématique dont bénéficie ce flux de faible volume et de forte valeur."
+    },
+    "proportion": {
+      "en": "Across reporting countries, the euro and the US dollar dominate the currency mix, while the Saudi riyal, the Polish zloty and the Ukrainian hryvnia point to localized cash corridors anchored in specific regional routes. Hungary and Poland report seizures across all five currencies, reflecting their position as transit hubs at the eastern border of the European Union, where flows from multiple origins converge before moving westward.",
+      "fr": "Parmi les pays rapporteurs, l'euro et le dollar US dominent le mix de devises, tandis que le riyal saoudien, le zloty polonais et la hryvnia ukrainienne signalent des corridors d'espèces localisés ancrés sur des routes régionales précises. La Hongrie et la Pologne déclarent des saisies dans les cinq devises, reflet de leur rôle de plaques tournantes à la frontière orientale de l'Union européenne, où des flux d'origines multiples convergent avant de filer vers l'ouest."
+    },
+    "map": {
+      "en": "Combining countries of seizure, departure and destination, 61 countries appear in at least one cash flow, far more than the administrations that report to the CEN, which illustrates the cross-border reach of the data. The most frequently mentioned jurisdictions align with three corridors: the Gulf and MENA circuit, the Eastern European axis around Poland and Ukraine, and trans-Eurasian flows through Türkiye and the Russian Federation, each linking distinct source and destination markets for physical cash.",
+      "fr": "En combinant les pays de saisie, de départ et de destination, 61 pays apparaissent dans au moins un flux d'espèces, bien plus que les administrations qui déclarent au CEN, ce qui illustre la portée transfrontalière des données. Les juridictions les plus citées s'alignent sur trois corridors : le circuit du Golfe et de la zone MENA, l'axe est-européen autour de la Pologne et de l'Ukraine, et les flux transeurasiens via la Turquie et la Fédération de Russie, chacun reliant des marchés sources et de destination distincts pour les espèces."
+    },
+    "counterfeit": {
+      "en": "Counterfeit currency is a marginal but highly concentrated typology, reported by only a handful of administrations across 2024 and 2025. Senegal dominates the caseload, consistent with regional CFA franc counterfeiting, with a small set of other administrations completing the reporting base. The narrow base means the CEN data is a window onto a few active reporters rather than a global measure, so year-on-year movements should be read as reporting signals rather than trafficking trends.",
+      "fr": "La fausse monnaie est une typologie marginale mais très concentrée, déclarée par une poignée d'administrations seulement sur 2024 et 2025. Le Sénégal domine les affaires, cohérent avec la contrefaçon régionale du franc CFA, quelques autres administrations complétant la base rapportrice. Cette base étroite fait des données du CEN une fenêtre sur quelques rapporteurs actifs plutôt qu'une mesure mondiale, si bien que les variations annuelles doivent se lire comme des signaux de déclaration plus que comme des tendances de trafic."
+    }
+  },
+  "conclusion": {
+    "lead": {
+      "en": "The 2025 edition of the Illicit Trade Report documents a global enforcement landscape that is neither static nor uniform. Across the six thematic sections covered by this report, the data confirms three structural realities. Criminal networks have demonstrated a consistent capacity to adapt to enforcement pressure, regulatory change, and shifts in the technological infrastructure of legitimate commerce. Customs administrations have responded with increased intelligence-led targeting, expanded cooperation frameworks and the systematic use of the Customs Enforcement Network as a global intelligence platform. The {cases} cases reported by {adm} administrations in 2025 are the visible expression of this collective effort.",
+      "fr": "L'édition 2025 du Rapport sur les trafics illicites documente un paysage répressif mondial qui n'est ni statique ni uniforme. À travers les six sections thématiques couvertes par ce rapport, les données confirment trois réalités structurelles. Les réseaux criminels ont démontré une capacité constante à s'adapter à la pression répressive, aux évolutions réglementaires et aux mutations de l'infrastructure technologique du commerce légitime. Les administrations douanières y ont répondu par un ciblage accru fondé sur le renseignement, des cadres de coopération élargis et l'usage systématique du Réseau douanier de lutte contre la fraude comme plateforme mondiale de renseignement. Les {cases} affaires déclarées par {adm} administrations en 2025 sont l'expression visible de cet effort collectif."
+    },
+    "threatH": {
+      "en": "An evolving threat",
+      "fr": "Une menace en évolution"
+    },
+    "threat": {
+      "en": [
+        "The most consequential adaptations documented in 2025 are structural rather than incremental. Fentanyl has displaced heroin as the most frequently seized opioid for the first time in CEN history, marking the structural arrival of synthetic opioids as the dominant category in Customs enforcement data. New psychoactive substances have become entirely postal, with 78.0% of seizures concealed in mail and 81.9% of cases linked to e-commerce, an enforcement profile that mirrors counterfeit goods rather than traditional narcotics. Ivory laundering has migrated into the legitimate antique trade, with 74.7% of elephant-derived seizures now involving worked ivory declared as antiques or jewellery rather than raw tusks. Firearms have been fragmented into postal-channel components, with silencers (85% e-commerce) and receivers (69% e-commerce) emerging as a structurally distinct trafficking channel within the Security section. Across all sections, e-commerce now powers 44.8% of cases globally, establishing the parcel and postal infrastructure of online commerce as a primary distribution channel for illicit trade.",
+        "These adaptations share a common underlying logic. Criminal networks systematically exploit the gap between the speed of change in commercial and technological environments and the speed of adaptation in enforcement systems. The postal and parcel infrastructure scaled dramatically with the growth of e-commerce, and criminal networks integrated it into their distribution flows immediately. The regulatory grey zones around new psychoactive substances, e-cigarettes and commercial drones were exploited from the moment they opened. The documentary complexity of antique trade exemptions under CITES has been mapped and exploited systematically. Closing these gaps requires enforcement systems that are as adaptive as the networks they pursue, with shorter feedback loops between data, intelligence and operational action."
+      ],
+      "fr": [
+        "Les adaptations les plus lourdes de conséquences documentées en 2025 sont structurelles plutôt qu'incrémentales. Le fentanyl a supplanté l'héroïne comme opioïde le plus fréquemment saisi pour la première fois dans l'histoire du CEN, marquant l'arrivée structurelle des opioïdes de synthèse comme catégorie dominante dans les données répressives douanières. Les nouvelles substances psychoactives sont devenues entièrement postales, avec 78,0 % des saisies dissimulées dans le courrier et 81,9 % des affaires liées à l'e-commerce, un profil répressif qui se rapproche davantage des contrefaçons que des stupéfiants traditionnels. Le blanchiment d'ivoire a migré vers le marché légitime des antiquités, 74,7 % des saisies dérivées de l'éléphant portant désormais sur de l'ivoire travaillé déclaré comme antiquités ou bijoux plutôt que sur des défenses brutes. Les armes à feu ont été fragmentées en composants acheminés par voie postale, les silencieux (85 % d'e-commerce) et les carcasses (69 % d'e-commerce) émergeant comme un canal de trafic structurellement distinct au sein de la section Sécurité. Toutes sections confondues, l'e-commerce alimente désormais 44,8 % des affaires au niveau mondial, érigeant l'infrastructure de colis et postale du commerce en ligne en canal de distribution majeur des trafics illicites.",
+        "Ces adaptations partagent une logique commune. Les réseaux criminels exploitent systématiquement l'écart entre la rapidité des évolutions des environnements commerciaux et technologiques et la vitesse d'adaptation des systèmes répressifs. L'infrastructure postale et de colis s'est massivement développée avec la croissance de l'e-commerce, et les réseaux criminels l'ont aussitôt intégrée à leurs flux de distribution. Les zones grises réglementaires entourant les nouvelles substances psychoactives, les cigarettes électroniques et les drones commerciaux ont été exploitées dès leur apparition. La complexité documentaire des exemptions du commerce d'antiquités au titre de la CITES a été cartographiée et exploitée méthodiquement. Combler ces écarts exige des systèmes répressifs aussi adaptatifs que les réseaux qu'ils poursuivent, avec des boucles de rétroaction plus courtes entre données, renseignement et action opérationnelle."
+      ]
+    },
+    "communityH": {
+      "en": "A responsive community",
+      "fr": "Une communauté réactive"
+    },
+    "community": {
+      "en": [
+        "The 2025 enforcement record reflects a Customs community that is actively adapting to these structural shifts. The expansion of risk profiling as the dominant detection mechanism, reaching 80.5% of cases in cannabis, 88.7% in NPS and 79.6% in weapons, indicates that algorithmic and intelligence-driven targeting has become the operational backbone of modern Customs enforcement. The growth of joint operations under WCO frameworks, including Operation STOP IV which mobilized 119 Customs administrations against counterfeit medical products and IPR-infringing goods in e-commerce, Operation FRONPIAS in the Americas focused on IPR, Health and Safety, the COLIBRI Project on cocaine trafficking, and the WCO-INTERPOL THUNDER framework on wildlife trafficking, illustrates the operational maturity of multilateral cooperation. The strengthening of postal operator partnerships and the progressive deployment of advance electronic data requirements for parcel consignments are gradually closing the visibility gap that criminal networks have exploited in postal channels.",
+        "The CEN is the institutional expression of this collective enforcement intelligence. The {cases} cases reported in 2025 do not merely document enforcement events: they generate a data set that identifies trends before they become entrenched, confirms routes before they become established corridors, and maps networks before they consolidate. Every administration that improves its CEN reporting in timeliness, completeness and geographic coverage multiplies the enforcement value of its own seizures by contributing to the collective intelligence available to all participating administrations. The {adm} administrations participating in the 2025 ITR represent a substantial increase in the institutional reach of the CEN compared with previous years, although significant reporting gaps remain in source and transit regions where the visibility of trafficking flows is structurally limited."
+      ],
+      "fr": [
+        "Le bilan répressif 2025 reflète une communauté douanière qui s'adapte activement à ces basculements structurels. L'essor du profilage de risque comme principal mécanisme de détection, atteignant 80,5 % des affaires pour le cannabis, 88,7 % pour les NSP et 79,6 % pour les armes, indique que le ciblage algorithmique et fondé sur le renseignement est devenu l'ossature opérationnelle de la douane moderne. La montée en puissance des opérations conjointes sous les cadres de l'OMD, dont l'opération STOP IV qui a mobilisé 119 administrations douanières contre les produits médicaux contrefaisants et les marchandises portant atteinte aux DPI dans l'e-commerce, l'opération FRONPIAS dans les Amériques axée sur les DPI, la santé et la sécurité, le projet COLIBRI sur le trafic de cocaïne, et le cadre OMD-INTERPOL THUNDER sur le trafic d'espèces sauvages, illustre la maturité opérationnelle de la coopération multilatérale. Le renforcement des partenariats avec les opérateurs postaux et le déploiement progressif des exigences de données électroniques anticipées pour les envois de colis comblent peu à peu le déficit de visibilité que les réseaux criminels exploitent dans les canaux postaux.",
+        "Le CEN est l'expression institutionnelle de ce renseignement répressif collectif. Les {cases} affaires déclarées en 2025 ne se contentent pas de documenter des événements répressifs : elles génèrent un jeu de données qui identifie les tendances avant qu'elles ne s'enracinent, confirme les routes avant qu'elles ne deviennent des corridors établis, et cartographie les réseaux avant qu'ils ne se consolident. Chaque administration qui améliore sa déclaration au CEN en rapidité, exhaustivité et couverture géographique multiplie la valeur répressive de ses propres saisies en contribuant au renseignement collectif accessible à toutes les administrations participantes. Les {adm} administrations participant à l'ITR 2025 représentent une hausse substantielle de la portée institutionnelle du CEN par rapport aux années précédentes, même si d'importantes lacunes déclaratives subsistent dans les régions de source et de transit, où la visibilité des flux de trafic est structurellement limitée."
+      ]
+    },
+    "prioritiesH": {
+      "en": "Three structural priorities for 2026 and beyond",
+      "fr": "Trois priorités structurelles pour 2026 et au-delà"
+    },
+    "priorities": [
+      {
+        "t": {
+          "en": "Postal and parcel risk profiling as a core Customs competency",
+          "fr": "Le profilage de risque postal et des colis comme compétence douanière centrale"
+        },
+        "x": {
+          "en": "With e-commerce driving 44.8% of all ITR cases, postal targeting can no longer be approached as a specialist function deployed in selected administrations. It must become a systemic capability embedded in national risk management frameworks, supported by advance electronic data requirements, integration with postal operators, and harmonised risk indicators across sections.",
+          "fr": "L'e-commerce portant 44,8 % de toutes les affaires de l'ITR, le ciblage postal ne peut plus être abordé comme une fonction de spécialiste déployée dans quelques administrations. Il doit devenir une capacité systémique intégrée aux cadres nationaux de gestion des risques, soutenue par des exigences de données électroniques anticipées, l'intégration avec les opérateurs postaux et des indicateurs de risque harmonisés entre les sections."
+        }
+      },
+      {
+        "t": {
+          "en": "Cross-section risk indicators that match the operational convergence of criminal networks",
+          "fr": "Des indicateurs de risque transversaux à la hauteur de la convergence opérationnelle des réseaux criminels"
+        },
+        "x": {
+          "en": "The same trafficking networks operate across drugs, IPR, environmental crime and revenue streams, yet enforcement frameworks are still organized around section-specific commodity categories. Developing risk indicators that detect actors operating across multiple trafficking streams simultaneously is the next analytical frontier for the CEN and a structural priority for WCO capacity building activities.",
+          "fr": "Les mêmes réseaux de trafic opèrent à travers les stupéfiants, les DPI, la criminalité environnementale et les recettes, alors que les cadres répressifs restent organisés autour de catégories de marchandises propres à chaque section. Développer des indicateurs de risque détectant les acteurs opérant simultanément sur plusieurs flux de trafic constitue la prochaine frontière analytique du CEN et une priorité structurelle pour les activités de renforcement des capacités de l'OMD."
+        }
+      },
+      {
+        "t": {
+          "en": "Expansion of CEN reporting coverage",
+          "fr": "L'élargissement de la couverture déclarative du CEN"
+        },
+        "x": {
+          "en": "The persistent gap between countries reporting cases and countries involved in trafficking flows underlines that the ITR captures the enforced dimension of illicit trade rather than its full extent. Expanding the geographic and analytical depth of CEN reporting, particularly in source and transit regions, is a direct investment in the analytical integrity of the ITR as a global enforcement intelligence product.",
+          "fr": "L'écart persistant entre les pays déclarant des affaires et les pays impliqués dans les flux de trafic souligne que l'ITR saisit la dimension réprimée du commerce illicite plutôt que son ampleur totale. Étendre la profondeur géographique et analytique de la déclaration au CEN, en particulier dans les régions de source et de transit, est un investissement direct dans l'intégrité analytique de l'ITR comme produit mondial de renseignement répressif."
+        }
+      }
+    ],
+    "forwardH": {
+      "en": "Looking forward to 2026",
+      "fr": "Perspectives pour 2026"
+    },
+    "forward": {
+      "en": [
+        "The 2026 edition of the ITR will document a Customs community that is already adapting to the challenges identified in 2025. Several institutional developments support this trajectory. Advance electronic data requirements for postal consignments are being progressively expanded, enabling earlier risk targeting before parcels arrive at their destinations. Postal operator partnerships are deepening across regions, with several frameworks moving from voluntary cooperation towards structured information sharing. The STOP operational series will continue to develop enforcement capabilities against counterfeit goods in e-commerce environments. The WCO-INTERPOL THUNDER framework on wildlife trafficking remains a structural pillar of environmental crime enforcement. The CEN itself continues to grow, both in administrations contributing and in the analytical depth of individual records.",
+        "The illicit trade ecosystem will also continue to evolve. New psychoactive substances will continue to be synthesized faster than scheduling frameworks can classify them. Online platforms will develop features that both facilitate and complicate enforcement. New product categories, including modified unmanned aerial systems, additively manufactured firearms components, and emerging tobacco and nicotine products, will require CEN classification responses. The structural shift towards e-commerce and parcel distribution will deepen as global online commerce volumes grow. The 2026 theme of the year, \"Customs Protecting Society through Vigilance and Commitment\", anchors the institutional response of the WCO and its Members to this evolving threat landscape.",
+        "The measure of the global Customs community's effectiveness is not the absolute volume of seizures in any single year. It is the consistency with which enforcement action is grounded in accurate and timely intelligence, the extent to which individual Customs interceptions contribute to and benefit from the collective intelligence of the CEN, and the degree to which the {adm} Customs administrations participating in the ITR operate as a unified enforcement network rather than as independent actors facing a globally integrated adversary. The 2025 Illicit Trade Report is both the record of what has been achieved through this collective effort and the analytical foundation for the work that must follow."
+      ],
+      "fr": [
+        "L'édition 2026 de l'ITR documentera une communauté douanière déjà en train de s'adapter aux défis identifiés en 2025. Plusieurs évolutions institutionnelles soutiennent cette trajectoire. Les exigences de données électroniques anticipées pour les envois postaux sont progressivement étendues, permettant un ciblage du risque plus précoce, avant l'arrivée des colis à destination. Les partenariats avec les opérateurs postaux s'approfondissent dans toutes les régions, plusieurs cadres passant d'une coopération volontaire à un partage d'informations structuré. La série opérationnelle STOP continuera de développer les capacités répressives contre les contrefaçons dans les environnements d'e-commerce. Le cadre OMD-INTERPOL THUNDER sur le trafic d'espèces sauvages demeure un pilier structurel de la lutte contre la criminalité environnementale. Le CEN lui-même continue de croître, tant par le nombre d'administrations contributrices que par la profondeur analytique des enregistrements individuels.",
+        "L'écosystème du commerce illicite continuera lui aussi d'évoluer. Les nouvelles substances psychoactives continueront d'être synthétisées plus vite que les cadres de classification ne peuvent les répertorier. Les plateformes en ligne développeront des fonctionnalités qui à la fois facilitent et compliquent la répression. De nouvelles catégories de produits, dont les systèmes aériens sans pilote modifiés, les composants d'armes à feu issus de la fabrication additive et les produits émergents du tabac et de la nicotine, exigeront des réponses de classification du CEN. Le basculement structurel vers l'e-commerce et la distribution par colis s'accentuera à mesure que croîtront les volumes du commerce en ligne mondial. Le thème de l'année 2026, « une douane qui protège la société par sa vigilance et son engagement », ancre la réponse institutionnelle de l'OMD et de ses Membres face à ce paysage de menaces en évolution.",
+        "La mesure de l'efficacité de la communauté douanière mondiale n'est pas le volume absolu des saisies d'une année donnée. C'est la constance avec laquelle l'action répressive s'appuie sur un renseignement exact et opportun, la mesure dans laquelle chaque interception douanière contribue au renseignement collectif du CEN et en bénéficie, et le degré auquel les {adm} administrations douanières participant à l'ITR opèrent comme un réseau répressif unifié plutôt que comme des acteurs isolés face à un adversaire intégré à l'échelle mondiale. Le Rapport 2025 sur les trafics illicites est à la fois le compte rendu de ce qui a été accompli par cet effort collectif et le socle analytique du travail à venir."
+      ]
+    },
+    "closing": {
+      "en": "Customs administrations remain a strong and effective line of defence for society.",
+      "fr": "Les administrations douanières demeurent une ligne de défense solide et efficace pour la société."
+    }
+  }
+}

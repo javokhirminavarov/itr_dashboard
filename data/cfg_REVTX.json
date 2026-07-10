@@ -1,0 +1,207 @@
+{
+  "ov": {
+    "intro": {
+      "en": "The Revenue section covers tobacco products trafficking and alcohol products trafficking, the two streams that most directly affect public finances through evaded excise and customs duties. In 2025, 120 Customs administrations reported 34,236 cases and 40,744 seizures, down from 50,457 cases and 57,320 seizures in 2024, a 32.2% fall in cases. The decline is concentrated in tobacco and reflects shifts in reporting and routine control intensity in a few high-volume administrations rather than a contraction of the underlying market. As with all CEN data, 2025 figures are provisional.",
+      "fr": "La section Recettes couvre le trafic de produits du tabac et de produits alcoolisés, les deux flux qui pèsent le plus directement sur les finances publiques par les droits d'accise et de douane éludés. En 2025, 120 administrations douanières ont déclaré 34 236 affaires et 40 744 saisies, contre 50 457 affaires et 57 320 saisies en 2024, soit une baisse de 32,2 % des affaires. Le recul se concentre sur le tabac et traduit des évolutions de déclaration et d'intensité des contrôles de routine dans quelques administrations à fort volume, plus qu'une contraction du marché sous-jacent. Comme toutes les données CEN, les chiffres 2025 sont provisoires."
+    },
+    "split": {
+      "en": "Tobacco trafficking is overwhelmingly dominant, with 31,571 cases (92.2% of the section) and 36,803 seizures, reported by 113 administrations. Alcohol trafficking accounts for 2,765 cases (7.8%) and 3,941 seizures, reported by 52 administrations. The contrast in reporting coverage is far narrower than the gap in case volume, which points to tobacco being driven by a handful of very high-volume reporters while alcohol enforcement is thinner but more evenly distributed.",
+      "fr": "Le trafic de tabac est très largement dominant, avec 31 571 affaires (92,2 % de la section) et 36 803 saisies, déclarées par 113 administrations. Le trafic d'alcool représente 2 765 affaires (7,8 %) et 3 941 saisies, déclarées par 52 administrations. Le contraste de couverture déclarative est bien plus faible que l'écart de volume d'affaires, ce qui indique un tabac porté par quelques très gros rapporteurs tandis que la lutte contre l'alcool est plus mince mais plus régulièrement répartie."
+    },
+    "regional": {
+      "en": "The Middle East and North Africa dominates the section, driven by a single very large reporter, while Europe is significant for both streams. The regional split differs by stream: tobacco is concentrated in the Gulf and Europe, whereas alcohol enforcement is comparatively more visible in Europe and parts of the Middle East where prohibition or high taxation create strong incentives for smuggling.",
+      "fr": "Le Moyen-Orient et l'Afrique du Nord domine la section, porté par un unique très gros rapporteur, tandis que l'Europe est significative pour les deux flux. La répartition régionale diffère selon le flux : le tabac se concentre dans le Golfe et en Europe, tandis que la lutte contre l'alcool est relativement plus visible en Europe et dans certaines parties du Moyen-Orient où la prohibition ou une fiscalité élevée créent de fortes incitations à la contrebande."
+    },
+    "operations": {
+      "en": "A coordinated international operation conducted in 2025 illustrates the joint enforcement response to revenue-related trafficking across regions.",
+      "fr": "Une opération internationale coordonnée menée en 2025 illustre la réponse répressive conjointe au trafic portant atteinte aux recettes, à travers plusieurs régions."
+    }
+  },
+  "ops": [
+    {
+      "title": {
+        "en": "Joint Operation LYNX AFRICA: 13 countries deliver across the African continent on excisable products",
+        "fr": "Opération conjointe LYNX AFRICA : 13 pays obtiennent des résultats sur le continent africain en matière de produits soumis à accise"
+      },
+      "body": {
+        "en": "Operation LYNX AFRICA brought together thirteen countries in April and May 2025. Support from the RILOs for the Middle East and North Africa (RILO MENA) and for Western and Central Africa (RILO WCA) was central to its success. The pre-operational workshop was hosted by the Kenya Revenue Authority in Mombasa in March 2025, and funding was provided by HMRC, United Kingdom. Across the thirteen participating countries, seizures included over 16 million cigarettes, over 2,000 kilograms of medicinal products and over 55,000 litres of smuggled beverages, alongside over 9,515 kilograms of illegal drugs and the equivalent of USD 230,000 in currency. Building on this operation and earlier iterations in the Asia-Pacific region, and in keeping with the WCO Strategic Plan, further phases of Operation LYNX are planned. Source: WCO RILO Middle East and North Africa and WCO RILO Western and Central Africa, with funding from HMRC, United Kingdom.",
+        "fr": "L'opération LYNX AFRICA a réuni treize pays en avril et mai 2025. Le soutien des BRLR du Moyen-Orient et de l'Afrique du Nord (BRLR MENA) et de l'Afrique de l'Ouest et centrale (BRLR WCA) a été central pour sa réussite. L'atelier pré-opérationnel a été accueilli par la Kenya Revenue Authority à Mombasa en mars 2025, et le financement a été assuré par HMRC, Royaume-Uni. Sur les treize pays participants, les saisies ont compté plus de 16 millions de cigarettes, plus de 2 000 kilogrammes de produits médicaux et plus de 55 000 litres de boissons de contrebande, ainsi que plus de 9 515 kilogrammes de drogues illicites et l'équivalent de 230 000 USD en devises. Forte de cette opération et des éditions précédentes dans la région Asie-Pacifique, et conformément au Plan stratégique de l'OMD, de nouvelles phases de l'opération LYNX sont prévues. Source : BRLR OMD Moyen-Orient et Afrique du Nord et BRLR OMD Afrique de l'Ouest et centrale, avec le financement de HMRC, Royaume-Uni."
+      }
+    }
+  ],
+  "lead": {
+    "tob": {
+      "en": "Tobacco products trafficking accounts for 31,571 cases and 36,803 seizures in 2025, reported by 113 administrations, with 9,662 tonnes seized. Reporting is exceptionally concentrated: Saudi Arabia alone reported 17,812 cases, about 56% of the stream. Cigarettes form the structural core of seizures, e-commerce penetration is low at 6%, and the operational profile is anchored in routine control at the border rather than intelligence-led targeting.",
+      "fr": "Le trafic de produits du tabac représente 31 571 affaires et 36 803 saisies en 2025, déclarées par 113 administrations, pour 9 662 tonnes saisies. La déclaration est exceptionnellement concentrée : l'Arabie saoudite déclare à elle seule 17 812 affaires, environ 56 % du flux. Les cigarettes forment le coeur structurel des saisies, la pénétration de l'e-commerce est faible à 6 %, et le profil opérationnel s'ancre dans le contrôle de routine à la frontière plus que dans le ciblage par le renseignement."
+    },
+    "alc": {
+      "en": "Alcohol products trafficking accounts for 2,765 cases and 3,941 seizures in 2025, reported by 52 administrations, with 1,987,170 litres seized. Reporting is led by Saudi Arabia (629 cases), France (437), Romania (389) and Oman (301), a mix of prohibition jurisdictions and high-tax European markets. E-commerce penetration is marginal at 0.5%, confirming alcohol as a physically transported, bulk commodity.",
+      "fr": "Le trafic de produits alcoolisés représente 2 765 affaires et 3 941 saisies en 2025, déclarées par 52 administrations, pour 1 987 170 litres saisis. La déclaration est menée par l'Arabie saoudite (629 affaires), la France (437), la Roumanie (389) et Oman (301), un mélange de juridictions de prohibition et de marchés européens à forte fiscalité. La pénétration de l'e-commerce est marginale à 0,5 %, ce qui confirme l'alcool comme un produit physique transporté en gros."
+    }
+  },
+  "fig": {
+    "tob": {
+      "reporters": {
+        "en": "Reporting is dominated by a single administration. Saudi Arabia recorded 17,812 cases, about 56% of the stream, ahead of Austria (2,551), Denmark (1,284) and Ireland (1,230). This concentration means that section-level trends are highly sensitive to reporting practices in one jurisdiction, and year-on-year movements should be read with that dependence in mind.",
+        "fr": "La déclaration est dominée par une seule administration. L'Arabie saoudite enregistre 17 812 affaires, environ 56 % du flux, devant l'Autriche (2 551), le Danemark (1 284) et l'Irlande (1 230). Cette concentration rend les tendances de la section très sensibles aux pratiques de déclaration d'une seule juridiction, et les variations annuelles doivent se lire en tenant compte de cette dépendance."
+      },
+      "commodity": {
+        "en": "Cigarettes form the structural backbone of tobacco seizures by a wide margin, followed at a distance by smokeless tobacco, hand rolling and pipe tobacco and water-pipe tobacco. The sub-category profile is stable year on year, consistent with a mature, high-volume illicit market rather than an emerging one.",
+        "fr": "Les cigarettes forment de loin l'ossature structurelle des saisies de tabac, suivies à distance par le tabac sans fumée, le tabac à rouler et à pipe et le tabac à pipe à eau. Le profil par sous-catégorie est stable d'une année sur l'autre, cohérent avec un marché illicite mature et de gros volume plutôt qu'émergent."
+      },
+      "qty": {
+        "en": "A total of 9,662 tonnes were seized in 2025, dominated by cigarettes by weight. The quantity profile follows the seizure profile closely, confirming that tobacco trafficking is a bulk commodity moved in large consignments rather than fragmented across small parcels.",
+        "fr": "9 662 tonnes ont été saisies en 2025, dominées par les cigarettes en poids. Le profil de quantité suit de près le profil de saisies, ce qui confirme que le trafic de tabac est un produit de gros déplacé en grandes cargaisons plutôt que fragmenté en petits colis."
+      },
+      "oper": {
+        "en": "The operational profile is anchored at the physical border. Routine control is the leading detection method, which sets tobacco apart from typologies dominated by risk profiling, and seizures cluster at land boundaries, seaports and airports. E-commerce drives only 6% of cases, confirming that tobacco moves overwhelmingly through traditional freight and passenger channels.",
+        "fr": "Le profil opérationnel est ancré à la frontière physique. Le contrôle de routine est la première méthode de détection, ce qui distingue le tabac des typologies dominées par le profilage de risque, et les saisies se concentrent aux frontières terrestres, dans les ports et les aéroports. L'e-commerce ne porte que 6 % des affaires, confirmant que le tabac circule très majoritairement par les canaux traditionnels de fret et de voyageurs."
+      },
+      "movement": {
+        "en": "Movement is dominated by overland and maritime freight. Departure countries are concentrated in a small number of manufacturing and transit jurisdictions, and the conveyance profile leans towards vehicle and container transport, with import the dominant direction. This is the movement signature of a bulk excise commodity rather than a parcel-based one.",
+        "fr": "Le mouvement est dominé par le fret terrestre et maritime. Les pays de départ se concentrent sur un petit nombre de juridictions de production et de transit, et le profil d'acheminement penche vers le transport par véhicule et conteneur, l'importation étant la direction dominante. C'est la signature de mouvement d'un produit d'accise de gros, et non d'un produit colisé."
+      },
+      "flows": {
+        "en": "Regional flows are concentrated on a limited set of corridors feeding the main consumer markets, with the Middle East and Europe as primary destinations. Interregional movements dominate, consistent with the role of a few production and transit hubs supplying high-tax and prohibition markets.",
+        "fr": "Les flux régionaux se concentrent sur un ensemble limité de corridors alimentant les principaux marchés de consommation, le Moyen-Orient et l'Europe en destinations principales. Les mouvements interrégionaux dominent, cohérents avec le rôle de quelques pôles de production et de transit approvisionnant les marchés à forte fiscalité et de prohibition."
+      },
+      "map": {
+        "en": "Country involvement extends well beyond the set of reporting administrations, with the dominant reporter and the main manufacturing and transit jurisdictions among the most frequently involved. The long tail of countries involved in only a handful of cases reflects the wide geographic reach of cigarette supply chains.",
+        "fr": "L'implication par pays dépasse largement l'ensemble des administrations rapportrices, le rapporteur dominant et les principales juridictions de production et de transit figurant parmi les plus souvent impliqués. La longue traîne de pays impliqués dans une poignée d'affaires reflète la large portée géographique des chaînes d'approvisionnement de cigarettes."
+      }
+    },
+    "alc": {
+      "reporters": {
+        "en": "Reporting is led by Saudi Arabia (629 cases), France (437), Romania (389) and Oman (301). The presence of two Gulf prohibition jurisdictions alongside two European high-tax markets is the defining feature of the stream, splitting alcohol enforcement into two distinct economic logics.",
+        "fr": "La déclaration est menée par l'Arabie saoudite (629 affaires), la France (437), la Roumanie (389) et Oman (301). La présence de deux juridictions de prohibition du Golfe aux côtés de deux marchés européens à forte fiscalité est la caractéristique déterminante du flux, scindant la lutte contre l'alcool en deux logiques économiques distinctes."
+      },
+      "commodity": {
+        "en": "Whisky leads alcohol seizures, ahead of beer, vodka and wine. The sub-category mix reflects both high-value spirits smuggled into prohibition markets and high-volume products moved across high-tax borders to evade duty.",
+        "fr": "Le whisky domine les saisies d'alcool, devant la bière, la vodka et le vin. Le mélange par sous-catégorie reflète à la fois les spiritueux de forte valeur introduits en contrebande dans les marchés de prohibition et les produits de gros volume déplacés à travers des frontières à forte fiscalité pour éluder les droits."
+      },
+      "qty": {
+        "en": "A total of 1,987,170 litres were seized in 2025. The quantity profile is shaped by a small number of large bulk interceptions, so volume and case counts do not move together, and quantity should be read as the footprint of occasional large consignments rather than a broad caseload.",
+        "fr": "1 987 170 litres ont été saisis en 2025. Le profil de quantité est façonné par un petit nombre de grandes interceptions en vrac, si bien que volume et nombre d'affaires ne varient pas ensemble, et la quantité doit se lire comme l'empreinte de cargaisons ponctuelles importantes plutôt que d'un large volume d'affaires."
+      },
+      "oper": {
+        "en": "Like tobacco, alcohol is intercepted mainly through routine control at land boundaries and seaports, with negligible e-commerce involvement (0.5%). The profile confirms alcohol as a bulk, physically transported commodity whose detection depends on border control capacity rather than parcel screening.",
+        "fr": "Comme le tabac, l'alcool est intercepté surtout par le contrôle de routine aux frontières terrestres et dans les ports, avec une implication e-commerce négligeable (0,5 %). Le profil confirme l'alcool comme un produit de gros, physiquement transporté, dont la détection dépend de la capacité de contrôle frontalier plus que du filtrage des colis."
+      },
+      "movement": {
+        "en": "Movement is overland and maritime, with departure countries concentrated in producing and transit jurisdictions feeding nearby high-tax or prohibition markets. Vehicle and container conveyance dominate, and import is the leading direction, mirroring the bulk logistics of the tobacco stream.",
+        "fr": "Le mouvement est terrestre et maritime, les pays de départ se concentrant dans des juridictions de production et de transit alimentant les marchés voisins à forte fiscalité ou de prohibition. L'acheminement par véhicule et conteneur domine, et l'importation est la direction principale, à l'image de la logistique de gros du flux tabac."
+      },
+      "flows": {
+        "en": "Regional flows are short and intraregional more often than for tobacco, consistent with alcohol being smuggled across adjacent borders into the nearest high-incentive market rather than shipped across continents.",
+        "fr": "Les flux régionaux sont plus courts et plus souvent intrarégionaux que pour le tabac, cohérent avec un alcool passé en contrebande à travers des frontières adjacentes vers le marché à plus forte incitation le plus proche, plutôt qu'expédié entre continents."
+      },
+      "map": {
+        "en": "Country involvement is narrower than for tobacco, concentrated in the prohibition and high-tax jurisdictions that report most cases and in their immediate supply neighbours. The smaller geographic footprint is consistent with a more regional trafficking pattern.",
+        "fr": "L'implication par pays est plus étroite que pour le tabac, concentrée dans les juridictions de prohibition et à forte fiscalité qui déclarent le plus d'affaires et dans leurs voisins d'approvisionnement immédiats. L'empreinte géographique plus réduite est cohérente avec un schéma de trafic plus régional."
+      }
+    }
+  },
+  "spot": {
+    "tob": [
+      {
+        "title": {
+          "en": "Spotlight: a tale of two tobacco markets",
+          "fr": "Focus : le récit de deux marchés du tabac"
+        },
+        "body": {
+          "en": "Tobacco enforcement combines two very different logics. In the Gulf, prohibition-adjacent pricing and a single very large reporter generate enormous case counts dominated by cigarettes. In Europe, high excise taxation drives a separate, more diversified market spanning cigarettes, hand rolling tobacco and water-pipe tobacco. The section total therefore blends a high-frequency Gulf signal with a structurally different European one, and movements in the aggregate should not be read as a single market trend.",
+          "fr": "La lutte contre le tabac combine deux logiques très différentes. Dans le Golfe, des prix proches de la prohibition et un unique très gros rapporteur génèrent d'énormes volumes d'affaires dominés par les cigarettes. En Europe, une forte fiscalité d'accise nourrit un marché distinct et plus diversifié, des cigarettes au tabac à rouler et au tabac à pipe à eau. Le total de la section mêle donc un signal de forte fréquence du Golfe et un signal européen structurellement différent, et les variations de l'agrégat ne doivent pas se lire comme une tendance de marché unique."
+        }
+      },
+      {
+        "title": {
+          "en": "Spotlight: routine control as the backbone",
+          "fr": "Focus : le contrôle de routine comme colonne vertébrale"
+        },
+        "body": {
+          "en": "Unlike narcotics or IPR, where risk profiling dominates, tobacco interception rests on routine control at the physical border. This reflects the bulk nature of the commodity, which is hard to conceal in small parcels and is most often found through systematic inspection of freight, vehicles and passenger baggage. The implication is operational: sustaining tobacco enforcement depends on frontline inspection capacity and excise-focused controls rather than on advance electronic data alone.",
+          "fr": "Contrairement aux stupéfiants ou aux DPI, où le profilage de risque domine, l'interception du tabac repose sur le contrôle de routine à la frontière physique. Cela reflète la nature de gros du produit, difficile à dissimuler en petits colis et le plus souvent trouvé par l'inspection systématique du fret, des véhicules et des bagages des voyageurs. L'implication est opérationnelle : maintenir la lutte contre le tabac dépend de la capacité d'inspection de première ligne et des contrôles axés sur l'accise, plus que des seules données électroniques anticipées."
+        }
+      }
+    ],
+    "alc": [
+      {
+        "title": {
+          "en": "Spotlight: enforcement in prohibition and high-tax jurisdictions",
+          "fr": "Focus : la lutte en juridictions de prohibition et à forte fiscalité"
+        },
+        "body": {
+          "en": "Alcohol seizures cluster in two kinds of jurisdiction. Prohibition markets such as Saudi Arabia and Oman intercept alcohol that is illegal regardless of duty status, while high-tax markets such as France and Romania intercept alcohol smuggled to evade excise. The two contexts share a method, routine control at the border, but differ in legal basis and in the products targeted, with high-value spirits more prominent in prohibition contexts and bulk products in high-tax ones.",
+          "fr": "Les saisies d'alcool se concentrent dans deux types de juridictions. Les marchés de prohibition comme l'Arabie saoudite et Oman interceptent un alcool illégal quel que soit son statut fiscal, tandis que les marchés à forte fiscalité comme la France et la Roumanie interceptent un alcool passé en contrebande pour éluder l'accise. Les deux contextes partagent une méthode, le contrôle de routine à la frontière, mais diffèrent par leur base légale et les produits visés, les spiritueux de forte valeur étant plus présents dans les contextes de prohibition et les produits de gros dans ceux à forte fiscalité."
+        }
+      }
+    ]
+  },
+  "cases": {
+    "ov": [
+      {
+        "title": {
+          "en": "Case study: Brazil, Operation Carbon-Chain (fuel)",
+          "fr": "Étude de cas : Brésil, opération Carbon-Chain (carburants)"
+        },
+        "body": {
+          "en": "Operation Carbon-Chain, conducted by Brazilian authorities, dismantled a large-scale fuel fraud scheme estimated at around 200 million litres, built on shell companies, triangulation and offshore structures to evade fuel taxes. The case illustrates that revenue-related trafficking extends well beyond tobacco and alcohol to high-value excise commodities such as fuel.",
+          "fr": "L'opération Carbon-Chain, menée par les autorités brésiliennes, a démantelé un vaste schéma de fraude aux carburants estimé à environ 200 millions de litres, reposant sur des sociétés-écrans, de la triangulation et des structures offshore pour éluder les taxes sur les carburants. L'affaire illustre que le trafic portant atteinte aux recettes dépasse largement le tabac et l'alcool pour toucher des produits d'accise de forte valeur comme les carburants."
+        }
+      }
+    ],
+    "tob": [
+      {
+        "title": {
+          "en": "Case study: Ireland, Operation Parker",
+          "fr": "Étude de cas : Irlande, opération Parker"
+        },
+        "body": {
+          "en": "Operation Parker led to the dismantling of an illicit cigarette manufacturing facility in Ireland, an inland seizure rather than a border interception. The case is consistent with the rising trend in raw tobacco seizures, with around 8 tonnes seized, and shows how illegal production can relocate inside consumer markets.",
+          "fr": "L'opération Parker a conduit au démantèlement d'une usine clandestine de cigarettes en Irlande, une saisie à l'intérieur du territoire et non à la frontière. L'affaire est cohérente avec la hausse des saisies de tabac brut, environ 8 tonnes saisies, et montre comment la production illégale peut se relocaliser au sein des marchés de consommation."
+        }
+      },
+      {
+        "title": {
+          "en": "Case study: Uzbekistan, cigarettes by rail",
+          "fr": "Étude de cas : Ouzbékistan, cigarettes par rail"
+        },
+        "body": {
+          "en": "Uzbekistan Customs intercepted around 3.1 million cigarettes moved by rail along a United Arab Emirates to Iran to Turkmenistan corridor. The case highlights the role of the United Arab Emirates as a major departure point and the relatively rare use of rail freight, which makes the corridor analytically distinctive.",
+          "fr": "La douane ouzbèke a intercepté environ 3,1 millions de cigarettes acheminées par chemin de fer le long d'un corridor Émirats arabes unis vers Iran vers Turkménistan. L'affaire souligne le rôle des Émirats arabes unis comme point de départ majeur et l'usage relativement rare du fret ferroviaire, ce qui rend le corridor analytiquement distinctif."
+        }
+      },
+      {
+        "title": {
+          "en": "Case study: Poland, cigarettes by weather balloon",
+          "fr": "Étude de cas : Pologne, cigarettes par ballon météorologique"
+        },
+        "body": {
+          "en": "Polish authorities seized cigarettes smuggled across the external European Union border from Belarus using weather balloons, an unusual conveyance method. The case illustrates the physical, border-anchored nature of tobacco enforcement and the persistence of the intra Eastern and Central Europe corridor.",
+          "fr": "Les autorités polonaises ont saisi des cigarettes passées en contrebande à travers la frontière extérieure de l'Union européenne depuis le Bélarus au moyen de ballons météorologiques, une méthode d'acheminement inhabituelle. L'affaire illustre le caractère physique et frontalier de la lutte contre le tabac et la persistance du corridor intra-Europe orientale et centrale."
+        }
+      },
+      {
+        "title": {
+          "en": "Case study: Bulgaria, cigarettes in toilet tanks",
+          "fr": "Étude de cas : Bulgarie, cigarettes dans des réservoirs de toilettes"
+        },
+        "body": {
+          "en": "Bulgarian Customs discovered cigarettes concealed in toilet water tanks within a freight consignment destined for the United Kingdom. The case combines an innovative concealment method with the Eastern and Central Europe to Western Europe corridor, a recurrent route for excise goods.",
+          "fr": "La douane bulgare a découvert des cigarettes dissimulées dans des réservoirs de chasse d'eau au sein d'un envoi de fret destiné au Royaume-Uni. L'affaire combine une méthode de dissimulation innovante et le corridor Europe orientale et centrale vers Europe occidentale, une route récurrente pour les produits d'accise."
+        }
+      },
+      {
+        "title": {
+          "en": "Case study: Kenya, counterfeit cigarettes in transit",
+          "fr": "Étude de cas : Kenya, cigarettes contrefaites en transit"
+        },
+        "body": {
+          "en": "Kenyan authorities intercepted counterfeit cigarettes in transit from Cambodia towards South Sudan through the port of Mombasa. The case activates the counterfeit tobacco typology and the less visible Asia-Pacific to East Africa transit corridor, underlining the role of major transit hubs.",
+          "fr": "Les autorités kényanes ont intercepté des cigarettes contrefaites en transit du Cambodge vers le Soudan du Sud via le port de Mombasa. L'affaire active la typologie du tabac contrefait et le corridor de transit, moins visible, Asie-Pacifique vers Afrique de l'Est, soulignant le rôle des grands pôles de transit."
+        }
+      }
+    ],
+    "alc": []
+  }
+}

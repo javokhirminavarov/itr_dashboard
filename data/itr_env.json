@@ -1,0 +1,3740 @@
+{
+  "totals": {
+    "cases": 4210,
+    "seizures": 4803,
+    "admins": 108,
+    "qty_kg": 17743931.7,
+    "qty_pieces": 1756783
+  },
+  "streamOrder": [
+    "Fauna",
+    "Flora",
+    "Waste",
+    "Other hazardous materials",
+    "ODS & HFCs"
+  ],
+  "composition": [
+    {
+      "en": "Fauna",
+      "fr": "Faune",
+      "cases": 2323,
+      "seizures": 2705
+    },
+    {
+      "en": "Flora",
+      "fr": "Flore",
+      "cases": 838,
+      "seizures": 872
+    },
+    {
+      "en": "Waste",
+      "fr": "Déchets",
+      "cases": 604,
+      "seizures": 729
+    },
+    {
+      "en": "Other hazardous materials",
+      "fr": "Autres matières dangereuses",
+      "cases": 294,
+      "seizures": 312
+    },
+    {
+      "en": "ODS & HFCs",
+      "fr": "SAO et HFC",
+      "cases": 166,
+      "seizures": 185
+    }
+  ],
+  "byStream": [
+    {
+      "en": "Fauna",
+      "fr": "Faune",
+      "curr": 2323,
+      "prev": 2249
+    },
+    {
+      "en": "Flora",
+      "fr": "Flore",
+      "curr": 838,
+      "prev": 641
+    },
+    {
+      "en": "Waste",
+      "fr": "Déchets",
+      "curr": 604,
+      "prev": 776
+    },
+    {
+      "en": "Other hazardous materials",
+      "fr": "Autres matières dangereuses",
+      "curr": 294,
+      "prev": 274
+    },
+    {
+      "en": "ODS & HFCs",
+      "fr": "SAO et HFC",
+      "curr": 166,
+      "prev": 144
+    }
+  ],
+  "cites": [
+    {
+      "en": "CITES Appendix II",
+      "fr": "CITES Annexe II",
+      "cases": 2167
+    },
+    {
+      "en": "CITES Appendix I/II",
+      "fr": "CITES Annexe I/II",
+      "cases": 392
+    },
+    {
+      "en": "CITES Appendix I",
+      "fr": "CITES Annexe I",
+      "cases": 296
+    },
+    {
+      "en": "Non-CITES",
+      "fr": "Hors CITES",
+      "cases": 109
+    },
+    {
+      "en": "CITES Appendix III",
+      "fr": "CITES Annexe III",
+      "cases": 17
+    }
+  ],
+  "ecom": 23.9,
+  "operational": {
+    "location": [
+      {
+        "en": "Airport",
+        "fr": "Aéroport",
+        "cases": 1476
+      },
+      {
+        "en": "Mail Centre",
+        "fr": "Centre postal",
+        "cases": 878
+      },
+      {
+        "en": "Land boundary",
+        "fr": "Frontière terrestre",
+        "cases": 276
+      },
+      {
+        "en": "Inland",
+        "fr": "Intérieur des terres",
+        "cases": 257
+      },
+      {
+        "en": "Seaport",
+        "fr": "Port maritime",
+        "cases": 168
+      },
+      {
+        "en": "Express Courier",
+        "fr": "Messagerie express",
+        "cases": 68
+      },
+      {
+        "en": "Rail",
+        "fr": "Voie ferrée",
+        "cases": 12
+      },
+      {
+        "en": "River",
+        "fr": "Voie fluviale",
+        "cases": 8
+      }
+    ],
+    "concealment": [
+      {
+        "en": "In baggage",
+        "fr": "Dans les bagages",
+        "cases": 1206
+      },
+      {
+        "en": "In mail",
+        "fr": "Dans le courrier",
+        "cases": 864
+      },
+      {
+        "en": "In freight",
+        "fr": "Dans le fret",
+        "cases": 234
+      },
+      {
+        "en": "In transport",
+        "fr": "Dans un moyen de transport",
+        "cases": 155
+      },
+      {
+        "en": "Not concealed",
+        "fr": "Non dissimulé",
+        "cases": 121
+      },
+      {
+        "en": "In express courier",
+        "fr": "Dans la messagerie express",
+        "cases": 80
+      },
+      {
+        "en": "On the person",
+        "fr": "Sur la personne",
+        "cases": 32
+      },
+      {
+        "en": "In premises",
+        "fr": "Dans des locaux",
+        "cases": 23
+      }
+    ],
+    "direction": [
+      {
+        "en": "Import",
+        "fr": "Importation",
+        "pct": 74.6
+      },
+      {
+        "en": "Export",
+        "fr": "Exportation",
+        "pct": 11
+      },
+      {
+        "en": "Transit",
+        "fr": "Transit",
+        "pct": 10.1
+      },
+      {
+        "en": "Internal",
+        "fr": "Interne",
+        "pct": 4.2
+      }
+    ],
+    "detection": [
+      {
+        "en": "Risk profiling",
+        "fr": "Profilage de risque",
+        "pct": 65
+      },
+      {
+        "en": "Routine control",
+        "fr": "Contrôle de routine",
+        "pct": 27.6
+      },
+      {
+        "en": "Intelligence",
+        "fr": "Renseignement",
+        "pct": 3.8
+      },
+      {
+        "en": "Random selection",
+        "fr": "Sélection aléatoire",
+        "pct": 2.9
+      },
+      {
+        "en": "Investigation",
+        "fr": "Enquête",
+        "pct": 0.7
+      }
+    ]
+  },
+  "regionCat": {
+    "regions": [
+      "WE",
+      "ECE",
+      "A/P",
+      "SA",
+      "ESA",
+      "CIS",
+      "CA",
+      "ME",
+      "WA",
+      "CAM",
+      "CAR",
+      "NA"
+    ],
+    "cats": [
+      {
+        "en": "Marine species",
+        "fr": "Espèces marines"
+      },
+      {
+        "en": "Plants",
+        "fr": "Plantes"
+      },
+      {
+        "en": "Reptiles",
+        "fr": "Reptiles"
+      },
+      {
+        "en": "Mammals",
+        "fr": "Mammifères"
+      },
+      {
+        "en": "Birds",
+        "fr": "Oiseaux"
+      },
+      {
+        "en": "Timber",
+        "fr": "Bois"
+      },
+      {
+        "en": "Arthropods",
+        "fr": "Arthropodes"
+      },
+      {
+        "en": "Other fauna",
+        "fr": "Autre faune"
+      },
+      {
+        "en": "Amphibians",
+        "fr": "Amphibiens"
+      }
+    ],
+    "matrix": [
+      [
+        823,
+        557,
+        375,
+        179,
+        63,
+        62,
+        11,
+        0,
+        4
+      ],
+      [
+        220,
+        62,
+        57,
+        46,
+        71,
+        0,
+        5,
+        12,
+        0
+      ],
+      [
+        45,
+        24,
+        52,
+        55,
+        14,
+        41,
+        6,
+        10,
+        2
+      ],
+      [
+        18,
+        47,
+        14,
+        16,
+        14,
+        10,
+        2,
+        1,
+        1
+      ],
+      [
+        4,
+        9,
+        8,
+        51,
+        2,
+        11,
+        0,
+        1,
+        0
+      ],
+      [
+        36,
+        3,
+        0,
+        20,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        5,
+        17,
+        3,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        3,
+        5,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        1,
+        1,
+        7,
+        3,
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        3,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        1,
+        2,
+        0,
+        2,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    ]
+  },
+  "involvement": [
+    {
+      "iso": "DEU",
+      "cases": 1271
+    },
+    {
+      "iso": "THA",
+      "cases": 440
+    },
+    {
+      "iso": "USA",
+      "cases": 313
+    },
+    {
+      "iso": "FRA",
+      "cases": 299
+    },
+    {
+      "iso": "UNK",
+      "cases": 255
+    },
+    {
+      "iso": "CHN",
+      "cases": 220
+    },
+    {
+      "iso": "HUN",
+      "cases": 220
+    },
+    {
+      "iso": "UKR",
+      "cases": 199
+    },
+    {
+      "iso": "AUT",
+      "cases": 190
+    },
+    {
+      "iso": "IDN",
+      "cases": 172
+    },
+    {
+      "iso": "AUS",
+      "cases": 152
+    },
+    {
+      "iso": "TUR",
+      "cases": 135
+    },
+    {
+      "iso": "ESP",
+      "cases": 132
+    },
+    {
+      "iso": "GBR",
+      "cases": 131
+    },
+    {
+      "iso": "POL",
+      "cases": 126
+    },
+    {
+      "iso": "CZE",
+      "cases": 113
+    },
+    {
+      "iso": "RUS",
+      "cases": 99
+    },
+    {
+      "iso": "HKG",
+      "cases": 99
+    },
+    {
+      "iso": "CHE",
+      "cases": 92
+    },
+    {
+      "iso": "VNM",
+      "cases": 87
+    },
+    {
+      "iso": "EGY",
+      "cases": 76
+    },
+    {
+      "iso": "SGP",
+      "cases": 70
+    },
+    {
+      "iso": "NOR",
+      "cases": 66
+    },
+    {
+      "iso": "CHL",
+      "cases": 60
+    },
+    {
+      "iso": "SAU",
+      "cases": 58
+    },
+    {
+      "iso": "PER",
+      "cases": 56
+    },
+    {
+      "iso": "QAT",
+      "cases": 49
+    },
+    {
+      "iso": "ITA",
+      "cases": 47
+    },
+    {
+      "iso": "MDV",
+      "cases": 46
+    },
+    {
+      "iso": "MUS",
+      "cases": 45
+    },
+    {
+      "iso": "IND",
+      "cases": 40
+    },
+    {
+      "iso": "PHL",
+      "cases": 38
+    },
+    {
+      "iso": "JPN",
+      "cases": 37
+    },
+    {
+      "iso": "MYS",
+      "cases": 36
+    },
+    {
+      "iso": "DNK",
+      "cases": 30
+    },
+    {
+      "iso": "TZA",
+      "cases": 30
+    },
+    {
+      "iso": "ARE",
+      "cases": 29
+    },
+    {
+      "iso": "SVK",
+      "cases": 28
+    },
+    {
+      "iso": "SYC",
+      "cases": 28
+    },
+    {
+      "iso": "SWE",
+      "cases": 27
+    },
+    {
+      "iso": "MEX",
+      "cases": 27
+    },
+    {
+      "iso": "AGO",
+      "cases": 26
+    },
+    {
+      "iso": "VIR",
+      "cases": 24
+    },
+    {
+      "iso": "NLD",
+      "cases": 24
+    },
+    {
+      "iso": "ZAF",
+      "cases": 24
+    },
+    {
+      "iso": "BRA",
+      "cases": 23
+    },
+    {
+      "iso": "CAN",
+      "cases": 22
+    },
+    {
+      "iso": "LKA",
+      "cases": 21
+    },
+    {
+      "iso": "CMR",
+      "cases": 19
+    },
+    {
+      "iso": "NAM",
+      "cases": 18
+    },
+    {
+      "iso": "KWT",
+      "cases": 18
+    },
+    {
+      "iso": "IRN",
+      "cases": 16
+    },
+    {
+      "iso": "CUB",
+      "cases": 16
+    },
+    {
+      "iso": "BEL",
+      "cases": 16
+    },
+    {
+      "iso": "IRQ",
+      "cases": 16
+    },
+    {
+      "iso": "NGA",
+      "cases": 15
+    },
+    {
+      "iso": "DOM",
+      "cases": 15
+    },
+    {
+      "iso": "MNG",
+      "cases": 15
+    },
+    {
+      "iso": "GAB",
+      "cases": 14
+    },
+    {
+      "iso": "ETH",
+      "cases": 13
+    },
+    {
+      "iso": "MDG",
+      "cases": 13
+    },
+    {
+      "iso": "OMN",
+      "cases": 12
+    },
+    {
+      "iso": "SRB",
+      "cases": 10
+    },
+    {
+      "iso": "BGR",
+      "cases": 10
+    },
+    {
+      "iso": "HRV",
+      "cases": 10
+    },
+    {
+      "iso": "PRT",
+      "cases": 10
+    },
+    {
+      "iso": "BHR",
+      "cases": 10
+    },
+    {
+      "iso": "ARG",
+      "cases": 10
+    },
+    {
+      "iso": "GHA",
+      "cases": 10
+    },
+    {
+      "iso": "CAF",
+      "cases": 10
+    },
+    {
+      "iso": "BOL",
+      "cases": 10
+    },
+    {
+      "iso": "AZE",
+      "cases": 9
+    },
+    {
+      "iso": "KEN",
+      "cases": 9
+    },
+    {
+      "iso": "ROU",
+      "cases": 9
+    },
+    {
+      "iso": "GLP",
+      "cases": 9
+    },
+    {
+      "iso": "LBN",
+      "cases": 9
+    },
+    {
+      "iso": "KAZ",
+      "cases": 8
+    },
+    {
+      "iso": "GTM",
+      "cases": 8
+    },
+    {
+      "iso": "JOR",
+      "cases": 8
+    },
+    {
+      "iso": "TWN",
+      "cases": 7
+    },
+    {
+      "iso": "FJI",
+      "cases": 7
+    },
+    {
+      "iso": "MTQ",
+      "cases": 7
+    },
+    {
+      "iso": "GEO",
+      "cases": 7
+    },
+    {
+      "iso": "UGA",
+      "cases": 7
+    },
+    {
+      "iso": "DZA",
+      "cases": 7
+    },
+    {
+      "iso": "PYF",
+      "cases": 6
+    },
+    {
+      "iso": "CPV",
+      "cases": 6
+    },
+    {
+      "iso": "MAR",
+      "cases": 6
+    },
+    {
+      "iso": "ISR",
+      "cases": 6
+    },
+    {
+      "iso": "LAO",
+      "cases": 6
+    },
+    {
+      "iso": "ZMB",
+      "cases": 6
+    },
+    {
+      "iso": "BIH",
+      "cases": 6
+    },
+    {
+      "iso": "BLR",
+      "cases": 5
+    },
+    {
+      "iso": "MDA",
+      "cases": 5
+    },
+    {
+      "iso": "MKD",
+      "cases": 5
+    },
+    {
+      "iso": "PNG",
+      "cases": 5
+    },
+    {
+      "iso": "GRC",
+      "cases": 5
+    },
+    {
+      "iso": "TUN",
+      "cases": 5
+    },
+    {
+      "iso": "KOR",
+      "cases": 5
+    },
+    {
+      "iso": "ALB",
+      "cases": 5
+    },
+    {
+      "iso": "MAC",
+      "cases": 5
+    },
+    {
+      "iso": "NZL",
+      "cases": 4
+    },
+    {
+      "iso": "COD",
+      "cases": 4
+    },
+    {
+      "iso": "UZB",
+      "cases": 3
+    },
+    {
+      "iso": "LVA",
+      "cases": 3
+    },
+    {
+      "iso": "ARM",
+      "cases": 3
+    },
+    {
+      "iso": "BGD",
+      "cases": 3
+    },
+    {
+      "iso": "NCL",
+      "cases": 3
+    },
+    {
+      "iso": "JAM",
+      "cases": 3
+    },
+    {
+      "iso": "MOZ",
+      "cases": 3
+    },
+    {
+      "iso": "IRL",
+      "cases": 3
+    },
+    {
+      "iso": "SYR",
+      "cases": 3
+    },
+    {
+      "iso": "NER",
+      "cases": 3
+    },
+    {
+      "iso": "GIN",
+      "cases": 3
+    },
+    {
+      "iso": "COG",
+      "cases": 3
+    },
+    {
+      "iso": "SEN",
+      "cases": 3
+    },
+    {
+      "iso": "KHM",
+      "cases": 3
+    },
+    {
+      "iso": "KGZ",
+      "cases": 2
+    },
+    {
+      "iso": "PRK",
+      "cases": 2
+    },
+    {
+      "iso": "MRT",
+      "cases": 2
+    },
+    {
+      "iso": "STP",
+      "cases": 2
+    },
+    {
+      "iso": "CRI",
+      "cases": 2
+    },
+    {
+      "iso": "BRB",
+      "cases": 2
+    },
+    {
+      "iso": "CUW",
+      "cases": 2
+    },
+    {
+      "iso": "SXM",
+      "cases": 2
+    },
+    {
+      "iso": "MCO",
+      "cases": 2
+    },
+    {
+      "iso": "SUR",
+      "cases": 2
+    },
+    {
+      "iso": "COM",
+      "cases": 2
+    },
+    {
+      "iso": "LUX",
+      "cases": 2
+    },
+    {
+      "iso": "ZWE",
+      "cases": 2
+    },
+    {
+      "iso": "BFA",
+      "cases": 2
+    },
+    {
+      "iso": "XXK",
+      "cases": 2
+    },
+    {
+      "iso": "CIV",
+      "cases": 2
+    },
+    {
+      "iso": "TKM",
+      "cases": 2
+    },
+    {
+      "iso": "FIN",
+      "cases": 2
+    },
+    {
+      "iso": "HND",
+      "cases": 2
+    },
+    {
+      "iso": "PAN",
+      "cases": 2
+    },
+    {
+      "iso": "LTU",
+      "cases": 1
+    },
+    {
+      "iso": "SVN",
+      "cases": 1
+    },
+    {
+      "iso": "EST",
+      "cases": 1
+    },
+    {
+      "iso": "COL",
+      "cases": 1
+    },
+    {
+      "iso": "VUT",
+      "cases": 1
+    },
+    {
+      "iso": "CYM",
+      "cases": 1
+    },
+    {
+      "iso": "ABW",
+      "cases": 1
+    },
+    {
+      "iso": "REU",
+      "cases": 1
+    },
+    {
+      "iso": "GIB",
+      "cases": 1
+    },
+    {
+      "iso": "GNB",
+      "cases": 1
+    },
+    {
+      "iso": "CYP",
+      "cases": 1
+    },
+    {
+      "iso": "GUY",
+      "cases": 1
+    },
+    {
+      "iso": "MNE",
+      "cases": 1
+    },
+    {
+      "iso": "GUF",
+      "cases": 1
+    },
+    {
+      "iso": "BEN",
+      "cases": 1
+    },
+    {
+      "iso": "TTO",
+      "cases": 1
+    },
+    {
+      "iso": "LCA",
+      "cases": 1
+    },
+    {
+      "iso": "MMR",
+      "cases": 1
+    },
+    {
+      "iso": "SWZ",
+      "cases": 1
+    },
+    {
+      "iso": "GRD",
+      "cases": 1
+    },
+    {
+      "iso": "MLI",
+      "cases": 1
+    },
+    {
+      "iso": "PAK",
+      "cases": 1
+    },
+    {
+      "iso": "MYT",
+      "cases": 1
+    },
+    {
+      "iso": "TGO",
+      "cases": 1
+    },
+    {
+      "iso": "BRN",
+      "cases": 1
+    },
+    {
+      "iso": "TCD",
+      "cases": 1
+    }
+  ],
+  "flows": {
+    "regions": [
+      "WE",
+      "A/P",
+      "ECE",
+      "NAM",
+      "ESA",
+      "ME",
+      "SA",
+      "CIS",
+      "CAR",
+      "NA",
+      "CA",
+      "WA",
+      "CAM"
+    ],
+    "matrix": [
+      [
+        231,
+        50,
+        39,
+        23,
+        1,
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        803,
+        171,
+        176,
+        14,
+        1,
+        16,
+        7,
+        25,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        136,
+        3,
+        103,
+        42,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        166,
+        11,
+        8,
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        0,
+        0,
+        0,
+        7
+      ],
+      [
+        80,
+        29,
+        30,
+        6,
+        41,
+        13,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0,
+        0
+      ],
+      [
+        62,
+        2,
+        42,
+        29,
+        1,
+        17,
+        0,
+        6,
+        0,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        21,
+        20,
+        2,
+        23,
+        1,
+        0,
+        48,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        45,
+        24,
+        15,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        87,
+        4,
+        11,
+        1,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        66,
+        1,
+        16,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        10,
+        4,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        27,
+        0,
+        0
+      ],
+      [
+        20,
+        6,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        2,
+        10,
+        0
+      ],
+      [
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    ]
+  },
+  "perStream": {
+    "Fauna": {
+      "fr": "Faune",
+      "totals": {
+        "cases": 2323,
+        "seizures": 2705,
+        "qty_kg": 292036.6,
+        "qty_pieces": 250155
+      },
+      "reporters": [
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 863,
+          "prev": 761
+        },
+        {
+          "en": "France",
+          "fr": "France",
+          "curr": 240,
+          "prev": 24
+        },
+        {
+          "en": "Hungary",
+          "fr": "Hongrie",
+          "curr": 180,
+          "prev": 77
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "curr": 112,
+          "prev": 100
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "curr": 100,
+          "prev": 162
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "curr": 96,
+          "prev": 57
+        },
+        {
+          "en": "Russian Federation",
+          "fr": "Fédération de Russie",
+          "curr": 57,
+          "prev": 6
+        },
+        {
+          "en": "Australia",
+          "fr": "Australie",
+          "curr": 56,
+          "prev": 48
+        },
+        {
+          "en": "Ukraine",
+          "fr": "Ukraine",
+          "curr": 46,
+          "prev": 3
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "curr": 46,
+          "prev": 3
+        }
+      ],
+      "categories": [
+        {
+          "en": "Marine species",
+          "fr": "Espèces marines",
+          "curr": 1157,
+          "prev": 978
+        },
+        {
+          "en": "Reptiles",
+          "fr": "Reptiles",
+          "curr": 553,
+          "prev": 622
+        },
+        {
+          "en": "Mammals",
+          "fr": "Mammifères",
+          "curr": 427,
+          "prev": 453
+        },
+        {
+          "en": "Birds",
+          "fr": "Oiseaux",
+          "curr": 187,
+          "prev": 206
+        },
+        {
+          "en": "Arthropods",
+          "fr": "Arthropodes",
+          "curr": 31,
+          "prev": 41
+        },
+        {
+          "en": "Other fauna",
+          "fr": "Autre faune",
+          "curr": 27,
+          "prev": 8
+        },
+        {
+          "en": "Amphibians",
+          "fr": "Amphibiens",
+          "curr": 7,
+          "prev": 6
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Corals",
+          "fr": "Coraux",
+          "curr": 689,
+          "prev": 562,
+          "kg": 49.3,
+          "pieces": 8053
+        },
+        {
+          "en": "Crocodilians",
+          "fr": "Crocodiliens",
+          "curr": 222,
+          "prev": 266,
+          "kg": 9.8,
+          "pieces": 1093
+        },
+        {
+          "en": "Elephant",
+          "fr": "Éléphant",
+          "curr": 183,
+          "prev": 143,
+          "kg": 887.6,
+          "pieces": 1428
+        },
+        {
+          "en": "Black corals",
+          "fr": "Coraux noirs",
+          "curr": 131,
+          "prev": 42,
+          "kg": 75.6,
+          "pieces": 1741
+        },
+        {
+          "en": "Sturgeons and caviar",
+          "fr": "Esturgeons et caviar",
+          "curr": 113,
+          "prev": 109,
+          "kg": 4259.4,
+          "pieces": 190034
+        },
+        {
+          "en": "Pythons",
+          "fr": "Pythons",
+          "curr": 111,
+          "prev": 125,
+          "kg": 3.2,
+          "pieces": 489
+        },
+        {
+          "en": "Parrots and psittacidae",
+          "fr": "Perroquets et psittacidés",
+          "curr": 95,
+          "prev": 102,
+          "kg": 0,
+          "pieces": 921
+        },
+        {
+          "en": "Tortoises",
+          "fr": "Tortues terrestres",
+          "curr": 65,
+          "prev": 88,
+          "kg": 0,
+          "pieces": 1782
+        },
+        {
+          "en": "Cetaceans",
+          "fr": "Cétacés",
+          "curr": 64,
+          "prev": 75,
+          "kg": 11,
+          "pieces": 97
+        },
+        {
+          "en": "Cobras and venomous snakes",
+          "fr": "Cobras et serpents venimeux",
+          "curr": 61,
+          "prev": 41,
+          "kg": 8.5,
+          "pieces": 367
+        },
+        {
+          "en": "Bears",
+          "fr": "Ours",
+          "curr": 60,
+          "prev": 31,
+          "kg": 4.4,
+          "pieces": 1029
+        },
+        {
+          "en": "Sharks and rays",
+          "fr": "Requins et raies",
+          "curr": 57,
+          "prev": 65,
+          "kg": 7435.1,
+          "pieces": 8744
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 1219
+          },
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 394
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 265
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 241
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 149
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 32
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 8
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 7
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 1049
+          },
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 398
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 154
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 136
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 86
+          },
+          {
+            "en": "In express courier",
+            "fr": "Dans la messagerie express",
+            "cases": 33
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 32
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 20
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 72.7
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 11.1
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 10.8
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 5.5
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 63.5
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 28.3
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 4.3
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 3
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.9
+          }
+        ]
+      },
+      "ecom": 20.1
+    },
+    "Flora": {
+      "fr": "Flore",
+      "totals": {
+        "cases": 838,
+        "seizures": 872,
+        "qty_kg": 1113756.4,
+        "qty_pieces": 65384
+      },
+      "reporters": [
+        {
+          "en": "Germany",
+          "fr": "Allemagne",
+          "curr": 385,
+          "prev": 259
+        },
+        {
+          "en": "Austria",
+          "fr": "Autriche",
+          "curr": 88,
+          "prev": 35
+        },
+        {
+          "en": "Czech Rep.",
+          "fr": "Rép. Tchèque",
+          "curr": 65,
+          "prev": 55
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "curr": 42,
+          "prev": 75
+        },
+        {
+          "en": "Hungary",
+          "fr": "Hongrie",
+          "curr": 33,
+          "prev": 20
+        },
+        {
+          "en": "Peru",
+          "fr": "Pérou",
+          "curr": 26,
+          "prev": 11
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "curr": 26,
+          "prev": 1
+        },
+        {
+          "en": "Chile",
+          "fr": "Chili",
+          "curr": 26,
+          "prev": 0
+        },
+        {
+          "en": "Philippines",
+          "fr": "Philippines",
+          "curr": 25,
+          "prev": 4
+        },
+        {
+          "en": "Australia",
+          "fr": "Australie",
+          "curr": 13,
+          "prev": 17
+        }
+      ],
+      "categories": [
+        {
+          "en": "Plants",
+          "fr": "Plantes",
+          "curr": 708,
+          "prev": 526
+        },
+        {
+          "en": "Timber",
+          "fr": "Bois",
+          "curr": 131,
+          "prev": 116
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Medicinal plants",
+          "fr": "Plantes médicinales",
+          "curr": 309,
+          "prev": 240,
+          "kg": 337.8,
+          "pieces": 41575
+        },
+        {
+          "en": "Cacti",
+          "fr": "Cactus",
+          "curr": 184,
+          "prev": 208,
+          "kg": 112.1,
+          "pieces": 9232
+        },
+        {
+          "en": "Orchids",
+          "fr": "Orchidées",
+          "curr": 167,
+          "prev": 81,
+          "kg": 194584.6,
+          "pieces": 7625
+        },
+        {
+          "en": "Agarwood and aromatic woods",
+          "fr": "Bois d'agar et bois aromatiques",
+          "curr": 57,
+          "prev": 24,
+          "kg": 38.8,
+          "pieces": 161
+        },
+        {
+          "en": "Succulents",
+          "fr": "Plantes succulentes",
+          "curr": 34,
+          "prev": 9,
+          "kg": 0,
+          "pieces": 403
+        },
+        {
+          "en": "Agarwood",
+          "fr": "Bois d'agar",
+          "curr": 27,
+          "prev": 12,
+          "kg": 79.3,
+          "pieces": 3
+        },
+        {
+          "en": "Other plants",
+          "fr": "Autres plantes",
+          "curr": 24,
+          "prev": 8,
+          "kg": 1559.5,
+          "pieces": 1576
+        },
+        {
+          "en": "Rosewoods and Dalbergia",
+          "fr": "Bois de rose et Dalbergia",
+          "curr": 17,
+          "prev": 20,
+          "kg": 99246.9,
+          "pieces": 235
+        },
+        {
+          "en": "Timber and wood products",
+          "fr": "Bois et produits du bois",
+          "curr": 16,
+          "prev": 17,
+          "kg": 107231.5,
+          "pieces": 425
+        },
+        {
+          "en": "Rosewoods and Pterocarpus",
+          "fr": "Bois de rose et Pterocarpus",
+          "curr": 12,
+          "prev": 35,
+          "kg": 96156.9,
+          "pieces": 3525
+        },
+        {
+          "en": "Carnivorous plants",
+          "fr": "Plantes carnivores",
+          "curr": 9,
+          "prev": 12,
+          "kg": 0,
+          "pieces": 64
+        },
+        {
+          "en": "Cycads",
+          "fr": "Cycadales",
+          "curr": 4,
+          "prev": 6,
+          "kg": 0.2,
+          "pieces": 374
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Mail Centre",
+            "fr": "Centre postal",
+            "cases": 485
+          },
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 261
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 36
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 19
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 17
+          },
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 12
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 4
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 1
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In mail",
+            "fr": "Dans le courrier",
+            "cases": 467
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 161
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 80
+          },
+          {
+            "en": "In express courier",
+            "fr": "Dans la messagerie express",
+            "cases": 47
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 35
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 20
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 3
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 79.8
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 11.1
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 8.4
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 0.7
+          }
+        ],
+        "detection": [
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 68.9
+          },
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 25.8
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 2.7
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 2.5
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.1
+          }
+        ]
+      },
+      "ecom": 64.2
+    },
+    "Waste": {
+      "fr": "Déchets",
+      "totals": {
+        "cases": 604,
+        "seizures": 729,
+        "qty_kg": 15644407.6,
+        "qty_pieces": 290497
+      },
+      "reporters": [
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "curr": 136,
+          "prev": 92
+        },
+        {
+          "en": "United Kingdom",
+          "fr": "Royaume-Uni",
+          "curr": 44,
+          "prev": 29
+        },
+        {
+          "en": "Gambia",
+          "fr": "Gambie",
+          "curr": 32,
+          "prev": 39
+        },
+        {
+          "en": "Türkiye",
+          "fr": "Türkiye",
+          "curr": 28,
+          "prev": 27
+        },
+        {
+          "en": "Belgium",
+          "fr": "Belgique",
+          "curr": 27,
+          "prev": 36
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "curr": 27,
+          "prev": 14
+        },
+        {
+          "en": "Qatar",
+          "fr": "Qatar",
+          "curr": 25,
+          "prev": 6
+        },
+        {
+          "en": "Bosnia and Herzegovina",
+          "fr": "Bosnie et Herzégovine",
+          "curr": 23,
+          "prev": 5
+        },
+        {
+          "en": "Canada",
+          "fr": "Canada",
+          "curr": 22,
+          "prev": 1
+        },
+        {
+          "en": "Italy",
+          "fr": "Italie",
+          "curr": 21,
+          "prev": 10
+        }
+      ],
+      "categories": [
+        {
+          "en": "Waste",
+          "fr": "Déchets",
+          "curr": 310,
+          "prev": 341
+        },
+        {
+          "en": "Metal",
+          "fr": "Métaux",
+          "curr": 81,
+          "prev": 178
+        },
+        {
+          "en": "Plastic",
+          "fr": "Plastiques",
+          "curr": 58,
+          "prev": 57
+        },
+        {
+          "en": "Waste - other",
+          "fr": "Déchets - autres",
+          "curr": 39,
+          "prev": 32
+        },
+        {
+          "en": "E-waste",
+          "fr": "Déchets électroniques",
+          "curr": 34,
+          "prev": 54
+        },
+        {
+          "en": "End-of-life vehicles and machinery",
+          "fr": "Véhicules et machines en fin de vie",
+          "curr": 32,
+          "prev": 53
+        },
+        {
+          "en": "Textiles",
+          "fr": "Textiles",
+          "curr": 25,
+          "prev": 12
+        },
+        {
+          "en": "Batteries",
+          "fr": "Batteries",
+          "curr": 12,
+          "prev": 21
+        },
+        {
+          "en": "Rubber",
+          "fr": "Caoutchouc",
+          "curr": 12,
+          "prev": 21
+        },
+        {
+          "en": "Mixed waste",
+          "fr": "Déchets mélangés",
+          "curr": 10,
+          "prev": 15
+        },
+        {
+          "en": "Paper",
+          "fr": "Papier",
+          "curr": 6,
+          "prev": 11
+        },
+        {
+          "en": "Medical waste",
+          "fr": "Déchets médicaux",
+          "curr": 4,
+          "prev": 9
+        },
+        {
+          "en": "Glass",
+          "fr": "Verre",
+          "curr": 1,
+          "prev": 1
+        },
+        {
+          "en": "Hazardous chemicals - other",
+          "fr": "Produits chimiques dangereux - autres",
+          "curr": 1,
+          "prev": 0
+        },
+        {
+          "en": "Wood",
+          "fr": "Bois",
+          "curr": 1,
+          "prev": 0
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Textiles",
+          "fr": "Textiles",
+          "curr": 257,
+          "prev": 270,
+          "kg": 1103513.5,
+          "pieces": 13293
+        },
+        {
+          "en": "Metal",
+          "fr": "Métal",
+          "curr": 50,
+          "prev": 44,
+          "kg": 926805.9,
+          "pieces": 893
+        },
+        {
+          "en": "E-waste",
+          "fr": "Déchets électroniques",
+          "curr": 24,
+          "prev": 15,
+          "kg": 547543,
+          "pieces": 282
+        },
+        {
+          "en": "End-of-life vehicles and machinery",
+          "fr": "Véhicules et machines en fin de vie",
+          "curr": 19,
+          "prev": 28,
+          "kg": 69989.4,
+          "pieces": 699
+        },
+        {
+          "en": "Rubber",
+          "fr": "Caoutchouc",
+          "curr": 14,
+          "prev": 4,
+          "kg": 262605,
+          "pieces": 308
+        },
+        {
+          "en": "Plastic",
+          "fr": "Plastique",
+          "curr": 11,
+          "prev": 15,
+          "kg": 378083,
+          "pieces": 19056
+        },
+        {
+          "en": "Waste - other",
+          "fr": "Déchets - autres",
+          "curr": 10,
+          "prev": 17,
+          "kg": 5396224,
+          "pieces": 83
+        },
+        {
+          "en": "Mixed waste",
+          "fr": "Déchets mélangés",
+          "curr": 7,
+          "prev": 10,
+          "kg": 318127,
+          "pieces": 0
+        },
+        {
+          "en": "Batteries",
+          "fr": "Batteries",
+          "curr": 4,
+          "prev": 6,
+          "kg": 0,
+          "pieces": 2397
+        },
+        {
+          "en": "Paper",
+          "fr": "Papier",
+          "curr": 3,
+          "prev": 7,
+          "kg": 280710,
+          "pieces": 0
+        },
+        {
+          "en": "Medical waste",
+          "fr": "Déchets médicaux",
+          "curr": 1,
+          "prev": 0,
+          "kg": 0,
+          "pieces": 6452
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 235
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 205
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 101
+          },
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 47
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 6
+          },
+          {
+            "en": "Border of free trade zone",
+            "fr": "Frontière de zone franche",
+            "cases": 3
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 3
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 1
+          }
+        ],
+        "concealment": [
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 191
+          },
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 141
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 130
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 66
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 29
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des marchés",
+            "cases": 12
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 1
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 57.8
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 32.5
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 6
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 3.8
+          }
+        ],
+        "detection": [
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 36.4
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 25.5
+          },
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 24.2
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 13.1
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.8
+          }
+        ]
+      },
+      "ecom": 0.2
+    },
+    "Other hazardous materials": {
+      "fr": "Autres matières dangereuses",
+      "totals": {
+        "cases": 294,
+        "seizures": 312,
+        "qty_kg": 437978.8,
+        "qty_pieces": 1142520
+      },
+      "reporters": [
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "curr": 77,
+          "prev": 3
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "curr": 44,
+          "prev": 19
+        },
+        {
+          "en": "Namibia",
+          "fr": "Namibie",
+          "curr": 39,
+          "prev": 48
+        },
+        {
+          "en": "Burkina Faso",
+          "fr": "Burkina Faso",
+          "curr": 21,
+          "prev": 13
+        },
+        {
+          "en": "South Africa",
+          "fr": "Afrique du Sud",
+          "curr": 19,
+          "prev": 1
+        },
+        {
+          "en": "Bulgaria",
+          "fr": "Bulgarie",
+          "curr": 18,
+          "prev": 7
+        },
+        {
+          "en": "Angola",
+          "fr": "Angola",
+          "curr": 17,
+          "prev": 66
+        },
+        {
+          "en": "Slovakia",
+          "fr": "Slovaquie",
+          "curr": 12,
+          "prev": 1
+        },
+        {
+          "en": "Argentina",
+          "fr": "Argentine",
+          "curr": 6,
+          "prev": 5
+        },
+        {
+          "en": "Togo",
+          "fr": "Togo",
+          "curr": 5,
+          "prev": 2
+        }
+      ],
+      "categories": [
+        {
+          "en": "Hazardous chemicals - other",
+          "fr": "Produits chimiques dangereux - autres",
+          "curr": 158,
+          "prev": 96
+        },
+        {
+          "en": "Petroleum products",
+          "fr": "Produits pétroliers",
+          "curr": 116,
+          "prev": 81
+        },
+        {
+          "en": "Fuel / petroleum products",
+          "fr": "Carburant / produits pétroliers",
+          "curr": 8,
+          "prev": 34
+        },
+        {
+          "en": "Mercury/Products containing mercury",
+          "fr": "Mercure / produits contenant du mercure",
+          "curr": 6,
+          "prev": 25
+        },
+        {
+          "en": "Other hazardous materials",
+          "fr": "Autres matières dangereuses",
+          "curr": 5,
+          "prev": 38
+        },
+        {
+          "en": "Gas",
+          "fr": "Gaz",
+          "curr": 2,
+          "prev": 3
+        },
+        {
+          "en": "Mercury / products containing mercury",
+          "fr": "Mercure / produits contenant du mercure",
+          "curr": 1,
+          "prev": 0
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "Hazardous chemicals - other",
+          "fr": "Produits chimiques dangereux - autres",
+          "curr": 17,
+          "prev": 54,
+          "kg": 29774,
+          "pieces": 1076379
+        },
+        {
+          "en": "Diesel",
+          "fr": "Diesel",
+          "curr": 7,
+          "prev": 8,
+          "kg": 1405,
+          "pieces": 0
+        },
+        {
+          "en": "Mercury/Products containing mercury",
+          "fr": "Mercure ou produits contenant du mercure",
+          "curr": 7,
+          "prev": 23,
+          "kg": 28915.5,
+          "pieces": 14
+        },
+        {
+          "en": "Pesticides",
+          "fr": "Pesticides",
+          "curr": 4,
+          "prev": 30,
+          "kg": 5.8,
+          "pieces": 26
+        },
+        {
+          "en": "Fuel",
+          "fr": "Carburant",
+          "curr": 1,
+          "prev": 22,
+          "kg": 20,
+          "pieces": 0
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 212
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 53
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 16
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 10
+          },
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 1
+          },
+          {
+            "en": "Rail",
+            "fr": "Voie ferrée",
+            "cases": 1
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 139
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 52
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 44
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 14
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 8
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 7
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 67.7
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 12.2
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 10.2
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 9.9
+          }
+        ],
+        "detection": [
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 58.5
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 20.7
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 15
+          },
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 5.4
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 0.3
+          }
+        ]
+      },
+      "ecom": 0
+    },
+    "ODS & HFCs": {
+      "fr": "SAO et HFC",
+      "totals": {
+        "cases": 166,
+        "seizures": 185,
+        "qty_kg": 255752.2,
+        "qty_pieces": 8227
+      },
+      "reporters": [
+        {
+          "en": "Croatia",
+          "fr": "Croatie",
+          "curr": 52,
+          "prev": 25
+        },
+        {
+          "en": "Romania",
+          "fr": "Roumanie",
+          "curr": 48,
+          "prev": 1
+        },
+        {
+          "en": "Gambia",
+          "fr": "Gambie",
+          "curr": 22,
+          "prev": 34
+        },
+        {
+          "en": "Poland",
+          "fr": "Pologne",
+          "curr": 14,
+          "prev": 11
+        },
+        {
+          "en": "Bulgaria",
+          "fr": "Bulgarie",
+          "curr": 11,
+          "prev": 23
+        },
+        {
+          "en": "Uganda",
+          "fr": "Ouganda",
+          "curr": 6,
+          "prev": 1
+        },
+        {
+          "en": "Spain",
+          "fr": "Espagne",
+          "curr": 2,
+          "prev": 0
+        },
+        {
+          "en": "Moldova, Rep. of",
+          "fr": "Moldavie, Rép. De",
+          "curr": 2,
+          "prev": 0
+        },
+        {
+          "en": "Portugal",
+          "fr": "Portugal",
+          "curr": 1,
+          "prev": 1
+        },
+        {
+          "en": "Sri Lanka",
+          "fr": "Sri Lanka",
+          "curr": 1,
+          "prev": 3
+        }
+      ],
+      "categories": [
+        {
+          "en": "HCFCs",
+          "fr": "HCFC",
+          "curr": 98,
+          "prev": 24
+        },
+        {
+          "en": "HFCs",
+          "fr": "HFC",
+          "curr": 19,
+          "prev": 27
+        },
+        {
+          "en": "Unspecified controlled substances and mixtures",
+          "fr": "Substances et mélanges réglementés non spécifiés",
+          "curr": 13,
+          "prev": 35
+        },
+        {
+          "en": "Equipment using ODS/HFCs",
+          "fr": "Équipements utilisant SAO/HFC",
+          "curr": 8,
+          "prev": 24
+        },
+        {
+          "en": "CFCs",
+          "fr": "CFC",
+          "curr": 7,
+          "prev": 6
+        },
+        {
+          "en": "Other ODS",
+          "fr": "Autres SAO",
+          "curr": 7,
+          "prev": 5
+        },
+        {
+          "en": "Plastic",
+          "fr": "Plastiques",
+          "curr": 7,
+          "prev": 0
+        },
+        {
+          "en": "Halons",
+          "fr": "Halons",
+          "curr": 6,
+          "prev": 6
+        },
+        {
+          "en": "Hazardous chemicals - other",
+          "fr": "Produits chimiques dangereux - autres",
+          "curr": 2,
+          "prev": 3
+        },
+        {
+          "en": "Methyl bromide",
+          "fr": "Bromure de méthyle",
+          "curr": 1,
+          "prev": 1
+        },
+        {
+          "en": "Petroleum products",
+          "fr": "Produits pétroliers",
+          "curr": 1,
+          "prev": 0
+        }
+      ],
+      "subSeiz": [
+        {
+          "en": "HCFCs",
+          "fr": "HCFC",
+          "curr": 70,
+          "prev": 24,
+          "kg": 36031.9,
+          "pieces": 7
+        },
+        {
+          "en": "HFCs",
+          "fr": "HFC",
+          "curr": 9,
+          "prev": 10,
+          "kg": 86764,
+          "pieces": 2260
+        },
+        {
+          "en": "Unspecified controlled substances and mixtures",
+          "fr": "Substances contrôlées et mélanges non précisés",
+          "curr": 6,
+          "prev": 19,
+          "kg": 5228.6,
+          "pieces": 0
+        },
+        {
+          "en": "CFCs",
+          "fr": "CFC",
+          "curr": 1,
+          "prev": 6,
+          "kg": 0.6,
+          "pieces": 0
+        },
+        {
+          "en": "Other ODS",
+          "fr": "Autres SAO",
+          "curr": 1,
+          "prev": 5,
+          "kg": 136,
+          "pieces": 0
+        }
+      ],
+      "operational": {
+        "location": [
+          {
+            "en": "Land boundary",
+            "fr": "Frontière terrestre",
+            "cases": 119
+          },
+          {
+            "en": "Inland",
+            "fr": "Intérieur des terres",
+            "cases": 34
+          },
+          {
+            "en": "Seaport",
+            "fr": "Port maritime",
+            "cases": 7
+          },
+          {
+            "en": "Airport",
+            "fr": "Aéroport",
+            "cases": 2
+          },
+          {
+            "en": "River",
+            "fr": "Voie fluviale",
+            "cases": 2
+          },
+          {
+            "en": "Express Courier",
+            "fr": "Messagerie express",
+            "cases": 1
+          }
+        ],
+        "concealment": [
+          {
+            "en": "In transport",
+            "fr": "Dans un moyen de transport",
+            "cases": 77
+          },
+          {
+            "en": "In freight",
+            "fr": "Dans le fret",
+            "cases": 24
+          },
+          {
+            "en": "Not concealed",
+            "fr": "Non dissimulé",
+            "cases": 22
+          },
+          {
+            "en": "In baggage",
+            "fr": "Dans les bagages",
+            "cases": 20
+          },
+          {
+            "en": "In premises",
+            "fr": "Dans des locaux",
+            "cases": 11
+          },
+          {
+            "en": "On market places",
+            "fr": "Sur des marchés",
+            "cases": 8
+          },
+          {
+            "en": "On the person",
+            "fr": "Sur la personne",
+            "cases": 1
+          }
+        ],
+        "direction": [
+          {
+            "en": "Import",
+            "fr": "Importation",
+            "pct": 63.3
+          },
+          {
+            "en": "Transit",
+            "fr": "Transit",
+            "pct": 31.3
+          },
+          {
+            "en": "Internal",
+            "fr": "Interne",
+            "pct": 3
+          },
+          {
+            "en": "Export",
+            "fr": "Exportation",
+            "pct": 2.4
+          }
+        ],
+        "detection": [
+          {
+            "en": "Routine control",
+            "fr": "Contrôle de routine",
+            "pct": 65.7
+          },
+          {
+            "en": "Risk profiling",
+            "fr": "Profilage de risque",
+            "pct": 14.5
+          },
+          {
+            "en": "Random selection",
+            "fr": "Sélection aléatoire",
+            "pct": 13.9
+          },
+          {
+            "en": "Intelligence",
+            "fr": "Renseignement",
+            "pct": 4.2
+          },
+          {
+            "en": "Investigation",
+            "fr": "Enquête",
+            "pct": 1.8
+          }
+        ]
+      },
+      "ecom": 0.6
+    }
+  },
+  "fauna": {
+    "perCategory": {
+      "Mammals": {
+        "fr": "Mammifères",
+        "totals": {
+          "cases": 427,
+          "seizures": 492,
+          "qty_kg": 150973.3,
+          "qty_pieces": 5546
+        },
+        "subSeiz": [
+          {
+            "en": "Elephant",
+            "fr": "Éléphant",
+            "curr": 183,
+            "prev": 143,
+            "kg": 887.6,
+            "pieces": 1428
+          },
+          {
+            "en": "Bears",
+            "fr": "Ours",
+            "curr": 60,
+            "prev": 31,
+            "kg": 4.4,
+            "pieces": 1029
+          },
+          {
+            "en": "Antelopes and deer",
+            "fr": "Antilopes et cervidés",
+            "curr": 40,
+            "prev": 58,
+            "kg": 293.8,
+            "pieces": 336
+          },
+          {
+            "en": "Big cats and felines",
+            "fr": "Grands félins et félidés",
+            "curr": 31,
+            "prev": 51,
+            "kg": 0.1,
+            "pieces": 116
+          },
+          {
+            "en": "Musk deer",
+            "fr": "Cerf porte-musc",
+            "curr": 26,
+            "prev": 22,
+            "kg": 0.7,
+            "pieces": 86
+          },
+          {
+            "en": "Canids",
+            "fr": "Canidés",
+            "curr": 22,
+            "prev": 16,
+            "kg": 0,
+            "pieces": 30
+          },
+          {
+            "en": "Rhinoceros",
+            "fr": "Rhinocéros",
+            "curr": 19,
+            "prev": 14,
+            "kg": 39.7,
+            "pieces": 15
+          },
+          {
+            "en": "Monkeys",
+            "fr": "Singes",
+            "curr": 17,
+            "prev": 21,
+            "kg": 0,
+            "pieces": 79
+          },
+          {
+            "en": "Pangolin",
+            "fr": "Pangolin",
+            "curr": 12,
+            "prev": 49,
+            "kg": 113.7,
+            "pieces": 15
+          },
+          {
+            "en": "Rodents and small mammals",
+            "fr": "Rongeurs et petits mammifères",
+            "curr": 11,
+            "prev": 10,
+            "kg": 0,
+            "pieces": 1088
+          },
+          {
+            "en": "Other mammals",
+            "fr": "Autres mammifères",
+            "curr": 9,
+            "prev": 2,
+            "kg": 0.6,
+            "pieces": 229
+          },
+          {
+            "en": "Great apes",
+            "fr": "Grands singes",
+            "curr": 8,
+            "prev": 3,
+            "kg": 0,
+            "pieces": 65
+          }
+        ],
+        "reporters": [
+          {
+            "en": "France",
+            "fr": "France",
+            "curr": 75,
+            "prev": 11
+          },
+          {
+            "en": "Germany",
+            "fr": "Allemagne",
+            "curr": 63,
+            "prev": 50
+          },
+          {
+            "en": "Hungary",
+            "fr": "Hongrie",
+            "curr": 25,
+            "prev": 4
+          },
+          {
+            "en": "Angola",
+            "fr": "Angola",
+            "curr": 22,
+            "prev": 5
+          },
+          {
+            "en": "Australia",
+            "fr": "Australie",
+            "curr": 21,
+            "prev": 13
+          },
+          {
+            "en": "Russian Federation",
+            "fr": "Fédération de Russie",
+            "curr": 20,
+            "prev": 3
+          },
+          {
+            "en": "Austria",
+            "fr": "Autriche",
+            "curr": 13,
+            "prev": 12
+          },
+          {
+            "en": "China",
+            "fr": "Chine",
+            "curr": 13,
+            "prev": 26
+          },
+          {
+            "en": "Namibia",
+            "fr": "Namibie",
+            "curr": 12,
+            "prev": 34
+          },
+          {
+            "en": "Spain",
+            "fr": "Espagne",
+            "curr": 12,
+            "prev": 17
+          }
+        ]
+      },
+      "Reptiles": {
+        "fr": "Reptiles",
+        "totals": {
+          "cases": 553,
+          "seizures": 650,
+          "qty_kg": 33.8,
+          "qty_pieces": 14961
+        },
+        "subSeiz": [
+          {
+            "en": "Crocodilians",
+            "fr": "Crocodiliens",
+            "curr": 222,
+            "prev": 266,
+            "kg": 9.8,
+            "pieces": 1093
+          },
+          {
+            "en": "Pythons",
+            "fr": "Pythons",
+            "curr": 111,
+            "prev": 125,
+            "kg": 3.2,
+            "pieces": 489
+          },
+          {
+            "en": "Tortoises",
+            "fr": "Tortues terrestres",
+            "curr": 65,
+            "prev": 88,
+            "kg": 0,
+            "pieces": 1782
+          },
+          {
+            "en": "Cobras and venomous snakes",
+            "fr": "Cobras et serpents venimeux",
+            "curr": 61,
+            "prev": 41,
+            "kg": 8.5,
+            "pieces": 367
+          },
+          {
+            "en": "Freshwater turtles",
+            "fr": "Tortues d'eau douce",
+            "curr": 41,
+            "prev": 40,
+            "kg": 0,
+            "pieces": 3077
+          },
+          {
+            "en": "Snakes and boas",
+            "fr": "Serpents et boas",
+            "curr": 28,
+            "prev": 24,
+            "kg": 5,
+            "pieces": 85
+          },
+          {
+            "en": "Turtles and tortoises",
+            "fr": "Tortues",
+            "curr": 27,
+            "prev": 6,
+            "kg": 1,
+            "pieces": 5980
+          },
+          {
+            "en": "Lizards",
+            "fr": "Lézards",
+            "curr": 25,
+            "prev": 43,
+            "kg": 0,
+            "pieces": 1215
+          },
+          {
+            "en": "Monitor lizards",
+            "fr": "Varans",
+            "curr": 25,
+            "prev": 25,
+            "kg": 0,
+            "pieces": 61
+          },
+          {
+            "en": "Marine turtles",
+            "fr": "Tortues marines",
+            "curr": 14,
+            "prev": 24,
+            "kg": 0.8,
+            "pieces": 177
+          },
+          {
+            "en": "Other reptiles",
+            "fr": "Autres reptiles",
+            "curr": 11,
+            "prev": 0,
+            "kg": 0,
+            "pieces": 544
+          },
+          {
+            "en": "Iguanas",
+            "fr": "Iguanes",
+            "curr": 8,
+            "prev": 9,
+            "kg": 5.5,
+            "pieces": 39
+          }
+        ],
+        "reporters": [
+          {
+            "en": "Germany",
+            "fr": "Allemagne",
+            "curr": 279,
+            "prev": 245
+          },
+          {
+            "en": "Poland",
+            "fr": "Pologne",
+            "curr": 40,
+            "prev": 26
+          },
+          {
+            "en": "Spain",
+            "fr": "Espagne",
+            "curr": 30,
+            "prev": 58
+          },
+          {
+            "en": "Austria",
+            "fr": "Autriche",
+            "curr": 30,
+            "prev": 12
+          },
+          {
+            "en": "France",
+            "fr": "France",
+            "curr": 28,
+            "prev": 10
+          },
+          {
+            "en": "United Kingdom",
+            "fr": "Royaume-Uni",
+            "curr": 13,
+            "prev": 108
+          },
+          {
+            "en": "Australia",
+            "fr": "Australie",
+            "curr": 12,
+            "prev": 30
+          },
+          {
+            "en": "Chile",
+            "fr": "Chili",
+            "curr": 11,
+            "prev": 2
+          },
+          {
+            "en": "China",
+            "fr": "Chine",
+            "curr": 11,
+            "prev": 11
+          },
+          {
+            "en": "Hong Kong, China",
+            "fr": "Hong Kong, Chine",
+            "curr": 9,
+            "prev": 4
+          }
+        ]
+      },
+      "Marine species": {
+        "fr": "Espèces marines",
+        "totals": {
+          "cases": 1157,
+          "seizures": 1232,
+          "qty_kg": 140963.8,
+          "qty_pieces": 223984
+        },
+        "subSeiz": [
+          {
+            "en": "Corals",
+            "fr": "Coraux",
+            "curr": 689,
+            "prev": 562,
+            "kg": 49.3,
+            "pieces": 8053
+          },
+          {
+            "en": "Black corals",
+            "fr": "Coraux noirs",
+            "curr": 131,
+            "prev": 42,
+            "kg": 75.6,
+            "pieces": 1741
+          },
+          {
+            "en": "Sturgeons and caviar",
+            "fr": "Esturgeons et caviar",
+            "curr": 113,
+            "prev": 109,
+            "kg": 4259.4,
+            "pieces": 190034
+          },
+          {
+            "en": "Cetaceans",
+            "fr": "Cétacés",
+            "curr": 64,
+            "prev": 75,
+            "kg": 11,
+            "pieces": 97
+          },
+          {
+            "en": "Sharks and rays",
+            "fr": "Requins et raies",
+            "curr": 57,
+            "prev": 65,
+            "kg": 7435.1,
+            "pieces": 8744
+          },
+          {
+            "en": "Seahorses",
+            "fr": "Hippocampes",
+            "curr": 57,
+            "prev": 49,
+            "kg": 66.5,
+            "pieces": 12795
+          },
+          {
+            "en": "Marine molluscs",
+            "fr": "Mollusques marins",
+            "curr": 28,
+            "prev": 23,
+            "kg": 87.8,
+            "pieces": 115
+          },
+          {
+            "en": "Giant clams",
+            "fr": "Bénitiers",
+            "curr": 28,
+            "prev": 33,
+            "kg": 4.8,
+            "pieces": 395
+          },
+          {
+            "en": "Nautilus and shells",
+            "fr": "Nautiles et coquillages",
+            "curr": 16,
+            "prev": 20,
+            "kg": 0,
+            "pieces": 106
+          },
+          {
+            "en": "Freshwater fish",
+            "fr": "Poissons d'eau douce",
+            "curr": 12,
+            "prev": 16,
+            "kg": 28002.5,
+            "pieces": 109
+          },
+          {
+            "en": "Sea cucumbers",
+            "fr": "Holothuries",
+            "curr": 7,
+            "prev": 15,
+            "kg": 13,
+            "pieces": 1028
+          },
+          {
+            "en": "Marine mammals",
+            "fr": "Mammifères marins",
+            "curr": 6,
+            "prev": 12,
+            "kg": 0,
+            "pieces": 443
+          }
+        ],
+        "reporters": [
+          {
+            "en": "Germany",
+            "fr": "Allemagne",
+            "curr": 503,
+            "prev": 454
+          },
+          {
+            "en": "Hungary",
+            "fr": "Hongrie",
+            "curr": 152,
+            "prev": 67
+          },
+          {
+            "en": "France",
+            "fr": "France",
+            "curr": 149,
+            "prev": 10
+          },
+          {
+            "en": "Poland",
+            "fr": "Pologne",
+            "curr": 57,
+            "prev": 55
+          },
+          {
+            "en": "Austria",
+            "fr": "Autriche",
+            "curr": 48,
+            "prev": 31
+          },
+          {
+            "en": "Spain",
+            "fr": "Espagne",
+            "curr": 38,
+            "prev": 57
+          },
+          {
+            "en": "Russian Federation",
+            "fr": "Fédération de Russie",
+            "curr": 37,
+            "prev": 1
+          },
+          {
+            "en": "United Kingdom",
+            "fr": "Royaume-Uni",
+            "curr": 21,
+            "prev": 64
+          },
+          {
+            "en": "Switzerland",
+            "fr": "Suisse",
+            "curr": 20,
+            "prev": 9
+          },
+          {
+            "en": "Denmark",
+            "fr": "Danemark",
+            "curr": 20,
+            "prev": 46
+          }
+        ]
+      },
+      "Birds": {
+        "fr": "Oiseaux",
+        "totals": {
+          "cases": 187,
+          "seizures": 259,
+          "qty_kg": 0.5,
+          "qty_pieces": 2743
+        },
+        "subSeiz": [
+          {
+            "en": "Parrots and psittacidae",
+            "fr": "Perroquets et psittacidés",
+            "curr": 95,
+            "prev": 102,
+            "kg": 0,
+            "pieces": 921
+          },
+          {
+            "en": "Owls",
+            "fr": "Hiboux et chouettes",
+            "curr": 34,
+            "prev": 7,
+            "kg": 0,
+            "pieces": 74
+          },
+          {
+            "en": "Other birds",
+            "fr": "Autres oiseaux",
+            "curr": 28,
+            "prev": 5,
+            "kg": 0,
+            "pieces": 255
+          },
+          {
+            "en": "Raptors",
+            "fr": "Rapaces",
+            "curr": 17,
+            "prev": 9,
+            "kg": 0,
+            "pieces": 34
+          },
+          {
+            "en": "Macaws",
+            "fr": "Aras",
+            "curr": 13,
+            "prev": 13,
+            "kg": 0,
+            "pieces": 145
+          },
+          {
+            "en": "Finches and passerines",
+            "fr": "Fringilles et passereaux",
+            "curr": 13,
+            "prev": 17,
+            "kg": 0,
+            "pieces": 447
+          },
+          {
+            "en": "Pigeons and doves",
+            "fr": "Pigeons et colombes",
+            "curr": 11,
+            "prev": 47,
+            "kg": 0,
+            "pieces": 279
+          },
+          {
+            "en": "Falcons",
+            "fr": "Faucons",
+            "curr": 10,
+            "prev": 8,
+            "kg": 0,
+            "pieces": 46
+          },
+          {
+            "en": "Songbirds",
+            "fr": "Oiseaux chanteurs",
+            "curr": 8,
+            "prev": 14,
+            "kg": 0,
+            "pieces": 76
+          },
+          {
+            "en": "Ratites",
+            "fr": "Ratites",
+            "curr": 8,
+            "prev": 2,
+            "kg": 0,
+            "pieces": 76
+          },
+          {
+            "en": "Game birds",
+            "fr": "Gibier à plumes",
+            "curr": 5,
+            "prev": 25,
+            "kg": 0.5,
+            "pieces": 332
+          },
+          {
+            "en": "Corvids",
+            "fr": "Corvidés",
+            "curr": 3,
+            "prev": 0,
+            "kg": 0,
+            "pieces": 7
+          }
+        ],
+        "reporters": [
+          {
+            "en": "Ukraine",
+            "fr": "Ukraine",
+            "curr": 36,
+            "prev": 1
+          },
+          {
+            "en": "Türkiye",
+            "fr": "Türkiye",
+            "curr": 24,
+            "prev": 1
+          },
+          {
+            "en": "Spain",
+            "fr": "Espagne",
+            "curr": 21,
+            "prev": 35
+          },
+          {
+            "en": "Germany",
+            "fr": "Allemagne",
+            "curr": 18,
+            "prev": 18
+          },
+          {
+            "en": "France",
+            "fr": "France",
+            "curr": 11,
+            "prev": 0
+          },
+          {
+            "en": "Chile",
+            "fr": "Chili",
+            "curr": 10,
+            "prev": 0
+          },
+          {
+            "en": "Saudi Arabia",
+            "fr": "Arabie Saoudite",
+            "curr": 8,
+            "prev": 47
+          },
+          {
+            "en": "Austria",
+            "fr": "Autriche",
+            "curr": 6,
+            "prev": 0
+          },
+          {
+            "en": "China",
+            "fr": "Chine",
+            "curr": 5,
+            "prev": 0
+          },
+          {
+            "en": "Switzerland",
+            "fr": "Suisse",
+            "curr": 4,
+            "prev": 0
+          }
+        ]
+      },
+      "Arthropods": {
+        "fr": "Arthropodes",
+        "totals": {
+          "cases": 31,
+          "seizures": 35,
+          "qty_kg": 0,
+          "qty_pieces": 1699
+        },
+        "subSeiz": [
+          {
+            "en": "Butterflies and insects",
+            "fr": "Papillons et insectes",
+            "curr": 8,
+            "prev": 22,
+            "kg": 0,
+            "pieces": 1288
+          },
+          {
+            "en": "Leeches and annelids",
+            "fr": "Sangsues et annélides",
+            "curr": 6,
+            "prev": 6,
+            "kg": 0,
+            "pieces": 119
+          },
+          {
+            "en": "Scorpions",
+            "fr": "Scorpions",
+            "curr": 6,
+            "prev": 4,
+            "kg": 0,
+            "pieces": 49
+          },
+          {
+            "en": "Ants",
+            "fr": "Fourmis",
+            "curr": 5,
+            "prev": 2,
+            "kg": 0,
+            "pieces": 219
+          },
+          {
+            "en": "Tarantulas",
+            "fr": "Mygales",
+            "curr": 4,
+            "prev": 13,
+            "kg": 0,
+            "pieces": 7
+          },
+          {
+            "en": "Other arthropods",
+            "fr": "Autres arthropodes",
+            "curr": 3,
+            "prev": 1,
+            "kg": 0,
+            "pieces": 7
+          },
+          {
+            "en": "Beetles and insects",
+            "fr": "Coléoptères et insectes",
+            "curr": 2,
+            "prev": 0,
+            "kg": 0,
+            "pieces": 6
+          },
+          {
+            "en": "Butterflies, insects and spiders",
+            "fr": "Papillons, insectes et araignées",
+            "curr": 1,
+            "prev": 0,
+            "kg": 0,
+            "pieces": 4
+          }
+        ],
+        "reporters": [
+          {
+            "en": "Germany",
+            "fr": "Allemagne",
+            "curr": 6,
+            "prev": 2
+          },
+          {
+            "en": "Poland",
+            "fr": "Pologne",
+            "curr": 4,
+            "prev": 2
+          },
+          {
+            "en": "Australia",
+            "fr": "Australie",
+            "curr": 3,
+            "prev": 0
+          },
+          {
+            "en": "Czech Rep.",
+            "fr": "Rép. Tchèque",
+            "curr": 3,
+            "prev": 4
+          },
+          {
+            "en": "Korea, Rep. of",
+            "fr": "Corée (Rép. de)",
+            "curr": 2,
+            "prev": 0
+          },
+          {
+            "en": "Mexico",
+            "fr": "Mexique",
+            "curr": 2,
+            "prev": 0
+          },
+          {
+            "en": "Nigeria",
+            "fr": "Nigéria",
+            "curr": 2,
+            "prev": 0
+          },
+          {
+            "en": "Peru",
+            "fr": "Pérou",
+            "curr": 2,
+            "prev": 4
+          },
+          {
+            "en": "Austria",
+            "fr": "Autriche",
+            "curr": 1,
+            "prev": 2
+          },
+          {
+            "en": "Indonesia",
+            "fr": "Indonésie",
+            "curr": 1,
+            "prev": 0
+          }
+        ]
+      }
+    }
+  }
+}

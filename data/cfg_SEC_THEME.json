@@ -1,0 +1,161 @@
+{
+  "AML/CTF": {
+    "traf": {
+      "Cash smuggling": "#56060C",
+      "Gemstones trafficking": "#C11F53",
+      "Gold trafficking": "#E090A9"
+    },
+    "det": {
+      "Routine control": "#56060C",
+      "Random selection": "#C11F53",
+      "Intelligence": "#E090A9",
+      "Investigation": "#871C25",
+      "Risk profiling": "#E7C1C4"
+    },
+    "pal": [
+      "#56060C",
+      "#C11F53",
+      "#E090A9",
+      "#871C25",
+      "#E7C1C4",
+      "#C15779",
+      "#730D2D",
+      "#D26A72",
+      "#9B2730",
+      "#DEAFBE"
+    ]
+  },
+  "Drugs": {
+    "traf": {
+      "Cannabis": "#563A06",
+      "Cocaine": "#C1631F",
+      "Khat": "#E0B190",
+      "New Psychoactive Substances": "#87621C",
+      "Opioids and Opiates": "#E7D9C1",
+      "Psychotropic substances": "#C18357"
+    },
+    "det": {
+      "Routine control": "#C1631F",
+      "Random selection": "#FCEBAF",
+      "Intelligence": "#F89C35",
+      "Investigation": "#FDC735",
+      "Risk profiling": "#87621C"
+    },
+    "pal": [
+      "#563A06",
+      "#C1631F",
+      "#E0B190",
+      "#87621C",
+      "#E7D9C1",
+      "#C18357",
+      "#73370D",
+      "#D2AE6A",
+      "#9B7227",
+      "#DEC3AF"
+    ]
+  },
+  "Environmental Crime": {
+    "traf": {
+      "Fauna": "#0C5606",
+      "Flora": "#53C11F",
+      "Waste": "#A9E090",
+      "ODS & HFCs": "#25871C",
+      "Other hazardous materials": "#C4E7C1"
+    },
+    "det": {
+      "Routine control": "#0C5606",
+      "Random selection": "#53C11F",
+      "Intelligence": "#A9E090",
+      "Investigation": "#25871C",
+      "Risk profiling": "#C4E7C1"
+    },
+    "pal": [
+      "#0C5606",
+      "#53C11F",
+      "#A9E090",
+      "#25871C",
+      "#C4E7C1",
+      "#79C157",
+      "#2D730D",
+      "#72D26A",
+      "#309B27",
+      "#BEDEAF"
+    ]
+  },
+  "IPR, Health and Safety": {
+    "traf": {
+      "IPR products trafficking": "#56062A",
+      "Medical products trafficking": "#C11F8E"
+    },
+    "det": {
+      "Routine control": "#56062A",
+      "Random selection": "#C11F8E",
+      "Intelligence": "#E090C6",
+      "Investigation": "#871C4C",
+      "Risk profiling": "#E7C1D2"
+    },
+    "pal": [
+      "#56062A",
+      "#C11F8E",
+      "#E090C6",
+      "#871C4C",
+      "#E7C1D2",
+      "#C157A0",
+      "#730D52",
+      "#D26A99",
+      "#9B275B",
+      "#DEAFD0"
+    ]
+  },
+  "Revenue": {
+    "traf": {
+      "Tobacco products trafficking": "#062A56",
+      "Alcohol products trafficking": "#1F8EC1"
+    },
+    "det": {
+      "Routine control": "#062A56",
+      "Random selection": "#1F8EC1",
+      "Intelligence": "#90C6E0",
+      "Investigation": "#1C4C87",
+      "Risk profiling": "#C1D2E7"
+    },
+    "pal": [
+      "#062A56",
+      "#1F8EC1",
+      "#90C6E0",
+      "#1C4C87",
+      "#C1D2E7",
+      "#57A0C1",
+      "#0D5273",
+      "#6A99D2",
+      "#275B9B",
+      "#AFD0DE"
+    ]
+  },
+  "Security": {
+    "traf": {
+      "Weapons, ammunition and tactical equipment": "#350656",
+      "Explosives and precursors": "#581FC1",
+      "Unmanned aerial systems (UAS)": "#AC90E0"
+    },
+    "det": {
+      "Routine control": "#350656",
+      "Random selection": "#581FC1",
+      "Intelligence": "#AC90E0",
+      "Investigation": "#5B1C87",
+      "Risk profiling": "#D7C1E7"
+    },
+    "pal": [
+      "#350656",
+      "#581FC1",
+      "#AC90E0",
+      "#5B1C87",
+      "#D7C1E7",
+      "#7C57C1",
+      "#300D73",
+      "#A76AD2",
+      "#6B279B",
+      "#C0AFDE"
+    ]
+  }
+}

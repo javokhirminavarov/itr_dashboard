@@ -1,0 +1,2035 @@
+{
+  "totals": {
+    "cases": 10538,
+    "seizures": 12261,
+    "admins": 87
+  },
+  "composition": [
+    {
+      "en": "Cash smuggling",
+      "fr": "Contrebande d'espèces",
+      "seizures": 11710
+    },
+    {
+      "en": "Gold trafficking",
+      "fr": "Trafic d'or",
+      "seizures": 510
+    },
+    {
+      "en": "Gemstones trafficking",
+      "fr": "Trafic de pierres précieuses",
+      "seizures": 41
+    }
+  ],
+  "topReporters": [
+    {
+      "en": "Italy",
+      "fr": "Italie",
+      "cur": 3352,
+      "prv": 7730
+    },
+    {
+      "en": "Germany",
+      "fr": "Allemagne",
+      "cur": 1646,
+      "prv": 0
+    },
+    {
+      "en": "United States",
+      "fr": "États-Unis",
+      "cur": 1050,
+      "prv": 1251
+    },
+    {
+      "en": "Poland",
+      "fr": "Pologne",
+      "cur": 689,
+      "prv": 765
+    },
+    {
+      "en": "Saudi Arabia",
+      "fr": "Arabie Saoudite",
+      "cur": 506,
+      "prv": 401
+    },
+    {
+      "en": "France",
+      "fr": "France",
+      "cur": 484,
+      "prv": 0
+    },
+    {
+      "en": "Hungary",
+      "fr": "Hongrie",
+      "cur": 389,
+      "prv": 557
+    },
+    {
+      "en": "Spain",
+      "fr": "Espagne",
+      "cur": 287,
+      "prv": 257
+    },
+    {
+      "en": "Greece",
+      "fr": "Grèce",
+      "cur": 203,
+      "prv": 7
+    },
+    {
+      "en": "Israel",
+      "fr": "Israël",
+      "cur": 151,
+      "prv": 170
+    }
+  ],
+  "currencies": [
+    {
+      "en": "Euro",
+      "fr": "Euro",
+      "seizures": 7267,
+      "value": 177788900
+    },
+    {
+      "en": "US Dollar",
+      "fr": "Dollar US",
+      "seizures": 2314,
+      "value": 119318456
+    },
+    {
+      "en": "Saudi Riyal",
+      "fr": "Riyal saoudien",
+      "seizures": 587,
+      "value": 23575685
+    },
+    {
+      "en": "Zloty",
+      "fr": "Zloty",
+      "seizures": 210,
+      "value": 804245
+    },
+    {
+      "en": "Hryvnia",
+      "fr": "Hryvnia",
+      "seizures": 190,
+      "value": 243039
+    }
+  ],
+  "conveyance": [
+    {
+      "en": "Air",
+      "fr": "Voie aérienne",
+      "seizures": 7237,
+      "value": 153014558,
+      "byCur": {
+        "Euro": 5267,
+        "US Dollar": 1403,
+        "Saudi Riyal": 425,
+        "Zloty": 86,
+        "Hryvnia": 56
+      }
+    },
+    {
+      "en": "Vehicle",
+      "fr": "Véhicule",
+      "seizures": 1929,
+      "value": 70018612,
+      "byCur": {
+        "Euro": 949,
+        "US Dollar": 601,
+        "Saudi Riyal": 160,
+        "Zloty": 94,
+        "Hryvnia": 125
+      }
+    },
+    {
+      "en": "Unknown",
+      "fr": "Inconnu",
+      "seizures": 616,
+      "value": 63712915,
+      "byCur": {
+        "Euro": 533,
+        "US Dollar": 55,
+        "Saudi Riyal": 1,
+        "Zloty": 27,
+        "Hryvnia": 0
+      }
+    },
+    {
+      "en": "Pedestrian",
+      "fr": "Piéton",
+      "seizures": 465,
+      "value": 11580766,
+      "byCur": {
+        "Euro": 304,
+        "US Dollar": 160,
+        "Saudi Riyal": 0,
+        "Zloty": 1,
+        "Hryvnia": 0
+      }
+    },
+    {
+      "en": "Rail Train",
+      "fr": "Train",
+      "seizures": 202,
+      "value": 4862430,
+      "byCur": {
+        "Euro": 182,
+        "US Dollar": 10,
+        "Saudi Riyal": 0,
+        "Zloty": 1,
+        "Hryvnia": 9
+      }
+    },
+    {
+      "en": "Regular Mail",
+      "fr": "Courrier ordinaire",
+      "seizures": 57,
+      "value": 14375093,
+      "byCur": {
+        "Euro": 2,
+        "US Dollar": 55,
+        "Saudi Riyal": 0,
+        "Zloty": 0,
+        "Hryvnia": 0
+      }
+    },
+    {
+      "en": "Vessel",
+      "fr": "Navire",
+      "seizures": 41,
+      "value": 3078780,
+      "byCur": {
+        "Euro": 19,
+        "US Dollar": 21,
+        "Saudi Riyal": 1,
+        "Zloty": 0,
+        "Hryvnia": 0
+      }
+    },
+    {
+      "en": "Express courier",
+      "fr": "Messagerie express",
+      "seizures": 21,
+      "value": 1087171,
+      "byCur": {
+        "Euro": 11,
+        "US Dollar": 9,
+        "Saudi Riyal": 0,
+        "Zloty": 1,
+        "Hryvnia": 0
+      }
+    }
+  ],
+  "direction": [
+    {
+      "en": "Italy",
+      "fr": "Italie",
+      "Export": 1941,
+      "Import": 1374,
+      "Internal": 1,
+      "Transit": 36
+    },
+    {
+      "en": "Germany",
+      "fr": "Allemagne",
+      "Export": 1123,
+      "Import": 418,
+      "Internal": 10,
+      "Transit": 95
+    },
+    {
+      "en": "United States",
+      "fr": "États-Unis",
+      "Export": 530,
+      "Import": 488,
+      "Internal": 0,
+      "Transit": 32
+    },
+    {
+      "en": "Poland",
+      "fr": "Pologne",
+      "Export": 104,
+      "Import": 439,
+      "Internal": 31,
+      "Transit": 113
+    },
+    {
+      "en": "Saudi Arabia",
+      "fr": "Arabie Saoudite",
+      "Export": 459,
+      "Import": 45,
+      "Internal": 0,
+      "Transit": 0
+    },
+    {
+      "en": "France",
+      "fr": "France",
+      "Export": 99,
+      "Import": 141,
+      "Internal": 128,
+      "Transit": 116
+    },
+    {
+      "en": "Hungary",
+      "fr": "Hongrie",
+      "Export": 81,
+      "Import": 240,
+      "Internal": 3,
+      "Transit": 65
+    },
+    {
+      "en": "Spain",
+      "fr": "Espagne",
+      "Export": 189,
+      "Import": 96,
+      "Internal": 2,
+      "Transit": 0
+    },
+    {
+      "en": "Greece",
+      "fr": "Grèce",
+      "Export": 17,
+      "Import": 157,
+      "Internal": 0,
+      "Transit": 29
+    },
+    {
+      "en": "Israel",
+      "fr": "Israël",
+      "Export": 36,
+      "Import": 109,
+      "Internal": 0,
+      "Transit": 0
+    }
+  ],
+  "detection": [
+    {
+      "en": "Routine control",
+      "fr": "Contrôle de routine",
+      "pct": 60.9
+    },
+    {
+      "en": "Risk profiling",
+      "fr": "Profilage de risque",
+      "pct": 35.3
+    },
+    {
+      "en": "Random selection",
+      "fr": "Sélection aléatoire",
+      "pct": 1.7
+    },
+    {
+      "en": "Investigation",
+      "fr": "Enquête",
+      "pct": 1.5
+    },
+    {
+      "en": "Intelligence",
+      "fr": "Renseignement",
+      "pct": 0.6
+    }
+  ],
+  "proportion": [
+    {
+      "en": "Albania",
+      "fr": "Albanie",
+      "total": 39,
+      "Euro": 39,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Angola",
+      "fr": "Angola",
+      "total": 40,
+      "Euro": 8,
+      "US Dollar": 32,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Anguilla",
+      "fr": "Anguilla",
+      "total": 2,
+      "Euro": 0,
+      "US Dollar": 2,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Argentina",
+      "fr": "Argentine",
+      "total": 41,
+      "Euro": 3,
+      "US Dollar": 38,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Armenia",
+      "fr": "Arménie",
+      "total": 11,
+      "Euro": 1,
+      "US Dollar": 10,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Austria",
+      "fr": "Autriche",
+      "total": 77,
+      "Euro": 68,
+      "US Dollar": 7,
+      "Saudi Riyal": 1,
+      "Zloty": 0,
+      "Hryvnia": 1
+    },
+    {
+      "en": "Azerbaijan",
+      "fr": "Azerbaïdjan",
+      "total": 22,
+      "Euro": 2,
+      "US Dollar": 20,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Bahamas",
+      "fr": "Bahamas",
+      "total": 1,
+      "Euro": 0,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Bahrain",
+      "fr": "Bahreïn",
+      "total": 9,
+      "Euro": 1,
+      "US Dollar": 5,
+      "Saudi Riyal": 3,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Bangladesh",
+      "fr": "Bangladesh",
+      "total": 15,
+      "Euro": 3,
+      "US Dollar": 4,
+      "Saudi Riyal": 8,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Barbados",
+      "fr": "Barbade",
+      "total": 5,
+      "Euro": 0,
+      "US Dollar": 5,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Bolivia",
+      "fr": "Bolivie",
+      "total": 2,
+      "Euro": 0,
+      "US Dollar": 2,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Bonaire, Sint Eustatius and Saba",
+      "fr": "Saba, Saint-Eustache et Bonaire",
+      "total": 7,
+      "Euro": 1,
+      "US Dollar": 6,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "British Virgin Islands",
+      "fr": "Îles Vierges Britanniques",
+      "total": 1,
+      "Euro": 0,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Bulgaria",
+      "fr": "Bulgarie",
+      "total": 66,
+      "Euro": 53,
+      "US Dollar": 13,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Chile",
+      "fr": "Chili",
+      "total": 3,
+      "Euro": 1,
+      "US Dollar": 2,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Costa Rica",
+      "fr": "Costa Rica",
+      "total": 1,
+      "Euro": 0,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Cote d'Ivoire",
+      "fr": "Côte d'Ivoire",
+      "total": 4,
+      "Euro": 2,
+      "US Dollar": 2,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Croatia",
+      "fr": "Croatie",
+      "total": 97,
+      "Euro": 91,
+      "US Dollar": 5,
+      "Saudi Riyal": 1,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Cyprus",
+      "fr": "Chypre",
+      "total": 11,
+      "Euro": 8,
+      "US Dollar": 3,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Czech Rep.",
+      "fr": "Rép. Tchèque",
+      "total": 26,
+      "Euro": 22,
+      "US Dollar": 4,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Denmark",
+      "fr": "Danemark",
+      "total": 23,
+      "Euro": 15,
+      "US Dollar": 7,
+      "Saudi Riyal": 0,
+      "Zloty": 1,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Dominican Rep.",
+      "fr": "Rép. Dominicaine",
+      "total": 21,
+      "Euro": 3,
+      "US Dollar": 18,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Egypt",
+      "fr": "Égypte",
+      "total": 2,
+      "Euro": 0,
+      "US Dollar": 2,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "France",
+      "fr": "France",
+      "total": 495,
+      "Euro": 495,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Gabon",
+      "fr": "Gabon",
+      "total": 1,
+      "Euro": 0,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Germany",
+      "fr": "Allemagne",
+      "total": 1646,
+      "Euro": 1646,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Greece",
+      "fr": "Grèce",
+      "total": 203,
+      "Euro": 203,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Hungary",
+      "fr": "Hongrie",
+      "total": 555,
+      "Euro": 342,
+      "US Dollar": 168,
+      "Saudi Riyal": 7,
+      "Zloty": 10,
+      "Hryvnia": 28
+    },
+    {
+      "en": "Iceland",
+      "fr": "Islande",
+      "total": 14,
+      "Euro": 11,
+      "US Dollar": 3,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "India",
+      "fr": "Inde",
+      "total": 5,
+      "Euro": 1,
+      "US Dollar": 2,
+      "Saudi Riyal": 2,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Israel",
+      "fr": "Israël",
+      "total": 148,
+      "Euro": 26,
+      "US Dollar": 122,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Italy",
+      "fr": "Italie",
+      "total": 3352,
+      "Euro": 3352,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Jordan",
+      "fr": "Jordanie",
+      "total": 23,
+      "Euro": 0,
+      "US Dollar": 22,
+      "Saudi Riyal": 1,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Kenya",
+      "fr": "Kenya",
+      "total": 3,
+      "Euro": 0,
+      "US Dollar": 3,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Kosovo",
+      "fr": "Kosovo",
+      "total": 3,
+      "Euro": 3,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Kuwait",
+      "fr": "Koweït",
+      "total": 8,
+      "Euro": 0,
+      "US Dollar": 6,
+      "Saudi Riyal": 2,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Latvia",
+      "fr": "Lettonie",
+      "total": 4,
+      "Euro": 3,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Liberia",
+      "fr": "Libéria",
+      "total": 8,
+      "Euro": 0,
+      "US Dollar": 8,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Libya",
+      "fr": "Libye",
+      "total": 9,
+      "Euro": 6,
+      "US Dollar": 3,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Mali",
+      "fr": "Mali",
+      "total": 2,
+      "Euro": 2,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Malta",
+      "fr": "Malte",
+      "total": 6,
+      "Euro": 6,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Mauritania",
+      "fr": "Mauritanie",
+      "total": 1,
+      "Euro": 1,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Mexico",
+      "fr": "Mexique",
+      "total": 75,
+      "Euro": 2,
+      "US Dollar": 73,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Moldova, Rep. of",
+      "fr": "Moldavie, Rép. De",
+      "total": 24,
+      "Euro": 10,
+      "US Dollar": 14,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Mongolia",
+      "fr": "Mongolie",
+      "total": 2,
+      "Euro": 0,
+      "US Dollar": 2,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Montenegro",
+      "fr": "Monténégro",
+      "total": 34,
+      "Euro": 23,
+      "US Dollar": 11,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Morocco",
+      "fr": "Maroc",
+      "total": 8,
+      "Euro": 5,
+      "US Dollar": 3,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Mozambique",
+      "fr": "Mozambique",
+      "total": 3,
+      "Euro": 0,
+      "US Dollar": 3,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Nigeria",
+      "fr": "Nigéria",
+      "total": 3,
+      "Euro": 0,
+      "US Dollar": 3,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "North Macedonia (Rep. of)",
+      "fr": "Macédoine du Nord",
+      "total": 13,
+      "Euro": 12,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Norway",
+      "fr": "Norvège",
+      "total": 54,
+      "Euro": 31,
+      "US Dollar": 21,
+      "Saudi Riyal": 0,
+      "Zloty": 2,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Oman",
+      "fr": "Oman",
+      "total": 13,
+      "Euro": 1,
+      "US Dollar": 1,
+      "Saudi Riyal": 11,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Philippines",
+      "fr": "Philippines",
+      "total": 7,
+      "Euro": 2,
+      "US Dollar": 5,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Poland",
+      "fr": "Pologne",
+      "total": 1143,
+      "Euro": 382,
+      "US Dollar": 404,
+      "Saudi Riyal": 1,
+      "Zloty": 195,
+      "Hryvnia": 161
+    },
+    {
+      "en": "Portugal",
+      "fr": "Portugal",
+      "total": 4,
+      "Euro": 3,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Romania",
+      "fr": "Roumanie",
+      "total": 27,
+      "Euro": 15,
+      "US Dollar": 12,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Russian Federation",
+      "fr": "Fédération de Russie",
+      "total": 2,
+      "Euro": 1,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Saudi Arabia",
+      "fr": "Arabie Saoudite",
+      "total": 514,
+      "Euro": 2,
+      "US Dollar": 33,
+      "Saudi Riyal": 479,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Senegal",
+      "fr": "Sénégal",
+      "total": 7,
+      "Euro": 6,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Serbia",
+      "fr": "Serbie",
+      "total": 8,
+      "Euro": 7,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Slovakia",
+      "fr": "Slovaquie",
+      "total": 1,
+      "Euro": 0,
+      "US Dollar": 1,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Spain",
+      "fr": "Espagne",
+      "total": 318,
+      "Euro": 279,
+      "US Dollar": 37,
+      "Saudi Riyal": 0,
+      "Zloty": 2,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Sri Lanka",
+      "fr": "Sri Lanka",
+      "total": 6,
+      "Euro": 2,
+      "US Dollar": 3,
+      "Saudi Riyal": 1,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Sweden",
+      "fr": "Suède",
+      "total": 1,
+      "Euro": 1,
+      "US Dollar": 0,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Tajikistan",
+      "fr": "Tadjikistan",
+      "total": 10,
+      "Euro": 0,
+      "US Dollar": 10,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Tunisia",
+      "fr": "Tunisie",
+      "total": 11,
+      "Euro": 8,
+      "US Dollar": 3,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Türkiye",
+      "fr": "Türkiye",
+      "total": 67,
+      "Euro": 35,
+      "US Dollar": 31,
+      "Saudi Riyal": 1,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "Ukraine",
+      "fr": "Ukraine",
+      "total": 48,
+      "Euro": 21,
+      "US Dollar": 27,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "United Arab Emirates",
+      "fr": "Émirats Arabes Unis",
+      "total": 80,
+      "Euro": 1,
+      "US Dollar": 10,
+      "Saudi Riyal": 69,
+      "Zloty": 0,
+      "Hryvnia": 0
+    },
+    {
+      "en": "United States",
+      "fr": "États-Unis",
+      "total": 1073,
+      "Euro": 0,
+      "US Dollar": 1073,
+      "Saudi Riyal": 0,
+      "Zloty": 0,
+      "Hryvnia": 0
+    }
+  ],
+  "involvement": [
+    {
+      "iso": "ITA",
+      "cases": 3430
+    },
+    {
+      "iso": "DEU",
+      "cases": 1893
+    },
+    {
+      "iso": "USA",
+      "cases": 1433
+    },
+    {
+      "iso": "TUR",
+      "cases": 1353
+    },
+    {
+      "iso": "POL",
+      "cases": 835
+    },
+    {
+      "iso": "EGY",
+      "cases": 631
+    },
+    {
+      "iso": "SAU",
+      "cases": 628
+    },
+    {
+      "iso": "FRA",
+      "cases": 596
+    },
+    {
+      "iso": "CHN",
+      "cases": 582
+    },
+    {
+      "iso": "ESP",
+      "cases": 462
+    },
+    {
+      "iso": "ARE",
+      "cases": 445
+    },
+    {
+      "iso": "HUN",
+      "cases": 410
+    },
+    {
+      "iso": "CHE",
+      "cases": 406
+    },
+    {
+      "iso": "MAR",
+      "cases": 392
+    },
+    {
+      "iso": "MEX",
+      "cases": 379
+    },
+    {
+      "iso": "ALB",
+      "cases": 309
+    },
+    {
+      "iso": "UKR",
+      "cases": 301
+    },
+    {
+      "iso": "GRC",
+      "cases": 279
+    },
+    {
+      "iso": "ISR",
+      "cases": 243
+    },
+    {
+      "iso": "GBR",
+      "cases": 182
+    },
+    {
+      "iso": "SRB",
+      "cases": 163
+    },
+    {
+      "iso": "IRQ",
+      "cases": 130
+    },
+    {
+      "iso": "JOR",
+      "cases": 129
+    },
+    {
+      "iso": "ARG",
+      "cases": 127
+    },
+    {
+      "iso": "BGR",
+      "cases": 127
+    },
+    {
+      "iso": "LBN",
+      "cases": 124
+    },
+    {
+      "iso": "PHL",
+      "cases": 122
+    },
+    {
+      "iso": "ROU",
+      "cases": 122
+    },
+    {
+      "iso": "AUT",
+      "cases": 121
+    },
+    {
+      "iso": "THA",
+      "cases": 117
+    },
+    {
+      "iso": "RUS",
+      "cases": 115
+    },
+    {
+      "iso": "HRV",
+      "cases": 109
+    },
+    {
+      "iso": "CAN",
+      "cases": 107
+    },
+    {
+      "iso": "VNM",
+      "cases": 101
+    },
+    {
+      "iso": "MDA",
+      "cases": 101
+    },
+    {
+      "iso": "IND",
+      "cases": 99
+    },
+    {
+      "iso": "QAT",
+      "cases": 90
+    },
+    {
+      "iso": "KOS",
+      "cases": 86
+    },
+    {
+      "iso": "IRN",
+      "cases": 79
+    },
+    {
+      "iso": "AZE",
+      "cases": 75
+    },
+    {
+      "iso": "NLD",
+      "cases": 74
+    },
+    {
+      "iso": "BIH",
+      "cases": 70
+    },
+    {
+      "iso": "BEL",
+      "cases": 69
+    },
+    {
+      "iso": "DOM",
+      "cases": 65
+    },
+    {
+      "iso": "BGD",
+      "cases": 63
+    },
+    {
+      "iso": "MKD",
+      "cases": 60
+    },
+    {
+      "iso": "BHS",
+      "cases": 59
+    },
+    {
+      "iso": "KOR",
+      "cases": 58
+    },
+    {
+      "iso": "ARM",
+      "cases": 57
+    },
+    {
+      "iso": "PAK",
+      "cases": 57
+    },
+    {
+      "iso": "BOL",
+      "cases": 54
+    },
+    {
+      "iso": "NOR",
+      "cases": 52
+    },
+    {
+      "iso": "GEO",
+      "cases": 51
+    },
+    {
+      "iso": "DNK",
+      "cases": 49
+    },
+    {
+      "iso": "CZE",
+      "cases": 47
+    },
+    {
+      "iso": "TUN",
+      "cases": 47
+    },
+    {
+      "iso": "GHA",
+      "cases": 45
+    },
+    {
+      "iso": "MNE",
+      "cases": 44
+    },
+    {
+      "iso": "JPN",
+      "cases": 43
+    },
+    {
+      "iso": "ETH",
+      "cases": 40
+    },
+    {
+      "iso": "BRA",
+      "cases": 39
+    },
+    {
+      "iso": "NGA",
+      "cases": 36
+    },
+    {
+      "iso": "OMN",
+      "cases": 36
+    },
+    {
+      "iso": "AGO",
+      "cases": 34
+    },
+    {
+      "iso": "LKA",
+      "cases": 33
+    },
+    {
+      "iso": "SEN",
+      "cases": 31
+    },
+    {
+      "iso": "KWT",
+      "cases": 27
+    },
+    {
+      "iso": "KAZ",
+      "cases": 27
+    },
+    {
+      "iso": "MLT",
+      "cases": 27
+    },
+    {
+      "iso": "HKG",
+      "cases": 26
+    },
+    {
+      "iso": "SYR",
+      "cases": 26
+    },
+    {
+      "iso": "PER",
+      "cases": 26
+    },
+    {
+      "iso": "ISL",
+      "cases": 25
+    },
+    {
+      "iso": "BHR",
+      "cases": 24
+    },
+    {
+      "iso": "CYP",
+      "cases": 24
+    },
+    {
+      "iso": "YEM",
+      "cases": 23
+    },
+    {
+      "iso": "AND",
+      "cases": 23
+    },
+    {
+      "iso": "LBY",
+      "cases": 22
+    },
+    {
+      "iso": "PRT",
+      "cases": 21
+    },
+    {
+      "iso": "SGP",
+      "cases": 21
+    },
+    {
+      "iso": "GMB",
+      "cases": 19
+    },
+    {
+      "iso": "CHL",
+      "cases": 19
+    },
+    {
+      "iso": "DZA",
+      "cases": 19
+    },
+    {
+      "iso": "CUB",
+      "cases": 19
+    },
+    {
+      "iso": "COL",
+      "cases": 19
+    },
+    {
+      "iso": "LUX",
+      "cases": 19
+    },
+    {
+      "iso": "SWE",
+      "cases": 19
+    },
+    {
+      "iso": "UZB",
+      "cases": 18
+    },
+    {
+      "iso": "HTI",
+      "cases": 18
+    },
+    {
+      "iso": "AFG",
+      "cases": 17
+    },
+    {
+      "iso": "IRL",
+      "cases": 14
+    },
+    {
+      "iso": "ZAF",
+      "cases": 13
+    },
+    {
+      "iso": "ERI",
+      "cases": 13
+    },
+    {
+      "iso": "TWN",
+      "cases": 12
+    },
+    {
+      "iso": "TJK",
+      "cases": 11
+    },
+    {
+      "iso": "IDN",
+      "cases": 11
+    },
+    {
+      "iso": "LBR",
+      "cases": 11
+    },
+    {
+      "iso": "ABW",
+      "cases": 11
+    },
+    {
+      "iso": "AUS",
+      "cases": 11
+    },
+    {
+      "iso": "LTU",
+      "cases": 11
+    },
+    {
+      "iso": "CMR",
+      "cases": 10
+    },
+    {
+      "iso": "FIN",
+      "cases": 10
+    },
+    {
+      "iso": "SVK",
+      "cases": 10
+    },
+    {
+      "iso": "MYS",
+      "cases": 9
+    },
+    {
+      "iso": "LVA",
+      "cases": 9
+    },
+    {
+      "iso": "NAM",
+      "cases": 9
+    },
+    {
+      "iso": "SVN",
+      "cases": 9
+    },
+    {
+      "iso": "MNG",
+      "cases": 8
+    },
+    {
+      "iso": "KGZ",
+      "cases": 8
+    },
+    {
+      "iso": "PRY",
+      "cases": 8
+    },
+    {
+      "iso": "CIV",
+      "cases": 7
+    },
+    {
+      "iso": "KEN",
+      "cases": 7
+    },
+    {
+      "iso": "GUY",
+      "cases": 7
+    },
+    {
+      "iso": "BLR",
+      "cases": 7
+    },
+    {
+      "iso": "PAN",
+      "cases": 7
+    },
+    {
+      "iso": "JAM",
+      "cases": 6
+    },
+    {
+      "iso": "GIN",
+      "cases": 6
+    },
+    {
+      "iso": "LAO",
+      "cases": 5
+    },
+    {
+      "iso": "SLV",
+      "cases": 5
+    },
+    {
+      "iso": "ECU",
+      "cases": 5
+    },
+    {
+      "iso": "BRB",
+      "cases": 5
+    },
+    {
+      "iso": "VEN",
+      "cases": 4
+    },
+    {
+      "iso": "GNQ",
+      "cases": 4
+    },
+    {
+      "iso": "TKM",
+      "cases": 4
+    },
+    {
+      "iso": "CRI",
+      "cases": 4
+    },
+    {
+      "iso": "MRT",
+      "cases": 3
+    },
+    {
+      "iso": "NPL",
+      "cases": 3
+    },
+    {
+      "iso": "MLI",
+      "cases": 3
+    },
+    {
+      "iso": "COG",
+      "cases": 3
+    },
+    {
+      "iso": "RWA",
+      "cases": 3
+    },
+    {
+      "iso": "BFA",
+      "cases": 3
+    },
+    {
+      "iso": "MOZ",
+      "cases": 3
+    },
+    {
+      "iso": "URY",
+      "cases": 3
+    },
+    {
+      "iso": "PSX",
+      "cases": 3
+    },
+    {
+      "iso": "KHM",
+      "cases": 3
+    },
+    {
+      "iso": "SXM",
+      "cases": 3
+    },
+    {
+      "iso": "ZMB",
+      "cases": 3
+    },
+    {
+      "iso": "AIA",
+      "cases": 2
+    },
+    {
+      "iso": "TZA",
+      "cases": 2
+    },
+    {
+      "iso": "DJI",
+      "cases": 2
+    },
+    {
+      "iso": "NZL",
+      "cases": 2
+    },
+    {
+      "iso": "ZWE",
+      "cases": 2
+    },
+    {
+      "iso": "SLE",
+      "cases": 2
+    },
+    {
+      "iso": "MAC",
+      "cases": 2
+    },
+    {
+      "iso": "VGB",
+      "cases": 2
+    },
+    {
+      "iso": "UGA",
+      "cases": 2
+    },
+    {
+      "iso": "GIB",
+      "cases": 2
+    },
+    {
+      "iso": "PYF",
+      "cases": 2
+    },
+    {
+      "iso": "SOM",
+      "cases": 2
+    },
+    {
+      "iso": "TCA",
+      "cases": 2
+    },
+    {
+      "iso": "GUM",
+      "cases": 2
+    },
+    {
+      "iso": "BMU",
+      "cases": 2
+    },
+    {
+      "iso": "EST",
+      "cases": 2
+    },
+    {
+      "iso": "MWI",
+      "cases": 1
+    },
+    {
+      "iso": "NIC",
+      "cases": 1
+    },
+    {
+      "iso": "MDV",
+      "cases": 1
+    },
+    {
+      "iso": "MDG",
+      "cases": 1
+    },
+    {
+      "iso": "BEN",
+      "cases": 1
+    },
+    {
+      "iso": "BDI",
+      "cases": 1
+    },
+    {
+      "iso": "STP",
+      "cases": 1
+    },
+    {
+      "iso": "HND",
+      "cases": 1
+    },
+    {
+      "iso": "MUS",
+      "cases": 1
+    },
+    {
+      "iso": "GRD",
+      "cases": 1
+    },
+    {
+      "iso": "CUW",
+      "cases": 1
+    },
+    {
+      "iso": "PRI",
+      "cases": 1
+    },
+    {
+      "iso": "SUR",
+      "cases": 1
+    },
+    {
+      "iso": "GAB",
+      "cases": 1
+    },
+    {
+      "iso": "VIR",
+      "cases": 1
+    },
+    {
+      "iso": "COD",
+      "cases": 1
+    },
+    {
+      "iso": "GRL",
+      "cases": 1
+    }
+  ],
+  "counterfeit": {
+    "admins": 12,
+    "byCountry": [
+      {
+        "en": "Senegal",
+        "fr": "Sénégal",
+        "cur": 7,
+        "prv": 5
+      },
+      {
+        "en": "Nigeria",
+        "fr": "Nigéria",
+        "cur": 2,
+        "prv": 0
+      },
+      {
+        "en": "Saudi Arabia",
+        "fr": "Arabie Saoudite",
+        "cur": 1,
+        "prv": 1
+      },
+      {
+        "en": "Serbia",
+        "fr": "Serbie",
+        "cur": 1,
+        "prv": 0
+      }
+    ]
+  },
+  "gold": {
+    "location": [
+      {
+        "en": "Airport",
+        "fr": "Aéroport",
+        "cases": 360
+      },
+      {
+        "en": "Land boundary",
+        "fr": "Frontière terrestre",
+        "cases": 108
+      },
+      {
+        "en": "Inland",
+        "fr": "Interieur",
+        "cases": 9
+      },
+      {
+        "en": "Rail",
+        "fr": "Voie ferrée",
+        "cases": 3
+      },
+      {
+        "en": "Seaport",
+        "fr": "Port maritime",
+        "cases": 3
+      },
+      {
+        "en": "Express Courier",
+        "fr": "Messagerie express",
+        "cases": 1
+      }
+    ],
+    "concealment": [
+      {
+        "en": "In baggage",
+        "fr": "Dans les bagages",
+        "cases": 302
+      },
+      {
+        "en": "On the person",
+        "fr": "Sur la personne",
+        "cases": 107
+      },
+      {
+        "en": "In transport",
+        "fr": "Dans le moyen de transport",
+        "cases": 53
+      },
+      {
+        "en": "Not concealed",
+        "fr": "Non dissimulé",
+        "cases": 7
+      },
+      {
+        "en": "In freight",
+        "fr": "Dans le fret",
+        "cases": 6
+      },
+      {
+        "en": "On market places",
+        "fr": "Sur des places de marche",
+        "cases": 3
+      },
+      {
+        "en": "In express courier",
+        "fr": "En messagerie express",
+        "cases": 2
+      },
+      {
+        "en": "In premises",
+        "fr": "Dans des locaux",
+        "cases": 2
+      },
+      {
+        "en": "Unknown",
+        "fr": "Inconnu",
+        "cases": 2
+      }
+    ],
+    "direction": [
+      {
+        "en": "Import",
+        "fr": "Importation",
+        "pct": 82.6
+      },
+      {
+        "en": "Export",
+        "fr": "Exportation",
+        "pct": 13.8
+      },
+      {
+        "en": "Transit",
+        "fr": "Transit",
+        "pct": 1.9
+      },
+      {
+        "en": "Internal",
+        "fr": "Interne",
+        "pct": 1.7
+      }
+    ],
+    "form": [
+      {
+        "en": "Gold Jewellery",
+        "fr": "Bijoux en or",
+        "pct": 42.8
+      },
+      {
+        "en": "Gold in bars",
+        "fr": "Or en lingots",
+        "pct": 38.6
+      },
+      {
+        "en": "Gold other",
+        "fr": "Or autre",
+        "pct": 18.6
+      }
+    ],
+    "reporters": [
+      {
+        "en": "Bangladesh",
+        "fr": "Bangladesh",
+        "cases": 130
+      },
+      {
+        "en": "Japan",
+        "fr": "Japon",
+        "cases": 70
+      },
+      {
+        "en": "Türkiye",
+        "fr": "Türkiye",
+        "cases": 65
+      },
+      {
+        "en": "United Arab Emirates",
+        "fr": "Émirats Arabes Unis",
+        "cases": 32
+      },
+      {
+        "en": "India",
+        "fr": "Inde",
+        "cases": 27
+      },
+      {
+        "en": "Azerbaijan",
+        "fr": "Azerbaïdjan",
+        "cases": 23
+      },
+      {
+        "en": "Jordan",
+        "fr": "Jordanie",
+        "cases": 20
+      },
+      {
+        "en": "Armenia",
+        "fr": "Arménie",
+        "cases": 14
+      },
+      {
+        "en": "Romania",
+        "fr": "Roumanie",
+        "cases": 11
+      },
+      {
+        "en": "Oman",
+        "fr": "Oman",
+        "cases": 8
+      }
+    ],
+    "cases": 484
+  },
+  "gems": {
+    "reporters": [
+      {
+        "en": "Türkiye",
+        "fr": "Türkiye",
+        "cases": 9
+      },
+      {
+        "en": "Azerbaijan",
+        "fr": "Azerbaïdjan",
+        "cases": 8
+      },
+      {
+        "en": "South Africa",
+        "fr": "Afrique du Sud",
+        "cases": 8
+      },
+      {
+        "en": "Jordan",
+        "fr": "Jordanie",
+        "cases": 2
+      },
+      {
+        "en": "Poland",
+        "fr": "Pologne",
+        "cases": 2
+      },
+      {
+        "en": "Union of Myanmar (Rep. of the)",
+        "fr": "Myanmar (La Rép. de l'Union du)",
+        "cases": 2
+      }
+    ],
+    "departures": [
+      {
+        "en": "Türkiye",
+        "fr": "Türkiye",
+        "cases": 9
+      },
+      {
+        "en": "South Africa",
+        "fr": "Afrique du Sud",
+        "cases": 8
+      },
+      {
+        "en": "Unknown",
+        "fr": "Inconnu",
+        "cases": 3
+      },
+      {
+        "en": "United Arab Emirates",
+        "fr": "Émirats Arabes Unis",
+        "cases": 3
+      },
+      {
+        "en": "Jordan",
+        "fr": "Jordanie",
+        "cases": 2
+      },
+      {
+        "en": "China",
+        "fr": "Chine",
+        "cases": 2
+      }
+    ],
+    "stoneTypes": [
+      {
+        "en": "Semi-precious stones",
+        "fr": "Pierres semi-precieuses",
+        "pct": 40
+      },
+      {
+        "en": "Other precious stones",
+        "fr": "Autres pierres precieuses",
+        "pct": 32.5
+      },
+      {
+        "en": "Diamonds",
+        "fr": "Diamants",
+        "pct": 27.5
+      }
+    ],
+    "detection": [
+      {
+        "en": "Routine control",
+        "fr": "Contrôle de routine",
+        "pct": 55
+      },
+      {
+        "en": "Risk profiling",
+        "fr": "Profilage de risque",
+        "pct": 17.5
+      },
+      {
+        "en": "Intelligence",
+        "fr": "Renseignement",
+        "pct": 15
+      },
+      {
+        "en": "Random selection",
+        "fr": "Sélection aléatoire",
+        "pct": 12.5
+      }
+    ],
+    "cases": 40
+  }
+}

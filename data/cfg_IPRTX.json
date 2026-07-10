@@ -1,0 +1,206 @@
+{
+  "ov": {
+    "intro": {
+      "en": "The IPR, Health and Safety section covers two trafficking streams that share a common feature: e-commerce and parcel delivery channels are now their main distribution mechanism. In 2025, 110 Customs administrations reported 35,759 IPR products cases and 6,267 medical products cases, for 74,389 and 8,207 seizures respectively. Section case volume rose 10.7% year on year, driven mainly by IPR reporting (+14.1%). As with all CEN data, 2025 figures are provisional.",
+      "fr": "La section DPI, santé et sécurité couvre deux flux de trafic qui partagent une caractéristique commune : l'e-commerce et la messagerie postale sont désormais leur principal mode de distribution. En 2025, 110 administrations douanières ont déclaré 35 759 affaires de produits IPR et 6 267 affaires de produits médicaux, pour 74 389 et 8 207 saisies respectivement. Le volume d'affaires de la section progresse de 10,7 % sur un an, porté surtout par la déclaration IPR (+14,1 %). Comme toutes les données CEN, les chiffres 2025 sont provisoires."
+    },
+    "split": {
+      "en": "IPR products trafficking is by far the dominant stream, with 85% of section cases and 90% of section seizures, reported by 80 administrations. Medical products trafficking accounts for 15% of cases and 10% of seizures, reported by 83 administrations. The reporting coverage is similar across the two streams despite the gap in case volume, reflecting a structural difference: IPR enforcement is concentrated in a few high-volume administrations, while medical enforcement is more broadly spread across regions.",
+      "fr": "Le trafic de produits IPR est de loin le flux dominant, avec 85 % des affaires et 90 % des saisies de la section, déclarés par 80 administrations. Le trafic de produits médicaux représente 15 % des affaires et 10 % des saisies, déclarés par 83 administrations. La couverture déclarative est proche entre les deux flux malgré l'écart de volume, ce qui traduit une différence structurelle : la lutte IPR se concentre sur quelques administrations à fort volume, tandis que la lutte médicale est plus largement répartie entre les régions."
+    },
+    "regional": {
+      "en": "The two streams have very different regional footprints. The Americas (89% IPR) and Europe (85% IPR) are dominated by IPR products, Asia/Pacific and Eastern and Southern Africa are roughly balanced, while the Middle East and North Africa (71% medical) and especially West and Central Africa (98% medical) are dominated by medical products. The structural separation is therefore not only operational but also geographic: the regions most exposed to e-commerce-driven counterfeit imports are not those most exposed to falsified and substandard medicines.",
+      "fr": "Les deux flux ont des empreintes régionales très différentes. Les Amériques (89 % IPR) et l'Europe (85 % IPR) sont dominées par les produits IPR, l'Asie-Pacifique et l'Afrique orientale et australe sont à peu près équilibrées, tandis que le Moyen-Orient et l'Afrique du Nord (71 % médical) et surtout l'Afrique de l'Ouest et centrale (98 % médical) sont dominés par les produits médicaux. La séparation structurelle n'est donc pas seulement opérationnelle mais aussi géographique : les régions les plus exposées aux importations de contrefaçons par e-commerce ne sont pas celles les plus exposées aux médicaments falsifiés et de qualité inférieure."
+    },
+    "operations": {
+      "en": "Two coordinated international operations conducted in 2025 illustrate the operational response of Customs administrations to IPR and medical product trafficking. The first is a regional operation in the Americas, the second a global e-commerce focused operation.",
+      "fr": "Deux opérations internationales coordonnées menées en 2025 illustrent la réponse opérationnelle des douanes au trafic de produits IPR et médicaux. La première est une opération régionale dans les Amériques, la seconde une opération mondiale centrée sur l'e-commerce."
+    }
+  },
+  "ops": [
+    {
+      "title": {
+        "en": "Operation FRONPIAS",
+        "fr": "Opération FRONPIAS"
+      },
+      "body": {
+        "en": "FRONPIAS, from the Spanish for clean borders, was conducted in January 2025 in the WCO Americas and Caribbean region with a focus on IPR, Health and Safety. Fourteen administrations took part. During the operational phase, 332 cases including 516 seizures and around 14 million counterfeit items were reported, of which 84% were IPR-related and 14% pharmaceutical. Peru reported the most cases (110), followed by Mexico (54), Chile (51), Argentina (46) and Brazil (39). Accessories and clothing were the most frequently affected IPR subcategories, while games and toys ranked first by number of pieces seized (279,752).",
+        "fr": "FRONPIAS, de l'espagnol fronteras limpias (frontières propres), a été menée en janvier 2025 dans la région OMD des Amériques et des Caraïbes, axée sur les DPI, la santé et la sécurité. Quatorze administrations y ont participé. Pendant la phase opérationnelle, 332 affaires dont 516 saisies et environ 14 millions d'articles contrefaits ont été déclarées, dont 84 % liées aux DPI et 14 % pharmaceutiques. Le Pérou a déclaré le plus d'affaires (110), devant le Mexique (54), le Chili (51), l'Argentine (46) et le Brésil (39). Les accessoires et les vêtements sont les sous-catégories IPR les plus touchées, tandis que les jeux et jouets arrivent en tête par nombre de pièces saisies (279 752)."
+      }
+    },
+    {
+      "title": {
+        "en": "Operation STOP IV",
+        "fr": "Opération STOP IV"
+      },
+      "body": {
+        "en": "The fourth edition of Operation STOP, run in May 2025 under the sponsorship of the Japan Customs Cooperation Fund, brought together 119 Customs administrations and RILO networks worldwide to disrupt the flow of counterfeit medicines and IPR-infringing products in e-commerce. It was preceded by four online regional workshops attended by 217 officers and a dedicated stakeholder session with platform and logistics operators and rights holders. STOP IV yielded 1,066 cases and 1,774 seizures, with a rising trend in counterfeit health and beauty products and continued reports on counterfeit weight-loss products.",
+        "fr": "La quatrième édition de l'opération STOP, menée en mai 2025 sous l'égide du Fonds de coopération douanière du Japon, a réuni 119 administrations douanières et réseaux BRLR dans le monde pour perturber le flux de médicaments contrefaits et de produits portant atteinte aux DPI dans l'e-commerce. Elle a été précédée de quatre ateliers régionaux en ligne suivis par 217 agents et d'une session dédiée avec les opérateurs de plateformes et de logistique et les titulaires de droits. STOP IV a donné 1 066 affaires et 1 774 saisies, avec une tendance à la hausse des produits de santé et de beauté contrefaits et des signalements continus de produits amincissants contrefaits."
+      }
+    }
+  ],
+  "lead": {
+    "ipr": {
+      "en": "IPR products trafficking accounts for 35,759 cases and 74,389 seizures in 2025, reported by 80 administrations, up 14.1% in cases year on year. Reporting is highly concentrated: the United States and the Chilean Customs administration alone account for 67% of cases, with North America and Western Europe receiving 83% of all seizures. Apparel-related goods form the structural core, airports record three quarters of cases as e-commerce, and Asia/Pacific is the dominant departure region.",
+      "fr": "Le trafic de produits IPR représente 35 759 affaires et 74 389 saisies en 2025, déclarées par 80 administrations, en hausse de 14,1 % en affaires sur un an. La déclaration est très concentrée : les États-Unis et la douane chilienne totalisent à eux seuls 67 % des affaires, l'Amérique du Nord et l'Europe occidentale recevant 83 % des saisies. Les produits d'habillement forment le cœur structurel, les aéroports enregistrent les trois quarts des affaires en e-commerce, et l'Asie-Pacifique est la région de départ dominante."
+    },
+    "med": {
+      "en": "Medical products trafficking accounts for 6,267 cases and 8,207 seizures in 2025, reported by 83 administrations, down 5.6% in cases year on year. Reporting is more diffuse than for IPR: Africa holds 13% of the section against 1% for IPR. Urogenital and metabolic agents lead, e-commerce penetration is highly polarised across therapeutic classes, and several intraregional flows are visible alongside the dominant Asia/Pacific to North America corridor.",
+      "fr": "Le trafic de produits médicaux représente 6 267 affaires et 8 207 saisies en 2025, déclarées par 83 administrations, en baisse de 5,6 % en affaires sur un an. La déclaration est plus diffuse que pour les DPI : l'Afrique pèse 13 % de la section contre 1 % pour les DPI. Les agents urogénitaux et métaboliques dominent, la pénétration de l'e-commerce est très polarisée selon les classes thérapeutiques, et plusieurs flux intrarégionaux apparaissent aux côtés du corridor dominant Asie-Pacifique vers Amérique du Nord."
+    }
+  },
+  "fig": {
+    "ipr": {
+      "reporters": {
+        "en": "Reporting is highly concentrated. The United States reported 20,606 cases in 2025, 57.6% of the total and up 22% year on year. The Chilean administration reported 3,322 cases, an increase that reflects a change in reporting practice rather than a change in trafficking, and should be read with caution. Austria, the third reporter, declined 34% to 3,229 cases, with Spain and Germany completing the top five.",
+        "fr": "La déclaration est très concentrée. Les États-Unis ont déclaré 20 606 affaires en 2025, soit 57,6 % du total et +22 % sur un an. La douane chilienne a déclaré 3 322 affaires, hausse qui reflète un changement de pratique de déclaration plus qu'un changement de trafic, à lire avec prudence. L'Autriche, troisième, recule de 34 % à 3 229 affaires, l'Espagne et l'Allemagne complétant le top cinq."
+      },
+      "commodity": {
+        "en": "The commodity profile is structurally stable. Four apparel-related categories, accessories, clothing, footwear and watches, account for 78% of all seizures. Accessories remain the leading category and are broadly stable, clothing and footwear decline, while watches grew 35%. Mobile phones, games and toys, and transportation parts all grew between 47% and 52%, a moderate diversification. The growth of other IPR products reflects an internal CEN reclassification rather than a shift in trafficking.",
+        "fr": "Le profil de produits est structurellement stable. Quatre catégories d'habillement, accessoires, vêtements, chaussures et montres, représentent 78 % des saisies. Les accessoires restent en tête et sont globalement stables, vêtements et chaussures reculent, tandis que les montres progressent de 35 %. Téléphones, jeux et jouets et pièces de transport progressent tous de 47 % à 52 %, diversification modérée. La croissance des autres produits IPR reflète une reclassification interne du CEN plus qu'un changement de trafic."
+      },
+      "qty": {
+        "en": "Across all subcategories, 116.8 million pieces were seized in 2025, up sharply from 49.1 million in 2024. This 138% rise in quantity far outpaces the 14% rise in cases, so the average quantity per seizure rose from 681 to 1,570 pieces. The volume profile is strongly differentiated, separating bulk container categories from atomised parcel categories.",
+        "fr": "Toutes sous-catégories confondues, 116,8 millions de pièces ont été saisies en 2025, en forte hausse depuis 49,1 millions en 2024. Cette hausse de 138 % en quantité dépasse de loin la hausse de 14 % en affaires, si bien que la quantité moyenne par saisie passe de 681 à 1 570 pièces. Le profil de volume est fortement différencié, séparant les catégories de conteneurs en gros des catégories de colis atomisés."
+      },
+      "oper": {
+        "en": "Interception takes place overwhelmingly at the border. Airports dominate with three quarters of cases, up 28%, while mail centres declined and seaports more than doubled. Airports and mail centres should be read together, as many mail centres sit within airports. Mail concealment predominates and is broadly stable, while freight concealment more than doubled, emerging as a meaningful channel from a small base. Risk profiling drives 84% of detections and import accounts for 90% of cases.",
+        "fr": "L'interception se fait massivement à la frontière. Les aéroports dominent avec les trois quarts des affaires, en hausse de 28 %, tandis que les centres de tri reculent et que les ports plus que doublent. Aéroports et centres de tri se lisent ensemble, beaucoup de centres de tri étant situés dans les aéroports. La dissimulation dans le courrier prédomine et reste stable, tandis que le fret plus que double, devenant un canal notable à partir d'une base faible. Le profilage de risque porte 84 % des détections et l'importation représente 90 % des affaires."
+      },
+      "movement": {
+        "en": "The conveyance profile reflects the dominance of the air-postal corridor. Express courier is now the leading conveyance, up 41%, having overtaken regular mail, which fell 28%. Air cargo and vessel both grew strongly from lower bases. Express courier, regular mail, air and vessel are nearly pure import channels, while vehicle and unknown carry a more mixed profile reflecting road-borne transit and internal movements.",
+        "fr": "Le profil d'acheminement reflète la domination du corridor aéro-postal. La messagerie express est désormais le premier acheminement, en hausse de 41 %, ayant dépassé le courrier ordinaire, en baisse de 28 %. Le fret aérien et le maritime progressent fortement depuis des bases plus faibles. Messagerie express, courrier ordinaire, air et navire sont des canaux quasi purement d'importation, tandis que véhicule et inconnu présentent un profil plus mixte, reflet du transit et des mouvements internes par route."
+      },
+      "flows": {
+        "en": "Trafficking flows are highly concentrated, with Asia/Pacific, Eastern and Central Europe and Western Europe as the main departures, and North America, Western Europe and South America as the primary destinations. At corridor level, flows departing from Asia/Pacific dominate: the single Asia/Pacific to North America corridor recorded 48% of all IPR cases, followed by Asia/Pacific to Western Europe and to South America.",
+        "fr": "Les flux de trafic sont très concentrés, avec l'Asie-Pacifique, l'Europe orientale et centrale et l'Europe occidentale comme principaux départs, et l'Amérique du Nord, l'Europe occidentale et l'Amérique du Sud comme principales destinations. Au niveau des corridors, les flux au départ de l'Asie-Pacifique dominent : le seul corridor Asie-Pacifique vers Amérique du Nord concentre 48 % de toutes les affaires IPR, devant Asie-Pacifique vers Europe occidentale et vers Amérique du Sud."
+      },
+      "map": {
+        "en": "In total, 164 countries were involved in at least one case in 2025, against only 80 reporting countries. The most frequently involved were the United States, China, Hong Kong-China, Chile and Austria, together mentioned in 53,880 cases. The distribution is uneven: half of the countries appeared only once or twice, while 117 were involved in at least five cases. This gap between reporting and involved countries highlights the global reach of trafficking networks.",
+        "fr": "Au total, 164 pays ont été impliqués dans au moins une affaire en 2025, contre seulement 80 pays rapporteurs. Les plus souvent impliqués sont les États-Unis, la Chine, Hong Kong-Chine, le Chili et l'Autriche, ensemble cités dans 53 880 affaires. La distribution est inégale : la moitié des pays n'apparaissent qu'une ou deux fois, tandis que 117 sont impliqués dans au moins cinq affaires. Cet écart entre pays rapporteurs et pays impliqués souligne la portée mondiale des réseaux de trafic."
+      }
+    },
+    "med": {
+      "reporters": {
+        "en": "Reporting is more diffuse than for IPR. The United States led with 2,783 cases, broadly stable and 44.4% of the total. Sweden reported 553 cases, up sharply, and Denmark 335, down from 1,074. Four African countries appear in the top ten. Africa as a whole contributes 13.2% of medical cases against 1.4% for IPR. The variable indicating whether seizures involved counterfeit products remains uncoded for 65% of medical seizures, limiting direct counterfeit versus substandard analysis.",
+        "fr": "La déclaration est plus diffuse que pour les DPI. Les États-Unis dominent avec 2 783 affaires, globalement stables et 44,4 % du total. La Suède déclare 553 affaires, en forte hausse, et le Danemark 335, en baisse depuis 1 074. Quatre pays africains figurent dans le top dix. L'Afrique dans son ensemble pèse 13,2 % des affaires médicales contre 1,4 % pour les DPI. La variable indiquant si les saisies portaient sur des produits contrefaits reste non codée pour 65 % des saisies médicales, ce qui limite l'analyse contrefait contre qualité inférieure."
+      },
+      "commodity": {
+        "en": "The therapeutic profile shows a moderate overall decline. Urogenital agents, mainly erectile dysfunction medicines, remain the leading class but fell 14%. Metabolic agents grew slightly, nervous system agents declined, and hormone and respiratory agents fell. Medical devices grew the most among established categories, up 57%, and anti-cancer agents rose 46% from a small base. The profile thus combines lower volume with a relative shift towards medical devices and anti-cancer agents.",
+        "fr": "Le profil thérapeutique montre un recul global modéré. Les agents urogénitaux, surtout les médicaments contre la dysfonction érectile, restent la première classe mais reculent de 14 %. Les agents métaboliques progressent légèrement, les agents du système nerveux reculent, et les agents hormonaux et respiratoires baissent. Les dispositifs médicaux progressent le plus parmi les catégories établies, +57 %, et les agents anticancéreux montent de 46 % depuis une base faible. Le profil combine ainsi un volume plus faible avec un glissement relatif vers les dispositifs médicaux et les anticancéreux."
+      },
+      "qty": {
+        "en": "In total, 533.5 million pieces were seized in 2025, down 40% from 885.4 million in 2024, a contraction far steeper than the 5.6% decline in cases and a sign of smaller per-seizure quantities. The high-volume segment is dominated by bulk pharmaceutical classes such as immunological, musculo-skeletal and respiratory agents, while urogenital agents sit at the low-volume end, consistent with the atomised online distribution of lifestyle medicines.",
+        "fr": "Au total, 533,5 millions de pièces ont été saisies en 2025, en baisse de 40 % depuis 885,4 millions en 2024, contraction bien plus forte que la baisse de 5,6 % des affaires et signe de quantités par saisie plus petites. Le segment de gros volume est dominé par des classes pharmaceutiques en vrac comme les agents immunologiques, musculo-squelettiques et respiratoires, tandis que les agents urogénitaux se situent au bas de l'échelle, cohérent avec la distribution en ligne atomisée des médicaments de confort."
+      },
+      "oper": {
+        "en": "Interception takes place across more channels than for IPR. Airports remained the leading location and are broadly stable, while mail centres declined. Land boundaries and inland sites together account for 22% of medical cases against 4% for IPR, reflecting the structural role of overland routes, particularly across African and Central American corridors. In mail remains the leading concealment but with a smaller share, while in baggage is a strong second at 19%, reflecting personal carriage by passengers and informal couriers.",
+        "fr": "L'interception se fait sur davantage de canaux que pour les DPI. Les aéroports restent le premier lieu et sont globalement stables, tandis que les centres de tri reculent. Frontières terrestres et sites intérieurs totalisent 22 % des affaires médicales contre 4 % pour les DPI, reflet du rôle structurel des routes terrestres, en particulier sur les corridors africains et d'Amérique centrale. Le courrier reste la première dissimulation mais avec une part plus faible, tandis que les bagages tiennent une forte deuxième place à 19 %, reflet du transport personnel par les passagers et les courriers informels."
+      },
+      "movement": {
+        "en": "The conveyance profile is fundamentally different from IPR. Regular mail remains the leading conveyance, followed by air cargo, vehicle and express courier at comparable levels. Vehicle alone accounts for 14% of medical cases against 2.5% for IPR, confirming the structural role of road transport. The detection profile is less concentrated than for IPR, with intelligence and investigation reaching 9% of cases against under 1% for IPR, reflecting connections to organised criminal networks.",
+        "fr": "Le profil d'acheminement est fondamentalement différent des DPI. Le courrier ordinaire reste le premier acheminement, suivi du fret aérien, du véhicule et de la messagerie express à des niveaux comparables. Le véhicule représente à lui seul 14 % des affaires médicales contre 2,5 % pour les DPI, confirmant le rôle structurel du transport routier. Le profil de détection est moins concentré que pour les DPI, le renseignement et l'enquête atteignant 9 % des affaires contre moins de 1 % pour les DPI, reflet des liens avec les réseaux criminels organisés."
+      },
+      "flows": {
+        "en": "Trafficking flows are highly concentrated, with Asia/Pacific, an unknown departure region and Western Africa as the main departures, and North America, Western Europe and Western Africa as the primary destinations. The Asia/Pacific to North America corridor dominates, followed by unknown to Western Europe and Central America to North America. Intraregional flows such as Western Africa to itself and Asia/Pacific to Western Europe indicate that a share of movements takes place within the same region.",
+        "fr": "Les flux de trafic sont très concentrés, avec l'Asie-Pacifique, une région de départ inconnue et l'Afrique de l'Ouest comme principaux départs, et l'Amérique du Nord, l'Europe occidentale et l'Afrique de l'Ouest comme principales destinations. Le corridor Asie-Pacifique vers Amérique du Nord domine, devant inconnu vers Europe occidentale et Amérique centrale vers Amérique du Nord. Des flux intrarégionaux comme Afrique de l'Ouest vers elle-même et Asie-Pacifique vers Europe occidentale indiquent qu'une partie des mouvements a lieu au sein d'une même région."
+      },
+      "map": {
+        "en": "In total, 147 countries were involved in at least one case in 2025, against only 83 reporting countries. The most frequently involved were the United States, India, an unknown origin, Sweden and Denmark, together mentioned in 7,169 cases. Half of the countries appeared only once or twice, while 103 were involved in at least five cases. This gap reflects the broad geographical reach of these movements.",
+        "fr": "Au total, 147 pays ont été impliqués dans au moins une affaire en 2025, contre seulement 83 pays rapporteurs. Les plus souvent impliqués sont les États-Unis, l'Inde, une origine inconnue, la Suède et le Danemark, ensemble cités dans 7 169 affaires. La moitié des pays n'apparaissent qu'une ou deux fois, tandis que 103 sont impliqués dans au moins cinq affaires. Cet écart reflète la large portée géographique de ces mouvements."
+      }
+    }
+  },
+  "spot": {
+    "ipr": [
+      {
+        "title": {
+          "en": "Spotlight: the airport paradox",
+          "fr": "Focus : le paradoxe de l'aéroport"
+        },
+        "body": {
+          "en": "Airports record the largest share of IPR cases, but this is not a return to traditional air cargo control. Of the cases recorded at airports, 76% involved e-commerce. Read together with mail centres and express courier locations as a single air-postal corridor, they account for 99% of all e-commerce IPR cases. Conversely, traditional physical channels capture most of the non-e-commerce traffic. Airport growth therefore reflects the rising volume of e-commerce parcels arriving by air and processed in facilities physically located within airports.",
+          "fr": "Les aéroports enregistrent la plus grande part des affaires IPR, mais ce n'est pas un retour au contrôle traditionnel du fret aérien. Parmi les affaires enregistrées dans les aéroports, 76 % relèvent de l'e-commerce. Lus avec les centres de tri et les sites de messagerie express comme un seul corridor aéro-postal, ils concentrent 99 % de toutes les affaires IPR d'e-commerce. À l'inverse, les canaux physiques traditionnels captent l'essentiel du trafic hors e-commerce. La croissance des aéroports reflète donc la hausse des colis d'e-commerce arrivant par voie aérienne et traités dans des installations situées au sein des aéroports."
+        }
+      },
+      {
+        "title": {
+          "en": "Spotlight: express courier as the backbone",
+          "fr": "Focus : la messagerie express comme colonne vertébrale"
+        },
+        "body": {
+          "en": "Express courier is the operational backbone of IPR distribution as recorded by Customs in 2025, with 42% of cases and 47% of seizures, having overtaken regular mail. The shift is recent and clearly visible year on year. Express courier offers faster transit, predictable delivery and end-to-end tracking, which reduce operational risk for short-cycle e-commerce sellers, while expanded electronic advance data improves targeting on postal flows. The result is that 89% of express courier cases are imports, almost entirely linked to e-commerce.",
+          "fr": "La messagerie express est la colonne vertébrale opérationnelle de la distribution IPR telle qu'enregistrée par les douanes en 2025, avec 42 % des affaires et 47 % des saisies, ayant dépassé le courrier ordinaire. La bascule est récente et nettement visible sur un an. La messagerie express offre des délais plus courts, des livraisons prévisibles et un suivi de bout en bout, qui réduisent le risque opérationnel pour les vendeurs e-commerce à cycle court, tandis que l'extension des données électroniques anticipées améliore le ciblage des flux postaux. Résultat, 89 % des affaires de messagerie express sont des importations, presque entièrement liées à l'e-commerce."
+        }
+      }
+    ],
+    "med": [
+      {
+        "title": {
+          "en": "Spotlight: online retail versus physical supply",
+          "fr": "Focus : vente en ligne contre approvisionnement physique"
+        },
+        "body": {
+          "en": "Two distinct medical trafficking economies are visible in 2025 and barely overlap in their channels. The first is online retail: urogenital agents at 91% e-commerce, metabolic at 78%, nervous system at 67%, hormone at 53%, corresponding to medicines with strong direct-to-consumer demand. The second relies on bulk shipments, road transport and informal carriage: respiratory agents at 3%, medical devices at 7%, dermatological at 10%, anti-infective at 14%. The two economies require different operational responses: risk profiling on parcel flows for the first, intelligence-led targeting on bulk freight and overland routes for the second.",
+          "fr": "Deux économies distinctes du trafic médical apparaissent en 2025 et se recoupent à peine dans leurs canaux. La première relève de la vente en ligne : agents urogénitaux à 91 % d'e-commerce, métaboliques à 78 %, système nerveux à 67 %, hormonaux à 53 %, correspondant à des médicaments à forte demande directe des consommateurs. La seconde repose sur les envois en vrac, le transport routier et le portage informel : agents respiratoires à 3 %, dispositifs médicaux à 7 %, dermatologiques à 10 %, anti-infectieux à 14 %. Les deux économies appellent des réponses opérationnelles différentes : profilage de risque sur les flux de colis pour la première, ciblage par le renseignement sur le fret en vrac et les routes terrestres pour la seconde."
+        }
+      },
+      {
+        "title": {
+          "en": "Spotlight: Africa as a medical enforcement front",
+          "fr": "Focus : l'Afrique, un front de la lutte médicale"
+        },
+        "body": {
+          "en": "Africa plays a structural role in medical trafficking with no equivalent in IPR. In 2025 Western Africa and Eastern and Southern Africa together account for 13.2% of medical cases against 1.4% of IPR cases. Several African countries appear among the top medical reporters and departure countries, and Western Africa is the second-largest departure region overall. The most striking pattern is the strong intraregional flow within Western Africa, which suggests that a substantial part of medical trafficking is regional and overland rather than transcontinental and air-postal. Customs collaboration along regional corridors, with health authorities, is therefore central.",
+          "fr": "L'Afrique joue dans le trafic médical un rôle structurel sans équivalent pour les DPI. En 2025, l'Afrique de l'Ouest et l'Afrique orientale et australe totalisent 13,2 % des affaires médicales contre 1,4 % des affaires IPR. Plusieurs pays africains figurent parmi les premiers rapporteurs et pays de départ de produits médicaux, et l'Afrique de l'Ouest est la deuxième région de départ au total. Le schéma le plus frappant est le fort flux intrarégional au sein de l'Afrique de l'Ouest, qui suggère qu'une part substantielle du trafic médical est régionale et terrestre plutôt que transcontinentale et aéro-postale. La coopération douanière le long des corridors régionaux, avec les autorités sanitaires, est donc centrale."
+        }
+      }
+    ]
+  },
+  "cases": {
+    "ipr": [
+      {
+        "title": {
+          "en": "Case study: Republic of Korea, counterfeit Labubu imports",
+          "fr": "Étude de cas : République de Corée, importations de Labubu contrefaits"
+        },
+        "body": {
+          "en": "The Korea Customs Service strengthened inspections in response to a surge in counterfeit products of the popular Labubu character imported through overseas direct purchases. Around 7,000 counterfeit items were detected over July and August 2025, including plush dolls, figures, keychains and phone cases, mostly sold on e-commerce platforms at less than half the price of authentic goods. Some metal accessories were found to contain lead and cadmium far above safety standards, raising serious safety concerns.",
+          "fr": "Le service des douanes coréen a renforcé les contrôles face à une flambée de produits contrefaits du personnage populaire Labubu importés via des achats directs à l'étranger. Environ 7 000 articles contrefaits ont été détectés en juillet et août 2025, dont des peluches, figurines, porte-clés et coques de téléphone, vendus surtout sur des plateformes d'e-commerce à moins de la moitié du prix des produits authentiques. Certains accessoires métalliques contenaient du plomb et du cadmium bien au-delà des normes de sécurité, soulevant de sérieuses préoccupations sanitaires."
+        }
+      },
+      {
+        "title": {
+          "en": "Case study: Guatemala, counterfeit phone chargers",
+          "fr": "Étude de cas : Guatemala, chargeurs de téléphone contrefaits"
+        },
+        "body": {
+          "en": "During a routine control at the express courier facility, a shipment of 800 phone chargers intended for an individual recipient was detected. Inspection found the goods to be non-original, and the rights holder confirmed the infringement. The seized goods were placed at the disposal of the competent authorities for further investigation.",
+          "fr": "Lors d'un contrôle de routine à l'installation de messagerie express, un envoi de 800 chargeurs de téléphone destinés à un particulier a été détecté. L'inspection a révélé des produits non originaux, et le titulaire de droits a confirmé l'atteinte. Les marchandises saisies ont été mises à la disposition des autorités compétentes pour enquête."
+        }
+      }
+    ],
+    "med": [
+      {
+        "title": {
+          "en": "Case study: Brazil, diabetes injectable in luggage",
+          "fr": "Étude de cas : Brésil, injectable contre le diabète dans des bagages"
+        },
+        "body": {
+          "en": "Brazilian Customs seized 300 doses of an injectable prescription diabetes medicine concealed in a suitcase. The detection was based on risk profiling supported by advance passenger information and reported during Operation FRONPIAS in January 2025. The case illustrates the role of metabolic agents trafficking in personal carriage by international passengers.",
+          "fr": "La douane brésilienne a saisi 300 doses d'un médicament injectable sur ordonnance contre le diabète dissimulées dans une valise. La détection reposait sur le profilage de risque appuyé par les informations préalables sur les passagers et a été déclarée pendant l'opération FRONPIAS en janvier 2025. L'affaire illustre le rôle du trafic d'agents métaboliques dans le portage personnel par les passagers internationaux."
+        }
+      },
+      {
+        "title": {
+          "en": "Case study: Portugal, sildenafil split across declarations",
+          "fr": "Étude de cas : Portugal, sildénafil réparti sur plusieurs déclarations"
+        },
+        "body": {
+          "en": "At Lisbon Airport, three import declarations submitted by the same operators over several days, declared as cosmetics or shaving preparations, were each selected for control through national automated targeting, including indicators applied during Operation STOP IV. They revealed 7,500, 5,000 and 1,250 tablets of sildenafil respectively. By splitting consignments across separate declarations the operators attempted to avoid successive controls, but the risk profiles ensured all three were selected. A memorandum of understanding between the medicines authority and Customs streamlines identification of falsified medicines.",
+          "fr": "À l'aéroport de Lisbonne, trois déclarations d'importation soumises par les mêmes opérateurs sur plusieurs jours, déclarées comme cosmétiques ou produits de rasage, ont chacune été sélectionnées pour contrôle par le ciblage automatisé national, dont des indicateurs appliqués pendant l'opération STOP IV. Elles ont révélé respectivement 7 500, 5 000 et 1 250 comprimés de sildénafil. En répartissant les envois sur des déclarations distinctes, les opérateurs ont tenté d'échapper aux contrôles successifs, mais les profils de risque ont assuré la sélection des trois. Un protocole d'accord entre l'autorité du médicament et la douane fluidifie l'identification des médicaments falsifiés."
+        }
+      }
+    ]
+  }
+}

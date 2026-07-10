@@ -1,0 +1,130 @@
+{
+  "regions": [
+    {
+      "code": "EUR",
+      "cases": 76059,
+      "seizures": 95859,
+      "countries": 50,
+      "ecom": 45.5
+    },
+    {
+      "code": "AMS",
+      "cases": 54097,
+      "seizures": 93853,
+      "countries": 30,
+      "ecom": 68
+    },
+    {
+      "code": "MENA",
+      "cases": 26067,
+      "seizures": 26965,
+      "countries": 13,
+      "ecom": 1.5
+    },
+    {
+      "code": "A/P",
+      "cases": 4354,
+      "seizures": 4880,
+      "countries": 27,
+      "ecom": 27.9
+    },
+    {
+      "code": "ESA",
+      "cases": 1688,
+      "seizures": 2575,
+      "countries": 17,
+      "ecom": 22.7
+    },
+    {
+      "code": "WCA",
+      "cases": 1525,
+      "seizures": 2334,
+      "countries": 20,
+      "ecom": 0.6
+    }
+  ],
+  "regionSection": [
+    {
+      "region": "EUR",
+      "sections": {
+        "AML/CTF": 9611,
+        "Drugs": 43633,
+        "Environmental Crime": 3538,
+        "IPR, Health and Safety": 18852,
+        "Revenue": 17736,
+        "Security": 2489
+      },
+      "total": 95859
+    },
+    {
+      "region": "AMS",
+      "sections": {
+        "AML/CTF": 1280,
+        "Drugs": 24272,
+        "Environmental Crime": 207,
+        "IPR, Health and Safety": 60347,
+        "Revenue": 547,
+        "Security": 7200
+      },
+      "total": 93853
+    },
+    {
+      "region": "MENA",
+      "sections": {
+        "AML/CTF": 827,
+        "Drugs": 3330,
+        "Environmental Crime": 69,
+        "IPR, Health and Safety": 455,
+        "Revenue": 21247,
+        "Security": 1037
+      },
+      "total": 26965
+    },
+    {
+      "region": "A/P",
+      "sections": {
+        "AML/CTF": 397,
+        "Drugs": 3294,
+        "Environmental Crime": 409,
+        "IPR, Health and Safety": 475,
+        "Revenue": 272,
+        "Security": 33
+      },
+      "total": 4880
+    },
+    {
+      "region": "ESA",
+      "sections": {
+        "AML/CTF": 93,
+        "Drugs": 343,
+        "Environmental Crime": 388,
+        "IPR, Health and Safety": 1067,
+        "Revenue": 655,
+        "Security": 29
+      },
+      "total": 2575
+    },
+    {
+      "region": "WCA",
+      "sections": {
+        "AML/CTF": 43,
+        "Drugs": 373,
+        "Environmental Crime": 184,
+        "IPR, Health and Safety": 1380,
+        "Revenue": 279,
+        "Security": 75
+      },
+      "total": 2334
+    }
+  ],
+  "totals": {
+    "cases": 163790,
+    "seizures": 226466,
+    "ecom": 44.8
+  },
+  "totalsAll": {
+    "cases": 163850,
+    "seizures": 226549,
+    "ecom": 44.8
+  }
+}
