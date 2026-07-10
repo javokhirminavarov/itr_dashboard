@@ -216,3 +216,87 @@ No figures were imputed, rescaled or back-filled for Phase A. The five non-Drugs
 sections render a "Coming soon" placeholder — their data (`itr_aml.json`,
 `itr_env.json`, `itr_iprhs.json`, `itr_rev.json`, `itr_sec.json`) is present in
 `data/` and will be wired in Phases B–F using the same component library.
+
+---
+
+# Phase B — IPR & Health/Safety
+
+Source: `data/itr_iprhs.json` (per-stream detail) + `data/itr_drill.json`
+(`IPR, Health and Safety/__all__` for the pooled e-commerce, quantity and detection
+cross-checks). Data year 2025, prior year 2024. All figures below trace to those two
+files; nothing was imputed.
+
+## Story figures kept consistent
+
+- **Urogenital agents e-commerce 91.0%** and **nervous-system agents 63.3%** — the
+  two Medical-products sub-commodity shares used in the story — render verbatim from
+  `perStream/Medical products trafficking/ecomByCommodity` (`91` → `91.0%` via the
+  one-decimal formatter; `63.3` as-is). Verified present in the live Medical sub-flow.
+- **Section e-commerce 67.8%**, **IPR products 68.2%**, **Medical products 65.1%** —
+  the overview e-commerce hbar reads the per-stream `ecom` (68.2 / 65.1) and labels
+  the section total from `itr_drill … /__all__/ecom` (67.8). Matches STORYBOARD.
+
+## How the overview pools two streams (and why it is exact, not approximate)
+
+The overview aggregates across *IPR products* and *Medical products*. Only these
+methods are used, and two independent cross-checks confirm they are exact:
+
+- **Counts are summed.** Reporters, sub-category seizures, sub-category quantity,
+  volume-profile rows, detection-location/concealment cases, involvement-by-country
+  and the regional-flow matrices are simple sums by entity. Sub-category and
+  sub-commodity lists are **disjoint** across the two streams, so pooling the
+  volume-profile is a concatenation; per-seizure is re-derived from the pooled
+  `qty / seizures`. **Cross-check:** pooled volume-profile quantity =
+  **650,327,769 pieces**, exactly `itr_drill … /__all__/quantity.value`.
+- **Percentage panels are case-weighted.** Trade-direction and detection-method
+  panels carry only percentages per stream, each a share of *that stream's* case
+  base (35,759 IPR / 6,267 Medical). The pooled share is therefore
+  `Σ(pct_stream · cases_stream) / Σ(cases_stream)` — algebraically the true combined
+  share, not an estimate. **Cross-check:** pooled detection *Risk profiling* =
+  **81.0%**, matching `itr_drill … /__all__/detect` (81). Pooled *Import* direction
+  = 89.3%.
+- **Conveyance-by-direction is volume-weighted.** Each conveyance method's
+  direction split is weighted by that method's case volume
+  (`operational.conveyance.curr`) before summing across streams. Every method in
+  `convByDirection` (Express courier, Regular Mail, Air, Vessel, Vehicle,
+  Pedestrian) has a matching count in `operational.conveyance`, so no method is
+  dropped or given a fallback weight.
+- **Regional-flow regions differ per stream** (IPR lists `A/P, NAM, WE, SA, ECE,
+  CAR, ME, ESA, CAM, CIS, WA, NA, CA`; Medical swaps in `WA`/`CA` ordering). The
+  pooled heatgrid takes the **union**, ordered by total involvement, and sums the
+  matrices after aligning region indices by name — no cells are dropped.
+
+The two sub-flows do **no** pooling: each reads one stream's arrays directly, so
+every sub-flow figure is a raw source value.
+
+## Data gaps found in `itr_iprhs.json`
+
+- **No prior-year figures at stream level.** `totalsPrev` exists only for the whole
+  section (`cases 37,953`, `seizures 81,035`); `perStream[*].totals` has no `prev`.
+  So YoY deltas are shown on the **overview KPIs** (section cases +10.7%, seizures
+  +1.9%) but **not** on the two sub-flow KPI rows, and the "…by sub-category / …by
+  sub-commodity" YoY charts get their prior year from the `curr/prev` pairs that
+  *do* exist inside `commodity` / `qtyByCommodity` / `reporters`.
+- **`operational.conveyance` carries `prev = curr` verbatim** (e.g. Express courier
+  `curr 15,006 / prev 15,006`) — the prior year is a duplicate of the current year,
+  not a real 2024 figure. The dashboard therefore uses `conveyance.curr` **only**
+  (as method weights for the pooled conveyance chart); it never renders a conveyance
+  YoY delta, which would be a false 0.0%.
+- **`involvement.countriesInvolved` (160 IPR / 145 Medical) cannot be summed** —
+  the same country appears in both streams — so the overview choropleth pools the
+  per-country `map` case counts (union of ISO codes) rather than adding the two
+  totals.
+- **Quantity unit is *pieces*, not tonnes.** Unlike Drugs (weight in tonnes, one
+  decimal), IPR volumes are piece counts. They are rendered as **integers with
+  thousands separators** (a one-decimal piece count would be false precision); the
+  `volumeProfile` component defaults to `fmt.int` for exactly this reason and takes
+  a `totalFmt` override for tonnes-based sections.
+
+## Palette & discipline
+
+The section reuses the LOCKED palette (`PALETTE.md`) verbatim — WCO-blue anchor,
+Okabe–Ito categorical set in fixed order (`IPR products` → cat[0] blue,
+`Medical products` → cat[1] amber), single-hue √-transformed ramp for the
+choropleth and the regional-flow heatgrid, gray for the "previous" series. No
+section-specific hue was introduced. One-decimal on every rate; integers on counts;
+direct labels on every mark.
