@@ -161,3 +161,58 @@ fill. This is the only gap.
 
 Rebuild scripts for all four files live in the scratchpad (`gen_data.py`,
 `gen_map.py`) and read straight from the source JSON, so every figure is reproducible.
+
+---
+
+# Explore app — Phase A (Drugs) data notes
+
+The Explore app (`explore.html`) reads its figures from `data/itr_drugs.json`
+(overview + per-drug detail) and `data/itr_drill.json` (supplementary). Every
+Drugs figure traces to one of those paths. Notes and gaps specific to Phase A:
+
+- **Year labelling.** `data/itr_meta.json` gives `year_current: 2025`,
+  `year_previous: 2024`. groupedYoY charts label the accent series **2025** and the
+  gray series **2024**; the delta chip is `(2025 − 2024) / 2024`.
+
+- **One-decimal discipline.** Percentages and tonnes render at one decimal
+  (`fmt.pct`, `fmt.dec`). Case and seizure **counts are integers** with thousands
+  separators — a one-decimal count (`37,058.0`) would be false precision. Heatgrid
+  in-cell labels use a compact form (`34.7k`) for space; the tooltip shows the full
+  figure.
+
+- **YoY delta suppressed when the prior year is zero.** Where `prev = 0` (e.g.
+  France in the Cannabis reporters chart), `fmt.delta` returns `null` and no delta
+  chip is drawn — a "+∞%" would be meaningless.
+
+- **Choropleth = country involvement, honest single hue.** `involvement` is a
+  country-level count of cases in which each country is named (reporter, origin,
+  transit or destination); a country can be counted in several. The scale is a
+  **single-hue** blue ramp; because the distribution is extremely skewed (USA
+  ≈ 29,015 vs a long tail), the map applies a **√ transform to the ramp position
+  only** so mid-range countries remain visible. The hue stays monotonic in
+  lightness, so it is still an honest sequential encoding; the caption discloses the
+  transform. `ATF` and any ISO not present in `involvement` render in the neutral
+  no-value fill.
+
+- **Region codes shown verbatim.** The region×category and region×region heatgrids
+  use the source's WCO regional codes (`A/P, CA, CAM, CAR, CIS, ECE, ESA, ME, NA,
+  NAM, SA, WA, WE`, plus `UNK` in flows). These are the codes as they appear in
+  `itr_drugs.json`; they are **displayed as-is** rather than expanded to full
+  region names, to avoid mislabelling a code whose exact WCO definition we cannot
+  verify. `UNK` = unknown/unattributed region.
+
+- **Regional trafficking flows.** `heatFlows.matrix` is departure region (row) →
+  destination region (column). The diagonal (intra-region movement) is present but
+  **dimmed** so cross-region flows read first.
+
+- **`heatRegionCat` has 13 region rows; `heatFlows` has 14** (it adds `UNK`). Both
+  are rendered exactly as supplied — no rows are dropped or merged.
+
+- **Sub-commodity counts vary by drug** (Cannabis 4, Cocaine 6, Khat 3, others 8).
+  The groupedYoY sub-commodity charts render whatever the source provides; no
+  padding or truncation.
+
+No figures were imputed, rescaled or back-filled for Phase A. The five non-Drugs
+sections render a "Coming soon" placeholder — their data (`itr_aml.json`,
+`itr_env.json`, `itr_iprhs.json`, `itr_rev.json`, `itr_sec.json`) is present in
+`data/` and will be wired in Phases B–F using the same component library.
