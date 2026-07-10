@@ -32,7 +32,7 @@
   var BEATS = ["sections", "spectrum", "ceiling", "floor", "map", "sowhat"];
   var CAPTIONS = {
     sections: "E-commerce share of cases by ITR section — all six, ranked.",
-    spectrum: "E-commerce share by commodity — the full 81.9% → 0% spectrum.",
+    spectrum: "E-commerce share by commodity — the full 81.9% → 0.0% spectrum.",
     ceiling: "The e-commerce-native ceiling — the top-7 cluster, plus sub-commodity peaks.",
     floor: "The physical-trade floor — commodities that still move offline.",
     map: "E-commerce share by WCO region — regional averages, shaded onto member countries.",
@@ -42,7 +42,7 @@
   function esc(s) {
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
-  function fmtPct(v) { return (v % 1 === 0 ? v : v.toFixed(1)) + "%"; }
+  function fmtPct(v) { return v.toFixed(1) + "%"; }  // always one decimal (81.9%, 55.0%, 0.0%)
   function specY(i) { return padTop + i * rowH + rowH / 2; }
   function scale(v) { return v / 81.9 * plotW; }
   function easeInOut(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
@@ -131,7 +131,7 @@
     // section-label layer (visible only in the 'sections' beat)
     var secLayer = document.createElementNS(svgNS, "g");
     secLayer.setAttribute("class", "sec-layer");
-    secLayer.style.transition = REDUCE ? "none" : "opacity .5s ease";
+    secLayer.style.transition = REDUCE ? "none" : "opacity .6s ease";
     var secTexts = sections.map(function (s, i) {
       var y = secY(i);
       var acc = s.ecomPct >= ACCENT_MIN;
@@ -254,7 +254,9 @@
         return;
       }
       var starts = bars.map(function (b) { return b.cur; });
-      var t0 = null, dur = 620;
+      // A more deliberate tween keeps the section→commodity explosion and the
+      // bars→map hand-off from snapping. Eased with cubic in/out below.
+      var t0 = null, dur = 780;
       if (raf) cancelAnimationFrame(raf);
       function frame(ts) {
         if (t0 === null) t0 = ts;
@@ -338,7 +340,7 @@
     svg.setAttribute("role", "img");
     svg.setAttribute("aria-label",
       "World map. Each country is shaded by its WCO region's average e-commerce " +
-      "case share — Americas 68% (darkest) down to West & Central Africa 0.6% (palest).");
+      "case share — Americas 68.0% (darkest) down to West & Central Africa 0.6% (palest).");
     var paths = world.paths;
     Object.keys(paths).forEach(function (iso) {
       var p = document.createElementNS(svgNS, "path");
@@ -359,7 +361,7 @@
     var legend = document.createElement("div");
     legend.className = "map-legend";
     legend.innerHTML =
-      '<span>0.6%</span><span class="legend-bar" aria-hidden="true"></span><span>68%</span>' +
+      '<span>0.6%</span><span class="legend-bar" aria-hidden="true"></span><span>68.0%</span>' +
       '<span style="margin-left:6px">low → high e-commerce share</span>';
     wrap.appendChild(legend);
     var cap = document.createElement("p");

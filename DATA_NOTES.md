@@ -149,7 +149,11 @@ Placement decisions worth flagging (WCO regions do not follow continents):
   Morocco); SOL (Somaliland, a non-ISO code used by the map geometry) → ESA with
   Somalia; CYN (Northern Cyprus) → EUR; KOS (Kosovo) → EUR; PSE (Palestine) → MENA.
 - **Sudan (SDN) → ESA** and **Mauritania (MRT) → WCA**, following WCO's African
-  regional split (which is not the UN's).
+  regional split (which is not the UN's). **Mauritania → WCA is confirmed.**
+  **Sudan → ESA is PENDING external verification** — the assignment is left as-is
+  in the lookup but awaits confirmation against WCO's official regional membership
+  list; if WCO places Sudan in MENA rather than ESA, `iso3_to_wco_region.json`
+  (key `SDN`) must be updated accordingly.
 
 **Unplaced (1):** `ATF` — French Southern & Antarctic Lands. Uninhabited, no customs
 administration and no WCO region; the choropleth renders it in the neutral "no-region"
