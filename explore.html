@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Explore — WCO Illicit Trade Report 2025</title>
+  <meta name="description" content="Explore the full WCO Illicit Trade Report 2025 dataset section by section — Drugs, AML/CTF, Environmental Crime, IPR &amp; Health/Safety, Revenue and Security.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./explore.css">
+</head>
+<body>
+  <!-- ============================ TOP BAR ============================ -->
+  <header class="appbar">
+    <div class="appbar__brand">
+      <span class="appbar__eyebrow">WCO Illicit Trade Report 2025</span>
+      <span class="appbar__title">Explore the full data</span>
+    </div>
+    <span class="appbar__spacer"></span>
+    <a class="appbar__link" href="./index.html">&larr; Back to the story</a>
+  </header>
+
+  <!-- ============================ SHELL ============================= -->
+  <div class="shell">
+    <!-- LEFT SECTION RAIL — all six sections; sub-flows injected per section -->
+    <nav class="rail" id="rail" aria-label="Sections"></nav>
+
+    <!-- CONTENT AREA -->
+    <main class="content" id="content" aria-live="polite">
+      <div class="state" id="boot">Loading…</div>
+    </main>
+  </div>
+
+  <!-- component library first, then the app assembler -->
+  <script src="./charts.js"></script>
+  <script src="./explore.js"></script>
+</body>
+</html>
