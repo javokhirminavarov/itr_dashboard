@@ -1,0 +1,38 @@
+[
+  {
+    "code": "AMS",
+    "name": "Americas",
+    "ecomPct": 68,
+    "sourcePath": "regions[code=AMS].ecom"
+  },
+  {
+    "code": "EUR",
+    "name": "Europe",
+    "ecomPct": 45.5,
+    "sourcePath": "regions[code=EUR].ecom"
+  },
+  {
+    "code": "A/P",
+    "name": "Asia / Pacific",
+    "ecomPct": 27.9,
+    "sourcePath": "regions[code=A/P].ecom"
+  },
+  {
+    "code": "ESA",
+    "name": "East & Southern Africa",
+    "ecomPct": 22.7,
+    "sourcePath": "regions[code=ESA].ecom"
+  },
+  {
+    "code": "MENA",
+    "name": "Middle East & North Africa",
+    "ecomPct": 1.5,
+    "sourcePath": "regions[code=MENA].ecom"
+  },
+  {
+    "code": "WCA",
+    "name": "West & Central Africa",
+    "ecomPct": 0.6,
+    "sourcePath": "regions[code=WCA].ecom"
+  }
+]

@@ -1,96 +1,347 @@
+/* WCO ITR 2025 — Step 2: scrollytelling engine + the sticky transforming graphic.
+   Progressive enhancement: the page renders as narration + a static full spectrum
+   with no JavaScript; app.js adds `.js` to <html> and takes over the graphic. */
+
 :root {
-  --accent: #2F6DB5;
+  --accent: #2F6DB5;      /* WCO blue — reserved for the e-commerce-native cluster */
+  --accent-deep: #1B4A82; /* darkest end of the choropleth ramp */
+  --gray: #8A8F9A;        /* every non-accent commodity */
   --ink: #1A1726;
   --ink-soft: #5A5E6B;
   --paper: #F7F8FA;
   --surface: #FFFFFF;
+  --hairline: #E4E7ED;
 }
 
 * { box-sizing: border-box; }
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
+html, body { margin: 0; padding: 0; }
 
 body {
   font-family: -apple-system, "Segoe UI", system-ui, Roboto, sans-serif;
-  font-size: 14px;
-  line-height: 1.45;
+  font-size: 15px;
+  line-height: 1.5;
   color: var(--ink);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
 }
 
-main {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 56px 24px 72px;
-}
-
-.beat {
-  background: var(--surface);
-  border-radius: 10px;
-  padding: 40px 40px 32px;
-  box-shadow: 0 1px 2px rgba(26, 23, 38, 0.06), 0 8px 24px rgba(26, 23, 38, 0.05);
-}
-
 .eyebrow {
-  margin: 0 0 10px;
+  margin: 0 0 14px;
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--accent);
 }
 
-.action-title {
-  margin: 0 0 28px;
-  font-size: 24px;
-  font-weight: 650;
-  line-height: 1.28;
-  letter-spacing: -0.01em;
+/* ================================================================= */
+/* BEAT 1 — HOOK                                                      */
+/* ================================================================= */
+.hook {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  background:
+    radial-gradient(120% 90% at 50% 0%, #FFFFFF 0%, var(--paper) 60%);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hook-inner {
+  max-width: 760px;
+  text-align: center;
+}
+
+.hook-number {
+  margin: 0;
+  line-height: 0.95;
+}
+
+.hook-figure {
+  display: inline-block;
+  font-size: clamp(72px, 18vw, 200px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.hook-sub {
+  margin: 22px auto 0;
+  max-width: 30em;
+  font-size: clamp(17px, 2.6vw, 24px);
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--ink);
-  max-width: 34em;
 }
 
-.chart {
-  width: 100%;
-}
-
-.chart svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Chart typography — kept in CSS so SVG text inherits the system stack */
-.chart svg text { font-family: inherit; }
-
-.cat-label {
+.hook-scroll {
+  margin: 56px 0 0;
   font-size: 12.5px;
-  fill: var(--ink);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.js .hook-scroll { animation: nudge 2.4s ease-in-out infinite; }
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); opacity: 0.75; }
+  50%      { transform: translateY(5px); opacity: 1; }
 }
 
+/* ================================================================= */
+/* SCROLLY LAYOUT — sticky graphic + narration column                */
+/* ================================================================= */
+.scrolly {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 8vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Sticky graphic pane */
+.scrolly__graphic {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+}
+
+.graphic-inner {
+  margin: 0;
+  width: 100%;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 22px 22px 18px;
+  box-shadow: 0 1px 2px rgba(26, 23, 38, 0.05), 0 10px 30px rgba(26, 23, 38, 0.05);
+}
+
+.graphic-caption {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  min-height: 1.4em;
+}
+
+.graphic { width: 100%; position: relative; }
+
+.graphic svg { display: block; width: 100%; height: auto; }
+.graphic svg text { font-family: inherit; }
+
+/* Chart typography */
+.cat-label { font-size: 12.5px; fill: var(--ink); }
 .val-label {
   font-size: 12.5px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
+.sec-label { font-size: 14px; font-weight: 600; fill: var(--ink); }
 
-.source {
-  margin: 26px 0 0;
+/* Narration column */
+.scrolly__narration {
+  padding: 42vh 0;
+}
+
+.step {
+  min-height: 62vh;
+  margin: 0 0 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 30em;
+}
+
+.step p {
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+.step p strong { font-weight: 650; color: var(--ink); }
+
+.step-kicker {
+  margin: 0 0 14px !important;
   font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.step-credit {
+  margin-top: 10px;
+  font-size: 12.5px;
   color: var(--ink-soft);
 }
 
-.chart-error {
-  font-size: 14px;
-  color: #B23A3A;
+/* Once the interactive graphic is built, dim inactive steps so the reader's
+   focus tracks the graphic. Gated on `.enhanced` (not `.js`) so a data-load
+   failure leaves every step fully readable. */
+.enhanced .step {
+  opacity: 0.32;
+  transition: opacity 0.4s ease;
+}
+.enhanced .step.is-active { opacity: 1; }
+
+/* ================================================================= */
+/* BEAT 4 — sub-commodity annotation cards (built by JS)             */
+/* ================================================================= */
+.annotations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.anno {
+  position: absolute;
+  right: 4%;
+  max-width: 44%;
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 11px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  line-height: 1.3;
+  box-shadow: 0 6px 18px rgba(26, 23, 38, 0.18);
+  opacity: 0;
+  transform: translateX(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.anno b {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.anno small { opacity: 0.85; font-size: 11.5px; }
+.annotations.show .anno { opacity: 1; transform: translateX(0); }
+.annotations.show .anno:nth-child(2) { transition-delay: 0.1s; }
+.annotations.show .anno:nth-child(3) { transition-delay: 0.2s; }
+
+/* ================================================================= */
+/* BEAT 6 — choropleth map + legend (built by JS)                    */
+/* ================================================================= */
+.mapwrap {
+  position: absolute;
+  inset: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.mapwrap.show { opacity: 1; }
+.mapwrap svg { display: block; width: 100%; height: auto; }
+.map-country { stroke: var(--surface); stroke-width: 0.4; }
+
+.map-legend {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  flex-wrap: wrap;
+}
+.legend-bar {
+  height: 10px;
+  width: 160px;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #E8F0F9 0%, var(--accent) 70%, var(--accent-deep) 100%);
+}
+.legend-caption {
+  margin-top: 8px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  line-height: 1.35;
+}
+
+/* Graphic swaps between the bar SVG and the map */
+.graphic.is-map svg { visibility: hidden; }
+
+/* ================================================================= */
+/* Progress dots                                                     */
+/* ================================================================= */
+.progress {
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 20;
+}
+.progress button {
+  width: 10px; height: 10px;
+  padding: 0;
+  border: 1.5px solid var(--gray);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+.progress button.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.15);
+}
+.progress button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.chart-error { font-size: 14px; color: #B23A3A; }
+
+/* ================================================================= */
+/* MOBILE FALLBACK                                                    */
+/* Graphic sticks to the TOP as a shorter pane; narration scrolls    */
+/* beneath it. Single column. Annotations reflow under the bars.     */
+/* ================================================================= */
+@media (max-width: 820px) {
+  .scrolly {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-bottom: 4vh;
+  }
+  .scrolly__graphic {
+    height: auto;
+    top: 0;
+    padding: 8px 0;
+    background: linear-gradient(var(--paper) 78%, rgba(247,248,250,0));
+    z-index: 5;
+  }
+  .graphic-inner { padding: 14px 14px 12px; }
+  .scrolly__narration { padding: 6vh 0 2vh; }
+  .step {
+    min-height: 0;
+    margin: 0 0 34vh;
+    max-width: none;
+  }
+  .step:last-child { margin-bottom: 8vh; }
+  .anno { font-size: 11.5px; }
+  .progress { display: none; }
 }
 
 @media (max-width: 560px) {
-  main { padding: 32px 14px 48px; }
-  .beat { padding: 26px 20px 22px; }
-  .action-title { font-size: 20px; }
+  body { font-size: 14px; }
+  .graphic-inner { border-radius: 10px; }
+}
+
+/* ================================================================= */
+/* REDUCED MOTION — snap to end states, no tweening or nudges        */
+/* ================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .enhanced .step,
+  .anno,
+  .mapwrap,
+  .progress button { transition: none !important; }
+  .hook-scroll { animation: none !important; }
 }
