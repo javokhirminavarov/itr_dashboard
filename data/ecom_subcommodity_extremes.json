@@ -1,0 +1,42 @@
+[
+  {
+    "label": "Gun silencers",
+    "ecomPct": 85.1,
+    "parent": "Weapons, ammunition & tactical equipment",
+    "section": "Security",
+    "note": "vs 2.3% for assault rifles",
+    "sourcePath": "itr_sec.json perStream/Weapons.../commerceByCommodity → Silencer"
+  },
+  {
+    "label": "Firearm receivers",
+    "ecomPct": 69.5,
+    "parent": "Weapons, ammunition & tactical equipment",
+    "section": "Security",
+    "note": "the serialised, regulated part — mailed as a component",
+    "sourcePath": "itr_sec.json perStream/Weapons.../commerceByCommodity → Receiver"
+  },
+  {
+    "label": "Urogenital agents",
+    "ecomPct": 91,
+    "parent": "Medical products trafficking",
+    "section": "IPR, Health and Safety",
+    "note": "erectile-dysfunction meds — the single highest sub-commodity share in the report",
+    "sourcePath": "itr_iprhs.json perStream/Medical.../ecomByCommodity → Urogenital Agents"
+  },
+  {
+    "label": "Nervous-system agents",
+    "ecomPct": 63.3,
+    "parent": "Medical products trafficking",
+    "section": "IPR, Health and Safety",
+    "note": "sedatives, stimulants, analgesics",
+    "sourcePath": "itr_iprhs.json perStream/Medical.../ecomByCommodity → Nervous System Agents"
+  },
+  {
+    "label": "E-cigarettes",
+    "ecomPct": 63.8,
+    "parent": "Tobacco products trafficking",
+    "section": "Revenue",
+    "note": "vs 1.1% for bulk cigarettes — same section, opposite physics",
+    "sourcePath": "itr_rev.json perStream/Tobacco.../ecomByCommodity → E-cigarettes / Cigarettes"
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "section": "IPR, Health and Safety",
+    "ecomPct": 67.8,
+    "members": [
+      "IPR products trafficking",
+      "Medical products trafficking"
+    ],
+    "sourcePath": "IPR, Health and Safety/__all__/ecom"
+  },
+  {
+    "section": "Drugs",
+    "ecomPct": 59.9,
+    "members": [
+      "New Psychoactive Substances",
+      "Cannabis",
+      "Psychotropic substances",
+      "Khat",
+      "Opioids and Opiates",
+      "Cocaine"
+    ],
+    "sourcePath": "Drugs/__all__/ecom"
+  },
+  {
+    "section": "Environmental Crime",
+    "ecomPct": 23.9,
+    "members": [
+      "Flora",
+      "Fauna",
+      "ODS & HFCs",
+      "Waste",
+      "Other hazardous materials"
+    ],
+    "sourcePath": "Environmental Crime/__all__/ecom"
+  },
+  {
+    "section": "Security",
+    "ecomPct": 23.6,
+    "members": [
+      "Weapons, ammunition and tactical equipment",
+      "Explosives and precursors",
+      "Unmanned aerial systems (UAS)"
+    ],
+    "sourcePath": "Security/__all__/ecom"
+  },
+  {
+    "section": "Revenue",
+    "ecomPct": 5.6,
+    "members": [
+      "Tobacco products trafficking",
+      "Alcohol products trafficking"
+    ],
+    "sourcePath": "Revenue/__all__/ecom"
+  },
+  {
+    "section": "AML/CTF",
+    "ecomPct": 1,
+    "members": [
+      "Gemstones trafficking",
+      "Cash smuggling",
+      "Gold trafficking"
+    ],
+    "sourcePath": "AML/CTF/__all__/ecom"
+  }
+]

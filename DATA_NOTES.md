@@ -1,8 +1,12 @@
-# DATA_NOTES — reconciliation of the e-commerce hero figures
+# DATA_NOTES — reconciliation of the e-commerce figures
 
 Every number in the hero spectrum (`data/ecom_spectrum.json`) traces to a single
 source: `data/itr_drill.json` at path `<section>/<flow>/ecom`. This note records the
 one genuine conflict we resolved and the other cross-checks we ran.
+
+> **Step 2 additions** (scrollytelling data files) are documented at the bottom of
+> this file under "Step 2 — new data files". The reconciliation below is unchanged
+> from Step 1.
 
 ## Resolved: NPS e-commerce share = **81.9%**
 
@@ -68,3 +72,88 @@ The original e-commerce `byCommodity` chart shows only 8 items and silently omit
 21 flow-level commodities (every `<section>/<flow>` with an `ecom` value, excluding the
 `__all__` section aggregates), so the full 81.9% → 0% range is shown honestly rather
 than a curated top slice.
+
+---
+
+# Step 2 — new data files (scrollytelling)
+
+Four new files back the guided story. Each figure is traced to source below.
+
+## `data/ecom_by_section.json` — the six section-level shares
+
+Sorted descending, taken verbatim from `itr_drill.json` `<section>/__all__/ecom`:
+
+| Section | share | sourcePath |
+|---|---|---|
+| IPR, Health and Safety | 67.8 | `IPR, Health and Safety/__all__/ecom` |
+| Drugs | 59.9 | `Drugs/__all__/ecom` |
+| Environmental Crime | 23.9 | `Environmental Crime/__all__/ecom` |
+| Security | 23.6 | `Security/__all__/ecom` |
+| Revenue | 5.6 | `Revenue/__all__/ecom` |
+| AML/CTF | 1.0 | `AML/CTF/__all__/ecom` |
+
+Each row also carries a `members` array — the commodity flows that belong to the
+section, derived from the `section` field already present in `ecom_spectrum.json`.
+This is the **section→commodity grouping** that drives the beat 2→3 "explode"
+transition. `members` holds commodity *names only*; the shares stay single-sourced in
+`ecom_spectrum.json` so the two files cannot drift.
+
+## `data/ecom_by_region.json` — the six regional shares
+
+Sorted descending, from `itr_global.json` `regions[].ecom` (the instructed source):
+
+| Region | share | note |
+|---|---|---|
+| Americas (AMS) | 68.0 | |
+| Europe (EUR) | **45.5** | `itr_global.json` says 45.5; `REPORT.ecommerce.byRegion` says 45.4. We use the `itr_global.json` value (45.5) as instructed; the 0.1 gap is display rounding, not a data disagreement. |
+| Asia / Pacific (A/P) | 27.9 | |
+| East & Southern Africa (ESA) | 22.7 | |
+| MENA | 1.5 | |
+| West & Central Africa (WCA) | 0.6 | |
+
+## `data/ecom_subcommodity_extremes.json` — beat-4 annotations
+
+The sharpest single sub-commodity figures, each confirmed against source:
+
+| Label | share | source |
+|---|---|---|
+| Urogenital agents | **91.0** | `itr_iprhs.json` `perStream/Medical products trafficking/ecomByCommodity` → *Urogenital Agents* (`pct`). Highest single sub-commodity share in the report. |
+| Gun silencers | **85.1** | `itr_sec.json` `perStream/Weapons, ammunition and tactical equipment/commerceByCommodity` → *Silencer* (`parts."e-commerce"`); assault rifle in the same table is 2.3. |
+| Firearm receivers | **69.5** | same weapons table → *Receiver*. The serialised, regulated part — mailed as a component. |
+| Nervous-system agents | **63.3** | medical table → *Nervous System Agents*. |
+| E-cigarettes | **63.8** | `itr_rev.json` `perStream/Tobacco products trafficking/ecomByCommodity` → *E-cigarettes* (`pct`); bulk *Cigarettes* in the same table are **1.1** — the contrast is the point. |
+
+Note: two shapes in source — Weapons uses `commerceByCommodity.rows[].parts["e-commerce"]`;
+Medical/Tobacco use `ecomByCommodity[].pct`. Both are e-commerce case shares.
+
+## `data/iso3_to_wco_region.json` — country → WCO region (DERIVED)
+
+**This is a derived artifact.** The extracted dashboard config has no country→region
+map — `REGION_CFG` names the six regions but the live choropleths colour by
+*per-country* values, not by region membership, so no such lookup was ever baked in.
+We constructed the map from **public WCO regional membership** (the WCO's six
+Vice-Chair regions: AMS, A/P, EUR, ESA, WCA, MENA) and keyed it to the 176 ISO-3
+codes present in `world_map_paths.json`. Flat `{ISO3: regionCode}`.
+
+Coverage: **175 / 176** map countries placed. Region counts: EUR 52, A/P 30, AMS 30,
+ESA 23, WCA 22, MENA 18.
+
+Placement decisions worth flagging (WCO regions do not follow continents):
+- **Central Asia & the Caucasus → EUR.** KAZ, KGZ, TJK, TKM, UZB, ARM, AZE, GEO all
+  sit in the WCO **Europe** region, as do TUR and ISR.
+- **Territories mapped to their administering member's region:** GRL (Greenland,
+  Danish) → EUR; PRI (Puerto Rico) → AMS; NCL (New Caledonia, French) → A/P; FLK
+  (Falklands) → AMS. Geographically some sit elsewhere; WCO membership follows the
+  administering customs authority.
+- **Disputed / non-standard codes:** ESH (Western Sahara) → MENA (administered by
+  Morocco); SOL (Somaliland, a non-ISO code used by the map geometry) → ESA with
+  Somalia; CYN (Northern Cyprus) → EUR; KOS (Kosovo) → EUR; PSE (Palestine) → MENA.
+- **Sudan (SDN) → ESA** and **Mauritania (MRT) → WCA**, following WCO's African
+  regional split (which is not the UN's).
+
+**Unplaced (1):** `ATF` — French Southern & Antarctic Lands. Uninhabited, no customs
+administration and no WCO region; the choropleth renders it in the neutral "no-region"
+fill. This is the only gap.
+
+Rebuild scripts for all four files live in the scratchpad (`gen_data.py`,
+`gen_map.py`) and read straight from the source JSON, so every figure is reproducible.
