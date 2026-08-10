@@ -628,7 +628,262 @@
     return h("div", { class: "c-vp-wrap" }, table);
   }
 
+  /* =================================================================
+     10 · SCATTER — two continuous measures, one point per entity, with
+          optional size, group colour and quadrant reference lines.
+          The only component in the library that can answer "does A
+          move with B?", which is exactly the RMS monitoring question
+          (risk-profiling share vs e-commerce penetration / volume /
+          year-on-year change). Points are labelled sparingly — only
+          the `annotate` most extreme, because 21 labels collide.
+        opts: { data:[{label,x,y,size?,group?}], x?, y?, size?, label?,
+                group?, xLabel, yLabel, xFmt?, yFmt?, sizeFmt?, sizeLabel?,
+                xScale?('linear'|'log'), colors?, refX?, refY?,
+                refXLabel?, refYLabel?, annotate?(n), width?, height?,
+                metric?, ariaLabel? }
+     ================================================================= */
+  function scatter(opts) {
+    var data = opts.data.slice();
+    var gx = accessor(opts.x, "x"), gy = accessor(opts.y, "y");
+    var gl = accessor(opts.label, "label");
+    var gs = opts.size ? accessor(opts.size, "size") : null;
+    var gg = opts.group ? accessor(opts.group, "group") : null;
+    var xf = opts.xFmt || fmt.dec, yf = opts.yFmt || fmt.pct;
+    var sf = opts.sizeFmt || fmt.int;
+    var logX = opts.xScale === "log";
+
+    var W = opts.width || 680, H = opts.height || 400;
+    // mL leaves room for the tick labels AND the rotated axis title inboard of them
+    var mL = 72, mR = 18, mT = 14, mB = 46;
+    var pw = W - mL - mR, ph = H - mT - mB;
+
+    /* ---- scales (log guards non-positive values) ------------------ */
+    var xs = data.map(gx).map(Number), ys = data.map(gy).map(Number);
+    var xPos = xs.filter(function (v) { return v > 0; });
+    var xLo = logX ? Math.min.apply(null, xPos.concat([1])) : Math.min.apply(null, xs.concat([0]));
+    var xHi = Math.max.apply(null, xs.concat([logX ? 10 : 0]));
+    var yLo = Math.min.apply(null, ys), yHi = Math.max.apply(null, ys);
+    // pad the linear domains a little so points never sit on the frame
+    if (!logX) { var xp = (xHi - xLo) * 0.06 || 1; xLo -= xp; xHi += xp; }
+    var yp = (yHi - yLo) * 0.08 || 1; yLo -= yp; yHi += yp;
+    if (!logX && xLo < 0 && Math.min.apply(null, xs) >= 0) xLo = 0;
+    if (yLo < 0 && Math.min.apply(null, ys) >= 0) yLo = 0;
+
+    function sx(v) {
+      if (!logX) return mL + (v - xLo) / (xHi - xLo || 1) * pw;
+      var lv = Math.log(Math.max(v, xLo)) / Math.LN10;
+      var l0 = Math.log(xLo) / Math.LN10, l1 = Math.log(xHi) / Math.LN10;
+      return mL + (lv - l0) / (l1 - l0 || 1) * pw;
+    }
+    function sy(v) { return mT + ph - (v - yLo) / (yHi - yLo || 1) * ph; }
+
+    var root = svg("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", role: "img",
+      "aria-label": (opts.ariaLabel || "Scatter plot"), class: "c-svg c-scatter" });
+
+    /* ---- axes: minimal chrome, ticks only ------------------------- */
+    var xTicks = logX ? logTicks(xLo, xHi) : niceTicks(xLo, xHi, 6);
+    var yTicks = niceTicks(yLo, yHi, 5);
+    yTicks.forEach(function (t) {
+      var y = sy(t);
+      root.appendChild(svg("line", { x1: mL, x2: mL + pw, y1: y.toFixed(1), y2: y.toFixed(1),
+        stroke: PALETTE.hairline, "stroke-width": 1 }));
+      root.appendChild(svg("text", { x: mL - 8, y: (y + 4).toFixed(1), "text-anchor": "end",
+        class: "c-axis" }, yf(t)));
+    });
+    xTicks.forEach(function (t) {
+      var x = sx(t);
+      root.appendChild(svg("text", { x: x.toFixed(1), y: mT + ph + 18, "text-anchor": "middle",
+        class: "c-axis" }, xf(t)));
+    });
+    root.appendChild(svg("line", { x1: mL, x2: mL + pw, y1: mT + ph, y2: mT + ph,
+      stroke: PALETTE.grayPale, "stroke-width": 1 }));
+
+    /* ---- quadrant reference lines --------------------------------- */
+    if (opts.refY != null) {
+      var ry = sy(opts.refY);
+      root.appendChild(svg("line", { x1: mL, x2: mL + pw, y1: ry.toFixed(1), y2: ry.toFixed(1),
+        stroke: PALETTE.gray, "stroke-width": 1.25, "stroke-dasharray": "5 4" }));
+      if (opts.refYLabel) root.appendChild(svg("text", { x: mL + pw, y: (ry - 6).toFixed(1),
+        "text-anchor": "end", class: "c-ref" }, opts.refYLabel));
+    }
+    if (opts.refX != null) {
+      var rx = sx(opts.refX);
+      root.appendChild(svg("line", { x1: rx.toFixed(1), x2: rx.toFixed(1), y1: mT, y2: mT + ph,
+        stroke: PALETTE.gray, "stroke-width": 1.25, "stroke-dasharray": "5 4" }));
+      if (opts.refXLabel) root.appendChild(svg("text", { x: (rx + 5).toFixed(1), y: mT + 10,
+        class: "c-ref" }, opts.refXLabel));
+    }
+
+    /* ---- axis titles ---------------------------------------------- */
+    if (opts.xLabel) root.appendChild(svg("text", { x: mL + pw / 2, y: H - 6,
+      "text-anchor": "middle", class: "c-axis-t" }, opts.xLabel));
+    if (opts.yLabel) root.appendChild(svg("text", { x: 14, y: mT + ph / 2,
+      "text-anchor": "middle", class: "c-axis-t",
+      transform: "rotate(-90 14 " + (mT + ph / 2).toFixed(1) + ")" }, opts.yLabel));
+
+    /* ---- groups -> fixed categorical colours ----------------------- */
+    var groups = [];
+    if (gg) data.forEach(function (d) {
+      var g = gg(d); if (groups.indexOf(g) < 0) groups.push(g);
+    });
+    var colors = opts.colors || groups.map(function (_, i) { return catColor(i); });
+    function colorOf(d) { return gg ? colors[groups.indexOf(gg(d))] : PALETTE.accent; }
+
+    /* ---- radius: area-proportional (sqrt), never linear ----------- */
+    var maxS = gs ? Math.max.apply(null, data.map(gs).map(Number).concat([0])) : 0;
+    var rMin = 4.5, rMax = 13;
+    function rOf(d) {
+      if (!gs || maxS <= 0) return 5.5;
+      return rMin + (rMax - rMin) * Math.sqrt(Math.max(0, +gs(d)) / maxS);
+    }
+
+    /* ---- which points earn a label: the most extreme ones ---------- */
+    var cx = opts.refX != null ? sx(opts.refX) : mL + pw / 2;
+    var cy = opts.refY != null ? sy(opts.refY) : mT + ph / 2;
+    var nLab = opts.annotate == null ? 6 : opts.annotate;
+    var minSep = opts.labelSep || 34;          // px; keeps labels from stacking
+    var ranked = data.map(function (d, i) {
+      var px = sx(+gx(d)), py = sy(+gy(d));
+      var dx = (px - cx) / (pw || 1), dy = (py - cy) / (ph || 1);
+      return { i: i, px: px, py: py, dist: Math.sqrt(dx * dx + dy * dy) };
+    }).sort(function (a, b) { return b.dist - a.dist; });
+    // greedily take the most extreme points, but skip any that would sit on
+    // top of a label already placed — outliers cluster, and six labels in one
+    // corner is worse than three legible ones
+    var labelled = {}, placed = [];
+    for (var ri = 0; ri < ranked.length && placed.length < nLab; ri++) {
+      var cand = ranked[ri], clear = true;
+      for (var pi = 0; pi < placed.length; pi++) {
+        if (Math.abs(cand.px - placed[pi].px) < minSep * 2.2 &&
+            Math.abs(cand.py - placed[pi].py) < minSep) { clear = false; break; }
+      }
+      if (clear) { labelled[cand.i] = true; placed.push(cand); }
+    }
+
+    /* ---- points ---------------------------------------------------- */
+    data.forEach(function (d, i) {
+      var xv = +gx(d), yv = +gy(d);
+      var px = sx(xv), py = sy(yv), r = rOf(d), col = colorOf(d);
+      var c = svg("circle", { cx: px.toFixed(1), cy: py.toFixed(1), r: r.toFixed(1),
+        fill: col, "fill-opacity": 0.72, stroke: PALETTE.surface, "stroke-width": 1.25 });
+      root.appendChild(c);
+      tip.bind(c, (function (d, xv, yv) { return function () {
+        var rows = [[opts.xLabel || "x", xf(xv)], [opts.yLabel || "y", yf(yv)]];
+        if (gs) rows.push([opts.sizeLabel || "Size", sf(+gs(d))]);
+        if (gg) rows.push(["Section", String(gg(d))]);
+        return tipRows(gl(d), rows);
+      }; })(d, xv, yv));
+
+      if (labelled[i]) {
+        // flip the label to the left when the point sits near the right edge
+        var right = px > mL + pw * 0.72;
+        root.appendChild(svg("text", {
+          x: (px + (right ? -(r + 5) : r + 5)).toFixed(1), y: (py + 4).toFixed(1),
+          "text-anchor": right ? "end" : "start", class: "c-pt" }, gl(d)));
+      }
+    });
+
+    if (!gg) return root;
+    var leg = h("ul", { class: "c-legend c-legend-row" });
+    groups.forEach(function (g, i) {
+      leg.appendChild(h("li", {}, [
+        h("span", { class: "c-sw", style: "background:" + colors[i] }),
+        h("span", { class: "c-leg-name", text: String(g) })
+      ]));
+    });
+    return h("div", { class: "c-scatter-wrap" }, [leg, root]);
+  }
+
+  /* =================================================================
+     11 · DIVERGING BAR — signed bars around a non-zero baseline.
+          `hbar` cannot express "above / below a reference"; this can,
+          which is what "vs the global risk-profiling baseline" needs.
+          Values are absolute; the drawn bar is (value − baseline).
+        opts: { data:[{label,value}], baseline(=0), label?, value?,
+                valueFmt?, devFmt?, posColor?, negColor?, posLabel?,
+                negLabel?, width?, rowH?, labelW?, metric?, ariaLabel? }
+     ================================================================= */
+  function divergingBar(opts) {
+    var data = opts.data.slice();
+    var getV = accessor(opts.value, "value");
+    var getL = accessor(opts.label, "label");
+    var base = opts.baseline || 0;
+    var vf = opts.valueFmt || fmt.pct;
+    var df = opts.devFmt || fmt.signedPct;
+    var posC = opts.posColor || PALETTE.accent;
+    var negC = opts.negColor || "#D55E00";      // vermillion — Okabe–Ito, CVD-safe vs the blue
+
+    var W = opts.width || 680, rowH = opts.rowH || 30, barH = opts.barH || 14;
+    var labelW = opts.labelW || 176, valW = 62, gap = 10;
+    // reserve a value-label lane on BOTH sides — a full-length negative bar
+    // would otherwise push its label back over the category name
+    var x0 = labelW + gap;
+    var half = ((W - x0 - 8) - valW * 2) / 2;
+    var mid = x0 + valW + half;
+    var maxDev = Math.max.apply(null, data.map(function (d) {
+      return Math.abs(getV(d) - base);
+    }).concat([0])) || 1;
+
+    var padT = 18, H = data.length * rowH + padT + 8;
+    var root = svg("svg", { viewBox: "0 0 " + W + " " + H, width: "100%", role: "img",
+      "aria-label": (opts.ariaLabel || "Deviation from baseline"), class: "c-svg c-diverge" });
+
+    // the baseline itself — the only rule the chart needs
+    root.appendChild(svg("line", { x1: mid, x2: mid, y1: padT - 8, y2: H - 6,
+      stroke: PALETTE.gray, "stroke-width": 1.25 }));
+    root.appendChild(svg("text", { x: mid, y: padT - 12, "text-anchor": "middle", class: "c-ref" },
+      (opts.baselineLabel || "baseline") + " " + vf(base)));
+
+    data.forEach(function (d, i) {
+      var v = +getV(d), dev = v - base, name = getL(d);
+      var y = padT + i * rowH + rowH / 2;
+      var w = Math.abs(dev) / maxDev * half;
+      var pos = dev >= 0;
+      root.appendChild(svg("text", { x: labelW, y: y + 4, "text-anchor": "end", class: "c-cat" }, name));
+      var rect = svg("rect", {
+        x: (pos ? mid : mid - w).toFixed(1), y: y - barH / 2,
+        width: Math.max(w, 1).toFixed(1), height: barH, rx: 3,
+        fill: pos ? posC : negC });
+      root.appendChild(rect);
+      root.appendChild(svg("text", {
+        x: (pos ? mid + w + 6 : mid - w - 6).toFixed(1), y: y + 4,
+        "text-anchor": pos ? "start" : "end", class: "c-val",
+        fill: pos ? posC : negC }, df(dev)));
+      tip.bind(rect, (function (name, v, dev) { return function () {
+        return tipRows(name, [
+          [opts.metric || "Value", vf(v)],
+          [opts.baselineLabel || "Baseline", vf(base)],
+          ["Difference", df(dev)]
+        ]);
+      }; })(name, v, dev));
+    });
+    return root;
+  }
+
   /* ---- small internals -------------------------------------------- */
+  /* readable axis ticks: 1 / 2 / 5 × 10^n covering [lo, hi] */
+  function niceTicks(lo, hi, n) {
+    n = n || 5;
+    if (!(hi > lo)) return [lo];
+    var step = Math.pow(10, Math.floor(Math.log((hi - lo) / n) / Math.LN10));
+    var err = (hi - lo) / n / step;
+    if (err >= 7.5) step *= 10; else if (err >= 3) step *= 5; else if (err >= 1.5) step *= 2;
+    var out = [];
+    for (var v = Math.ceil(lo / step) * step; v <= hi + step * 1e-9; v += step) {
+      out.push(+v.toPrecision(12));
+    }
+    return out;
+  }
+  /* decade ticks for a log axis */
+  function logTicks(lo, hi) {
+    var out = [];
+    for (var e = Math.floor(Math.log(lo) / Math.LN10); e <= Math.ceil(Math.log(hi) / Math.LN10); e++) {
+      var v = Math.pow(10, e);
+      if (v >= lo && v <= hi) out.push(v);
+    }
+    return out.length ? out : [lo, hi];
+  }
+
   function accessor(spec, dflt) {
     if (typeof spec === "function") return spec;
     var key = spec || dflt;
@@ -651,6 +906,7 @@
     hbar: hbar, groupedYoY: groupedYoY, donut: donut, donutB: donutB,
     stackedBar: stackedBar, choropleth: choropleth, heatGrid: heatGrid,
     operPanels: operPanels, kpi: kpi, volumeProfile: volumeProfile,
+    scatter: scatter, divergingBar: divergingBar,
     // low-level helpers exposed for the app assembler
     _h: h, _svg: svg, _esc: esc, _lbl: lbl
   };

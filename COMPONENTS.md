@@ -151,6 +151,37 @@ When `topN` truncates, the tail is folded into an explicit **"Other (k)"** row (
 silently dropped), so the visible rows always reconcile to the footer — the footer
 sums **every** sub-category, shown or not.
 
+### `scatter(opts)` — two measures, one point per entity
+The only component that can answer *"does A move with B?"* — which is the RMS
+monitoring question. Optional size (area-proportional, √-scaled), optional group
+colour, optional quadrant reference lines. Returns a bare `<svg>` when there are
+no groups, otherwise a wrapper `<div>` (HTML key legend + SVG).
+```
+{ data:[{label,x,y,size?,group?}], x?, y?, size?, label?, group?,
+  xLabel, yLabel, xFmt?, yFmt?, sizeFmt?, sizeLabel?,
+  xScale?('linear'|'log'), colors?, refX?, refY?, refXLabel?, refYLabel?,
+  annotate?(=6), labelSep?(=34), width?, height?, metric?, ariaLabel? }
+```
+`xScale:'log'` draws decade ticks and is the honest way to plot seizure counts,
+which span 41 → 74,389. Only the `annotate` most extreme points are labelled, and
+a candidate is **skipped when its label would collide** with one already placed —
+outliers cluster, and six labels stacked in one corner is worse than three
+legible ones. Reference lines are dashed with an edge label; pass both `refX` and
+`refY` to get a quadrant read.
+
+### `divergingBar(opts)` — signed bars around a baseline
+`hbar` cannot express "above / below a reference", which is exactly what
+"vs the global risk-profiling baseline" needs. Values are absolute; the drawn bar
+is `value − baseline`, and the direct label is the signed difference.
+```
+{ data:[{label,value}], baseline(=0), baselineLabel?, label?, value?,
+  valueFmt?(=fmt.pct), devFmt?(=fmt.signedPct), posColor?, negColor?,
+  width?, rowH?, barH?, labelW?, metric?, ariaLabel? }
+```
+A value-label lane is reserved on **both** sides of the baseline, so a
+full-length negative bar never pushes its label back over the category name.
+`negColor` defaults to Okabe–Ito vermillion `#D55E00` — CVD-safe against the blue.
+
 ---
 
 ## Adding a section (Phases B–F)
@@ -186,3 +217,27 @@ sub-commodity, conveyance, flows, involvement, operational panels). Adding Reven
 a new `STREAM_CFG.revenue` entry (its region keys are `s0/s1`, `a0/a1`) plus flipping
 `live:true` — **no renderer changes**. Optional per-stream cards (Revenue's `departures`
 hbar) render automatically when the data carries them.
+
+### The **RMS Monitoring** section (cross-cutting)
+
+`RMS Monitoring` is registered first in `SECTIONS` with `xcut:true`, which makes
+the rail draw a divider under it — it is not a seventh commodity, it reads across
+all six typologies. Four sub-flows: `overview` · `coverage` · `yield` · `channels`
+(`#section=rms&flow=coverage`).
+
+Everything it draws is **derived at load time** by `buildRmsModel(sections, drill,
+global)` in `explore.js` from `itr_sections.json`, `itr_drill.json` and
+`itr_global.json`. Nothing under `data/` was re-extracted for it, so there is
+exactly one source of truth; the render functions stay presentation-only. See
+[`DATA_NOTES.md`](DATA_NOTES.md) for every formula and caveat.
+
+Two conventions this section adds:
+
+- **`cardWide(title, sub, node)`** — a `card--full` whose chart is wrapped in
+  `.c-wide`. The RMS panels use a 1040-unit `viewBox` (rather than the default
+  680) so their type is not upscaled on a wide card; below 900px `.c-wide`
+  scrolls the chart sideways instead of shrinking that type into illegibility.
+- **`rmsSectionPanel(sectionId)`** — the compact RMS card embedded in each live
+  section (`renderDrugs`, and `streamOverview` via `cfg.drillKey`, so every future
+  stream section gets it with no renderer change). Share vs baseline + channel mix
+  + a link through to the hub.
