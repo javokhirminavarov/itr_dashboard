@@ -11,7 +11,7 @@ inline JavaScript object literals (no remote fetch — the page's CSP even sets
 |------|----------|
 | `itr_data.json` | Complete `ITR_DATA` object (everything below in one file) |
 | `itr_meta.json` | Reporting year, comparator year, admin & region counts |
-| `itr_sections.json` | Per-section headline flows (`s`=seizures, `p`=pieces, `c`=cases) + detection mix |
+| `itr_sections.json` | Per-section headline flows (`s`=seizures this year, `p`=seizures **prior year**, `c`=cases) + detection mix |
 | `itr_global.json` | Global totals, per-region cases/seizures/countries/e-commerce, region×section seizure matrix |
 | `itr_drill.json` | Generic drill-down data (countries, routes, quantity, detection, e-commerce) per section/flow |
 | `itr_aml.json` | AML/CTF detail: composition, top reporters, currencies, conveyance, direction, detection, proportion, involvement (map), gold, gems, counterfeit |

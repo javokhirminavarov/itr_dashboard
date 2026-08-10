@@ -15,8 +15,12 @@
   var C = window.ITR;                    // the component library
   var fmt = C.fmt, P = C.palette;
 
-  /* ---- section registry (all six; order matters) ------------------ */
+  /* ---- section registry (all six; order matters) ------------------
+     RMS Monitoring sits FIRST and is flagged `xcut` — it is not a
+     seventh commodity, it reads across all six typologies, so the rail
+     draws a divider under it. */
   var SECTIONS = [
+    { id: "rms",     label: "RMS Monitoring",        live: true, xcut: true },
     { id: "drugs",   label: "Drugs",                 live: true  },
     { id: "aml",     label: "AML/CTF",               live: false },
     { id: "env",     label: "Environmental Crime",   live: false },
@@ -70,6 +74,32 @@
 
   var SOURCE = "WCO Illicit Trade Report 2025 (data year 2025; prior year 2024).";
 
+  /* ---- RMS monitoring --------------------------------------------
+     "RMS" = the customs Risk Management System. The ITR's proxy for it
+     is the `Risk profiling` detection channel, reported for all six
+     sections and all 21 sub-commodities alongside the four other
+     channels. Labels come from DETECT_CFG in the source config bundle
+     (data/config_bundle.json); colours come from ITR.catColor like
+     everywhere else in the Explore app — SEC_THEME.det belongs to the
+     old story palette (see PALETTE.md) and is deliberately not used. */
+  var RMS_KEY = "Risk profiling";
+  var METHODS = ["Risk profiling", "Routine control", "Intelligence",
+                 "Investigation", "Random selection"];
+  var RMS_FLOWS = [
+    { slug: "overview", label: "Overview" },
+    { slug: "coverage", label: "Coverage" },
+    { slug: "yield",    label: "Yield & blind spots" },
+    { slug: "channels", label: "Channel mix" }
+  ];
+  var SEC_SHORT = {
+    "AML/CTF": "AML/CTF", "Drugs": "Drugs", "Environmental Crime": "Env. Crime",
+    "IPR, Health and Safety": "IPR & H/S", "Revenue": "Revenue", "Security": "Security"
+  };
+  var REGION_NAME = {
+    EUR: "Europe", AMS: "Americas", MENA: "N. Africa / Near & Middle East",
+    "A/P": "Asia / Pacific", ESA: "East & Southern Africa", WCA: "West & Central Africa"
+  };
+
   /* ---- shared app state ------------------------------------------- */
   var state = { section: "drugs", flow: "overview" };
   var DATA = null;                        // loaded payloads
@@ -90,10 +120,14 @@
     fetchJSON("./data/world_map_paths.json"),
     fetchJSON("./data/cfg_CNAME.json"),
     fetchJSON("./data/itr_meta.json"),
-    fetchJSON("./data/itr_iprhs.json")
+    fetchJSON("./data/itr_iprhs.json"),
+    fetchJSON("./data/itr_sections.json"),
+    fetchJSON("./data/itr_global.json")
   ]).then(function (res) {
     DATA = { drugs: res[0], drill: res[1], world: res[2], cname: res[3], meta: res[4],
-             iprhs: res[5] };
+             iprhs: res[5], sections: res[6], global: res[7] };
+    // derive the RMS model ONCE; the render path stays presentation-only
+    DATA.rms = buildRmsModel(DATA.sections, DATA.drill, DATA.global);
     boot();
   }).catch(function (err) {
     content.innerHTML = "";
@@ -129,6 +163,7 @@
   /* the ordered list of sub-flow slugs a section exposes (drugs has its
      per-drug flows; a stream-section has overview + one flow per stream) */
   function flowsFor(sectionId) {
+    if (sectionId === "rms") return RMS_FLOWS.map(function (f) { return f.slug; });
     if (sectionId === "drugs") return DRUG_FLOWS.map(function (f) { return f.slug; });
     var cfg = STREAM_CFG[sectionId];
     if (cfg) return ["overview"].concat(cfg.streams.map(function (s) { return s.slug; }));
@@ -151,7 +186,8 @@
     content.innerHTML = "";
     window.scrollTo(0, 0);
     if (!sec || !sec.live) { renderComingSoon(sec); return; }
-    if (sec.id === "drugs") renderDrugs();
+    if (sec.id === "rms") renderRMS();
+    else if (sec.id === "drugs") renderDrugs();
     else if (STREAM_CFG[sec.id]) renderStreamSection(STREAM_CFG[sec.id]);
     else renderComingSoon(sec);
   }
@@ -171,6 +207,8 @@
       ]);
       btn.addEventListener("click", function () { go(s.id, "overview"); });
       rail.appendChild(btn);
+      // RMS reads across all six typologies — separate it from the list
+      if (s.xcut) rail.appendChild(C._h("div", { class: "rail__div" }));
     });
   }
 
@@ -187,6 +225,462 @@
       C._h("p", { class: "soon__text",
         text: "This section is being built from the same component library that powers Drugs. Check back as the Explore app expands across all six ITR sections." })
     ]));
+  }
+
+  /* =================================================================
+     RMS MONITORING — the cross-cutting section.
+
+     Everything here is DERIVED at load time from files the app already
+     ships; nothing under data/ is re-extracted, so there is exactly one
+     source of truth. Derivation formulas are documented in
+     DATA_NOTES.md.
+
+     Honest-reporting constraints baked into this model:
+       · detection shares are case-weighted and round to 99–101, so any
+         100% stacked view is normalised before drawing;
+       · there is NO detection breakdown by region, country or year —
+         the regional figure is a section-mix-weighted ESTIMATE and is
+         labelled as derived everywhere it appears;
+       · quantity units differ (kg / pieces / Litres / USD), so every
+         cross-section panel uses cases or seizures as the common
+         denominator and quantity appears only within a single unit.
+     ================================================================= */
+  function buildRmsModel(sections, drill, global) {
+    var secIds = Object.keys(sections);
+
+    /* ---- per-section roll-up ------------------------------------- */
+    var secRows = secIds.map(function (id) {
+      var sv = sections[id];
+      var cases = 0, seiz = 0, prev = 0;
+      Object.keys(sv.flows).forEach(function (f) {
+        cases += sv.flows[f].c || 0; seiz += sv.flows[f].s || 0; prev += sv.flows[f].p || 0;
+      });
+      return {
+        id: id, label: SEC_SHORT[id] || id, admins: sv.admins,
+        cases: cases, seizures: seiz, prev: prev,
+        detect: sv.detect, pct: normPct(sv.detect),
+        rms: sv.detect[RMS_KEY] || 0,
+        perCase: cases > 0 ? seiz / cases : null
+      };
+    });
+
+    /* ---- global baseline: case-weighted, NOT a mean of six shares -- */
+    var num = 0, den = 0;
+    secRows.forEach(function (r) { num += r.rms * r.cases; den += r.cases; });
+    var baseline = den > 0 ? num / den : 0;
+    secRows.forEach(function (r) { r.dev = r.rms - baseline; });
+
+    /* ---- per sub-commodity --------------------------------------- */
+    var flowRows = [];
+    secIds.forEach(function (id) {
+      var sv = sections[id], dsec = drill[id] || {};
+      Object.keys(sv.flows).forEach(function (name) {
+        var f = sv.flows[name], dd = dsec[name] || {};
+        var det = dd.detect || {};
+        var q = dd.quantity || {};
+        flowRows.push({
+          section: id, sectionLabel: SEC_SHORT[id] || id, label: name,
+          rms: det[RMS_KEY] || 0,
+          routine: det["Routine control"] || 0,
+          random: det["Random selection"] || 0,
+          intel: det["Intelligence"] || 0,
+          invest: det["Investigation"] || 0,
+          pct: normPct(det),
+          ecom: dd.ecom == null ? null : dd.ecom,
+          cases: f.c || 0, seizures: f.s || 0, prev: f.p || 0,
+          yoy: fmt.delta(f.s, f.p),
+          perCase: f.c > 0 ? f.s / f.c : null,
+          qty: q.value == null ? null : q.value, unit: q.en || null
+        });
+        flowRows[flowRows.length - 1].dev = flowRows[flowRows.length - 1].rms - baseline;
+      });
+    });
+
+    /* ---- DERIVED regional exposure -------------------------------
+       Not reported data. Each region's seizure mix across the six
+       sections is weighted by that section's own RMS share:
+         expected = Σ(seizures_region,section × rms_section) / Σ seizures
+       It answers "given what this region seizes, how RMS-led would we
+       expect it to be?" — never "this region's RMS rate is X". */
+    var rmsBySec = {};
+    secRows.forEach(function (r) { rmsBySec[r.id] = r.rms; });
+    var regions = (global.regionSection || []).map(function (rs) {
+      var n = 0, d2 = 0;
+      Object.keys(rs.sections).forEach(function (s) {
+        var v = rs.sections[s] || 0;
+        n += (rmsBySec[s] || 0) * v; d2 += v;
+      });
+      return { code: rs.region, name: REGION_NAME[rs.region] || rs.region,
+        seizures: rs.total, expectedRms: d2 > 0 ? n / d2 : 0, derived: true };
+    });
+
+    /* ---- headline relationships ---------------------------------- */
+    var withEcom = flowRows.filter(function (r) { return r.ecom != null; });
+    var seizSorted = flowRows.map(function (r) { return r.seizures; })
+      .sort(function (a, b) { return a - b; });
+
+    return {
+      baseline: baseline, totalCases: den, methods: METHODS,
+      sections: secRows, flows: flowRows, regions: regions,
+      stats: {
+        corrEcomRms: corr(withEcom.map(function (r) { return r.ecom; }),
+                          withEcom.map(function (r) { return r.rms; })),
+        corrRandomRms: corr(flowRows.map(function (r) { return r.random; }),
+                            flowRows.map(function (r) { return r.rms; })),
+        medianSeizures: median(seizSorted),
+        belowBaseline: secRows.filter(function (r) { return r.rms < baseline; }).length,
+        randomCases: flowRows.reduce(function (s, r) { return s + r.cases * r.random / 100; }, 0)
+      }
+    };
+  }
+
+  /* detection shares are case-weighted and round to 99–101; normalise
+     before ANY 100% view so the stack reconciles exactly */
+  function normPct(detect) {
+    var out = {}, tot = 0;
+    METHODS.forEach(function (m) { tot += +detect[m] || 0; });
+    METHODS.forEach(function (m) { out[m] = tot > 0 ? (+detect[m] || 0) / tot * 100 : 0; });
+    return out;
+  }
+  function corr(a, b) {
+    var n = a.length; if (n < 2) return null;
+    var ma = a.reduce(function (s, v) { return s + v; }, 0) / n;
+    var mb = b.reduce(function (s, v) { return s + v; }, 0) / n;
+    var sab = 0, sa = 0, sb = 0;
+    for (var i = 0; i < n; i++) {
+      var da = a[i] - ma, db = b[i] - mb;
+      sab += da * db; sa += da * da; sb += db * db;
+    }
+    return (sa > 0 && sb > 0) ? sab / Math.sqrt(sa * sb) : null;
+  }
+  /* a correlation coefficient is not a rate — two decimals, not one, or
+     r = 0.87 would print as the much vaguer 0.9 */
+  function rr(v) { return v == null ? "–" : v.toFixed(2); }
+  function median(sorted) {
+    if (!sorted.length) return 0;
+    var m = Math.floor(sorted.length / 2);
+    return sorted.length % 2 ? sorted[m] : (sorted[m - 1] + sorted[m]) / 2;
+  }
+
+  /* ---- section shell ---------------------------------------------- */
+  function renderRMS() {
+    var m = DATA.rms;
+
+    content.appendChild(C._h("div", { class: "sec-head" }, [
+      C._h("p", { class: "sec-head__eyebrow", text: "Cross-cutting" }),
+      C._h("h1", { class: "sec-head__title", text: "RMS Monitoring" }),
+      C._h("p", { class: "sec-head__sub",
+        text: "How much of the " + DATA.meta.year_current + " caseload the Risk Management System "
+          + "actually found. Risk profiling is read as the RMS channel and compared against routine "
+          + "control, intelligence, investigation and random selection — across all six typologies, "
+          + "21 sub-commodities and " + DATA.meta.wco_regions + " WCO regions." })
+    ]));
+
+    var bar = C._h("div", { class: "flowbar" });
+    RMS_FLOWS.forEach(function (f) {
+      var b = C._h("button", { class: "flowbar__btn" + (f.slug === state.flow ? " is-active" : ""),
+        type: "button", text: f.label });
+      b.addEventListener("click", function () { go("rms", f.slug); });
+      bar.appendChild(b);
+    });
+    content.appendChild(bar);
+
+    if (state.flow === "coverage") rmsCoverage(m);
+    else if (state.flow === "yield") rmsYield(m);
+    else if (state.flow === "channels") rmsChannels(m);
+    else rmsOverview(m);
+  }
+
+  /* ================= RMS · OVERVIEW ================================ */
+  function rmsOverview(m) {
+    var st = m.stats;
+    var best = m.sections.slice().sort(function (a, b) { return b.rms - a.rms; })[0];
+    var worst = m.sections.slice().sort(function (a, b) { return a.rms - b.rms; })[0];
+
+    content.appendChild(C._h("div", { class: "kpi-row" }, [
+      C.kpi({ value: fmt.pct(m.baseline), label: "Global RMS share", accent: P.accent,
+        sub: "Case-weighted across " + fmt.int(m.totalCases) + " cases" }),
+      C.kpi({ value: fmt.pct(best.rms - worst.rms), label: "Spread across sections",
+        sub: best.label + " " + fmt.pct(best.rms) + " → " + worst.label + " " + fmt.pct(worst.rms) }),
+      C.kpi({ value: st.belowBaseline + " of " + m.sections.length, label: "Sections below baseline",
+        sub: "Risk profiling finds less than the global rate" }),
+      C.kpi({ value: fmt.int(st.randomCases), label: "Cases found by random selection",
+        sub: "Volume RMS did not target" })
+    ]));
+
+    var grid = C._h("div", { class: "grid" });
+
+    grid.appendChild(card("RMS share by section",
+      "Share of cases detected by risk profiling. The global case-weighted baseline is "
+        + fmt.pct(m.baseline) + ".",
+      C.hbar({ data: sortBy(m.sections.slice(), "rms"), value: "rms", label: "label",
+        valueFmt: fmt.pct, metric: "Risk profiling", max: 100,
+        ariaLabel: "Risk profiling share by section" }),
+      "card--half"));
+
+    grid.appendChild(card("Distance from the global baseline",
+      "Percentage points above or below the " + fmt.pct(m.baseline) + " case-weighted global share.",
+      C.divergingBar({ data: sortBy(m.sections.slice(), "rms"), value: "rms", label: "label",
+        baseline: m.baseline, baselineLabel: "Global", metric: "Risk profiling",
+        ariaLabel: "Section deviation from the global risk-profiling baseline" }),
+      "card--half"));
+
+    grid.appendChild(cardWide("Detection channel mix by section",
+      "All five channels, normalised to 100% (reported shares round to 99–101).",
+      C.stackedBar({ data: methodRows(m.sections), keys: METHODS, mode: "pct",
+        label: "label", valueFmt: fmt.pct, labelW: 120, width: 1040,
+        ariaLabel: "Detection channel mix by section" })));
+
+    grid.appendChild(card("Expected RMS exposure by region — derived estimate",
+      "NOT reported data. Each region's seizure mix across the six sections weighted by that "
+        + "section's own RMS share; it shows how RMS-led a region's caseload would be expected "
+        + "to be, not its measured rate. The ITR reports no detection breakdown by region.",
+      C.hbar({ data: sortBy(m.regions.slice(), "expectedRms"), value: "expectedRms", label: "name",
+        valueFmt: fmt.pct, metric: "Expected RMS share", max: 100, labelW: 210,
+        ariaLabel: "Derived expected risk-profiling exposure by WCO region" }),
+      "card--half"));
+
+    grid.appendChild(card("Where RMS is weakest",
+      "The sub-commodities with the lowest risk-profiling share — the areas the system is "
+        + "least likely to flag before a control.",
+      C.hbar({ data: m.flows.slice().sort(function (a, b) { return a.rms - b.rms; }).slice(0, 8),
+        value: "rms", label: "label", valueFmt: fmt.pct, metric: "Risk profiling", max: 100,
+        labelW: 210, ariaLabel: "Lowest risk-profiling sub-commodities" }),
+      "card--half"));
+
+    content.appendChild(grid);
+  }
+
+  /* ================= RMS · COVERAGE =============================== */
+  function rmsCoverage(m) {
+    var grid = C._h("div", { class: "grid" });
+
+    grid.appendChild(cardWide("Section × detection channel",
+      "Normalised share of cases, every section against every channel.",
+      C.heatGrid({
+        rows: m.sections.map(function (r) { return r.label; }),
+        cols: METHODS,
+        matrix: m.sections.map(function (r) {
+          return METHODS.map(function (k) { return r.pct[k]; });
+        }),
+        valueFmt: fmt.pct, metric: "Share of cases", max: 100, labelW: 130, width: 1040,
+        ariaLabel: "Section by detection channel matrix" })));
+
+    grid.appendChild(cardWide("RMS share by sub-commodity",
+      "All 21 sub-commodities ranked by risk-profiling share, from NPS down to UAS.",
+      C.hbar({ data: sortBy(m.flows.slice(), "rms"), value: "rms", label: "label",
+        valueFmt: fmt.pct, metric: "Risk profiling", max: 100, labelW: 260, rowH: 26, barH: 12,
+        width: 1040, ariaLabel: "Risk profiling share by sub-commodity" })));
+
+    grid.appendChild(cardWide("Does e-commerce drive risk profiling?",
+      "Each point is a sub-commodity: e-commerce penetration against risk-profiling share. "
+        + "The relationship is strong (r = " + rr(m.stats.corrEcomRms)
+        + " across " + m.flows.filter(function (r) { return r.ecom != null; }).length
+        + " sub-commodities) — parcel-borne trade is where RMS earns its keep. Point size = cases.",
+      C.scatter({
+        data: m.flows.filter(function (r) { return r.ecom != null; }),
+        x: "ecom", y: "rms", size: "cases", label: "label", group: "sectionLabel",
+        xLabel: "E-commerce penetration (% of cases)", yLabel: "Risk profiling (% of cases)",
+        xFmt: fmt.pct, yFmt: fmt.pct, sizeLabel: "Cases",
+        refY: m.baseline, refYLabel: "global " + fmt.pct(m.baseline),
+        annotate: 6, width: 1040, height: 470,
+        ariaLabel: "E-commerce penetration versus risk profiling share" })));
+
+    grid.appendChild(cardWide("Blind-spot quadrant — volume vs RMS",
+      "Seizures (log scale, the unit-free common denominator) against risk-profiling share. "
+        + "The bottom-right quadrant is the concern: high seizure volume that RMS is not driving.",
+      C.scatter({
+        data: m.flows, x: "seizures", y: "rms", size: "cases", label: "label",
+        group: "sectionLabel", xScale: "log",
+        xLabel: "Seizures (log scale)", yLabel: "Risk profiling (% of cases)",
+        xFmt: fmt.k, yFmt: fmt.pct, sizeLabel: "Cases",
+        refX: m.stats.medianSeizures, refXLabel: "median seizures",
+        refY: m.baseline, refYLabel: "global " + fmt.pct(m.baseline),
+        annotate: 6, width: 1040, height: 470,
+        ariaLabel: "Seizure volume versus risk profiling share" })));
+
+    content.appendChild(grid);
+  }
+
+  /* ================= RMS · YIELD & BLIND SPOTS ==================== */
+  function rmsYield(m) {
+    var grid = C._h("div", { class: "grid" });
+
+    /* seizures per case, grouped into RMS reliance bands */
+    var bands = [
+      { label: "RMS 75–100%", lo: 75, hi: 101 },
+      { label: "RMS 50–75%",  lo: 50, hi: 75 },
+      { label: "RMS 25–50%",  lo: 25, hi: 50 },
+      { label: "RMS 0–25%",   lo: 0,  hi: 25 }
+    ].map(function (b) {
+      var rows = m.flows.filter(function (r) { return r.rms >= b.lo && r.rms < b.hi; });
+      var c = 0, s = 0;
+      rows.forEach(function (r) { c += r.cases; s += r.seizures; });
+      return { label: b.label + " (" + rows.length + ")", value: c > 0 ? s / c : 0, cases: c };
+    });
+
+    var lo = Math.min.apply(null, bands.map(function (b) { return b.value; }));
+    var hi = Math.max.apply(null, bands.map(function (b) { return b.value; }));
+
+    grid.appendChild(card("Seizures per case by RMS reliance band",
+      "Sub-commodities grouped by how RMS-led they are; seizures per case is the unit-free yield "
+        + "measure that works across every commodity. The finding is a flat one — yield sits "
+        + "between " + fmt.dec(lo) + " and " + fmt.dec(hi) + " across all four bands, so risk "
+        + "profiling changes WHAT gets found, not how much each case yields.",
+      C.hbar({ data: bands, value: "value", label: "label", valueFmt: fmt.dec,
+        metric: "Seizures per case", labelW: 150,
+        ariaLabel: "Seizures per case by risk-profiling band" }),
+      "card--half"));
+
+    grid.appendChild(card("Where random selection is still finding things",
+      "Random selection is the inverse signal: when untargeted checks keep producing results "
+        + "(r = " + rr(m.stats.corrRandomRms) + " against RMS share), the risk rules are not "
+        + "covering that traffic.",
+      C.hbar({ data: m.flows.slice().sort(function (a, b) { return b.random - a.random; }).slice(0, 8),
+        value: "random", label: "label", valueFmt: fmt.pct, metric: "Random selection",
+        color: "#D55E00", labelW: 210,
+        ariaLabel: "Highest random-selection sub-commodities" }),
+      "card--half"));
+
+    grid.appendChild(cardWide("RMS reliance against year-on-year movement",
+      "Risk-profiling share against the change in seizures, " + DATA.meta.year_previous + " → "
+        + DATA.meta.year_current + ". This is a cross-section, not a trend in RMS itself — "
+        + "the ITR reports no detection breakdown by year.",
+      C.scatter({
+        data: m.flows.filter(function (r) { return r.yoy != null; }),
+        x: "rms", y: "yoy", size: "seizures", label: "label", group: "sectionLabel",
+        xLabel: "Risk profiling (% of cases)", yLabel: "Change in seizures (%)",
+        xFmt: fmt.pct, yFmt: fmt.signedPct, sizeLabel: "Seizures",
+        refX: m.baseline, refXLabel: "global " + fmt.pct(m.baseline),
+        refY: 0, refYLabel: "no change", annotate: 6, width: 1040, height: 470,
+        ariaLabel: "Risk profiling share versus year-on-year seizure change" })));
+
+    /* volume tables — one per unit, because kg / pieces / Litres / USD
+       must never be summed into a single ranking */
+    unitGroups(m.flows).forEach(function (g) {
+      grid.appendChild(card("Volume behind the caseload — " + g.unit,
+        "Sub-commodities reported in " + g.unit + ", with their risk-profiling share alongside. "
+          + "Units are never mixed: each table totals only its own unit.",
+        C.volumeProfile({
+          data: g.rows.map(function (r) {
+            return { en: r.label + " — RMS " + fmt.pct(r.rms), seizures: r.seizures,
+              qty: r.qty, perSeiz: r.seizures > 0 ? r.qty / r.seizures : null };
+          }),
+          unit: g.unit, totalFmt: fmt.dec, perFmt: fmt.dec, catLabel: "Sub-commodity",
+          ariaLabel: "Volume profile for sub-commodities reported in " + g.unit }),
+        "card--half"));
+    });
+
+    content.appendChild(grid);
+  }
+
+  /* ================= RMS · CHANNEL MIX ============================ */
+  function rmsChannels(m) {
+    var grid = C._h("div", { class: "grid" });
+
+    /* global channel split, case-weighted across every sub-commodity */
+    var tot = {}, cases = 0;
+    METHODS.forEach(function (k) { tot[k] = 0; });
+    m.flows.forEach(function (r) {
+      cases += r.cases;
+      METHODS.forEach(function (k) { tot[k] += r.pct[k] * r.cases; });
+    });
+    var split = METHODS.map(function (k) {
+      return { en: k, pct: cases > 0 ? tot[k] / cases : 0 };
+    });
+
+    grid.appendChild(card("Global detection channel split",
+      "Case-weighted across all 21 sub-commodities — the single picture of how the "
+        + DATA.meta.year_current + " caseload was found.",
+      C.donutB({ data: split, value: "pct", label: "en", metric: "Share of cases",
+        valueFmt: fmt.pct, centerLabel: "risk profiling",
+        ariaLabel: "Global detection channel split" }),
+      "card--half"));
+
+    var targeted = m.flows.map(function (r) {
+      return { label: r.label, value: r.intel + r.invest };
+    }).sort(function (a, b) { return b.value - a.value; });
+
+    grid.appendChild(card("The targeted minority",
+      "Intelligence and investigation are the deliberate, case-built channels. They are marginal "
+        + "across most of the caseload, but not everywhere — the top of this list ("
+        + targeted[0].label.toLowerCase() + ", " + fmt.pct(targeted[0].value)
+        + ") is made up of the same low-RMS commodities seen elsewhere, where targeting is done "
+        + "by hand rather than by the system.",
+      C.hbar({ data: targeted.slice(0, 8),
+        value: "value", label: "label", valueFmt: fmt.pct,
+        metric: "Intelligence + investigation", labelW: 210,
+        ariaLabel: "Intelligence and investigation share by sub-commodity" }),
+      "card--half"));
+
+    grid.appendChild(cardWide("Sub-commodity × detection channel",
+      "The full 21 × 5 matrix, normalised to 100% per row.",
+      C.heatGrid({
+        rows: sortBy(m.flows.slice(), "rms").map(function (r) { return r.label; }),
+        cols: METHODS,
+        matrix: sortBy(m.flows.slice(), "rms").map(function (r) {
+          return METHODS.map(function (k) { return r.pct[k]; });
+        }),
+        valueFmt: fmt.pct, metric: "Share of cases", max: 100, labelW: 260, cellH: 24,
+        width: 1040, ariaLabel: "Sub-commodity by detection channel matrix" })));
+
+    content.appendChild(grid);
+  }
+
+  /* ---- the compact RMS panel embedded in each live section -------- */
+  function rmsSectionPanel(sectionId) {
+    var m = DATA.rms;
+    var row = m.sections.filter(function (r) { return r.id === sectionId; })[0];
+    if (!row) return null;
+
+    var head = C._h("div", { class: "rms-mini" }, [
+      C.kpi({ value: fmt.pct(row.rms), label: "Detected by risk profiling",
+        accent: P.accent,
+        sub: (row.dev >= 0 ? "+" : "") + fmt.dec(row.dev) + " pts vs the "
+          + fmt.pct(m.baseline) + " global baseline" }),
+      C.stackedBar({ data: methodRows([row]), keys: METHODS, mode: "pct", label: "label",
+        valueFmt: fmt.pct, labelW: 96, width: 520,
+        ariaLabel: "Detection channel mix for this section" })
+    ]);
+
+    var link = C._h("button", { class: "rms-link", type: "button",
+      text: "View in RMS Monitoring →" });
+    link.addEventListener("click", function () { go("rms", "coverage"); });
+
+    return card("Risk Management System — how much of this did RMS find?",
+      "The section's risk-profiling share against the global case-weighted baseline, "
+        + "and its full detection channel mix.",
+      C._h("div", {}, [head, link]), "card--full");
+  }
+
+  /* a full-width RMS card: wide charts scroll sideways on a narrow screen
+     rather than scaling their type down to nothing (see .c-wide) */
+  function cardWide(title, sub, node) {
+    return card(title, sub, C._h("div", { class: "c-wide" }, [node]), "card--full");
+  }
+
+  /* rows shaped for stackedBar: one object per section, one key per method */
+  function methodRows(rows) {
+    return rows.map(function (r) {
+      var o = { label: r.label };
+      METHODS.forEach(function (k) { o[k] = r.pct[k]; });
+      return o;
+    });
+  }
+
+  /* group sub-commodities by reported quantity unit — kg, pieces,
+     Litres and USD are NEVER pooled into one ranking */
+  function unitGroups(flows) {
+    var by = {};
+    flows.forEach(function (r) {
+      if (r.qty == null || !r.unit) return;
+      (by[r.unit] = by[r.unit] || []).push(r);
+    });
+    // every unit gets a table, including the single-row ones (USD, Litres) —
+    // dropping them would silently hide two whole sub-commodities
+    return Object.keys(by)
+      .map(function (u) { return { unit: u, rows: by[u] }; })
+      .sort(function (a, b) { return b.rows.length - a.rows.length; });
   }
 
   /* =================================================================
@@ -261,6 +755,10 @@
         centerLabel: "risk profiling",
         ariaLabel: "Detection method share" }),
       "card--half"));
+
+    // RMS in context — sits with the detection donut, links to the hub
+    var rmsPanel = rmsSectionPanel("Drugs");
+    if (rmsPanel) grid.appendChild(rmsPanel);
 
     // groupedYoY seizures by category
     grid.appendChild(card("Seizures by category — year on year",
@@ -535,6 +1033,11 @@
       C.operPanels({ location: mo.location, direction: mo.direction,
         concealment: mo.concealment, detection: mo.detection, topN: 6 }),
       "card--full"));
+
+    // RMS in context — driven by cfg.drillKey, so every stream section
+    // (IPR now, Revenue next) gets it with no renderer change
+    var rmsPanel = rmsSectionPanel(cfg.drillKey);
+    if (rmsPanel) grid.appendChild(rmsPanel);
 
     // conveyance by direction (pooled, weighted by method volume)
     grid.appendChild(card("Conveyance by trade direction",

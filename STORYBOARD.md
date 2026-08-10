@@ -206,3 +206,29 @@ expects, provable across the whole report). **B** is the richer, more chart-dens
 and best-narrated spine (the writing is already done). Neither can support a
 multi-year trend line — worth deciding up front whether the story is framed as
 "the 2025 snapshot" rather than "the rise over time."
+
+---
+
+## C — Risk management (the RMS cross-cut)
+
+Added while building the Explore app's **RMS Monitoring** section; recorded here
+because it is a third viable spine, not just a set of panels. Full derivations and
+caveats in [`DATA_NOTES.md`](DATA_NOTES.md).
+
+**Big Idea.** Risk profiling finds **63.3%** of the global caseload — but that
+average hides a 4× spread, and the gaps are systematic rather than random.
+
+| | **C — Risk management** |
+|---|---|
+| Scope | Cross-cutting, all 6 sections + 21 sub-commodities |
+| Single killer number | 63.3% of cases found by risk profiling |
+| Best structural tension | RMS finds 89% of NPS and 0% of UAS; the bulk commodities are the blind spots |
+| Pre-written narrative | Thin — `REPORT.conclusion.priorities[0]` on embedding profiling in national risk frameworks is the only direct hook |
+| Chartable variety | ranked bars, deviation-from-baseline, 6×5 and 21×5 matrices, two quadrant scatters, per-unit volume tables |
+| Biggest data gap | **no detection breakdown by region, country or year** — no RMS trend is possible, and the regional view can only ever be a section-mix estimate |
+| Surprise factor | e-commerce penetration predicts RMS reliance at r = 0.87; random selection still finds 25% of Waste cases; yield per case is flat (1.1–1.6) regardless of how RMS-led a commodity is |
+
+The tension worth writing: RMS is excellent at the parcel-borne, high-count,
+low-mass commodities and largely absent from the heavy ones — Waste (15.6M kg,
+24% RMS), tobacco (9.66M kg, 21%), other hazardous materials (5%). The system is
+tuned to where the cases are, not to where the volume is.

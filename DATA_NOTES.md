@@ -300,3 +300,51 @@ Okabe–Ito categorical set in fixed order (`IPR products` → cat[0] blue,
 choropleth and the regional-flow heatgrid, gray for the "previous" series. No
 section-specific hue was introduced. One-decimal on every rate; integers on counts;
 direct labels on every mark.
+
+---
+
+## RMS monitoring — derived metrics
+
+The **RMS Monitoring** section of the Explore app is computed, not extracted.
+`buildRmsModel(sections, drill, global)` in `explore.js` derives everything at load
+time from three files the app already ships — `itr_sections.json`,
+`itr_drill.json`, `itr_global.json` — so no new data file was created and there is
+exactly one source of truth.
+
+"RMS" is the customs **Risk Management System**. The ITR's proxy for it is the
+`Risk profiling` detection channel, reported for all six sections and all 21
+sub-commodities alongside `Routine control`, `Intelligence`, `Investigation` and
+`Random selection`. Channel labels match `DETECT_CFG` in `config_bundle.json`.
+
+### Formulas
+
+| Metric | Derivation |
+|---|---|
+| **Global RMS baseline** | Case-weighted, **not** a mean of the six section shares: `Σ(rms_section × cases_section) / Σ cases_section` = **63.3%** over **166,220** cases. A plain mean would be 56.0% and would over-weight small sections. |
+| **Deviation** | `rms_section − baseline`, in percentage points. |
+| **Normalised channel mix** | `method / Σ(all five methods) × 100`. Reported shares are case-weighted and round to **99–101**, so every 100%-stacked view and every heat-grid row is normalised first. |
+| **Seizures per case** | `s / c` from `itr_sections.json`, aggregated within an RMS reliance band. Unit-free, so it is comparable across commodities. |
+| **Year-on-year change** | `(s − p) / p` via `ITR.fmt.delta`. |
+| **Expected regional RMS** | `Σ(seizures_region,section × rms_section) / Σ seizures_region` from `itr_global.json → regionSection`. **A derived estimate, not reported data** — see the caveat below. |
+| **Correlations** | Pearson `r` over the 21 sub-commodities. `r(e-commerce, RMS) = 0.87`; `r(random selection, RMS) = −0.52`. Reported to **two** decimals — a correlation coefficient is not a rate, and one decimal would print 0.87 as the much vaguer 0.9. |
+
+### Caveats that shape what the panels may claim
+
+- **No detection breakdown by region, country or year exists anywhere in the
+  dataset.** The regional figure is therefore a section-mix estimate and is
+  labelled *derived estimate* on the card itself. Derived values: AMS 78.3, WCA
+  69.9, A/P 69.4, EUR 62.5, ESA 59.3, MENA 31.4.
+- For the same reason there is **no RMS trend**. The "RMS reliance against
+  year-on-year movement" panel is a cross-section — RMS share on one axis, the
+  change in *seizures* on the other — and says so in its subtitle. No RMS trend
+  line is drawn.
+- **Quantity units differ** across sub-commodities (kg / pieces / Litres / US
+  Dollar). Every cross-section panel therefore uses **cases or seizures** as the
+  common denominator; quantity appears only inside per-unit `volumeProfile`
+  tables, one per unit, and every unit gets a table (including the single-row US
+  Dollar and Litres ones) so nothing is silently dropped.
+- The blind-spot quadrant plots **seizures on a log axis**, not quantity — counts
+  span 41 → 74,389 and a linear axis would collapse the low end.
+- **Yield does not vary much with RMS reliance** (1.1–1.6 seizures per case across
+  all four bands). That null result is stated in the panel rather than dressed up
+  as a ranking.
