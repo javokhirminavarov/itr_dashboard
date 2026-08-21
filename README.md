@@ -2,33 +2,68 @@
 
 Interactive presentation page for the WCO Secretary General visit: how
 Uzbekistan Customs targets and controls a consignment from border to
-post-clearance audit. Ten stages, three speakers, one screen. Fully
+post-clearance audit. Ten stages down one continuous corridor. Fully
 self-contained — **no network access after load** (enforced by CSP
 `connect-src 'none'`), so it runs from a local file or any static host.
 
+## The shape of the page
+
+The page is a **vertical journey**. The corridor runs top to bottom: border
+gate, supervised transit, customs warehouse, declaration, release, audit,
+passengers, and out into Tashkent. Down the left is the numbered stage
+timeline; down the right, that stage's figures. The consignment drives the road
+as you scroll, and whatever landmark sits beside it is the stage you are
+reading — the ten stages and the ten landmarks in the art are placed from the
+same row grid in `plates.js`, so they cannot drift apart.
+
 ## Presenting
 
-- Open `index.html` in Chrome/Edge and press **F11** for fullscreen
-  (works from a USB stick — no server needed). Target canvas is 1920×1080;
-  other sizes letterbox.
-- Keys: `→` `↓` `Space` `PageDown` next · `←` `↑` `PageUp` prev ·
-  `1`–`9` and `0` jump to a stage · `Home`/`End` first/last ·
-  `Esc` stage overview · `R` replay the current stage's animation.
-  Presenter clickers (PageUp/PageDown) work. Scroll wheel and touch swipe
-  advance one stage per gesture. The cursor hides after 3 s idle.
-- Stage 2 only: click **Road / Rail / Air cargo** to swap that panel's data
-  and cut to that mode's scene. The deep journey stays road.
+- Open `index.html` in Chrome/Edge and press **F11** for fullscreen (works from
+  a USB stick — no server needed).
+- Scroll to move. Scrolling is free and continuous; nothing snaps.
+- Keys, for driving from a lectern: `↓` `PageDown` `Space` next stage · `↑`
+  `PageUp` previous · `1`–`9` and `0` jump to a stage · `Home`/`End` first/last
+  · `Esc` stage overview · `R` replay the current stage's reveal. Presenter
+  clickers (PageUp/PageDown) work.
+- **Road / Rail / Air cargo** in the header swap the flows-stage figures and
+  that stage's scene. **Passengers** jumps to the passenger stage. **Targeting
+  centre** at the bottom left opens the control-room view.
+- Below 1200 px the art becomes a backdrop and the two rails stack into one
+  column, so the page still reads on a tablet or a phone.
 
 ## Editing before the visit
 
-- **Figures**: every number lives in `demo-data.js`. Unfilled figures render
-  as dashed `{{TOKEN}}` chips — see the fill-in sheet in `ASSETS.md`.
-  Replace the token string with the final display string; nothing else moves.
-- **Copy**: headlines and support lines are also in `demo-data.js`
-  (discipline: ≤6-word headline, ≤20-word support, ≤3 metrics per stage).
-- **Art**: the scenes are watermarked pre-viz stand-ins. `ASSETS.md` is the
-  render request and the drop-in contract (`plates.js` holds every
-  coordinate).
+- **Figures**: every number lives in `demo-data.js`. They are currently
+  **illustrative placeholders**, and the page says so — in the header badge and
+  in the opening disclosure. `ASSETS.md` lists every value to replace. Figures
+  written as `{{TOKEN}}` render as dashed *awaiting figure* chips;
+  `TRANSIT_LEGAL_BASIS` is deliberately left as one.
+- **Copy**: headlines and support lines are also in `demo-data.js` (discipline:
+  ≤6-word headline, ≤20-word support, ≤3 metrics per stage).
+- **Contracts that hold the page honest**: a metric without an anchor (a 2018
+  baseline, a trend, or a random-selection comparison) refuses to render;
+  channel outcomes are only ever the words green / yellow / red; no figure
+  appears anywhere that is not defined in `demo-data.js`; and the state of the
+  illustrative consignment is labelled as such, separately from the statistics.
+- **Art**: `ASSETS.md` is the drop-in contract; `plates.js` holds every
+  coordinate.
+
+## Regenerating the art
+
+The page needs no build step — the corridor ships as six JPEGs. To change the
+art itself:
+
+```
+python3 tools/build_plates.py     # corridor -> tools/build/vertical/*.svg
+node tools/rasterise.mjs          # -> assets/plates/vertical/*.jpg
+python3 tools/build_scenes.py     # the five secondary scenes -> assets/plates/
+```
+
+`build_plates.py` prints the route path to paste back into `plates.js`.
+`rasterise.mjs` needs Playwright and Chromium; nothing is added to this repo.
+The SVG is the editable source and the JPEG is the artifact: painting the
+corridor as live vector costs 200–300 ms the first time each section scrolls
+in, which the reader feels as a hitch.
 
 ## Verifying
 
@@ -37,13 +72,19 @@ repo):
 
 ```
 npm i playwright
-node verify.mjs   # see the session's verification script for reference
+node verify.mjs      # see the session's verification script for reference
 ```
 
-The suite drives the full keyboard map from every stage (including
-mid-animation interrupts), asserts exactly one stage visible at a time, zero
-network requests after load (file:// and http), reduced-motion behaviour, and
-that no metric renders without an anchor.
+The suite asserts zero network requests after load (on `file://` and
+`http://`), that the ten stage rows stay exactly one tenth of the corridor
+each, that the consignment moves down the route monotonically and picks up its
+scanned and sealed states in order, that no metric renders without an anchor,
+the full keyboard map, the flow tabs, reduced-motion behaviour, and that
+nothing overflows at 1920, 1600, 1440, 1280, 900 and 420 px wide.
+
+Scroll cost was measured the same way: with the corridor shipping as JPEG and
+the route overlay on its own compositor layer, a full scroll of the journey at
+1920×1080 holds a ~17 ms median frame with no long tasks.
 
 ## Deployment note
 

@@ -1,60 +1,75 @@
 # Asset request & drop-in contract
 
-The page currently runs on **pre-viz stand-in plates** (schematic SVGs
-watermarked "PRE-VIZ PLATE · FINAL ART PENDING"). This document is the formal
-request for the final rendered art, and the contract that lets it drop in
-without touching layout code.
+The corridor and the five secondary scenes are **generated art**, produced by
+the scripts in `tools/` and committed as the images the page serves. They read
+as a rendered dusk corridor rather than a diagram, but they are not
+photography. This document is the formal request for final rendered art, and
+the contract that lets it drop in without touching layout code.
 
 ## How drop-in works
 
-- `plates.js` is the **only coordinate authority**: plate file paths and pixel
-  sizes, per-stage camera rectangles, the route path, and the truck anchors
+- `plates.js` is the **only coordinate authority**: the page space, the section
+  list, the route path, the road-width law, the map pins and the truck's states
   all live there. Layout code holds no plate coordinates.
-- To install a final render: replace the file under `assets/plates/` and update
-  that plate's `src` (and `width`/`height` if they differ) in `plates.js`.
-  Nothing else changes.
-- The truck follows an SVG path defined in `plates.js` in **master-plate pixel
-  coordinates** — the route is never baked into a plate file. If the final
-  master render moves the road, re-trace `PLATES.master.route.d` (and, if
-  needed, the per-stage `camera` rects) against the new image; the glow line,
-  truck motion and all ten camera positions update from those values alone.
-- All text, numbers, panels and icons are HTML/SVG overlays. **Final plates
-  must contain no text, no signage words, no UI panels, no numbers, and no
-  vehicles.** The pre-viz captions and rulers exist only in the stand-ins.
+- The corridor is a page space of **1600 × 4800 units**, shipped as six
+  **1600 × 800** sections stacked top to bottom (rendered at 2000 × 1000). The
+  page maps that space to the viewport by width, so one page unit is
+  `viewportWidth / 1600` CSS pixels.
+- The page is **ten rows of 480 units**, one per stage. Each stage's landmark
+  sits on its row's centre line — 240, 720, 1200, 1680, 2160, 2640, 3120, 3600,
+  4080, 4560 — and the generator places them all with one `R(n)` helper. Final
+  art must keep each landmark on its row's centre line, or the stage cards will
+  no longer line up with what they describe.
+- To install a final render: drop the image in as
+  `assets/plates/vertical/sN.jpg` (any format the browser reads works — update
+  that section's `src` in `plates.js` if the extension changes). Nothing else
+  changes.
+- If the final render **moves the road**, re-trace `JOURNEY.route.d` against it
+  and update `JOURNEY.route.width` to match the new road half-width law. The
+  glow trail, the flowing chevrons, the map pins and the truck all derive from
+  those two values alone.
 
-## A. Master corridor plate (required)
+## A. Corridor sections (six, required)
 
-- Content, left → right: border crossing gate → open road with CCTV masts →
-  customs warehouse → declaration building → exit toward Tashkent.
-- **Minimum 7680×2160**, WebP or PNG, sRGB, single consistent sun direction
-  (current pre-viz assumes dusk, light from the right).
-- Road surface empty. No trucks anywhere.
-- **Calm bands:** top ~20% and bottom ~15% of the frame must stay visually
-  quiet — glass panels and metrics overlay there. The current stand-in keeps
-  the road band mid-frame (~y 1150–1500 of 2160) with the entire bottom third
-  calm; matching that composition means every existing camera rect survives.
-- Current camera rects (master-plate px, from `plates.js`) — final art should
-  keep each zone inside its rect:
-  | Stage | rect x,y,w | shows |
-  |---|---|---|
-  | 1 | 0, 0, 3840 | gate + corridor start |
-  | 2 | 150, 124, 3400 | gate zone wide |
-  | 3 | 120, 420, 2400 | gate + scanner portal close |
-  | 4 | 1500, 330, 2900 | CCTV corridor |
-  | 7 | 4680, 300, 3000 | declaration → exit |
-  | 10 | full plate, letterboxed | whole corridor |
+Content top → bottom, one landmark per stage row:
 
-## B. Truck sprites
+| Row | Centre y | Landmark |
+|---|---|---|
+| 1 | 240 | sky, hazed mountains, the corridor running to the horizon |
+| 2 | 720 | rail line crossing the corridor; an aircraft on approach in the sky |
+| 3 | 1200 | **border gate**: canopy over the lanes, booths, flag mast, floodlights |
+| 4 | 1680 | inspection portal, CCTV masts, inland checkpoint gantry |
+| 5 | 2160 | **customs warehouse**: dock doors, yard, parked trailers |
+| 6 | 2640 | **declaration building**: glass office, car park |
+| 7 | 3120 | release plaza and exit gantry |
+| 8 | 3600 | importer's premises: offices, container yard |
+| 9 | 4080 | passenger terminal: apron, aircraft on stand, control tower |
+| 10 | 4560 | overpass, then the Tashkent skyline and the TV tower |
 
-- 3/4 or side view matching the master plate's perspective, transparent PNG,
-  **~1200 px wide**, facing right (direction of travel).
-- Variants: **travelling (doors closed)** · **stopped at gate** · **at
-  warehouse dock, doors open**. If perspective shifts along the plate, three
-  angle variants.
-- The page composes state decorations (scan highlight, seal tag) as overlays,
-  so plain variants are enough. Sprite anchor is bottom-centre of the wheels.
+- **Minimum 2000 px wide per section**, sRGB, one consistent light direction
+  (the current art assumes dusk, sun low and off to the upper right).
+- **Seams:** at every section boundary the road edges, the ground tone and the
+  haze must match. The generator gets this for free by authoring the whole
+  corridor once and slicing it; a hand-rendered replacement must match by eye.
+- **Calm bands:** the left ~26 % and the right ~26 % of the frame carry the
+  stage cards and the metric panels. Keep those bands visually quiet.
+- **Road surface empty.** No vehicles on the carriageway — the page composes
+  the consignment as an overlay. Static plant off the road (parked trailers in
+  the warehouse yard, an aircraft on stand) is wanted.
+- **No text, no signage words, no numbers, no UI panels.** Every word on screen
+  is an HTML overlay.
 
-## C. Secondary plates — 2560×1440 each, same rules as A
+## B. Truck sprite
+
+- The corridor recedes toward the border at the top of the page, so the
+  consignment drives **toward the camera**: a **front three-quarter view** with
+  headlights on, transparent PNG, ~600 px wide, drawn 120 × 152 page units with
+  its contact point at the bottom centre.
+- Variants: **travelling (doors closed)** · **scanned** (the page adds the teal
+  outline) · **sealed** (the page adds the seal tag). Plain variants are enough;
+  the state decorations are overlays.
+
+## C. Secondary scenes — 1600 × 900 each, same rules as A
 
 1. Rail terminal (gantry crane, wagons, container stacks)
 2. Air cargo apron (freighter, ULDs, loader)
@@ -65,53 +80,57 @@ without touching layout code.
 
 ## D. Vectors (SVG)
 
-1. Route path traced over the final master plate, in plate pixel coordinates
-   (replaces `PLATES.master.route.d`).
+1. Route path traced over the final corridor, in page coordinates (replaces
+   `JOURNEY.route.d`), plus the matching `JOURNEY.route.width` law.
 2. Uzbekistan outline with the real corridor and checkpoint nodes (for a
    locator motif; not yet placed on a stage).
-3. Customs Committee emblem (the page currently shows none rather than a fake).
+3. Customs Committee emblem. The page currently shows a neutral mark rather
+   than a fake one — `buildChrome()` in `app.js` draws it.
 
 ## E. Type & colour
 
-- Current faces (self-hosted, OFL): **Space Grotesk** (display/body),
-  **IBM Plex Mono** (numerals, tokens, chips). To swap in a licensed brand
-  face: drop the woff2 into `assets/fonts/`, update the `@font-face` block and
-  the two `--font-*` tokens at the top of `styles.css`.
+- Current faces (self-hosted, OFL): **Space Grotesk** (display/body), **IBM
+  Plex Mono** (numerals, tokens, chips). To swap in a licensed brand face: drop
+  the woff2 into `assets/fonts/`, update the `@font-face` block and the two
+  `--font-*` tokens at the top of `styles.css`.
 - Accent palette is centralised in the `:root` tokens of `styles.css`
   (`--teal` accent on near-black). Official palette welcome if one exists.
 
 ---
 
-# Figure fill-in sheet
+# Figure replacement checklist
 
-Every figure below renders as a visibly-unfilled `{{TOKEN}}` chip until the
-real value is written into `demo-data.js` (replace the token string with the
-final display string, e.g. `"38 min"`, `"2.1×"`, `"UZS 210 bn"`). Nothing else
-needs editing. **Do not** put risk rules, thresholds or scores anywhere —
-channel outcomes stay the words green / yellow / red.
+**Every figure on screen is illustrative.** The page says so — the header
+carries an `ILLUSTRATIVE FIGURES` badge and stage 1 prints the disclosure. Both
+are driven by `demoData.meta.figuresIllustrative`; set it to `false` once the
+table below is cleared and the badge and its wording disappear.
 
-| Token | Stage | What it is |
-|---|---|---|
-| `BORDER_WAIT_2018` | 1 | typical border wait in 2018 (e.g. "3–5 days") |
-| `OVERALL_SELECTIVITY_NOW` | 2 | share of consignments selected for control, all modes |
-| `ROAD_SELECTIVITY_NOW` | 2 | share selected — road |
-| `RAIL_SELECTIVITY_NOW` | 2 | share selected — rail |
-| `AIR_SELECTIVITY_NOW` | 2 | share selected — air cargo |
-| `GATE_DECISION_TIME_NOW` | 3 | time to channel decision at the gate |
-| `TRANSIT_SEIZURES_LATEST` | 4 | seizures on supervised transit, latest period |
-| `TRANSIT_SEIZURES_TREND` | 4 | its trend line (e.g. "up ×2 since 2022") |
-| `TRANSIT_LEGAL_BASIS` | 4 | legal instrument authorising transit supervision |
-| `WAREHOUSE_ATTENDANCE_NOW` | 5 | share of unloadings with an officer attending |
-| `DECL_VIOLATION_RATE_SELECTED` | 6 | violation rate on RMS-selected declarations |
-| `DECL_VIOLATION_RATE_RANDOM` | 6 | violation rate on random selection |
-| `CLEARANCE_TIME_NOW` | 7 | average clearance time now |
-| `CLEARANCE_TIME_2018` | 7 | average clearance time in 2018 |
-| `INSPECTION_HIT_RATE_NOW` | 7 | share of inspections finding a violation |
-| `PCA_RESULTS_LATEST` | 8 | post-clearance audit results, latest period |
-| `PCA_RESULTS_TREND` | 8 | PCA results trend |
-| `PCA_EXTRA_REVENUE_LATEST` | 8 | additional revenue assessed (secondary metric) |
-| `PAX_HIT_RATE_TARGETED` | 9 | hit rate on targeted passenger selections |
-| `PAX_HIT_RATE_RANDOM` | 9 | hit rate on random passenger checks |
+Replace each value in `demo-data.js`. Nothing else needs editing.
+
+| Stage | Field | Shown now | Must be |
+|---|---|---|---|
+| 1 | inspected share | `100%` | 2018 baseline — verify |
+| 1 | inspection hit rate | `~3%` | 2018 baseline — verify |
+| 1 | border wait | `3–5 days` | typical wait in 2018 |
+| 2 | overall selectivity | `29%` | share selected for control, all modes |
+| 2 | road / rail / air | `29%` / `18%` / `34%` | share selected, per mode |
+| 3 | pre-arrival risk, data sources | `MEDIUM`, `12` | state of the consignment shown |
+| 3 | channel split | `71%` / `24%` / `5%` | green / yellow / red share, road |
+| 3 | gate decision time | `2.1 min` | time to channel decision at the gate |
+| 4 | checkpoints, alerts | `7`, `0` | state of the consignment shown |
+| 4 | transit seizures | `1,248` + `up ×2 since 2022` | seizures on supervised transit, and the trend |
+| 4 | legal basis | *awaiting figure* | **left unfilled on purpose** — a legal citation must not be invented |
+| 5 | officer attendance | `28%` | share of unloadings with an officer attending |
+| 6 | violation rate | `18.6%` vs `7.3%` | RMS-selected vs random selection |
+| 7 | clearance time | `1.6 hrs` vs `3–5 days` | now vs 2018 |
+| 7 | inspection hit rate | `92%` | **check this first** — the least plausible figure on the page |
+| 8 | audit findings | `1,982` + `+14%` | post-clearance audit results, and the trend |
+| 8 | additional revenue | `UZS 214 bn` | **check this** — invented magnitude |
+| 8 | risk profiles updated | `243` | profiles rebuilt from audit findings, latest month |
+| 9 | passenger hit rate | `11.4%` vs `0.8%` | targeted vs random checks |
 
 Config: `demoData.meta.trsMethodology` — set `true` once clearance times follow
 WCO Time Release Study methodology; stage 7 then prints the TRS footnote.
+
+**Do not** put risk rules, thresholds or scores anywhere — channel outcomes stay
+the words green / yellow / red.

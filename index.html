@@ -12,23 +12,42 @@
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-stage="1" data-view="stage">
+<body data-stage="1" data-view="journey" data-mode="road">
 
-<div id="fitbox">
-  <div id="stage1920">
-    <div id="world">
-      <!-- master corridor plate is inserted here by app.js (from plates.js) -->
-      <svg id="route-layer" xmlns="http://www.w3.org/2000/svg"></svg>
-      <div id="truck"></div>
-    </div>
-    <div id="cutlayer"></div>
-    <div id="vignette"></div>
-    <div id="overlays"></div>
-    <nav id="rail" aria-label="Stages"></nav>
-    <footer id="footer"></footer>
-    <div id="overview" aria-label="Stage overview"></div>
+<div id="progress" aria-hidden="true"><i></i></div>
+
+<header id="topbar">
+  <div class="brand" id="brand"></div>
+  <nav id="tabs" aria-label="Flow"></nav>
+  <button id="overview-btn" type="button">OVERVIEW</button>
+</header>
+
+<main id="journey" aria-label="Border to audit journey">
+  <div id="corridor" aria-hidden="true"></div>
+  <!-- page-space overlay: everything inside uses 1600x8000 corridor coordinates -->
+  <div id="overlay-space" aria-hidden="true">
+    <svg id="route-layer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 8000"
+         preserveAspectRatio="none" focusable="false"></svg>
+    <div id="truck"></div>
   </div>
-</div>
+  <!-- pins live in screen space and are positioned in per-cent of the corridor,
+       so they keep a constant on-screen size at any viewport width -->
+  <div id="pins" aria-hidden="true"></div>
+  <div id="rows"><div id="spine" aria-hidden="true"></div></div>
+</main>
+
+<!-- tail: the closing statement, and the scroll room the last stage needs
+     to reach the truck's focus line -->
+<section id="tail"></section>
+
+<footer id="bottombar">
+  <button id="tc-btn" type="button"></button>
+  <div id="scroll-hint"></div>
+  <span id="illustrative"></span>
+</footer>
+
+<div id="overview" aria-label="Stage overview"></div>
+<div id="modal" aria-label="Targeting centre"></div>
 
 <noscript><p style="color:#e9f2ef;font-family:system-ui;padding:2rem">This presentation requires JavaScript (it runs fully offline).</p></noscript>
 
