@@ -238,6 +238,9 @@
   // perspective it would be five times bigger at the city than at the border
   // and would swamp the last rows.
   var TRUCK_MID = halfwAt(2400), TRUCK_UNITS = 74, TRUCK_GROWTH = 0.62;
+  function truckScale(y) {
+    return TRUCK_UNITS * Math.pow(halfwAt(y) / TRUCK_MID, TRUCK_GROWTH) / TW;
+  }
 
   /* ---------------- route, chevrons, sampling ---------------- */
   var routeGlow, routeHalo, routeLen, SAMPLES = [], N_SAMPLES = 600;
@@ -251,9 +254,12 @@
     routeGlow = document.createElementNS(SVG_NS, "path");
     routeGlow.setAttribute("class", "route-glow");
     routeGlow.setAttribute("d", J.route.d);
-    $routeLayer.appendChild(track);
-    $routeLayer.appendChild(halo);
-    $routeLayer.appendChild(routeGlow);
+    var line = document.createElementNS(SVG_NS, "g");
+    line.setAttribute("class", "route-line");
+    line.appendChild(track);
+    line.appendChild(halo);
+    line.appendChild(routeGlow);
+    $routeLayer.appendChild(line);
     routeHalo = halo;
     routeLen = routeGlow.getTotalLength();
     [routeGlow, routeHalo].forEach(function (n) {
@@ -269,6 +275,7 @@
 
     // Flowing chevrons: the running arrows down the carriageway.
     var chevs = document.createElementNS(SVG_NS, "g");
+    chevs.setAttribute("class", "chev-flow");
     var step = 74, n = 0;
     for (var y = 190; y < PAGE.h - 80; y += step) {
       var s = at(y), w = halfwAt(y) * 0.34, h = halfwAt(y) * 0.3;
@@ -391,6 +398,96 @@
     var name = J.truck.variants[0].name;
     J.truck.variants.forEach(function (v) { if (y >= v.from) name = v.name; });
     return name;
+  }
+
+  /* ---------------- the 2018 queue ---------------- */
+  // Stage 1 says every truck stopped and every consignment was opened by hand.
+  // This draws that: a queue halted between the consignment and the gate, and
+  // two more pulled onto the verge with the lights on them. It is an overlay in
+  // corridor coordinates, not baked into a plate, so the plates stay "today"
+  // and the queue can clear as the modern system comes on.
+  var QUEUE_SPRITE =
+    '<g id="qtruck">' +
+    '<ellipse cx="60" cy="146" rx="46" ry="9" fill="#03080a" opacity="0.5"/>' +
+    '<path d="M26 14 L94 14 L102 78 L18 78 Z" fill="#2a3740"/>' +
+    '<path d="M26 14 L94 14 L92 22 L28 22 Z" fill="#46555c" opacity="0.45"/>' +
+    '<g stroke="#1d272c" stroke-width="1.6" opacity="0.55">' +
+    '<path d="M43 15 L38 78"/><path d="M60 15 L60 78"/><path d="M77 15 L82 78"/></g>' +
+    '<path d="M22 76 L98 76 L104 126 L16 126 Z" fill="#212f38"/>' +
+    '<path d="M31 82 L89 82 L93 101 L27 101 Z" fill="#0d181e"/>' +
+    '<rect x="7" y="103" width="13" height="31" rx="5" fill="#0a1013"/>' +
+    '<rect x="100" y="103" width="13" height="31" rx="5" fill="#0a1013"/>' +
+    '<ellipse cx="32" cy="118" rx="21" ry="13" fill="url(#qhl)"/>' +
+    '<ellipse cx="88" cy="118" rx="21" ry="13" fill="url(#qhl)"/>' +
+    '<rect x="24" y="113" width="16" height="8" rx="4" fill="#ffdca6"/>' +
+    '<rect x="80" y="113" width="16" height="8" rx="4" fill="#ffdca6"/>' +
+    '</g>';
+  var QUEUE_DEFS =
+    '<radialGradient id="qhl"><stop offset="0" stop-color="#ffcf8f" stop-opacity="0.55"/>' +
+    '<stop offset="1" stop-color="#ffcf8f" stop-opacity="0"/></radialGradient>' +
+    '<radialGradient id="qpool"><stop offset="0" stop-color="#ffcf8f" stop-opacity="0.4"/>' +
+    '<stop offset="0.55" stop-color="#ffcf8f" stop-opacity="0.12"/>' +
+    '<stop offset="1" stop-color="#ffcf8f" stop-opacity="0"/></radialGradient>';
+
+  function placeQueued(y, offset, tilt) {
+    var s = at(y), ts = truckScale(y);
+    // offset is a multiple of the road half-width, measured from the centreline
+    var x = s.x - J.route.lane * halfwAt(y) + offset * halfwAt(y);
+    var u = document.createElementNS(SVG_NS, "use");
+    u.setAttribute("href", "#qtruck");
+    u.setAttribute("transform",
+      "translate(" + x.toFixed(1) + "," + y.toFixed(1) + ") rotate(" +
+      (s.a - 90 + (tilt || 0)).toFixed(1) + ") scale(" + ts.toFixed(3) + ") translate(" +
+      (-TW / 2) + "," + (-TH) + ")");
+    return u;
+  }
+
+  // Where the queue can start without the consignment standing on top of it.
+  // At stage n the consignment sits at exactly (n - 0.5) * ROW_H, but stage 1
+  // is the exception: the page cannot scroll above zero, so there it sits at
+  // viewportHeight * focus / k — which on a tall, narrow window is far enough
+  // down the corridor to land inside the queue.
+  function queueStart() {
+    var k = $journey.clientWidth / PAGE.w;
+    var truckY = innerHeight * J.truck.focus / k;
+    // Sprites are anchored at their base, so a vehicle placed at y occupies
+    // y - height .. y. Clearing the consignment means leaving a whole sprite
+    // plus a gap below where its own base sits.
+    return Math.max(J.queue2018.from, truckY + TH * truckScale(truckY) * 1.28);
+  }
+
+  var queueEl = null, queueStartAt = -1;
+  function buildQueue() {
+    var q = J.queue2018;
+    if (!q) return;
+    var start = queueStart();
+    if (queueEl && Math.abs(start - queueStartAt) < 8) return;   // nothing moved
+    queueStartAt = start;
+    if (queueEl) queueEl.remove();
+    var defs = document.createElementNS(SVG_NS, "defs");
+    defs.innerHTML = QUEUE_DEFS + QUEUE_SPRITE;
+    var g = document.createElementNS(SVG_NS, "g");
+    g.id = "queue2018";
+    g.appendChild(defs);
+    // Spacing closes up with depth because it is derived from the sprite's own
+    // height at that y — the same scale law the consignment uses.
+    for (var y = start; y <= q.to; y += TH * truckScale(y) * 1.18) {
+      g.appendChild(placeQueued(y, q.lane, 0));
+    }
+    (q.verge || []).forEach(function (v) {
+      var pool = document.createElementNS(SVG_NS, "ellipse");
+      var s = at(v.y), hw = halfwAt(v.y);
+      var x = s.x - J.route.lane * hw + v.side * 1.62 * hw;
+      pool.setAttribute("cx", x.toFixed(1));
+      pool.setAttribute("cy", (v.y + 6).toFixed(1));
+      pool.setAttribute("rx", (hw * 1.5).toFixed(1));
+      pool.setAttribute("ry", (hw * 0.5).toFixed(1));
+      pool.setAttribute("fill", "url(#qpool)");
+      g.appendChild(pool);
+      g.appendChild(placeQueued(v.y, v.side * 1.62, v.tilt));
+    });
+    $routeLayer.appendChild(g);
+    queueEl = g;
   }
 
   /* ---------------- stage rows ---------------- */
@@ -711,7 +808,7 @@
     var pageY = clamp((innerHeight * J.truck.focus - rect.top) / k, SAMPLES[0].y,
                       SAMPLES[SAMPLES.length - 1].y);
     var s = at(pageY);
-    var ts = TRUCK_UNITS * Math.pow(halfwAt(pageY) / TRUCK_MID, TRUCK_GROWTH) / TW;
+    var ts = truckScale(pageY);
     $truck.style.transform = "translate(" + s.x.toFixed(2) + "px," + pageY.toFixed(2) + "px) rotate(" +
       (s.a - 90).toFixed(2) + "deg) scale(" + ts.toFixed(3) + ") translate(" + (-TW / 2) + "px," + (-TH) + "px)";
     var off = String(routeLen - s.l);
@@ -723,7 +820,8 @@
     // onto the focus line (there is nothing above it), and reading the stage
     // off the truck would report stage 2 at the top of the page.
     var centreY = (innerHeight / 2 - rect.top) / k;
-    setStage(clamp(Math.round(centreY / ROW_H - 0.5) + 1, 1, S.length));
+    setStage(window.scrollY < 4 ? 1
+      : clamp(Math.round(centreY / ROW_H - 0.5) + 1, 1, S.length));
   }
   function onScroll() {
     if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); }
@@ -786,6 +884,7 @@
 
   /* ---------------- init ---------------- */
   function init() {
+    var deepLink = /#stage-(\d+)/.exec(location.hash);
     var root = document.documentElement.style;
     root.setProperty("--page-aspect", PAGE.w + " / " + PAGE.h);
     root.setProperty("--sec-h", (100 / J.sections.length) + "%");
@@ -803,6 +902,7 @@
     });
     buildRoute();
     buildTruck();
+    buildQueue();
     buildRows();
     buildPins();
     buildChrome();
@@ -812,13 +912,12 @@
     observeRows();
 
     addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("resize", onScroll);
+    addEventListener("resize", function () { buildQueue(); onScroll(); });
     mqWide.addEventListener("change", onScroll);
     onScrollFrame();
 
-    var m = /#stage-(\d+)/.exec(location.hash);
-    if (m) {
-      var n = clamp(+m[1], 1, S.length);
+    if (deepLink) {
+      var n = clamp(+deepLink[1], 1, S.length);
       requestAnimationFrame(function () {
         var t = scrollTargetFor(n);
         if (t == null) rowEls[n - 1].scrollIntoView();

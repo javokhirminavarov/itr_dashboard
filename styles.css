@@ -146,6 +146,16 @@ body.is-end #scroll-hint { opacity: 0; transition: opacity .4s ease; }
   opacity: 0; animation: chev 2.6s linear infinite; }
 @keyframes chev { 0% { opacity: 0; } 22% { opacity: 0.95; } 55% { opacity: 0.2; } 100% { opacity: 0; } }
 
+/* The 2018 frame: stage 1 shows the queue every truck used to join, and the
+   corridor's teal instrumentation is off. Both cross-fade as the modern system
+   comes on. Driven by body[data-stage], which app.js writes only when the stage
+   actually changes — nothing here costs anything per scroll frame. */
+#queue2018, .chev-flow, .route-line { transition: opacity 0.8s ease; }
+#queue2018 { opacity: 0; }
+body[data-stage="1"] #queue2018 { opacity: 1; }
+body[data-stage="1"] .chev-flow,
+body[data-stage="1"] .route-line { opacity: 0; }
+
 #truck { position: absolute; left: 0; top: 0; width: 0; height: 0; }
 .truck-bob { position: absolute; animation: bob 1.9s ease-in-out infinite; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
@@ -385,6 +395,7 @@ body.is-end #scroll-hint { opacity: 0; transition: opacity .4s ease; }
   html { scroll-behavior: auto; }
   .fx, .row.is-in .fx { transition: none; opacity: 1; transform: none; }
   .truck-bob, .chev, #scroll-hint .mouse::after { animation: none; }
+  #queue2018, .chev-flow, .route-line { transition: none; }
   .chev { opacity: 0.55; }
   .truck-variant { transition: none; }
   #overview, #modal { transition: none; }

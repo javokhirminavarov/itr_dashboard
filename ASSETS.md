@@ -54,8 +54,9 @@ Content top → bottom, one landmark per stage row:
 - **Calm bands:** the left ~26 % and the right ~26 % of the frame carry the
   stage cards and the metric panels. Keep those bands visually quiet.
 - **Road surface empty.** No vehicles on the carriageway — the page composes
-  the consignment as an overlay. Static plant off the road (parked trailers in
-  the warehouse yard, an aircraft on stand) is wanted.
+  the consignment, and the 2018 queue (see B), as overlays. Static plant off
+  the road (parked trailers in the warehouse yard, an aircraft on stand) is
+  wanted.
 - **No text, no signage words, no numbers, no UI panels.** Every word on screen
   is an HTML overlay.
 
@@ -68,6 +69,16 @@ Content top → bottom, one landmark per stage row:
 - Variants: **travelling (doors closed)** · **scanned** (the page adds the teal
   outline) · **sealed** (the page adds the seal tag). Plain variants are enough;
   the state decorations are overlays.
+
+**The 2018 queue.** Stage 1 draws a queue of halted trucks between the
+consignment and the gate, plus two pulled onto the verge under a work light —
+the "every truck stopped, every consignment opened by hand" the copy describes.
+It is an overlay in corridor coordinates (`JOURNEY.queue2018` in `plates.js`),
+**not** part of any plate, and it cross-fades out as the reader scrolls into the
+modern system while the teal chevrons and tracking trail fade in. So the plates
+themselves stay "today" and the no-vehicles rule above is unchanged. A final
+render needs no queue in it; a simpler front-view truck sprite for the queue is
+welcome but the page draws its own if none is supplied.
 
 ## C. Secondary scenes — 1600 × 900 each, same rules as A
 
