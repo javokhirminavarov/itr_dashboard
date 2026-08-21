@@ -16,6 +16,12 @@ as you scroll, and whatever landmark sits beside it is the stage you are
 reading — the ten stages and the ten landmarks in the art are placed from the
 same row grid in `plates.js`, so they cannot drift apart.
 
+Stage 1 is the 2018 "before" frame, and it shows it: a queue of halted trucks
+standing between the consignment and the gate, two of them pulled onto the
+verge to be opened by hand, and the corridor's teal instrumentation switched
+off. Scroll on and the queue dissolves as the chevrons and the tracking trail
+come up — the before/after the whole talk rests on, made once, visually.
+
 ## Presenting
 
 - Open `index.html` in Chrome/Edge and press **F11** for fullscreen (works from
@@ -25,6 +31,8 @@ same row grid in `plates.js`, so they cannot drift apart.
   `PageUp` previous · `1`–`9` and `0` jump to a stage · `Home`/`End` first/last
   · `Esc` stage overview · `R` replay the current stage's reveal. Presenter
   clickers (PageUp/PageDown) work.
+- The page always opens at stage 1, whatever the window shape, so the 2018
+  frame is what a visitor sees first.
 - **Road / Rail / Air cargo** in the header swap the flows-stage figures and
   that stage's scene. **Passengers** jumps to the passenger stage. **Targeting
   centre** at the bottom left opens the control-room view.
@@ -81,6 +89,12 @@ each, that the consignment moves down the route monotonically and picks up its
 scanned and sealed states in order, that no metric renders without an anchor,
 the full keyboard map, the flow tabs, reduced-motion behaviour, and that
 nothing overflows at 1920, 1600, 1440, 1280, 900 and 420 px wide.
+
+It also covers the 2018 frame: that the queue builds, that stage 1 shows it
+with the corridor instrumentation off and stage 3 has it the other way round,
+and — measured from the transforms rather than `getBoundingClientRect`, which
+is not dependable on `<use>` — that no queued vehicle ever stands on the
+consignment, at eight window shapes including tall, narrow ones.
 
 Scroll cost was measured the same way: with the corridor shipping as JPEG and
 the route overlay on its own compositor layer, a full scroll of the journey at

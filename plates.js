@@ -49,6 +49,20 @@ window.JOURNEY = {
     variants: [{ from: 0, name: "closed" }, { from: 1420, name: "scanned" }, { from: 2180, name: "sealed" }]
   },
 
+  // Stage 1 is the 2018 "before" frame: every truck stopped, every consignment
+  // opened by hand. The queue it describes is drawn as an overlay in these
+  // coordinates rather than baked into a plate, so the plates stay "today" and
+  // the queue can clear as the reader scrolls into the modern system.
+  //
+  // The gate is at y 1200 and the journey runs downward, so the queue waits
+  // above it. It starts below where the consignment holds at the top of the
+  // page (y ~504-560 depending on viewport) and runs toward the gate.
+  queue2018: {
+    from: 600, to: 1170, lane: -0.48,     // the consignment's own lane
+    // pulled onto the verge and being opened — what "by hand" looked like
+    verge: [{ y: 1055, side: 1, tilt: -14 }, { y: 1140, side: 1, tilt: 9 }]
+  },
+
   // Map markers pinned to the corridor, in page coordinates.
   pins: [
     { y: 1200, side: 1,  icon: "shield", label: "Border checkpoint" },
