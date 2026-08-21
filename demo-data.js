@@ -4,164 +4,340 @@
    - No figure may appear anywhere in the page that is not defined here.
    - Every metric must carry an `anchor` (a 2018 baseline, a trend, or a
      random-selection comparison). Metrics without one refuse to render.
+   - Every chart must carry a `caption` and a `range`. Charts without them
+     refuse to render, for the same reason: a number with nothing to measure it
+     against is decoration.
    - A value written as "{{TOKEN}}" is an awaiting-figure placeholder and
      renders as a visibly unfilled chip. `TRANSIT_LEGAL_BASIS` is deliberately
      left as one: inventing a legal citation is a different class of error from
      using an illustrative number, and it keeps that machinery visibly alive.
-   - `metrics` are statistics and must be anchored. `panel.facts` are the
-     *state of this one illustrative consignment* (its channel, its risk level)
-     and are labelled as such on screen — they are not statistics.
-   - Channel outcomes are the words green / yellow / red only.
+     `ETRANSIT_MORE` is the presenter's own "we will add later".
+   - `metrics` are statistics and must be anchored. `facts` are the *state of
+     this one illustrative consignment* (its channel, its risk level) and are
+     labelled as such on screen — they are not statistics.
+   - Channel outcomes are the words green / yellow / red only. Passenger
+     control uses the green / red subset.
 
    FIGURES ARE ILLUSTRATIVE. meta.figuresIllustrative below drives the on-screen
    badge. Every value to be replaced before the visit is listed in ASSETS.md.
    ========================================================================= */
 window.demoData = {
   meta: {
-    title: "One Consignment — Border to Audit",
-    subtitle: "Uzbekistan Customs · Risk-based control, end to end",
+    title: "Risk management, end to end",
+    subtitle: "Uzbekistan Customs · with the World Customs Organization",
     org: "UZBEKISTAN CUSTOMS",
-    orgSub: "RISK MANAGEMENT JOURNEY",
+    orgSub: "RISK MANAGEMENT SYSTEM",
     figuresIllustrative: true,
     illustrativeBadge: "ILLUSTRATIVE FIGURES",
-    trsMethodology: false, // true → stage 7 prints the WCO Time Release Study footnote
+    trsMethodology: false, // true → section 5 prints the WCO Time Release Study footnote
     trsFootnote: "Clearance times measured under WCO Time Release Study methodology.",
     disclosure:
       "The consignment shown is an illustrative composite, and the figures on screen are " +
       "illustrative placeholders pending verified Customs data.",
     theme2026: "Customs protecting society through vigilance and commitment",
     speakers: [
-      { stages: [1, 5], credential: "WCO-accredited Risk Management Expert", short: "RISK MGMT EXPERT" },
-      { stages: [6, 8], credential: "WCO BACUDA Scholar", short: "BACUDA SCHOLAR" },
-      { stages: [9, 10], credential: "WCO Master Trainer Programme Graduate", short: "MASTER TRAINER" }
+      { sections: [1, 2], credential: "WCO-accredited Risk Management Expert", short: "RISK MGMT EXPERT" },
+      { sections: [3, 5], credential: "WCO BACUDA Scholar", short: "BACUDA SCHOLAR" },
+      { sections: [6, 7], credential: "WCO Master Trainer Programme Graduate", short: "MASTER TRAINER" }
     ],
-    tabs: [
-      { id: "road", label: "Road", icon: "truck" },
-      { id: "rail", label: "Rail", icon: "train" },
-      { id: "air", label: "Air cargo", icon: "plane" },
-      { id: "pax", label: "Passengers", icon: "person", jumpTo: 9 }
-    ],
-    scrollHint: "SCROLL DOWN TO CONTINUE THE JOURNEY",
-    targetingCentre: {
-      link: "TARGETING CENTRE",
-      title: "National targeting centre",
-      text: "One centre assesses road, rail, air cargo and passenger data against the same " +
-            "risk management system, and pushes the result to the officer at the front line."
-    },
-    keyHints: "↑ ↓ stage · 1–0 jump · ESC overview · R replay"
+    scrollHint: "SCROLL DOWN TO CONTINUE",
+    keyHints: "↑ ↓ beat · 1–7 section · ESC overview · R replay",
+    targetingCentreLink: "TARGETING CENTRE",
+
+    /* Modals opened from the mini markers pinned on the corridor. */
+    modals: {
+      eTransit: {
+        icon: "doc",
+        tag: "INFORMATION SYSTEM",
+        title: "E-Transit",
+        lead: "Bill-of-lading data reaches Customs before the truck does, and the system clears " +
+              "the vehicle at the border on it.",
+        bullets: [
+          "Other border-related agencies work in the same system",
+          "Statistics on every movement, provided by the risk management system",
+          "Faster and more targeted customs controls",
+          "{{ETRANSIT_MORE}}"
+        ]
+      },
+      tcBorder: {
+        icon: "screen",
+        tag: "AT THE BORDER",
+        title: "Role of the targeting centre",
+        lead: "The centre is live on the crossing while the vehicle is standing there.",
+        plate: "targetingCentre",
+        bullets: [
+          "Monitor movements through surveillance cameras",
+          "Stop or hold cargo and vehicles when necessary",
+          "Change the assigned risk channel",
+          "Initiate customs inspections",
+          "Place shipments or vehicles under enhanced control"
+        ]
+      },
+      ccoIS: {
+        icon: "box",
+        tag: "INFORMATION SYSTEM",
+        title: "Customs and cargo operations",
+        lead: "One digital platform for the whole customs warehouse network.",
+        plate: "warehouseInterior",
+        bullets: [
+          "Around 430 customs warehouses on a single digital platform",
+          "Warehouse operators and customs officers monitor and control through the same platform",
+          "The risk management system applied to warehouse operations",
+          "Less time and lower operating cost for business",
+          "Faster processing and placement of goods into customs warehouses",
+          "Greater efficiency and transparency of warehouse operations"
+        ]
+      }
+    }
   },
 
-  stages: {
-    baseline: {
-      n: 1, rail: "2018", eyebrow: "2018 — BEFORE",
-      headline: "Every truck stopped.",
-      support: "Every consignment opened by hand. Days at the border. Almost nothing found.",
-      overview: "100% physical inspection, ~3% found anything",
-      card: { title: "The 2018 baseline", icon: "truck" },
-      panel: { title: "Baseline — 2018", icon: "clock" },
-      metrics: [
-        { value: "100%", label: "consignments physically inspected",
-          anchor: { type: "context", text: "2018 — every truck, every time" } },
-        { value: "~3%", label: "of inspections found a violation", compact: true,
-          anchor: { type: "context", text: "97 of 100 opened for nothing" } },
-        { value: "3–5 days", label: "typical wait at the border", compact: true,
-          anchor: { type: "context", text: "2018" } }
-      ],
-      showDisclosure: true
+  /* ------------------------------------------------------------------ beats */
+  beats: {
+    /* --- section 1 --------------------------------------------------------- */
+    cooperation: {
+      section: 1, rail: "WCO", eyebrow: "SECTION 1 · INTERNATIONAL COOPERATION",
+      headline: "Built with the WCO.",
+      support: "Uzbekistan Customs built its risk management system with the World Customs " +
+               "Organization — and now helps other administrations build theirs.",
+      overview: "Accreditation, training, workshops, benchmarking, working group",
+      card: { title: "WCO & Uzbekistan", icon: "shield" },
+      items: [
+        { icon: "check", tag: "ACCREDITATION", title: "Expert accreditation",
+          text: "Officers accredited by the WCO as Risk Management Experts, and deployed on WCO missions." },
+        { icon: "person", tag: "TRAINING", title: "Master Trainer Programme and BACUDA",
+          text: "Graduates of the WCO Master Trainer Programme, and a scholar on the BACUDA " +
+                "data-analytics scholarship programme." },
+        { icon: "screen", tag: "WORKSHOPS", title: "Workshops delivered by the WCO",
+          text: "National risk management workshops, delivered in Tashkent by WCO experts." },
+        { icon: "plane", tag: "BENCHMARKING", title: "Malaysia Customs benchmarking visit",
+          text: "Malaysia Customs came to study the system — Uzbekistan supporting another " +
+                "administration on risk management." },
+        { icon: "loop", tag: "WORKING GROUP", title: "Risk management mini working group",
+          text: "Uzbekistan organises the group's online sessions." }
+      ]
     },
 
-    flows: {
-      n: 2, rail: "FLOWS", eyebrow: "TODAY — THREE FLOWS, ONE SYSTEM",
-      headline: "Three flows. One system.",
-      support: "Road, rail and air cargo — one risk management system assesses them all.",
-      overview: "Road, rail, air — one RMS across all modes",
-      card: { title: "Three flows, one system", icon: "layers" },
-      panel: { title: "Selectivity by mode", icon: "layers" },
-      overall: {
-        value: "29%", label: "selected for control, all modes",
-        anchor: { type: "baseline2018", text: "vs 100% stopped in 2018" }
+    /* --- section 2 --------------------------------------------------------- */
+    targeting: {
+      section: 2, rail: "CENTRE", eyebrow: "SECTION 2 · TARGETING CENTRE",
+      headline: "One centre. Every channel.",
+      support: "A key component of the risk management system, staffed around the clock.",
+      overview: "Functions and structure of the targeting centre",
+      card: { title: "Targeting centre", icon: "screen" },
+      hub: { title: "Targeting Centre", sub: "STATE CUSTOMS COMMITTEE" },
+      functions: [
+        { icon: "layers", title: "Key component of the RMS",
+          text: "The centre is where the risk management system meets the officer on duty." },
+        { icon: "screen", title: "Real-time monitoring",
+          text: "Customs processes watched as they happen, across every crossing." },
+        { icon: "doc", title: "Operational intelligence",
+          text: "Processing and analysis of operational intelligence from the field." },
+        { icon: "shield", title: "WCO information and databases",
+          text: "WCO enforcement information and databases, including CENcomm." },
+        { icon: "loop", title: "Integration with OGAs",
+          text: "Connected to other government agencies working at the border." },
+        { icon: "scan", title: "Additional risks",
+          text: "Detection and mitigation of risks the profiles did not anticipate." },
+        { icon: "clock", title: "24/7 capability",
+          text: "Operational around the clock, every day of the year." }
+      ],
+      note: "Control-room view is illustrative; no operational content is shown on the screens."
+    },
+
+    /* --- section 3, beat one ------------------------------------------------ */
+    baseline2018: {
+      section: 3, rail: "2018", eyebrow: "SECTION 3 · THE 2018 BASELINE",
+      headline: "Every truck stopped.",
+      support: "Every consignment opened by hand. Days at the border. Almost nothing found.",
+      overview: "100% inspection in 2018, and the flows since",
+      card: { title: "The 2018 baseline", icon: "clock" },
+      showDisclosure: true,
+      leftPanel: {
+        title: "2018 — before", icon: "clock",
+        metrics: [
+          { value: "100%", label: "consignments physically inspected",
+            anchor: { type: "context", text: "2018 — every truck, every time" } },
+          { value: "~3%", label: "of inspections found a violation", compact: true,
+            anchor: { type: "context", text: "97 of 100 opened for nothing" } },
+          { value: "3–5 days", label: "typical wait at the border", compact: true,
+            anchor: { type: "context", text: "2018" } }
+        ]
       },
-      modes: {
-        road: { name: "Road",
-          metric: { value: "29%", label: "road consignments selected for control",
-            anchor: { type: "baseline2018", text: "vs 100% stopped in 2018" } } },
-        rail: { name: "Rail",
-          metric: { value: "18%", label: "rail consignments selected for control",
-            anchor: { type: "baseline2018", text: "vs 100% stopped in 2018" } } },
-        air: { name: "Air cargo",
-          metric: { value: "34%", label: "air consignments selected for control",
-            anchor: { type: "baseline2018", text: "vs 100% stopped in 2018" } } }
+      rightPanel: {
+        title: "Flows since 2018", icon: "layers",
+        chart: {
+          kind: "line",
+          caption: "Transport and cargo flow, indexed to 2018 = 100",
+          range: "2018–2025",
+          note: "Indexed so that one axis carries both. The 2025 multiple is printed on each line.",
+          x: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+          series: [
+            { name: "Vehicles crossing", tone: "a", values: [100, 118, 96, 131, 168, 196, 224, 247], end: "×2.5" },
+            { name: "Cargo carried", tone: "b", values: [100, 112, 91, 124, 151, 173, 192, 208], end: "×2.1" }
+          ]
+        }
       }
     },
 
+    /* --- section 3, beat two ------------------------------------------------ */
     border: {
-      n: 3, rail: "BORDER", eyebrow: "STAGE 1 · THE GATE",
+      section: 3, rail: "BORDER", eyebrow: "SECTION 3 · VEHICLE ENTRY AT THE BORDER",
       headline: "Decided before arrival.",
-      support: "Pre-arrival data is assessed before the truck arrives; low-risk cargo clears on the spot.",
-      overview: "Channel decided at the gate, before arrival",
+      support: "Bill-of-lading data arrives ahead of the truck, and the channel is set before it " +
+               "reaches the barrier.",
+      overview: "Entry at the checkpoint, decided on pre-arrival data",
       card: { title: "Border checkpoint", icon: "shield" },
-      panel: { title: "Border decision", icon: "shield",
-        facts: [
-          { label: "Pre-arrival risk", value: "MEDIUM" },
-          { label: "Data sources consulted", value: "12" }
-        ] },
+      hint: "Open the two markers on the corridor for E-Transit and the targeting centre's role here.",
       channels: { options: ["green", "yellow", "red"], outcome: "green", note: "this consignment" },
-      split: [
-        { name: "green", share: "71%" }, { name: "yellow", share: "24%" }, { name: "red", share: "5%" }
+      facts: [
+        { label: "Pre-arrival risk", value: "MEDIUM" },
+        { label: "Data sources consulted", value: "12" }
       ],
-      splitNote: "share of road consignments by channel",
-      metrics: [
-        { value: "2.1 min", label: "decision at the gate",
-          anchor: { type: "baseline2018", text: "vs days of waiting in 2018" } }
-      ]
+      leftPanel: {
+        title: "Traffic, 2025", icon: "truck",
+        metrics: [
+          { value: "2.71 m", label: "trucks cleared at the border",
+            anchor: { type: "baseline2018", text: "×2.5 on 2018" } },
+          { value: "7,420", label: "trucks a day, average", compact: true,
+            anchor: { type: "trend", text: "peak days above 9,000" } }
+        ]
+      },
+      rightPanel: {
+        title: "Risk management at the gate", icon: "shield",
+        split: [{ name: "green", share: "71%" }, { name: "yellow", share: "24%" }, { name: "red", share: "5%" }],
+        splitNote: "share of road consignments by channel, 2025",
+        metrics: [
+          { value: "2.1 min", label: "decision at the gate",
+            anchor: { type: "baseline2018", text: "vs days of waiting in 2018" } },
+          { value: "1,860", label: "seizure cases at the border", compact: true,
+            anchor: { type: "trend", text: "+18% on 2024" } }
+        ]
+      }
     },
 
+    /* --- between sections 3 and 4 ------------------------------------------- */
     transit: {
-      n: 4, rail: "TRANSIT", eyebrow: "STAGE 2 · INLAND TRANSIT",
+      section: 3, rail: "TRANSIT", eyebrow: "BETWEEN 3 AND 4 · INLAND TRANSIT",
       headline: "Supervised, not stopped.",
-      support: "Customs CCTV integrated with the national police camera network — every checkpoint passed is on record.",
-      overview: "Goods under customs supervision, corridor-wide",
+      support: "The consignment stays under continuous supervision while it moves inside the country.",
+      overview: "Continuous supervision between the border and the warehouse",
       card: { title: "Inland transit", icon: "cam" },
-      panel: { title: "Transit monitoring", icon: "cam",
+      leftPanel: {
+        title: "How it is supervised", icon: "loop",
+        bullets: [
+          "GPS electronic seals fitted to the load",
+          "Vehicle tracking on the main movement platform",
+          "Camera data from the Ministry of Internal Affairs"
+        ]
+      },
+      rightPanel: {
+        title: "Transit monitoring", icon: "cam",
         facts: [
+          { label: "GPS electronic seal", value: "FITTED" },
           { label: "Checkpoints passed", value: "7" },
           { label: "Alerts raised", value: "0" }
-        ] },
-      legalBasis: "{{TRANSIT_LEGAL_BASIS}}",
-      trace: ["GATE", "CP·1", "CP·2", "WAREHOUSE"],
-      metrics: [
-        { value: "1,248", label: "seizures on supervised transit",
-          anchor: { type: "trend", text: "up ×2 since 2022" } }
-      ]
+        ],
+        trace: ["GATE", "CP·1", "CP·2", "WAREHOUSE"],
+        legalBasis: "{{TRANSIT_LEGAL_BASIS}}",
+        metrics: [
+          { value: "1,248", label: "seizures on supervised transit",
+            anchor: { type: "trend", text: "up ×2 since 2022" } }
+        ]
+      }
     },
 
+    /* --- section 4 --------------------------------------------------------- */
     warehouse: {
-      n: 5, rail: "WAREHOUSE", eyebrow: "STAGE 3 · CUSTOMS WAREHOUSE",
-      headline: "The system decides who attends.",
-      support: "The RMS decides whether an officer must attend the unloading.",
-      overview: "Officer attendance decided by the RMS",
-      card: { title: "Warehouse / unloading", icon: "box" },
-      panel: { title: "Unloading control", icon: "person",
-        facts: [{ label: "Officer required", value: "NO — remote control" }] },
-      metrics: [
-        { value: "28%", label: "unloadings with an officer attending",
-          anchor: { type: "baseline2018", text: "vs 100% in 2018" } }
-      ]
+      section: 4, rail: "WAREHOUSE", eyebrow: "SECTION 4 · CUSTOMS WAREHOUSE INFORMATION SYSTEM",
+      headline: "430 warehouses, one platform.",
+      support: "Operators and officers work the same system, and the RMS decides who has to attend.",
+      overview: "One digital platform across the warehouse network",
+      card: { title: "Customs warehouse", icon: "box" },
+      hint: "Open the marker on the corridor for the Customs and cargo operations system.",
+      leftPanel: {
+        title: "Growth against 2018", icon: "layers",
+        chart: {
+          kind: "growth",
+          caption: "2018 compared with 2025",
+          range: "2018 vs 2025",
+          note: "Four measures on four scales, so each pair is read against itself — both values printed.",
+          rows: [
+            { name: "Customs warehouses", from: 264, to: 430, fromText: "264", toText: "430", mult: "×1.6" },
+            { name: "Shipments placed", from: 96, to: 412, fromText: "96 k", toText: "412 k", mult: "×4.3" },
+            { name: "Value of goods", from: 18.4, to: 71.9, fromText: "UZS 18.4 tn", toText: "UZS 71.9 tn", mult: "×3.9" },
+            { name: "Weight of goods", from: 1.9, to: 6.4, fromText: "1.9 m t", toText: "6.4 m t", mult: "×3.4" }
+          ]
+        }
+      },
+      rightPanel: {
+        title: "Officer attendance, 2025", icon: "person",
+        share: {
+          caption: "Share of placements an officer attended in person",
+          range: "2025",
+          parts: [
+            { name: "Officer attended", value: 28, tone: "a" },
+            { name: "Remote control only", value: 72, tone: "n" }
+          ]
+        },
+        metrics: [
+          { value: "28%", label: "placements with an officer attending",
+            anchor: { type: "baseline2018", text: "vs 100% in 2018" } }
+        ]
+      }
     },
 
+    /* --- section 5 --------------------------------------------------------- */
     declaration: {
-      n: 6, rail: "DECLARATION", eyebrow: "STAGE 4 · IMPORT DECLARATION",
+      section: 5, rail: "DECLARATION", eyebrow: "SECTION 5 · CUSTOMS DECLARATION CLEARANCE",
       headline: "Assessed again at declaration.",
-      support: "The import declaration is assessed a second time — every stage runs on data analysis.",
-      overview: "Second assessment; AI-based RMS as next step",
+      support: "Entity category, risk profiles and a random selection module set the channel — and " +
+               "the random module is what proves the rest of it works.",
+      overview: "The structure of the RMS, and what it produces",
       card: { title: "Final declaration", icon: "doc" },
-      panel: { title: "Declaration assessment", icon: "doc",
-        facts: [{ label: "Channel selected", value: "YELLOW — documentary check" }] },
       channels: { options: ["green", "yellow", "red"], outcome: "yellow", note: "documentary check" },
-      metrics: [
-        { value: "18.6%", label: "violations found on selected declarations",
-          anchor: { type: "vsRandom", text: "vs 7.3% on random selection" } }
-      ],
+      structure: {
+        caption: "Main structure of the risk management system",
+        nodes: [
+          { icon: "person", title: "Categorisation of entities", value: "4 categories",
+            sub: "312 risk criteria applied to traders" },
+          { icon: "shield", title: "Risk profiles", value: "1,146 profiles",
+            sub: "186 undervaluation · 143 misclassification · 27 AI-based" },
+          { icon: "loop", title: "Random selection module", value: "3% of declarations",
+            sub: "the control group everything else is measured against" }
+        ]
+      },
+      leftPanel: {
+        title: "Operational flow", icon: "layers", metricsGrid: true,
+        metrics: [
+          { value: "1.42 m", label: "customs declarations", compact: true,
+            anchor: { type: "baseline2018", text: "×2.6 on 2018" } },
+          { value: "USD 62.4 bn", label: "foreign trade turnover", compact: true,
+            anchor: { type: "baseline2018", text: "×2.2 on 2018" } },
+          { value: "3.86 m", label: "consignments declared", compact: true,
+            anchor: { type: "baseline2018", text: "×2.4 on 2018" } },
+          { value: "38,700", label: "traders on the register", compact: true,
+            anchor: { type: "baseline2018", text: "×1.9 on 2018" } }
+        ]
+      },
+      rightPanel: {
+        title: "What the system produces", icon: "check",
+        shift: {
+          caption: "Declarations by risk channel",
+          range: "2018 vs 2025",
+          rows: [
+            { year: "2018", parts: [{ name: "green", value: 0 }, { name: "yellow", value: 0 }, { name: "red", value: 100 }] },
+            { year: "2025", parts: [{ name: "green", value: 68 }, { name: "yellow", value: 26 }, { name: "red", value: 6 }] }
+          ]
+        },
+        metrics: [
+          { value: "1.6 hrs", label: "average clearance time",
+            anchor: { type: "baseline2018", text: "vs 3–5 days in 2018" } },
+          { value: "18.6%", label: "risk confirmation rate on selected declarations", compact: true,
+            anchor: { type: "vsRandom", text: "vs 7.3% on random selection" } },
+          { value: "24,180", label: "customs violations detected", compact: true,
+            anchor: { type: "trend", text: "+14% on 2024" } }
+        ]
+      },
       nextStep: {
         tag: "NEXT STEP — IN DEVELOPMENT",
         title: "AI-based risk assessment",
@@ -169,61 +345,81 @@ window.demoData = {
       }
     },
 
-    release: {
-      n: 7, rail: "RELEASE", eyebrow: "STAGE 5 · RELEASE",
-      headline: "Faster release, sharper inspections.",
-      support: "The consignment releases; inspection effort goes only where the data points.",
-      overview: "The payoff: clearance time and inspection efficiency",
-      card: { title: "Release", icon: "check" },
-      panel: { title: "Release outcome", icon: "check" },
-      metrics: [
-        { value: "1.6 hrs", label: "average clearance time",
-          anchor: { type: "baseline2018", text: "vs 3–5 days in 2018" } },
-        { value: "92%", label: "of inspections finding a violation", compact: true,
-          anchor: { type: "baseline2018", text: "vs ~3% in 2018" } }
-      ]
-    },
-
-    pca: {
-      n: 8, rail: "AUDIT", eyebrow: "STAGE 6 · POST-CLEARANCE AUDIT",
+    /* --- section 6 --------------------------------------------------------- */
+    audit: {
+      section: 6, rail: "AUDIT", eyebrow: "SECTION 6 · CUSTOMS AUDIT",
       headline: "Control continues after release.",
-      support: "Post-clearance audit findings feed straight back into the risk management system.",
-      overview: "The loop closes: audit findings feed the RMS",
-      card: { title: "Post-clearance audit", icon: "loop" },
-      panel: { title: "Feedback to RMS", icon: "loop",
+      support: "Audit findings are what rebuild the risk profiles — the loop that keeps the system honest.",
+      overview: "Audit indicators, and the findings that feed the RMS",
+      card: { title: "Customs audit", icon: "loop" },
+      leftPanel: {
+        title: "Audit activity", icon: "doc", metricsGrid: true,
+        metrics: [
+          { value: "3,140", label: "customs audits conducted", compact: true,
+            anchor: { type: "trend", text: "+9% on the prior year" } },
+          { value: "1,982", label: "audits with findings", compact: true,
+            anchor: { type: "trend", text: "+14% on the prior year" } },
+          { value: "63%", label: "of audits found something", compact: true,
+            anchor: { type: "vsRandom", text: "vs 21% on randomly selected audits" } }
+        ]
+      },
+      rightPanel: {
+        title: "Feedback to the RMS", icon: "loop", motif: "loop",
         factsNote: "risk profiles rebuilt from audit findings, latest month",
-        facts: [{ label: "Risk profiles updated", value: "243" }] },
-      metrics: [
-        { value: "1,982", label: "post-clearance audit findings",
-          anchor: { type: "trend", text: "+14% on the prior year" } },
-        { value: "UZS 214 bn", label: "additional revenue assessed", secondary: true, compact: true,
-          anchor: { type: "trend", text: "secondary to protection — seizures lead" } }
-      ]
+        facts: [{ label: "Risk profiles updated", value: "243" }],
+        metrics: [
+          { value: "UZS 214 bn", label: "additional revenue assessed", secondary: true, compact: true,
+            anchor: { type: "trend", text: "secondary to protection — seizures lead" } }
+        ]
+      }
     },
 
+    /* --- section 7 --------------------------------------------------------- */
     passengers: {
-      n: 9, rail: "PASSENGERS", eyebrow: "BEYOND CARGO · PASSENGERS",
-      headline: "Risk also travels with passengers.",
-      support: "Advance passenger information, assessed by a dedicated passenger targeting system before the aircraft lands.",
-      overview: "API data + dedicated passenger targeting",
-      card: { title: "Passengers", icon: "person" },
-      panel: { title: "Passenger targeting", icon: "person" },
-      metrics: [
-        { value: "11.4%", label: "hit rate on targeted selections",
-          anchor: { type: "vsRandom", text: "vs 0.8% on random checks" } }
-      ]
-    },
-
-    close: {
-      n: 10, rail: "2026", eyebrow: "WCO 2026",
-      headline: "Vigilance and commitment.",
-      support: "Customs protecting society through vigilance and commitment.",
-      overview: "Where this leads — WCO 2026 theme",
-      card: { title: "WCO 2026", icon: "flag" },
-      panel: { title: "Where this leads", icon: "flag",
-        factsNote: "in development with the WCO BACUDA programme",
-        facts: [{ label: "Next", value: "AI-based risk assessment · WCO BACUDA" }] },
-      metrics: []
+      section: 7, rail: "PASSENGERS", eyebrow: "SECTION 7 · PASSENGER CONTROL",
+      headline: "Risk travels with passengers.",
+      support: "Advance passenger information is assessed before the aircraft lands, so the channel " +
+               "is already waiting when the passenger reaches the hall.",
+      overview: "API-based targeting through passport and customs control",
+      card: { title: "Passenger control", icon: "person" },
+      schema: {
+        caption: "Arrivals: passport control, then customs control",
+        note: "The system assigns the channel by analysing advance passenger information and other data.",
+        nodes: [
+          { key: "arrive", title: "Arrival", sub: "aircraft on stand" },
+          { key: "api", title: "Advance passenger information", sub: "assessed before landing" },
+          { key: "passport", title: "Passport control", sub: "identity" },
+          { key: "customs", title: "Customs control", sub: "channel assigned" }
+        ],
+        channels: [
+          { name: "green", label: "Green channel", share: 96.4, shareText: "96.4%" },
+          { name: "red", label: "Red channel", share: 3.6, shareText: "3.6%" }
+        ]
+      },
+      leftPanel: {
+        title: "Passenger flow", icon: "plane",
+        chart: {
+          kind: "line",
+          caption: "Passengers arriving, indexed to 2018 = 100",
+          range: "2018–2025",
+          note: "One series, so the caption names it and no legend box is needed.",
+          x: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
+          series: [
+            { name: "Arriving passengers", tone: "a", values: [100, 121, 34, 62, 128, 174, 219, 264], end: "×2.6" }
+          ]
+        }
+      },
+      rightPanel: {
+        title: "Targeting passengers", icon: "person", metricsGrid: true,
+        metrics: [
+          { value: "148", label: "passenger risk criteria in use", compact: true,
+            anchor: { type: "baseline2018", text: "from 26 in 2018" } },
+          { value: "34", label: "airlines providing API data", compact: true,
+            anchor: { type: "baseline2018", text: "from 6 in 2018" } },
+          { value: "11.4%", label: "hit rate on targeted selections",
+            anchor: { type: "vsRandom", text: "vs 0.8% on random checks" } }
+        ]
+      }
     }
   }
 };

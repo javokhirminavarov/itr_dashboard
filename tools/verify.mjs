@@ -1,0 +1,275 @@
+/*
+ * Verification suite for the presentation page.
+ *
+ * Asserts the things the page promises — no network after load, every metric
+ * anchored, every chart captioned, the corridor rows matching the plate grid,
+ * the consignment running the route — and the things that have actually broken
+ * here before: content overflowing its corridor row at anything narrower than
+ * 1920, a queued vehicle standing on the consignment, a "visually hidden" table
+ * widening the document.
+ *
+ * Usage (Playwright + Chromium required; nothing is added to this repo):
+ *   npx --no-install http-server -p 8099 -s .     # or any static server
+ *   node tools/verify.mjs [http://127.0.0.1:8099/index.html]
+ */
+import { chromium } from 'playwright';
+import path from 'path';
+const HTTP = process.argv[2] || 'http://127.0.0.1:8099/index.html';
+const FILE = 'file://' + path.resolve(new URL('../index.html', import.meta.url).pathname);
+const results = [];
+const ok = (n, c, d = '') => results.push([c ? 'PASS' : 'FAIL', n, d]);
+
+const browser = await chromium.launch();
+
+async function page(opts = {}) {
+  const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, ...opts });
+  const p = await ctx.newPage();
+  p.__errs = []; p.__net = [];
+  p.on('console', m => { if (m.type() === 'error') p.__errs.push(m.text()); });
+  p.on('pageerror', e => p.__errs.push('PAGEERROR ' + e.message));
+  return p;
+}
+const settle = async p => { await p.waitForFunction(() => document.querySelectorAll('#rows .row').length > 0); await p.waitForTimeout(350); };
+
+/* ---- 1. no network after load, on both schemes -------------------------- */
+for (const [name, url] of [['http', HTTP], ['file', FILE]]) {
+  const p = await page();
+  await p.goto(url, { waitUntil: 'networkidle' });
+  await settle(p);
+  p.on('request', r => p.__net.push(r.url()));
+  await p.evaluate(() => window.scrollTo({ top: document.body.scrollHeight / 2, behavior: 'instant' }));
+  await p.waitForTimeout(600);
+  await p.evaluate(() => document.querySelector('.pin.is-live')?.click());
+  await p.waitForTimeout(400);
+  ok(`no network after load (${name})`, p.__net.length === 0, p.__net.slice(0, 3).join(' '));
+  ok(`no console errors (${name})`, p.__errs.length === 0, p.__errs.slice(0, 3).join(' | '));
+  await p.context().close();
+}
+
+const p = await page();
+await p.goto(HTTP, { waitUntil: 'networkidle' });
+await settle(p);
+
+/* ---- 2. contracts ------------------------------------------------------- */
+const contract = await p.evaluate(() => ({
+  errors: document.querySelectorAll('.metric-error').length,
+  metrics: document.querySelectorAll('.metric').length,
+  anchorless: [...document.querySelectorAll('.metric')].filter(m => !m.querySelector('.metric-anchor')).length,
+  charts: document.querySelectorAll('.chart').length,
+  captionless: [...document.querySelectorAll('.chart')].filter(c => !c.querySelector('.ch-caption') || !c.querySelector('.ch-range')).length,
+  tables: document.querySelectorAll('.chart .sr-only table').length
+}));
+ok('no contract-violation elements rendered', contract.errors === 0, `${contract.errors} found`);
+ok('every metric carries an anchor', contract.anchorless === 0 && contract.metrics > 10, `${contract.metrics} metrics, ${contract.anchorless} anchorless`);
+ok('every chart carries caption + range', contract.captionless === 0 && contract.charts >= 4, `${contract.charts} charts`);
+ok('every chart ships a data table', contract.tables === contract.charts, `${contract.tables}/${contract.charts}`);
+
+/* ---- 3. corridor geometry: six equal rows ------------------------------- */
+const geom = await p.evaluate(() => {
+  const j = document.getElementById('journey').getBoundingClientRect();
+  const rows = [...document.querySelectorAll('#rows .row')].map(r => r.getBoundingClientRect().height);
+  return { rows, journeyH: j.height, journeyW: j.width, expected: window.JOURNEY.page.h / window.JOURNEY.rows };
+});
+const share = geom.journeyH / geom.rows.length;
+ok('corridor is six rows', geom.rows.length === 6, String(geom.rows.length));
+ok('each row is exactly one sixth of the corridor',
+   geom.rows.every(h => Math.abs(h - share) < 1), geom.rows.map(h => h.toFixed(1)).join(', '));
+ok('corridor holds the plate aspect ratio',
+   Math.abs(geom.journeyH / geom.journeyW - 4800 / 1600) < 0.02,
+   (geom.journeyH / geom.journeyW).toFixed(3));
+
+/* ---- 4. row content fits inside its row, at several widths --------------- */
+for (const w of [1920, 1600, 1440, 1280]) {
+  await p.setViewportSize({ width: w, height: 1080 });
+  await p.waitForTimeout(300);
+  const over = await p.evaluate(() => {
+    const out = [];
+    document.querySelectorAll('#rows .row').forEach(r => {
+      const rh = r.getBoundingClientRect().height;
+      ['.step-stack', '.right-stack'].forEach(sel => {
+        const s = r.querySelector(sel);
+        if (s && s.getBoundingClientRect().height > rh - 8) {
+          out.push(r.dataset.beat + ' ' + sel + ' ' + Math.round(s.getBoundingClientRect().height) + '>' + Math.round(rh));
+        }
+      });
+    });
+    return out;
+  });
+  ok(`row content fits its row at ${w}px`, over.length === 0, over.join('; '));
+}
+
+/* ---- 4b. a beat is one screenful: it must fit the viewport it is shown in -- */
+for (const [w, h] of [[1920, 1080], [1600, 900], [1440, 900], [1280, 800]]) {
+  await p.setViewportSize({ width: w, height: h });
+  await p.waitForTimeout(300);
+  const over = await p.evaluate(vh => [...document.querySelectorAll('[data-beat][id]')]
+    .map(e => ({ beat: e.dataset.beat, h: Math.round(e.getBoundingClientRect().height) }))
+    .filter(x => x.h > vh), h);
+  ok(`every beat fits the viewport at ${w}x${h}`, over.length === 0,
+     over.map(x => `${x.beat} ${x.h}>${h}`).join('; '));
+}
+
+/* ---- 5. no horizontal overflow ------------------------------------------ */
+for (const [w, h] of [[1920, 1080], [1600, 900], [1440, 900], [1280, 800], [900, 900], [420, 780]]) {
+  await p.setViewportSize({ width: w, height: h });
+  await p.waitForTimeout(280);
+  const o = await p.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  ok(`no horizontal overflow at ${w}px`, o <= 0, `${o}px`);
+}
+await p.setViewportSize({ width: 1920, height: 1080 });
+await p.waitForTimeout(300);
+
+/* ---- 6. the consignment runs the route, and picks up its states in order -- */
+const run = await p.evaluate(async () => {
+  const seen = [], states = [];
+  const H = document.body.scrollHeight;
+  for (let t = 0; t <= 1.0001; t += 0.02) {
+    window.scrollTo({ top: H * t, behavior: 'instant' });
+    await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+    const m = /translate\(([-\d.]+)px,\s*([-\d.]+)px\)/.exec(document.getElementById('truck').style.transform);
+    if (m) seen.push(+m[2]);
+    const on = [...document.querySelectorAll('.truck-variant[data-variant].is-on')].map(v => v.dataset.variant);
+    const s = on.includes('sealed') ? 'sealed' : on.includes('scanned') ? 'scanned' : 'closed';
+    if (states[states.length - 1] !== s) states.push(s);
+  }
+  return { monotone: seen.every((v, i) => i === 0 || v >= seen[i - 1] - 0.01), span: [seen[0], seen[seen.length - 1]], states };
+});
+ok('consignment moves down the route monotonically', run.monotone, run.span.map(v => v?.toFixed(0)).join(' → '));
+ok('states arrive in order closed → scanned → sealed',
+   JSON.stringify(run.states) === JSON.stringify(['closed', 'scanned', 'sealed']), run.states.join(' → '));
+
+/* ---- 7. the 2018 frame -------------------------------------------------- */
+const frame = await p.evaluate(async () => {
+  const at = async key => {
+    const el = document.getElementById('beat-' + key);
+    const r = el.getBoundingClientRect();
+    window.scrollTo({ top: Math.max(0, window.scrollY + r.top + r.height / 2 - innerHeight * 0.56), behavior: 'instant' });
+    await new Promise(r2 => setTimeout(r2, 900));
+    const q = document.getElementById('queue2018'), c = document.querySelector('.chev-flow');
+    return { beat: document.body.dataset.beat, queue: +getComputedStyle(q).opacity, chev: +getComputedStyle(c).opacity };
+  };
+  return { base: await at('baseline2018'), transit: await at('transit'), count: document.querySelectorAll('#queue2018 use').length };
+});
+ok('2018 queue is built', frame.count >= 4, `${frame.count} vehicles`);
+ok('queue shows on the 2018 beat with the instrumentation off',
+   frame.base.queue > 0.9 && frame.base.chev < 0.1, JSON.stringify(frame.base));
+ok('and is inverted by the transit beat',
+   frame.transit.queue < 0.1 && frame.transit.chev > 0.9, JSON.stringify(frame.transit));
+
+/* ---- 8. no queued vehicle ever stands on the consignment ----------------- */
+const clash = await p.evaluate(async () => {
+  const bad = [];
+  for (const [w, h] of [[1920, 1080], [1440, 1200], [1280, 1400], [1360, 1600]]) {
+    // measured from the transforms, not getBoundingClientRect, which is not
+    // dependable on <use>
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    await new Promise(r => setTimeout(r, 500));
+    const TH = 152;
+    const t = /translate\(([-\d.]+)px,\s*([-\d.]+)px\).*scale\(([\d.]+)\)/.exec(document.getElementById('truck').style.transform);
+    if (!t) continue;
+    const ty = +t[2], ts = +t[3];
+    const truck = [ty - TH * ts, ty];
+    [...document.querySelectorAll('#queue2018 use')].forEach(u => {
+      const m = /translate\(([-\d.]+),([-\d.]+)\).*scale\(([\d.]+)\)/.exec(u.getAttribute('transform'));
+      if (!m) return;
+      const qy = +m[2], qs = +m[3];
+      const q = [qy - TH * qs, qy];
+      if (q[1] > truck[0] && q[0] < truck[1]) bad.push(`${w}x${h}: queue ${q.map(Math.round)} vs truck ${truck.map(Math.round)}`);
+    });
+  }
+  return bad;
+});
+ok('no queued vehicle stands on the consignment', clash.length === 0, clash.slice(0, 2).join('; '));
+
+/* ---- 9. navigation ------------------------------------------------------ */
+const nav = await p.evaluate(async () => {
+  const press = async k => { window.dispatchEvent(new KeyboardEvent('keydown', { code: k, bubbles: true })); await new Promise(r => setTimeout(r, 700)); };
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  await new Promise(r => setTimeout(r, 500));
+  const seq = [document.body.dataset.beat];
+  for (let i = 0; i < 8; i++) { await press('ArrowDown'); seq.push(document.body.dataset.beat); }
+  const jumps = [];
+  for (let n = 1; n <= 7; n++) { await press('Digit' + n); jumps.push(+document.body.dataset.section); }
+  return { seq, jumps };
+});
+ok('arrow keys walk all nine beats in order',
+   JSON.stringify(nav.seq) === JSON.stringify(['cooperation', 'targeting', 'baseline2018', 'border', 'transit', 'warehouse', 'declaration', 'audit', 'passengers']),
+   nav.seq.join(' → '));
+ok('number keys 1–7 jump to their section',
+   JSON.stringify(nav.jumps) === JSON.stringify([1, 2, 3, 4, 5, 6, 7]), nav.jumps.join(','));
+
+/* ---- 10. modals from the corridor markers ------------------------------- */
+const modal = await p.evaluate(async () => {
+  const out = [];
+  const pins = [...document.querySelectorAll('.pin.is-live')];
+  for (const pin of pins) {
+    pin.click();
+    await new Promise(r => setTimeout(r, 400));
+    const openNow = document.getElementById('modal').classList.contains('is-open');
+    const title = document.querySelector('.modal-body h2')?.textContent || '';
+    const bullets = document.querySelectorAll('.md-bullets li').length;
+    window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Escape', bubbles: true }));
+    await new Promise(r => setTimeout(r, 400));
+    out.push({ label: pin.getAttribute('aria-label'), openNow, title, bullets,
+               closed: !document.getElementById('modal').classList.contains('is-open'),
+               refocused: document.activeElement === pin });
+  }
+  return out;
+});
+ok('every marker opens its modal', modal.length === 3 && modal.every(m => m.openNow && m.title && m.bullets > 2),
+   modal.map(m => `${m.title}(${m.bullets})`).join(', '));
+ok('escape closes the modal and returns focus to the marker',
+   modal.every(m => m.closed && m.refocused), modal.map(m => m.closed + '/' + m.refocused).join(' '));
+
+/* ---- 11. the awaiting-figure machinery is still alive -------------------- */
+const chips = await p.evaluate(async () => {
+  document.querySelector('.pin.is-live[aria-label*="E-Transit"]').click();
+  await new Promise(r => setTimeout(r, 300));
+  const inModal = document.querySelectorAll('.modal-body .ph-chip').length;
+  window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Escape', bubbles: true }));
+  await new Promise(r => setTimeout(r, 300));
+  return { inModal, inPage: document.querySelectorAll('#rows .ph-chip').length };
+});
+ok('awaiting-figure chips render where the data asks for them',
+   chips.inModal >= 1 && chips.inPage >= 1, JSON.stringify(chips));
+
+/* ---- 12. light-theme contrast of the smallest type ---------------------- */
+const contrast = await p.evaluate(() => {
+  const lum = c => { const v = c.map(x => x / 255).map(x => x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4));
+    return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]; };
+  const rgb = s => s.match(/\d+/g).slice(0, 3).map(Number);
+  const ratio = (a, b) => { const x = lum(rgb(a)), y = lum(rgb(b)); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+  const surface = getComputedStyle(document.querySelector('.panel')).backgroundColor;
+  const WHITE = 'rgb(255,255,255)';
+  const samples = {};
+  [['.facts-note', 'facts-note'], ['.metric-anchor', 'metric-anchor'], ['.ch-range', 'ch-range'],
+   ['.metric-label', 'metric-label'], ['.c-eyebrow', 'c-eyebrow'], ['.ch-note', 'ch-note']].forEach(([sel, name]) => {
+    const e = document.querySelector(sel);
+    if (e) samples[name] = +ratio(getComputedStyle(e).color, WHITE).toFixed(2);
+  });
+  return samples;
+});
+const worst = Math.min(...Object.values(contrast));
+ok('smallest type clears 4.5:1 on the panel', worst >= 4.5,
+   Object.entries(contrast).map(([k, v]) => `${k} ${v}`).join(', '));
+
+/* ---- 13. reduced motion ------------------------------------------------- */
+const rp = await page({ reducedMotion: 'reduce' });
+await rp.goto(HTTP, { waitUntil: 'networkidle' });
+await settle(rp);
+const still = await rp.evaluate(() => {
+  const none = s => getComputedStyle(document.querySelector(s)).animationName === 'none';
+  const dots = [...document.querySelectorAll('.pax-dot')].map(d => d.style.offsetDistance);
+  return { chev: none('.chev'), bob: none('.truck-bob'), dot: none('.pax-dot'),
+           spread: new Set(dots).size };
+});
+ok('reduced motion stops the chevrons, the bob and the passenger dots',
+   still.chev && still.bob && still.dot, JSON.stringify(still));
+ok('and the dots still stand spread along the route', still.spread > 15, `${still.spread} distinct offsets`);
+await rp.context().close();
+
+await browser.close();
+const fails = results.filter(r => r[0] === 'FAIL');
+results.forEach(([s, n, d]) => console.log(`  [${s}] ${n}${d ? '  — ' + d : ''}`));
+console.log(`\n${results.length - fails.length}/${results.length} passed`);
+process.exit(fails.length ? 1 : 0);
