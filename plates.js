@@ -1,52 +1,92 @@
 /* =========================================================================
-   PLATES + STAGES — the only coordinate authority in the page.
-   - Final rendered art replaces a plate by swapping `src` (and matching
-     `width`/`height`, or updating them here in the same commit).
-   - The route path `d` and all camera rects are expressed in MASTER PLATE
-     PIXELS (7680×2160). Layout code holds no plate coordinates.
-   - Truck anchors are arc-length fractions (0..1) along the route path.
-   See ASSETS.md for the art request and drop-in rules.
+   JOURNEY GEOMETRY — the only coordinate authority in the page.
+
+   The corridor is authored in a PAGE SPACE of 1600 x 4800 units and rendered
+   as six stacked 1600 x 800 section plates. The page maps that space to the
+   viewport by width, so one page unit is (viewportWidth / 1600) CSS pixels and
+   every y below is directly comparable to the art.
+
+   The page is ten rows of 480 units, one per stage, and each stage's landmark
+   in the art sits on its row's centre line (240, 720, 1200 ... 4560). The
+   truck rides the road at the viewport's focus line, so whatever is beside it
+   on screen is always the landmark for the stage being read.
+
+   To install final rendered art: drop the image in as assets/plates/vertical/
+   sN.jpg (any format the browser reads works — update `src` here if the
+   extension changes). If the render moves the road, re-trace
+   JOURNEY.route.d against it — the glow trail, the flowing chevrons, the map
+   pins and the truck all derive from that one path.
+
+   The shipped plates are rendered by tools/build_plates.py (SVG) and
+   tools/rasterise.mjs (JPEG). build_plates.py prints the route path to paste
+   in below. See ASSETS.md.
    ========================================================================= */
-window.PLATES = {
-  master: {
-    src: "assets/plates/master-corridor.svg", width: 7680, height: 2160,
-    route: {
-      d: "M 340 1340 C 1000 1338, 1600 1334, 2400 1330 C 3100 1326, 3500 1322, 4200 1318 C 4900 1312, 5400 1304, 6000 1294 C 6600 1282, 7050 1262, 7420 1245",
-      anchors: {
-        approach:    0.040,
-        gate:        0.105,
-        gateCleared: 0.172,
-        transit:     0.350,
-        warehouse:   0.530,
-        declaration: 0.740,
-        exit:        0.940,
-        final:       0.970
-      }
-    }
+window.JOURNEY = {
+  page: { w: 1600, h: 4800 },
+  rows: 10,
+
+  sections: [1, 2, 3, 4, 5, 6].map(function (n) {
+    return { src: "assets/plates/vertical/s" + n + ".jpg", w: 2000, h: 1000 };
+  }),
+
+  // Traced down the offside lane: right-hand traffic coming toward the camera
+  // sits left of the centre line.
+  route: {
+    // Road half-width at page y, matching tools/build_plates.py exactly:
+    //   halfw(y) = base + span * ((y - horizon) / (pageH - horizon)) ** exp
+    // The page uses it to scale the flowing chevrons and to place map pins,
+    // so a re-traced route must bring these with it.
+    width: { horizon: 260, base: 30, span: 150, exp: 1.25 },
+    d: "M 780.2 306 Q 776.6 416 774.6 471 Q 772.6 526 770.5 581 Q 768.4 636 766.2 691 Q 764 746 761.8 801 Q 759.6 856 757.5 911 Q 755.4 966 753.4 1021 Q 751.4 1076 749.6 1131 Q 747.8 1186 746.3 1241 Q 744.8 1296 743.6 1351 Q 742.3 1406 741.5 1461 Q 740.6 1516 740.2 1571 Q 739.8 1626 740 1681 Q 740.2 1736 740.9 1791 Q 741.6 1846 742.8 1901 Q 744 1956 745.5 2011 Q 747.1 2066 748.8 2121 Q 750.6 2176 752.6 2231 Q 754.5 2286 756.6 2341 Q 758.6 2396 760.6 2451 Q 762.6 2506 764.4 2561 Q 766.3 2616 767.9 2671 Q 769.5 2726 770.9 2781 Q 772.2 2836 773.1 2891 Q 773.9 2946 774.3 3001 Q 774.7 3056 774.4 3111 Q 774.2 3166 773.3 3221 Q 772.3 3276 770.7 3331 Q 769.1 3386 766.9 3441 Q 764.8 3496 762.1 3551 Q 759.5 3606 756.5 3661 Q 753.4 3716 750.1 3771 Q 746.8 3826 743.3 3881 Q 739.8 3936 736.2 3991 Q 732.6 4046 729.1 4101 Q 725.5 4156 722 4211 Q 718.5 4266 715.2 4321 Q 711.9 4376 708.9 4431 Q 705.9 4486 703.3 4541 Q 700.7 4596 698.5 4651 Q 696.4 4706 695.3 4740.5 L 694.2 4775",
+    lane: -0.48
   },
+
+  truck: {
+    // Fraction of the viewport height the truck holds while scrolling. Slightly
+    // below centre so the road ahead of it stays visible.
+    focus: 0.56,
+    // Page y at which the consignment picks up each state.
+    variants: [{ from: 0, name: "closed" }, { from: 1420, name: "scanned" }, { from: 2180, name: "sealed" }]
+  },
+
+  // Map markers pinned to the corridor, in page coordinates.
+  pins: [
+    { y: 1200, side: 1,  icon: "shield", label: "Border checkpoint" },
+    { y: 1402, side: -1, icon: "scan",   label: "Inspection portal" },
+    { y: 1560, side: -1, icon: "cam",    label: "Customs CCTV" },
+    { y: 1810, side: 1,  icon: "cam",    label: "Police camera network" },
+    { y: 2160, side: 1,  icon: "box",    label: "Customs warehouse" },
+    { y: 2640, side: -1, icon: "doc",    label: "Declaration processing" },
+    { y: 3120, side: 1,  icon: "check",  label: "Release" },
+    { y: 3600, side: -1, icon: "loop",   label: "Importer premises" },
+    { y: 4080, side: 1,  icon: "plane",  label: "Passenger terminal" }
+  ]
+};
+
+/* Per stage: which secondary plate (if any) this stage can cut to, the truck
+   state at its row, and — stage 2 only — the per-mode overrides. Row order is
+   array order; row n owns page y (n-1)*800 .. n*800.                        */
+window.STAGES = [
+  { n: 1,  key: "baseline",    cut: null },
+  { n: 2,  key: "flows",       cut: null,
+    modes: { road: { cut: null }, rail: { cut: "railTerminal" }, air: { cut: "airApron" } } },
+  { n: 3,  key: "border",      cut: null },
+  { n: 4,  key: "transit",     cut: null },
+  { n: 5,  key: "warehouse",   cut: "warehouseInterior" },
+  { n: 6,  key: "declaration", cut: "targetingCentre" },
+  { n: 7,  key: "release",     cut: null },
+  { n: 8,  key: "pca",         cut: "targetingCentre" },
+  { n: 9,  key: "passengers",  cut: "airportArrivals" },
+  { n: 10, key: "close",       cut: null }
+];
+
+/* Secondary plates — shown in the stage's cut-in panel and the targeting
+   centre modal. Instantiated at load; nothing loads later.                  */
+window.PLATES = {
+  roadCorridor:      { src: "assets/plates/vertical/s2.jpg",        width: 2000, height: 1000 },
   railTerminal:      { src: "assets/plates/rail-terminal.svg",      width: 2560, height: 1440 },
   airApron:          { src: "assets/plates/air-apron.svg",          width: 2560, height: 1440 },
   warehouseInterior: { src: "assets/plates/warehouse-interior.svg", width: 2560, height: 1440 },
   targetingCentre:   { src: "assets/plates/targeting-centre.svg",   width: 2560, height: 1440 },
   airportArrivals:   { src: "assets/plates/airport-arrivals.svg",   width: 2560, height: 1440 }
 };
-
-/* Per stage:
-   - camera: master-plate rect {x, y, w} (16:9 window, h = w * 1080/1920),
-     or {fit:"contain"} for the full-corridor pull-back.
-   - cut: secondary plate id shown over the corridor (camera still holds the
-     master position behind it, so returning to the corridor stays seamless).
-   - truck: route anchor name; variant: sprite state at that stage.       */
-window.STAGES = [
-  { n: 1,  key: "baseline",    cut: null,                camera: { x: 0,    y: 0,   w: 3840 }, truck: "approach",    variant: "closed"  },
-  { n: 2,  key: "flows",       cut: null,                camera: { x: 150,  y: 124, w: 3400 }, truck: "gate",        variant: "closed",
-    modes: { road: { cut: null }, rail: { cut: "railTerminal" }, air: { cut: "airApron" } } },
-  { n: 3,  key: "border",      cut: null,                camera: { x: 120,  y: 420, w: 2400 }, truck: "gateCleared", variant: "scanned" },
-  { n: 4,  key: "transit",     cut: null,                camera: { x: 1500, y: 330, w: 2900 }, truck: "transit",     variant: "scanned" },
-  { n: 5,  key: "warehouse",   cut: "warehouseInterior", camera: { x: 2950, y: 380, w: 2900 }, truck: "warehouse",   variant: "sealed"  },
-  { n: 6,  key: "declaration", cut: "targetingCentre",   camera: { x: 4420, y: 330, w: 2900 }, truck: "declaration", variant: "sealed"  },
-  { n: 7,  key: "release",     cut: null,                camera: { x: 4680, y: 300, w: 3000 }, truck: "exit",        variant: "sealed"  },
-  { n: 8,  key: "pca",         cut: "targetingCentre",   camera: { x: 4680, y: 300, w: 3000 }, truck: "exit",        variant: "sealed"  },
-  { n: 9,  key: "passengers",  cut: "airportArrivals",   camera: { x: 4680, y: 300, w: 3000 }, truck: "exit",        variant: "sealed"  },
-  { n: 10, key: "close",       cut: null,                camera: { fit: "contain" },           truck: "final",       variant: "sealed"  }
-];
