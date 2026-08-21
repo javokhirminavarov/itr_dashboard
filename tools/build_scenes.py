@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """
-Generates the secondary scene plates in assets/plates/ — the images the stage
-cards cut to (rail terminal, air apron, warehouse interior, targeting centre,
-airport arrivals).
+Generates the secondary scene plates in assets/plates/ — the images the section
+cards cut to (warehouse interior, targeting centre, airport arrivals).
 
-They share the corridor's register deliberately: same dusk palette, same bloom
-and grain, same rule that a plate carries no text, no numbers and no UI. A
-schematic thumbnail beside a rendered corridor reads as an unfinished asset.
+All three are interiors, and an interior is lit by its own lights whatever the
+sky outside is doing — so they keep their own register rather than being
+repainted to match the daylight corridor. What does have to agree with the
+corridor is anything you can see THROUGH: a dock door standing open, the
+glazing along an arrivals hall. Those read as a bright day.
+
+They share the corridor's other rules: same grain, and no plate carries text,
+numbers or UI. A schematic thumbnail beside a rendered corridor reads as an
+unfinished asset.
 
 The targeting centre is the one scene with a hard content rule: its screens are
 BLANK GLOWS. Nothing on a wall in that room may be legible.
@@ -16,7 +21,7 @@ The generated SVGs are committed; the page needs no build step.
 """
 import math, os, random, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from build_plates import mix, shade, rgb, f, window_grid, solid, check_refs, TEAL, WARM
+from build_plates import f, window_grid, solid, check_refs, WARM
 
 W, H = 1600, 900
 OUT = os.path.join(os.path.dirname(__file__), "..", "assets", "plates")
@@ -107,95 +112,6 @@ def floorlines(horizon, vpx, n=16, col="#4a5a55", op=0.16):
             f(y), f(y), col, f(op * 0.7)))
     return "".join(o)
 
-# --------------------------------------------------------- rail terminal ----
-def rail_terminal():
-    HZ = 380.0
-    o = [defs("#080f18", "#28464b", "#1b2422", "#0c1211", HZ)]
-    r = random.Random(3)
-    # distant yard buildings and mast lights
-    for i in range(9):
-        bx, bw, bh = r.uniform(-40, 1520), r.uniform(90, 220), r.uniform(50, 130)
-        o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="%s" opacity="0.9"/>' % (
-            f(bx), f(HZ - bh), f(bw), f(bh), mix("#16242c", "#2c464e", r.uniform(.1, .5))))
-    o.append('<g filter="url(#soft)"><rect y="%s" width="1600" height="10" fill="#3b5a5e" opacity="0.4"/></g>' % f(HZ - 4))
-    # tracks running to the vanishing point
-    o.append(floorlines(HZ, 830, 14, "#5b6b66", 0.13))
-    for i in range(5):
-        x0 = 120 + i * 330
-        o.append('<path d="M %s 920 L %s %s" stroke="#6d7d78" stroke-width="4" opacity="0.35" fill="none"/>' % (
-            f(x0), f(830 - (830 - x0) * 0.06), f(HZ + 6)))
-        o.append('<path d="M %s 920 L %s %s" stroke="#6d7d78" stroke-width="4" opacity="0.35" fill="none"/>' % (
-            f(x0 + 62), f(830 - (830 - x0 - 62) * 0.06), f(HZ + 6)))
-    # gantry crane spanning the yard
-    o.append('<rect x="120" y="150" width="1360" height="26" fill="#2b3a40"/>')
-    o.append('<rect x="120" y="176" width="1360" height="9" fill="#141d21"/>')
-    for lx in (170, 640, 1080, 1430):
-        o.append('<rect x="%s" y="185" width="26" height="430" fill="#243239"/>' % f(lx))
-        o.append('<rect x="%s" y="600" width="54" height="22" fill="#1a2429"/>' % f(lx - 14))
-    o.append('<rect x="700" y="176" width="150" height="70" rx="8" fill="#2f4149"/>')
-    o.append('<rect x="716" y="192" width="118" height="34" fill="#9fe8dc" opacity="0.35" filter="url(#bloom-s)"/>')
-    o.append('<path d="M 775 246 L 775 340 M 745 340 h 60" stroke="#3a4a50" stroke-width="7" fill="none"/>')
-    # wagons + container stacks
-    r2 = random.Random(19)
-    cols = ["#2f4a4a", "#4a3a2c", "#33403a", "#3d3346", "#2b3d4c"]
-    for i in range(4):
-        y = 470 + i * 92
-        sw = 0.55 + i * 0.16
-        for j in range(6):
-            bx = 60 + j * (250 * sw) + r2.uniform(-14, 14)
-            o.append(solid(bx, y + 60 * sw, 210 * sw, 74 * sw, 26 * sw,
-                           r2.choice(cols), "#141c1f", "#2b3940", -0.5))
-            o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="#0d1416" opacity="0.45"/>' % (
-                f(bx), f(y + 60 * sw - 74 * sw), f(210 * sw), f(5 * sw)))
-        o.append('<rect x="0" y="%s" width="1600" height="%s" fill="#0a1012" opacity="0.5" filter="url(#soft)"/>' % (
-            f(y + 62 * sw), f(12 * sw)))
-    for lx in (250, 800, 1350):
-        o.append(lamp(lx, 470, 1.0, WARM, 320))
-    o.append('<rect y="%s" width="1600" height="120" fill="#050b0d" opacity="0.35" filter="url(#near)"/>' % f(H - 120))
-    return wrap("Rail terminal", "".join(o))
-
-# ------------------------------------------------------------- air apron ----
-def air_apron():
-    HZ = 400.0
-    o = [defs("#070e17", "#2a4750", "#20262a", "#0d1215", HZ)]
-    r = random.Random(11)
-    o.append('<g filter="url(#soft)"><rect y="%s" width="1600" height="12" fill="#3b5a5e" opacity="0.45"/></g>' % f(HZ - 6))
-    for i in range(7):
-        o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="%s"/>' % (
-            f(r.uniform(-40, 1500)), f(HZ - r.uniform(30, 90)), f(r.uniform(120, 280)),
-            f(90), mix("#16242c", "#2b444c", r.uniform(.1, .5))))
-    # apron markings
-    o.append(floorlines(HZ, 800, 10, "#c9cfae", 0.09))
-    for i in range(3):
-        o.append('<path d="M %s 900 L %s %s" stroke="#c9cfae" stroke-width="9" opacity="0.14" '
-                 'stroke-dasharray="42 34" fill="none"/>' % (f(300 + i * 500), f(760 + i * 40), f(HZ + 20)))
-    # freighter, three-quarter from behind, nose gear off to the left
-    o.append('<ellipse cx="820" cy="690" rx="520" ry="52" fill="#04090b" opacity="0.5" filter="url(#soft)"/>')
-    o.append('<path d="M 300 520 L 1180 520 q 120 0 120 62 q 0 62 -120 62 L 300 644 q -80 -62 0 -124 Z" fill="#c6cfcd"/>')
-    o.append('<path d="M 300 528 L 1180 528 q 100 0 100 54 L 300 582 Z" fill="#e2e8e6" opacity="0.55"/>')
-    o.append('<path d="M 1120 520 L 1330 300 L 1400 300 L 1250 520 Z" fill="#aab5b3"/>')
-    o.append('<path d="M 1155 520 L 1300 318 L 1330 318 L 1215 520 Z" fill="#8fa4b4" opacity="0.55"/>')
-    o.append('<path d="M 700 560 L 470 760 L 590 762 L 830 590 Z" fill="#b3bdbb"/>')
-    o.append('<path d="M 700 566 L 980 700 L 900 704 L 660 596 Z" fill="#9aa5a3" opacity="0.8"/>')
-    for ex, ey in ((640, 640), (900, 636)):
-        o.append('<ellipse cx="%s" cy="%s" rx="46" ry="34" fill="#4a5a5e"/>' % (f(ex), f(ey)))
-        o.append('<ellipse cx="%s" cy="%s" rx="30" ry="22" fill="#101a1e"/>' % (f(ex), f(ey)))
-    for i in range(11):     # cabin windows
-        o.append('<rect x="%s" y="546" width="12" height="9" rx="2" fill="#ffe6b8" opacity="0.7"/>' % f(340 + i * 70))
-    o.append('<circle cx="292" cy="560" r="7" fill="#ff5f4d" filter="url(#bloom-s)"/>')
-    o.append('<circle cx="1392" cy="308" r="7" fill="#ffffff" filter="url(#bloom-s)"/>')
-    # ULD trains and a loader
-    r3 = random.Random(31)
-    for i in range(6):
-        bx = 180 + i * 150
-        o.append(solid(bx, 810, 118, 66, 30, r3.choice(["#4a5c60", "#3d4c50", "#55666a"]), "#1a2428", "#5f7074", -0.5))
-    o.append(solid(1180, 800, 190, 96, 44, "#2c3a3e", "#1a2428", "#3b4a4e", -0.5))
-    o.append('<rect x="1196" y="716" width="120" height="10" fill="#4d5f63"/>')
-    o.append('<circle cx="1200" cy="712" r="6" fill="#ffb24a" filter="url(#bloom-s)"/>')
-    for lx in (140, 780, 1420):
-        o.append(lamp(lx, 470, 1.05, "#dfe9f2", 360))
-    return wrap("Air cargo apron", "".join(o))
-
 # ------------------------------------------------- warehouse interior -------
 def warehouse_interior():
     HZ = 300.0
@@ -217,15 +133,20 @@ def warehouse_interior():
             for c in range(3):
                 o.append('<rect x="%s" y="%s" width="86" height="62" fill="%s" opacity="0.85"/>' % (
                     f(x - 170 + c * 118), f(y + 62), ["#4a3a2c", "#2f4a4a", "#3a4038"][c]))
-    # dock doors on the back wall — one open onto the night
+    # dock doors on the back wall — one standing open onto the daylight
     for i in range(3):
         dx = 540 + i * 200
         lit = i == 1
         o.append('<rect x="%s" y="%s" width="150" height="150" fill="%s"/>' % (
-            f(dx), f(HZ - 150), "#2b4048" if lit else "#121b1f"))
+            f(dx), f(HZ - 150), "#e6f1f6" if lit else "#121b1f"))
         if lit:
-            o.append('<rect x="%s" y="%s" width="150" height="150" fill="#7fd4c4" opacity="0.16" '
+            # daylight spilling in past the door, and the patch of it that
+            # lands on the bay floor
+            o.append('<rect x="%s" y="%s" width="150" height="150" fill="#ffffff" opacity="0.5" '
                      'filter="url(#glow)"/>' % (f(dx), f(HZ - 150)))
+            o.append('<path d="M %s %s L %s %s L %s %s L %s %s Z" fill="#dcebf2" opacity="0.16" '
+                     'filter="url(#soft)"/>' % (f(dx), f(HZ), f(dx + 150), f(HZ),
+                                                f(dx + 260), f(HZ + 250), f(dx - 110), f(HZ + 250)))
         for b in range(6):
             o.append('<rect x="%s" y="%s" width="150" height="3" fill="#0b1215" opacity="0.7"/>' % (
                 f(dx), f(HZ - 150 + b * 25)))
@@ -298,8 +219,11 @@ def airport_arrivals():
         o.append('<rect x="%s" y="%s" width="%s" height="14" rx="6" fill="#1d282e"/>' % (
             f(90 + i * 150 - i * 4), f(40 + i * 6), f(120)))
     o.append('<rect x="180" y="34" width="1240" height="9" fill="#ffeec4" opacity="0.75" filter="url(#bloom)"/>')
-    o.append('<rect x="330" y="%s" width="940" height="180" fill="#16222a"/>' % f(HZ - 180))
-    o.append(window_grid(350, HZ - 170, 900, 150, 12, 2, 5, "#8fd4e6", 0.35))
+    o.append('<rect x="330" y="%s" width="940" height="180" fill="#243640"/>' % f(HZ - 180))
+    o.append(window_grid(350, HZ - 170, 900, 150, 12, 2, 5, "#dbeef8", 0.85))
+    # the daylight those windows are letting in, washing down the back wall
+    o.append('<rect x="330" y="%s" width="940" height="180" fill="#dbeef8" opacity="0.3" '
+             'filter="url(#glow)"/>' % f(HZ - 180))
     o.append(floorlines(HZ, 800, 14, "#6b7b76", 0.11))
     # control booths across the hall, lanes between them
     for i in range(5):
@@ -320,8 +244,8 @@ def airport_arrivals():
     return wrap("Airport arrivals hall", "".join(o))
 
 def main():
-    scenes = [("rail-terminal.svg", rail_terminal), ("air-apron.svg", air_apron),
-              ("warehouse-interior.svg", warehouse_interior), ("targeting-centre.svg", targeting_centre),
+    scenes = [("warehouse-interior.svg", warehouse_interior),
+              ("targeting-centre.svg", targeting_centre),
               ("airport-arrivals.svg", airport_arrivals)]
     for name, fn in scenes:
         svg = fn()

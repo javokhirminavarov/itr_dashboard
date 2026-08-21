@@ -7,37 +7,44 @@
      inert on https. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' file:; style-src 'self' 'unsafe-inline' file:; img-src 'self' data: file:; font-src 'self' data: file:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
-<title>One Consignment — Border to Audit · Uzbekistan Customs</title>
+<meta name="color-scheme" content="light">
+<title>Risk management, end to end · Uzbekistan Customs</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-stage="1" data-view="journey" data-mode="road">
+<body data-beat="cooperation" data-section="1" data-view="journey">
 
 <div id="progress" aria-hidden="true"><i></i></div>
 
 <header id="topbar">
   <div class="brand" id="brand"></div>
-  <nav id="tabs" aria-label="Flow"></nav>
-  <button id="overview-btn" type="button">OVERVIEW</button>
+  <nav id="nav" aria-label="Sections"></nav>
+  <button id="overview-btn" type="button">RUNNING ORDER</button>
 </header>
 
-<main id="journey" aria-label="Border to audit journey">
+<!-- Sections 1 and 2 are screens, not places on the road. -->
+<div id="screens-before"></div>
+
+<main id="journey" aria-label="Border to audit corridor">
   <div id="corridor" aria-hidden="true"></div>
-  <!-- page-space overlay: everything inside uses 1600x8000 corridor coordinates -->
+  <!-- page-space overlay: everything inside uses 1600x4800 corridor coordinates -->
   <div id="overlay-space" aria-hidden="true">
-    <svg id="route-layer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 8000"
+    <svg id="route-layer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 4800"
          preserveAspectRatio="none" focusable="false"></svg>
     <div id="truck"></div>
   </div>
-  <!-- pins live in screen space and are positioned in per-cent of the corridor,
-       so they keep a constant on-screen size at any viewport width -->
-  <div id="pins" aria-hidden="true"></div>
+  <!-- pins and building captions live in screen space and are positioned in
+       per-cent of the corridor, so they keep a constant on-screen size at any
+       viewport width -->
+  <div id="labels" aria-hidden="true"></div>
+  <div id="pins"></div>
   <div id="rows"><div id="spine" aria-hidden="true"></div></div>
 </main>
 
-<!-- tail: the closing statement, and the scroll room the last stage needs
-     to reach the truck's focus line -->
+<!-- Section 7 is a screen too. -->
+<div id="screens-after"></div>
+
+<!-- tail: the closing statement, and the scroll room the last beat needs -->
 <section id="tail"></section>
 
 <footer id="bottombar">
@@ -46,10 +53,10 @@
   <span id="illustrative"></span>
 </footer>
 
-<div id="overview" aria-label="Stage overview"></div>
-<div id="modal" aria-label="Targeting centre"></div>
+<div id="overview" aria-label="Running order"></div>
+<div id="modal" role="dialog" aria-modal="true" aria-label="Information system"></div>
 
-<noscript><p style="color:#e9f2ef;font-family:system-ui;padding:2rem">This presentation requires JavaScript (it runs fully offline).</p></noscript>
+<noscript><p style="color:#10201f;font-family:system-ui;padding:2rem">This presentation requires JavaScript (it runs fully offline).</p></noscript>
 
 <!-- demoData first: the single source of every word and figure on screen -->
 <script src="demo-data.js"></script>
