@@ -1,27 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>itr_dashboard</title>
-  <style>
-    :root { color-scheme: light dark; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
-    }
-    main { text-align: center; padding: 2rem; }
-    h1 { margin: 0 0 .5rem; font-size: 1.5rem; }
-    p { margin: 0; opacity: .7; }
-  </style>
+<meta charset="utf-8">
+<!-- No network after load, structurally: connect-src 'none'. The page runs
+     identically from file:// and from a static host; the file: sources are
+     inert on https. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' file:; style-src 'self' 'unsafe-inline' file:; img-src 'self' data: file:; font-src 'self' data: file:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>One Consignment — Border to Audit · Uzbekistan Customs</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <main>
-    <h1>itr_dashboard</h1>
-    <p>Clean slate &mdash; ready for the new build.</p>
-  </main>
+<body data-stage="1" data-view="stage">
+
+<div id="fitbox">
+  <div id="stage1920">
+    <div id="world">
+      <!-- master corridor plate is inserted here by app.js (from plates.js) -->
+      <svg id="route-layer" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="truck"></div>
+    </div>
+    <div id="cutlayer"></div>
+    <div id="vignette"></div>
+    <div id="overlays"></div>
+    <nav id="rail" aria-label="Stages"></nav>
+    <footer id="footer"></footer>
+    <div id="overview" aria-label="Stage overview"></div>
+  </div>
+</div>
+
+<noscript><p style="color:#e9f2ef;font-family:system-ui;padding:2rem">This presentation requires JavaScript (it runs fully offline).</p></noscript>
+
+<!-- demoData first: the single source of every word and figure on screen -->
+<script src="demo-data.js"></script>
+<script src="plates.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
