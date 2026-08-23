@@ -121,22 +121,40 @@ await p.waitForTimeout(300);
 
 /* ---- 6. the consignment runs the route, and picks up its states in order -- */
 const run = await p.evaluate(async () => {
-  const seen = [], states = [];
+  const truck = document.getElementById('truck');
+  const seen = [], states = [], held = [], turns = [];
+  const hold = window.JOURNEY.route.width.holdY, exit = window.JOURNEY.truck.exit;
   const H = document.body.scrollHeight;
   for (let t = 0; t <= 1.0001; t += 0.02) {
     window.scrollTo({ top: H * t, behavior: 'instant' });
     await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-    const m = /translate\(([-\d.]+)px,\s*([-\d.]+)px\)/.exec(document.getElementById('truck').style.transform);
+    const tr = truck.style.transform;
+    const m = /translate\(([-\d.]+)px,\s*([-\d.]+)px\)/.exec(tr);
+    const z = /scale\(([-\d.]+)\)/.exec(tr), a = /rotate\(([-\d.]+)deg\)/.exec(tr);
     if (m) seen.push(+m[2]);
+    // past the hold the corridor is at one scale, so the consignment is too
+    if (m && z && +m[2] > hold + 100) held.push(+z[1]);
+    if (a) turns.push(Math.abs(+a[1]));
     const on = [...document.querySelectorAll('.truck-variant[data-variant].is-on')].map(v => v.dataset.variant);
     const s = on.includes('sealed') ? 'sealed' : on.includes('scanned') ? 'scanned' : 'closed';
     if (states[states.length - 1] !== s) states.push(s);
   }
-  return { monotone: seen.every((v, i) => i === 0 || v >= seen[i - 1] - 0.01), span: [seen[0], seen[seen.length - 1]], states };
+  return { monotone: seen.every((v, i) => i === 0 || v >= seen[i - 1] - 0.01), span: [seen[0], seen[seen.length - 1]], states,
+           held: [Math.min(...held), Math.max(...held)], maxTurn: Math.max(...turns),
+           endOpacity: +getComputedStyle(truck).opacity, exit };
 });
 ok('consignment moves down the route monotonically', run.monotone, run.span.map(v => v?.toFixed(0)).join(' → '));
 ok('states arrive in order closed → scanned → sealed',
    JSON.stringify(run.states) === JSON.stringify(['closed', 'scanned', 'sealed']), run.states.join(' → '));
+// The corridor used to grow about six-fold between the border and the city,
+// which on a scrolled page reads as a zoom rather than as travel.
+ok('the corridor holds one scale past the hold', run.held[1] - run.held[0] < 0.001,
+   `consignment ${run.held[0].toFixed(3)} → ${run.held[1].toFixed(3)}`);
+// It used to be held at the last point of the route with no heading to read,
+// which turned it a quarter circle across the carriageway.
+ok('the consignment never turns across the carriageway', run.maxTurn < 20, `worst ${run.maxTurn.toFixed(1)}°`);
+ok('and is gone once it has been delivered', run.endOpacity === 0,
+   `opacity ${run.endOpacity} below y ${run.exit.to}`);
 
 /* ---- 7. the 2018 frame -------------------------------------------------- */
 const frame = await p.evaluate(async () => {
@@ -220,6 +238,33 @@ ok('every marker opens its modal', modal.length === 3 && modal.every(m => m.open
    modal.map(m => `${m.title}(${m.bullets})`).join(', '));
 ok('escape closes the modal and returns focus to the marker',
    modal.every(m => m.closed && m.refocused), modal.map(m => m.closed + '/' + m.refocused).join(' '));
+
+/* ---- 10b. and a real pointer reaches them -------------------------------- */
+/* pin.click() dispatches on the element and so passes even when something is
+   lying over it — which is exactly how the corridor rows came to swallow every
+   click aimed at a marker. Hit-test the point a reader would actually press. */
+const reachable = await p.evaluate(async () => {
+  const out = [];
+  const root = document.documentElement, was = root.style.scrollBehavior;
+  root.style.scrollBehavior = 'auto';        // a smooth scroll still in flight moves the target
+  for (const pin of document.querySelectorAll('.pin.is-live')) {
+    let r = pin.getBoundingClientRect();
+    for (let i = 0; i < 4 && Math.abs(r.top - innerHeight / 2) > 2; i++) {
+      window.scrollTo({ top: window.scrollY + r.top - innerHeight / 2, behavior: 'instant' });
+      await new Promise(res => setTimeout(res, 250));
+      r = pin.getBoundingClientRect();
+    }
+    const hit = document.elementFromPoint(r.left + r.width / 2, r.top + r.height * 0.3);
+    out.push({ label: pin.getAttribute('aria-label'),
+               centred: Math.abs(r.top - innerHeight / 2) <= 2,
+               reached: !!hit && pin.contains(hit),
+               over: hit ? (hit.className.baseVal ?? hit.className) || hit.tagName : 'nothing' });
+  }
+  root.style.scrollBehavior = was;
+  return out;
+});
+ok('a click on a marker reaches the marker', reachable.every(r => r.centred && r.reached),
+   reachable.filter(r => !r.reached).map(r => `${r.label} → ${r.over}`).join('; ') || `${reachable.length} markers`);
 
 /* ---- 11. the awaiting-figure machinery is still alive -------------------- */
 const chips = await p.evaluate(async () => {

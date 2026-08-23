@@ -56,11 +56,29 @@ def cx(y):
                           (-p0 + 3 * p1 - 3 * p2 + p3) * t3)
     return 800.0
 
+# The corridor establishes its depth once and then HOLDS it. A perspective run
+# all the way to the foot of the page grows the road, the props and the
+# consignment about six-fold between the border and the city, which on a page
+# that is scrolled reads as a slow zoom rather than as travel. So the ground
+# plane opens out over the first HOLD_Y units — the reader still comes over the
+# horizon into the corridor — and from there down every drawn thing keeps the
+# scale the old perspective reached at HOLD_REF, the middle of the corridor.
+HOLD_Y = 620.0                  # page y at which the corridor stops growing
+HOLD_REF = 2560.0               # the scale it settles on: mid-corridor
+HOLD_DEPTH = (HOLD_REF - HORIZON) / (TOTAL_H - HORIZON)
+HAZE_END = HOLD_Y + 300.0       # aerial perspective belongs to the ramp only
+
 def depth(y):
-    """0 at the horizon, 1 at the bottom of the page. Everything that has to
-    obey the ground plane is driven from this, which is what stops the corridor
-    reading as a flat diagram."""
-    return max(0.0, y - HORIZON) / (TOTAL_H - HORIZON)
+    """0 at the horizon, HOLD_DEPTH from HOLD_Y down.
+
+    Everything that has to obey the ground plane is driven from this. It is no
+    longer a straight ramp to the bottom of the page: past HOLD_Y the corridor
+    is at a constant scale, so scrolling reads as moving along the road rather
+    than as zooming into it. The ramp is smoothstepped so it arrives at the hold
+    with no rate of change — the road edges meet the held width tangentially
+    instead of turning a corner there."""
+    t = max(0.0, min(1.0, (y - HORIZON) / (HOLD_Y - HORIZON)))
+    return HOLD_DEPTH * t * t * (3.0 - 2.0 * t)
 
 def halfw(y):
     """Half the carriageway width at page y."""
@@ -175,7 +193,7 @@ def defs():
       '<stop offset="1" stop-color="' + ASPHALT_NEAR + '"/></linearGradient>'
       # haze thins as the ground comes toward the viewer — the single strongest
       # depth cue on the plate
-      '<linearGradient id="g-haze" gradientUnits="userSpaceOnUse" x1="0" y1="' + f(HORIZON - 50) + '" x2="0" y2="1900">'
+      '<linearGradient id="g-haze" gradientUnits="userSpaceOnUse" x1="0" y1="' + f(HORIZON - 50) + '" x2="0" y2="' + f(HAZE_END) + '">'
       '<stop offset="0" stop-color="' + HAZE + '" stop-opacity="0.6"/>'
       '<stop offset="0.1" stop-color="' + HAZE + '" stop-opacity="0.38"/>'
       '<stop offset="0.3" stop-color="' + HAZE + '" stop-opacity="0.19"/>'
@@ -501,8 +519,15 @@ PROPS = []      # (ymin, ymax, svg) — sliced per section
 def prop(ymin, ymax, svg):
     PROPS.append((ymin, ymax, svg))
 
+# A prop is emitted into every section its band reaches, plus a margin: at the
+# held scale the tallest structures stand ~7 road half-widths proud of their
+# own y, which is most of a section, and a prop missing from the section above
+# its band loses its roof at the seam.
+PROP_MARGIN = 700.0
+
 def props(y0, y1):
-    return "".join(s for (a, b, s) in PROPS if b > y0 - 60 and a < y1 + 60)
+    return "".join(s for (a, b, s) in PROPS
+                   if b > y0 - PROP_MARGIN and a < y1 + PROP_MARGIN)
 
 # =========================================================================
 # SCENE PROPS
@@ -515,11 +540,19 @@ def props(y0, y1):
 # =========================================================================
 
 # ------------------------------------------------ row 2 · the border gate ---
+# The border complex is authored in road half-widths like every other prop, but
+# it is by far the widest of them: 12.4 of them across the canopy. That was
+# comfortable while the perspective drew this row's road narrow, and fills the
+# frame edge to edge now that the corridor holds one scale. GATE_K takes the
+# whole composition — structure and apron alike — back to the footprint it had,
+# without touching any of its internal proportions.
+GATE_K = 0.62
+
 def _gate():
     y = R(2)
-    c, u, s = cx(y), halfw(y), sc(y)
+    c, u, s = cx(y), halfw(y) * GATE_K, sc(y) * GATE_K
     o = ['<path d="%s" fill="#b9c0b1" opacity="0.58" filter="url(#fx-soft)"/>'
-         % _strip(y - 232, y + 232, -4.6, 4.6)]
+         % _strip(y - 232, y + 232, -4.6 * GATE_K, 4.6 * GATE_K)]
     # the apron is painted over the carriageway, so put the road back on top of
     # it — the corridor has to run visibly under the canopy, not stop at it
     o.append('<path d="%s" fill="url(#g-asphalt)"/>' % _strip(y - 226, y + 232, -1, 1))
@@ -528,7 +561,7 @@ def _gate():
     for k in (-0.34, 0.34):
         o.append('<path d="%s" fill="#e8eee7" opacity="0.1"/>' % _strip(y - 196, y + 202, k - .02, k + .02))
     o.append('<path d="%s" fill="#5b6b52" opacity="0.22" filter="url(#fx-soft)"/>'
-             % _strip(y + 24, y + 122, -4.4, 4.4))
+             % _strip(y + 24, y + 122, -4.4 * GATE_K, 4.4 * GATE_K))
     # main hall, set back behind the canopy
     hall_w, hall_h = 10.2 * u, 3.0 * u
     o.append(solid(c - hall_w / 2, y - 2.8 * u, hall_w, hall_h, 1.1 * u, BLD_FACE, BLD_SIDE, BLD_TOP, 0.32))
@@ -797,10 +830,11 @@ def far_haze(y0, y1):
     This is the one cue that survives the trees. Applied inside ground() it
     only hazed the fields, and the crisp far road and crisp far gate then read
     flat against them; applied here it hazes whatever is standing at that
-    depth, which is what air actually does."""
-    if y0 > 1900:
+    depth, which is what air actually does. It stops at HAZE_END: below the
+    hold everything stands at the same depth, so there is no air to draw."""
+    if y0 > HAZE_END:
         return ""
-    b = min(y1 + 2, 1900.0)
+    b = min(y1 + 2, HAZE_END)
     return '<rect x="0" y="%s" width="1600" height="%s" fill="url(#g-haze)"/>' % (f(y0), f(b - y0))
 
 # --------------------------------------------------------------- assembly --

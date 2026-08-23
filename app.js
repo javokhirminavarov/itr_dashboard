@@ -606,14 +606,20 @@
   /* ---------------- corridor geometry ---------------- */
   // Mirrors tools/build_plates.py exactly; the parameters live in plates.js.
   var WP = J.route.width;
-  function halfwAt(y) {
-    var t = Math.max(0, y - WP.horizon) / (PAGE.h - WP.horizon);
-    return WP.base + WP.span * Math.pow(t, WP.exp);
+  // Mirrors depth()/halfw() in tools/build_plates.py: the corridor opens out
+  // over the first WP.holdY units, smoothstepped so it arrives at the hold with
+  // no rate of change, and then holds that scale to the foot of the page —
+  // nothing on the road grows as the reader scrolls.
+  function depthAt(y) {
+    var t = clamp((y - WP.horizon) / (WP.holdY - WP.horizon), 0, 1);
+    return WP.holdDepth * t * t * (3 - 2 * t);
   }
-  // The consignment is drawn 120 units wide. It grows with the road as the
-  // corridor comes toward the camera, but on a compressed curve: at full
-  // perspective it would be five times bigger at the city than at the border
-  // and would swamp the last rows.
+  function halfwAt(y) {
+    return WP.base + WP.span * Math.pow(depthAt(y), WP.exp);
+  }
+  // The consignment is drawn 120 units wide. It grows with the road while the
+  // corridor is still opening out, on a compressed curve, and then holds one
+  // size for the whole journey — the same law the road itself follows.
   var TW = 120, TH = 152;
   var TRUCK_MID = halfwAt(2400), TRUCK_UNITS = 74, TRUCK_GROWTH = 0.62;
   function truckScale(y) {
@@ -674,11 +680,16 @@
     }
     var a = SAMPLES[lo], b = SAMPLES[Math.min(SAMPLES.length - 1, lo + 1)];
     var t = b.y === a.y ? 0 : (y - a.y) / (b.y - a.y);
-    var ref = SAMPLES[Math.min(SAMPLES.length - 1, lo + 3)];
+    // Heading is read three samples ahead, from a pair that always exists: at
+    // the end of the table both ends of that pair collapse onto the last
+    // sample, and atan2(0, 0) is 0 — which would swing the consignment a
+    // quarter turn on the last frame of the corridor.
+    var i0 = Math.min(lo, SAMPLES.length - 4);
+    var head = SAMPLES[i0], ref = SAMPLES[i0 + 3];
     return {
       x: a.x + (b.x - a.x) * t,
       l: a.l + (b.l - a.l) * t,
-      a: Math.atan2(ref.y - a.y, ref.x - a.x) * 180 / Math.PI
+      a: Math.atan2(ref.y - head.y, ref.x - head.x) * 180 / Math.PI
     };
   }
 
@@ -1129,13 +1140,14 @@
 
   // The two buildings the talk names out loud. Drawn as HTML over the plate
   // rather than baked into it: the plates stay wordless, the type stays crisp
-  // at any width, and the caption follows the page's theme.
+  // at any width, and the caption follows the page's theme. The anchor is the
+  // middle of the building's roofline and the caption is centred on it (see
+  // JOURNEY.labels), so the words sit on the building itself.
   function buildLabels() {
     J.labels.forEach(function (lb) {
       var node = el("div", "blabel");
       place(node, lb.x, lb.y);
       node.appendChild(el("span", "bl-text", lb.text));
-      node.appendChild(el("span", "bl-stem"));
       $labels.appendChild(node);
     });
   }
@@ -1385,6 +1397,10 @@
     var ts = truckScale(pageY);
     $truck.style.transform = "translate(" + s.x.toFixed(2) + "px," + pageY.toFixed(2) + "px) rotate(" +
       (s.a - 90).toFixed(2) + "deg) scale(" + ts.toFixed(3) + ") translate(" + (-TW / 2) + "px," + (-TH) + "px)";
+    // delivered: the consignment fades out over the run-out below row 6 rather
+    // than driving on to the foot of the page
+    var ex = J.truck.exit;
+    $truck.style.opacity = clamp((ex.to - pageY) / (ex.to - ex.from), 0, 1).toFixed(3);
     var off = String(routeLen - s.l);
     routeGlow.style.strokeDashoffset = off;
     routeHalo.style.strokeDashoffset = off;

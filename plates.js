@@ -39,11 +39,17 @@ window.JOURNEY = {
   // sits left of the centre line.
   route: {
     // Road half-width at page y, matching tools/build_plates.py exactly:
-    //   halfw(y) = base + span * ((y - horizon) / (pageH - horizon)) ** exp
-    // The page uses it to scale the flowing chevrons, so a re-traced route must
-    // bring these with it.
-    width: { horizon: 260, base: 30, span: 150, exp: 1.25 },
-    d: "M 780.2 306 Q 776.6 416 774.6 471 Q 772.6 526 770.5 581 Q 768.4 636 766.2 691 Q 764 746 761.8 801 Q 759.6 856 757.5 911 Q 755.4 966 753.4 1021 Q 751.4 1076 749.6 1131 Q 747.8 1186 746.3 1241 Q 744.8 1296 743.6 1351 Q 742.3 1406 741.5 1461 Q 740.6 1516 740.2 1571 Q 739.8 1626 740 1681 Q 740.2 1736 740.9 1791 Q 741.6 1846 742.8 1901 Q 744 1956 745.5 2011 Q 747.1 2066 748.8 2121 Q 750.6 2176 752.6 2231 Q 754.5 2286 756.6 2341 Q 758.6 2396 760.6 2451 Q 762.6 2506 764.4 2561 Q 766.3 2616 767.9 2671 Q 769.5 2726 770.9 2781 Q 772.2 2836 773.1 2891 Q 773.9 2946 774.3 3001 Q 774.7 3056 774.4 3111 Q 774.2 3166 773.3 3221 Q 772.3 3276 770.7 3331 Q 769.1 3386 766.9 3441 Q 764.8 3496 762.1 3551 Q 759.5 3606 756.5 3661 Q 753.4 3716 750.1 3771 Q 746.8 3826 743.3 3881 Q 739.8 3936 736.2 3991 Q 732.6 4046 729.1 4101 Q 725.5 4156 722 4211 Q 718.5 4266 715.2 4321 Q 711.9 4376 708.9 4431 Q 705.9 4486 703.3 4541 Q 700.7 4596 698.5 4651 Q 696.4 4706 695.3 4740.5 L 694.2 4775",
+    //   t        = clamp((y - horizon) / (holdY - horizon), 0, 1)
+    //   depth(y) = holdDepth * t * t * (3 - 2t)
+    //   halfw(y) = base + span * depth(y) ** exp
+    // The corridor opens out over the first `holdY` units and then HOLDS that
+    // scale to the foot of the page: a perspective carried all the way down
+    // grows everything six-fold between the border and the city, which on a
+    // scrolled page reads as a zoom rather than as travel. The page uses this
+    // for the flowing chevrons and for the consignment's own size, so a
+    // re-traced route must bring these with it.
+    width: { horizon: 260, base: 30, span: 150, exp: 1.25, holdY: 620, holdDepth: 0.506608 },
+    d: "M 779.8 306 Q 767.9 416 759.1 471 Q 750.3 526 745.5 581 Q 740.8 636 739.2 691 Q 737.6 746 736.1 801 Q 734.5 856 733.1 911 Q 731.6 966 730.4 1021 Q 729.1 1076 728 1131 Q 726.9 1186 726.1 1241 Q 725.4 1296 724.9 1351 Q 724.4 1406 724.4 1461 Q 724.3 1516 724.7 1571 Q 725.1 1626 726.1 1681 Q 727.1 1736 728.6 1791 Q 730.2 1846 732.2 1901 Q 734.2 1956 736.6 2011 Q 739 2066 741.7 2121 Q 744.4 2176 747.2 2231 Q 750 2286 752.9 2341 Q 755.9 2396 758.8 2451 Q 761.7 2506 764.4 2561 Q 767.2 2616 769.8 2671 Q 772.3 2726 774.6 2781 Q 776.8 2836 778.7 2891 Q 780.5 2946 781.9 3001 Q 783.2 3056 783.9 3111 Q 784.7 3166 784.7 3221 Q 784.7 3276 784.1 3331 Q 783.5 3386 782.3 3441 Q 781.1 3496 779.5 3551 Q 777.9 3606 775.9 3661 Q 773.8 3716 771.6 3771 Q 769.3 3826 766.8 3881 Q 764.3 3936 761.8 3991 Q 759.2 4046 756.7 4101 Q 754.2 4156 751.7 4211 Q 749.3 4266 747.1 4321 Q 744.8 4376 742.9 4431 Q 741 4486 739.4 4541 Q 737.9 4596 736.8 4651 Q 735.7 4706 735.4 4740.5 L 735 4775",
     lane: -0.48
   },
 
@@ -51,6 +57,13 @@ window.JOURNEY = {
     // Fraction of the viewport height the truck holds while scrolling. Slightly
     // below centre so the road ahead of it stays visible.
     focus: 0.56,
+    // The consignment is delivered at the importer's premises (y 4304) and the
+    // corridor below row 6 is only the run-out to the foot of the page. It
+    // fades away over this stretch rather than driving on: the journey the deck
+    // describes is over by then, and the road runs out under it either way —
+    // held at the last point of the route, the consignment used to sit at the
+    // bottom of the page turned across the carriageway.
+    exit: { from: 4440, to: 4700 },
     // Page y at which the consignment picks up each state. `scanned` is the
     // inspection portal just past the gate; `sealed` is the GPS electronic seal
     // fitted at the transit gantry, which is what the row-3 copy describes.
@@ -77,10 +90,14 @@ window.JOURNEY = {
   // plate: the plates stay wordless (see ASSETS.md), the type stays crisp at
   // any viewport width, and the caption follows the page's own theme.
   //
-  // y is the highest point of the roof; the caption sits above it.
+  // The anchor is the middle of the building's own roofline — x is the centre
+  // of the roof as drawn (the warehouse's roof face is skewed back and to the
+  // left of its front wall, so that is not the centre of the footprint), and y
+  // is its top edge. The caption is centred on that point, so it reads as a
+  // sign on the building rather than as a tag floating in the sky above it.
   labels: [
-    { y: 838,  x: 745,  text: "Border checkpoint" },
-    { y: 2470, x: 1230, text: "Customs warehouse" }
+    { y: 848,  x: 772,  text: "Border checkpoint" },
+    { y: 2552, x: 1199, text: "Customs warehouse" }
   ],
 
   // Map markers pinned to the corridor, in page coordinates. A marker with a
