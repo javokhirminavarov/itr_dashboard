@@ -25,8 +25,10 @@ the contract that lets it drop in without touching layout code.
   `assets/plates/vertical/sN.jpg` (any format the browser reads works — update
   that section's `src` in `plates.js` if the extension changes). Nothing else
   changes.
-- If the final render **moves the road**, re-trace `JOURNEY.route.d` against it
-  and update `JOURNEY.route.width` to match the new road half-width law. The
+- If the final render **moves the road** or **changes its width law**, re-trace
+  `JOURNEY.route.d` against it and update `JOURNEY.route.width` — including
+  `holdY` and `holdDepth`, the point at which the corridor stops opening out
+  and the scale it holds from there down. The
   glow trail, the flowing chevrons, the map pins, the building captions and the
   truck all derive from those two values alone.
 
@@ -56,6 +58,14 @@ Content top → bottom, one landmark per row:
 - **No vegetation.** No trees, no bushes, no hedge lines. Depth is carried by
   aerial haze, by the field patchwork, and by the verge marker posts, whose
   drawn height and spacing are both pure functions of depth.
+- **One scale below the ramp.** The ground plane opens out over the first ~620
+  page units, out of the horizon, and then holds that scale to the foot of the
+  page: road width, prop size, field size and haze are all constant from there
+  down. A perspective carried the whole way grows everything about six-fold
+  between the border and the city, which on a page that is *scrolled* reads as
+  a slow zoom rather than as travel. A hand-rendered replacement must hold the
+  same discipline, and `JOURNEY.route.width` (`holdY`, `holdDepth`) must match
+  whatever law it uses.
 - **No text, no signage words, no numbers, no UI panels, and no flag.** Every
   word on screen is an HTML overlay — including the two building captions, see
   D3 below.
@@ -101,8 +111,10 @@ window wall. Those read as a bright day.
    locator motif; not yet placed).
 3. **Building captions are HTML overlays, not plate text.** "Border checkpoint"
    and "Customs warehouse" are positioned from `JOURNEY.labels` in page
-   coordinates, above each building's highest roof point. Do not bake them into
-   a plate; if a final render moves a roofline, move the `y` in `plates.js`.
+   coordinates and centred on the middle of each building's own roofline, so
+   the words sit on the building. Do not bake them into a plate; if a final
+   render moves a roofline, move the `x`/`y` in `plates.js` to the middle of
+   the roof as drawn.
 4. Customs Committee emblem. The page currently shows a neutral mark rather
    than a fake one — `buildChrome()` in `app.js` draws it.
 

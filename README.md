@@ -34,7 +34,11 @@ the customs warehouse, the declaration office and the importer's premises each
 sitting on their own row. The consignment drives that road as you scroll, and
 whatever landmark sits beside it is the beat you are reading: the six rows and
 the six section plates are the same grid, defined once in `plates.js`, so they
-cannot drift apart.
+cannot drift apart. The corridor opens out of the horizon over the first row
+and then holds one scale to the foot of the page — the road, the landmarks and
+the consignment are all the same size at the city as at the border, so
+scrolling reads as travel rather than as a slow zoom. The consignment is
+delivered at the importer's premises on the last row and fades out below it.
 
 The first corridor beat is the 2018 "before" frame, and it shows it: a queue of
 halted trucks standing between the consignment and the gate, two of them pulled
@@ -116,13 +120,16 @@ npx --no-install http-server -p 8099 -s .
 node tools/verify.mjs
 ```
 
-39 assertions. Zero network requests after load, on `file://` and `http://`; the
+43 assertions. Zero network requests after load, on `file://` and `http://`; the
 six corridor rows each exactly one sixth of the corridor; **every beat fitting
 the viewport it is presented in, and every row's content fitting its row**, at
 1920, 1600, 1440 and 1280; the consignment moving down the route monotonically
-and picking up its scanned and sealed states in order; no metric without an
-anchor and no chart without a caption; the full keyboard map; every marker
-opening its panel, `Esc` closing it and focus returning to the marker; no
+and picking up its scanned and sealed states in order, holding one size past
+the corridor's hold point, never turning across the carriageway, and being gone
+once it has been delivered; no metric without an anchor and no chart without a
+caption; the full keyboard map; every marker opening its panel — and a real
+pointer landing on the marker rather than on whatever is over it — `Esc`
+closing it and focus returning to the marker; no
 horizontal overflow at six widths; the smallest type on the page clearing 4.5:1
 against the panel; and reduced-motion behaviour, including that the passenger
 dots stay spread along their route rather than piling at the door when their
