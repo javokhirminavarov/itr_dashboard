@@ -11,7 +11,7 @@ self-contained — **no network access after load** (enforced by CSP
 | § | Section | How it is shown |
 |---|---|---|
 | 1 | International cooperation — WCO & Uzbekistan | screen |
-| 2 | Targeting centre — functions and structure | screen |
+| 2 | Targeting centre — eight functions, six monitored channels | screen |
 | 3 | The 2018 baseline, then vehicle entry at the border | two corridor beats, plus the inland-transit passage between 3 and 4 |
 | 4 | Customs warehouse information system | corridor beat |
 | 5 | Customs declaration clearance | corridor beat |
@@ -40,16 +40,16 @@ the consignment are all the same size at the city as at the border, so
 scrolling reads as travel rather than as a slow zoom. The consignment is
 delivered at the importer's premises on the last row and fades out below it.
 
-The first corridor beat is the 2018 "before" frame, and it shows it: a queue of
-halted trucks standing between the consignment and the gate, two of them pulled
-onto the verge to be opened by hand, and the corridor's teal instrumentation
-switched off. Scroll on and the queue dissolves as the chevrons and the tracking
-trail come up — the before/after the whole talk rests on, made once, visually.
+The first corridor beat is the 2018 "before" frame, and it shows it: the road
+runs empty to the gate with the corridor's blue instrumentation switched off.
+Scroll on and the chevrons and the tracking trail come up — the before/after the
+whole talk rests on, made once, visually. The carriageway carries nothing but
+the consignment anywhere on the page.
 
 Two markers on the corridor open **information-system panels** mid-talk:
 E-Transit and the targeting centre's role at the border (beside the gate), and
 the Customs and cargo operations system (at the warehouse). They are the pulsing
-teal pins; click, or tab to them and press Enter.
+blue pins; click, or tab to them and press Enter.
 
 ## Presenting
 
@@ -71,9 +71,12 @@ teal pins; click, or tab to them and press Enter.
 
 ## Editing before the visit
 
-- **Figures**: every number lives in `demo-data.js`. They are currently
+- **Figures**: every number lives in `demo-data.js`. Most are still
   **illustrative placeholders**, and the page says so — in the header badge and
-  in the opening disclosure. `ASSETS.md` lists all 48 to replace, flags the
+  in the opening disclosure. The exception is the border row: `61` customs
+  posts, the `4.5` / `5.2` / `1.2` mln transactions by mode, `30 k` vehicles and
+  `87 k` transactions a day, and `3,184` officers on daily duty all come off the
+  official *Statistics at the border* slide and are not to be re-invented. `ASSETS.md` lists all 48 to replace, flags the
   three least plausible, and notes the one name to confirm. Figures written as
   `{{TOKEN}}` render as dashed *awaiting figure* chips; `TRANSIT_LEGAL_BASIS`
   and the presenter's own "we will add later" in the E-Transit panel are
@@ -120,7 +123,7 @@ npx --no-install http-server -p 8099 -s .
 node tools/verify.mjs
 ```
 
-43 assertions. Zero network requests after load, on `file://` and `http://`; the
+42 assertions. Zero network requests after load, on `file://` and `http://`; the
 six corridor rows each exactly one sixth of the corridor; **every beat fitting
 the viewport it is presented in, and every row's content fitting its row**, at
 1920, 1600, 1440 and 1280; the consignment moving down the route monotonically
@@ -135,11 +138,9 @@ against the panel; and reduced-motion behaviour, including that the passenger
 dots stay spread along their route rather than piling at the door when their
 animation is off.
 
-It also covers the 2018 frame: that the queue builds, that the first corridor
-beat shows it with the corridor instrumentation off and the transit beat has it
-the other way round, and — measured from the transforms rather than
-`getBoundingClientRect`, which is not dependable on `<use>` — that no queued
-vehicle ever stands on the consignment.
+It also covers the 2018 frame: that the first corridor beat runs with the
+corridor instrumentation off and the transit beat has it the other way round,
+and that nothing but the consignment ever stands on the carriageway.
 
 Two sizing rules are load-bearing and the suite guards both: a corridor row's
 height is a pure function of viewport width, so the content laid over it is

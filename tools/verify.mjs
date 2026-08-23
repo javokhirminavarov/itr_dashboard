@@ -5,17 +5,18 @@
  * anchored, every chart captioned, the corridor rows matching the plate grid,
  * the consignment running the route — and the things that have actually broken
  * here before: content overflowing its corridor row at anything narrower than
- * 1920, a queued vehicle standing on the consignment, a "visually hidden" table
- * widening the document.
+ * 1920, a lamp standard planted in the middle of the carriageway, a "visually
+ * hidden" table widening the document.
  *
  * Usage (Playwright + Chromium required; nothing is added to this repo):
  *   npx --no-install http-server -p 8099 -s .     # or any static server
  *   node tools/verify.mjs [http://127.0.0.1:8099/index.html]
  */
 import { chromium } from 'playwright';
-import path from 'path';
+// A file: URL's .pathname is "/C:/..." on Windows, which path.resolve() then
+// turns into "C:\C:\..."; the URL itself is already what page.goto() wants.
 const HTTP = process.argv[2] || 'http://127.0.0.1:8099/index.html';
-const FILE = 'file://' + path.resolve(new URL('../index.html', import.meta.url).pathname);
+const FILE = new URL('../index.html', import.meta.url).href;
 const results = [];
 const ok = (n, c, d = '') => results.push([c ? 'PASS' : 'FAIL', n, d]);
 
@@ -163,45 +164,40 @@ const frame = await p.evaluate(async () => {
     const r = el.getBoundingClientRect();
     window.scrollTo({ top: Math.max(0, window.scrollY + r.top + r.height / 2 - innerHeight * 0.56), behavior: 'instant' });
     await new Promise(r2 => setTimeout(r2, 900));
-    const q = document.getElementById('queue2018'), c = document.querySelector('.chev-flow');
-    return { beat: document.body.dataset.beat, queue: +getComputedStyle(q).opacity, chev: +getComputedStyle(c).opacity };
+    const c = document.querySelector('.chev-flow');
+    return { beat: document.body.dataset.beat, chev: +getComputedStyle(c).opacity };
   };
-  return { base: await at('baseline2018'), transit: await at('transit'), count: document.querySelectorAll('#queue2018 use').length };
+  return { base: await at('baseline2018'), transit: await at('transit') };
 });
-ok('2018 queue is built', frame.count >= 4, `${frame.count} vehicles`);
-ok('queue shows on the 2018 beat with the instrumentation off',
-   frame.base.queue > 0.9 && frame.base.chev < 0.1, JSON.stringify(frame.base));
+ok('the 2018 beat runs with the corridor instrumentation off',
+   frame.base.chev < 0.1, JSON.stringify(frame.base));
 ok('and is inverted by the transit beat',
-   frame.transit.queue < 0.1 && frame.transit.chev > 0.9, JSON.stringify(frame.transit));
+   frame.transit.chev > 0.9, JSON.stringify(frame.transit));
 
-/* ---- 8. no queued vehicle ever stands on the consignment ----------------- */
-const clash = await p.evaluate(async () => {
-  const bad = [];
-  for (const [w, h] of [[1920, 1080], [1440, 1200], [1280, 1400], [1360, 1600]]) {
-    // measured from the transforms, not getBoundingClientRect, which is not
-    // dependable on <use>
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    await new Promise(r => setTimeout(r, 500));
-    const TH = 152;
-    const t = /translate\(([-\d.]+)px,\s*([-\d.]+)px\).*scale\(([\d.]+)\)/.exec(document.getElementById('truck').style.transform);
-    if (!t) continue;
-    const ty = +t[2], ts = +t[3];
-    const truck = [ty - TH * ts, ty];
-    [...document.querySelectorAll('#queue2018 use')].forEach(u => {
-      const m = /translate\(([-\d.]+),([-\d.]+)\).*scale\(([\d.]+)\)/.exec(u.getAttribute('transform'));
-      if (!m) return;
-      const qy = +m[2], qs = +m[3];
-      const q = [qy - TH * qs, qy];
-      if (q[1] > truck[0] && q[0] < truck[1]) bad.push(`${w}x${h}: queue ${q.map(Math.round)} vs truck ${truck.map(Math.round)}`);
-    });
-  }
-  return bad;
-});
-ok('no queued vehicle stands on the consignment', clash.length === 0, clash.slice(0, 2).join('; '));
+/* ---- 8. nothing but the consignment stands on the carriageway ------------ */
+const onRoad = await p.evaluate(() =>
+  [...document.querySelectorAll('#route-layer use, #route-layer image')].length);
+ok('no vehicle on the road but the consignment', onRoad === 0, `${onRoad} sprites in the route layer`);
 
 /* ---- 9. navigation ------------------------------------------------------ */
 const nav = await p.evaluate(async () => {
-  const press = async k => { window.dispatchEvent(new KeyboardEvent('keydown', { code: k, bubbles: true })); await new Promise(r => setTimeout(r, 700)); };
+  // Wait for the scroll to SETTLE, not for a fixed slice of time. A jump from
+  // the foot of the page to section 1 is a smooth scroll the length of the
+  // whole corridor, and a fixed 700 ms read it mid-flight and reported
+  // whichever section it happened to be passing.
+  const settle = async () => {
+    let last = NaN;
+    for (let i = 0; i < 40; i++) {
+      await new Promise(r => setTimeout(r, 80));
+      if (window.scrollY === last) return;
+      last = window.scrollY;
+    }
+  };
+  const press = async k => {
+    window.dispatchEvent(new KeyboardEvent('keydown', { code: k, bubbles: true }));
+    await settle();
+    await new Promise(r => setTimeout(r, 120));   // let the beat readout catch up
+  };
   window.scrollTo({ top: 0, behavior: 'instant' });
   await new Promise(r => setTimeout(r, 500));
   const seq = [document.body.dataset.beat];

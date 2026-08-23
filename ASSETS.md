@@ -52,12 +52,19 @@ Content top → bottom, one landmark per row:
   corridor once and slicing it; a hand-rendered replacement must match by eye.
 - **Calm bands:** the left ~26 % and the right ~26 % of the frame carry the
   cards and the metric panels. Keep those bands visually quiet.
-- **Road surface empty.** No vehicles on the carriageway — the page composes the
-  consignment, and the 2018 queue (see B), as overlays. Static plant off the
-  road (trailers on the warehouse apron, marker posts on the verge) is wanted.
-- **No vegetation.** No trees, no bushes, no hedge lines. Depth is carried by
-  aerial haze, by the field patchwork, and by the verge marker posts, whose
-  drawn height and spacing are both pure functions of depth.
+- **Road surface empty.** No vehicles on the carriageway at all — the page
+  composes the consignment as an overlay and nothing else drives this road.
+  Static plant off the road (trailers on the warehouse apron) is wanted.
+- **No roadside furniture beyond the road's own.** No trees, no bushes, no
+  hedge lines; no marker posts, no power poles or catenary, no perimeter
+  hairlines running out to the frame edges. The guardrail stays, because it is
+  part of the road. Depth is carried by aerial haze and by the road's own
+  width law.
+- **The ground is a background.** A patchwork of large, low-contrast plots and
+  nothing else: no ploughing hatch, no irrigation canals, no scattered sheds or
+  blotches. It reads as cultivated plain at a glance and does not reward a
+  second look — the road, the landmarks and the two calm bands are the
+  subject.
 - **One scale below the ramp.** The ground plane opens out over the first ~620
   page units, out of the horizon, and then holds that scale to the foot of the
   page: road width, prop size, field size and haze are all constant from there
@@ -81,27 +88,24 @@ Content top → bottom, one landmark per row:
   outline) · **sealed** (the page adds the GPS seal tag). Plain variants are
   enough; the state decorations are overlays.
 
-**The 2018 queue.** The first corridor beat draws a queue of halted trucks
-between the consignment and the gate, plus two pulled onto the verge — the
-"every truck stopped, every consignment opened by hand" the copy describes. It
-is an overlay in corridor coordinates (`JOURNEY.queue2018` in `plates.js`),
-**not** part of any plate, and it cross-fades out as the reader scrolls into the
-modern system while the teal chevrons and tracking trail fade in. So the plates
-themselves stay "today" and the no-vehicles rule above is unchanged. A final
-render needs no queue in it.
-
 ## C. Secondary scenes — 1600 × 900 each
 
 1. Customs warehouse interior, unloading bay (a dock door standing open onto
    daylight)
 2. Targeting centre interior — screens must be **blank glows**, no readable
    content, no numbers
-3. Airport arrivals hall (control booths, lanes, daylight through the glazing)
+3. Airport arrivals hall — a glazed back wall with the **stand on the other
+   side of it**: a narrow-body at the gate, the jet bridge off its forward
+   door, apron traffic, and the tower and runway behind. Inside: e-gates,
+   baggage reclaim and passengers. Everything with a real-world size is drawn
+   from one depth law — `PZ()` in `tools/build_scenes.py`, the drawn height of
+   a 1.75 m person at that depth — which is what keeps the aircraft, the gates
+   and the people one scene rather than three drawings
 
 All three are **interiors**, and an interior is lit by its own lights whatever
 the sky is doing — they are deliberately darker than the corridor. What must
 agree with the corridor is anything you can see *through*: an open door, a
-window wall. Those read as a bright day.
+window wall, an aircraft on the stand. Those read as a bright day.
 
 ## D. Vectors (SVG)
 
@@ -124,28 +128,66 @@ window wall. Those read as a bright day.
   Plex Mono** (numerals, tokens, chips). To swap in a licensed brand face: drop
   the woff2 into `assets/fonts/`, update the `@font-face` block and the two
   `--font-*` tokens at the top of `styles.css`.
-- The palette is centralised in the `:root` tokens of `styles.css`. It is a
-  **light** palette, because the corridor is a daylight scene. Two things were
-  measured rather than chosen and should be re-measured if they change:
-  `--ink-faint` is the smallest type on the page and clears 4.5:1 on both the
-  panel white and the page ground; and the three chart series colours
-  (`--series-a/b/n`) plus the channel colours were checked as a set for
-  colour-vision-deficiency separation. An official palette is welcome, but run
-  those two checks against it.
-- The generator's own palette lives at the top of `tools/build_plates.py`.
+- The palette **is the official deck's**, sampled from the slides rather than
+  chosen, and centralised in the `:root` tokens of `styles.css`. It is a
+  **light** palette, because the corridor is a daylight scene.
+
+  | Token | Value | What it is on the deck |
+  |---|---|---|
+  | `--brand` | `#00569b` | the blue every title, label and card outline is set in |
+  | `--brand-line` | `#337ed2` | the card outline itself |
+  | `--brand-sky` | `#12a7eb` | the area-chart blue |
+  | `--navy` | `#183e69` | the deep tiles and the ring's dark arc |
+  | `--cyan` | `#2bada7` | the cyan tiles and the ring's light arc |
+  | `--green` | `#048d01` | **every headline figure** and growth arrow |
+
+  The blue/green division is also the accessibility division, and it was
+  measured: `--brand` clears 7.3:1 on white and is safe at any size; `--green`
+  clears 3.9:1 and is therefore a **mark and big-figure colour only**, with
+  `--green-ink` (5.6:1) as its partner for small type. Same rule for
+  `--brand-ink` and `--cyan-ink`.
+
+  Two further things were measured rather than chosen and should be re-measured
+  if they change: `--ink-faint` is the smallest type on the page and clears
+  4.5:1 on both the panel white and the page ground; and the three chart series
+  colours (`--series-a/b/n`) plus the channel colours were checked as a set for
+  colour-vision-deficiency separation. `node tools/verify.mjs` asserts the
+  first of those.
+- The corridor's own palette lives at the top of `tools/build_plates.py`.
+  `SIGNAL` (`#1a86d0`) is the risk-management system's signature on the plates
+  — the deck blue *lifted*, because `#00569b` against asphalt reads as a dark
+  smudge rather than as instrumentation. The secondary scenes take their screen
+  glow from the literals in `tools/build_scenes.py`.
 
 ---
 
 # Figure replacement checklist
 
-**Every figure on screen is illustrative.** The page says so — the header
+**Most figures on screen are still illustrative.** The page says so — the header
 carries an `ILLUSTRATIVE FIGURES` badge and the 2018 beat prints the disclosure.
 Both are driven by `demoData.meta.figuresIllustrative`; set it to `false` once
 the table below is cleared and the badge and its wording disappear.
 
 Replace each value in `demo-data.js`. Nothing else needs editing. Figures
 written as `{{TOKEN}}` render as dashed *awaiting figure* chips;
-`TRANSIT_LEGAL_BASIS` and `ETRANSIT_MORE` are deliberately left as ones.
+`TRANSIT_LEGAL_BASIS` and `ETRANSIT_SHARE` are deliberately left as ones.
+
+**Values taken from the official deck, and NOT to be re-invented** — these came
+off the *Statistics at the border* slide and are the page's only sourced
+figures:
+
+| § | Where | What | Shown now |
+|---|---|---|---|
+| 3 | tiles | the border network | `61` customs posts |
+| 3 | tiles | transactions by mode | avto `4.5` · cargo `5.2` · railway `1.2` mln |
+| 3 | metric | vehicles crossing a day | `30 k` (×2.9 on 2018) |
+| 3 | metric | transactions a day | `87 k` (×3.2 on 2018) |
+| 3 | metric | customs officers on daily duty | `3,184` (+10% since 2018) |
+
+The deck's *Targeting Center* and *E-Transit AAT* slides are likewise the
+authority for section 2's eight functions, its six monitored channels, and the
+E-Transit panel's eight points. Those carry no figures, so nothing of theirs
+appears below.
 
 **Values the presenter supplied and that should survive review as-is:** the
 ~430 customs warehouses on the platform (section 4).
@@ -162,14 +204,14 @@ the 96.4 / 3.6 passenger channel split (section 7).
 | 3 | chart | Vehicles crossing, indexed 2018=100 | `100 118 96 131 168 196 224 247` |
 | 3 | chart | Cargo carried, indexed 2018=100 | `100 112 91 124 151 173 192 208` |
 | 3 | consignment state | pre-arrival risk / data sources | `MEDIUM` / `12` |
-| 3 | metric | trucks cleared at the border, 2025 | `2.71 m` (×2.5 on 2018) |
-| 3 | metric | trucks a day, average | `7,420` (peaks above 9,000) |
+| 3 | awaiting | customs officers on daily duty, 2018 | the deck charts the bar but does not print the number; the page states the +10% instead |
 | 3 | channel split | green / yellow / red at the gate | `71%` / `24%` / `5%` |
 | 3 | metric | decision time at the gate | `2.1 min` |
 | 3 | metric | seizure cases at the border | `1,860` (+18% on 2024) |
 | 3 | consignment state | GPS seal / checkpoints / alerts | `FITTED` / `7` / `0` |
 | 3 | metric | seizures on supervised transit | `1,248` (up ×2 since 2022) |
 | 3 | legal basis | transit supervision | *awaiting figure* — **left unfilled on purpose** |
+| 3 | metric | share of transit movements cleared on E-Transit | *awaiting figure* — the deck defines the system but not its uptake |
 | 4 | growth | customs warehouses | `264` → `430` (×1.6) |
 | 4 | growth | shipments placed | `96 k` → `412 k` (×4.3) |
 | 4 | growth | total value of goods | `UZS 18.4 tn` → `UZS 71.9 tn` (×3.9) |

@@ -127,10 +127,13 @@ def ground_at(y):
 SKY_TOP, SKY_MID, SKY_HORIZON = "#6ea8d8", "#9cc6e6", "#dcebf3"
 HAZE = "#d3e2ec"
 ASPHALT_FAR, ASPHALT_NEAR = "#a3adaf", "#8b9596"
-# TEAL is the risk-management system's signature, used for every piece of
-# instrumentation in the scene. On a lit plate it has to be a pigment, not a
-# glow: #3fe0c5 only reads against near-black.
-TEAL, WARM = "#0f9e8a", "#e0912f"
+# SIGNAL is the risk-management system's signature, used for every piece of
+# instrumentation in the scene, and it is the deck's blue. On a lit plate it
+# has to be a pigment, not a glow: #3fe0c5 only reads against near-black. It
+# also cannot be the deck's own #00569b — against asphalt that reads as a dark
+# smudge rather than as instrumentation, so this is the deck blue lifted to
+# where it still carries at plate scale.
+SIGNAL, WARM = "#1a86d0", "#e0912f"
 FIELD_TONES = ["#c2cd97", "#b4c489", "#cbd2a2", "#a9bb80", "#d3d2a6", "#bcc08d",
                "#d8cf9c", "#c6bd88", "#e0d7ad", "#b9bd8b", "#e4dcb4", "#aec089"]
 
@@ -175,7 +178,6 @@ def defs():
       #     filter tight around the group it is applied to.
       '<filter id="fx-far" x="-8%" y="-25%" width="116%" height="150%"><feGaussianBlur stdDeviation="5.5"/></filter>'
       '<filter id="fx-soft" x="-10%" y="-20%" width="120%" height="140%"><feGaussianBlur stdDeviation="2.4"/></filter>'
-      '<filter id="fx-blob" x="-14%" y="-24%" width="128%" height="148%"><feGaussianBlur stdDeviation="9"/></filter>'
       '<filter id="fx-edge" x="-8%" y="-14%" width="116%" height="128%"><feGaussianBlur stdDeviation="1.5"/></filter>'
       # the one glow left: a camera's field of view, which is a drawn cone
       '<filter id="fx-glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="9"/></filter>'
@@ -202,8 +204,13 @@ def defs():
       # the ground/sky join, softened by a ramp rather than a blurred band: a
       # blur wide enough to hide the seam also prints a bar at the section edge
       '<linearGradient id="g-horizon" gradientUnits="userSpaceOnUse" x1="0" y1="' + f(HORIZON - 46) + '" x2="0" y2="' + f(HORIZON + 160) + '">'
-      '<stop offset="0" stop-color="#ffffff" stop-opacity="0.28"/>'
-      '<stop offset="0.3" stop-color="#ffffff" stop-opacity="0.14"/>'
+      # Ramps up to the horizon line (46 of the band's 206 units down) and
+      # away again. It used to open at 0.28, which printed a hard-edged white
+      # bar across the sky as soon as the ground below it was calm enough to
+      # see it against.
+      '<stop offset="0" stop-color="#ffffff" stop-opacity="0"/>'
+      '<stop offset="0.223" stop-color="#ffffff" stop-opacity="0.28"/>'
+      '<stop offset="0.45" stop-color="#ffffff" stop-opacity="0.12"/>'
       '<stop offset="1" stop-color="#ffffff" stop-opacity="0"/></linearGradient>'
       '<linearGradient id="g-vig-l" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="380" y2="0">'
       '<stop offset="0" stop-color="#3d5a63" stop-opacity="0.13"/>'
@@ -227,8 +234,8 @@ def defs():
       '<stop offset="0.55" stop-color="#4d5f52" stop-opacity="0.07"/>'
       '<stop offset="1" stop-color="#4d5f52" stop-opacity="0"/></radialGradient>'
       '<radialGradient id="g-pool-teal" cx="0.5" cy="0.5" r="0.5">'
-      '<stop offset="0" stop-color="' + TEAL + '" stop-opacity="0.2"/>'
-      '<stop offset="1" stop-color="' + TEAL + '" stop-opacity="0"/></radialGradient>'
+      '<stop offset="0" stop-color="' + SIGNAL + '" stop-opacity="0.2"/>'
+      '<stop offset="1" stop-color="' + SIGNAL + '" stop-opacity="0"/></radialGradient>'
       '</defs>')
 
 # ------------------------------------------------------------------- sky ----
@@ -273,17 +280,12 @@ def sky(y0, y1):
     return "".join(o)
 
 # ---------------------------------------------------- ground + field work ---
-def furrow_defs():
-    """Three ploughing pitches so furrows keep the ground plane's perspective
-    instead of printing one flat texture over the whole page."""
-    out = []
-    for name, pitch, ang in (("f", 11, -18), ("m", 24, -14), ("n", 52, -10)):
-        out.append('<pattern id="p-fur-%s" patternUnits="userSpaceOnUse" width="%d" height="%d" '
-                   'patternTransform="rotate(%d)"><rect width="%d" height="%s" fill="#000" opacity="0.5"/>'
-                   '<rect y="%s" width="%d" height="%s" fill="#fff" opacity="0.22"/></pattern>' % (
-                       name, pitch, pitch, ang, pitch, f(pitch * .34), f(pitch * .34), pitch, f(pitch * .2)))
-    return "".join(out)
-
+# The ground is a BACKGROUND. It used to be a quilt: small plots, three
+# ploughing pitches hatched over them, irrigation canals cutting across, and
+# forty-odd soft blotches on top. All of it competed with the road, the
+# landmarks and the two calm bands the cards sit in. What is left is a
+# patchwork of large, low-contrast plots — enough to say cultivated plain, not
+# enough to look at.
 _rf = random.Random(4404)
 FIELDS = []
 # Tile the WHOLE ground plane with fields rather than scattering a few patches.
@@ -291,10 +293,10 @@ FIELDS = []
 # same perspective as the road and reads as farmland instead of a green wash.
 _fy = HORIZON + 6
 while _fy < TOTAL_H + 140:
-    _rh = 34 + 210 * depth(_fy) ** 1.05
+    _rh = 60 + 420 * depth(_fy) ** 1.05
     _fx = -320.0
     while _fx < 1920:
-        _cw = (80 + 330 * depth(_fy)) * _rf.uniform(0.65, 1.75)
+        _cw = (170 + 700 * depth(_fy)) * _rf.uniform(0.7, 1.7)
         x0, x1 = _fx, _fx + _cw
         y0 = _fy + _rf.uniform(-.3, .3) * _rh
         y1 = y0 + _rh * _rf.choice([0.55, 0.9, 1.0, 1.0, 1.7])
@@ -306,44 +308,18 @@ while _fy < TOTAL_H + 140:
                 f(x1 + _rf.uniform(-j, j)), f(y0 + _rf.uniform(-j, j)),
                 f(x1 + _rf.uniform(-j, j)), f(y1 + _rf.uniform(-j, j)),
                 f(x0 + _rf.uniform(-j, j)), f(y1 + _rf.uniform(-j, j)))
-            tone = mix(_rf.choice(FIELD_TONES), ground_at(_fy), _rf.uniform(0, .35))
+            # Pulled most of the way back to the ground tone: a plot should
+            # separate from its neighbour, not from the plain.
+            tone = mix(_rf.choice(FIELD_TONES), ground_at(_fy), _rf.uniform(.45, .75))
             tone = mix(tone, HAZE, max(0.0, .5 - depth(_fy) * 2.4))
-            piece = '<path d="%s" fill="%s" opacity="%s"/>' % (d, tone, f(_rf.uniform(.55, .95)))
-            if _rf.random() < 0.5:
-                s_ = sc(_fy)
-                pitch = "f" if s_ < 0.38 else ("m" if s_ < 1.0 else "n")
-                piece += '<path d="%s" fill="url(#p-fur-%s)" opacity="%s"/>' % (d, pitch, f(_rf.uniform(.12, .3)))
-            if _rf.random() < 0.4:          # a ploughed field boundary, not a hedge
+            piece = '<path d="%s" fill="%s" opacity="%s"/>' % (d, tone, f(_rf.uniform(.25, .5)))
+            if _rf.random() < 0.22:         # a ploughed field boundary, not a hedge
                 piece += '<path d="%s" fill="none" stroke="%s" stroke-width="%s" opacity="%s"/>' % (
-                    d, shade(tone, 0.82), f(max(1.0, 2.4 * sc(_fy))), f(_rf.uniform(.2, .4)))
+                    d, shade(tone, 0.86), f(max(1.0, 2.0 * sc(_fy))), f(_rf.uniform(.1, .18)))
             FIELDS.append((y0 - 20, y1 + 20, piece))
         _fx += _cw
     _fy += _rh
 _rf.shuffle(FIELDS)      # overlap order varies, so no plot looks stamped
-
-# irrigation canals cutting across the plots — the detail that says Uzbekistan
-# corridor rather than generic countryside
-for _i in range(7):
-    _cy = HORIZON + 84 + _i * 672 + _rf.uniform(-70, 70)
-    _s = sc(_cy)
-    _pts, _px = [], -260.0
-    while _px < 1880:
-        _pts.append((_px, _cy + _rf.uniform(-1, 1) * 90 * _s))
-        _px += 240 * _s + 90
-    _d = "M " + " L ".join("%s %s" % (f(a), f(b)) for a, b in _pts)
-    FIELDS.append((_cy - 200 * _s, _cy + 200 * _s,
-        '<path d="%s" fill="none" stroke="#0e1a18" stroke-width="%s" opacity="0.5"/>'
-        '<path d="%s" fill="none" stroke="#5c8f8a" stroke-width="%s" opacity="0.3"/>' % (
-            _d, f(max(2.0, 15 * _s)), _d, f(max(1.0, 7 * _s)))))
-
-_rp = random.Random(1207)
-PATCHES = []
-for _ in range(46):
-    py = _rp.uniform(HORIZON, TOTAL_H + 60)
-    s_ = sc(py)
-    PATCHES.append((py, '<ellipse cx="%s" cy="%s" rx="%s" ry="%s" fill="%s" opacity="%s"/>' % (
-        f(_rp.uniform(-140, 1740)), f(py), f(_rp.uniform(200, 560) * s_), f(_rp.uniform(50, 150) * s_),
-        shade(ground_at(py), _rp.choice([0.88, 0.94, 1.07])), f(_rp.uniform(.14, .3)))))
 
 def ground(y0, y1):
     a, b = max(HORIZON - 2, y0 - 90), y1 + 90
@@ -351,9 +327,6 @@ def ground(y0, y1):
     fl = [s for (fa, fb, s) in FIELDS if fb > a - 40 and fa < b + 40]
     if fl:
         o.append('<g filter="url(#fx-edge)">%s</g>' % "".join(fl))
-    px = [s for (py, s) in PATCHES if a - 460 < py < b + 460]
-    if px:
-        o.append('<g filter="url(#fx-blob)" opacity="0.55">%s</g>' % "".join(px))
     o.append('<rect x="0" y="%s" width="1600" height="%s" fill="url(#p-mottle)" opacity="0.3"/>' % (f(a), f(b - a)))
     return "".join(o)
 
@@ -410,65 +383,12 @@ def guardrail(y0, y1):
             y += max(14.0, 96 * s)
     return "".join(o)
 
-def markers(y0, y1):
-    """Verge marker posts down both shoulders.
-
-    The trees used to be what told the eye how far away a stretch of corridor
-    was. These do that job instead, and more honestly: the post is a fixed real
-    size, so its drawn height and its spacing are both pure functions of depth.
-    Spaced by the same sc(y) law as the guardrail stanchions."""
-    a, b = max(HORIZON + 90, y0 - 90), min(TOTAL_H, y1 + 90)
-    o = []
-    for side in (-1, 1):
-        y = a
-        while y < b:
-            s = sc(y)
-            x = edge(y, side) + side * 1.7 * halfw(y)
-            h, w = max(4.0, 46 * s), max(1.2, 7 * s)
-            o.append('<ellipse cx="%s" cy="%s" rx="%s" ry="%s" fill="#5b6b52" opacity="0.24"/>' % (
-                f(x - w * 1.3), f(y + w * .3), f(w * 1.9), f(w * .7)))
-            o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="#eef1e8" opacity="0.9"/>' % (
-                f(x - w / 2), f(y - h), f(w), f(h)))
-            o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="#c8503c" opacity="0.85"/>' % (
-                f(x - w / 2), f(y - h + h * .14), f(w), f(max(.8, h * .16))))
-            y += max(46.0, 320 * s)
-    return "".join(o)
-
-def powerline(y0, y1):
-    """Poles and catenary along the left verge — reads instantly as inhabited
-    country rather than an empty diagram."""
-    a, b = max(660.0, y0 - 260), min(3960.0, y1 + 260)
-    if b <= a:
-        return ""
-    ys, y = [], a
-    while y < b:
-        ys.append(y)
-        y += max(120.0, 300 * sc(y))
-    o = []
-    for i, y in enumerate(ys):
-        s = sc(y)
-        x = edge(y, -1) - 2.7 * halfw(y)
-        top = y - 190 * s
-        o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="#8a9082" opacity="0.9"/>' % (
-            f(x - 2.4 * s), f(top), f(4.8 * s), f(190 * s)))
-        o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="#8a9082" opacity="0.9"/>' % (
-            f(x - 22 * s), f(top + 12 * s), f(44 * s), f(3.4 * s)))
-        if i:
-            py = ys[i - 1]
-            ps, pxx = sc(py), edge(py, -1) - 2.7 * halfw(py)
-            for dx in (-16, 16):
-                o.append('<path d="M %s %s Q %s %s %s %s" fill="none" stroke="#6d7568" '
-                         'stroke-width="%s" opacity="0.5"/>' % (
-                             f(pxx + dx * ps), f(py - 178 * ps), f((x + pxx) / 2 + dx * s),
-                             f((y + py) / 2 - 150 * s), f(x + dx * s), f(top + 12 * s), f(max(.8, 1.5 * s))))
-    return "".join(o)
-
 # ------------------------------------------------------- prop primitives ----
 def lamp(x, y, s, warm=True, mast=True, h=120):
     """A lamp standard in daylight: mast, bracket, unlit head, and the shadow
     the sun throws down and to the left of it. The signature is unchanged so
     every call site is; `warm` now only picks the head's tint."""
-    col = "#7a8688" if warm else mix("#7a8688", TEAL, 0.35)
+    col = "#7a8688" if warm else mix("#7a8688", SIGNAL, 0.35)
     top = y - h * s
     o = ['<path d="M %s %s L %s %s L %s %s L %s %s Z" fill="#5b6b52" opacity="0.16"/>' % (
         f(x - 2.6 * s), f(y), f(x + 2.6 * s), f(y),
@@ -569,7 +489,7 @@ def _gate():
     o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="#8e9b9a"/>' % (
         f(c - hall_w / 2), f(y - 6.2 * u), f(hall_w), f(.36 * u)))
     o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="%s" opacity="0.55"/>' % (
-        f(c - hall_w / 2), f(y - 5.85 * u), f(hall_w), f(.12 * u), TEAL))
+        f(c - hall_w / 2), f(y - 5.85 * u), f(hall_w), f(.12 * u), SIGNAL))
     # canopy slab over the lanes, on four columns
     o.append('<path d="M %s %s L %s %s L %s %s L %s %s Z" fill="#c3cecd"/>' % (
         f(c - 5.9 * u), f(y - 3.0 * u), f(c + 5.9 * u), f(y - 3.0 * u),
@@ -594,12 +514,6 @@ def _gate():
         f(c - 5.5 * u), f(y + .55 * u), f(1.75 * u), f(.09 * u)))
     o.append('<rect x="%s" y="%s" width="%s" height="%s" fill="#c8ccc6" opacity="0.7"/>' % (
         f(c + 4.15 * u), f(y - .18 * u), f(.09 * u), f(.78 * u)))
-    for side in (-1, 1):                # perimeter fence out to the frame edges
-        o.append('<path d="M %s %s L %s %s" stroke="#9aa69f" stroke-width="2" opacity="0.5" fill="none"/>' % (
-            f(c + side * 6.3 * u), f(y + .35 * u), f(c + side * 24 * u), f(y - .1 * u)))
-        o.append('<path d="M %s %s L %s %s L %s %s" stroke="#9aa69f" stroke-width="1.6" opacity="0.45" '
-                 'fill="none"/>' % (f(c + side * 21 * u), f(y - 4.4 * u), f(c + side * 5.1 * u), f(y - 4.1 * u),
-                                    f(c + side * 6.15 * u), f(y + 3.1 * u)))
     o.append('<ellipse cx="%s" cy="%s" rx="%s" ry="%s" fill="url(#g-pool)" opacity="0.5"/>' % (
         f(c), f(y + .35 * u), f(7.5 * u), f(1.6 * u)))
     return "".join(o)
@@ -608,7 +522,7 @@ prop(R(2, -0.62), R(2, 0.62), _gate())
 # ------------------------------- row 3 · supervised transit: portal, CCTV ---
 def _portal(y, tone=None):
     c, u, s = cx(y), halfw(y), sc(y)
-    col = tone or TEAL
+    col = tone or SIGNAL
     h = 2.7 * u
     o = ['<path d="%s" fill="#aeb6a8" opacity="0.55"/>' % _strip(y - 55, y + 55, -1.6, 1.6)]
     for side in (-1, 1):
@@ -636,12 +550,14 @@ def cctv(y, side, cone=True):
          '<rect x="%s" y="%s" width="%s" height="%s" rx="%s" fill="#6f7d7d"/>' % (
              f(x - side * 1.35 * u), f(top + .06 * u), f(.62 * u), f(.3 * u), f(.08 * u)),
          '<circle cx="%s" cy="%s" r="%s" fill="%s"/>' % (
-             f(x - side * 1.3 * u), f(top + .42 * u), f(.08 * u), TEAL)]
+             f(x - side * 1.3 * u), f(top + .42 * u), f(.08 * u), SIGNAL)]
     if cone:
         o.append('<path d="M %s %s L %s %s L %s %s Z" fill="%s" opacity="0.07" filter="url(#fx-glow)"/>' % (
-            f(x - side * 1.3 * u), f(top + .3 * u), f(c - u), f(y + 3 * u), f(c + u), f(y + 1.4 * u), TEAL))
+            f(x - side * 1.3 * u), f(top + .3 * u), f(c - u), f(y + 3 * u), f(c + u), f(y + 1.4 * u), SIGNAL))
     return "".join(o)
-for _y, _sd in ((R(3, -0.25), -1), (R(3, 0.27), 1), (R(5, 0.15), -1), (R(6, -0.3), 1)):
+# Only on the transit row. The pair that used to stand on rows 5 and 6 were
+# roadside furniture a long way from the passage they illustrate.
+for _y, _sd in ((R(3, -0.25), -1), (R(3, 0.27), 1)):
     prop(_y - 300, _y + 40, cctv(_y, _sd))
 
 def _checkpoint(y):
@@ -657,7 +573,7 @@ def _checkpoint(y):
         o.append('<rect x="%s" y="%s" width="%s" height="%s" rx="%s" fill="#8e9c9c"/>' % (
             f(c + k * u * 1.2 - .26 * u), f(y - h + .04 * u), f(.52 * u), f(.26 * u), f(.06 * u)))
         o.append('<circle cx="%s" cy="%s" r="%s" fill="%s"/>' % (
-            f(c + k * u * 1.2), f(y - h + .4 * u), f(.07 * u), TEAL))
+            f(c + k * u * 1.2), f(y - h + .4 * u), f(.07 * u), SIGNAL))
     o.append(lamp(c - u * 1.9, y + .1 * u, s, True, True, 200))
     o.append(lamp(c + u * 1.9, y + .1 * u, s, True, True, 200))
     return "".join(o)
@@ -702,7 +618,10 @@ def _warehouse():
         f(x0 + .7 * u), f(y + .3 * u), f(.3 * u), f(.24 * u)))
     o.append('<circle cx="%s" cy="%s" r="%s" fill="#c8802c"/>' % (
         f(x0 + .85 * u), f(y + .26 * u), f(.05 * u)))
-    for lx in (x0 - 2.2 * u, x0 + 2.6 * u, x0 + 5.4 * u):
+    # The apron's lamp standards. The first used to be authored at x0 - 2.2u,
+    # which on this row's geometry is c - 0.3u — a lamp planted in the middle
+    # of the carriageway. It stands on the apron with the other two now.
+    for lx in (x0 + .1 * u, x0 + 2.6 * u, x0 + 5.4 * u):
         o.append(lamp(lx, y + .6 * u, s * 0.95, True, True, 200))
     return "".join(o)
 prop(R(4, -0.55), R(4, 0.36), _warehouse())
@@ -744,7 +663,9 @@ prop(R(5, -0.53), R(5, 0.34), _declaration())
 
 # the exit gantry: the same portal, released green, at the foot of the
 # declaration row
-prop(R(5, 0.3), R(5, 0.52), _portal(R(5, 0.42), "#2f9e63"))
+# the exit gantry on the declaration row is the green channel, so it wears the
+# deck's green rather than the corridor's blue signal — lifted the same way
+prop(R(5, 0.3), R(5, 0.52), _portal(R(5, 0.42), "#1f9b2e"))
 
 # ---------------------- row 6 · post-clearance audit: the importer's premises -
 def _premises():
@@ -796,18 +717,6 @@ def _outskirts():
 prop(4380, 4830, _outskirts())
 
 
-# ------------------------------------------------- farm sheds in the fields -
-_rs = random.Random(7717)
-for _sy, _sx in ((900, 260), (1540, 1390), (2390, 210), (2990, 1440), (3850, 150)):
-    _s = sc(_sy)
-    _w, _h = _rs.uniform(90, 160) * _s, _rs.uniform(34, 58) * _s
-    _shed = solid(_sx, _sy, _w, _h, _h * .5, "#c0c3ac", "#a3a891", "#d4d6bd", -0.5)
-    _shed += '<ellipse cx="%s" cy="%s" rx="%s" ry="%s" fill="#5b6b52" opacity="0.35" filter="url(#fx-soft)"/>' % (
-        f(_sx - _w * .2), f(_sy + _h * .12), f(_w * .7), f(_h * .3))
-    _shed += '<rect x="%s" y="%s" width="%s" height="%s" fill="#78867e" opacity="0.6"/>' % (
-        f(_sx + _w * .2), f(_sy - _h * .6), f(_w * .12), f(_h * .22))
-    prop(_sy - 120, _sy + 50, _shed)
-
 # ------------------------------------------------------------ atmosphere ---
 def atmosphere(y0):
     # Vignette is horizontal only. A top/bottom vignette per section would
@@ -844,15 +753,13 @@ def section(idx):
         '<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d" viewBox="0 %d %d %d">'
         % (W, SECTION_H, y0, W, SECTION_H),
         '<title>Uzbekistan customs corridor, section %d of %d</title>' % (idx + 1, N_SECTIONS),
-        defs().replace("</defs>", furrow_defs() + "</defs>"),
+        defs(),
         '<rect x="0" y="%d" width="%d" height="%d" fill="%s"/>' % (y0, W, SECTION_H, ground_at(y0 + 500)),
         sky(y0, y1),
         ground(y0, y1),
         horizon_glow(y0),
         road(idx, y0, y1),
         guardrail(y0, y1),
-        markers(y0, y1),
-        powerline(y0, y1),
         props(y0, y1),
         far_haze(y0, y1),
         atmosphere(y0),

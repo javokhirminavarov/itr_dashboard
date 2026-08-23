@@ -75,6 +75,11 @@
     flag: "M5 21V4h13l-2.2 4L18 12H5",
     scan: "M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M4 12h16",
     screen: "M3 5h18v11H3zM8 20h8M12 16v4",
+    /* the six channels the targeting centre watches in real time (section 2) */
+    car: "M4 12.5l1.9-4.7A2 2 0 0 1 7.8 6.5h8.4a2 2 0 0 1 1.9 1.3l1.9 4.7M4 12.5h16v4.5H4zM7.5 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3M16.5 20a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3",
+    train: "M6 3h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM4 10h16M12 3v7M9 14h6M8 17l-3 4M16 17l3 4",
+    pax: "M11 5.2a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4M12.4 7.4 9.6 9.2l1.3 3.6L9 21M11.4 12.2 14.4 14.6 15 21M9.6 9.2 6.6 11.6M17.5 11h4.5v10h-4.5zM19 11V9.4h1.6V11",
+    warehouse: "M2.5 21V9.2L12 4.6l9.5 4.6V21zM2.5 21h19M7.5 21v-7h9v7M12 14v7M7.5 17.5h9",
     chev: "M6 9l6 6 6-6",
     x: "M6 6l12 12M18 6 6 18",
     arrow: "M5 12h14M13 6l6 6-6 6"
@@ -206,6 +211,46 @@
     out.appendChild(wrap);
     out.appendChild(el("div", "facts-note", note || "state of this illustrative consignment"));
     return out;
+  }
+
+  /* Counts that are not metrics: a network inventory (61 posts, and the
+     transactions each mode carries) has no 2018 baseline to be measured
+     against, and pretending otherwise would put a fake anchor under it. It is
+     rendered as a strip of tiles instead, plainly labelled, so it cannot be
+     mistaken for a trend. */
+  function TileStrip(tiles) {
+    var strip = el("div", "tiles");
+    tiles.forEach(function (t) {
+      var cell = el("div", "tile");
+      var head = el("div", "t-head");
+      head.appendChild(icon(t.icon));
+      head.appendChild(el("span", null, t.label));
+      cell.appendChild(head);
+      var v = el("div", "t-value");
+      if (isToken(t.value)) v.appendChild(phChip(t.value));
+      else v.textContent = t.value;
+      cell.appendChild(v);
+      cell.appendChild(el("div", "t-unit", t.unit));
+      strip.appendChild(cell);
+    });
+    return strip;
+  }
+
+  /* The six channels the targeting centre watches at once — the band along the
+     foot of section 2. The note about the control-room art rides with it. */
+  function MonitorBand(mon, note) {
+    var band = el("div", "mon-band");
+    band.appendChild(el("div", "mon-title", mon.title));
+    var row = el("div", "mon-modes");
+    mon.modes.forEach(function (m) {
+      var chip = el("div", "mon-mode");
+      chip.appendChild(icon(m.icon));
+      chip.appendChild(el("span", null, m.label));
+      row.appendChild(chip);
+    });
+    band.appendChild(row);
+    if (note) band.appendChild(el("p", "mon-note", note));
+    return band;
   }
 
   function Bullets(list, cls) {
@@ -513,75 +558,131 @@
      reach customs control. Dots ride the paths with CSS offset-path; each one
      also carries a static offset-distance so that under reduced motion they
      stand spread along the route instead of piled at the door.
+
+     The two ends are drawn, not abbreviated: the route starts under an
+     aircraft on the stand and comes into the building down a jet bridge, and
+     it finishes at two doorways rather than two boxes. The route strings
+     themselves are load-bearing — they are the dots' offset-path — so
+     everything else is drawn around them and they do not move.
      ========================================================================= */
   var PS = { w: 1000, h: 316 };
+  var HALL = { x: 176, w: 790, top: 70, floor: 296 };
   function PassengerSchema(sc) {
     var wrap = el("div", "pax");
     wrap.appendChild(el("div", "st-caption", sc.caption));
     var stage = el("div", "pax-stage");
     var svg = svgEl("svg", { viewBox: "0 0 " + PS.w + " " + PS.h, "class": "pax-svg",
                              role: "img", "aria-label": sc.caption });
+    function put(parent, tag, attrs) {
+      var n = svgEl(tag, attrs);
+      parent.appendChild(n);
+      return n;
+    }
+    function label(parent, x, y, cls, s) {
+      var t = svgEl("text", { x: x, y: y, "class": cls, "text-anchor": "middle" });
+      t.textContent = s;
+      parent.appendChild(t);
+    }
 
     var routeGreen = "M 70 196 L 330 196 L 470 196 L 640 196 L 762 140 L 930 140";
     var routeRed = "M 70 196 L 330 196 L 470 196 L 640 196 L 762 262 L 930 262";
-    // the hall itself
-    svg.appendChild(svgEl("rect", { x: 34, y: 78, width: 932, height: 218, rx: 16, "class": "pax-hall" }));
+
+    // ---- the terminal the routes run inside ------------------------------
+    put(svg, "rect", { x: HALL.x - 6, y: HALL.top - 8, width: HALL.w + 12, height: 12, rx: 3,
+                       "class": "pax-roof" });
+    put(svg, "rect", { x: HALL.x, y: HALL.top, width: HALL.w, height: HALL.floor - HALL.top,
+                       rx: 12, "class": "pax-hall" });
+    // Clerestory, in two runs: the advance-information feed comes down the
+    // middle and should not have to cross a window.
+    [[196, 380], [700, 250]].forEach(function (b) {
+      put(svg, "rect", { x: b[0], y: 86, width: b[1], height: 24, "class": "pax-glaze" });
+      for (var mx = b[0] + 48; mx < b[0] + b[1]; mx += 48) {
+        put(svg, "path", { d: "M " + mx + " 86 L " + mx + " 110", "class": "pax-mullion" });
+      }
+    });
+    put(svg, "path", { d: "M " + HALL.x + " " + HALL.floor + " L " + (HALL.x + HALL.w) + " " + HALL.floor,
+                       "class": "pax-floor" });
+    put(svg, "path", { d: "M 8 188 L 170 188", "class": "pax-floor" });
+
     [[routeGreen, "green"], [routeRed, "red"]].forEach(function (r) {
-      svg.appendChild(svgEl("path", { d: r[0], "class": "pax-track ch-" + r[1] }));
+      put(svg, "path", { d: r[0], "class": "pax-track ch-" + r[1] });
     });
 
-    function station(x, label, sub, cls) {
-      var g = svgEl("g", { "class": "pax-station " + (cls || "") });
-      g.appendChild(svgEl("rect", { x: x - 56, y: 152, width: 112, height: 88, rx: 10, "class": "pax-box" }));
+    // ---- passport control: a row of e-gates ------------------------------
+    function gates(x, title, sub) {
+      var g = put(svg, "g", { "class": "pax-station" });
       for (var i = 0; i < 3; i++) {
-        g.appendChild(svgEl("rect", { x: x - 42 + i * 30, y: 166, width: 18, height: 28, rx: 3, "class": "pax-booth" }));
+        var b = x - 55 + i * 37;
+        put(g, "rect", { x: b + 9, y: 180, width: 19, height: 32, "class": "pax-paddle" });
+        put(g, "rect", { x: b, y: 168, width: 9, height: 56, rx: 3, "class": "pax-gate" });
+        put(g, "rect", { x: b + 28, y: 168, width: 9, height: 56, rx: 3, "class": "pax-gate" });
+        put(g, "circle", { cx: b + 4.5, cy: 176, r: 2.6, "class": "pax-reader" });
       }
-      var t = svgEl("text", { x: x, y: 266, "class": "pax-label", "text-anchor": "middle" });
-      t.textContent = label;
-      g.appendChild(t);
-      var s = svgEl("text", { x: x, y: 284, "class": "pax-sub", "text-anchor": "middle" });
-      s.textContent = sub;
-      g.appendChild(s);
-      return g;
+      label(g, x, 266, "pax-label", title);
+      label(g, x, 284, "pax-sub", sub);
     }
-    svg.appendChild(station(400, sc.nodes[2].title, sc.nodes[2].sub));
-    svg.appendChild(station(640, sc.nodes[3].title, sc.nodes[3].sub, "is-decision"));
 
-    // arrival
-    var arr = svgEl("g", { "class": "pax-arrive" });
-    arr.appendChild(svgEl("path", { d: "M 44 180 l 44 0 l 12 8 l -12 8 l -44 0 z", "class": "pax-plane" }));
-    var at = svgEl("text", { x: 70, y: 266, "class": "pax-label", "text-anchor": "middle" });
-    at.textContent = sc.nodes[0].title;
-    arr.appendChild(at);
-    var asub = svgEl("text", { x: 70, y: 284, "class": "pax-sub", "text-anchor": "middle" });
-    asub.textContent = sc.nodes[0].sub;
-    arr.appendChild(asub);
-    svg.appendChild(arr);
+    // ---- customs control: the scanner the channel decision happens at ----
+    function customs(x, title, sub) {
+      var g = put(svg, "g", { "class": "pax-station is-decision" });
+      put(g, "rect", { x: x - 54, y: 224, width: 108, height: 10, rx: 3, "class": "pax-belt" });
+      put(g, "rect", { x: x - 16, y: 209, width: 26, height: 15, rx: 3, "class": "pax-case" });
+      put(g, "path", { d: "M " + (x - 46) + " 234 L " + (x - 46) + " 176 Q " + (x - 46) + " 160 " +
+                          (x - 30) + " 160 L " + (x + 30) + " 160 Q " + (x + 46) + " 160 " +
+                          (x + 46) + " 176 L " + (x + 46) + " 234", "class": "pax-arch" });
+      label(g, x, 266, "pax-label", title);
+      label(g, x, 284, "pax-sub", sub);
+    }
+    gates(400, sc.nodes[2].title, sc.nodes[2].sub);
+    customs(640, sc.nodes[3].title, sc.nodes[3].sub);
+
+    // ---- the arrival: an aircraft on the stand, and the bridge off it ----
+    // Nose toward the building, so the bridge is the short hop a bridge
+    // actually is and the fin sits at the far end, out of everything's way.
+    var arr = put(svg, "g", { "class": "pax-arrive" });
+    put(arr, "ellipse", { cx: 80, cy: 186, rx: 58, ry: 4, "class": "pax-shadow" });
+    put(arr, "path", { d: "M 46 133 L 24 100 L 8 100 L 8 135 Z", "class": "pax-plane-fin" });
+    put(arr, "path", { d: "M 40 140 L 12 135 L 11 143 L 38 148 Z", "class": "pax-plane-fin" });
+    put(arr, "path", { d: "M 66 165 L 108 178 L 122 183 L 80 169 Z", "class": "pax-plane-wing" });
+    put(arr, "rect", { x: 84, y: 168, width: 26, height: 10, rx: 5, "class": "pax-plane-wing" });
+    [[136, 182], [84, 182]].forEach(function (w) {
+      put(arr, "rect", { x: w[0] - 1, y: 166, width: 2, height: 14, "class": "pax-plane-wing" });
+      put(arr, "ellipse", { cx: w[0], cy: w[1], rx: 3.4, ry: 2.6, "class": "pax-plane-dark" });
+    });
+    put(arr, "path", { d: "M 8 138 L 46 133 L 134 133 Q 154 133 156 150 Q 154 167 134 167 " +
+                          "L 46 167 L 8 147 Z", "class": "pax-plane" });
+    put(arr, "path", { d: "M 12 160 L 152 155 L 152 160 L 12 165 Z", "class": "pax-plane-line" });
+    put(arr, "path", { d: "M 137 141 L 150 143 L 149 150 L 136 149 Z", "class": "pax-plane-dark" });
+    for (var wx = 54; wx <= 128; wx += 8) {
+      put(arr, "circle", { cx: wx, cy: 148, r: 1.7, "class": "pax-plane-win" });
+    }
+    put(arr, "rect", { x: 112, y: 137, width: 10, height: 22, rx: 2.5, "class": "pax-plane-door" });
+    put(arr, "path", { d: "M 124 140 L 176 152 L 176 168 L 124 156 Z", "class": "pax-bridge" });
+    for (var bi = 1; bi < 3; bi++) {
+      var bx = 124 + (52 * bi) / 3;
+      put(arr, "path", { d: "M " + bx + " " + (140 + (12 * bi) / 3) + " L " + bx + " " +
+                            (156 + (12 * bi) / 3), "class": "pax-bridge-rib" });
+    }
+    label(arr, 70, 266, "pax-label", sc.nodes[0].title);
+    label(arr, 70, 284, "pax-sub", sc.nodes[0].sub);
 
     // API arrives ahead of the aircraft and feeds the decision
-    var api = svgEl("g", { "class": "pax-api" });
-    api.appendChild(svgEl("rect", { x: 468, y: 6, width: 344, height: 50, rx: 10, "class": "pax-api-box" }));
-    var apiT = svgEl("text", { x: 640, y: 28, "class": "pax-api-title", "text-anchor": "middle" });
-    apiT.textContent = sc.nodes[1].title;
-    api.appendChild(apiT);
-    var apiS = svgEl("text", { x: 640, y: 46, "class": "pax-sub", "text-anchor": "middle" });
-    apiS.textContent = sc.nodes[1].sub;
-    api.appendChild(apiS);
-    api.appendChild(svgEl("path", { d: "M 640 56 L 640 150", "class": "pax-feed" }));
-    svg.appendChild(api);
+    var api = put(svg, "g", { "class": "pax-api" });
+    put(api, "rect", { x: 468, y: 6, width: 344, height: 50, rx: 10, "class": "pax-api-box" });
+    label(api, 640, 28, "pax-api-title", sc.nodes[1].title);
+    label(api, 640, 46, "pax-sub", sc.nodes[1].sub);
+    put(api, "path", { d: "M 640 56 L 640 156", "class": "pax-feed" });
 
-    // channel ends
+    // ---- channel ends: two doorways out of the hall ----------------------
     sc.channels.forEach(function (c) {
       var y = c.name === "green" ? 140 : 262;
-      var g = svgEl("g", { "class": "pax-end ch-" + c.name });
-      g.appendChild(svgEl("rect", { x: 828, y: y - 26, width: 140, height: 52, rx: 10, "class": "pax-end-box" }));
-      var t = svgEl("text", { x: 898, y: y - 4, "class": "pax-end-label", "text-anchor": "middle" });
-      t.textContent = c.label;
-      g.appendChild(t);
-      var s = svgEl("text", { x: 898, y: y + 15, "class": "pax-end-share", "text-anchor": "middle" });
-      s.textContent = c.shareText;
-      g.appendChild(s);
-      svg.appendChild(g);
+      var g = put(svg, "g", { "class": "pax-end ch-" + c.name });
+      put(g, "rect", { x: 828, y: y - 24, width: 140, height: 48, rx: 4, "class": "pax-end-box" });
+      put(g, "rect", { x: 822, y: y - 36, width: 152, height: 12, rx: 3, "class": "pax-end-header" });
+      put(g, "rect", { x: 822, y: y - 24, width: 6, height: 48, "class": "pax-jamb" });
+      put(g, "rect", { x: 968, y: y - 24, width: 6, height: 48, "class": "pax-jamb" });
+      label(g, 898, y - 2, "pax-end-label", c.label);
+      label(g, 898, y + 17, "pax-end-share", c.shareText);
     });
 
     // the passengers themselves — 24 of them, split the way the figures say
@@ -740,8 +841,8 @@
     '<rect x="83" y="118" width="20" height="9" rx="4" fill="#e8eef0"/></g>';
   var TRUCK_VARIANTS = {
     scanned:
-      '<rect x="8" y="2" width="104" height="78" rx="7" fill="none" stroke="#00897b" stroke-width="3"/>' +
-      '<circle cx="60" cy="2" r="5" fill="#00897b"/>',
+      '<rect x="8" y="2" width="104" height="78" rx="7" fill="none" stroke="#00569b" stroke-width="3"/>' +
+      '<circle cx="60" cy="2" r="5" fill="#00569b"/>',
     sealed:
       '<rect x="52" y="30" width="16" height="20" rx="3" fill="#c07a1e"/>' +
       '<rect x="57" y="36" width="6" height="8" fill="#6b4410"/>'
@@ -776,87 +877,6 @@
     return name;
   }
 
-  /* ---------------- the 2018 queue ---------------- */
-  // The first corridor beat says every truck stopped and every consignment was
-  // opened by hand. This draws that: a queue halted between the consignment and
-  // the gate, and two more pulled onto the verge. It is an overlay in corridor
-  // coordinates, not baked into a plate, so the plates stay "today" and the
-  // queue can clear as the modern system comes on.
-  var QUEUE_SPRITE =
-    '<g id="qtruck">' +
-    '<ellipse cx="52" cy="146" rx="46" ry="9" fill="#4d5f52" opacity="0.28"/>' +
-    '<path d="M26 14 L94 14 L102 78 L18 78 Z" fill="#c8cfcd"/>' +
-    '<path d="M26 14 L94 14 L92 22 L28 22 Z" fill="#e6eae8"/>' +
-    '<g stroke="#a4aead" stroke-width="1.6" opacity="0.7">' +
-    '<path d="M43 15 L38 78"/><path d="M60 15 L60 78"/><path d="M77 15 L82 78"/></g>' +
-    '<path d="M22 76 L98 76 L104 126 L16 126 Z" fill="#7d8f96"/>' +
-    '<path d="M31 82 L89 82 L93 101 L27 101 Z" fill="#b4c9d2"/>' +
-    '<rect x="7" y="103" width="13" height="31" rx="5" fill="#1d2528"/>' +
-    '<rect x="100" y="103" width="13" height="31" rx="5" fill="#1d2528"/>' +
-    '<rect x="24" y="113" width="16" height="8" rx="4" fill="#e8eef0"/>' +
-    '<rect x="80" y="113" width="16" height="8" rx="4" fill="#e8eef0"/>' +
-    '</g>';
-  var QUEUE_DEFS =
-    '<radialGradient id="qpool"><stop offset="0" stop-color="#4d5f52" stop-opacity="0.2"/>' +
-    '<stop offset="0.55" stop-color="#4d5f52" stop-opacity="0.07"/>' +
-    '<stop offset="1" stop-color="#4d5f52" stop-opacity="0"/></radialGradient>';
-
-  function placeQueued(y, offset, tilt) {
-    var s = at(y), ts = truckScale(y);
-    // offset is a multiple of the road half-width, measured from the centreline
-    var x = s.x - J.route.lane * halfwAt(y) + offset * halfwAt(y);
-    return svgEl("use", {
-      href: "#qtruck",
-      transform: "translate(" + x.toFixed(1) + "," + y.toFixed(1) + ") rotate(" +
-        (s.a - 90 + (tilt || 0)).toFixed(1) + ") scale(" + ts.toFixed(3) + ") translate(" +
-        (-TW / 2) + "," + (-TH) + ")"
-    });
-  }
-
-  // Where the queue can start without the consignment standing on top of it.
-  // At beat n the consignment sits at exactly (row - 0.5) * ROW_H, but the
-  // first corridor beat is the exception: the page cannot scroll above zero, so
-  // there it sits at viewportHeight * focus / k — which on a tall, narrow
-  // window is far enough down the corridor to land inside the queue.
-  function queueStart() {
-    var k = $journey.clientWidth / PAGE.w;
-    var truckY = innerHeight * J.truck.focus / k;
-    // Sprites are anchored at their base, so a vehicle placed at y occupies
-    // y - height .. y. Clearing the consignment means leaving a whole sprite
-    // plus a gap below where its own base sits.
-    return Math.max(J.queue2018.from, truckY + TH * truckScale(truckY) * 1.28);
-  }
-
-  var queueEl = null, queueStartAt = -1;
-  function buildQueue() {
-    var q = J.queue2018;
-    if (!q) return;
-    var start = queueStart();
-    if (queueEl && Math.abs(start - queueStartAt) < 8) return;   // nothing moved
-    queueStartAt = start;
-    if (queueEl) queueEl.remove();
-    var defs = svgEl("defs");
-    defs.innerHTML = QUEUE_DEFS + QUEUE_SPRITE;
-    var g = svgEl("g", { id: "queue2018" });
-    g.appendChild(defs);
-    // Spacing closes up with depth because it is derived from the sprite's own
-    // height at that y — the same scale law the consignment uses.
-    for (var y = start; y <= q.to; y += TH * truckScale(y) * 1.18) {
-      g.appendChild(placeQueued(y, q.lane, 0));
-    }
-    (q.verge || []).forEach(function (v) {
-      var s = at(v.y), hw = halfwAt(v.y);
-      var x = s.x - J.route.lane * hw + v.side * 1.62 * hw;
-      g.appendChild(svgEl("ellipse", {
-        cx: x.toFixed(1), cy: (v.y + 6).toFixed(1),
-        rx: (hw * 1.5).toFixed(1), ry: (hw * 0.5).toFixed(1), fill: "url(#qpool)"
-      }));
-      g.appendChild(placeQueued(v.y, v.side * 1.62, v.tilt));
-    });
-    $routeLayer.appendChild(g);
-    queueEl = g;
-  }
-
   /* =========================================================================
      BEATS
      ========================================================================= */
@@ -884,6 +904,7 @@
     head.appendChild(icon(p.icon));
     head.appendChild(el("span", null, p.title));
     panel.appendChild(head);
+    if (p.tiles) panel.appendChild(TileStrip(p.tiles));
     if (p.bullets) panel.appendChild(Bullets(p.bullets));
     if (p.facts) panel.appendChild(Facts(p.facts, p.factsNote));
     if (p.split) panel.appendChild(SplitRow(p.split, p.splitNote));
@@ -1033,8 +1054,8 @@
     stage.appendChild(spokes);
 
     var grid = el("div", "hub-grid");
-    // the seven functions fill seven perimeter slots; the eighth carries the
-    // note, so the composition closes instead of showing a gap
+    // the eight functions fill the eight perimeter slots and the hub takes the
+    // middle, so the composition closes with no gap to dress
     var slots = d.functions.slice();
     var order = [0, 1, 2, 3, null, 4, 5, 6, 7];
     order.forEach(function (idx, cell) {
@@ -1047,12 +1068,7 @@
         return;
       }
       var fn = slots[idx];
-      if (!fn) {
-        var noteCell = el("div", "hub-note");
-        noteCell.appendChild(el("span", null, d.note));
-        grid.appendChild(fx(noteCell, 3 + cell * 0.2));
-        return;
-      }
+      if (!fn) return;
       var c = el("article", "hub-card");
       var h = el("div", "hc-head");
       h.appendChild(icon(fn.icon));
@@ -1063,10 +1079,13 @@
     });
     stage.appendChild(grid);
     sec.appendChild(stage);
+    var foot = el("div", "hub-foot");
+    if (d.monitoring) foot.appendChild(fx(MonitorBand(d.monitoring, d.note), 5));
     if (def.cut) {
       var ci = CutIn(def.cut, "Targeting centre");
-      if (ci) { ci.classList.add("hub-cut"); sec.appendChild(fx(ci, 6)); }
+      if (ci) { ci.classList.add("hub-cut"); foot.appendChild(fx(ci, 6)); }
     }
+    if (foot.childNodes.length) sec.appendChild(foot);
     return sec;
   }
 
@@ -1298,6 +1317,11 @@
       if (ci) body.appendChild(ci);
     }
     body.appendChild(Bullets(m.bullets, "md-bullets"));
+    if (m.metric) {
+      var mw = el("div", "md-metric");
+      mw.appendChild(Metric(m.metric));
+      body.appendChild(mw);
+    }
     engine.view = "modal";
     $modal.classList.add("is-open");
     document.body.dataset.view = "modal";
@@ -1481,7 +1505,6 @@
     document.title = D.meta.title + " · " + D.meta.org;
     buildRoute();
     buildTruck();
-    buildQueue();
     buildBeats();
     buildPins();
     buildLabels();
@@ -1492,7 +1515,7 @@
 
     measureBeats();
     addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("resize", function () { buildQueue(); measureBeats(); onScroll(); });
+    addEventListener("resize", function () { measureBeats(); onScroll(); });
     addEventListener("load", function () { measureBeats(); onScroll(); });
     mqWide.addEventListener("change", function () { measureBeats(); onScroll(); });
     onScrollFrame();

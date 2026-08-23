@@ -49,15 +49,26 @@ window.demoData = {
       eTransit: {
         icon: "doc",
         tag: "INFORMATION SYSTEM",
-        title: "E-Transit",
+        title: "E-Transit AAT",
         lead: "Bill-of-lading data reaches Customs before the truck does, and the system clears " +
               "the vehicle at the border on it.",
         bullets: [
-          "Other border-related agencies work in the same system",
-          "Statistics on every movement, provided by the risk management system",
-          "Faster and more targeted customs controls",
-          "{{ETRANSIT_MORE}}"
-        ]
+          "Developed in line with WCO recommendations",
+          "Integrated Border Management through a single platform connecting all relevant " +
+            "government agencies",
+          "Fully automated fees and payments",
+          "The risk management system facilitates legitimate trade while ensuring border security",
+          "Integrated information exchange between the relevant authorities",
+          "Simple enough that businesses use it without specialised knowledge",
+          "Centralised control by the targeting centre",
+          "Reduces congestion at border crossing points"
+        ],
+        /* The deck settles what E-Transit is; it does not say how much of the
+           traffic already moves on it, which is the first thing anyone asks. */
+        metric: {
+          value: "{{ETRANSIT_SHARE}}", label: "share of transit movements cleared on E-Transit",
+          anchor: { type: "context", text: "of 5.2 mln cargo and 1.2 mln railway transactions a year" }
+        }
       },
       tcBorder: {
         icon: "screen",
@@ -122,14 +133,16 @@ window.demoData = {
       section: 2, rail: "CENTRE", eyebrow: "SECTION 2 · TARGETING CENTRE",
       headline: "One centre. Every channel.",
       support: "A key component of the risk management system, staffed around the clock.",
-      overview: "Functions and structure of the targeting centre",
+      overview: "Eight functions, and the six channels it watches at once",
       card: { title: "Targeting centre", icon: "screen" },
       hub: { title: "Targeting Centre", sub: "STATE CUSTOMS COMMITTEE" },
+      /* Eight functions, filling the eight perimeter slots of the hub grid.
+         Real-time monitoring is not one of them: it is what the centre does
+         across all six channels at once, and it has its own band below. */
       functions: [
         { icon: "layers", title: "Key component of the RMS",
-          text: "The centre is where the risk management system meets the officer on duty." },
-        { icon: "screen", title: "Real-time monitoring",
-          text: "Customs processes watched as they happen, across every crossing." },
+          text: "A key component of the Risk Management Department — where the system meets " +
+                "the officer on duty." },
         { icon: "doc", title: "Operational intelligence",
           text: "Processing and analysis of operational intelligence from the field." },
         { icon: "shield", title: "WCO information and databases",
@@ -138,9 +151,25 @@ window.demoData = {
           text: "Connected to other government agencies working at the border." },
         { icon: "scan", title: "Additional risks",
           text: "Detection and mitigation of risks the profiles did not anticipate." },
+        { icon: "flag", title: "Rules for non-standard cases",
+          text: "Risk rules tailored to consignments the standing profiles do not cover." },
+        { icon: "check", title: "On-site assessment",
+          text: "Assessment on site, and expert examination commissioned where it is needed." },
         { icon: "clock", title: "24/7 capability",
           text: "Operational around the clock, every day of the year." }
       ],
+      /* The six channels the centre watches at once. */
+      monitoring: {
+        title: "Real-time monitoring of the customs processes",
+        modes: [
+          { icon: "plane", label: "Air" },
+          { icon: "car", label: "Road vehicles" },
+          { icon: "train", label: "Rail" },
+          { icon: "truck", label: "Cargo" },
+          { icon: "pax", label: "Passengers" },
+          { icon: "warehouse", label: "Warehouses" }
+        ]
+      },
       note: "Control-room view is illustrative; no operational content is shown on the screens."
     },
 
@@ -188,18 +217,30 @@ window.demoData = {
       overview: "Entry at the checkpoint, decided on pre-arrival data",
       card: { title: "Border checkpoint", icon: "shield" },
       hint: "Open the two markers on the corridor for E-Transit and the targeting centre's role here.",
+      /* Slide "Statistics at the border": the network the corridor is one road
+         through. Counts, not rates — the rates are the metrics below. */
       channels: { options: ["green", "yellow", "red"], outcome: "green", note: "this consignment" },
       facts: [
         { label: "Pre-arrival risk", value: "MEDIUM" },
         { label: "Data sources consulted", value: "12" }
       ],
       leftPanel: {
-        title: "Traffic, 2025", icon: "truck",
+        title: "Traffic at the border, 2025", icon: "truck",
+        tiles: [
+          { icon: "flag",      label: "Border",  value: "61",  unit: "customs posts" },
+          { icon: "car",       label: "Avto",    value: "4.5", unit: "mln transactions" },
+          { icon: "box",       label: "Cargo",   value: "5.2", unit: "mln transactions" },
+          { icon: "train",     label: "Railway", value: "1.2", unit: "mln transactions" }
+        ],
         metrics: [
-          { value: "2.71 m", label: "trucks cleared at the border",
-            anchor: { type: "baseline2018", text: "×2.5 on 2018" } },
-          { value: "7,420", label: "trucks a day, average", compact: true,
-            anchor: { type: "trend", text: "peak days above 9,000" } }
+          { value: "30 k", label: "vehicles crossing the border a day", compact: true,
+            anchor: { type: "baseline2018", text: "×2.9 on 2018" } },
+          { value: "87 k", label: "transactions a day", compact: true,
+            anchor: { type: "baseline2018", text: "×3.2 on 2018" } },
+          /* The argument the whole talk rests on, in one line: the traffic
+             nearly tripled and the establishment did not. */
+          { value: "3,184", label: "customs officers on daily duty", compact: true,
+            anchor: { type: "baseline2018", text: "+10% since 2018, against ×2.9 more vehicles" } }
         ]
       },
       rightPanel: {
