@@ -8,42 +8,30 @@
      refuse to render, for the same reason: a number with nothing to measure it
      against is decoration.
    - A value written as "{{TOKEN}}" is an awaiting-figure placeholder and
-     renders as a visibly unfilled chip. `TRANSIT_LEGAL_BASIS` is deliberately
-     left as one: inventing a legal citation is a different class of error from
-     using an illustrative number, and it keeps that machinery visibly alive.
-     `ETRANSIT_MORE` is the presenter's own "we will add later".
+     renders as a visibly unfilled chip. `ETRANSIT_SHARE` is one: the presenter's
+     own "we will add later", and it keeps that machinery visibly alive.
    - `metrics` are statistics and must be anchored. `facts` are the *state of
      this one illustrative consignment* (its channel, its risk level) and are
      labelled as such on screen — they are not statistics.
    - Channel outcomes are the words green / yellow / red only. Passenger
      control uses the green / red subset.
 
-   FIGURES ARE ILLUSTRATIVE. meta.figuresIllustrative below drives the on-screen
-   badge. Every value to be replaced before the visit is listed in ASSETS.md.
+   FIGURES ARE ILLUSTRATIVE. Every value to be replaced before the visit is
+   listed in ASSETS.md.
    ========================================================================= */
 window.demoData = {
   meta: {
     title: "Risk management, end to end",
     subtitle: "Uzbekistan Customs · with the World Customs Organization",
     org: "UZBEKISTAN CUSTOMS",
-    orgSub: "RISK MANAGEMENT SYSTEM",
-    figuresIllustrative: true,
-    illustrativeBadge: "ILLUSTRATIVE FIGURES",
     trsMethodology: false, // true → section 5 prints the WCO Time Release Study footnote
     trsFootnote: "Clearance times measured under WCO Time Release Study methodology.",
-    disclosure:
-      "The consignment shown is an illustrative composite, and the figures on screen are " +
-      "illustrative placeholders pending verified Customs data.",
     theme2026: "Customs protecting society through vigilance and commitment",
     speakers: [
       { sections: [1, 2], credential: "WCO-accredited Risk Management Expert", short: "RISK MGMT EXPERT" },
       { sections: [3, 5], credential: "WCO BACUDA Scholar", short: "BACUDA SCHOLAR" },
       { sections: [6, 7], credential: "WCO Master Trainer Programme Graduate", short: "MASTER TRAINER" }
     ],
-    scrollHint: "SCROLL DOWN TO CONTINUE",
-    keyHints: "↑ ↓ beat · 1–7 section · ESC overview · R replay",
-    targetingCentreLink: "TARGETING CENTRE",
-
     /* Modals opened from the mini markers pinned on the corridor. */
     modals: {
       eTransit: {
@@ -75,7 +63,6 @@ window.demoData = {
         tag: "AT THE BORDER",
         title: "Role of the targeting centre",
         lead: "The centre is live on the crossing while the vehicle is standing there.",
-        plate: "targetingCentre",
         bullets: [
           "Monitor movements through surveillance cameras",
           "Stop or hold cargo and vehicles when necessary",
@@ -169,8 +156,7 @@ window.demoData = {
           { icon: "pax", label: "Passengers" },
           { icon: "warehouse", label: "Warehouses" }
         ]
-      },
-      note: "Control-room view is illustrative; no operational content is shown on the screens."
+      }
     },
 
     /* --- section 3, beat one ------------------------------------------------ */
@@ -180,7 +166,6 @@ window.demoData = {
       support: "Every consignment opened by hand. Days at the border. Almost nothing found.",
       overview: "100% inspection in 2018, and the flows since",
       card: { title: "The 2018 baseline", icon: "clock" },
-      showDisclosure: true,
       leftPanel: {
         title: "2018 — before", icon: "clock",
         metrics: [
@@ -279,7 +264,6 @@ window.demoData = {
           { label: "Alerts raised", value: "0" }
         ],
         trace: ["GATE", "CP·1", "CP·2", "WAREHOUSE"],
-        legalBasis: "{{TRANSIT_LEGAL_BASIS}}",
         metrics: [
           { value: "1,248", label: "seizures on supervised transit",
             anchor: { type: "trend", text: "up ×2 since 2022" } }
@@ -378,11 +362,6 @@ window.demoData = {
           { value: "24,180", label: "customs violations detected", compact: true,
             anchor: { type: "trend", text: "+14% on 2024" } }
         ]
-      },
-      nextStep: {
-        tag: "NEXT STEP — IN DEVELOPMENT",
-        title: "AI-based risk assessment",
-        text: "Machine-learning assessment, developed with the WCO BACUDA programme."
       }
     },
 

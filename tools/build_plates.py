@@ -519,7 +519,7 @@ def _gate():
     return "".join(o)
 prop(R(2, -0.62), R(2, 0.62), _gate())
 
-# ------------------------------- row 3 · supervised transit: portal, CCTV ---
+# ------------------------------------- row 3 · supervised transit: portal ---
 def _portal(y, tone=None):
     c, u, s = cx(y), halfw(y), sc(y)
     col = tone or SIGNAL
@@ -537,28 +537,6 @@ def _portal(y, tone=None):
     o.append(lamp(c - u * 2.1, y + 16, s, False, True, 210))
     return "".join(o)
 prop(R(2, 0.3), R(2, 0.56), _portal(R(2, 0.42)))
-
-def cctv(y, side, cone=True):
-    c, u = cx(y), halfw(y)
-    x, h = c + side * u * 2.1, 3.4 * u
-    top = y - h
-    o = ['<ellipse cx="%s" cy="%s" rx="%s" ry="%s" fill="#5b6b52" opacity="0.35" filter="url(#fx-soft)"/>' % (
-             f(x - .5 * u), f(y + .1 * u), f(.5 * u), f(.16 * u)),
-         '<rect x="%s" y="%s" width="%s" height="%s" fill="#7d8b8b"/>' % (f(x - .09 * u), f(top), f(.18 * u), f(h)),
-         '<path d="M %s %s l %s 0" stroke="#7d8b8b" stroke-width="%s" fill="none"/>' % (
-             f(x), f(top + .18 * u), f(-side * u), f(.14 * u)),
-         '<rect x="%s" y="%s" width="%s" height="%s" rx="%s" fill="#6f7d7d"/>' % (
-             f(x - side * 1.35 * u), f(top + .06 * u), f(.62 * u), f(.3 * u), f(.08 * u)),
-         '<circle cx="%s" cy="%s" r="%s" fill="%s"/>' % (
-             f(x - side * 1.3 * u), f(top + .42 * u), f(.08 * u), SIGNAL)]
-    if cone:
-        o.append('<path d="M %s %s L %s %s L %s %s Z" fill="%s" opacity="0.07" filter="url(#fx-glow)"/>' % (
-            f(x - side * 1.3 * u), f(top + .3 * u), f(c - u), f(y + 3 * u), f(c + u), f(y + 1.4 * u), SIGNAL))
-    return "".join(o)
-# Only on the transit row. The pair that used to stand on rows 5 and 6 were
-# roadside furniture a long way from the passage they illustrate.
-for _y, _sd in ((R(3, -0.25), -1), (R(3, 0.27), 1)):
-    prop(_y - 300, _y + 40, cctv(_y, _sd))
 
 def _checkpoint(y):
     c, u, s = cx(y), halfw(y), sc(y)

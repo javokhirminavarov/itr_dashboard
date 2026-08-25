@@ -12,7 +12,9 @@ the contract that lets it drop in without touching layout code.
   list, the route path, the road-width law, the map pins, the building captions
   and the truck's states all live there. Layout code holds no plate coordinates.
 - The corridor is a page space of **1600 × 4800 units**, shipped as six
-  **1600 × 800** sections stacked top to bottom (rendered at 2000 × 1000). The
+  **1600 × 800** sections stacked top to bottom (rendered at 3000 × 1500 — the
+  page fits the corridor like `object-fit: cover`, so the art paints wider than
+  the viewport and a 2000 px render would be upscaled on a large screen). The
   page maps that space to the viewport by width, so one page unit is
   `viewportWidth / 1600` CSS pixels.
 - The corridor is **six rows of 800 units — one row per section plate**, which
@@ -40,12 +42,12 @@ Content top → bottom, one landmark per row:
 |---|---|---|
 | 1 | 400 | sky, hazed mountains, the corridor running to the horizon — the 2018 frame is drawn over this |
 | 2 | 1200 | **border checkpoint**: canopy over the lanes, booths, main hall, floodlight masts |
-| 3 | 2000 | inspection portal, CCTV masts, inland checkpoint gantry |
+| 3 | 2000 | inspection portal, inland checkpoint gantry (the roadside cameras are drawn by the page, not by the plate — see D4) |
 | 4 | 2800 | **customs warehouse**: dock doors, apron, parked trailers |
 | 5 | 3600 | declaration building: glass office, car park, exit gantry at the row's foot |
 | 6 | 4400 | importer's premises: offices, container yard, and the outskirts of the capital at the page's foot |
 
-- **Minimum 2000 px wide per section**, sRGB, one consistent light direction
+- **Minimum 3000 px wide per section**, sRGB, one consistent light direction
   (the current art is a high midday sun, slightly to the upper right).
 - **Seams:** at every section boundary the road edges, the ground tone and the
   haze must match. The generator gets this for free by authoring the whole
@@ -88,24 +90,21 @@ Content top → bottom, one landmark per row:
   outline) · **sealed** (the page adds the GPS seal tag). Plain variants are
   enough; the state decorations are overlays.
 
-## C. Secondary scenes — 1600 × 900 each
+## C. Secondary scene — 1600 × 900
 
 1. Customs warehouse interior, unloading bay (a dock door standing open onto
-   daylight)
-2. Targeting centre interior — screens must be **blank glows**, no readable
-   content, no numbers
-3. Airport arrivals hall — a glazed back wall with the **stand on the other
-   side of it**: a narrow-body at the gate, the jet bridge off its forward
-   door, apron traffic, and the tower and runway behind. Inside: e-gates,
-   baggage reclaim and passengers. Everything with a real-world size is drawn
-   from one depth law — `PZ()` in `tools/build_scenes.py`, the drawn height of
-   a 1.75 m person at that depth — which is what keeps the aircraft, the gates
-   and the people one scene rather than three drawings
+   daylight), shown in the "Customs and cargo operations" marker's panel
 
-All three are **interiors**, and an interior is lit by its own lights whatever
-the sky is doing — they are deliberately darker than the corridor. What must
-agree with the corridor is anything you can see *through*: an open door, a
-window wall, an aircraft on the stand. Those read as a bright day.
+It is an **interior**, and an interior is lit by its own lights whatever the sky
+is doing — it is deliberately darker than the corridor. What must agree with the
+corridor is anything you can see *through*: the open dock door. That reads as a
+bright day.
+
+The deck used to carry two more of these — a targeting-centre control room on
+section 2 and an airport arrivals hall on section 7 — as cut-in images beside
+the content. Both are gone: the sections say what they have to say in words and
+in their own diagrams, and a small photographic inset beside them was decoration
+competing with the argument.
 
 ## D. Vectors (SVG)
 
@@ -119,8 +118,14 @@ window wall, an aircraft on the stand. Those read as a bright day.
    the words sit on the building. Do not bake them into a plate; if a final
    render moves a roofline, move the `x`/`y` in `plates.js` to the middle of
    the roof as drawn.
-4. Customs Committee emblem. The page currently shows a neutral mark rather
-   than a fake one — `buildChrome()` in `app.js` draws it.
+4. **The roadside cameras are page vectors, not plate art.** The transit
+   passage carries two, listed in `JOURNEY.cameras` and drawn by
+   `buildCameras()` in `app.js` in the same page coordinates as the route, at a
+   size set in road half-widths so they hold the corridor's perspective. They
+   were baked into the plates once, as masts 3.4 road-widths tall, and at
+   viewport scale that read as a gantry with something small on top rather than
+   as a camera. Do not bake them back in: a small object has to stay vector to
+   stay legible, and the size is then a number in one file.
 
 ## E. Type & colour
 
@@ -163,14 +168,14 @@ window wall, an aircraft on the stand. Those read as a bright day.
 
 # Figure replacement checklist
 
-**Most figures on screen are still illustrative.** The page says so — the header
-carries an `ILLUSTRATIVE FIGURES` badge and the 2018 beat prints the disclosure.
-Both are driven by `demoData.meta.figuresIllustrative`; set it to `false` once
-the table below is cleared and the badge and its wording disappear.
+**Most figures on screen are still illustrative**, and the table below is the
+list of what has to be replaced before the visit. The page no longer says so on
+screen: the badge and the on-slide disclosure were presentation furniture, and
+the presenter says it out loud instead.
 
 Replace each value in `demo-data.js`. Nothing else needs editing. Figures
-written as `{{TOKEN}}` render as dashed *awaiting figure* chips;
-`TRANSIT_LEGAL_BASIS` and `ETRANSIT_SHARE` are deliberately left as ones.
+written as `{{TOKEN}}` render as dashed *awaiting figure* chips; `ETRANSIT_SHARE`
+is deliberately left as one.
 
 **Values taken from the official deck, and NOT to be re-invented** — these came
 off the *Statistics at the border* slide and are the page's only sourced
@@ -210,7 +215,6 @@ the 96.4 / 3.6 passenger channel split (section 7).
 | 3 | metric | seizure cases at the border | `1,860` (+18% on 2024) |
 | 3 | consignment state | GPS seal / checkpoints / alerts | `FITTED` / `7` / `0` |
 | 3 | metric | seizures on supervised transit | `1,248` (up ×2 since 2022) |
-| 3 | legal basis | transit supervision | *awaiting figure* — **left unfilled on purpose** |
 | 3 | metric | share of transit movements cleared on E-Transit | *awaiting figure* — the deck defines the system but not its uptake |
 | 4 | growth | customs warehouses | `264` → `430` (×1.6) |
 | 4 | growth | shipments placed | `96 k` → `412 k` (×4.3) |

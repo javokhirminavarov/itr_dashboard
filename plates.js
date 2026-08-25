@@ -32,7 +32,7 @@ window.JOURNEY = {
   rows: 6,
 
   sections: [1, 2, 3, 4, 5, 6].map(function (n) {
-    return { src: "assets/plates/vertical/s" + n + ".jpg", w: 2000, h: 1000 };
+    return { src: "assets/plates/vertical/s" + n + ".jpg", w: 3000, h: 1500 };
   }),
 
   // Traced down the offside lane: right-hand traffic coming toward the camera
@@ -85,6 +85,18 @@ window.JOURNEY = {
     { y: 2552, x: 1199, text: "Customs warehouse" }
   ],
 
+  // Roadside cameras on the transit passage, in page coordinates. They used to
+  // be baked into the plates as 3.4-road-width masts, which at viewport scale
+  // read as gantries rather than as cameras. Drawn by the page instead: a
+  // camera is small, and small art has to stay vector to stay legible. `side`
+  // is which shoulder it stands on (-1 left, +1 right); the mast height and the
+  // stand-off from the centreline are multiples of the road half-width at that
+  // y, so they hold the corridor's own perspective.
+  cameras: [
+    { y: 1820, side: -1 },
+    { y: 2210, side: 1 }
+  ],
+
   // Map markers pinned to the corridor, in page coordinates. A marker with a
   // `modal` is a control the presenter can open mid-talk; one without is a
   // label on the scene.
@@ -121,23 +133,21 @@ window.SECTIONS = [
 
    `kind: "corridor"` beats own row `row` of the six-row page above.
    `kind: "screen"` beats are full-viewport panels and hold no corridor
-   coordinates. `cut` names a secondary plate in PLATES below.                */
+   coordinates.                                                               */
 window.BEATS = [
   { key: "cooperation",  section: 1, kind: "screen" },
-  { key: "targeting",    section: 2, kind: "screen",   cut: "targetingCentre" },
+  { key: "targeting",    section: 2, kind: "screen" },
   { key: "baseline2018", section: 3, kind: "corridor", row: 1 },
   { key: "border",       section: 3, kind: "corridor", row: 2 },
   { key: "transit",      section: 3, kind: "corridor", row: 3, transition: [3, 4] },
   { key: "warehouse",    section: 4, kind: "corridor", row: 4 },
   { key: "declaration",  section: 5, kind: "corridor", row: 5 },
   { key: "audit",        section: 6, kind: "corridor", row: 6 },
-  { key: "passengers",   section: 7, kind: "screen",   cut: "airportArrivals" }
+  { key: "passengers",   section: 7, kind: "screen" }
 ];
 
-/* Secondary plates — shown in a beat's cut-in panel and in the modals.
-   Instantiated at load; nothing loads later.                                 */
+/* Secondary plates — shown in the markers' modals. Instantiated at load;
+   nothing loads later.                                                       */
 window.PLATES = {
-  warehouseInterior: { src: "assets/plates/warehouse-interior.svg", width: 2560, height: 1440 },
-  targetingCentre:   { src: "assets/plates/targeting-centre.svg",   width: 2560, height: 1440 },
-  airportArrivals:   { src: "assets/plates/airport-arrivals.svg",   width: 2560, height: 1440 }
+  warehouseInterior: { src: "assets/plates/warehouse-interior.svg", width: 2560, height: 1440 }
 };

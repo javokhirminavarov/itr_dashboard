@@ -21,7 +21,12 @@ import { fileURLToPath } from 'url';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(HERE, 'build', 'vertical');
 const OUT = path.join(HERE, '..', 'assets', 'plates', 'vertical');
-const WIDTH = 2000;                  // 1.25x the 1600-unit design width
+// 1.875x the 1600-unit design width. The page fits the corridor like
+// object-fit: cover, so at 1920x1080 the art paints about 2420 px wide and at
+// 2560x1440 about 3230: rendered at 2000 it would be upscaled on every
+// projector worth presenting on. Six plates at this width still cost well
+// under a megabyte in total.
+const WIDTH = 3000;
 const QUALITY = 82;
 
 const files = fs.readdirSync(SRC).filter(f => f.endsWith('.svg')).sort();

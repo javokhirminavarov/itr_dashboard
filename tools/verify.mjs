@@ -20,7 +20,8 @@ const FILE = new URL('../index.html', import.meta.url).href;
 const results = [];
 const ok = (n, c, d = '') => results.push([c ? 'PASS' : 'FAIL', n, d]);
 
-const browser = await chromium.launch();
+// PW_CHROME overrides the browser Playwright would pick, as in rasterise.mjs.
+const browser = await chromium.launch(process.env.PW_CHROME ? { executablePath: process.env.PW_CHROME } : {});
 
 async function page(opts = {}) {
   const ctx = await browser.newContext({ viewport: { width: 1920, height: 1080 }, ...opts });
@@ -65,19 +66,26 @@ ok('every metric carries an anchor', contract.anchorless === 0 && contract.metri
 ok('every chart carries caption + range', contract.captionless === 0 && contract.charts >= 4, `${contract.charts} charts`);
 ok('every chart ships a data table', contract.tables === contract.charts, `${contract.tables}/${contract.charts}`);
 
-/* ---- 3. corridor geometry: six equal rows ------------------------------- */
+/* ---- 3. corridor geometry: six equal rows, fitted like object-fit: cover -- */
+/* The corridor is no longer painted at viewport width: it is scaled until one
+   row covers the viewport and allowed to overflow sideways, into the calm bands
+   that carry no landmark. So the aspect ratio to check is the STAGE's — the
+   1600x4800 box — and the corridor must never be narrower than the viewport. */
 const geom = await p.evaluate(() => {
   const j = document.getElementById('journey').getBoundingClientRect();
+  const st = document.getElementById('stage').getBoundingClientRect();
   const rows = [...document.querySelectorAll('#rows .row')].map(r => r.getBoundingClientRect().height);
-  return { rows, journeyH: j.height, journeyW: j.width, expected: window.JOURNEY.page.h / window.JOURNEY.rows };
+  return { rows, journeyH: j.height, stageW: st.width, vw: innerWidth, vh: innerHeight };
 });
 const share = geom.journeyH / geom.rows.length;
 ok('corridor is six rows', geom.rows.length === 6, String(geom.rows.length));
 ok('each row is exactly one sixth of the corridor',
    geom.rows.every(h => Math.abs(h - share) < 1), geom.rows.map(h => h.toFixed(1)).join(', '));
-ok('corridor holds the plate aspect ratio',
-   Math.abs(geom.journeyH / geom.journeyW - 4800 / 1600) < 0.02,
-   (geom.journeyH / geom.journeyW).toFixed(3));
+ok('the corridor holds the plate aspect ratio',
+   Math.abs(geom.journeyH / geom.stageW - 4800 / 1600) < 0.02,
+   (geom.journeyH / geom.stageW).toFixed(3));
+ok('and is never narrower than the viewport', geom.stageW >= geom.vw - 1,
+   `${geom.stageW.toFixed(0)} vs ${geom.vw}`);
 
 /* ---- 4. row content fits inside its row, at several widths --------------- */
 for (const w of [1920, 1600, 1440, 1280]) {
@@ -99,15 +107,44 @@ for (const w of [1920, 1600, 1440, 1280]) {
   ok(`row content fits its row at ${w}px`, over.length === 0, over.join('; '));
 }
 
-/* ---- 4b. a beat is one screenful: it must fit the viewport it is shown in -- */
-for (const [w, h] of [[1920, 1080], [1600, 900], [1440, 900], [1280, 800]]) {
+/* ---- 4b. a beat is a screenful of its own -------------------------------- */
+/* The deck used to ask that a beat FIT the viewport, and that let a beat shorter
+   than the viewport show its neighbours above and below it. It now asks the
+   opposite: a beat covers the viewport it is presented in — and, because a beat
+   is centred on the focus line rather than on the middle of the screen, it has
+   to cover it from there, which takes 2 * max(focus, 1 - focus). What still has
+   to FIT is the content inside the beat: it is read whole, without scrolling. */
+for (const [w, h] of [[1920, 1080], [1600, 900], [1440, 900], [1280, 800], [1280, 1024]]) {
   await p.setViewportSize({ width: w, height: h });
   await p.waitForTimeout(300);
-  const over = await p.evaluate(vh => [...document.querySelectorAll('[data-beat][id]')]
-    .map(e => ({ beat: e.dataset.beat, h: Math.round(e.getBoundingClientRect().height) }))
-    .filter(x => x.h > vh), h);
-  ok(`every beat fits the viewport at ${w}x${h}`, over.length === 0,
-     over.map(x => `${x.beat} ${x.h}>${h}`).join('; '));
+  const beats = await p.evaluate(() => {
+    const fill = 2 * Math.max(window.JOURNEY.truck.focus, 1 - window.JOURNEY.truck.focus);
+    return [...document.querySelectorAll('[data-beat][id]')].map(e => {
+      const kids = [...e.children].map(c => c.getBoundingClientRect());
+      const content = kids.length ? Math.max(...kids.map(r => r.bottom)) - Math.min(...kids.map(r => r.top)) : 0;
+      return { beat: e.dataset.beat, h: Math.round(e.getBoundingClientRect().height),
+               content: Math.round(content), need: Math.round(fill * innerHeight),
+               capped: document.body.dataset.crop === 'capped' };
+    });
+  });
+  // The one exception: on a window tall enough that covering it would crop the
+  // markers off the art, the page caps the scale and says so on the body.
+  const short = beats.filter(b => b.h < b.need - 1 && !b.capped);
+  const spill = beats.filter(b => b.content > h - 8);
+  ok(`every beat covers the viewport at ${w}x${h}`, short.length === 0,
+     short.map(b => `${b.beat} ${b.h}<${b.need}`).join('; '));
+  ok(`every beat's content fits the viewport at ${w}x${h}`, spill.length === 0,
+     spill.map(b => `${b.beat} ${b.content}>${h}`).join('; '));
+}
+
+/* ---- 4c. cropping the art must never crop a marker or a caption away ------ */
+for (const [w, h] of [[1920, 1080], [1440, 900], [1280, 1024], [1280, 1600]]) {
+  await p.setViewportSize({ width: w, height: h });
+  await p.waitForTimeout(300);
+  const off = await p.evaluate(() => [...document.querySelectorAll('.pin, .blabel')]
+    .filter(e => { const r = e.getBoundingClientRect(); return r.left < 0 || r.right > innerWidth; })
+    .map(e => (e.getAttribute('aria-label') || e.textContent).trim()));
+  ok(`no marker or caption is cropped off at ${w}x${h}`, off.length === 0, off.join('; '));
 }
 
 /* ---- 5. no horizontal overflow ------------------------------------------ */
@@ -271,8 +308,10 @@ const chips = await p.evaluate(async () => {
   await new Promise(r => setTimeout(r, 300));
   return { inModal, inPage: document.querySelectorAll('#rows .ph-chip').length };
 });
+/* The one awaiting-figure left is ETRANSIT_SHARE, in the E-Transit modal: the
+   transit row's legal-basis chip is gone with the rest of that panel. */
 ok('awaiting-figure chips render where the data asks for them',
-   chips.inModal >= 1 && chips.inPage >= 1, JSON.stringify(chips));
+   chips.inModal >= 1, JSON.stringify(chips));
 
 /* ---- 12. light-theme contrast of the smallest type ---------------------- */
 const contrast = await p.evaluate(() => {

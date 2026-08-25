@@ -57,30 +57,28 @@ blue pins; click, or tab to them and press Enter.
   a USB stick — no server needed).
 - Scroll to move. Scrolling is free and continuous; nothing snaps. Every beat is
   scrolled so its own centre lands on the truck's focus line, and every beat
-  fits the viewport it is shown in from 1280 px wide upward.
+  **covers** the viewport it is shown in from 1280 px wide upward — one section
+  on screen at a time, with no sliver of its neighbours.
 - Keys, for driving from a lectern: `↓` `PageDown` `Space` next beat · `↑`
   `PageUp` previous · `1`–`7` jump to a section · `Home`/`End` first/last ·
   `Esc` running order · `R` replay the current beat's reveal. Presenter clickers
   (PageUp/PageDown) work.
-- The page always opens on section 1, whatever the window shape.
-- **Targeting centre** at the bottom left jumps to section 2. **Running order**
-  at the top right opens the seven-section grid.
+- The page always opens on section 1, whatever the window shape. It carries no
+  bars: the page itself is the presentation surface, and the running order, the
+  sections and the beats are all on the keyboard. `Esc` opens the running order.
 - Below 1200 px the corridor art becomes a backdrop and the two rails stack into
-  one column, so the page still reads on a tablet or a phone. Below 620 px the
-  section nav gives way to the running-order button.
+  one column, so the page still reads on a tablet or a phone.
 
 ## Editing before the visit
 
 - **Figures**: every number lives in `demo-data.js`. Most are still
-  **illustrative placeholders**, and the page says so — in the header badge and
-  in the opening disclosure. The exception is the border row: `61` customs
+  **illustrative placeholders**. The exception is the border row: `61` customs
   posts, the `4.5` / `5.2` / `1.2` mln transactions by mode, `30 k` vehicles and
   `87 k` transactions a day, and `3,184` officers on daily duty all come off the
-  official *Statistics at the border* slide and are not to be re-invented. `ASSETS.md` lists all 48 to replace, flags the
+  official *Statistics at the border* slide and are not to be re-invented. `ASSETS.md` lists all 47 to replace, flags the
   three least plausible, and notes the one name to confirm. Figures written as
-  `{{TOKEN}}` render as dashed *awaiting figure* chips; `TRANSIT_LEGAL_BASIS`
-  and the presenter's own "we will add later" in the E-Transit panel are
-  deliberately left as ones.
+  `{{TOKEN}}` render as dashed *awaiting figure* chips; the presenter's own
+  "we will add later" in the E-Transit panel is deliberately left as one.
 - **Copy**: headlines and support lines are also in `demo-data.js` (discipline:
   ≤6-word headline, ≤25-word support).
 - **Contracts that hold the page honest**, enforced in code rather than trusted:
@@ -102,7 +100,7 @@ art itself:
 ```
 python3 tools/build_plates.py     # corridor -> tools/build/vertical/*.svg
 node tools/rasterise.mjs          # -> assets/plates/vertical/*.jpg
-python3 tools/build_scenes.py     # the three secondary scenes -> assets/plates/
+python3 tools/build_scenes.py     # the warehouse interior -> assets/plates/
 ```
 
 `build_plates.py` prints the route path to paste back into `plates.js`, and
@@ -123,10 +121,11 @@ npx --no-install http-server -p 8099 -s .
 node tools/verify.mjs
 ```
 
-42 assertions. Zero network requests after load, on `file://` and `http://`; the
-six corridor rows each exactly one sixth of the corridor; **every beat fitting
-the viewport it is presented in, and every row's content fitting its row**, at
-1920, 1600, 1440 and 1280; the consignment moving down the route monotonically
+53 assertions. Zero network requests after load, on `file://` and `http://`; the
+six corridor rows each exactly one sixth of the corridor; **every beat covering
+the viewport it is presented in, its content fitting that viewport, and every
+row's content fitting its row**, at 1920, 1600, 1440, 1280 and 1280x1024, with
+no marker or building caption cropped off the art; the consignment moving down the route monotonically
 and picking up its scanned and sealed states in order, holding one size past
 the corridor's hold point, never turning across the carriageway, and being gone
 once it has been delivered; no metric without an anchor and no chart without a
@@ -142,11 +141,17 @@ It also covers the 2018 frame: that the first corridor beat runs with the
 corridor instrumentation off and the transit beat has it the other way round,
 and that nothing but the consignment ever stands on the carriageway.
 
-Two sizing rules are load-bearing and the suite guards both: a corridor row's
-height is a pure function of viewport width, so the content laid over it is
-sized in `em` against a single `clamp(10px, 0.781vw, 15px)` on `.row` — the
-factor that keeps content height and row height in step. Screens do the same
-thing with their own clamp.
+Two sizing rules are load-bearing and the suite guards both. First, the corridor
+is fitted to the viewport like `object-fit: cover`: it is scaled until one row
+covers the viewport — 2 x max(focus, 1 - focus) of it, because a beat is centred
+on the focus line and not on the middle of the screen — and allowed to overflow
+sideways into the calm bands the plates keep clear. That scale is capped rather
+than let the crop take the markers and the building captions off screen; where
+the cap binds, the page says so with `data-crop="capped"` on the body. Second,
+because that scale is never below viewport width / 1600, a row is never shorter
+than it used to be, so the content laid over it is still sized in `em` against a
+single `clamp(10px, 0.781vw, 15px)` on `.row` — the factor that kept content
+height and row height in step. Screens do the same thing with their own clamp.
 
 ## Deployment note
 

@@ -14,6 +14,9 @@
    centre lands on the truck's focus line, and the current beat is whichever
    beat's centre is nearest that line.
 
+   The page has no chrome of its own — no bars, no tabs. `Esc` opens the running
+   order, 1-7 jump to a section, the arrows step a beat.
+
    Layout code holds no corridor coordinates (see plates.js) and no figures
    (see demo-data.js).
    ========================================================================= */
@@ -54,7 +57,7 @@
   var $pins = document.getElementById("pins");
   var $labels = document.getElementById("labels");
   var $rows = document.getElementById("rows");
-  var $nav = document.getElementById("nav");
+  var $stage = document.getElementById("stage");
   var $overview = document.getElementById("overview");
   var $modal = document.getElementById("modal");
   var $progress = document.querySelector("#progress i");
@@ -172,13 +175,6 @@
     return wrap;
   }
 
-  function LegalChip(token) {
-    var c = el("span", "legal-chip");
-    c.appendChild(el("span", "pilcrow", "¶"));
-    richText(c, "Legal basis: " + token);
-    return c;
-  }
-
   function TraceRow(nodes) {
     var row = el("div", "trace-row");
     nodes.forEach(function (name, i) {
@@ -189,14 +185,6 @@
       row.appendChild(n);
     });
     return row;
-  }
-
-  function NextStep(ns) {
-    var f = el("div", "next-step");
-    f.appendChild(el("span", "ns-tag", ns.tag));
-    f.appendChild(el("div", "ns-title", ns.title));
-    f.appendChild(el("div", "ns-text", ns.text));
-    return f;
   }
 
   function Facts(facts, note) {
@@ -768,6 +756,57 @@
     $routeLayer.appendChild(chevs);
   }
 
+
+  /* Roadside cameras on the transit passage.
+
+     They used to be baked into the plates as masts 3.4 road-widths tall, which
+     at viewport scale read as gantries: too big to be a camera, and with a head
+     too small to be recognised as one. Drawn here instead, from
+     JOURNEY.cameras, in the same page space as the route and the chevrons — so
+     they take the corridor's own perspective from halfwAt(), they stay crisp at
+     any viewport width, and the size is a number in this file rather than a
+     re-render.
+
+     One orientation is authored: a camera on the LEFT shoulder, its arm
+     reaching in toward the road (+x) and its lens looking down-page. The
+     right-hand one is the same glyph mirrored. */
+  function buildCameras() {
+    if (!J.cameras) return;
+    var g = svgEl("g", { "class": "cctv-flow" });
+    J.cameras.forEach(function (c) {
+      var u = halfwAt(c.y) * 0.8;              // road half-width here, and the
+      // glyph is drawn at 0.8 of it: big enough to be read as a camera from the
+      // back of a room, small enough that it is furniture and not a landmark
+      var base = { x: at(c.y).x + c.side * 2.2 * halfwAt(c.y), y: c.y };
+      var n = svgEl("g", {
+        "class": "cctv",
+        transform: "translate(" + base.x.toFixed(1) + "," + base.y.toFixed(1) + ")" +
+                   " scale(" + (c.side < 0 ? 1 : -1) + ",1) scale(" + u.toFixed(2) + ")"
+      });
+      // Everything below is in road half-widths, with the mast foot at 0,0.
+      // A real mast is about twice a lane wide and no taller: it is the head
+      // that has to be legible, not the pole, so the head is drawn generously
+      // and the pole is kept to the height it would really be.
+      n.appendChild(svgEl("ellipse", { "class": "cctv-shadow", cx: 0.1, cy: 0.03, rx: 0.3, ry: 0.09 }));
+      // what the camera watches: short and narrow, so it reads as a sight line
+      // rather than as a wash over the carriageway
+      n.appendChild(svgEl("path", { "class": "cctv-cone", d: "M 0.9 -1 L 1.28 0.5 L 1.82 0.22 Z" }));
+      n.appendChild(svgEl("rect", { "class": "cctv-mast", x: -0.045, y: -1.05, width: 0.09, height: 1.05 }));
+      n.appendChild(svgEl("rect", { "class": "cctv-mast", x: -0.13, y: -0.05, width: 0.26, height: 0.07, rx: 0.03 }));
+      // arm, then the head: body, sun hood over it, lens, and the live dot
+      n.appendChild(svgEl("rect", { "class": "cctv-mast", x: 0, y: -1.02, width: 0.46, height: 0.06, rx: 0.03 }));
+      var head = svgEl("g", { transform: "rotate(9,0.45,-1)" });
+      head.appendChild(svgEl("rect", { "class": "cctv-body", x: 0.42, y: -1.13, width: 0.5, height: 0.23, rx: 0.06 }));
+      head.appendChild(svgEl("rect", { "class": "cctv-hood", x: 0.4, y: -1.19, width: 0.6, height: 0.07, rx: 0.035 }));
+      head.appendChild(svgEl("circle", { "class": "cctv-lens", cx: 0.9, cy: -1.01, r: 0.115 }));
+      head.appendChild(svgEl("circle", { "class": "cctv-glint", cx: 0.865, cy: -1.045, r: 0.042 }));
+      head.appendChild(svgEl("circle", { "class": "cctv-dot", cx: 0.5, cy: -0.96, r: 0.04 }));
+      n.appendChild(head);
+      g.appendChild(n);
+    });
+    $routeLayer.appendChild(g);
+  }
+
   // route point at page y, by interpolation over the sample table
   function at(y) {
     var lo = 0, hi = SAMPLES.length - 1;
@@ -918,7 +957,6 @@
       panel.appendChild(mHost);
     }
     (p.metrics || []).forEach(function (m) { mHost.appendChild(Metric(m)); });
-    if (p.legalBasis) panel.appendChild(LegalChip(p.legalBasis));
     if (p.motif && MOTIFS[p.motif]) panel.appendChild(MOTIFS[p.motif]());
     return panel;
   }
@@ -935,13 +973,8 @@
       hint.appendChild(el("span", null, d.hint));
       card.appendChild(hint);
     }
-    if (d.showDisclosure) card.appendChild(el("p", "c-note", D.meta.disclosure));
     if (def.key === "declaration" && D.meta.trsMethodology) {
       card.appendChild(el("p", "c-note", D.meta.trsFootnote));
-    }
-    if (def.cut) {
-      var ci = CutIn(def.cut, d.card.title);
-      if (ci) card.appendChild(ci);
     }
     return card;
   }
@@ -978,7 +1011,6 @@
       if (d.facts) chWrap.appendChild(Facts(d.facts));
       right.appendChild(chWrap);
     }
-    if (d.nextStep) right.appendChild(NextStep(d.nextStep));
     wrap.appendChild(fx(right, 2));
     row.appendChild(wrap);
 
@@ -1081,10 +1113,6 @@
     sec.appendChild(stage);
     var foot = el("div", "hub-foot");
     if (d.monitoring) foot.appendChild(fx(MonitorBand(d.monitoring, d.note), 5));
-    if (def.cut) {
-      var ci = CutIn(def.cut, "Targeting centre");
-      if (ci) { ci.classList.add("hub-cut"); foot.appendChild(fx(ci, 6)); }
-    }
     if (foot.childNodes.length) sec.appendChild(foot);
     return sec;
   }
@@ -1094,10 +1122,6 @@
     var body = el("div", "pax-body");
     var main = el("div", "pax-main");
     main.appendChild(PassengerSchema(d.schema));
-    if (def.cut) {
-      var ci = CutIn(def.cut, "Arrivals hall");
-      if (ci) { ci.classList.add("pax-cut"); main.appendChild(ci); }
-    }
     body.appendChild(main);
     var side = el("div", "pax-side");
     if (d.leftPanel) side.appendChild(Panel(d.leftPanel));
@@ -1171,46 +1195,12 @@
     });
   }
 
-  /* ---------------- chrome ---------------- */
-  function buildChrome() {
-    var brand = document.getElementById("brand");
-    var emb = svgEl("svg", { viewBox: "0 0 40 40", "class": "emblem", "aria-hidden": "true" });
-    emb.innerHTML =
-      '<circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.4" opacity="0.5"/>' +
-      '<circle cx="20" cy="20" r="13.5" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.3"/>' +
-      '<path d="M20 8 L20 32 M14 15 L20 9 L26 15 M14 25 L20 31 L26 25" fill="none" stroke="currentColor" ' +
-      'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>';
-    brand.appendChild(emb);
-    var txt = el("div");
-    txt.appendChild(el("div", "b-org", D.meta.org));
-    txt.appendChild(el("div", "b-sub", D.meta.orgSub));
-    brand.appendChild(txt);
-
-    SECTIONS.forEach(function (s) {
-      var b = el("button", "tab");
-      b.type = "button";
-      b.dataset.section = s.n;
-      b.appendChild(el("span", "tab-n", String(s.n)));
-      b.appendChild(el("span", "tab-label", s.short));
-      b.addEventListener("click", function () { goToSection(s.n); });
-      $nav.appendChild(b);
-    });
-
-    var tc = document.getElementById("tc-btn");
-    tc.appendChild(el("span", null, D.meta.targetingCentreLink));
-    tc.appendChild(icon("arrow"));
-    tc.addEventListener("click", function () { goToSection(2); });
-
-    var hint = document.getElementById("scroll-hint");
-    hint.appendChild(el("span", "mouse"));
-    hint.appendChild(el("span", null, D.meta.scrollHint));
-
-    var badge = document.getElementById("illustrative");
-    if (D.meta.figuresIllustrative) badge.textContent = D.meta.illustrativeBadge;
-    else badge.remove();
-
-    document.getElementById("overview-btn").addEventListener("click", openOverview);
-
+  /* ---------------- tail ----------------
+     The deck carries no bars: the page is the presentation surface, and the
+     running order, the sections and the beats are all on the keyboard (ESC,
+     1-7, arrows). What is left of the page's own furniture is the closing
+     statement at the foot. */
+  function buildTail() {
     var tail = document.getElementById("tail");
     tail.appendChild(el("div", "t-sub", "WCO 2026"));
     tail.appendChild(el("div", "t-theme", D.meta.theme2026));
@@ -1373,9 +1363,6 @@
     document.body.dataset.beat = def.key;
     document.body.dataset.section = String(def.section);
     beatEls.forEach(function (e, j) { e.classList.toggle("is-current", j === i); });
-    $nav.querySelectorAll(".tab").forEach(function (b) {
-      b.classList.toggle("is-active", +b.dataset.section === def.section);
-    });
     try { history.replaceState(null, "", "#beat-" + def.key); } catch (e) { /* file:// quirks */ }
   }
 
@@ -1405,12 +1392,11 @@
     ticking = false;
     var docH = document.documentElement.scrollHeight - innerHeight;
     $progress.style.width = (docH > 0 ? clamp(window.scrollY / docH, 0, 1) * 100 : 0) + "%";
-    document.body.classList.toggle("is-end", docH > 0 && window.scrollY / docH > 0.965);
 
     setBeat(window.scrollY < 4 ? 0 : nearestBeat());
 
     if (!mqWide.matches) return;
-    var k = $journey.clientWidth / PAGE.w;
+    var k = stageK;
     if (k !== lastK) {
       lastK = k;
       $space.style.transform = "scale(" + k + ")";
@@ -1432,6 +1418,74 @@
   }
   function onScroll() {
     if (!ticking) { ticking = true; requestAnimationFrame(onScrollFrame); }
+  }
+
+  /* =========================================================================
+     THE STAGE
+     A corridor row used to be a pure function of viewport width — the page held
+     the plates' aspect ratio, so a row was (100vw / 1600) * 800 tall. On any
+     screen narrower than 2:1, which is every screen, that makes a row shorter
+     than the viewport, and the sections above and below bleed into it.
+
+     So the art is fitted the way `object-fit: cover` fits a photograph: scaled
+     until one row covers the viewport, and allowed to overflow sideways, which
+     is where the plates are quiet by design — the outer bands carry the cards
+     and hold no landmark (see ASSETS.md). The cards themselves stay in viewport
+     space; only the art and the things pinned to it move with k.
+
+     FILL is not 1: a beat is scrolled so its CENTRE lands on the focus line at
+     0.56 of the viewport, so a row exactly one viewport tall would still leave
+     a sliver of its neighbour at the top. Covering both edges from an offset
+     centre takes 2 * max(focus, 1 - focus) — 1.12 here, and it follows the
+     focus line if that is ever retuned.
+
+     K_MAX is the other end of it: on a tall, narrow window an uncapped k would
+     crop the corridor down to the carriageway and take the pins and the
+     building captions off screen with it. The cap keeps the outermost of them
+     CROP_M px inside the frame and accepts a visible neighbour instead — the
+     corridor is merely imperfect with a sliver showing, and unreadable without
+     its landmarks.
+     ========================================================================= */
+  var FILL = 2 * Math.max(J.truck.focus, 1 - J.truck.focus);
+  var CROP_M = 110;                        // screen px kept outboard of the last overlay
+  var X_MAX = J.pins.concat(J.labels).reduce(function (m, p) {
+    return Math.max(m, Math.abs(p.x - PAGE.w / 2));
+  }, 1);
+  var stageK = 1;
+  function layoutStage() {
+    if (!mqWide.matches) {                 // the narrow layout floats the art
+      $stage.style.cssText = "";           // behind stacked cards and needs no
+      $journey.style.height = "";          // stage of its own
+      return;
+    }
+    // clientWidth, not innerWidth: the page always has a vertical scrollbar, and
+    // the centring offset has to use the same width the layout box uses, or the
+    // art sits a few pixels off and the consignment drives off the road.
+    var vw = $journey.clientWidth;
+    var cover = FILL * innerHeight / ROW_H;              // what covering takes
+    var capped = (vw / 2 - CROP_M) / X_MAX;              // what the pins allow
+    stageK = Math.max(vw / PAGE.w, Math.min(cover, capped));
+    // On a window tall enough for the cap to bind, a beat no longer covers the
+    // viewport on its own. Said out loud, so the page's own tests can hold the
+    // rule and its one exception apart rather than quietly widening the rule.
+    document.body.dataset.crop = stageK < cover - 1e-6 ? "capped" : "cover";
+    $journey.style.height = (PAGE.h * stageK).toFixed(1) + "px";
+    $stage.style.width = (PAGE.w * stageK).toFixed(1) + "px";
+    $stage.style.left = ((vw - PAGE.w * stageK) / 2).toFixed(1) + "px";
+  }
+
+  // Order matters: measureBeats() reads the rows' rects, and before the stage
+  // is sized they are still the old height.
+  function remeasure() { layoutStage(); measureBeats(); onScroll(); }
+  // A resize changes k, and with it every beat's place in the document, so the
+  // reader is put back on the beat they were reading rather than left standing
+  // between two. Not on load: the page may be opening on a deep link, and this
+  // would drag it back to the top.
+  function relayout() {
+    layoutStage();
+    measureBeats();
+    window.scrollTo({ top: Math.max(0, scrollTargetForBeat(engine.beat)), behavior: "auto" });
+    onScroll();
   }
 
   /* ---------------- reveal ---------------- */
@@ -1487,8 +1541,9 @@
   function init() {
     var deepLink = /#beat-([a-z0-9]+)/i.exec(location.hash);
     var root = document.documentElement.style;
-    root.setProperty("--page-aspect", PAGE.w + " / " + PAGE.h);
     root.setProperty("--sec-h", (100 / J.sections.length) + "%");
+    root.setProperty("--fill", String(FILL));   // the screens cover the viewport
+                                                // from the focus line too
     root.setProperty("--rows", String(ROWS));
     $space.style.width = PAGE.w + "px";
     $space.style.height = PAGE.h + "px";
@@ -1504,20 +1559,22 @@
     });
     document.title = D.meta.title + " · " + D.meta.org;
     buildRoute();
+    buildCameras();
     buildTruck();
     buildBeats();
     buildPins();
     buildLabels();
-    buildChrome();
+    buildTail();
     buildOverview();
     buildModal();
     observeBeats();
 
+    layoutStage();
     measureBeats();
     addEventListener("scroll", onScroll, { passive: true });
-    addEventListener("resize", function () { measureBeats(); onScroll(); });
-    addEventListener("load", function () { measureBeats(); onScroll(); });
-    mqWide.addEventListener("change", function () { measureBeats(); onScroll(); });
+    addEventListener("resize", relayout);
+    addEventListener("load", remeasure);
+    mqWide.addEventListener("change", relayout);
     onScrollFrame();
     setBeat(0);
 
