@@ -1,8 +1,9 @@
 /* =========================================================================
    Risk management, end to end.
 
-   The corridor is a 1600x4800 page space rendered as six stacked section
-   plates. #stage holds that exact aspect, and app.js sizes it so one row covers
+   The corridor is a 1600x4800 page space drawn by app.js as six stacked
+   sections of SVG — an ORTHOGRAPHIC PLAN of the route, seen from directly
+   above. #stage holds that exact aspect, and app.js sizes it so one row covers
    the viewport — the art overflows sideways rather than the sections being cut
    short. #overlay-space inside it is scaled from page units to CSS pixels, so
    the route, the truck, the map pins, the cameras and the building captions
@@ -12,9 +13,12 @@
    The page carries no bars: it is the presentation surface itself, and the
    running order, the sections and the beats are on the keyboard.
 
-   The page is LIGHT, because the corridor art is a daylight scene. Every
-   colour lives in the tokens below; a value written literally anywhere else in
-   this file is a bug waiting for the next repaint.
+   The page is LIGHT, and so is the corridor: a plan is a drawing on paper, not
+   a scene with a sky in it. Every colour lives in the tokens below; a value
+   written literally anywhere else in this file is a bug waiting for the next
+   repaint. The corridor art now holds that rule too — it used to be generated
+   JPEGs with their palette duplicated in a Python file, and it is now SVG that
+   takes every fill and stroke from the classes at the foot of this section.
    ========================================================================= */
 
 /* ---- faces (self-hosted, OFL; no network after load) -------------------- */
@@ -74,6 +78,23 @@
   --series-a: #00569b;
   --series-b: #12a7eb;
   --series-n: #8496a8;
+  /* The corridor, drawn as a plan. One family with the cards — blue, white and
+     grey — because the art and the panels are now the same document. Nothing
+     here is green, and nothing is lit: a plan has no sun. */
+  --plan-ground: #e9eff6;
+  --plan-parcel: rgba(0, 86, 155, 0.07);
+  --plan-verge: #dee6ef;
+  --plan-shoulder: #c3d0de;
+  --plan-road: #aebdcd;
+  --plan-mark: rgba(255, 255, 255, 0.92);
+  --plan-apron: #ccd7e4;
+  --plan-bay: rgba(0, 86, 155, 0.17);
+  --plan-built: #f6f9fc;
+  --plan-built-line: rgba(0, 86, 155, 0.44);
+  --plan-opening: #8a9db2;
+  --plan-island: #d3dde8;
+  --plan-parked: #e7eef6;
+  --plan-city: rgba(0, 86, 155, 0.08);
   --scrim: rgba(233, 239, 247, 0.96);
   --veil: rgba(239, 244, 250, 0.7);
   --shadow: 0 10px 30px rgba(14, 34, 60, 0.12);
@@ -134,10 +155,43 @@ h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
 #stage { position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   pointer-events: none; }
 #corridor { position: absolute; inset: 0; overflow: hidden; }
-#corridor img { position: absolute; left: 0; width: 100%;
+/* One <svg> per corridor row, each carrying viewBox="0 {row} 1600 800" over
+   art authored once in whole-page coordinates, so the seams line up by
+   construction. content-visibility is why the corridor is cut into rows at all:
+   the rows that are off screen are not painted. */
+#corridor svg { position: absolute; left: 0; width: 100%;
   top: var(--t, 0); height: var(--sec-h, 16.6667%);
   user-select: none; pointer-events: none;
   content-visibility: auto; contain-intrinsic-size: 1px 1px; }
+
+/* ---- the corridor drawn as a plan ---- */
+.plan-ground { fill: var(--plan-ground); }
+.plan-parcel { fill: none; stroke: var(--plan-parcel); stroke-width: 1.5; }
+.plan-verge { fill: var(--plan-verge); }
+.plan-shoulder { fill: var(--plan-shoulder); }
+.plan-road { fill: var(--plan-road); }
+.plan-edge { fill: none; stroke: var(--plan-mark); stroke-width: 2.6; }
+.plan-centre { fill: none; stroke: var(--plan-mark); stroke-width: 2.4; stroke-dasharray: 26 22; }
+.plan-apron { fill: var(--plan-apron); }
+.plan-bay { fill: none; stroke: var(--plan-bay); stroke-width: 1.6; }
+.plan-built { fill: var(--plan-built); stroke: var(--plan-built-line); stroke-width: 2; }
+.plan-built-line { fill: none; stroke: var(--plan-built-line); stroke-width: 1.5; }
+.plan-opening { fill: var(--plan-opening); }
+.plan-island { fill: var(--plan-island); stroke: var(--plan-built-line); stroke-width: 1.4; }
+.plan-booth { fill: var(--plan-built); stroke: var(--brand); stroke-width: 1.8; }
+.plan-barrier { fill: var(--red); }
+/* a canopy is drawn as the ground it covers, which is why it is dashed */
+.plan-canopy { fill: none; stroke: var(--plan-built-line); stroke-width: 2;
+  stroke-dasharray: 12 9; }
+.plan-span { fill: none; stroke: var(--plan-built-line); stroke-width: 3;
+  stroke-dasharray: 10 8; }
+.plan-pier { fill: var(--plan-built); stroke: var(--plan-built-line); stroke-width: 1.6; }
+.plan-scanner { fill: var(--brand-sky); opacity: 0.16; }
+.plan-parked { fill: var(--plan-parked); stroke: var(--plan-built-line); stroke-width: 1.8; }
+.plan-parked-line { fill: none; stroke: var(--plan-built-line); stroke-width: 1.4; }
+.plan-cab { fill: #9fb0c2; }
+.plan-container { fill: var(--plan-parked); stroke: var(--plan-built-line); stroke-width: 1; }
+.plan-city rect { fill: var(--plan-city); }
 
 /* page-space overlay: 1600x4800 units, scaled to CSS px by app.js.
    Promoted to its own compositor layer. Without this the route, chevrons and
@@ -151,20 +205,18 @@ h2, h3 { font-weight: 700; letter-spacing: -0.01em; }
 .route-glow { fill: none; stroke: var(--brand); stroke-width: 3.4; stroke-linecap: round; opacity: 0.75; }
 .chev { fill: none; stroke: var(--brand-sky); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round;
   opacity: 0; animation: chev 2.6s linear infinite; }
-@keyframes chev { 0% { opacity: 0; } 22% { opacity: 0.9; } 55% { opacity: 0.2; } 100% { opacity: 0; } }
+@keyframes chev { 0% { opacity: 0; } 22% { opacity: 0.72; } 55% { opacity: 0.16; } 100% { opacity: 0; } }
 
 /* Roadside cameras on the transit passage (JOURNEY.cameras). Drawn by the page
-   rather than baked into the plates: a camera is a small object, and small art
-   has to stay vector to still read as what it is. Everything here is stroked in
-   page units, so it holds the corridor's perspective at any viewport width. */
-.cctv-shadow { fill: #5b6b52; opacity: 0.28; }
-.cctv-mast { fill: #7d8b8b; }
-.cctv-body { fill: #66757a; }
-.cctv-hood { fill: #8b9a9c; }
-.cctv-lens { fill: #22333a; }
-.cctv-glint { fill: #cfe6ef; opacity: 0.65; }
+   in the corridor's own units, so it holds its scale at any viewport width. In
+   plan a camera is a pad, an arm over the shoulder and the cone of carriageway
+   it watches — which is more legible than the mast it used to be. */
+.cctv-pad { fill: var(--plan-built); stroke: var(--plan-built-line); stroke-width: 0.05; }
+.cctv-mast { fill: #6f8095; }
+.cctv-body { fill: #46586b; }
+.cctv-lens { fill: #22303f; }
 .cctv-dot { fill: var(--brand-sky); }
-.cctv-cone { fill: var(--brand-sky); opacity: 0.07; }
+.cctv-cone { fill: var(--brand-sky); opacity: 0.13; }
 /* the 2018 frame runs with the corridor's instrumentation off, cameras included */
 body[data-beat="baseline2018"] .cctv-flow { opacity: 0; }
 .cctv-flow { transition: opacity 0.8s ease; }
@@ -177,11 +229,30 @@ body[data-beat="baseline2018"] .cctv-flow { opacity: 0; }
 body[data-beat="baseline2018"] .chev-flow,
 body[data-beat="baseline2018"] .route-line { opacity: 0; }
 
+/* The consignment: an articulated goods vehicle seen from above, 36 x 232 page
+   units — 2.55 m by 16.5 m at the corridor's 14 units to the metre. It does not
+   bob. A vehicle bouncing on the spot is a cartoon device, and this one is an
+   object on a drawing; the bob keyframes are gone rather than merely paused
+   under prefers-reduced-motion. */
 #truck { position: absolute; left: 0; top: 0; width: 0; height: 0; }
-.truck-bob { position: absolute; animation: bob 1.9s ease-in-out infinite; }
-@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.truck-body { position: absolute; }
 .truck-variant { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity 0.3s linear; }
 .truck-variant.is-on { opacity: 1; }
+.hgv-tractor { fill: #46586b; }
+.hgv-cab { fill: #5b6f83; }
+.hgv-glass { fill: #aebfd0; }
+.hgv-mirror { fill: #46586b; }
+.hgv-wheel { fill: #2b3644; }
+.hgv-beacon { fill: var(--yellow); }
+.hgv-coupling { fill: none; stroke: #46586b; stroke-width: 2; }
+.hgv-trailer { fill: #fbfcfe; stroke: #7d8fa3; stroke-width: 1.6; }
+.hgv-seam { fill: none; stroke: #c3cedb; stroke-width: 1.2; }
+.hgv-rib { fill: none; stroke: #c3cedb; stroke-width: 1.2; }
+.hgv-doors { fill: none; stroke: #7d8fa3; stroke-width: 1.8; }
+.hgv-scan { fill: none; stroke: var(--brand); stroke-width: 2.6; }
+.hgv-scan-dot { fill: var(--brand); }
+.hgv-seal { fill: var(--amber); }
+.hgv-seal-ink { fill: none; stroke: var(--amber-wash); stroke-width: 2; }
 
 /* map pins: positioned in per-cent of the corridor, sized in CSS pixels */
 #pins { position: absolute; inset: 0; pointer-events: none; }
@@ -762,7 +833,8 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .fx, .is-in .fx { transition: none; opacity: 1; transform: none; }
-  .truck-bob, .chev, .pin.is-live::after { animation: none; }
+  /* the consignment no longer bobs at all, so there is nothing here to stop */
+  .chev, .pin.is-live::after { animation: none; }
   /* each dot carries its own static offset-distance, so with the animation off
      they stand spread along the route instead of piled at the door */
   .pax-dot { animation: none; }

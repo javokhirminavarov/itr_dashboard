@@ -2,7 +2,7 @@
  * Verification suite for the presentation page.
  *
  * Asserts the things the page promises — no network after load, every metric
- * anchored, every chart captioned, the corridor rows matching the plate grid,
+ * anchored, every chart captioned, the corridor rows matching the page grid,
  * the consignment running the route — and the things that have actually broken
  * here before: content overflowing its corridor row at anything narrower than
  * 1920, a lamp standard planted in the middle of the carriageway, a "visually
@@ -20,7 +20,7 @@ const FILE = new URL('../index.html', import.meta.url).href;
 const results = [];
 const ok = (n, c, d = '') => results.push([c ? 'PASS' : 'FAIL', n, d]);
 
-// PW_CHROME overrides the browser Playwright would pick, as in rasterise.mjs.
+// PW_CHROME overrides the browser Playwright would pick.
 const browser = await chromium.launch(process.env.PW_CHROME ? { executablePath: process.env.PW_CHROME } : {});
 
 async function page(opts = {}) {
@@ -75,15 +75,20 @@ const geom = await p.evaluate(() => {
   const j = document.getElementById('journey').getBoundingClientRect();
   const st = document.getElementById('stage').getBoundingClientRect();
   const rows = [...document.querySelectorAll('#rows .row')].map(r => r.getBoundingClientRect().height);
-  return { rows, journeyH: j.height, stageW: st.width, vw: innerWidth, vh: innerHeight };
+  return { rows, journeyH: j.height, stageW: st.width, vw: innerWidth, vh: innerHeight,
+           plates: document.querySelectorAll('#corridor svg').length };
 });
+const window0Rows = await p.evaluate(() => window.JOURNEY.rows);
 const share = geom.journeyH / geom.rows.length;
 ok('corridor is six rows', geom.rows.length === 6, String(geom.rows.length));
 ok('each row is exactly one sixth of the corridor',
    geom.rows.every(h => Math.abs(h - share) < 1), geom.rows.map(h => h.toFixed(1)).join(', '));
-ok('the corridor holds the plate aspect ratio',
-   Math.abs(geom.journeyH / geom.stageW - 4800 / 1600) < 0.02,
+const PAGE = await p.evaluate(() => window.JOURNEY.page);
+ok('the corridor holds the page aspect ratio',
+   Math.abs(geom.journeyH / geom.stageW - PAGE.h / PAGE.w) < 0.02,
    (geom.journeyH / geom.stageW).toFixed(3));
+ok('one section of corridor art per row', geom.plates === window0Rows,
+   `${geom.plates} drawn for ${window0Rows} rows`);
 ok('and is never narrower than the viewport', geom.stageW >= geom.vw - 1,
    `${geom.stageW.toFixed(0)} vs ${geom.vw}`);
 
@@ -161,7 +166,7 @@ await p.waitForTimeout(300);
 const run = await p.evaluate(async () => {
   const truck = document.getElementById('truck');
   const seen = [], states = [], held = [], turns = [];
-  const hold = window.JOURNEY.route.width.holdY, exit = window.JOURNEY.truck.exit;
+  const exit = window.JOURNEY.truck.exit;
   const H = document.body.scrollHeight;
   for (let t = 0; t <= 1.0001; t += 0.02) {
     window.scrollTo({ top: H * t, behavior: 'instant' });
@@ -170,8 +175,9 @@ const run = await p.evaluate(async () => {
     const m = /translate\(([-\d.]+)px,\s*([-\d.]+)px\)/.exec(tr);
     const z = /scale\(([-\d.]+)\)/.exec(tr), a = /rotate\(([-\d.]+)deg\)/.exec(tr);
     if (m) seen.push(+m[2]);
-    // past the hold the corridor is at one scale, so the consignment is too
-    if (m && z && +m[2] > hold + 100) held.push(+z[1]);
+    // the corridor is a plan and has no perspective, so the consignment is one
+    // size for the whole page — not merely past a hold, as it used to be
+    if (m && z) held.push(+z[1]);
     if (a) turns.push(Math.abs(+a[1]));
     const on = [...document.querySelectorAll('.truck-variant[data-variant].is-on')].map(v => v.dataset.variant);
     const s = on.includes('sealed') ? 'sealed' : on.includes('scanned') ? 'scanned' : 'closed';
@@ -185,8 +191,9 @@ ok('consignment moves down the route monotonically', run.monotone, run.span.map(
 ok('states arrive in order closed → scanned → sealed',
    JSON.stringify(run.states) === JSON.stringify(['closed', 'scanned', 'sealed']), run.states.join(' → '));
 // The corridor used to grow about six-fold between the border and the city,
-// which on a scrolled page reads as a zoom rather than as travel.
-ok('the corridor holds one scale past the hold', run.held[1] - run.held[0] < 0.001,
+// which on a scrolled page reads as a zoom rather than as travel. It is now an
+// orthographic plan, so there is nothing left that could grow.
+ok('the corridor holds one scale end to end', run.held[1] - run.held[0] < 0.001,
    `consignment ${run.held[0].toFixed(3)} → ${run.held[1].toFixed(3)}`);
 // It used to be held at the last point of the route with no heading to read,
 // which turned it a quarter circle across the carriageway.
@@ -340,11 +347,11 @@ await settle(rp);
 const still = await rp.evaluate(() => {
   const none = s => getComputedStyle(document.querySelector(s)).animationName === 'none';
   const dots = [...document.querySelectorAll('.pax-dot')].map(d => d.style.offsetDistance);
-  return { chev: none('.chev'), bob: none('.truck-bob'), dot: none('.pax-dot'),
+  return { chev: none('.chev'), dot: none('.pax-dot'),
            spread: new Set(dots).size };
 });
-ok('reduced motion stops the chevrons, the bob and the passenger dots',
-   still.chev && still.bob && still.dot, JSON.stringify(still));
+ok('reduced motion stops the chevrons and the passenger dots',
+   still.chev && still.dot, JSON.stringify(still));
 ok('and the dots still stand spread along the route', still.spread > 15, `${still.spread} distinct offsets`);
 await rp.context().close();
 

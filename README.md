@@ -28,17 +28,23 @@ numbered. `window.BEATS` in `plates.js` is the list.
 ## The shape of the page
 
 Sections 1, 2 and 7 are **screens**: full-viewport panels that are not places on
-a road. Sections 3–6 are a **corridor** — one continuous daylight road running
-top to bottom, six rows deep, with the border checkpoint, the transit gantry,
-the customs warehouse, the declaration office and the importer's premises each
-sitting on their own row. The consignment drives that road as you scroll, and
-whatever landmark sits beside it is the beat you are reading: the six rows and
-the six section plates are the same grid, defined once in `plates.js`, so they
-cannot drift apart. The corridor opens out of the horizon over the first row
-and then holds one scale to the foot of the page — the road, the landmarks and
-the consignment are all the same size at the city as at the border, so
-scrolling reads as travel rather than as a slow zoom. The consignment is
-delivered at the importer's premises on the last row and fades out below it.
+a road. Sections 3–6 are a **corridor** — one road running top to bottom, six
+rows deep, with the border checkpoint, the transit gantry, the customs
+warehouse, the declaration office and the importer's premises each sitting on
+their own row. The consignment drives that road as you scroll, and whatever
+landmark sits beside it is the beat you are reading: the six rows and the six
+sections of art are the same grid, defined once in `plates.js`, so they cannot
+drift apart. The consignment is delivered at the importer's premises on the last
+row and fades out below it.
+
+The corridor is drawn as an **operations plan** — one flat orthographic view
+from directly above, in the same white, blue and grey the cards are set in.
+Facilities are plan footprints, not buildings in three-quarter view; the
+consignment is an articulated goods vehicle seen from above, true to the road it
+drives on at about 14 page units to the metre. A plan has no horizon, so it has
+no perspective: the road is one width from the head of the page to the foot of
+it and nothing grows as the reader scrolls. See `ASSETS.md` for what each row
+carries and what is held to scale.
 
 The first corridor beat is the 2018 "before" frame, and it shows it: the road
 runs empty to the gate with the corridor's blue instrumentation switched off.
@@ -89,63 +95,39 @@ blue pins; click, or tab to them and press Enter.
   `demo-data.js`. The state of the illustrative consignment is labelled as such,
   separately from the statistics. Every chart also ships the same numbers as a
   visually-hidden table.
-- **Art**: `ASSETS.md` is the drop-in contract; `plates.js` holds every
-  coordinate.
+- **Art**: `ASSETS.md` is the drawing contract; `plates.js` holds every
+  coordinate, and `styles.css` holds every colour.
 
-## Regenerating the art
+## Changing the art
 
-The page needs no build step — the corridor ships as six JPEGs. To change the
-art itself:
+There is **no build step**. The corridor is drawn by `app.js` as six sections of
+SVG, one per row, and takes every fill and stroke from the `--plan-*` tokens in
+`styles.css` — so the art and the cards cannot drift apart in palette, it stays
+crisp at any projector resolution, and there is no second copy of the palette to
+keep in step.
 
-```
-python3 tools/build_plates.py     # corridor -> tools/build/vertical/*.svg
-node tools/rasterise.mjs          # -> assets/plates/vertical/*.jpg
-python3 tools/build_scenes.py     # the warehouse interior -> assets/plates/
-```
+- To move the road, edit `JOURNEY.route.d` in `plates.js`. The carriageway is
+  generated from that path, so the art, the glow trail, the chevrons, the
+  cameras and the consignment all follow it together.
+- To change the road's width, edit `JOURNEY.route.width.half`. Everything on the
+  corridor is measured in multiples of it.
+- To change what a row shows, edit its function in the corridor-art section of
+  `app.js` — `row1` … `row6` draw beside the carriageway, `over2` / `over3` /
+  `over5` draw on it. If you move a footprint, move its caption in
+  `JOURNEY.labels` to the new centre.
 
-`build_plates.py` prints the route path to paste back into `plates.js`, and
-checks every plate it writes twice: that it is well-formed XML, and that every
-`url(#id)` in it resolves. Both failures are otherwise silent — a dangling
-reference just stops painting, and a malformed attribute surfaces only as an
-image-load timeout thirty seconds into the rasteriser.
-
-`rasterise.mjs` needs Playwright and Chromium; nothing is added to this repo.
-The SVG is the editable source and the JPEG is the artifact: painting the
-corridor as live vector costs 200–300 ms the first time each section scrolls in,
-which the reader feels as a hitch.
-
-## Verifying
-
-```
-npx --no-install http-server -p 8099 -s .
-node tools/verify.mjs
-```
-
-53 assertions. Zero network requests after load, on `file://` and `http://`; the
-six corridor rows each exactly one sixth of the corridor; **every beat covering
-the viewport it is presented in, its content fitting that viewport, and every
-row's content fitting its row**, at 1920, 1600, 1440, 1280 and 1280x1024, with
-no marker or building caption cropped off the art; the consignment moving down the route monotonically
-and picking up its scanned and sealed states in order, holding one size past
-the corridor's hold point, never turning across the carriageway, and being gone
-once it has been delivered; no metric without an anchor and no chart without a
-caption; the full keyboard map; every marker opening its panel — and a real
-pointer landing on the marker rather than on whatever is over it — `Esc`
-closing it and focus returning to the marker; no
-horizontal overflow at six widths; the smallest type on the page clearing 4.5:1
-against the panel; and reduced-motion behaviour, including that the passenger
-dots stay spread along their route rather than piling at the door when their
-animation is off.
-
-It also covers the 2018 frame: that the first corridor beat runs with the
-corridor instrumentation off and the transit beat has it the other way round,
-and that nothing but the consignment ever stands on the carriageway.
+The corridor used to be six JPEGs generated by `tools/build_plates.py` and
+rasterised with `tools/rasterise.mjs`, and the warehouse scene by
+`tools/build_scenes.py`. All three are gone: a schematic rasterised to JPEG
+carries compression artefacts on every edge, and the vector cost that justified
+the pipeline was a cost of thousands of paths of noise and grain, which a plan
+does not have.
 
 Two sizing rules are load-bearing and the suite guards both. First, the corridor
 is fitted to the viewport like `object-fit: cover`: it is scaled until one row
 covers the viewport — 2 x max(focus, 1 - focus) of it, because a beat is centred
 on the focus line and not on the middle of the screen — and allowed to overflow
-sideways into the calm bands the plates keep clear. That scale is capped rather
+sideways into the calm bands the art keeps clear. That scale is capped rather
 than let the crop take the markers and the building captions off screen; where
 the cap binds, the page says so with `data-crop="capped"` on the body. Second,
 because that scale is never below viewport width / 1600, a row is never shorter

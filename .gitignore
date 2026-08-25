@@ -1,6 +1,3 @@
-# Intermediate SVGs from tools/build_plates.py. The committed artifacts are the
-# JPEGs under assets/plates/vertical/, produced from these by tools/rasterise.mjs.
-tools/build/
 .preview.html
 node_modules/
 __pycache__/

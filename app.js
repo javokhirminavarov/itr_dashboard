@@ -693,27 +693,33 @@
   }
 
   /* ---------------- corridor geometry ---------------- */
-  // Mirrors tools/build_plates.py exactly; the parameters live in plates.js.
+  /* The corridor is an ORTHOGRAPHIC PLAN — one flat view from directly above —
+     so it has no horizon and therefore no perspective. There used to be a
+     depth law here, mirroring tools/build_plates.py: the road opened out of a
+     vanishing point over the first 620 units and then held that scale. It is
+     gone, and with it the generator it had to be kept in step with. The road is
+     one width from the top of the page to the foot of it.
+
+     halfwAt() survives as the single statement of that width, because
+     everything else on the corridor is measured in multiples of it: the road
+     art, the flowing chevrons, the roadside cameras and the consignment. The
+     corridor's scale is about 14 page units to the metre, so 52 is a real
+     3.75 m lane and the carriageway below is a 7.5 m two-lane road. */
   var WP = J.route.width;
-  // Mirrors depth()/halfw() in tools/build_plates.py: the corridor opens out
-  // over the first WP.holdY units, smoothstepped so it arrives at the hold with
-  // no rate of change, and then holds that scale to the foot of the page —
-  // nothing on the road grows as the reader scrolls.
-  function depthAt(y) {
-    var t = clamp((y - WP.horizon) / (WP.holdY - WP.horizon), 0, 1);
-    return WP.holdDepth * t * t * (3 - 2 * t);
-  }
-  function halfwAt(y) {
-    return WP.base + WP.span * Math.pow(depthAt(y), WP.exp);
-  }
-  // The consignment is drawn 120 units wide. It grows with the road while the
-  // corridor is still opening out, on a compressed curve, and then holds one
-  // size for the whole journey — the same law the road itself follows.
-  var TW = 120, TH = 152;
-  var TRUCK_MID = halfwAt(2400), TRUCK_UNITS = 74, TRUCK_GROWTH = 0.62;
-  function truckScale(y) {
-    return TRUCK_UNITS * Math.pow(halfwAt(y) / TRUCK_MID, TRUCK_GROWTH) / TW;
-  }
+  function halfwAt() { return WP.half; }
+
+  // The consignment, at that same 14 units to the metre: 2.55 m wide by 16.5 m
+  // long — the legal maximum for an articulated combination, and a shape no
+  // one can mistake for a van. It is drawn once at full size and never scaled,
+  // because in a plan nothing on the ground is nearer than anything else.
+  var TW = 36, TH = 232;
+  function truckScale() { return 1; }
+
+  // Centreline of the ROAD at page y. JOURNEY.route.d is traced down the
+  // offside lane, so the middle of the carriageway is that path pushed back by
+  // the lane offset. The road art and the route are therefore the same curve,
+  // and cannot drift apart the way a traced path and a rendered picture could.
+  function roadCx(y) { return at(y).x - J.route.lane * WP.half; }
 
   /* ---------------- route, chevrons, sampling ---------------- */
   var routeGlow, routeHalo, routeLen, SAMPLES = [], N_SAMPLES = 600;
@@ -741,12 +747,12 @@
     // Flowing chevrons: the running arrows down the carriageway.
     var chevs = svgEl("g", { "class": "chev-flow" });
     var step = 74, n = 0;
-    for (var y = 190; y < PAGE.h - 80; y += step) {
-      var s = at(y), w = halfwAt(y) * 0.34, h = halfwAt(y) * 0.3;
+    for (var y = 40; y < PAGE.h - 80; y += step) {
+      var s = at(y), w = halfwAt(y) * 0.3, h = halfwAt(y) * 0.26;
       var path = svgEl("path", {
         "class": "chev",
         d: "M " + (-w) + " " + (-h) + " L 0 0 L " + w + " " + (-h),
-        "stroke-width": String(Math.max(3, halfwAt(y) * 0.09)),
+        "stroke-width": String(Math.max(2.5, halfwAt(y) * 0.075)),
         transform: "translate(" + s.x.toFixed(1) + "," + y.toFixed(1) + ") rotate(" + (s.a - 90).toFixed(1) + ")"
       });
       path.style.animationDelay = (-(n % 9) * 0.29).toFixed(2) + "s";
@@ -759,17 +765,13 @@
 
   /* Roadside cameras on the transit passage.
 
-     They used to be baked into the plates as masts 3.4 road-widths tall, which
-     at viewport scale read as gantries: too big to be a camera, and with a head
-     too small to be recognised as one. Drawn here instead, from
-     JOURNEY.cameras, in the same page space as the route and the chevrons — so
-     they take the corridor's own perspective from halfwAt(), they stay crisp at
-     any viewport width, and the size is a number in this file rather than a
-     re-render.
+     Drawn from JOURNEY.cameras in the same page space as the route and the
+     chevrons, and sized in road half-widths from halfwAt(), so they are stated
+     in the corridor's own units and stay crisp at any viewport width.
 
      One orientation is authored: a camera on the LEFT shoulder, its arm
-     reaching in toward the road (+x) and its lens looking down-page. The
-     right-hand one is the same glyph mirrored. */
+     reaching in toward the road (+x) and its cone laid across the carriageway.
+     The right-hand one is the same glyph mirrored. */
   function buildCameras() {
     if (!J.cameras) return;
     var g = svgEl("g", { "class": "cctv-flow" });
@@ -777,34 +779,297 @@
       var u = halfwAt(c.y) * 0.8;              // road half-width here, and the
       // glyph is drawn at 0.8 of it: big enough to be read as a camera from the
       // back of a room, small enough that it is furniture and not a landmark
-      var base = { x: at(c.y).x + c.side * 2.2 * halfwAt(c.y), y: c.y };
+      // Measured from the CENTRE of the carriageway, not from the lane the
+      // route runs down, so both shoulders stand the same distance off the road.
+      var base = { x: roadCx(c.y) + c.side * 1.8 * halfwAt(c.y), y: c.y };
       var n = svgEl("g", {
         "class": "cctv",
         transform: "translate(" + base.x.toFixed(1) + "," + base.y.toFixed(1) + ")" +
                    " scale(" + (c.side < 0 ? 1 : -1) + ",1) scale(" + u.toFixed(2) + ")"
       });
       // Everything below is in road half-widths, with the mast foot at 0,0.
-      // A real mast is about twice a lane wide and no taller: it is the head
-      // that has to be legible, not the pole, so the head is drawn generously
-      // and the pole is kept to the height it would really be.
-      n.appendChild(svgEl("ellipse", { "class": "cctv-shadow", cx: 0.1, cy: 0.03, rx: 0.3, ry: 0.09 }));
-      // what the camera watches: short and narrow, so it reads as a sight line
-      // rather than as a wash over the carriageway
-      n.appendChild(svgEl("path", { "class": "cctv-cone", d: "M 0.9 -1 L 1.28 0.5 L 1.82 0.22 Z" }));
-      n.appendChild(svgEl("rect", { "class": "cctv-mast", x: -0.045, y: -1.05, width: 0.09, height: 1.05 }));
-      n.appendChild(svgEl("rect", { "class": "cctv-mast", x: -0.13, y: -0.05, width: 0.26, height: 0.07, rx: 0.03 }));
-      // arm, then the head: body, sun hood over it, lens, and the live dot
-      n.appendChild(svgEl("rect", { "class": "cctv-mast", x: 0, y: -1.02, width: 0.46, height: 0.06, rx: 0.03 }));
-      var head = svgEl("g", { transform: "rotate(9,0.45,-1)" });
-      head.appendChild(svgEl("rect", { "class": "cctv-body", x: 0.42, y: -1.13, width: 0.5, height: 0.23, rx: 0.06 }));
-      head.appendChild(svgEl("rect", { "class": "cctv-hood", x: 0.4, y: -1.19, width: 0.6, height: 0.07, rx: 0.035 }));
-      head.appendChild(svgEl("circle", { "class": "cctv-lens", cx: 0.9, cy: -1.01, r: 0.115 }));
-      head.appendChild(svgEl("circle", { "class": "cctv-glint", cx: 0.865, cy: -1.045, r: 0.042 }));
-      head.appendChild(svgEl("circle", { "class": "cctv-dot", cx: 0.5, cy: -0.96, r: 0.04 }));
+      // Seen from above a camera is a foundation pad, an arm reaching out over
+      // the shoulder, the head on the end of it, and the cone of carriageway it
+      // watches. The cone is the part that gains most from the plan: in
+      // elevation it was a wash over the road, and here it is simply the piece
+      // of carriageway under supervision.
+      n.appendChild(pn("path", "cctv-cone", { d: "M 0.62 -0.1 L 3.4 -1.3 L 3.4 1.1 Z" }));
+      n.appendChild(svgEl("rect", { "class": "cctv-pad", x: -0.2, y: -0.2, width: 0.4, height: 0.4, rx: 0.06 }));
+      n.appendChild(svgEl("rect", { "class": "cctv-mast", x: 0, y: -0.055, width: 0.5, height: 0.11, rx: 0.05 }));
+      var head = svgEl("g", { transform: "rotate(-14,0.5,0)" });
+      head.appendChild(svgEl("rect", { "class": "cctv-body", x: 0.4, y: -0.13, width: 0.32, height: 0.26, rx: 0.06 }));
+      head.appendChild(svgEl("circle", { "class": "cctv-lens", cx: 0.72, cy: 0, r: 0.1 }));
+      head.appendChild(svgEl("circle", { "class": "cctv-dot", cx: 0.47, cy: 0, r: 0.045 }));
       n.appendChild(head);
       g.appendChild(n);
     });
     $routeLayer.appendChild(g);
+  }
+
+  /* =========================================================================
+     CORRIDOR ART
+
+     The corridor used to be six JPEGs generated by tools/build_plates.py and
+     rasterised with Playwright. It is drawn here instead, as SVG, for three
+     reasons: a schematic rasterised to JPEG carries compression artefacts on
+     every edge and this page is shown on a projector; the palette had to be
+     kept in step by hand between a Python file and styles.css, and now it is
+     simply the CSS tokens; and the repo loses a build step.
+
+     The whole 1600 x 4800 corridor is authored ONCE in page coordinates and
+     sliced into six sections by viewBox, exactly as the generator did, so the
+     seams line up by construction rather than by hand-matching. Sectioning is
+     what lets content-visibility skip the rows that are off screen, which is
+     the only reason the art was ever cut up.
+
+     ON SCALE. The road and the consignment are true to each other — about 14
+     page units to the metre — because that is the one proportion the eye
+     actually checks, and getting it wrong is what made the old sprite read as a
+     van. The facilities are not held to it: a 60 m warehouse at that scale is
+     wider than the whole clear band between the cards. They are drawn instead
+     as a site plan cropped to the corridor — the dock face, the apron, the gate
+     line are in frame and the bulk runs off it, which is what a real drawing at
+     this zoom looks like.
+
+     Nothing here carries a colour. Every element takes a class and styles.css
+     holds the palette, per the rule at the head of that file. */
+
+  function pn(tag, cls, attrs) {
+    attrs = attrs || {};
+    if (cls) attrs["class"] = cls;
+    return svgEl(tag, attrs);
+  }
+  function pRect(cls, x, y, w, h, rx) {
+    var a = { x: x, y: y, width: w, height: h };
+    if (rx) a.rx = rx;
+    return pn("rect", cls, a);
+  }
+  function pPath(cls, d) { return pn("path", cls, { d: d }); }
+  // Deterministic jitter: the base has to be irregular enough not to read as
+  // graph paper, and identical on every load.
+  function jit(n) { var x = Math.sin(n * 12.9898) * 43758.5453; return x - Math.floor(x); }
+
+  /* ---- the road, drawn from JOURNEY.route.d ---- */
+  function roadSide(ya, yb, off, back) {
+    var pts = [], y;
+    for (y = ya; y < yb; y += 20) pts.push([roadCx(y) + off, y]);
+    pts.push([roadCx(yb) + off, yb]);
+    if (back) pts.reverse();
+    return pts;
+  }
+  function strD(pts) {
+    var d = "", i;
+    for (i = 0; i < pts.length; i++) d += (i ? "L " : "M ") + pts[i][0].toFixed(1) + " " + pts[i][1] + " ";
+    return d;
+  }
+  function bandD(ya, yb, off) {
+    return strD(roadSide(ya, yb, -off).concat(roadSide(ya, yb, off, true))) + "Z";
+  }
+  function lineD(ya, yb, off) { return strD(roadSide(ya, yb, off)); }
+
+  function buildRoad(g, ya, yb) {
+    var h = WP.half;
+    g.appendChild(pPath("plan-verge", bandD(ya, yb, h + 30)));
+    g.appendChild(pPath("plan-shoulder", bandD(ya, yb, h + 10)));
+    g.appendChild(pPath("plan-road", bandD(ya, yb, h)));
+    g.appendChild(pPath("plan-edge", lineD(ya, yb, -(h - 4))));
+    g.appendChild(pPath("plan-edge", lineD(ya, yb, h - 4)));
+    g.appendChild(pPath("plan-centre", lineD(ya, yb, 0)));
+  }
+
+  /* ---- the base the corridor stands on ---- */
+  function buildGround(g, y0, y1) {
+    g.appendChild(pRect("plan-ground", 0, y0, PAGE.w, y1 - y0));
+    var parcels = pn("g", "plan-parcel"), i, y, x;
+    for (i = 0; i < 5; i++) {
+      y = y0 + (i + jit(y0 + i * 7) * 0.8) * (y1 - y0) / 5;
+      parcels.appendChild(pPath(null, "M 0 " + y.toFixed(0) + " H " + PAGE.w));
+    }
+    for (i = 0; i < 7; i++) {
+      x = (i + jit(y0 + i * 31) * 0.9) * PAGE.w / 7;
+      parcels.appendChild(pPath(null, "M " + x.toFixed(0) + " " + y0 + " V " + y1));
+    }
+    g.appendChild(parcels);
+  }
+
+  /* ---- a gantry straddling the carriageway ---- */
+  function gantry(g, y, cls) {
+    var c = roadCx(y), h = WP.half;
+    if (cls) g.appendChild(pRect(cls, c - h, y - 13, h * 2, 26));
+    g.appendChild(pPath("plan-span", "M " + (c - h - 34) + " " + y + " H " + (c + h + 34)));
+    g.appendChild(pRect("plan-pier", c - h - 38, y - 17, 28, 34, 3));
+    g.appendChild(pRect("plan-pier", c + h + 10, y - 17, 28, 34, 3));
+  }
+
+  /* ---- a rank of vehicles standing off the carriageway ---- */
+  function standing(g, x, y, cols, rows, dx, dy) {
+    var i, j, px, py;
+    for (i = 0; i < cols; i++) for (j = 0; j < rows; j++) {
+      px = x + i * dx; py = y + j * dy;
+      // Nose-down, facing the gate they are waiting for. Trailer and tractor
+      // drawn separately for the same reason the consignment is: two bodies
+      // with a break between them is what says heavy goods from above.
+      g.appendChild(pRect("plan-parked", px, py, 26, 84, 2));
+      g.appendChild(pRect("plan-cab", px + 2, py + 88, 22, 28, 2));
+    }
+  }
+
+  /* =======================  the six rows  ======================= */
+
+  /* Each row draws in two passes. ROW_ART goes down BEFORE the carriageway, for
+     everything that lies beside it — aprons, sheds, yards, the slip roads that
+     have to run under the road edge rather than over it. ROW_OVER goes down
+     AFTER it, for the things that are ON the road: a control plaza is the
+     carriageway opening out, and a gantry straddles it. */
+
+  /* Row 1 — the 2018 baseline. The corridor's instrumentation is switched off
+     on this beat (styles.css does that from body[data-beat]); what the art has
+     to carry is the queue. Every consignment was opened, so the vehicles stand
+     for days. They stand OFF the carriageway: the road itself carries nothing
+     but the consignment anywhere on this page, which is a rule in ASSETS.md and
+     an assertion in tools/verify.mjs. */
+  function row1(g) {
+    var c = roadCx(300);
+    g.appendChild(pRect("plan-apron", c + 76, 100, 320, 590, 3));
+    g.appendChild(pPath("plan-apron", "M " + (c + WP.half) + " 250 L " + (c + 76) + " 180 L " +
+      (c + 76) + " 330 L " + (c + WP.half) + " 350 Z"));
+    standing(g, c + 96, 138, 3, 4, 50, 136);
+    g.appendChild(pPath("plan-bay", "M " + (c + 88) + " 676 H " + (c + 386)));
+  }
+
+  /* Row 2 — the border checkpoint: the hall beside the road, the secondary
+     inspection bays behind it. */
+  function row2(g) {
+    var c = roadCx(1200), i;
+    g.appendChild(pRect("plan-apron", c + 140, 1060, 340, 350, 3));
+    g.appendChild(pRect("plan-built", c + 166, 1082, 300, 164, 3));
+    g.appendChild(pPath("plan-built-line", "M " + (c + 166) + " 1118 H " + (c + 466)));
+    for (i = 0; i < 5; i++)
+      g.appendChild(pRect("plan-opening", c + 190 + i * 54, 1236, 30, 10, 1));
+    for (i = 0; i < 3; i++)
+      g.appendChild(pPath("plan-bay", "M " + (c + 158) + " " + (1300 + i * 36) + " h 150"));
+  }
+
+  /* The control plaza: the carriageway opening out into four lanes, each with
+     its island, its booth and its barrier, under a canopy that oversails them.
+     A canopy is drawn dashed, because in a plan it is the ground it covers. */
+  function over2(g) {
+    var c = roadCx(1200), h = WP.half, W = 150, i, lx;
+    g.appendChild(pPath("plan-road",
+      "M " + (roadCx(1050) - h) + " 1050 L " + (roadCx(1120) - W) + " 1120 L " +
+      (roadCx(1300) - W) + " 1300 L " + (roadCx(1370) - h) + " 1370 L " +
+      (roadCx(1370) + h) + " 1370 L " + (roadCx(1300) + W) + " 1300 L " +
+      (roadCx(1120) + W) + " 1120 L " + (roadCx(1050) + h) + " 1050 Z"));
+    for (i = 0; i < 3; i++) {
+      lx = c - 75 + i * 75;
+      g.appendChild(pRect("plan-island", lx - 9, 1158, 18, 104, 6));
+      g.appendChild(pRect("plan-booth", lx - 13, 1196, 26, 40, 2));
+    }
+    for (i = 0; i < 4; i++) {
+      lx = c - 112 + i * 75;
+      g.appendChild(pRect("plan-barrier", lx - 28, 1288, 56, 5, 2));
+    }
+    g.appendChild(pRect("plan-canopy", c - 162, 1126, 324, 184, 5));
+  }
+
+  /* Row 3 — the inland transit passage: the inspection portal just past the
+     gate, then the gantry where the electronic seal goes on. The two roadside
+     cameras on this stretch are drawn by buildCameras() from JOURNEY.cameras. */
+  function row3(g) {
+    var c = roadCx(2090), i;
+    g.appendChild(pRect("plan-apron", c + 74, 2036, 200, 158, 3));
+    g.appendChild(pPath("plan-apron", "M " + (c + WP.half) + " 2106 L " + (c + 74) + " 2056 L " +
+      (c + 74) + " 2172 L " + (c + WP.half) + " 2182 Z"));
+    for (i = 0; i < 2; i++)
+      g.appendChild(pPath("plan-bay", "M " + (c + 92) + " " + (2082 + i * 48) + " h 168"));
+  }
+  function over3(g) {
+    gantry(g, 1610, "plan-scanner");
+    gantry(g, 2090, null);
+  }
+
+  /* Row 4 — the customs warehouse. The dock face, its apron and the trailers
+     standing at the bays are what the beat is about, so they are in frame; the
+     shed itself runs off under the card, the way a site plan crops. */
+  function row4(g) {
+    var c = roadCx(2800), i, dy;
+    g.appendChild(pRect("plan-apron", c + 58, 2596, 320, 440, 3));
+    g.appendChild(pPath("plan-apron", "M " + (roadCx(2560) + WP.half) + " 2560 L " + (c + 58) + " 2632 L " +
+      (c + 58) + " 2756 L " + (roadCx(2640) + WP.half) + " 2660 Z"));
+    g.appendChild(pRect("plan-built", c + 196, 2646, 420, 306, 3));
+    g.appendChild(pPath("plan-built-line", "M " + (c + 262) + " 2646 V 2952"));
+    for (i = 0; i < 6; i++)
+      g.appendChild(pRect("plan-opening", c + 190, 2682 + i * 46, 12, 32, 1));
+    for (i = 0; i < 3; i++) {
+      dy = 2688 + i * 92;
+      g.appendChild(pRect("plan-parked", c + 84, dy, 112, 26, 2));
+      g.appendChild(pPath("plan-parked-line", "M " + (c + 112) + " " + dy + " v 26"));
+    }
+    g.appendChild(pPath("plan-bay", "M " + (c + 58) + " 3000 H " + (c + 378)));
+  }
+
+  /* Row 5 — the declaration office, its car park, and the exit gantry at the
+     row's foot. The park is drawn as painted bays, not as little cars: a rank
+     of tiny vehicles is the detail that made the old art read as a toy. */
+  function row5(g) {
+    var c = roadCx(3600), i, j;
+    g.appendChild(pRect("plan-apron", c + 64, 3416, 300, 404, 3));
+    g.appendChild(pRect("plan-built", c + 90, 3440, 236, 158, 3));
+    g.appendChild(pPath("plan-built-line", "M " + (c + 90) + " 3484 H " + (c + 326)));
+    for (i = 0; i < 4; i++)
+      g.appendChild(pRect("plan-opening", c + 112 + i * 56, 3588, 28, 10, 1));
+    for (j = 0; j < 2; j++) {
+      g.appendChild(pPath("plan-bay", "M " + (c + 90) + " " + (3652 + j * 76) + " h 240"));
+      for (i = 0; i < 10; i++)
+        g.appendChild(pPath("plan-bay", "M " + (c + 90 + i * 26.6) + " " + (3652 + j * 76) + " v 44"));
+    }
+  }
+  function over5(g) { gantry(g, 3960, null); }
+
+  /* Row 6 — the importer's premises, and the capital at the foot of the page.
+     The city is a street grid held far back in tone. It used to be ranks of
+     identical little blocks with checkerboard windows, which was the single
+     most toy-like thing the deck carried. */
+  function row6(g) {
+    var c = roadCx(4400), i, j, x, y;
+    g.appendChild(pRect("plan-apron", c + 62, 4206, 340, 440, 3));
+    g.appendChild(pRect("plan-built", c + 88, 4228, 196, 124, 3));
+    g.appendChild(pPath("plan-built-line", "M " + (c + 88) + " 4262 H " + (c + 284)));
+    // container yard: from above a container simply IS a rectangle, which is
+    // why a yard reads as freight in plan and as toys in three-quarter view
+    for (j = 0; j < 7; j++) for (i = 0; i < 7; i++)
+      g.appendChild(pRect("plan-container", c + 90 + i * 44, 4380 + j * 34, 38, 25, 1));
+    var city = pn("g", "plan-city");
+    for (j = 0; j < 9; j++) for (i = 0; i < 10; i++) {
+      x = 60 + i * 152 + jit(i * 3 + j) * 26;
+      y = 4120 + j * 78 + jit(i + j * 5) * 16;
+      if (x > c - 320 && x < c + 470) continue;
+      city.appendChild(pRect(null, x, y, 66 + jit(i * j + 2) * 54, 34 + jit(i + j) * 16, 1));
+    }
+    g.appendChild(city);
+  }
+
+  var ROW_ART = [row1, row2, row3, row4, row5, row6];
+  var ROW_OVER = [null, over2, over3, null, over5, null];
+
+  function buildCorridor() {
+    var share = 100 / ROWS;
+    for (var i = 0; i < ROWS; i++) {
+      var y0 = i * ROW_H, y1 = y0 + ROW_H;
+      var svg = svgEl("svg", {
+        viewBox: "0 " + y0 + " " + PAGE.w + " " + ROW_H,
+        preserveAspectRatio: "none", focusable: "false"
+      });
+      svg.style.setProperty("--t", (i * share) + "%");
+      buildGround(svg, y0, y1);
+      // Facilities first, then the road over them: a slip road drawn as part of
+      // a facility has to run under the carriageway edge, not over it.
+      ROW_ART[i](svg);
+      // A little past the seam at each end, so a join never shows a hairline.
+      buildRoad(svg, y0 - 30, y1 + 30);
+      if (ROW_OVER[i]) ROW_OVER[i](svg);
+      $corridor.appendChild(svg);
+    }
   }
 
   // route point at page y, by interpolation over the sample table
@@ -833,79 +1098,94 @@
     };
   }
 
-  /* ---------------- truck ---------------- */
-  // Front three-quarter view: the corridor recedes toward the border at the top
-  // of the page, so the consignment drives toward the camera. Painted for the
-  // daylight plates — a white box body over a slate cab, with the sun's own
-  // shadow under it and no headlight wash, because it is the middle of the day.
+  /* ---------------- the consignment ---------------- */
+  /* An articulated goods vehicle seen from directly above, in the corridor's
+     own units: 36 x 232 is 2.55 m by 16.5 m at 14 units to the metre, which is
+     the legal maximum for a tractor-and-semi-trailer combination. It replaces a
+     120 x 152 front three-quarter sprite — a single box body on two wheels,
+     wider than it was long, which read as a small van and which the route
+     heading then rotated as though it had been drawn from above anyway.
+
+     Three things make it read as heavy goods rather than as a big car, and all
+     three are cheap in plan: the length-to-width ratio (6.4 : 1), the
+     ARTICULATION GAP between the tractor and the trailer, and the AXLE COUNT —
+     one steer, two drive, three on the trailer bogie. The mirrors reaching out
+     past the nose are the fourth: from above, nothing else has them.
+
+     Authored NOSE-UP, which is the easier frame to hold while writing the
+     coordinates, and then turned to face down the page — which is the way it
+     travels. The corridor runs from the border at the head of the page to the
+     capital at the foot, so the consignment drives downward, and the route
+     heading the scroll frame applies is a correction of a couple of degrees on
+     top of that rather than the whole of it.
+
+     Flat fills and a thin outline only: a plan is lit from nowhere, so there
+     are no gradients here and no shadow on the road. Every colour is a class
+     in styles.css — see the note at the head of that file. */
   function truckSvg(inner) {
     return '<svg xmlns="http://www.w3.org/2000/svg" width="' + TW + '" height="' + TH +
-      '" viewBox="0 0 ' + TW + ' ' + TH + '" style="overflow:visible">' + inner + "</svg>";
+      '" viewBox="0 0 ' + TW + ' ' + TH + '" style="overflow:visible">' +
+      '<g transform="rotate(180 ' + (TW / 2) + ' ' + (TH / 2) + ')">' + inner + "</g></svg>";
   }
   var TRUCK_BASE =
-    '<defs>' +
-    '<linearGradient id="tb" x1="0" y1="0" x2="1" y2="0">' +
-    '<stop offset="0" stop-color="#d3dbdb"/><stop offset="0.45" stop-color="#f4f7f6"/>' +
-    '<stop offset="1" stop-color="#c2cbcb"/></linearGradient>' +
-    '<linearGradient id="tc" x1="0" y1="0" x2="1" y2="0">' +
-    '<stop offset="0" stop-color="#2f4148"/><stop offset="0.4" stop-color="#4c6771"/>' +
-    '<stop offset="1" stop-color="#26363c"/></linearGradient>' +
-    '<linearGradient id="tg" x1="0" y1="0" x2="0" y2="1">' +
-    '<stop offset="0" stop-color="#dcecf3"/>' +
-    '<stop offset="1" stop-color="#8fa9b4"/></linearGradient></defs>' +
-    // shadow on the road, thrown down and to the left like everything else
-    '<ellipse cx="52" cy="146" rx="54" ry="11" fill="#4d5f52" opacity="0.3"/>' +
-    // trailer, receding up-page
-    '<path d="M22 6 L98 6 L108 76 L12 76 Z" fill="url(#tb)"/>' +
-    '<path d="M22 6 L98 6 L96 13 L24 13 Z" fill="#ffffff" opacity="0.75"/>' +
-    '<g stroke="#aab5b4" stroke-width="1.6" opacity="0.7">' +
-    '<path d="M34 8 L28 76"/><path d="M48 7 L45 76"/><path d="M62 7 L62 76"/>' +
-    '<path d="M76 7 L79 76"/><path d="M89 8 L95 76"/></g>' +
-    // cab
-    '<path d="M16 74 L104 74 L110 128 L10 128 Z" fill="url(#tc)"/>' +
-    '<path d="M25 80 L95 80 L99 104 L21 104 Z" fill="url(#tg)"/>' +
-    '<path d="M25 80 L52 80 L38 104 L21 104 Z" fill="#ffffff" opacity="0.3"/>' +
-    '<rect x="24" y="108" width="72" height="12" rx="3" fill="#22333a"/>' +
-    '<g stroke="#3d545d" stroke-width="1.4"><path d="M28 111h64"/><path d="M28 116h64"/></g>' +
-    // wheels
-    '<rect x="2" y="104" width="14" height="34" rx="5" fill="#1d2528"/>' +
-    '<rect x="104" y="104" width="14" height="34" rx="5" fill="#1d2528"/>' +
-    // mirrors, roof markers
-    '<path d="M14 78 L4 84" stroke="#2f4148" stroke-width="3"/>' +
-    '<path d="M106 78 L116 84" stroke="#2f4148" stroke-width="3"/>' +
-    '<g fill="#e0912f"><circle cx="42" cy="76" r="2"/><circle cx="60" cy="76" r="2"/>' +
-    '<circle cx="78" cy="76" r="2"/></g>' +
-    // headlights, unlit
-    '<g><rect x="17" y="118" width="20" height="9" rx="4" fill="#e8eef0"/>' +
-    '<rect x="83" y="118" width="20" height="9" rx="4" fill="#e8eef0"/></g>';
+    // axles: one steer, two drive, three on the trailer bogie. Drawn as bars
+    // breaking the body edge, the way a vehicle plan states an axle layout.
+    '<g class="hgv-wheel">' +
+    '<rect x="-0.5" y="17" width="5.5" height="10" rx="1.4"/><rect x="31" y="17" width="5.5" height="10" rx="1.4"/>' +
+    '<rect x="-0.5" y="51" width="5.5" height="10" rx="1.4"/><rect x="31" y="51" width="5.5" height="10" rx="1.4"/>' +
+    '<rect x="-0.5" y="63" width="5.5" height="10" rx="1.4"/><rect x="31" y="63" width="5.5" height="10" rx="1.4"/>' +
+    '<rect x="-3.5" y="189" width="6" height="10" rx="1.4"/><rect x="33.5" y="189" width="6" height="10" rx="1.4"/>' +
+    '<rect x="-3.5" y="201" width="6" height="10" rx="1.4"/><rect x="33.5" y="201" width="6" height="10" rx="1.4"/>' +
+    '<rect x="-3.5" y="213" width="6" height="10" rx="1.4"/><rect x="33.5" y="213" width="6" height="10" rx="1.4"/></g>' +
+    // mirrors — the tell, from above, that this is a truck and not a car
+    '<g class="hgv-mirror"><rect x="-4" y="10" width="6" height="3.4" rx="1.5"/>' +
+    '<rect x="34" y="10" width="6" height="3.4" rx="1.5"/></g>' +
+    // tractor unit
+    '<rect class="hgv-tractor" x="3" y="0" width="30" height="76" rx="3.5"/>' +
+    '<path class="hgv-glass" d="M 5.6 12 L 30.4 12 L 28.6 4.2 Q 18 1.8 7.4 4.2 Z"/>' +
+    '<rect class="hgv-cab" x="6.5" y="16" width="23" height="46" rx="2.5"/>' +
+    '<g class="hgv-rib"><path d="M 6.5 30 h 23"/><path d="M 6.5 46 h 23"/></g>' +
+    '<g class="hgv-beacon"><circle cx="11" cy="8.4" r="1.5"/><circle cx="25" cy="8.4" r="1.5"/></g>' +
+    // the articulation: the gap is what says tractor-and-trailer rather than
+    // one long rigid box, and the fifth wheel is drawn in it
+    '<circle class="hgv-coupling" cx="18" cy="81" r="3.6"/>' +
+    // semi-trailer
+    '<rect class="hgv-trailer" x="0" y="86" width="36" height="146" rx="2"/>' +
+    '<path class="hgv-seam" d="M 18 89 V 229"/>' +
+    '<g class="hgv-rib"><path d="M 0 106 h 36"/><path d="M 0 124 h 36"/><path d="M 0 142 h 36"/>' +
+    '<path d="M 0 160 h 36"/><path d="M 0 178 h 36"/><path d="M 0 196 h 36"/><path d="M 0 214 h 36"/></g>' +
+    // rear doors
+    '<path class="hgv-doors" d="M 0 226 h 36"/>';
   var TRUCK_VARIANTS = {
     scanned:
-      '<rect x="8" y="2" width="104" height="78" rx="7" fill="none" stroke="#00569b" stroke-width="3"/>' +
-      '<circle cx="60" cy="2" r="5" fill="#00569b"/>',
+      '<rect class="hgv-scan" x="-6" y="80" width="48" height="158" rx="4"/>' +
+      '<circle class="hgv-scan-dot" cx="18" cy="80" r="4"/>',
     sealed:
-      '<rect x="52" y="30" width="16" height="20" rx="3" fill="#c07a1e"/>' +
-      '<rect x="57" y="36" width="6" height="8" fill="#6b4410"/>'
+      '<rect class="hgv-seal" x="12" y="219" width="12" height="15" rx="2"/>' +
+      '<path class="hgv-seal-ink" d="M 18 222.5 v 8"/>'
   };
-  var truckBob;
+  var truckBody;
   function buildTruck() {
-    truckBob = el("div", "truck-bob");
-    truckBob.style.cssText = "left:0;top:0;width:" + TW + "px;height:" + TH + "px";
+    // No bob. A vehicle that bounces on the spot is a cartoon device, and this
+    // one is an object on a drawing.
+    truckBody = el("div", "truck-body");
+    truckBody.style.cssText = "left:0;top:0;width:" + TW + "px;height:" + TH + "px";
     var base = el("div", "truck-variant is-on");
     base.innerHTML = truckSvg(TRUCK_BASE);
-    truckBob.appendChild(base);
+    truckBody.appendChild(base);
     ["scanned", "sealed"].forEach(function (name) {
       var v = el("div", "truck-variant");
       v.dataset.variant = name;
       v.innerHTML = truckSvg(TRUCK_VARIANTS[name]);
-      truckBob.appendChild(v);
+      truckBody.appendChild(v);
     });
-    $truck.appendChild(truckBob);
+    $truck.appendChild(truckBody);
   }
   var lastVariant = null;
   function setVariant(name) {
     if (name === lastVariant) return;
     lastVariant = name;
-    truckBob.querySelectorAll("[data-variant]").forEach(function (v) {
+    truckBody.querySelectorAll("[data-variant]").forEach(function (v) {
       v.classList.toggle("is-on", v.dataset.variant === name ||
         (name === "sealed" && v.dataset.variant === "scanned"));
     });
@@ -1402,11 +1682,19 @@
       $space.style.transform = "scale(" + k + ")";
     }
     var rect = $journey.getBoundingClientRect();
-    var pageY = clamp((focusLine() - rect.top) / k, SAMPLES[0].y, SAMPLES[SAMPLES.length - 1].y);
+    // The route now starts above the page edge, so that the road runs off the
+    // top rather than beginning at a horizon. The consignment must not follow
+    // it up there: half its length above y 0 and it hangs over the screen
+    // section stacked above the corridor.
+    var pageY = clamp((focusLine() - rect.top) / k,
+      Math.max(SAMPLES[0].y, TH / 2), SAMPLES[SAMPLES.length - 1].y);
     var s = at(pageY);
-    var ts = truckScale(pageY);
+    var ts = truckScale();
+    // Anchored on the middle of the vehicle, not on the bottom edge: the old
+    // sprite was an elevation and hung from its contact point with the road,
+    // but a plan object simply sits centred on the point it occupies.
     $truck.style.transform = "translate(" + s.x.toFixed(2) + "px," + pageY.toFixed(2) + "px) rotate(" +
-      (s.a - 90).toFixed(2) + "deg) scale(" + ts.toFixed(3) + ") translate(" + (-TW / 2) + "px," + (-TH) + "px)";
+      (s.a - 90).toFixed(2) + "deg) scale(" + ts.toFixed(3) + ") translate(" + (-TW / 2) + "px," + (-TH / 2) + "px)";
     // delivered: the consignment fades out over the run-out below row 6 rather
     // than driving on to the foot of the page
     var ex = J.truck.exit;
@@ -1541,7 +1829,7 @@
   function init() {
     var deepLink = /#beat-([a-z0-9]+)/i.exec(location.hash);
     var root = document.documentElement.style;
-    root.setProperty("--sec-h", (100 / J.sections.length) + "%");
+    root.setProperty("--sec-h", (100 / ROWS) + "%");
     root.setProperty("--fill", String(FILL));   // the screens cover the viewport
                                                 // from the focus line too
     root.setProperty("--rows", String(ROWS));
@@ -1550,15 +1838,11 @@
     $routeLayer.style.width = PAGE.w + "px";
     $routeLayer.style.height = PAGE.h + "px";
     $routeLayer.setAttribute("viewBox", "0 0 " + PAGE.w + " " + PAGE.h);
-    var share = 100 / J.sections.length;
-    J.sections.forEach(function (sec, i) {
-      var img = document.createElement("img");
-      img.src = sec.src; img.width = sec.w; img.height = sec.h; img.alt = "";
-      img.style.setProperty("--t", (i * share) + "%");
-      $corridor.appendChild(img);
-    });
     document.title = D.meta.title + " · " + D.meta.org;
+    // buildRoute() first: it samples the route, and the corridor art is drawn
+    // around that sample table.
     buildRoute();
+    buildCorridor();
     buildCameras();
     buildTruck();
     buildBeats();

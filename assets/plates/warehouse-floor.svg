@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<title>Customs warehouse — floor plan</title>
+<!--
+  The customs warehouse, drawn as a floor plan, in the same orthographic idiom
+  as the corridor: the goods come in at the dock line on the left, are placed in
+  the racking, and are examined in the marked inspection bay when the risk
+  management system asks for it.
+
+  This one scene is loaded through <img src>, so it cannot see the page's CSS
+  custom properties — the values below are the same tokens as the :root block in
+  styles.css and must be changed with them.
+-->
+<style>
+  .g   { fill: #e9eff6; }
+  .flr { fill: #f6f9fc; stroke: rgba(0,86,155,.44); stroke-width: 3; }
+  .wall{ fill: none; stroke: rgba(0,86,155,.44); stroke-width: 3; }
+  .rack{ fill: #dbe4ee; stroke: rgba(0,86,155,.44); stroke-width: 1.6; }
+  .bay { fill: none; stroke: rgba(0,86,155,.2); stroke-width: 1.4; }
+  .dock{ fill: #8a9db2; }
+  .trlr{ fill: #e7eef6; stroke: rgba(0,86,155,.44); stroke-width: 2; }
+  .cab { fill: #9fb0c2; }
+  .insp{ fill: #12a7eb; opacity: .1; }
+  .ilin{ fill: none; stroke: #00569b; stroke-width: 2.4; stroke-dasharray: 12 9; }
+  .off { fill: #f6f9fc; stroke: rgba(0,86,155,.44); stroke-width: 2; }
+  .plt { fill: #ccd7e4; stroke: rgba(0,86,155,.3); stroke-width: 1.2; }
+  .aisl{ fill: none; stroke: rgba(0,86,155,.14); stroke-width: 1.6; stroke-dasharray: 16 12; }
+</style>
+
+<rect class="g" x="0" y="0" width="1600" height="900"/>
+<rect class="flr" x="230" y="70" width="1300" height="760" rx="6"/>
+
+<!-- dock line, on the apron side -->
+<g class="dock">
+  <rect x="222" y="130" width="16" height="86" rx="2"/>
+  <rect x="222" y="260" width="16" height="86" rx="2"/>
+  <rect x="222" y="390" width="16" height="86" rx="2"/>
+  <rect x="222" y="520" width="16" height="86" rx="2"/>
+  <rect x="222" y="650" width="16" height="86" rx="2"/>
+</g>
+<!-- a trailer backed onto the second bay, its tractor uncoupled and away -->
+<g><rect class="trlr" x="40" y="268" width="182" height="70" rx="3"/>
+   <path class="wall" d="M 78 268 V 338"/></g>
+<g><rect class="trlr" x="66" y="528" width="156" height="70" rx="3"/>
+   <rect class="cab" x="26" y="534" width="38" height="58" rx="3"/></g>
+
+<!-- marked inspection bay: where the risk management system sends a placement -->
+<rect class="insp" x="300" y="150" width="250" height="196"/>
+<rect class="ilin" x="300" y="150" width="250" height="196"/>
+<g class="plt">
+  <rect x="336" y="196" width="66" height="46" rx="2"/>
+  <rect x="336" y="256" width="66" height="46" rx="2"/>
+  <rect x="424" y="196" width="66" height="46" rx="2"/>
+</g>
+
+<!-- racking runs, with their bay divisions -->
+<g>
+  <rect class="rack" x="640" y="120" width="96" height="660" rx="3"/>
+  <rect class="rack" x="800" y="120" width="96" height="660" rx="3"/>
+  <rect class="rack" x="1040" y="120" width="96" height="660" rx="3"/>
+  <rect class="rack" x="1200" y="120" width="96" height="660" rx="3"/>
+  <rect class="rack" x="1360" y="120" width="96" height="660" rx="3"/>
+</g>
+<g class="bay">
+  <path d="M 640 175 h 96 M 640 230 h 96 M 640 285 h 96 M 640 340 h 96 M 640 395 h 96 M 640 450 h 96 M 640 505 h 96 M 640 560 h 96 M 640 615 h 96 M 640 670 h 96 M 640 725 h 96"/>
+  <path d="M 800 175 h 96 M 800 230 h 96 M 800 285 h 96 M 800 340 h 96 M 800 395 h 96 M 800 450 h 96 M 800 505 h 96 M 800 560 h 96 M 800 615 h 96 M 800 670 h 96 M 800 725 h 96"/>
+  <path d="M 1040 175 h 96 M 1040 230 h 96 M 1040 285 h 96 M 1040 340 h 96 M 1040 395 h 96 M 1040 450 h 96 M 1040 505 h 96 M 1040 560 h 96 M 1040 615 h 96 M 1040 670 h 96 M 1040 725 h 96"/>
+  <path d="M 1200 175 h 96 M 1200 230 h 96 M 1200 285 h 96 M 1200 340 h 96 M 1200 395 h 96 M 1200 450 h 96 M 1200 505 h 96 M 1200 560 h 96 M 1200 615 h 96 M 1200 670 h 96 M 1200 725 h 96"/>
+  <path d="M 1360 175 h 96 M 1360 230 h 96 M 1360 285 h 96 M 1360 340 h 96 M 1360 395 h 96 M 1360 450 h 96 M 1360 505 h 96 M 1360 560 h 96 M 1360 615 h 96 M 1360 670 h 96 M 1360 725 h 96"/>
+</g>
+<!-- the aisles the handling equipment runs -->
+<g class="aisl">
+  <path d="M 768 120 V 780 M 968 120 V 780 M 1168 120 V 780 M 1328 120 V 780"/>
+  <path d="M 300 450 H 620"/>
+</g>
+
+<!-- goods-in staging, and the office that watches the floor -->
+<g class="plt">
+  <rect x="310" y="560" width="72" height="50" rx="2"/>
+  <rect x="396" y="560" width="72" height="50" rx="2"/>
+  <rect x="482" y="560" width="72" height="50" rx="2"/>
+  <rect x="310" y="624" width="72" height="50" rx="2"/>
+  <rect x="396" y="624" width="72" height="50" rx="2"/>
+</g>
+<g>
+  <rect class="off" x="300" y="720" width="250" height="90" rx="4"/>
+  <path class="wall" d="M 300 756 H 550"/>
+</g>
+</svg>

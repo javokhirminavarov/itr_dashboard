@@ -1,133 +1,121 @@
-# Asset request & drop-in contract
+# The corridor: how it is drawn, and how to change it
 
-The corridor and the three secondary scenes are **generated art**, produced by
-the scripts in `tools/` and committed as the images the page serves. They read
-as a rendered daylight corridor rather than a diagram, but they are not
-photography. This document is the formal request for final rendered art, and
-the contract that lets it drop in without touching layout code.
+The corridor and the warehouse floor plan are **drawn by the page**, as SVG, in
+the deck's own palette. They used to be generated art — a Python script that
+authored a daylight scene and a Playwright script that rasterised it to six
+JPEGs — and this document used to be a request for final rendered art to drop in
+over the top. That is no longer what the page wants.
 
-## How drop-in works
+## What changed, and why
 
-- `plates.js` is the **only coordinate authority**: the page space, the section
-  list, the route path, the road-width law, the map pins, the building captions
-  and the truck's states all live there. Layout code holds no plate coordinates.
-- The corridor is a page space of **1600 × 4800 units**, shipped as six
-  **1600 × 800** sections stacked top to bottom (rendered at 3000 × 1500 — the
-  page fits the corridor like `object-fit: cover`, so the art paints wider than
-  the viewport and a 2000 px render would be upscaled on a large screen). The
-  page maps that space to the viewport by width, so one page unit is
+The old corridor mixed three cameras in one frame: a one-point-perspective road
+running to a hazed horizon, axonometric extruded buildings standing beside it,
+and a flat top-down field under both. Nothing agreed about where the viewer was.
+The consignment was a front three-quarter sprite that the route heading then
+rotated as though it had been drawn from above anyway, and at 120 x 152 units —
+wider than it was long, on two wheels — it read as a small van rather than as
+international road freight. With saturated field green, ranks of identical
+little blocks with checkerboard windows, and a bob animation on the vehicle, the
+whole thing read as a city-builder game.
+
+It is now **one orthographic plan**, seen from directly above, in the same
+white/blue/grey the cards are set in. There is no sky, no horizon, no aerial
+haze, no extrusion, no gradient standing in for light, and no green.
+
+## How it is put together
+
+- `plates.js` is the **only coordinate authority**: the page space, the route
+  path, the road width, the map pins, the building captions and the
+  consignment's states all live there. Layout code holds no corridor
+  coordinates.
+- The corridor is a page space of **1600 x 4800 units**, drawn as **six 1600 x
+  800 sections** of SVG stacked top to bottom. Everything is authored once in
+  whole-page coordinates and sliced by `viewBox`, so the seams line up by
+  construction. Sectioning exists so `content-visibility` can skip the rows that
+  are off screen; it is not a division of the artwork.
+- The page maps that space to the viewport by width, so one page unit is
   `viewportWidth / 1600` CSS pixels.
-- The corridor is **six rows of 800 units — one row per section plate**, which
-  is why a landmark and its plate cannot drift apart. Each landmark sits on its
-  row's centre line (400, 1200, 2000, 2800, 3600, 4400) and the generator places
-  them all with one `R(n)` helper. Final art must keep each landmark on its
-  row's centre line, or the cards will no longer line up with what they
-  describe.
-- To install a final render: drop the image in as
-  `assets/plates/vertical/sN.jpg` (any format the browser reads works — update
-  that section's `src` in `plates.js` if the extension changes). Nothing else
-  changes.
-- If the final render **moves the road** or **changes its width law**, re-trace
-  `JOURNEY.route.d` against it and update `JOURNEY.route.width` — including
-  `holdY` and `holdDepth`, the point at which the corridor stops opening out
-  and the scale it holds from there down. The
-  glow trail, the flowing chevrons, the map pins, the building captions and the
-  truck all derive from those two values alone.
+- Each of the six rows carries one landmark, on its row's centre line (400,
+  1200, 2000, 2800, 3600, 4400), which is why a landmark and the card that
+  describes it cannot drift apart.
+- **The road is generated from `JOURNEY.route.d`**, not traced against a picture
+  of one. Move the path and the carriageway, the glow trail, the flowing
+  chevrons, the roadside cameras and the consignment all move with it. The old
+  "re-trace the route if the render moves the road" step no longer exists,
+  because there is no longer a render to disagree with.
+- **Nothing carries a colour.** Every drawn element takes a class and
+  `styles.css` holds the palette, in the `--plan-*` tokens beside the rest. This
+  is the rule stated at the head of that file, and the art can now hold it.
 
-## A. Corridor sections (six, required)
+## Scale
 
-Content top → bottom, one landmark per row:
+The **road and the consignment are true to each other** — about **14 page units
+to the metre** — because that is the one proportion a viewer actually checks,
+and getting it wrong is what made the old sprite read as a van. So `half: 52` is
+a real 3.75 m lane, and the consignment at 36 x 232 units is a 2.55 m by 16.5 m
+articulated combination: the legal maximum, and the vehicle a road corridor
+actually handles.
+
+The **facilities are not held to that scale**. A 60 m warehouse at 14 units to
+the metre is wider than the whole clear band between the cards. They are drawn
+instead as a **site plan cropped to the corridor**: the dock face, the apron and
+the gate line are in frame, and the bulk of the shed runs off it — which is what
+a real drawing at this zoom looks like.
+
+## What each row shows
 
 | Row | Centre y | Landmark |
 |---|---|---|
-| 1 | 400 | sky, hazed mountains, the corridor running to the horizon — the 2018 frame is drawn over this |
-| 2 | 1200 | **border checkpoint**: canopy over the lanes, booths, main hall, floodlight masts |
-| 3 | 2000 | inspection portal, inland checkpoint gantry (the roadside cameras are drawn by the page, not by the plate — see D4) |
-| 4 | 2800 | **customs warehouse**: dock doors, apron, parked trailers |
-| 5 | 3600 | declaration building: glass office, car park, exit gantry at the row's foot |
-| 6 | 4400 | importer's premises: offices, container yard, and the outskirts of the capital at the page's foot |
+| 1 | 400 | the 2018 baseline: open carriageway, and the queue standing in a holding apron beside it |
+| 2 | 1200 | **border checkpoint**: the carriageway opening into four lanes, islands, booths, barriers, a canopy over them, and the hall beside it |
+| 3 | 2000 | inspection portal and the transit gantry where the seal goes on (the roadside cameras are drawn from `JOURNEY.cameras`, not as part of the row) |
+| 4 | 2800 | **customs warehouse**: slip road, apron, dock line, trailers standing at the bays |
+| 5 | 3600 | declaration office, its car park, and the exit gantry at the row's foot |
+| 6 | 4400 | importer's premises, the container yard, and the capital as a street grid held far back in tone |
 
-- **Minimum 3000 px wide per section**, sRGB, one consistent light direction
-  (the current art is a high midday sun, slightly to the upper right).
-- **Seams:** at every section boundary the road edges, the ground tone and the
-  haze must match. The generator gets this for free by authoring the whole
-  corridor once and slicing it; a hand-rendered replacement must match by eye.
-- **Calm bands:** the left ~26 % and the right ~26 % of the frame carry the
-  cards and the metric panels. Keep those bands visually quiet.
-- **Road surface empty.** No vehicles on the carriageway at all — the page
-  composes the consignment as an overlay and nothing else drives this road.
-  Static plant off the road (trailers on the warehouse apron) is wanted.
-- **No roadside furniture beyond the road's own.** No trees, no bushes, no
-  hedge lines; no marker posts, no power poles or catenary, no perimeter
-  hairlines running out to the frame edges. The guardrail stays, because it is
-  part of the road. Depth is carried by aerial haze and by the road's own
-  width law.
-- **The ground is a background.** A patchwork of large, low-contrast plots and
-  nothing else: no ploughing hatch, no irrigation canals, no scattered sheds or
-  blotches. It reads as cultivated plain at a glance and does not reward a
-  second look — the road, the landmarks and the two calm bands are the
-  subject.
-- **One scale below the ramp.** The ground plane opens out over the first ~620
-  page units, out of the horizon, and then holds that scale to the foot of the
-  page: road width, prop size, field size and haze are all constant from there
-  down. A perspective carried the whole way grows everything about six-fold
-  between the border and the city, which on a page that is *scrolled* reads as
-  a slow zoom rather than as travel. A hand-rendered replacement must hold the
-  same discipline, and `JOURNEY.route.width` (`holdY`, `holdDepth`) must match
-  whatever law it uses.
-- **No text, no signage words, no numbers, no UI panels, and no flag.** Every
-  word on screen is an HTML overlay — including the two building captions, see
-  D3 below.
+Rules that still hold:
 
-## B. Truck sprite
+- **Calm bands.** The left ~26 % and the right ~26 % of the frame carry the
+  cards and the metric panels. Keep those bands visually quiet — a facility may
+  run through them, but no landmark may depend on being seen there.
+- **Road surface empty.** Nothing stands on the carriageway but the consignment.
+  Static plant off the road — trailers at the dock, the 2018 queue in its
+  holding apron — is wanted. `tools/verify.mjs` asserts this.
+- **No text.** Every word on screen is an HTML overlay, including the two
+  building captions. In a plan there is no roofline to sit on, so
+  `JOURNEY.labels` anchors each caption on the **centre of its footprint**. Move
+  a footprint in `app.js` and move the caption with it.
+- **One scale.** A plan has no perspective, so nothing on the page grows as the
+  reader scrolls. `JOURNEY.route.width` is a single constant and there is no
+  depth law left to keep in step with anything.
 
-- The corridor recedes toward the border at the top of the page, so the
-  consignment drives **toward the camera**: a **front three-quarter view**,
-  transparent PNG, ~600 px wide, drawn 120 × 152 page units with its contact
-  point at the bottom centre. Daylight, so no lit headlights and no light wash
-  on the road — a ground shadow thrown down and to the left instead.
-- Variants: **travelling (doors closed)** · **scanned** (the page adds the teal
-  outline) · **sealed** (the page adds the GPS seal tag). Plain variants are
-  enough; the state decorations are overlays.
+## The consignment
 
-## C. Secondary scene — 1600 × 900
+An articulated goods vehicle seen from above. Three things make it read as heavy
+goods rather than as a large car, and all three are cheap in plan: the
+**length-to-width ratio** (6.4 : 1), the **articulation gap** between tractor
+and semi-trailer, and the **axle count** — one steer, two drive, three on the
+trailer bogie. The mirrors reaching out past the nose are the fourth; from above
+nothing else has them.
 
-1. Customs warehouse interior, unloading bay (a dock door standing open onto
-   daylight), shown in the "Customs and cargo operations" marker's panel
+It is authored nose-up, because that is the easier frame to write coordinates
+in, and turned to face down the page — the direction it travels. It does not
+bob. Its states are overlays: **travelling** (plain) · **scanned** (the page adds
+the brand-blue outline) · **sealed** (the page adds the seal at the rear doors).
 
-It is an **interior**, and an interior is lit by its own lights whatever the sky
-is doing — it is deliberately darker than the corridor. What must agree with the
-corridor is anything you can see *through*: the open dock door. That reads as a
-bright day.
+## Secondary scene — 1600 x 900
 
-The deck used to carry two more of these — a targeting-centre control room on
-section 2 and an airport arrivals hall on section 7 — as cut-in images beside
-the content. Both are gone: the sections say what they have to say in words and
-in their own diagrams, and a small photographic inset beside them was decoration
-competing with the argument.
+`assets/plates/warehouse-floor.svg` — the customs warehouse as a **floor plan**:
+the dock line, the racking runs and their bays, the aisles, the marked
+inspection bay and the staging area. Shown in the "Customs and cargo operations"
+marker's panel.
 
-## D. Vectors (SVG)
+It was a dark three-quarter interior with floating cardboard boxes and blurred
+shadows. It is the one asset loaded through `<img src>`, so it cannot see the
+page's custom properties and carries a copy of the palette in its own `<style>`
+block — change it together with the `:root` tokens.
 
-1. Route path traced over the final corridor, in page coordinates (replaces
-   `JOURNEY.route.d`), plus the matching `JOURNEY.route.width` law.
-2. Uzbekistan outline with the real corridor and checkpoint nodes (for a
-   locator motif; not yet placed).
-3. **Building captions are HTML overlays, not plate text.** "Border checkpoint"
-   and "Customs warehouse" are positioned from `JOURNEY.labels` in page
-   coordinates and centred on the middle of each building's own roofline, so
-   the words sit on the building. Do not bake them into a plate; if a final
-   render moves a roofline, move the `x`/`y` in `plates.js` to the middle of
-   the roof as drawn.
-4. **The roadside cameras are page vectors, not plate art.** The transit
-   passage carries two, listed in `JOURNEY.cameras` and drawn by
-   `buildCameras()` in `app.js` in the same page coordinates as the route, at a
-   size set in road half-widths so they hold the corridor's perspective. They
-   were baked into the plates once, as masts 3.4 road-widths tall, and at
-   viewport scale that read as a gantry with something small on top rather than
-   as a camera. Do not bake them back in: a small object has to stay vector to
-   stay legible, and the size is then a number in one file.
-
-## E. Type & colour
+## Type & colour
 
 - Current faces (self-hosted, OFL): **Space Grotesk** (display/body), **IBM
   Plex Mono** (numerals, tokens, chips). To swap in a licensed brand face: drop
@@ -135,7 +123,8 @@ competing with the argument.
   `--font-*` tokens at the top of `styles.css`.
 - The palette **is the official deck's**, sampled from the slides rather than
   chosen, and centralised in the `:root` tokens of `styles.css`. It is a
-  **light** palette, because the corridor is a daylight scene.
+  **light** palette, and the corridor is light with it: a plan is a drawing on
+  paper, not a scene with a sky in it.
 
   | Token | Value | What it is on the deck |
   |---|---|---|
@@ -158,11 +147,9 @@ competing with the argument.
   colours (`--series-a/b/n`) plus the channel colours were checked as a set for
   colour-vision-deficiency separation. `node tools/verify.mjs` asserts the
   first of those.
-- The corridor's own palette lives at the top of `tools/build_plates.py`.
-  `SIGNAL` (`#1a86d0`) is the risk-management system's signature on the plates
-  — the deck blue *lifted*, because `#00569b` against asphalt reads as a dark
-  smudge rather than as instrumentation. The secondary scenes take their screen
-  glow from the literals in `tools/build_scenes.py`.
+- The corridor's own colours are the `--plan-*` tokens in the same block. There
+  is no second copy of them anywhere: the Python file that used to hold one is
+  gone.
 
 ---
 
