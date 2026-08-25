@@ -541,148 +541,266 @@
 
   /* =========================================================================
      PASSENGER SCHEMA
-     The arrivals hall as a diagram: passengers walk it, the advance passenger
-     information gets there first, and the channel is already decided when they
-     reach customs control. Dots ride the paths with CSS offset-path; each one
-     also carries a static offset-distance so that under reduced motion they
-     stand spread along the route instead of piled at the door.
+     The arrivals hall, drawn the way the corridor is drawn: ONE ORTHOGRAPHIC
+     PLAN, seen from directly above, in the corridor's own --plan-* palette.
 
-     The two ends are drawn, not abbreviated: the route starts under an
-     aircraft on the stand and comes into the building down a jet bridge, and
-     it finishes at two doorways rather than two boxes. The route strings
-     themselves are load-bearing — they are the dots' offset-path — so
-     everything else is drawn around them and they do not move.
+     It used to mix two cameras in one frame — the terminal in elevation (a roof
+     slab, clerestory glazing with mullions, a ground line, side-on e-gates, a
+     scanner arch, two doorways with jambs) with an aircraft beside it drawn
+     from above. That is the fault the corridor was cured of, and this is the
+     same cure: there is no roof, no window, no doorway and no cast shadow here,
+     because from directly above there is nothing to see of any of them.
+
+     SCALE. Everything a viewer can check the proportion of is sized from real
+     metres through PAX.upm — 7 units to the metre, half the corridor's 14,
+     because an aircraft is 37.6 m long where a lorry is 16.5 m. The aircraft is
+     an A320-family narrowbody at 37.6 m by 35.8 m; a gate island is 1.2 m wide
+     with a 0.9 m lane beside it; a reclaim carousel is 29 m of racetrack; a
+     passenger is a metre across. What is NOT held to that scale is the
+     terminal, which at 7 units to the metre is far wider than the frame: like
+     row 4's warehouse it is CROPPED rather than shrunk, and runs off the right
+     and bottom edges the way a site plan crops.
+
+     Three things make the aircraft read as an airliner, and all three are cheap
+     in plan, the way the consignment's length ratio, articulation gap and axle
+     count are: the SPAN IS ABOUT THE LENGTH (35.8 by 37.6 — the old drawing had
+     wings on one side only and a fin fanned out as though seen from the side),
+     the WING SWEEP, and TWO NACELLES slung under the wings. The fin from above
+     is a sliver on the centreline, which is all a fin is from above.
+
+     The route strings are load-bearing — they are the dots' offset-path — so
+     they are authored first and everything else is drawn around them. Each dot
+     also carries a static offset-distance, so under reduced motion they stand
+     spread along the route instead of piled at the door.
      ========================================================================= */
-  var PS = { w: 1000, h: 316 };
-  var HALL = { x: 176, w: 790, top: 70, floor: 296 };
+  var PAX = { w: 1000, h: 440, upm: 7 };
+  function pm(v) { return v * PAX.upm; }
+
+  // The aircraft, in metres, turned into units once.
+  var AC = { cy: 175, nose: 283, len: pm(37.6), span: pm(35.8), body: pm(3.95) };
+  AC.tail = AC.nose - AC.len;            // 19.8
+  AC.half = AC.body / 2;                 // 13.8 — the fuselage half-width
+  AC.reach = (AC.span - AC.body) / 2;    // 111.5 — fuselage side to wing tip
+  AC.sweep = AC.reach * 0.47;            // 25 degrees of leading-edge sweep
+
+  // Passport control: six islands, five lanes, centred on the walking route.
+  var GATE = { x: 424, cy: 121, n: 8, islandW: pm(1.2), islandL: pm(3.2), lane: pm(0.9) };
+  GATE.pitch = GATE.islandW + GATE.lane;
+
+  // Baggage reclaim: two racetracks, the dwell the advance information is
+  // assessed during. This is the beat's substance, not dressing — the old
+  // drawing ran straight from the jet bridge to customs with nothing between.
+  var BELT = { x: 556, w: pm(29), h: pm(5), upper: 167.5, lower: 313.5 };
+
+  // A passenger with a bag is about a metre across.
+  var DOT_R = pm(1) / 2;
+
+  /* The routes. Common as far as customs control, where the channel — decided
+     before the aircraft landed — becomes the passenger's direction. */
+  var PAX_COMMON = "M 104 175 L 238 175 L 250 160 L 348 121 L 530 121 L 530 240 L 866 240";
+  var PAX_GREEN = PAX_COMMON + " L 902 164 L 1000 164";
+  var PAX_RED = PAX_COMMON + " L 902 316 L 1000 316";
+
   function PassengerSchema(sc) {
     var wrap = el("div", "pax");
     wrap.appendChild(el("div", "st-caption", sc.caption));
     var stage = el("div", "pax-stage");
-    var svg = svgEl("svg", { viewBox: "0 0 " + PS.w + " " + PS.h, "class": "pax-svg",
+    var svg = svgEl("svg", { viewBox: "0 0 " + PAX.w + " " + PAX.h, "class": "pax-svg",
                              role: "img", "aria-label": sc.caption });
     function put(parent, tag, attrs) {
       var n = svgEl(tag, attrs);
       parent.appendChild(n);
       return n;
     }
-    function label(parent, x, y, cls, s) {
-      var t = svgEl("text", { x: x, y: y, "class": cls, "text-anchor": "middle" });
+    function text(parent, x, y, cls, s) {
+      var t = put(parent, "text", { x: x, y: y, "class": cls, "text-anchor": "middle" });
       t.textContent = s;
-      parent.appendChild(t);
+      return t;
+    }
+    function rect(parent, x, y, w, h, cls, rx) {
+      return put(parent, "rect", { x: x, y: y, width: w, height: h, rx: rx, "class": cls });
+    }
+    function path(parent, d, cls) { return put(parent, "path", { d: d, "class": cls }); }
+
+    /* A plan captions with a chip on a leader. This is the same white chip on a
+       hairline that the corridor's building captions use (.blabel), drawn in
+       the SVG so it travels with the drawing. IBM Plex Mono is a fixed-advance
+       face, so the chip can be sized from the character count without
+       measuring: 0.6 em plus the tracking. */
+    function chip(cx, cy, lines, tone) {
+      var g = put(svg, "g", { "class": "pax-callout" + (tone ? " ch-" + tone : "") });
+      var w = 40, h = lines.length * 17 + 8, i;
+      for (i = 0; i < lines.length; i++) w = Math.max(w, lines[i].t.length * lines[i].adv + 22);
+      rect(g, cx - w / 2, cy - h / 2, w, h, "pax-chip", 5);
+      if (tone) rect(g, cx - w / 2, cy - h / 2, 4, h, "pax-chip-tab", 2);
+      for (i = 0; i < lines.length; i++)
+        text(g, cx, cy - h / 2 + 17 * (i + 1), lines[i].cls, lines[i].t);
+      g.__h = h;
+      return g;
+    }
+    function leader(g, sx, sy, tx, ty) {
+      path(g, "M " + sx + " " + sy + " L " + tx + " " + ty, "pax-leader");
+      put(g, "circle", { cx: tx, cy: ty, r: 2, "class": "pax-leader-dot" });
+    }
+    // a station caption: chip in the key row along the foot, leader to the thing
+    function station(cx, cy, node, tx, ty) {
+      var g = chip(cx, cy, [{ t: node.title.toUpperCase(), cls: "pax-label", adv: 8.14 },
+                            { t: node.sub, cls: "pax-sub", adv: 6.3 }]);
+      leader(g, cx, cy - g.__h / 2, tx, ty);
     }
 
-    var routeGreen = "M 70 196 L 330 196 L 470 196 L 640 196 L 762 140 L 930 140";
-    var routeRed = "M 70 196 L 330 196 L 470 196 L 640 196 L 762 262 L 930 262";
+    /* ---- the ground: apron on the left, terminal footprint on the right ---- */
+    rect(svg, 0, 0, PAX.w, PAX.h, "pax-ground");
+    rect(svg, 0, 24, 352, 392, "pax-apron");
+    // stand markings: the lead-in line the nose gear follows, and the stop bar.
+    // Drawn BEFORE the aircraft, so it emerges from under the tail the way it
+    // does on a real stand.
+    path(svg, "M 0 " + AC.cy + " L 272 " + AC.cy, "pax-mark");
+    path(svg, "M 272 161 L 272 189", "pax-mark");
+    rect(svg, 10, 38, 290, 274, "pax-envelope", 4);
 
-    // ---- the terminal the routes run inside ------------------------------
-    put(svg, "rect", { x: HALL.x - 6, y: HALL.top - 8, width: HALL.w + 12, height: 12, rx: 3,
-                       "class": "pax-roof" });
-    put(svg, "rect", { x: HALL.x, y: HALL.top, width: HALL.w, height: HALL.floor - HALL.top,
-                       rx: 12, "class": "pax-hall" });
-    // Clerestory, in two runs: the advance-information feed comes down the
-    // middle and should not have to cross a window.
-    [[196, 380], [700, 250]].forEach(function (b) {
-      put(svg, "rect", { x: b[0], y: 86, width: b[1], height: 24, "class": "pax-glaze" });
-      for (var mx = b[0] + 48; mx < b[0] + b[1]; mx += 48) {
-        put(svg, "path", { d: "M " + mx + " 86 L " + mx + " 110", "class": "pax-mullion" });
-      }
+    // The terminal is cropped, not shrunk: a footprint, one building face with
+    // the bridge opening in it, and a column grid on the 8 m bay.
+    rect(svg, 352, 0, PAX.w - 352, PAX.h, "pax-hall");
+    path(svg, "M 352 0 V 106", "pax-face");
+    path(svg, "M 352 136 V " + PAX.h, "pax-face");
+    var cols = put(svg, "g", { "class": "pax-column" }), gx, gy;
+    for (gx = 384; gx < PAX.w - 8; gx += pm(8))
+      for (gy = 40; gy < PAX.h - 12; gy += pm(8)) rect(cols, gx - 2.5, gy - 2.5, 5, 5, null, 1);
+
+    /* ---- the aircraft on the stand ---------------------------------------- */
+    var ac = put(svg, "g", { "class": "pax-aircraft" });
+    var top = AC.cy - AC.half, bot = AC.cy + AC.half;
+    var wRoot = 194, wChord = 49, tipY = top - AC.reach, tipLE = wRoot - AC.sweep;
+    // wings, both sides, swept — the span is about the length
+    path(ac, "M " + wRoot + " " + top + " L " + tipLE + " " + tipY + " L " + (tipLE - 12.6) +
+             " " + tipY + " L " + (wRoot - wChord) + " " + top + " Z", "pax-plane-wing");
+    path(ac, "M " + wRoot + " " + bot + " L " + tipLE + " " + (bot + AC.reach) + " L " +
+             (tipLE - 12.6) + " " + (bot + AC.reach) + " L " + (wRoot - wChord) + " " + bot + " Z",
+         "pax-plane-wing");
+    // tailplane
+    path(ac, "M 60 166.5 L 38 132 L 28 132 L 42 166.5 Z", "pax-plane-tail");
+    path(ac, "M 60 183.5 L 38 218 L 28 218 L 42 183.5 Z", "pax-plane-tail");
+    // fin: from above, a sliver on the centreline and nothing more
+    path(ac, "M 62 " + AC.cy + " L 24 " + (AC.cy - 6) + " L 24 " + (AC.cy + 6) + " Z", "pax-plane-tail");
+    // fuselage
+    path(ac, "M " + AC.nose + " " + AC.cy + " Q " + (AC.nose - 1) + " " + (top + 1.3) + " 262 " + top +
+             " L 60 " + top + " L " + AC.tail + " " + (AC.cy - 5) + " L " + AC.tail + " " + (AC.cy + 5) +
+             " L 60 " + bot + " L 262 " + bot + " Q " + (AC.nose - 1) + " " + (bot - 1.3) + " " +
+             AC.nose + " " + AC.cy + " Z", "pax-plane");
+    // two nacelles under the wings, at a third of the semi-span out
+    [top - AC.reach / 3, bot + AC.reach / 3].forEach(function (ny) {
+      rect(ac, 170, ny - pm(2.6) / 2, pm(4.4), pm(2.6), "pax-nacelle", 6);
     });
-    put(svg, "path", { d: "M " + HALL.x + " " + HALL.floor + " L " + (HALL.x + HALL.w) + " " + HALL.floor,
-                       "class": "pax-floor" });
-    put(svg, "path", { d: "M 8 188 L 170 188", "class": "pax-floor" });
+    // the forward port door, which is the one the bridge goes to
+    rect(ac, 244, top - 3.2, 11, 5, "pax-door", 1.5);
 
-    [[routeGreen, "green"], [routeRed, "red"]].forEach(function (r) {
-      put(svg, "path", { d: r[0], "class": "pax-track ch-" + r[1] });
+    /* ---- the jet bridge, and its rotunda at the building face ------------- */
+    /* Rotunda at the building face, a constant-width tunnel, and the cab square
+       against the fuselage at the door — a tunnel drawn as one quad from the
+       rotunda to the door has to taper, and a taper this long reads as a beam
+       of light rather than as a walkway. The tunnel passes about 3 m clear of
+       the nose, which is where a bridge to a forward port door passes. */
+    var br = put(svg, "g", { "class": "pax-bridge-g" });
+    path(br, "M 255.2 134.9 L 345.2 109.9 L 350.8 130.1 L 260.8 155.1 Z", "pax-bridge");
+    path(br, "M 285.2 126.6 L 290.8 146.8", "pax-bridge-rib");
+    path(br, "M 315.2 118.2 L 320.8 138.4", "pax-bridge-rib");
+    rect(br, 234, 138, 32, 23.6, "pax-bridge", 2);
+    put(br, "circle", { cx: 350, cy: 120, r: 13, "class": "pax-rotunda" });
+
+    /* ---- passport control: an e-gate bank, in plan ------------------------ */
+    var gates = put(svg, "g", { "class": "pax-station" }), i, iy;
+    for (i = 0; i < GATE.n; i++) {
+      iy = GATE.cy + (i - (GATE.n - 1) / 2) * GATE.pitch;
+      rect(gates, GATE.x, iy - GATE.islandW / 2, GATE.islandL, GATE.islandW, "pax-gate", 2);
+      put(gates, "circle", { cx: GATE.x + 3, cy: iy, r: 1.6, "class": "pax-reader" });
+      // the glass paddle across the lane above each island but the first
+      if (i) path(gates, "M " + (GATE.x + GATE.islandL / 2) + " " + (iy - GATE.islandW / 2) +
+                         " V " + (iy - GATE.pitch + GATE.islandW / 2), "pax-paddle");
+    }
+
+    /* ---- baggage reclaim: two racetracks ---------------------------------- */
+    [BELT.upper, BELT.lower].forEach(function (by) {
+      rect(svg, BELT.x, by - BELT.h / 2, BELT.w, BELT.h, "pax-belt", BELT.h / 2);
+      rect(svg, BELT.x + 8, by - BELT.h / 2 + 8, BELT.w - 16, BELT.h - 16, "pax-belt-core",
+           (BELT.h - 16) / 2);
+      [0.28, 0.66].forEach(function (t) {
+        var ax = BELT.x + BELT.w * t;
+        path(svg, "M " + (ax - 5) + " " + (by - 5) + " L " + ax + " " + by + " L " + (ax - 5) +
+                  " " + (by + 5), "pax-belt-arrow");
+      });
     });
 
-    // ---- passport control: a row of e-gates ------------------------------
-    function gates(x, title, sub) {
-      var g = put(svg, "g", { "class": "pax-station" });
-      for (var i = 0; i < 3; i++) {
-        var b = x - 55 + i * 37;
-        put(g, "rect", { x: b + 9, y: 180, width: 19, height: 32, "class": "pax-paddle" });
-        put(g, "rect", { x: b, y: 168, width: 9, height: 56, rx: 3, "class": "pax-gate" });
-        put(g, "rect", { x: b + 28, y: 168, width: 9, height: 56, rx: 3, "class": "pax-gate" });
-        put(g, "circle", { cx: b + 4.5, cy: 176, r: 2.6, "class": "pax-reader" });
-      }
-      label(g, x, 266, "pax-label", title);
-      label(g, x, 284, "pax-sub", sub);
-    }
+    /* ---- customs control: the point the channel becomes a direction ------- */
+    var cust = put(svg, "g", { "class": "pax-station is-decision" });
+    rect(cust, 766, 210, 52, 60, "pax-scan", 3);
+    rect(cust, 774, 218, 36, 44, "pax-machine", 3);
+    rect(cust, 780, 188, 24, 17, "pax-booth", 2);
+    rect(cust, 780, 273, 24, 17, "pax-booth", 2);
 
-    // ---- customs control: the scanner the channel decision happens at ----
-    function customs(x, title, sub) {
-      var g = put(svg, "g", { "class": "pax-station is-decision" });
-      put(g, "rect", { x: x - 54, y: 224, width: 108, height: 10, rx: 3, "class": "pax-belt" });
-      put(g, "rect", { x: x - 16, y: 209, width: 26, height: 15, rx: 3, "class": "pax-case" });
-      put(g, "path", { d: "M " + (x - 46) + " 234 L " + (x - 46) + " 176 Q " + (x - 46) + " 160 " +
-                          (x - 30) + " 160 L " + (x + 30) + " 160 Q " + (x + 46) + " 160 " +
-                          (x + 46) + " 176 L " + (x + 46) + " 234", "class": "pax-arch" });
-      label(g, x, 266, "pax-label", title);
-      label(g, x, 284, "pax-sub", sub);
-    }
-    gates(400, sc.nodes[2].title, sc.nodes[2].sub);
-    customs(640, sc.nodes[3].title, sc.nodes[3].sub);
-
-    // ---- the arrival: an aircraft on the stand, and the bridge off it ----
-    // Nose toward the building, so the bridge is the short hop a bridge
-    // actually is and the fin sits at the far end, out of everything's way.
-    var arr = put(svg, "g", { "class": "pax-arrive" });
-    put(arr, "ellipse", { cx: 80, cy: 186, rx: 58, ry: 4, "class": "pax-shadow" });
-    put(arr, "path", { d: "M 46 133 L 24 100 L 8 100 L 8 135 Z", "class": "pax-plane-fin" });
-    put(arr, "path", { d: "M 40 140 L 12 135 L 11 143 L 38 148 Z", "class": "pax-plane-fin" });
-    put(arr, "path", { d: "M 66 165 L 108 178 L 122 183 L 80 169 Z", "class": "pax-plane-wing" });
-    put(arr, "rect", { x: 84, y: 168, width: 26, height: 10, rx: 5, "class": "pax-plane-wing" });
-    [[136, 182], [84, 182]].forEach(function (w) {
-      put(arr, "rect", { x: w[0] - 1, y: 166, width: 2, height: 14, "class": "pax-plane-wing" });
-      put(arr, "ellipse", { cx: w[0], cy: w[1], rx: 3.4, ry: 2.6, "class": "pax-plane-dark" });
-    });
-    put(arr, "path", { d: "M 8 138 L 46 133 L 134 133 Q 154 133 156 150 Q 154 167 134 167 " +
-                          "L 46 167 L 8 147 Z", "class": "pax-plane" });
-    put(arr, "path", { d: "M 12 160 L 152 155 L 152 160 L 12 165 Z", "class": "pax-plane-line" });
-    put(arr, "path", { d: "M 137 141 L 150 143 L 149 150 L 136 149 Z", "class": "pax-plane-dark" });
-    for (var wx = 54; wx <= 128; wx += 8) {
-      put(arr, "circle", { cx: wx, cy: 148, r: 1.7, "class": "pax-plane-win" });
-    }
-    put(arr, "rect", { x: 112, y: 137, width: 10, height: 22, rx: 2.5, "class": "pax-plane-door" });
-    put(arr, "path", { d: "M 124 140 L 176 152 L 176 168 L 124 156 Z", "class": "pax-bridge" });
-    for (var bi = 1; bi < 3; bi++) {
-      var bx = 124 + (52 * bi) / 3;
-      put(arr, "path", { d: "M " + bx + " " + (140 + (12 * bi) / 3) + " L " + bx + " " +
-                            (156 + (12 * bi) / 3), "class": "pax-bridge-rib" });
-    }
-    label(arr, 70, 266, "pax-label", sc.nodes[0].title);
-    label(arr, 70, 284, "pax-sub", sc.nodes[0].sub);
-
-    // API arrives ahead of the aircraft and feeds the decision
-    var api = put(svg, "g", { "class": "pax-api" });
-    put(api, "rect", { x: 468, y: 6, width: 344, height: 50, rx: 10, "class": "pax-api-box" });
-    label(api, 640, 28, "pax-api-title", sc.nodes[1].title);
-    label(api, 640, 46, "pax-sub", sc.nodes[1].sub);
-    put(api, "path", { d: "M 640 56 L 640 156", "class": "pax-feed" });
-
-    // ---- channel ends: two doorways out of the hall ----------------------
+    /* ---- the two channels: painted floor bands to two openings ------------ */
     sc.channels.forEach(function (c) {
-      var y = c.name === "green" ? 140 : 262;
-      var g = put(svg, "g", { "class": "pax-end ch-" + c.name });
-      put(g, "rect", { x: 828, y: y - 24, width: 140, height: 48, rx: 4, "class": "pax-end-box" });
-      put(g, "rect", { x: 822, y: y - 36, width: 152, height: 12, rx: 3, "class": "pax-end-header" });
-      put(g, "rect", { x: 822, y: y - 24, width: 6, height: 48, "class": "pax-jamb" });
-      put(g, "rect", { x: 968, y: y - 24, width: 6, height: 48, "class": "pax-jamb" });
-      label(g, 898, y - 2, "pax-end-label", c.label);
-      label(g, 898, y + 17, "pax-end-share", c.shareText);
+      var g = put(svg, "g", { "class": "pax-channel ch-" + c.name });
+      var y = c.name === "green" ? 164 : 316;
+      path(g, "M 884 " + (240 + (y - 240) / 2) + " L 902 " + y + " L 952 " + y, "pax-band");
+      rect(g, 948, y - 18, 8, 36, "pax-opening");
+    });
+    path(svg, "M 952 30 V 146", "pax-wall");
+    path(svg, "M 952 182 V 298", "pax-wall");
+    path(svg, "M 952 334 V 410", "pax-wall");
+
+    /* ---- the walking routes, over everything they run through ------------- */
+    /* Drawn as ONE route to customs control and two after it. Painting the
+       green and the red route full length laid 96.4% over 3.6% for the whole
+       walk, and two translucent channel colours over each other are an olive
+       nobody chose. The dots still carry the whole path each: what the eye is
+       told here is that there is one queue until the scanner, which is true. */
+    path(svg, PAX_COMMON, "pax-track is-common");
+    path(svg, "M 866 240 L 902 164 L 1000 164", "pax-track ch-green");
+    path(svg, "M 866 240 L 902 316 L 1000 316", "pax-track ch-red");
+
+    /* ---- the advance information, as a drawing annotation ----------------- */
+    /* Not a floating card over the roof with a dashed line dropping out of it —
+       there is no roof, and a card is UI rather than drawing. It is a note
+       block with a services run to the point it feeds, which is what a plan
+       does with something that arrives without walking. */
+    var api = put(svg, "g", { "class": "pax-api" });
+    var aw = Math.max(sc.nodes[1].title.length * 8.14, sc.nodes[1].sub.length * 6.3) + 22;
+    rect(api, 560 - aw / 2, 6, aw, 40, "pax-note", 5);
+    text(api, 560, 23, "pax-note-title", sc.nodes[1].title.toUpperCase());
+    text(api, 560, 40, "pax-sub", sc.nodes[1].sub);
+    path(api, "M 560 46 L 560 62 L 790 62 L 790 184", "pax-feed");
+    path(api, "M 786 178 L 790 186 L 794 178", "pax-feed-head");
+
+    /* ---- the key row: a chip on a leader for each place ------------------- */
+    station(105, 392, sc.nodes[0], 136, 302);
+    station(430, 392, sc.nodes[2], 436, 164);
+    station(760, 392, sc.nodes[3], 790, 292);
+    sc.channels.forEach(function (c) {
+      var up = c.name === "green";
+      var g = chip(890, up ? 108 : 368,
+                   [{ t: c.shareText, cls: "pax-share", adv: 10.2 },
+                    { t: c.label.toUpperCase(), cls: "pax-sub", adv: 6.9 }], c.name);
+      leader(g, 890, up ? 108 + g.__h / 2 : 368 - g.__h / 2, 920, up ? 164 : 316);
     });
 
-    // the passengers themselves — 24 of them, split the way the figures say
-    var N = 24, DUR = 9;
+    /* ---- the passengers --------------------------------------------------- */
+    /* One dot is one person, a metre across at this plan's scale, which is why
+       they are small: 24 stroked blobs read as beads on a string, and a crowd
+       reads as a crowd. Each carries its own offset-distance so reduced motion
+       leaves them spread, and its animation-delay matches, so switching motion
+       on does not jump them. The phase carries a deterministic wobble for the
+       same reason: people do not walk evenly spaced. */
+    var N = 28, DUR = 11;
     var redEvery = Math.max(1, Math.round(100 / (sc.channels[1].share || 4)));
-    for (var i = 0; i < N; i++) {
+    for (i = 0; i < N; i++) {
       var isRed = (i % redEvery) === 0;
-      var dot = svgEl("circle", { r: 7, cx: 0, cy: 0, "class": "pax-dot" + (isRed ? " is-red" : "") });
-      var phase = (i / N * 100).toFixed(2);
-      dot.style.offsetPath = 'path("' + (isRed ? routeRed : routeGreen) + '")';
-      dot.style.offsetDistance = phase + "%";
-      dot.style.animationDelay = (-(i / N) * DUR).toFixed(2) + "s";
+      var dot = svgEl("circle", { r: DOT_R, cx: 0, cy: 0,
+                                  "class": "pax-dot" + (isRed ? " is-red" : "") });
+      var phase = (i / N * 100 + (((i * 37) % 11) - 5) * 0.34 + 100) % 100;
+      dot.style.offsetPath = 'path("' + (isRed ? PAX_RED : PAX_GREEN) + '")';
+      dot.style.offsetDistance = phase.toFixed(2) + "%";
+      dot.style.animationDelay = (-(phase / 100) * DUR).toFixed(2) + "s";
       svg.appendChild(dot);
     }
 

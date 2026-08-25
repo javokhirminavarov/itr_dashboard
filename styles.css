@@ -648,55 +648,85 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
 .mon-note { font-family: var(--font-mono); font-size: 10px; line-height: 1.5;
   color: var(--ink-faint); margin-top: 9px; }
 
-/* section 7 — passenger control */
+/* section 7 — passenger control.
+   One orthographic plan of the arrivals sequence, at 7 units to the metre, and
+   it takes the --plan-* tokens above: this is the same drawing as the corridor,
+   at the other end of the journey, so it must not carry a second palette. What
+   went with the elevation the plan replaced: the roof slab, the clerestory
+   glazing and its mullions, the floor line, the side-on gate paddles and reader
+   heads, the scanner arch, the belt with a case standing on it, the two
+   doorways with their jambs and headers, and the cast shadow under the
+   aircraft. A plan has no roof, no wall face and no light. */
 .pax { display: flex; flex-direction: column; gap: 8px; }
 .pax-stage { background: var(--panel-solid); border: 1px solid var(--hair); border-radius: var(--radius);
   box-shadow: var(--shadow-soft); padding: 8px 12px; width: 100%; }
 .pax-svg { width: 100%; height: auto; display: block; }
-.pax-hall { fill: rgba(0, 86, 155, 0.04); stroke: var(--hair); stroke-width: 1.5; }
-.pax-track { fill: none; stroke: var(--tone); stroke-width: 3; stroke-linecap: round;
-  stroke-linejoin: round; opacity: 0.42; }
-/* the building the routes run inside */
-.pax-roof { fill: var(--ink-soft); opacity: 0.16; }
-.pax-glaze { fill: rgba(0, 86, 155, 0.05); }
-.pax-mullion { stroke: var(--hair); stroke-width: 1; opacity: 0.7; fill: none; }
-.pax-floor { stroke: var(--stroke-strong); stroke-width: 1.6; opacity: 0.45; fill: none; }
-/* passport control: e-gates. Customs control: a scanner over a belt */
-.pax-gate { fill: var(--panel-solid); stroke: var(--stroke-strong); stroke-width: 1.6; }
-.pax-paddle { fill: var(--brand); opacity: 0.28; }
+/* ground, apron pavement and painted stand markings */
+.pax-ground { fill: var(--plan-ground); }
+.pax-apron { fill: var(--plan-apron); }
+.pax-mark { fill: none; stroke: var(--plan-mark); stroke-width: 2.4; stroke-linecap: round; }
+.pax-envelope { fill: none; stroke: var(--plan-mark); stroke-width: 1.6; stroke-dasharray: 11 9; }
+/* the terminal: a footprint, one building face, a column grid on the 8 m bay */
+.pax-hall { fill: var(--plan-built); }
+.pax-face { fill: none; stroke: var(--plan-built-line); stroke-width: 2.4; }
+.pax-wall { fill: none; stroke: var(--plan-built-line); stroke-width: 1.8; }
+.pax-column rect { fill: var(--plan-city); }
+.pax-opening { fill: var(--plan-opening); }
+/* the aircraft: 37.6 m by 35.8 m, flat fills and one thin outline, no shadow */
+.pax-plane { fill: var(--plan-parked); stroke: var(--plan-built-line); stroke-width: 1.8; }
+.pax-plane-wing { fill: var(--plan-parked); stroke: var(--plan-built-line); stroke-width: 1.4; }
+.pax-plane-tail { fill: var(--plan-parked); stroke: var(--plan-built-line); stroke-width: 1.2; }
+.pax-nacelle { fill: var(--plan-opening); }
+.pax-door { fill: var(--plan-opening); }
+/* the jet bridge and its rotunda at the building face */
+.pax-bridge { fill: var(--plan-built); stroke: var(--plan-built-line); stroke-width: 1.6; }
+.pax-bridge-rib { fill: none; stroke: var(--plan-built-line); stroke-width: 1; opacity: 0.5; }
+.pax-rotunda { fill: var(--plan-built); stroke: var(--plan-built-line); stroke-width: 1.6; }
+/* passport control: islands with lanes between them, which is what an e-gate
+   bank is from above, and the glass paddle drawn across each lane */
+.pax-gate { fill: var(--plan-island); stroke: var(--plan-built-line); stroke-width: 1.3; }
+.pax-paddle { fill: none; stroke: var(--brand); stroke-width: 1.8; opacity: 0.65; }
 .pax-reader { fill: var(--brand); }
-.pax-arch { fill: none; stroke: var(--stroke-strong); stroke-width: 2.4; }
-.pax-station.is-decision .pax-arch { stroke-width: 3.2; }
-.pax-belt { fill: var(--brand-wash); stroke: var(--stroke-strong); stroke-width: 1.4; }
-.pax-case { fill: var(--ink-soft); opacity: 0.4; }
-/* the aircraft on the stand, and the bridge off it */
-.pax-plane { fill: var(--panel-solid); stroke: var(--ink-soft); stroke-width: 1.6; }
-.pax-plane-fin { fill: var(--ink-soft); opacity: 0.34; }
-.pax-plane-wing { fill: var(--ink-soft); opacity: 0.3; }
-.pax-plane-dark { fill: var(--ink-soft); }
-.pax-plane-win { fill: var(--ink-soft); opacity: 0.65; }
-.pax-plane-line { fill: var(--brand); opacity: 0.32; }
-.pax-plane-door { fill: none; stroke: var(--ink-soft); stroke-width: 1.2; opacity: 0.75; }
-.pax-shadow { fill: var(--ink); opacity: 0.08; }
-.pax-bridge { fill: var(--panel-solid); stroke: var(--ink-soft); stroke-width: 1.4; }
-.pax-bridge-rib { stroke: var(--ink-soft); stroke-width: 1; opacity: 0.4; fill: none; }
-.pax-label { font-family: var(--font-display); font-size: 15px; font-weight: 700; fill: var(--ink); }
-.pax-sub { font-family: var(--font-mono); font-size: 11px; fill: var(--ink-faint); }
-.pax-api-box { fill: var(--panel-solid); stroke: var(--series-b); stroke-width: 1.6;
+/* baggage reclaim: a racetrack is hollow, which is what stops it reading as a pill */
+.pax-belt { fill: var(--brand-wash); stroke: var(--plan-built-line); stroke-width: 1.5; }
+.pax-belt-core { fill: var(--plan-built); stroke: var(--plan-built-line); stroke-width: 1.2; }
+.pax-belt-arrow { fill: none; stroke: var(--plan-built-line); stroke-width: 1.6; opacity: 0.6;
+  stroke-linecap: round; stroke-linejoin: round; }
+/* customs control — the same tint the corridor's scanner gantry carries */
+.pax-scan { fill: var(--brand-sky); opacity: 0.16; }
+.pax-machine { fill: var(--plan-built); stroke: var(--brand); stroke-width: 2; }
+.pax-booth { fill: var(--plan-built); stroke: var(--brand); stroke-width: 1.6; }
+/* the two channels, painted on the floor rather than boxed at the wall */
+.pax-band { fill: none; stroke: var(--tone); stroke-width: 26; opacity: 0.13;
+  stroke-linecap: butt; stroke-linejoin: round; }
+.pax-track { fill: none; stroke: var(--tone); stroke-width: 2.6; stroke-linecap: round;
+  stroke-linejoin: round; opacity: 0.5; }
+.pax-track.is-common { stroke: var(--ink-soft); opacity: 0.38; }
+/* plan callouts — the corridor's building caption (.blabel), drawn in the SVG */
+.pax-chip { fill: var(--panel-solid); stroke: var(--stroke); stroke-width: 1; }
+.pax-chip-tab { fill: var(--tone); }
+.pax-leader { fill: none; stroke: var(--stroke-strong); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.pax-leader-dot { fill: var(--stroke-strong); }
+.pax-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; fill: var(--ink); }
+.pax-sub { font-family: var(--font-mono); font-size: 10.5px; fill: var(--ink-faint); }
+.pax-share { font-family: var(--font-display); font-size: 17px; font-weight: 700; fill: var(--ink); }
+/* the advance information: a note block and a services run to what it feeds */
+.pax-note { fill: var(--panel-solid); stroke: var(--series-b); stroke-width: 1.5;
   stroke-dasharray: 6 4; }
-.pax-api-title { font-family: var(--font-display); font-size: 14px; font-weight: 700;
-  fill: var(--series-b); }
-.pax-feed { stroke: var(--series-b); stroke-width: 2; stroke-dasharray: 5 5; fill: none; }
-.pax-end-box { fill: var(--panel-solid); stroke: var(--tone); stroke-width: 2.2; }
-.pax-end-header { fill: var(--tone); }
-.pax-jamb { fill: var(--tone); opacity: 0.55; }
-.pax-end-label { font-family: var(--font-mono); font-size: 12px; font-weight: 500; fill: var(--ink); }
-.pax-end-share { font-family: var(--font-mono); font-size: 13px; font-weight: 500; fill: var(--ink); }
-.pax-dot { fill: var(--brand); stroke: var(--panel-solid); stroke-width: 2;
-  animation: paxflow 9s linear infinite; }
+.pax-note-title { font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em; fill: var(--series-b); }
+.pax-feed { fill: none; stroke: var(--series-b); stroke-width: 1.8; stroke-dasharray: 5 5; }
+.pax-feed-head { fill: none; stroke: var(--series-b); stroke-width: 1.8; stroke-linecap: round;
+  stroke-linejoin: round; }
+.pax-dot { fill: var(--brand); stroke: var(--panel-solid); stroke-width: 1;
+  animation: paxflow 11s linear infinite; }
 .pax-dot.is-red { fill: var(--red); }
 @keyframes paxflow { from { offset-distance: 0%; } to { offset-distance: 100%; } }
-.pax-body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr); gap: 16px;
+/* A plan needs area. The art column used to be 1.5fr of this grid and the
+   drawing a 3.2:1 strip inside it, a good deal shorter than the panel stack
+   beside it; it is now the wide half of the screen at 1000x440. */
+.pax-body { display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(290px, 340px); gap: 16px;
   align-items: start; }
 .pax-main { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .pax-side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
@@ -819,7 +849,12 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
 @media (max-width: 1660px) {
   .screen { padding-block: 28px; }
 }
-@media (max-width: 820px) {
+/* The plan is a drawing with 11px annotation on it, so it has a width below
+   which it stops being readable rather than merely getting smaller. Beside a
+   290px panel column that width arrives at about 1040, not at 820: the whole
+   page is already stacking by then, and the drawing should take the stack's
+   full width rather than half of a narrow screen. */
+@media (max-width: 1040px) {
   .pax-body { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {

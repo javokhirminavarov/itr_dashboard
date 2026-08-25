@@ -1,7 +1,7 @@
 # The corridor: how it is drawn, and how to change it
 
-The corridor and the warehouse floor plan are **drawn by the page**, as SVG, in
-the deck's own palette. They used to be generated art — a Python script that
+The corridor, the arrivals hall and the warehouse floor plan are **drawn by the
+page**, as SVG, in the deck's own palette. They used to be generated art — a Python script that
 authored a daylight scene and a Playwright script that rasterised it to six
 JPEGs — and this document used to be a request for final rendered art to drop in
 over the top. That is no longer what the page wants.
@@ -21,6 +21,18 @@ whole thing read as a city-builder game.
 It is now **one orthographic plan**, seen from directly above, in the same
 white/blue/grey the cards are set in. There is no sky, no horizon, no aerial
 haze, no extrusion, no gradient standing in for light, and no green.
+
+**Section 7 was the beat that repair missed**, and it carried every one of the
+same faults. The arrivals hall was drawn in elevation — a roof slab, clerestory
+glazing with mullions, a ground line, side-on e-gates, a scanner arch, a belt
+with a case standing on it, two doorways with jambs and headers — with an
+aircraft beside it drawn from directly above: two cameras in one frame. The
+aircraft had the van's problem in mirror image, 148 units long with wings on one
+side only and a fin fanned out as though seen from the side, so its span was a
+third of its length where a narrowbody's span is about its length. Nothing was
+measured against anything: at the aircraft's implied scale a passenger dot was a
+person three and a half metres across. It is now the same plan as the corridor —
+see **The arrivals hall** below.
 
 ## How it is put together
 
@@ -62,6 +74,13 @@ instead as a **site plan cropped to the corridor**: the dock face, the apron and
 the gate line are in frame, and the bulk of the shed runs off it — which is what
 a real drawing at this zoom looks like.
 
+The arrivals hall (section 7) is a second plan at **7 units to the metre** —
+half the corridor's, because an aircraft is 37.6 m long where a lorry is 16.5 m.
+It follows the same division: the aircraft, the gate islands, the carousels and
+the passengers are true to each other and to that number; the terminal, which at
+7 units to the metre is several times the frame, is cropped rather than shrunk
+and runs off the right and bottom edges.
+
 ## What each row shows
 
 | Row | Centre y | Landmark |
@@ -102,6 +121,41 @@ It is authored nose-up, because that is the easier frame to write coordinates
 in, and turned to face down the page — the direction it travels. It does not
 bob. Its states are overlays: **travelling** (plain) · **scanned** (the page adds
 the brand-blue outline) · **sealed** (the page adds the seal at the rear doors).
+
+## The arrivals hall — 1000 x 440
+
+Section 7, drawn by `PassengerSchema()` in `app.js` from `PAX`, `AC`, `GATE` and
+`BELT` — the same top-down plan as the corridor, at 7 units to the metre. Left to
+right: the apron with its painted lead-in line, stop bar and stand envelope; the
+aircraft; the jet bridge, as a rotunda at the building face, a constant-width
+tunnel and a cab square against the fuselage at the forward port door; the
+terminal footprint with its 8 m column grid; passport control as an e-gate bank;
+two baggage-reclaim racetracks; customs control; and the two channels as bands
+painted on the floor to two openings in a wall.
+
+**The aircraft** is an A320-family narrowbody, 37.6 m by 35.8 m. Three things
+make it read as an airliner, and all three are as cheap in plan as the
+consignment's three are: the **span is about the length**, the **wing sweep**,
+and **two nacelles** slung under the wings. From above a fin is a sliver on the
+centreline and nothing more, and there are no windows to draw, because they are
+on the side.
+
+Rules, as for the corridor:
+
+- **One camera.** Nothing here is seen from anywhere but directly above. No
+  roof, no wall face, no doorway, no cast shadow.
+- **The routes are load-bearing.** `PAX_COMMON` / `PAX_GREEN` / `PAX_RED` are
+  the dots' `offset-path`, so they are authored first and everything else is
+  drawn around them. One route is painted as far as customs control and two
+  after it: two translucent channel colours laid over each other for the whole
+  walk are an olive nobody chose, and there is one queue until the scanner.
+- **A passenger is a metre across.** `DOT_R` comes off `PAX.upm` like everything
+  else. Each dot carries its own static `offset-distance`, so under
+  `prefers-reduced-motion` they stand spread along the route rather than piled
+  at the door — `tools/verify.mjs` asserts it.
+- **Captions are chips on leaders**, drawn in the SVG in the same white-on-
+  hairline the corridor's building captions use, and sized from the character
+  count because IBM Plex Mono has a fixed advance.
 
 ## Secondary scene — 1600 x 900
 
