@@ -61,42 +61,27 @@ blue pins; click, or tab to them and press Enter.
 
 Section 2 and the two information-system markers used to be what the source
 slides were: eight boxes, read all at once, remembered as none of them. Each is
-now **one picture**, revealed in three moves by the presenter. Every sentence
-they replaced is still in `demo-data.js` and still reachable, and
-`tools/verify-scenes.mjs` checks that verbatim.
+now **one static drawing** in which every capability is a labelled part of the
+picture. Nothing to press, nothing to step through, nothing that runs — the
+whole thing is on screen from the moment it appears, and the presenter talks
+over it. Every sentence they replaced is still in `demo-data.js` and still
+reachable, and `tools/verify-scenes.mjs` checks that verbatim.
 
 | Picture | What it shows |
 |---|---|
-| **§2, the targeting centre** | What comes in on the left — WCO information and databases, other government agencies, operational intelligence. The centre in the middle, open around the clock, with the six channels it watches under it. What comes out on the right — a channel, the rules and risks the standing profiles do not cover, and the assessment on site that follows. |
-| **E-Transit** | The corridor a consignment travels, border to border, with each claim labelled where it happens: one lodgement, fees settled without a counter visit, one platform every agency is on, the RMS setting the channel, shorter queues, and the targeting centre watching the whole route. |
-| **Customs and cargo operations** | Many warehouses becoming one platform, with demo-data's own figure printed; three parties reading one record; and one consignment from arrival to release, with the RMS deciding who has to attend. |
+| **§2, the targeting centre** | What comes in on the left — WCO information and databases, other government agencies, operational intelligence. The centre in the middle, open around the clock, with the six channels it watches under it. What comes out on the right — a channel, the rules and the risks the standing profiles do not cover, and the assessment on site that follows a flagged one. |
+| **E-Transit** | The corridor a consignment travels, border to border, with each claim labelled where on it that thing happens: one lodgement, fees settled without a counter visit, one platform every agency is on, the RMS setting the channel, shorter queues, one step for the trader, and the targeting centre watching the whole route. |
+| **Customs and cargo operations** | Many warehouses becoming one platform, with `demo-data.js`'s own figure printed; three parties reading one record; and one consignment from arrival to release, with the RMS deciding who has to attend and 2018 against 2025 on one axis. |
 
 They live in `sections/`, which is loaded before `app.js` and registers itself
 on `window.SceneCore`. `app.js` reaches them through two seams and nothing else:
 one entry in `SCREEN_BUILDERS`, and one branch in `openModal`. Both fall back to
 the card they replaced, so **deleting `sections/` leaves the deck exactly as it
-was**. Every CSS rule in `sections/*.css` is scoped to `.scene`, `.tgc`, `.etx`
-or `.cco` — `styles.css`, `plates.js` and `demo-data.js` are not touched by any
-of it, and the suite asserts that scoping rather than trusting it.
-
-The whole mechanism is one rule: **a picture is laid out once, and a step only
-shows more of it.** Nothing rearranges, nothing loops, nothing runs while the
-speaker is talking over it. That is also why any stage is reachable directly,
-why a stage never depends on the one before it, and why
-`prefers-reduced-motion` needs no second code path — the fade stops and the
-drawing is still complete.
-
-Driving one, from the lectern:
-
-- **In the page (§2)** the picture takes the keyboard only while the focus is
-  inside it, so `↑` `↓` `1`–`7` never stop moving the deck. Tab in, then `←` `→`
-  or a digit. `R` still replays the beat, and the picture resets with it.
-- **In a panel** the picture owns the keyboard, because it is the only thing on
-  screen: `←` `→` `↑` `↓` `Space` step, `1`–`3` jump straight to a stage,
-  `Home` / `End` first / last, `R` back to the start, `Esc` closes as it always
-  did.
-
-Every stage is a real button as well as a key, and nothing is behind a hover.
+was**. The pictures bind no keys, hold no state and observe nothing, so the
+lectern keys behave exactly as they did before them. Every CSS rule in
+`sections/*.css` is scoped to `.scene`, `.tgc`, `.etx` or `.cco` —
+`styles.css`, `plates.js` and `demo-data.js` are not touched by any of it, and
+the suite asserts that scoping rather than trusting it.
 
 ## Presenting
 
@@ -109,8 +94,7 @@ Every stage is a real button as well as a key, and nothing is behind a hover.
 - Keys, for driving from a lectern: `↓` `PageDown` `Space` next beat · `↑`
   `PageUp` previous · `1`–`7` jump to a section · `Home`/`End` first/last ·
   `Esc` running order · `R` replay the current beat's reveal. Presenter clickers
-  (PageUp/PageDown) work. The three pictures have their own keys, which never
-  take one of these away — see *The three pictures*.
+  (PageUp/PageDown) work.
 - The page always opens on section 1, whatever the window shape. It carries no
   bars: the page itself is the presentation surface, and the running order, the
   sections and the beats are all on the keyboard. `Esc` opens the running order.
@@ -156,14 +140,12 @@ node tools/verify-scenes.mjs   # the three scenes: facts, keyboard, determinism
 ```
 
 `verify.mjs` guards what the page has always promised. `verify-scenes.mjs`
-guards the three things a picture can get wrong that a bullet list could not: it
-can drop a fact, it can become undrivable from a lectern, and it can hide
-something inside a fade. So it checks every sentence in `demo-data.js` is still
-reachable verbatim, walks every stage of all three pictures by key, asserts the
-same press gives the same frame and that each stage shows more of the picture
-and never less, asserts the drawing never moves between stages, and re-runs the
-lot under `prefers-reduced-motion` to confirm the pictures go static without
-going incomplete.
+guards what a picture can get wrong that a bullet list could not: it can drop a
+fact, it can hide one, and it can outgrow itself. So it checks every sentence in
+`demo-data.js` is still reachable verbatim; that nothing on any of the three is
+at zero opacity, hidden, or behind a control; that no caption has overflowed its
+chip and no label has walked off the edge of the drawing; that the deck still
+owns the keyboard; and that none of it animates or transitions at all.
 
 ## Changing the art
 

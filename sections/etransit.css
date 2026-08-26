@@ -42,7 +42,6 @@
   background: var(--brand-wash); font-family: var(--font-mono); font-size: 0.66em;
   letter-spacing: 0.1em; color: var(--brand-ink); }
 
-.etx-foot { display: flex; flex-wrap: wrap; align-items: center;
-  justify-content: space-between; gap: 0.6em; }
+.etx-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9em; }
 .etx-metric { margin-top: 0; padding-top: 0; border-top: 0; }
 .etx-metric .metric-value { font-size: 1.5em; }

@@ -6,7 +6,8 @@
    other four fall out of them, which a list cannot show and a picture can:
    many warehouses become one platform, and three parties read one record.
    The consignment's own flow runs along the foot, with the risk management
-   system as the fork in it.
+   system as the fork in it. All of it is on screen at once; there is nothing
+   to press.
 
    Every figure is read live out of window.demoData — 430 and the officer
    attendance split are section 4's own numbers. Nothing here invents one,
@@ -48,15 +49,15 @@
                                "aria-label": m.title });
     stage.appendChild(svg);
 
-    function box(at, x, y, w, h, cls, title, sub) {
-      var g = S.put(svg, "g", { "class": "cco-b " + cls, "data-at": String(at) });
+    function box(x, y, w, h, cls, title, sub) {
+      var g = S.put(svg, "g", { "class": "cco-b " + cls });
       S.put(g, "rect", { x: x, y: y, width: w, height: h, rx: 10 });
       S.text(g, x + 16, y + (sub ? h / 2 - 2 : h / 2 + 5), "cco-t", title);
       if (sub) S.text(g, x + 16, y + h / 2 + 16, "cco-s", sub);
       return g;
     }
-    function arrow(at, x0, y0, x1, y1, cls) {
-      var g = S.put(svg, "g", { "class": "cco-arrow " + (cls || ""), "data-at": String(at) });
+    function arrow(x0, y0, x1, y1, cls) {
+      var g = S.put(svg, "g", { "class": "cco-arrow " + (cls || "") });
       S.put(g, "path", { d: "M " + x0 + " " + y0 + " C " + ((x0 + x1) / 2) + " " + y0 +
                             " " + ((x0 + x1) / 2) + " " + y1 + " " + x1 + " " + y1 });
       S.put(g, "path", { d: "M " + (x1 - 7) + " " + (y1 - 4) + " L " + x1 + " " + y1 +
@@ -65,7 +66,7 @@
     }
 
     /* ---- 1. many warehouses, one platform ---- */
-    var many = S.put(svg, "g", { "class": "cco-many", "data-at": "0" });
+    var many = S.put(svg, "g", { "class": "cco-many" });
     S.text(many, GRID.x, 64, "cco-cap", T.manyTitle);
     var r, c;
     for (r = 0; r < GRID.rows; r++) {
@@ -79,22 +80,22 @@
     S.text(many, GRID.x, GRID.y + GRID.rows * GRID.dy + 34, "cco-big", "≈" + TOTAL);
     S.text(many, GRID.x + 84, GRID.y + GRID.rows * GRID.dy + 34, "cco-s",
            wh.leftPanel.chart.rows[0].name.toLowerCase());
-    arrow(0, GRID.x + GRID.cols * GRID.dx + 8, SLAB.y + SLAB.h / 2, SLAB.x - 8, SLAB.y + SLAB.h / 2);
-    var slab = S.put(svg, "g", { "class": "cco-slab", "data-at": "0" });
+    arrow(GRID.x + GRID.cols * GRID.dx + 8, SLAB.y + SLAB.h / 2, SLAB.x - 8, SLAB.y + SLAB.h / 2);
+    var slab = S.put(svg, "g", { "class": "cco-slab" });
     S.put(slab, "rect", { x: SLAB.x, y: SLAB.y, width: SLAB.w, height: SLAB.h, rx: 12 });
     S.text(slab, SLAB.x + SLAB.w / 2, SLAB.y + 58, "cco-slabt", T.platform, "middle");
 
     /* ---- 2. three parties, one record ---- */
-    var rec = box(1, REC.x, REC.y, REC.w, REC.h, "cco-rec", T.recordTitle, null);
+    var rec = box(REC.x, REC.y, REC.w, REC.h, "cco-rec", T.recordTitle, null);
     S.text(rec, REC.x + REC.w / 2, REC.y + REC.h - 24, "cco-s", T.sameNote, "middle");
-    arrow(1, SLAB.x + SLAB.w + 8, SLAB.y + SLAB.h / 2, REC.x - 8, REC.y + REC.h / 2);
+    arrow(SLAB.x + SLAB.w + 8, SLAB.y + SLAB.h / 2, REC.x - 8, REC.y + REC.h / 2);
     T.parties.forEach(function (p, i) {
-      box(1, PARTY.x, PARTY.ys[i], PARTY.w, 62, "cco-party", p.t, p.s);
-      arrow(1, PARTY.x - 8, PARTY.ys[i] + 31, REC.x + REC.w + 8, REC.y + REC.h / 2, "cco-back");
+      box(PARTY.x, PARTY.ys[i], PARTY.w, 62, "cco-party", p.t, p.s);
+      arrow(PARTY.x - 8, PARTY.ys[i] + 31, REC.x + REC.w + 8, REC.y + REC.h / 2, "cco-back");
     });
 
     /* ---- 3. one consignment, arrival to release ---- */
-    var flow = S.put(svg, "g", { "class": "cco-flow", "data-at": "2" });
+    var flow = S.put(svg, "g", { "class": "cco-flow" });
     S.text(flow, FLOW.xs[0] - 60, FLOW.y - 44, "cco-cap", T.flowNote);
     S.put(flow, "path", { d: "M " + FLOW.xs[0] + " " + FLOW.y + " H " + FLOW.xs[3],
                           "class": "cco-track" });
@@ -112,7 +113,7 @@
            remote.name.toUpperCase() + " " + remote.value + "%");
 
     /* time and cost, as a before and an after on one axis rather than a claim */
-    var gains = S.put(svg, "g", { "class": "cco-gains", "data-at": "2" });
+    var gains = S.put(svg, "g", { "class": "cco-gains" });
     S.text(gains, 700, FLOW.y - 74, "cco-cap", T.gains);
     [["2018", 100], [range, attended.value]].forEach(function (row, i) {
       var y = FLOW.y - 56 + i * 26;
@@ -125,15 +126,6 @@
     S.text(gains, 700, FLOW.y + 4, "cco-s", T.gainsCaption);
 
     root.appendChild(stage);
-    var machine = S.machine({
-      root: root, keys: "modal", railLabel: "One platform, three parties",
-      steps: T.steps, render: function (n) { S.reveal(root, n); }
-    });
-    root.appendChild(machine.rail);
-    var foot = S.el("div", "cco-foot");
-    foot.appendChild(machine.readout);
-    root.appendChild(foot);
-
     /* the same two figures as text, the way every chart in this deck ships a
        table of its own, and every bullet in the words demo-data.js holds */
     root.appendChild(S.srList(
@@ -141,8 +133,6 @@
         "2018: 100% of placements attended by an officer in person",
         range + ": " + attended.value + "% attended, " + remote.value + "% controlled remotely"
       ]), m.title, "bullets md-bullets"));
-
-    machine.setStep(0, false);
     return root;
   });
 })();

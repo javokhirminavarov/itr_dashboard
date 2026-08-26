@@ -12,7 +12,6 @@
 .tgc-stage { width: min(100%, calc(52vh * 1200 / 470)); aspect-ratio: 1200 / 470;
   border: 1px solid var(--hair); background: var(--panel-solid);
   box-shadow: var(--shadow-soft); }
-.tgc-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8em; }
 
 .tgc-cap { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 11px;
   font-weight: 500; letter-spacing: 0.16em; }

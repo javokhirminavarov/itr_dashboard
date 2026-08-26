@@ -8,9 +8,10 @@
    a sentence that is still in demo-data.js — `src` names the sentence it
    compresses, so the two can be checked against each other.
 
-   Each picture also ships the uncompressed sentences as a visually-hidden
-   list, the same way every chart in this deck already ships its numbers as a
-   visually-hidden table. Nothing is dropped, only redrawn.
+   Each picture is one static drawing that shows all of this at once, and it
+   also ships the uncompressed sentences as a visually-hidden list — the same
+   way every chart in this deck already ships its numbers as a visually-hidden
+   table. Nothing is dropped, only redrawn.
    ========================================================================= */
 window.SCENE_DATA = {
 
@@ -32,11 +33,6 @@ window.SCENE_DATA = {
       { t: "ADDITIONAL RISKS", s: "detected and mitigated", src: "functions[4]" }
     ],
     handoff: { t: "ON-SITE ASSESSMENT", s: "expert examination", src: "functions[6]" },
-    steps: [
-      { label: "The centre", say: "six channels, watched at once" },
-      { label: "What comes in", say: "three sources of information" },
-      { label: "What comes out", say: "a channel, and what follows it" }
-    ]
   },
 
   /* ------------------------------------------------- E-Transit, at the gate */
@@ -58,11 +54,6 @@ window.SCENE_DATA = {
     ],
     queue: { t: "SHORTER QUEUES", s: "at the crossing", src: "bullets[7]" },
     simple: { t: "ONE STEP FOR THE TRADER", s: "no specialised knowledge", src: "bullets[5]" },
-    steps: [
-      { label: "The corridor", say: "border to border, under watch" },
-      { label: "Before the barrier", say: "lodged, paid, everyone told" },
-      { label: "Through it", say: "the channel, and the queue" }
-    ]
   },
 
   /* --------------------------------- Customs and cargo operations, warehouse */
@@ -82,10 +73,5 @@ window.SCENE_DATA = {
     branchNote: "THE RMS DECIDES WHO ATTENDS",           /* bullets[2] */
     gains: "LESS TIME, LOWER COST",                      /* bullets[3] */
     gainsCaption: "Share of placements an officer attended in person",
-    steps: [
-      { label: "One platform", say: "the whole warehouse network" },
-      { label: "Three parties", say: "all reading the same record" },
-      { label: "One consignment", say: "arrival to release" }
-    ]
   }
 };

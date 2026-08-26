@@ -8,7 +8,8 @@
    A transit movement does have an order, and it is always the same: lodge,
    notify, pay, be assessed, cross, be watched, leave. So there is one
    drawing of that — entry post, inland route, exit post — with each bullet
-   labelled where it happens on it, revealed in three moves.
+   labelled where on it that thing happens. All of it is on screen at once;
+   there is nothing to press.
    ========================================================================= */
 (function () {
   "use strict";
@@ -37,7 +38,7 @@
     S.put(svg, "rect", { x: 0, y: 0, width: W, height: H, rx: 12, "class": "etx-ground" });
 
     /* ---- 1. the corridor, and the centre watching all of it ---- */
-    var road = S.put(svg, "g", { "class": "etx-road-g", "data-at": "0" });
+    var road = S.put(svg, "g", { "class": "etx-road-g" });
     S.put(road, "rect", { x: 0, y: ROAD.y - ROAD.half - 8, width: W, height: 8, "class": "etx-verge" });
     S.put(road, "rect", { x: 0, y: ROAD.y + ROAD.half, width: W, height: 8, "class": "etx-verge" });
     S.put(road, "rect", { x: 0, y: ROAD.y - ROAD.half, width: W, height: ROAD.half * 2,
@@ -58,7 +59,7 @@
     S.put(veh, "rect", { x: 560, y: ROAD.y - 11, width: 60, height: 22, rx: 2, "class": "etx-trailer" });
     S.put(veh, "rect", { x: 622, y: ROAD.y - 12, width: 24, height: 24, rx: 3, "class": "etx-cab" });
     /* centralised control rides the whole route, so it is drawn over all of it */
-    var obs = S.put(svg, "g", { "class": "etx-obs", "data-at": "0" });
+    var obs = S.put(svg, "g", { "class": "etx-obs" });
     S.put(obs, "path", { d: "M 60 62 H 1140", "class": "etx-obsline" });
     S.text(obs, 600, 52, "etx-cap etx-obst", T.observer, "middle");
     [190, 600, 1010].forEach(function (x) {
@@ -67,21 +68,21 @@
 
     /* ---- 2. what happens before the barrier ---- */
     T.marks.slice(0, 2).forEach(function (mk, i) {
-      var g = S.put(svg, "g", { "class": "etx-mark", "data-at": "1" });
+      var g = S.put(svg, "g", { "class": "etx-mark" });
       S.chip(g, 150 + i * 210, 348, [{ t: mk.t }, { t: mk.s, cls: "sc-chip-s" }], "etx-blue");
       S.leader(g, 150 + i * 210, 334, 260, ROAD.y + ROAD.half + 10);
     });
     /* one platform, one bar — never several silos */
-    var bar = S.put(svg, "g", { "class": "etx-baru", "data-at": "1" });
+    var bar = S.put(svg, "g", { "class": "etx-baru" });
     S.text(bar, 600, 96, "etx-cap", T.barTitle, "middle");
 
     /* ---- 3. the decision, the queue, and the way out ---- */
-    var dec = S.put(svg, "g", { "class": "etx-mark", "data-at": "2" });
+    var dec = S.put(svg, "g", { "class": "etx-mark" });
     S.chip(dec, 600, 348, [{ t: T.marks[2].t }, { t: T.marks[2].s, cls: "sc-chip-s" }], "etx-green");
     S.leader(dec, 600, 334, 330, ROAD.y + ROAD.half + 10);
-    var q = S.put(svg, "g", { "class": "etx-queue", "data-at": "2" });
+    var q = S.put(svg, "g", { "class": "etx-queue" });
     S.chip(q, 96, 214, [{ t: T.queue.t }, { t: T.queue.s, cls: "sc-chip-s" }], "etx-amber");
-    var sim = S.put(svg, "g", { "class": "etx-mark", "data-at": "2" });
+    var sim = S.put(svg, "g", { "class": "etx-mark" });
     S.chip(sim, 1044, 348, [{ t: T.simple.t }, { t: T.simple.s, cls: "sc-chip-s" }], "etx-green");
     S.leader(sim, 1044, 334, 970, ROAD.y + ROAD.half + 10);
 
@@ -96,24 +97,15 @@
       HOST.richText(seg, a);
       strip.appendChild(seg);
     });
-    strip.dataset.at = "1";
     root.appendChild(strip);
 
-    var machine = S.machine({
-      root: root, keys: "modal", railLabel: "The transit journey",
-      steps: T.steps, render: function (n) { S.reveal(root, n); }
-    });
-    root.appendChild(machine.rail);
-
     var foot = S.el("div", "etx-foot");
-    foot.appendChild(machine.readout);
     var mw = S.el("div", "md-metric etx-metric");
     mw.appendChild(HOST.Metric(m.metric));
     foot.appendChild(mw);
     root.appendChild(foot);
 
     root.appendChild(S.srList([m.lead].concat(m.bullets), m.title, "bullets md-bullets"));
-    machine.setStep(0, false);
     return root;
   });
 })();
