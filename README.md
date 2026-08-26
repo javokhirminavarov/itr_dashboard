@@ -11,7 +11,7 @@ self-contained — **no network access after load** (enforced by CSP
 | § | Section | How it is shown |
 |---|---|---|
 | 1 | International cooperation — WCO & Uzbekistan | screen |
-| 2 | Targeting centre — eight functions, six monitored channels | screen |
+| 2 | Targeting centre — a live console over six monitored channels | screen |
 | 3 | The 2018 baseline, then vehicle entry at the border | two corridor beats, plus the inland-transit passage between 3 and 4 |
 | 4 | Customs warehouse information system | corridor beat |
 | 5 | Customs declaration clearance | corridor beat |
@@ -57,6 +57,44 @@ E-Transit and the targeting centre's role at the border (beside the gate), and
 the Customs and cargo operations system (at the warehouse). They are the pulsing
 blue pins; click, or tab to them and press Enter.
 
+## The three interactive scenes
+
+Section 2 and the two information-system markers used to be what the source
+slides were: eight boxes, read all at once, remembered as none of them. They are
+now **scenes** — one visual each, driven by the presenter, in which the facts
+are behaviour rather than sentences. Every sentence they replaced is still in
+`demo-data.js` and still reachable in the scene, and `tools/verify-scenes.mjs`
+checks that verbatim.
+
+| Scene | What it does |
+|---|---|
+| **§2, the targeting console** | Six channels run left to right and are never empty. Three inbound feeds converge into them. Everything crossing the scoring bar comes out green, yellow or red. The consignment the standing profiles do not cover is held at the bar with the reason attached to *it*, and handed on to assessment on site. The clock in the corner is the 24/7 claim, running. |
+| **E-Transit** | The corridor a consignment actually travels — entry post, inland route, exit post — with each claim attached to the moment it happens. The queue at the crossing drains on screen; the trader's side of the journey is counted on screen. |
+| **Customs and cargo operations** | ~430 warehouses on a map, consolidating into one platform with the counter landing on 430; then the same record in three panes — operator, customs, declarant — where a change in one is a change in all three; then one consignment through arrival, the RMS attendance decision, placement and release. |
+
+They live in `sections/`, which is loaded before `app.js` and registers itself
+on `window.SceneCore`. `app.js` reaches them through two seams and nothing else:
+one entry in `SCREEN_BUILDERS`, and one branch in `openModal`. Both fall back to
+the card they replaced, so **deleting `sections/` leaves the deck exactly as it
+was**. Every CSS rule in `sections/*.css` is scoped to `.scene`, `.tgc`, `.etx`
+or `.cco` — `styles.css`, `plates.js` and `demo-data.js` are not touched by any
+of it, and the suite asserts that scoping rather than trusting it.
+
+Driving a scene, from the lectern:
+
+- **In the page (§2)** the console takes the keyboard only while the focus is
+  inside it, so `↑` `↓` `1`–`7` never stop moving the deck. Tab in, then `←` `→`
+  or a digit — on the channel rail to filter the console to one flow, on the
+  step rail to move through the five states. `R` still replays the beat, and the
+  console resets with it.
+- **In a panel** the scene owns the keyboard, because it is the only thing on
+  screen: `←` `→` `↑` `↓` `Space` step, `1`–`8` jump straight to a state, `Home`
+  / `End` first / last, `R` back to the start, `Esc` closes as it always did.
+  A control inside a scene keeps `Space` and `Enter`.
+
+Every state is a real button as well as a key, no state depends on the one
+before it, and nothing in a scene is behind a hover.
+
 ## Presenting
 
 - Open `index.html` in Chrome/Edge and press **F11** for fullscreen (works from
@@ -68,7 +106,8 @@ blue pins; click, or tab to them and press Enter.
 - Keys, for driving from a lectern: `↓` `PageDown` `Space` next beat · `↑`
   `PageUp` previous · `1`–`7` jump to a section · `Home`/`End` first/last ·
   `Esc` running order · `R` replay the current beat's reveal. Presenter clickers
-  (PageUp/PageDown) work.
+  (PageUp/PageDown) work. The three interactive scenes have their own keys,
+  which never take one of these away — see *The three interactive scenes*.
 - The page always opens on section 1, whatever the window shape. It carries no
   bars: the page itself is the presentation surface, and the running order, the
   sections and the beats are all on the keyboard. `Esc` opens the running order.
@@ -84,7 +123,9 @@ blue pins; click, or tab to them and press Enter.
   official *Statistics at the border* slide and are not to be re-invented. `ASSETS.md` lists all 47 to replace, flags the
   three least plausible, and notes the one name to confirm. Figures written as
   `{{TOKEN}}` render as dashed *awaiting figure* chips; the presenter's own
-  "we will add later" in the E-Transit panel is deliberately left as one.
+  "we will add later" in the E-Transit panel is deliberately left as one, and
+  the three scene tokens in `sections/scene-data.js` are the same device
+  applied to claims the deck makes without a figure behind them.
 - **Copy**: headlines and support lines are also in `demo-data.js` (discipline:
   ≤6-word headline, ≤25-word support).
 - **Contracts that hold the page honest**, enforced in code rather than trusted:
@@ -96,7 +137,31 @@ blue pins; click, or tab to them and press Enter.
   separately from the statistics. Every chart also ships the same numbers as a
   visually-hidden table.
 - **Art**: `ASSETS.md` is the drawing contract; `plates.js` holds every
-  coordinate, and `styles.css` holds every colour.
+  coordinate, and `styles.css` holds every colour. The three scenes hold their
+  own geometry at the head of their own file in `sections/`, and take every
+  colour from `styles.css`'s tokens — including the targeting console's dark
+  surface, which derives its palette from `--navy` and declares it on `.tgc` so
+  nothing else on the page can see it.
+
+## Checking it
+
+Two suites, both headless, both needing only Playwright and Chromium:
+
+```
+npx --no-install http-server -p 8099 -s .     # or any static server
+node tools/verify.mjs          # the deck: corridor, beats, contracts, contrast
+node tools/verify-scenes.mjs   # the three scenes: facts, keyboard, determinism
+```
+
+`verify.mjs` guards what the page has always promised. `verify-scenes.mjs`
+guards the three things a scene can get wrong that a bullet list could not: it
+can drop a fact, it can become undrivable from a lectern, and it can hide
+something inside an animation. So it checks every sentence in `demo-data.js` is
+still reachable verbatim, walks every state of all three scenes by key, asserts
+the same press gives the same frame and that no state depends on the one before
+it, asserts the stage never moves between states, and re-runs the lot under
+`prefers-reduced-motion` to confirm the scenes go static without going
+incomplete.
 
 ## Changing the art
 

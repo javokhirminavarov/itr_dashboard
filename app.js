@@ -1529,9 +1529,27 @@
     return sec;
   }
 
+  /* The interactive scenes in sections/ are registered on window.SceneCore
+     before this file is parsed. They get HOST — this file's own private
+     helpers, passed rather than reimplemented — and nothing else: they cannot
+     reach the engine, and the engine does not know they exist. Delete the
+     directory and every builder below falls back to the card it replaced. */
+  var HOST = {
+    el: el, svgEl: svgEl, icon: icon, fx: fx,
+    iconPath: function (n) { return ICONS[n] || ICONS.doc; },
+    Metric: Metric, Bullets: Bullets, richText: richText, screenShell: screenShell,
+    clamp: clamp, pct: pct, data: D,
+    reduce: function () { return REDUCE; }
+  };
+  function sceneScreen(key, fallback) {
+    var S = window.SceneCore;
+    if (!S || !S.screens[key]) return fallback;
+    return function (def, d) { return S.screens[key](def, d, HOST); };
+  }
+
   var SCREEN_BUILDERS = {
     cooperation: buildCooperationScreen,
-    targeting: buildTargetingScreen,
+    targeting: sceneScreen("targeting", buildTargetingScreen),
     passengers: buildPassengerScreen
   };
 
@@ -1686,12 +1704,11 @@
     $modal.appendChild(el("div", "modal-body"));
     $modal.addEventListener("click", function (e) { if (e.target === $modal) closeOverlays(); });
   }
-  function openModal(id, opener) {
-    var m = D.meta.modals[id];
-    if (!m) { console.error("no modal:", id); return; }
-    lastFocus = opener || document.activeElement;
-    var body = $modal.querySelector(".modal-body");
-    body.textContent = "";
+  /* The card an information-system marker used to open, unchanged. A marker
+     with a scene registered for it opens the scene instead; the one that has
+     none — the targeting centre's role at the border — still comes through
+     here. */
+  function modalCard(m, body) {
     var head = el("div", "md-head");
     head.appendChild(icon(m.icon, "md-icon"));
     var ht = el("div");
@@ -1710,8 +1727,21 @@
       mw.appendChild(Metric(m.metric));
       body.appendChild(mw);
     }
+  }
+  function openModal(id, opener) {
+    var m = D.meta.modals[id];
+    if (!m) { console.error("no modal:", id); return; }
+    lastFocus = opener || document.activeElement;
+    var body = $modal.querySelector(".modal-body");
+    body.textContent = "";
+    var scene = window.SceneCore && window.SceneCore.modals[id];
+    body.classList.toggle("scene-host", !!scene);
+    if (scene) body.appendChild(scene(m, HOST));
+    else modalCard(m, body);
     engine.view = "modal";
     $modal.classList.add("is-open");
+    // data-view is written last, and SceneCore watches it: by the time the
+    // scene is told to start, its node is already in the document.
     document.body.dataset.view = "modal";
     $modal.querySelector(".close-x").focus();
   }

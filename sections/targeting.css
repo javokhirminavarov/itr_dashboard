@@ -1,0 +1,177 @@
+/* =========================================================================
+   Section 2 — the targeting console.
+
+   The one dark surface in a deck that is otherwise a drawing on paper, and
+   the reason is the subject: a control room is a lit screen in a room with
+   the lights down, and saying so in the palette costs one line of argument
+   that eight white cards could not make. It is contained — the section
+   header above it stays on the page's own ground, every token below is
+   declared on .tgc and nowhere else, and no rule here can reach a surface
+   that is not this console.
+
+   The channel colours are declared here too. --green, --yellow and --red in
+   styles.css are authored against white and do not clear on navy; these are
+   their light-on-dark partners and they exist only inside .tgc.
+   ========================================================================= */
+.tgc {
+  --tg-bg: #0c2038;              /* --navy, taken down to a screen           */
+  --tg-panel: #14304f;
+  --tg-ink: #eaf2fb;
+  --tg-dim: #a8bed6;             /* 6.9:1 on --tg-panel                      */
+  --tg-line: rgba(234, 242, 251, 0.16);
+  --tg-live: #56c2f5;            /* --brand-sky, lifted for a dark ground    */
+  --tg-green: #4ade80;
+  --tg-yellow: #f0b429;
+  --tg-red: #f2736b;
+  display: flex; flex-direction: column; gap: 0.7em;
+}
+
+/* ---- which channel ---------------------------------------------------- */
+.tgc-modes { display: flex; flex-wrap: wrap; gap: 0.4em; }
+.tgc-mode { display: inline-flex; align-items: center; gap: 0.5em;
+  font-family: var(--font-mono); font-size: 0.72em; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-soft);
+  background: var(--panel-solid); border: 1px solid var(--stroke);
+  border-radius: 999px; padding: 0.5em 0.9em; cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease; }
+.tgc-mode svg { width: 1.15em; height: 1.15em; flex: none; color: var(--brand); }
+.tgc-mode:hover { border-color: var(--brand-line); color: var(--ink); }
+.tgc-mode:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.tgc-mode.is-on { color: #fff; background: var(--brand); border-color: var(--brand); }
+.tgc-mode.is-on svg { color: #fff; }
+
+/* ---- the console -------------------------------------------------------
+   Held to its own aspect and to a share of the viewport height, so section 2
+   cannot outgrow the screenful it is presented in at any window the deck is
+   shown at. Nothing inside reflows between steps. */
+.tgc-stage { width: min(100%, calc(48vh * 1440 / 640)); aspect-ratio: 1440 / 640;
+  border-radius: var(--card-radius); box-shadow: var(--shadow); }
+.tgc-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8em; }
+
+.tgc-bg { fill: var(--tg-bg); }
+.tgc-rule { stroke: var(--tg-line); stroke-width: 1; }
+.tgc-name { fill: var(--tg-ink); font-family: var(--font-mono); font-size: 15px;
+  font-weight: 500; letter-spacing: 0.2em; }
+.tgc-sub { fill: var(--tg-dim); font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 0.16em; }
+.tgc-cap { fill: var(--tg-dim); font-family: var(--font-mono); font-size: 9.5px;
+  letter-spacing: 0.16em; }
+.tgc-keychip rect { fill: rgba(86, 194, 245, 0.12); stroke: rgba(86, 194, 245, 0.4); stroke-width: 1; }
+.tgc-keytext { fill: var(--tg-live); font-family: var(--font-mono); font-size: 9.5px;
+  letter-spacing: 0.14em; }
+.tgc-clock { fill: var(--tg-live); font-family: var(--font-mono); font-size: 19px;
+  font-weight: 500; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; }
+.tgc-247 rect { fill: var(--tg-live); }
+.tgc-247t { fill: #06243a; font-family: var(--font-mono); font-size: 12px;
+  font-weight: 500; letter-spacing: 0.08em; }
+
+/* ---- the feeds ---------------------------------------------------------- */
+.tgc-feedbox { fill: var(--tg-panel); stroke: var(--tg-line); stroke-width: 1; }
+.tgc-feedlabel { fill: var(--tg-ink); font-family: var(--font-mono); font-size: 11px;
+  font-weight: 500; letter-spacing: 0.12em; }
+.tgc-feedsub { fill: var(--tg-dim); font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 0.06em; }
+.tgc-run { fill: none; stroke: var(--tg-line); stroke-width: 1.4; }
+.tgc-spine, .tgc-stub { fill: none; stroke: var(--tg-line); stroke-width: 1.4; }
+.tgc-node { fill: var(--tg-live); opacity: 0.7; }
+.tgc-intake { fill: var(--tg-live); }
+.tgc-packet { fill: var(--tg-live);
+  animation: tgcFeed 5.2s linear infinite; animation-play-state: paused; }
+@keyframes tgcFeed { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+
+/* ---- the six channels ---------------------------------------------------- */
+.tgc-lane { transition: opacity 0.35s ease; }
+.tgc-laneicon { fill: none; stroke: var(--tg-dim); stroke-width: 2.2;
+  stroke-linecap: round; stroke-linejoin: round; }
+.tgc-lanelabel { fill: var(--tg-dim); font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.14em; }
+.tgc-track { fill: var(--tg-panel); stroke: var(--tg-line); stroke-width: 1; }
+/* An item travels the lane and takes its channel colour as it crosses the
+   scoring bar — 496 units of travel, the bar at 52.4% of it. Both animations
+   carry the same duration and the same delay, so the colour cannot drift off
+   the bar. transform and opacity only: nothing here can shift the layout or
+   cost a frame on scroll. */
+.tgc-item { animation: tgcRun 12s linear infinite; animation-play-state: paused; }
+.tgc-i-base { fill: #33506f; }
+.tgc-i-live { opacity: 0; animation: tgcScore 12s linear infinite;
+  animation-play-state: paused; }
+.tgc-i-live.ch-g, .tgc-bin.ch-g .tgc-bintab, .tgc-bin.ch-g .tgc-mark { fill: var(--tg-green); }
+.tgc-i-live.ch-y, .tgc-bin.ch-y .tgc-bintab, .tgc-bin.ch-y .tgc-mark { fill: var(--tg-yellow); }
+.tgc-i-live.ch-r, .tgc-bin.ch-r .tgc-bintab, .tgc-bin.ch-r .tgc-mark { fill: var(--tg-red); }
+@keyframes tgcRun { from { transform: translateX(0); } to { transform: translateX(496px); } }
+@keyframes tgcScore { 0%, 52.3% { opacity: 0; } 52.4%, 100% { opacity: 1; } }
+/* The lanes run only while section 2 is near the reader — targeting.js sets
+   data-live off the beat's own `is-in` class. Nothing loops behind the speaker
+   while they are three sections away, and the never-empty lane costs nothing
+   when it is not the point. */
+.tgc[data-live="1"] .tgc-item,
+.tgc[data-live="1"] .tgc-i-live,
+.tgc[data-live="1"] .tgc-packet { animation-play-state: running; }
+
+/* ---- the scoring bar, and what comes out of it ------------------------- */
+.tgc-gate rect { fill: var(--tg-live); opacity: 0.55; transition: opacity 0.35s ease; }
+.tgc-fan { transition: opacity 0.35s ease; }
+.tgc-binbox { fill: var(--tg-panel); stroke: var(--tg-line); stroke-width: 1; }
+.tgc-binword { fill: var(--tg-ink); font-family: var(--font-mono); font-size: 12px;
+  font-weight: 500; letter-spacing: 0.16em; }
+.tgc-bin { transition: opacity 0.35s ease; }
+
+/* ---- the flagged consignment, annotated where it happens ---------------- */
+.tgc-flag, .tgc-handoff { opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+.tgc-flagring { fill: none; stroke: var(--tg-red); stroke-width: 2; }
+.tgc-chip .sc-chip-box { fill: var(--tg-panel); stroke: var(--tg-red); }
+.tgc-chip .sc-chip-t { fill: var(--tg-ink); }
+.tgc-chip .sc-chip-s { fill: var(--tg-dim); }
+.tgc-leader { stroke: var(--tg-red); }
+.tgc-leader.sc-leader-dot, .sc-leader-dot.tgc-leader { fill: var(--tg-red); }
+.tgc-handrun { fill: none; stroke: var(--tg-red); stroke-width: 1.6; stroke-dasharray: 5 3; }
+.tgc-handbox { fill: var(--tg-panel); stroke: var(--tg-red); stroke-width: 1.4; }
+.tgc-handt { fill: var(--tg-ink); font-family: var(--font-mono); font-size: 12px;
+  font-weight: 500; letter-spacing: 0.14em; }
+.tgc-hands { fill: var(--tg-dim); font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.12em; }
+
+/* ---- the five states ----------------------------------------------------
+   Each is written whole by render(n): a step never depends on the step before
+   it, so the presenter can jump into any one of them and be interrupted out
+   of it again. */
+.tgc-feeds, .tgc-lanes, .tgc-bins { transition: opacity 0.35s ease; }
+.tgc[data-step="1"] .tgc-lanes, .tgc[data-step="1"] .tgc-bins { opacity: 0.22; }
+.tgc[data-step="1"] .tgc-feedbox { stroke: var(--tg-live); }
+.tgc[data-step="2"] .tgc-feeds { opacity: 0.35; }
+.tgc[data-step="2"] .tgc-gate rect { opacity: 1; }
+.tgc[data-step="3"] .tgc-feeds { opacity: 0.25; }
+.tgc[data-step="3"] .tgc-lanes { opacity: 0.3; }
+.tgc[data-step="3"] .tgc-gate rect { opacity: 1; }
+.tgc[data-step="3"] .tgc-flag { opacity: 1; }
+.tgc[data-step="4"] .tgc-feeds { opacity: 0.25; }
+.tgc[data-step="4"] .tgc-lanes { opacity: 0.3; }
+.tgc[data-step="4"] .tgc-bins .tgc-bin:not(.ch-r) { opacity: 0.3; }
+.tgc[data-step="4"] .tgc-flag, .tgc[data-step="4"] .tgc-handoff { opacity: 1; }
+
+/* ---- and the channel filter, orthogonal to the step -------------------- */
+.tgc[data-mode="m0"] .tgc-lane:not([data-mode="m0"]),
+.tgc[data-mode="m1"] .tgc-lane:not([data-mode="m1"]),
+.tgc[data-mode="m2"] .tgc-lane:not([data-mode="m2"]),
+.tgc[data-mode="m3"] .tgc-lane:not([data-mode="m3"]),
+.tgc[data-mode="m4"] .tgc-lane:not([data-mode="m4"]),
+.tgc[data-mode="m5"] .tgc-lane:not([data-mode="m5"]) { opacity: 0.14; }
+
+/* ---- narrow ------------------------------------------------------------
+   The deck already stacks at 1200. The console keeps its drawing and simply
+   takes the full width it is given. */
+@media (max-width: 1199px) {
+  .tgc-stage { width: 100%; }
+}
+
+/* ---- reduced motion ----------------------------------------------------
+   The lanes stop travelling. They do not empty: every item keeps the static
+   position its delay put it at, spread along its lane, and every item past
+   the bar keeps its channel colour — so the console still says "six channels,
+   never empty, everything scored" without a pixel moving. Every step and
+   every channel is still reachable, because the steps are buttons. */
+@media (prefers-reduced-motion: reduce) {
+  .tgc-item, .tgc-i-live, .tgc-packet { animation: none; }
+  .tgc-lane, .tgc-bin, .tgc-fan, .tgc-flag, .tgc-handoff,
+  .tgc-feeds, .tgc-lanes, .tgc-bins, .tgc-gate rect { transition: none; }
+}

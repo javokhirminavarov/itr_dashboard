@@ -1,0 +1,130 @@
+/* =========================================================================
+   E-Transit — a corridor in plan, and the journey along it.
+
+   Drawn in the deck's own --plan-* palette so the modal is visibly the same
+   drawing as the road the reader has been scrolling: one carriageway width
+   from end to end, no horizon, no perspective. Only the vehicle moves, and
+   only when the presenter moves it.
+   ========================================================================= */
+.etx { display: flex; flex-direction: column; gap: 0.75em; }
+
+/* Bounded by height as well as width. A panel in this deck is read whole,
+   from a lectern, without scrolling inside it — so on a short window the
+   drawing gives way before the reading does. */
+.etx-stage { aspect-ratio: 1200 / 380; width: min(100%, calc(41vh * 1200 / 380));
+  border: 1px solid var(--hair); box-shadow: var(--shadow-soft); }
+
+/* ---- the plan ----------------------------------------------------------- */
+.etx-ground { fill: var(--plan-ground); }
+.etx-verge { fill: var(--plan-verge); }
+.etx-road { fill: var(--plan-road); }
+.etx-centre { stroke: var(--plan-mark); stroke-width: 2; stroke-dasharray: 16 14; fill: none; }
+.etx-built { fill: var(--plan-built); stroke: var(--plan-built-line); stroke-width: 1.2; }
+.etx-gantry { fill: var(--brand); }
+.etx-cap { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 10px;
+  font-weight: 500; letter-spacing: 0.16em; }
+.etx-barrier { fill: var(--red); transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1); }
+
+/* ---- the queue at the crossing ------------------------------------------ */
+.etx-qmark { fill: var(--plan-parked); stroke: var(--plan-shoulder); stroke-width: 1;
+  transition: opacity 0.55s ease; }
+.etx-metertrack { fill: rgba(14, 28, 46, 0.1); }
+.etx-meter { fill: var(--amber); transform-box: fill-box;
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1); }
+
+/* ---- the lodgement ------------------------------------------------------ */
+.etx-doc { fill: var(--panel-solid); stroke: var(--brand-line); stroke-width: 1.4; }
+.etx-docline { stroke: var(--brand-line); stroke-width: 1.6; fill: none; stroke-linecap: round; }
+.etx-stamp .sc-chip-box { fill: var(--brand-wash); stroke: var(--brand-line); }
+.etx-stamp .sc-chip-t { fill: var(--brand-ink); }
+
+/* ---- the vehicle, and the one held beside it ---------------------------- */
+.etx-truck, .etx-held-truck { transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.etx-trailer { fill: #fbfcfe; stroke: #7d8fa3; stroke-width: 1.4; }
+.etx-cab { fill: #5b6f83; }
+.etx-couple { fill: #46586b; }
+.etx-held-truck .etx-trailer { stroke: var(--red); }
+.etx-green .sc-chip-box { fill: var(--panel-solid); stroke: var(--green); }
+.etx-green .sc-chip-t { fill: var(--green-ink); }
+.etx-red .sc-chip-box { fill: var(--panel-solid); stroke: var(--red); }
+.etx-red .sc-chip-t { fill: var(--red); }
+
+/* ---- the targeting centre, riding along ---------------------------------- */
+.etx-obsline { stroke: var(--cyan); stroke-width: 1.4; stroke-dasharray: 4 3; fill: none; }
+.etx-eye circle { fill: var(--cyan); }
+.etx-eye { transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.etx-tether { stroke: var(--cyan); stroke-width: 1; stroke-dasharray: 3 3; fill: none; opacity: 0.75; }
+
+/* ---- what is lit at which step -------------------------------------------
+   render(n) writes the whole frame, so a step never depends on the one before
+   it: the presenter can jump into any of the eight and be interrupted out. */
+.etx-lodge, .etx-pay, .etx-decision, .etx-obs, .etx-held {
+  opacity: 0; transition: opacity 0.4s ease; }
+.etx[data-step="1"] .etx-lodge { opacity: 1; }
+.etx[data-step="2"] .etx-lodge { opacity: 0.45; }
+.etx[data-step="3"] .etx-lodge { opacity: 0.45; }
+.etx[data-step="3"] .etx-pay { opacity: 1; }
+.etx[data-step="4"] .etx-decision, .etx[data-step="4"] .etx-held,
+.etx[data-step="5"] .etx-decision, .etx[data-step="5"] .etx-held { opacity: 1; }
+/* The centre is watching from the moment the data arrives, not from the
+   moment the deck gets round to saying so — it is dim from the lodgement and
+   named at its own step. That is what "rides the whole route" means. */
+.etx[data-step="1"] .etx-obs, .etx[data-step="2"] .etx-obs,
+.etx[data-step="3"] .etx-obs, .etx[data-step="4"] .etx-obs,
+.etx[data-step="5"] .etx-obs { opacity: 0.42; }
+.etx[data-step="6"] .etx-obs, .etx[data-step="7"] .etx-obs { opacity: 1; }
+
+/* ---- the one shared platform --------------------------------------------
+   One strip with every agency a segment of it, never several silos, and one
+   event running its length when the lodgement is made. */
+.etx-bar { border: 1px solid var(--stroke); border-radius: var(--radius);
+  background: var(--brand-wash); padding: 0.7em 0.85em; }
+.etx-bar-title { font-family: var(--font-mono); font-size: 0.68em; letter-spacing: 0.16em;
+  color: var(--brand-ink); }
+.etx-strip { position: relative; display: flex; flex-wrap: wrap; gap: 2px; margin-top: 0.55em;
+  border-radius: 0.4em; overflow: hidden; background: var(--stroke); }
+.etx-seg { flex: 1 1 120px; min-width: 0; text-align: center; padding: 0.6em 0.5em;
+  background: var(--panel-solid); font-family: var(--font-mono); font-size: 0.66em;
+  letter-spacing: 0.1em; color: var(--ink-soft);
+  transition: background-color 0.35s ease, color 0.35s ease; }
+.etx-pulse { position: absolute; left: 0; top: 0; bottom: 0; width: 22%;
+  background: linear-gradient(90deg, transparent, rgba(0, 86, 155, 0.22), transparent);
+  opacity: 0; pointer-events: none; }
+.etx[data-step="2"] .etx-seg { background: var(--brand); color: #fff; }
+.etx[data-step="2"] .etx-pulse { opacity: 1; animation: etxSweep 1.1s ease-out 1; }
+@keyframes etxSweep { from { transform: translateX(-100%); } to { transform: translateX(455%); } }
+.etx-bar-note { font-family: var(--font-mono); font-size: 0.64em; letter-spacing: 0.14em;
+  color: var(--ink-faint); margin-top: 0.5em; }
+
+/* ---- how short the trader's side is -------------------------------------- */
+.etx-count { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5em 0.9em; }
+.etx-clab { font-family: var(--font-mono); font-size: 0.68em; letter-spacing: 0.16em;
+  color: var(--brand-ink); }
+.etx-cnum { font-family: var(--font-mono); font-size: 1.8em; font-weight: 500;
+  color: var(--green-ink); line-height: 1; font-variant-numeric: tabular-nums; }
+.etx-cnote { font-family: var(--font-mono); font-size: 0.64em; letter-spacing: 0.14em;
+  color: var(--ink-faint); }
+.etx-autos { display: flex; flex-wrap: wrap; gap: 0.3em; margin-left: auto; }
+.etx-auto { font-family: var(--font-mono); font-size: 0.6em; letter-spacing: 0.1em;
+  color: var(--ink-faint); border: 1px solid var(--hair); border-radius: 999px;
+  padding: 0.35em 0.7em; transition: color 0.3s ease, border-color 0.3s ease; }
+.etx-auto.is-on { color: var(--cyan-ink); border-color: var(--cyan); }
+
+.etx-foot { display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: 0.6em; }
+.etx-metric { margin-top: 0; padding-top: 0; border-top: 0; }
+.etx-metric .metric-value { font-size: 1.5em; }
+
+@media (max-width: 900px) {
+  .etx-autos { margin-left: 0; }
+}
+
+/* ---- reduced motion ------------------------------------------------------
+   Nothing here loops, so there is nothing to switch off but the travel: every
+   step still writes its whole frame, and every step is still a button. */
+@media (prefers-reduced-motion: reduce) {
+  .etx-truck, .etx-held-truck, .etx-eye, .etx-meter, .etx-barrier,
+  .etx-qmark, .etx-seg, .etx-auto, .etx-lodge, .etx-pay, .etx-decision, .etx-obs, .etx-held {
+    transition: none; }
+  .etx-pulse { animation: none; opacity: 0; }
+}

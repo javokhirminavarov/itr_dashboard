@@ -11,6 +11,12 @@
 <title>Risk management, end to end · Uzbekistan Customs</title>
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="styles.css">
+<!-- The three interactive scenes. Scoped to .scene/.tgc/.etx/.cco; they add
+     no rule that any other section can see. -->
+<link rel="stylesheet" href="sections/scene-core.css">
+<link rel="stylesheet" href="sections/targeting.css">
+<link rel="stylesheet" href="sections/etransit.css">
+<link rel="stylesheet" href="sections/cco.css">
 </head>
 <body data-beat="cooperation" data-section="1" data-view="journey">
 
@@ -57,6 +63,12 @@
 <!-- demoData first: the single source of every word and figure on screen -->
 <script src="demo-data.js"></script>
 <script src="plates.js"></script>
+<!-- the scenes register themselves before app.js is parsed -->
+<script src="sections/scene-core.js"></script>
+<script src="sections/scene-data.js"></script>
+<script src="sections/targeting.js"></script>
+<script src="sections/etransit.js"></script>
+<script src="sections/cco.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
