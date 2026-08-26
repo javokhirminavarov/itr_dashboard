@@ -1,136 +1,61 @@
 /* =========================================================================
-   Customs and cargo operations.
+   Customs and cargo operations — one picture.
 
-   Three tableaux stacked in one stage and swapped by opacity, so the step
-   changes what is on screen and never what size anything is: the box is
-   measured once and does not move again. The map is a drawing and is set in
-   the deck's --plan-* palette; the three panes are software and are set in
-   the deck's panel palette, because that is what they are.
+   Set in the deck's own light palette; the warehouse marks reuse the page's
+   own warehouse icon rather than a second drawing of one. Nothing moves; a
+   step shows more of the drawing.
    ========================================================================= */
-.cco { display: flex; flex-direction: column; gap: 0.75em; }
+.cco { display: flex; flex-direction: column; gap: 0.7em; }
 
 /* Bounded by height as well as width, for the same reason the corridor is:
    a panel in this deck is read whole, without scrolling inside it. */
-.cco-stage { aspect-ratio: 1200 / 520; width: min(100%, calc(58vh * 1200 / 520));
-  background: var(--panel-solid);
-  border: 1px solid var(--hair); box-shadow: var(--shadow-soft); }
-.cco-t { position: absolute; inset: 0; opacity: 0; pointer-events: none;
-  transition: opacity 0.4s ease; display: flex; flex-direction: column; }
-.cco-t > svg { width: 100%; height: 100%; display: block; }
-.cco[data-step="0"] .cco-map, .cco[data-step="1"] .cco-map { opacity: 1; pointer-events: auto; }
-.cco[data-step="2"] .cco-work, .cco[data-step="3"] .cco-work,
-.cco[data-step="4"] .cco-work, .cco[data-step="5"] .cco-work,
-.cco[data-step="6"] .cco-work { opacity: 1; pointer-events: auto; }
-.cco[data-step="7"] .cco-gains { opacity: 1; pointer-events: auto; }
+.cco-stage { aspect-ratio: 1200 / 480; width: min(100%, calc(52vh * 1200 / 480));
+  background: var(--panel-solid); border: 1px solid var(--hair);
+  box-shadow: var(--shadow-soft); }
 
-/* ---- 430 warehouses, and then one platform ----------------------------- */
-.cco-country { fill: var(--plan-city); stroke: var(--brand-line); stroke-width: 1.4;
-  stroke-linejoin: round; }
-.cco-cap, .cco-cap2 { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 11px;
+.cco-cap { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 11px;
   font-weight: 500; letter-spacing: 0.16em; }
-.cco-dot { fill: var(--brand); transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1); }
-.cco-dots { transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.6s ease; }
-.cco[data-step="1"] .cco-dots { transform: translate(var(--dx, 0), var(--dy, 0)); opacity: 0.28; }
-.cco-slab { opacity: 0; transition: opacity 0.5s ease 0.25s; }
-.cco[data-step="1"] .cco-slab { opacity: 1; }
+.cco-t { fill: var(--ink); font-family: var(--font-mono); font-size: 12px;
+  font-weight: 500; letter-spacing: 0.1em; }
+.cco-s { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.06em; }
+
+/* ---- many warehouses, one platform -------------------------------------- */
+.cco-wh { fill: none; stroke: var(--brand); stroke-width: 1.7;
+  stroke-linecap: round; stroke-linejoin: round; opacity: 0.8; }
+.cco-big { fill: var(--green-ink); font-family: var(--font-mono); font-size: 30px;
+  font-weight: 500; font-variant-numeric: tabular-nums; }
 .cco-slab rect { fill: var(--brand); }
-.cco-count { fill: #fff; font-family: var(--font-mono); font-size: 58px; font-weight: 500;
-  font-variant-numeric: tabular-nums; }
-.cco-slabsub { fill: rgba(255, 255, 255, 0.88); font-family: var(--font-mono); font-size: 11px;
-  letter-spacing: 0.18em; }
-.cco-slabtag { fill: rgba(255, 255, 255, 0.7); font-family: var(--font-mono); font-size: 9.5px;
-  letter-spacing: 0.18em; }
+.cco-slabt { fill: #fff; font-family: var(--font-mono); font-size: 13px;
+  font-weight: 500; letter-spacing: 0.14em; }
 
-/* ---- three parties, one record ------------------------------------------
-   The whole argument of this section is that these three panes cannot
-   disagree, so they are drawn identically and updated in the same frame. */
-.cco-work { padding: clamp(10px, 1.6%, 20px); gap: 0.6em; }
-.cco-panes { flex: 1 1 auto; display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 0.6em; min-height: 0; }
-.cco-pane { display: flex; flex-direction: column; gap: 0.35em; min-width: 0;
-  border: 1.5px solid var(--brand-line); border-radius: var(--card-radius);
-  background: var(--panel-solid); padding: 0.7em 0.8em; box-shadow: var(--shadow-soft); }
-.cco-pane-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4em 0.6em; }
-.cco-party { font-family: var(--font-mono); font-size: 0.72em; font-weight: 500;
-  letter-spacing: 0.12em; color: var(--brand-ink); }
-.cco-badge { font-family: var(--font-mono); font-size: 0.58em; letter-spacing: 0.1em;
-  color: var(--cyan-ink); border: 1px solid var(--cyan); border-radius: 999px;
-  padding: 0.2em 0.55em; }
-.cco-rec-title { font-family: var(--font-mono); font-size: 0.6em; letter-spacing: 0.14em;
-  color: var(--ink-faint); margin-top: 0.15em; }
-.cco-row { display: flex; align-items: baseline; gap: 0.6em; padding: 0.3em 0.45em;
-  border-radius: 0.35em; border-bottom: 1px solid var(--hair); }
-.cco-k { font-family: var(--font-mono); font-size: 0.62em; letter-spacing: 0.1em;
-  color: var(--ink-faint); }
-.cco-v { margin-left: auto; font-family: var(--font-mono); font-size: 0.78em;
-  font-weight: 500; color: var(--ink); }
-.cco-row.is-hit { animation: ccoHit 1s ease-out 1; }
-@keyframes ccoHit { 0% { background: rgba(0, 86, 155, 0.22); } 100% { background: transparent; } }
-.cco-chint { font-family: var(--font-mono); font-size: 0.58em; letter-spacing: 0.14em;
-  color: var(--brand-ink); margin-top: 0.35em; }
-.cco-ctrls { display: flex; flex-wrap: wrap; gap: 0.3em; }
-.cco-btn { font-family: var(--font-mono); font-size: 0.6em; letter-spacing: 0.1em;
-  color: var(--brand-ink); background: var(--brand-wash); border: 1px solid var(--stroke);
-  border-radius: 999px; padding: 0.4em 0.75em; cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease; }
-.cco-btn:hover { background: var(--brand); color: #fff; }
-.cco-btn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
-.cco-note { margin-top: auto; font-family: var(--font-mono); font-size: 0.55em;
-  letter-spacing: 0.08em; color: var(--ink-faint); }
-.cco-same { text-align: center; font-family: var(--font-mono); font-size: 0.66em;
-  letter-spacing: 0.18em; color: var(--brand-ink); }
+/* ---- three parties, one record ------------------------------------------ */
+.cco-b rect { fill: var(--panel-solid); stroke: var(--brand-line); stroke-width: 1.5; }
+.cco-rec rect { stroke: var(--brand); stroke-width: 2; fill: var(--brand-wash); }
+.cco-party rect { stroke: var(--cyan); }
+.cco-arrow path { fill: none; stroke: var(--stroke-strong); stroke-width: 1.4; }
+.cco-arrow.cco-back path { stroke: var(--cyan); stroke-dasharray: 4 3; }
+.cco-arrow .cco-head { stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: none; }
 
-/* ---- the flow, and the risk decision inside it -------------------------- */
-.cco-run { flex: 0 0 auto; }
-.cco-run svg { width: 100%; height: auto; display: block; }
+/* ---- one consignment, arrival to release -------------------------------- */
 .cco-track { stroke: var(--stroke); stroke-width: 2; fill: none; }
-.cco-station circle { fill: var(--panel-solid); stroke: var(--brand-line); stroke-width: 2;
-  transition: fill 0.3s ease; }
-.cco-station.is-done circle { fill: var(--brand); }
-.cco-stname { fill: var(--ink-soft); font-family: var(--font-mono); font-size: 15px;
+.cco-st circle { fill: var(--panel-solid); stroke: var(--brand-line); stroke-width: 2; }
+.cco-st.is-rms circle { fill: var(--brand); stroke: var(--brand); }
+.cco-stt { fill: var(--ink-soft); font-family: var(--font-mono); font-size: 10px;
   letter-spacing: 0.12em; }
-.cco-fork { opacity: 0; transition: opacity 0.4s ease; }
-.cco[data-step="5"] .cco-fork { opacity: 1; }
-.cco-forkline { fill: none; stroke: var(--stroke); stroke-width: 2; stroke-dasharray: 5 4; }
-.cco-forkline.is-taken { stroke: var(--brand); stroke-dasharray: none; }
-.cco-forkt { fill: var(--ink-soft); font-family: var(--font-mono); font-size: 14px;
-  letter-spacing: 0.1em; }
-.cco-forkt.is-taken { fill: var(--brand-ink); font-weight: 500; }
-.cco-forkr { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 11px;
-  letter-spacing: 0.1em; }
-.cco-token { fill: var(--green); transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.cco-brancht { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.14em; }
+.cco-branchv { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 11px;
+  font-weight: 500; letter-spacing: 0.08em; }
+.cco-branchn { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.08em; }
 
-/* ---- before and after, on one axis -------------------------------------- */
-.cco-gains { padding: clamp(14px, 3%, 34px); gap: 0.9em; justify-content: center; }
-.cco-axis { display: grid; gap: 0.6em; }
-.cco-arow { display: grid; grid-template-columns: 4em 1fr 4em; gap: 0.8em; align-items: center; }
-.cco-ayear { font-family: var(--font-mono); font-size: 0.78em; color: var(--ink-faint); }
-.cco-atrack { height: 1.5em; border-radius: 0.3em; background: rgba(14, 28, 46, 0.06); }
-.cco-afill { height: 100%; border-radius: 0.3em; background: var(--series-n); }
-.cco-afill.tone-a { background: var(--brand); }
-.cco-aval { font-family: var(--font-mono); font-size: 0.95em; font-weight: 500; color: var(--ink);
-  font-variant-numeric: tabular-nums; text-align: right; }
-.cco-arange { font-family: var(--font-mono); font-size: 0.62em; letter-spacing: 0.1em;
-  color: var(--ink-faint); }
-.cco-toks { display: flex; flex-wrap: wrap; gap: 0.6em; }
-.cco-tok { display: inline-flex; align-items: center; gap: 0.6em;
-  border: 1px solid var(--hair); border-radius: var(--radius); padding: 0.5em 0.8em; }
-.cco-tok i { font-style: normal; font-size: 0.72em; color: var(--ink-soft); }
-.cco-anote { font-size: 0.72em; color: var(--ink-faint); }
+/* ---- time and cost, as a before and an after on one axis ----------------- */
+.cco-ayear { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 11px; }
+.cco-atrack { fill: rgba(14, 28, 46, 0.08); }
+.cco-afill { fill: var(--series-n); }
+.cco-afill.is-now { fill: var(--brand); }
+.cco-aval { fill: var(--ink); font-family: var(--font-mono); font-size: 11px;
+  font-weight: 500; font-variant-numeric: tabular-nums; }
+
 .cco-foot { display: flex; flex-wrap: wrap; gap: 0.8em; align-items: center; }
-
-@media (max-width: 900px) {
-  .cco-panes { grid-template-columns: 1fr; }
-  .cco-stage { aspect-ratio: auto; min-height: 62vh; }
-}
-
-/* ---- reduced motion ------------------------------------------------------
-   The consolidation arrives instead of travelling, the counter is printed at
-   430 instead of running up to it, and the highlight on a changed row does
-   not flash. Every step still writes its whole frame; nothing is unreachable
-   and no fact is only visible mid-animation. */
-@media (prefers-reduced-motion: reduce) {
-  .cco-t, .cco-dot, .cco-dots, .cco-slab, .cco-station circle,
-  .cco-fork, .cco-token, .cco-btn { transition: none; }
-  .cco-row.is-hit { animation: none; }
-}

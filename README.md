@@ -11,7 +11,7 @@ self-contained — **no network access after load** (enforced by CSP
 | § | Section | How it is shown |
 |---|---|---|
 | 1 | International cooperation — WCO & Uzbekistan | screen |
-| 2 | Targeting centre — a live console over six monitored channels | screen |
+| 2 | Targeting centre — what comes in, what comes out, six channels | screen |
 | 3 | The 2018 baseline, then vehicle entry at the border | two corridor beats, plus the inland-transit passage between 3 and 4 |
 | 4 | Customs warehouse information system | corridor beat |
 | 5 | Customs declaration clearance | corridor beat |
@@ -57,20 +57,19 @@ E-Transit and the targeting centre's role at the border (beside the gate), and
 the Customs and cargo operations system (at the warehouse). They are the pulsing
 blue pins; click, or tab to them and press Enter.
 
-## The three interactive scenes
+## The three pictures
 
 Section 2 and the two information-system markers used to be what the source
-slides were: eight boxes, read all at once, remembered as none of them. They are
-now **scenes** — one visual each, driven by the presenter, in which the facts
-are behaviour rather than sentences. Every sentence they replaced is still in
-`demo-data.js` and still reachable in the scene, and `tools/verify-scenes.mjs`
-checks that verbatim.
+slides were: eight boxes, read all at once, remembered as none of them. Each is
+now **one picture**, revealed in three moves by the presenter. Every sentence
+they replaced is still in `demo-data.js` and still reachable, and
+`tools/verify-scenes.mjs` checks that verbatim.
 
-| Scene | What it does |
+| Picture | What it shows |
 |---|---|
-| **§2, the targeting console** | Six channels run left to right and are never empty. Three inbound feeds converge into them. Everything crossing the scoring bar comes out green, yellow or red. The consignment the standing profiles do not cover is held at the bar with the reason attached to *it*, and handed on to assessment on site. The clock in the corner is the 24/7 claim, running. |
-| **E-Transit** | The corridor a consignment actually travels — entry post, inland route, exit post — with each claim attached to the moment it happens. The queue at the crossing drains on screen; the trader's side of the journey is counted on screen. |
-| **Customs and cargo operations** | ~430 warehouses on a map, consolidating into one platform with the counter landing on 430; then the same record in three panes — operator, customs, declarant — where a change in one is a change in all three; then one consignment through arrival, the RMS attendance decision, placement and release. |
+| **§2, the targeting centre** | What comes in on the left — WCO information and databases, other government agencies, operational intelligence. The centre in the middle, open around the clock, with the six channels it watches under it. What comes out on the right — a channel, the rules and risks the standing profiles do not cover, and the assessment on site that follows. |
+| **E-Transit** | The corridor a consignment travels, border to border, with each claim labelled where it happens: one lodgement, fees settled without a counter visit, one platform every agency is on, the RMS setting the channel, shorter queues, and the targeting centre watching the whole route. |
+| **Customs and cargo operations** | Many warehouses becoming one platform, with demo-data's own figure printed; three parties reading one record; and one consignment from arrival to release, with the RMS deciding who has to attend. |
 
 They live in `sections/`, which is loaded before `app.js` and registers itself
 on `window.SceneCore`. `app.js` reaches them through two seams and nothing else:
@@ -80,20 +79,24 @@ was**. Every CSS rule in `sections/*.css` is scoped to `.scene`, `.tgc`, `.etx`
 or `.cco` — `styles.css`, `plates.js` and `demo-data.js` are not touched by any
 of it, and the suite asserts that scoping rather than trusting it.
 
-Driving a scene, from the lectern:
+The whole mechanism is one rule: **a picture is laid out once, and a step only
+shows more of it.** Nothing rearranges, nothing loops, nothing runs while the
+speaker is talking over it. That is also why any stage is reachable directly,
+why a stage never depends on the one before it, and why
+`prefers-reduced-motion` needs no second code path — the fade stops and the
+drawing is still complete.
 
-- **In the page (§2)** the console takes the keyboard only while the focus is
+Driving one, from the lectern:
+
+- **In the page (§2)** the picture takes the keyboard only while the focus is
   inside it, so `↑` `↓` `1`–`7` never stop moving the deck. Tab in, then `←` `→`
-  or a digit — on the channel rail to filter the console to one flow, on the
-  step rail to move through the five states. `R` still replays the beat, and the
-  console resets with it.
-- **In a panel** the scene owns the keyboard, because it is the only thing on
-  screen: `←` `→` `↑` `↓` `Space` step, `1`–`8` jump straight to a state, `Home`
-  / `End` first / last, `R` back to the start, `Esc` closes as it always did.
-  A control inside a scene keeps `Space` and `Enter`.
+  or a digit. `R` still replays the beat, and the picture resets with it.
+- **In a panel** the picture owns the keyboard, because it is the only thing on
+  screen: `←` `→` `↑` `↓` `Space` step, `1`–`3` jump straight to a stage,
+  `Home` / `End` first / last, `R` back to the start, `Esc` closes as it always
+  did.
 
-Every state is a real button as well as a key, no state depends on the one
-before it, and nothing in a scene is behind a hover.
+Every stage is a real button as well as a key, and nothing is behind a hover.
 
 ## Presenting
 
@@ -106,8 +109,8 @@ before it, and nothing in a scene is behind a hover.
 - Keys, for driving from a lectern: `↓` `PageDown` `Space` next beat · `↑`
   `PageUp` previous · `1`–`7` jump to a section · `Home`/`End` first/last ·
   `Esc` running order · `R` replay the current beat's reveal. Presenter clickers
-  (PageUp/PageDown) work. The three interactive scenes have their own keys,
-  which never take one of these away — see *The three interactive scenes*.
+  (PageUp/PageDown) work. The three pictures have their own keys, which never
+  take one of these away — see *The three pictures*.
 - The page always opens on section 1, whatever the window shape. It carries no
   bars: the page itself is the presentation surface, and the running order, the
   sections and the beats are all on the keyboard. `Esc` opens the running order.
@@ -124,8 +127,8 @@ before it, and nothing in a scene is behind a hover.
   three least plausible, and notes the one name to confirm. Figures written as
   `{{TOKEN}}` render as dashed *awaiting figure* chips; the presenter's own
   "we will add later" in the E-Transit panel is deliberately left as one, and
-  the three scene tokens in `sections/scene-data.js` are the same device
-  applied to claims the deck makes without a figure behind them.
+  the two agency tokens in `sections/scene-data.js` are the same device applied
+  to a claim the deck makes without naming who is behind it.
 - **Copy**: headlines and support lines are also in `demo-data.js` (discipline:
   ≤6-word headline, ≤25-word support).
 - **Contracts that hold the page honest**, enforced in code rather than trusted:
@@ -139,9 +142,8 @@ before it, and nothing in a scene is behind a hover.
 - **Art**: `ASSETS.md` is the drawing contract; `plates.js` holds every
   coordinate, and `styles.css` holds every colour. The three scenes hold their
   own geometry at the head of their own file in `sections/`, and take every
-  colour from `styles.css`'s tokens — including the targeting console's dark
-  surface, which derives its palette from `--navy` and declares it on `.tgc` so
-  nothing else on the page can see it.
+  colour from `styles.css`'s tokens — they are the same drawing, in the same
+  light palette, as the corridor they sit beside.
 
 ## Checking it
 
@@ -154,14 +156,14 @@ node tools/verify-scenes.mjs   # the three scenes: facts, keyboard, determinism
 ```
 
 `verify.mjs` guards what the page has always promised. `verify-scenes.mjs`
-guards the three things a scene can get wrong that a bullet list could not: it
+guards the three things a picture can get wrong that a bullet list could not: it
 can drop a fact, it can become undrivable from a lectern, and it can hide
-something inside an animation. So it checks every sentence in `demo-data.js` is
-still reachable verbatim, walks every state of all three scenes by key, asserts
-the same press gives the same frame and that no state depends on the one before
-it, asserts the stage never moves between states, and re-runs the lot under
-`prefers-reduced-motion` to confirm the scenes go static without going
-incomplete.
+something inside a fade. So it checks every sentence in `demo-data.js` is still
+reachable verbatim, walks every stage of all three pictures by key, asserts the
+same press gives the same frame and that each stage shows more of the picture
+and never less, asserts the drawing never moves between stages, and re-runs the
+lot under `prefers-reduced-motion` to confirm the pictures go static without
+going incomplete.
 
 ## Changing the art
 

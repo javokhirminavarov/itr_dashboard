@@ -30,10 +30,16 @@ window.SceneCore = (function () {
   var mqReduce = matchMedia("(prefers-reduced-motion: reduce)");
   function reduce() { return mqReduce.matches; }
 
-  /* The codebase's own deterministic hash (app.js jit()). Math.random() would
-     put an unrepeatable frame in front of an audience, so it appears nowhere
-     in this directory and tools/verify-scenes.mjs greps for it. */
-  function hash(n) { var x = Math.sin(n * 12.9898) * 43758.5453; return x - Math.floor(x); }
+  /* Each scene is one picture whose parts carry `data-at` — the stage they
+     belong to. A step is that and nothing more: everything up to n is shown,
+     everything after it is not. It is why render(n) can be a pure function of
+     n, and why there is no second code path for reduced motion. */
+  function reveal(root, n) {
+    var parts = root.querySelectorAll("[data-at]"), i;
+    for (i = 0; i < parts.length; i++) {
+      parts[i].classList.toggle("is-on", +parts[i].getAttribute("data-at") <= n);
+    }
+  }
 
   /* ---------------- tiny DOM helpers ----------------
      Deliberate copies of app.js's own: the scene modules are parsed before
@@ -261,7 +267,7 @@ window.SceneCore = (function () {
     registerScreen: function (k, fn) { screens[k] = fn; },
     registerModal: function (id, fn) { modals[id] = fn; },
     machine: machine, onReplay: onReplay, watchClass: watchClass,
-    reduce: reduce, hash: hash,
+    reduce: reduce, reveal: reveal,
     el: el, svgEl: svgEl, put: put, text: svgText, chip: chip, leader: leader,
     srList: srList, ADV: ADV
   };

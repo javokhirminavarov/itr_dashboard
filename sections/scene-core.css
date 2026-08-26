@@ -60,6 +60,12 @@
   text-transform: uppercase; color: var(--ink-faint);
   border: 1px dashed var(--stroke); border-radius: 999px; padding: 0.4em 0.85em; }
 
+/* ---- the reveal ----------------------------------------------------------
+   A scene is one picture. A step shows more of it; it never rearranges it, so
+   the drawing is laid out once and nothing moves under the reader. */
+.scene [data-at] { opacity: 0; transition: opacity 0.4s ease; }
+.scene [data-at].is-on { opacity: 1; }
+
 /* ---- the caption chip on a leader ----------------------------------------
    The same device the corridor and the arrivals hall already caption with, so
    an annotation inside a scene reads as a label on a drawing. */

@@ -218,13 +218,12 @@ Replace each value in `demo-data.js`. Nothing else needs editing. Figures
 written as `{{TOKEN}}` render as dashed *awaiting figure* chips; `ETRANSIT_SHARE`
 is deliberately left as one.
 
-Three more tokens live in `sections/scene-data.js`, the labels file the three
-interactive scenes are annotated from. That file holds **no figures** — every
-number the scenes print is read live out of `demo-data.js` — but it uses the
-same awaiting-figure device for two things the deck asserts without settling:
-the agencies on the E-Transit platform, and the size of the time and cost
-saving at the warehouse. An unfilled chip is the honest state of a claim the
-deck has not sourced; a plausible invention is not.
+Two more tokens live in `sections/scene-data.js`, the labels file the three
+pictures are annotated from. That file holds **no figures** — every number the
+pictures print is read live out of `demo-data.js` — but it uses the same
+awaiting-figure device for the one thing the deck asserts without settling:
+which agencies are on the E-Transit platform. An unfilled chip is the honest
+state of a claim the deck has not sourced; a plausible invention is not.
 
 **Values taken from the official deck, and NOT to be re-invented** — these came
 off the *Statistics at the border* slide and are the page's only sourced
@@ -271,8 +270,6 @@ the 96.4 / 3.6 passenger channel split (section 7).
 | 4 | growth | total value of goods | `UZS 18.4 tn` → `UZS 71.9 tn` (×3.9) |
 | 4 | growth | total weight of goods | `1.9 m t` → `6.4 m t` (×3.4) |
 | 4 | share | officer attended / remote only, 2025 | `28%` / `72%` |
-| 4 | awaiting | time saved placing a consignment | `{{CCO_TIME_SAVING}}` — the deck claims less time, with no figure behind it |
-| 4 | awaiting | operating cost saved for business | `{{CCO_COST_SAVING}}` — the deck claims lower cost, with no figure behind it |
 | 5 | RMS structure | categorisation of entities | `4 categories`, `312 risk criteria` |
 | 5 | RMS structure | risk profiles | `1,146` — `186` undervaluation, `143` misclassification, `27` AI-based |
 | 5 | RMS structure | random selection module | `3% of declarations` |
