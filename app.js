@@ -128,17 +128,26 @@
     return el("div", "metric-error", what.toUpperCase());
   }
 
+  var EXECUTIVE_FIELDS = ["value", "unit", "period", "comparison", "source"];
+  function missingExecutiveFields(spec) {
+    return EXECUTIVE_FIELDS.filter(function (field) { return spec == null || spec[field] == null || spec[field] === ""; });
+  }
+
   function Metric(m) {
-    if (!m || !m.anchor || !m.anchor.text) {
-      return contractError("metric without anchor — not rendered" + (m && m.label ? ": " + m.label : ""));
+    var missing = missingExecutiveFields(m);
+    if (missing.length) {
+      return contractError("metric missing " + missing.join(", ") + " — not rendered" + (m && m.label ? ": " + m.label : ""));
     }
     var root = el("div", "metric" + (m.secondary ? " secondary" : "") + (m.compact ? " compact" : ""));
     var v = el("div", "metric-value");
     if (isToken(m.value)) v.appendChild(phChip(m.value));
-    else v.textContent = m.value;
+    else v.appendChild(document.createTextNode(m.value));
+    v.appendChild(el("span", "metric-unit" + (m.unit === "%" ? " unit-symbol" : ""), m.unit));
     root.appendChild(v);
     root.appendChild(el("div", "metric-label", m.label));
-    root.appendChild(richText(el("div", "metric-anchor"), m.anchor.text));
+    root.appendChild(el("div", "metric-period", m.period));
+    root.appendChild(richText(el("div", "metric-anchor"), m.comparison));
+    root.appendChild(el("div", "metric-source", "Source: " + m.source));
     return root;
   }
 
@@ -202,7 +211,7 @@
   }
 
   /* Counts that are not metrics: a network inventory (61 posts, and the
-     transactions each mode carries) has no 2018 baseline to be measured
+     movements each mode carries) has no 2018 baseline to be measured
      against, and pretending otherwise would put a fake anchor under it. It is
      rendered as a strip of tiles instead, plainly labelled, so it cannot be
      mistaken for a trend. */
@@ -272,21 +281,29 @@
      rather read the numbers — a table of the same data.
      ========================================================================= */
   function chartFrame(spec, body, legend) {
-    if (!spec.caption || !spec.range) {
-      return contractError("chart without caption or range — not rendered");
+    var missing = missingExecutiveFields(spec);
+    if (!spec.caption) missing.push("caption");
+    if (missing.length) {
+      return contractError("chart missing " + missing.join(", ") + " — not rendered");
     }
     var fig = el("figure", "chart");
     var head = el("figcaption", "ch-head");
     head.appendChild(el("span", "ch-caption", spec.caption));
-    head.appendChild(el("span", "ch-range", spec.range));
+    head.appendChild(el("span", "ch-range", spec.period));
     fig.appendChild(head);
+    var headline = el("div", "ch-value");
+    headline.appendChild(document.createTextNode(spec.value));
+    headline.appendChild(el("span", "ch-unit", spec.unit));
+    fig.appendChild(headline);
     fig.appendChild(body);
     if (legend) fig.appendChild(legend);
+    fig.appendChild(el("p", "ch-comparison", spec.comparison));
+    fig.appendChild(el("p", "ch-source", "Source: " + spec.source));
     if (spec.note) fig.appendChild(el("p", "ch-note", spec.note));
     return fig;
   }
 
-  function dataTable(cols, rows, caption) {
+  function dataTable(cols, rows, caption, spec) {
     // `overflow` does not apply to a table box, so the usual visually-hidden
     // recipe does not clip one: the table lays out at its natural width and
     // widens the document. The clipping goes on a wrapping block instead.
@@ -294,11 +311,12 @@
     var t = el("table");
     t.appendChild(el("caption", null, caption));
     var thead = el("thead"), tr = el("tr");
-    cols.forEach(function (c) { var th = el("th", null, c); th.scope = "col"; tr.appendChild(th); });
+    cols.concat(["Unit", "Reporting period", "Source"]).forEach(function (c) { var th = el("th", null, c); th.scope = "col"; tr.appendChild(th); });
     thead.appendChild(tr);
     t.appendChild(thead);
     var tb = el("tbody");
     rows.forEach(function (r) {
+      r = r.concat([spec.unit, spec.period, spec.source]);
       var row = el("tr");
       r.forEach(function (c, i) {
         var cell = el(i ? "td" : "th", null, String(c));
@@ -325,7 +343,7 @@
     var Y = function (v) { return LC.t + ih * (1 - (v - lo) / (hi - lo)); };
 
     var svg = svgEl("svg", { viewBox: "0 0 " + LC.w + " " + LC.h, "class": "ch-svg",
-                             role: "img", "aria-label": spec.caption + ", " + spec.range });
+                             role: "img", "aria-label": spec.caption + ", " + spec.period });
     // recessive grid, and the axis it implies — no box, no ticks
     [0, 0.5, 1].forEach(function (f) {
       var y = LC.t + ih * f;
@@ -400,7 +418,7 @@
     fig.appendChild(dataTable(["Year"].concat(spec.series.map(function (s) { return s.name; })),
       spec.x.map(function (xl, i) {
         return [xl].concat(spec.series.map(function (s) { return s.values[i]; }));
-      }), spec.caption));
+      }), spec.caption, spec));
     return fig;
   }
 
@@ -431,7 +449,7 @@
     });
     var fig = chartFrame(spec, body, null);
     fig.appendChild(dataTable(["Measure", "2018", "2025", "Change"],
-      spec.rows.map(function (r) { return [r.name, r.fromText, r.toText, r.mult]; }), spec.caption));
+      spec.rows.map(function (r) { return [r.name, r.fromText, r.toText, r.mult]; }), spec.caption, spec));
     return fig;
   }
 
@@ -457,7 +475,7 @@
     body.appendChild(keys);
     var fig = chartFrame(spec, body, null);
     fig.appendChild(dataTable(["Part", "Share"],
-      spec.parts.map(function (p) { return [p.name, p.value + "%"]; }), spec.caption));
+      spec.parts.map(function (p) { return [p.name, p.value + "%"]; }), spec.caption, spec));
     return fig;
   }
 
@@ -491,7 +509,7 @@
     fig.appendChild(dataTable(["Year", "Green", "Yellow", "Red"],
       spec.rows.map(function (r) {
         return [r.year].concat(r.parts.map(function (p) { return p.value + "%"; }));
-      }), spec.caption));
+      }), spec.caption, spec));
     return fig;
   }
 
