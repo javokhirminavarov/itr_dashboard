@@ -107,6 +107,9 @@
   --col-l: clamp(272px, 25vw, 430px);
   --col-r: clamp(272px, 25vw, 430px);
   --badge: 42px;
+  --masthead-logo-h: clamp(32px, 4.2vw, 54px);
+  --masthead-gap: clamp(10px, 1.5vw, 24px);
+  --masthead-space: clamp(10px, 1.8vh, 18px);
 }
 
 /* ---- base ---------------------------------------------------------------- */
@@ -302,6 +305,29 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
   border: 1px solid var(--stroke); border-radius: 999px; padding: 11px 22px; color: var(--ink-soft);
   background: var(--panel-solid); }
 
+
+/* ---- shared institutional masthead ---------------------------------------- */
+.masthead { grid-column: 1 / -1; display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(0, 2fr) minmax(150px, 1fr);
+  align-items: center; gap: var(--masthead-gap); width: 100%;
+  padding-bottom: var(--masthead-space); border-bottom: 2px solid var(--brand-line); }
+.masthead-logo { width: 100%; height: var(--masthead-logo-h); max-width: 100%;
+  object-fit: contain; }
+.masthead-logo-wco { justify-self: start; }
+.masthead-logo-customs { justify-self: end; }
+.masthead-identity { min-width: 0; display: flex; align-items: center;
+  justify-content: center; gap: clamp(9px, 1vw, 16px); text-align: center; }
+.masthead-title { color: var(--brand); font-size: clamp(25px, 3vw, 48px);
+  font-weight: 700; letter-spacing: 0.06em; line-height: 0.95; text-transform: uppercase; }
+.masthead-beat.step-n { width: clamp(30px, 3vw, var(--badge));
+  height: clamp(30px, 3vw, var(--badge)); font-size: clamp(12px, 1vw, 16px);
+  box-shadow: none; }
+.masthead-compact { --masthead-logo-h: 30px; --masthead-space: 9px;
+  grid-template-columns: minmax(110px, 1fr) minmax(0, 2fr) minmax(110px, 1fr);
+  margin-bottom: 18px; }
+.masthead-compact .masthead-title { font-size: clamp(18px, 2.3vw, 27px); }
+.masthead-compact .masthead-beat.step-n { width: 28px; height: 28px; font-size: 11px; }
+
 /* ---- corridor rows -------------------------------------------------------- */
 /* A corridor row is 800 * k tall, where k is the cover scale layoutStage()
    works out — and k is never less than viewportWidth / 1600, so a row is never
@@ -323,11 +349,12 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
   background: linear-gradient(180deg, transparent, var(--stroke-strong) 6%,
               var(--stroke-strong) 94%, transparent); }
 .row { display: grid; grid-template-columns: var(--col-l) 1fr var(--col-r);
-  align-items: center; padding: 0 var(--pad); gap: 20px; min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr); align-items: center; padding: var(--masthead-space) var(--pad);
+  column-gap: 20px; row-gap: var(--masthead-space); min-height: 0;
   font-size: clamp(10px, 0.781vw, 15px); }
-.step { grid-column: 1; display: flex; align-items: flex-start; gap: 1.07em; position: relative; }
+.step { grid-column: 1; grid-row: 2; display: flex; align-items: flex-start; gap: 1.07em; position: relative; }
 .step-stack, .right-stack { display: flex; flex-direction: column; gap: 0.8em; min-width: 0; flex: 1; }
-.panel-wrap { grid-column: 3; justify-self: end; width: 100%; max-width: 430px; }
+.panel-wrap { grid-column: 3; grid-row: 2; justify-self: end; width: 100%; max-width: 430px; }
 
 .step-n { flex: none; width: var(--badge); height: var(--badge); border-radius: 50%;
   display: grid; place-items: center; background: var(--panel-solid);
@@ -576,8 +603,8 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
    content still fits a viewport — the rest is air around it. */
 .screen { min-height: calc(var(--fill, 1.12) * 100vh);
   display: flex; flex-direction: column; justify-content: center;
-  gap: clamp(16px, 2.2vh, 26px);
-  padding: 40px var(--pad);
+  gap: clamp(12px, 1.7vh, 20px);
+  padding: var(--masthead-space) var(--pad) 24px;
   max-width: 1500px; margin: 0 auto;
   /* the same trick the corridor rows use: a screen has one viewport of height
      to work with, so its content scales with the width it is given */
@@ -830,9 +857,10 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
   /* no corridor overlay down here, so nothing is under the rows to click */
   #rows { position: static; display: block; pointer-events: auto; }
   #spine { display: none; }
-  .row { position: relative; z-index: 1; grid-template-columns: 1fr; min-height: 100vh;
-    padding: 40px 18px; align-content: center; gap: 16px; }
-  .step, .panel-wrap { grid-column: 1; justify-self: stretch; max-width: 620px;
+  .row { position: relative; z-index: 1; grid-template-columns: 1fr; grid-template-rows: auto auto auto; min-height: 100vh;
+    padding: 24px 18px; align-content: center; gap: 16px; }
+  .masthead { grid-row: 1; }
+  .step, .panel-wrap { grid-column: 1; grid-row: auto; justify-self: stretch; max-width: 620px;
     margin-inline: auto; width: 100%; }
   /* nothing is beside a screen down here, so it needs no cover height */
   .screen { position: relative; z-index: 1; min-height: 100vh; }
@@ -849,6 +877,12 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
 @media (max-width: 1660px) {
   .screen { padding-block: 28px; }
 }
+@media (max-height: 760px) and (min-width: 1200px) {
+  :root { --masthead-logo-h: 38px; --masthead-space: 8px; }
+  .masthead-title { font-size: clamp(24px, 2.5vw, 36px); }
+  .screen { gap: 10px; padding-block: 8px 16px; }
+  .sc-support { margin-top: 7px; }
+}
 /* The plan is a drawing with 11px annotation on it, so it has a width below
    which it stops being readable rather than merely getting smaller. Beside a
    290px panel column that width arrives at about 1040, not at 820: the whole
@@ -858,6 +892,9 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
   .pax-body { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
+  .masthead { grid-template-columns: 70px minmax(0, 1fr) 70px; }
+  .masthead-logo { height: 27px; }
+  .masthead-title { font-size: clamp(16px, 5.5vw, 25px); }
   .row { padding: 32px 14px; }
   .screen { padding-inline: 14px; }
   .modal-body { padding: 20px 18px; }

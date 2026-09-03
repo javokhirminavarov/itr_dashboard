@@ -1331,6 +1331,31 @@
     return SECTIONS[0];
   }
 
+  /* The institutional identity is deliberately one component. Keeping the
+     logos, section name, divider and beat control together prevents screens,
+     corridor rows and information-system overlays from inventing competing
+     headers. The supplied title is the section name; the story headline stays
+     immediately below as supporting editorial copy. */
+  function Masthead(def, title, compact) {
+    var head = el("header", "masthead" + (compact ? " masthead-compact" : ""));
+    var wco = document.createElement("img");
+    wco.className = "masthead-logo masthead-logo-wco";
+    wco.src = "assets/logos/wco-logo.svg";
+    wco.alt = "World Customs Organization";
+    var customs = document.createElement("img");
+    customs.className = "masthead-logo masthead-logo-customs";
+    customs.src = "assets/logos/uzbekistan-customs.svg";
+    customs.alt = "Uzbekistan Customs";
+    var identity = el("div", "masthead-identity");
+    var b = badgeFor(def);
+    identity.appendChild(el("div", "masthead-beat step-n" + b.cls, b.text));
+    identity.appendChild(el("h1", "masthead-title", title));
+    head.appendChild(wco);
+    head.appendChild(identity);
+    head.appendChild(customs);
+    return head;
+  }
+
   /* A metric panel, assembled from whichever of the parts this beat declares.
      Order is fixed so the panels read the same way everywhere: what it is, then
      what happened, then what it means. */
@@ -1390,9 +1415,8 @@
     row.dataset.section = def.section;
     row.id = "beat-" + def.key;
 
+    row.appendChild(fx(Masthead(def, sectionOf(def.section).short), 0));
     var step = el("div", "step");
-    var b = badgeFor(def);
-    step.appendChild(fx(el("div", "step-n" + b.cls, b.text), 0));
     var stack = el("div", "step-stack");
     stack.appendChild(Card(def, d));
     if (d.structure) stack.appendChild(StructureMotif(d.structure));
@@ -1422,9 +1446,8 @@
     sec.dataset.beat = def.key;
     sec.dataset.section = def.section;
     sec.id = "beat-" + def.key;
-    var head = el("header", "sc-head");
-    var b = badgeFor(def);
-    head.appendChild(fx(el("div", "step-n" + b.cls, b.text), 0));
+    sec.appendChild(fx(Masthead(def, sectionOf(def.section).short), 0));
+    var head = el("div", "sc-head");
     var t = el("div", "sc-titles");
     t.appendChild(el("div", "c-eyebrow", d.eyebrow));
     t.appendChild(el("h2", "sc-title", d.headline));
@@ -1734,6 +1757,8 @@
     lastFocus = opener || document.activeElement;
     var body = $modal.querySelector(".modal-body");
     body.textContent = "";
+    var def = BEATS[engine.beat] || BEATS[0];
+    body.appendChild(Masthead(def, sectionOf(def.section).short, true));
     var scene = window.SceneCore && window.SceneCore.modals[id];
     body.classList.toggle("scene-host", !!scene);
     if (scene) body.appendChild(scene(m, HOST));

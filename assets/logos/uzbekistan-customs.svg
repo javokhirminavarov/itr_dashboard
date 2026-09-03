@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 84" role="img" aria-labelledby="title">
+  <title id="title">Uzbekistan Customs</title>
+  <g fill="none" stroke="#00569b" stroke-width="3">
+    <path d="M36 7 64 18v19c0 20-12 32-28 40C20 69 8 57 8 37V18Z"/>
+    <path d="M20 31h32M36 18v44" stroke-width="2"/>
+  </g>
+  <path fill="#12a7eb" d="M13 20 36 11l23 9v8H13z"/>
+  <path fill="#048d01" d="M13 44h46c-2 13-10 22-23 29-13-7-21-16-23-29z"/>
+  <circle cx="36" cy="37" r="8" fill="#fff" stroke="#00569b" stroke-width="2"/>
+  <g fill="#00569b" font-family="Arial, sans-serif">
+    <text x="78" y="34" font-size="21" font-weight="700">UZBEKISTAN</text>
+    <text x="78" y="59" font-size="21" font-weight="700">CUSTOMS</text>
+  </g>
+</svg>
