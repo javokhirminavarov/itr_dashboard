@@ -318,7 +318,11 @@
     var body = el("div", "chart-awaiting");
     richText(body, "{{" + (spec.token || "CHART_DATA") + "}}");
     var fig = chartFrame(spec, body, null);
-    fig.appendChild(dataTable(["Status"], [["Awaiting an approved Customs figure"]], spec.caption));
+    // Keep the placeholder table on the same metadata contract as every
+    // resolved chart. Omitting `spec` here made dataTable dereference
+    // `undefined` as soon as it encountered the first awaiting-figure chart,
+    // aborting buildBeats and leaving the presentation only partly rendered.
+    fig.appendChild(dataTable(["Status"], [["Awaiting an approved Customs figure"]], spec.caption, spec));
     return fig;
   }
 
