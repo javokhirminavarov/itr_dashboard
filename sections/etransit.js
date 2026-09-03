@@ -104,6 +104,7 @@
     mw.appendChild(HOST.Metric(m.metric));
     foot.appendChild(mw);
     root.appendChild(foot);
+    if (m.source) root.appendChild(HOST.SourceLine(m.source));
 
     root.appendChild(S.srList([m.lead].concat(m.bullets), m.title, "bullets md-bullets"));
     return root;

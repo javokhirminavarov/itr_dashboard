@@ -7,15 +7,16 @@
    space defined by plates.js. The truck, the glow trail behind it, its state
    and the current beat all derive from that one value.
 
-   The deck is NINE beats across SEVEN sections (see plates.js). Six beats are
-   rows of the corridor; three are full-viewport screens that are not places on
-   the road — WCO cooperation, the targeting centre, and passenger control.
+   The deck is TEN beats across EIGHT sections (see plates.js). Six beats are
+   rows of the corridor; four are full-viewport screens that are not places on
+   the road — WCO cooperation, the targeting centre, passenger control and AI
+   risk analysis.
    Both kinds are navigated identically: every beat is scrolled so that its own
    centre lands on the truck's focus line, and the current beat is whichever
    beat's centre is nearest that line.
 
    The page has no chrome of its own — no bars, no tabs. `Esc` opens the running
-   order, 1-7 jump to a section, the arrows step a beat.
+   order, 1-8 jump to a section, the arrows step a beat.
 
    Layout code holds no corridor coordinates (see plates.js) and no figures
    (see demo-data.js).
@@ -151,6 +152,15 @@
     return root;
   }
 
+  function SourceLine(source) {
+    if (!source || !source.period || !source.owner || !source.publication) {
+      return contractError("statistical panel without source — not rendered");
+    }
+    var line = el("p", "data-source");
+    richText(line, "Data as of " + source.period + " · Source: " + source.owner + " / " + source.publication);
+    return line;
+  }
+
   // channel outcomes only — the words green / yellow / red. Nothing else exists.
   var CHANNEL_WORDS = { green: "GREEN", yellow: "YELLOW", red: "RED" };
   function ChannelRow(ch) {
@@ -176,7 +186,7 @@
       ring.appendChild(icon(s.name === "red" ? "x" : s.name === "yellow" ? "chev" : "check"));
       cell.appendChild(ring);
       cell.appendChild(el("div", "s-name", CHANNEL_WORDS[s.name]));
-      cell.appendChild(el("div", "s-share", s.share));
+      cell.appendChild(richText(el("div", "s-share"), s.share));
       row.appendChild(cell);
     });
     wrap.appendChild(row);
@@ -202,7 +212,7 @@
     facts.forEach(function (ft) {
       var r = el("div", "fact");
       r.appendChild(el("span", "f-label", ft.label));
-      r.appendChild(el("span", "f-value", ft.value));
+      r.appendChild(richText(el("span", "f-value"), ft.value));
       wrap.appendChild(r);
     });
     out.appendChild(wrap);
@@ -300,6 +310,15 @@
     fig.appendChild(el("p", "ch-comparison", spec.comparison));
     fig.appendChild(el("p", "ch-source", "Source: " + spec.source));
     if (spec.note) fig.appendChild(el("p", "ch-note", spec.note));
+    if (spec.source) fig.appendChild(SourceLine(spec.source));
+    return fig;
+  }
+
+  function unresolvedChart(spec) {
+    var body = el("div", "chart-awaiting");
+    richText(body, "{{" + (spec.token || "CHART_DATA") + "}}");
+    var fig = chartFrame(spec, body, null);
+    fig.appendChild(dataTable(["Status"], [["Awaiting an approved Customs figure"]], spec.caption));
     return fig;
   }
 
@@ -334,6 +353,7 @@
      them all — a second y-scale is the one thing a chart may never have. */
   var LC = { w: 400, h: 190, l: 34, r: 46, t: 14, b: 26 };
   function LineChart(spec) {
+    if (TOKEN_RE.test(JSON.stringify(spec.series))) return unresolvedChart(spec);
     var vals = spec.series.reduce(function (a, s) { return a.concat(s.values); }, []);
     var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
     var pad = (hi - lo) * 0.12 || 10;
@@ -427,6 +447,7 @@
      both real values are printed — which is the honest way to put four
      incomparable magnitudes in one panel. */
   function GrowthBars(spec) {
+    if (TOKEN_RE.test(JSON.stringify(spec.rows))) return unresolvedChart(spec);
     var body = el("div", "growth");
     spec.rows.forEach(function (r) {
       var row = el("div", "gr-row");
@@ -456,6 +477,7 @@
   /* Parts of one whole, as a single bar. Segments carry a 2px surface gap so
      they never blur into one another, and every part is direct-labelled. */
   function ShareBar(spec) {
+    if (TOKEN_RE.test(JSON.stringify(spec.parts))) return unresolvedChart(spec);
     var body = el("div", "share");
     var bar = el("div", "sh-bar");
     spec.parts.forEach(function (p) {
@@ -482,6 +504,7 @@
   /* The same whole at two dates, stacked bar over stacked bar — the form that
      makes a change in composition legible without a second axis. */
   function ShiftBars(spec) {
+    if (TOKEN_RE.test(JSON.stringify(spec.rows))) return unresolvedChart(spec);
     var body = el("div", "shift");
     spec.rows.forEach(function (r) {
       var line = el("div", "sf-row");
@@ -545,8 +568,8 @@
       head.appendChild(icon(n.icon));
       head.appendChild(el("span", null, n.title));
       node.appendChild(head);
-      node.appendChild(el("div", "st-value", n.value));
-      node.appendChild(el("div", "st-sub", n.sub));
+      node.appendChild(richText(el("div", "st-value"), n.value));
+      node.appendChild(richText(el("div", "st-sub"), n.sub));
       list.appendChild(node);
     });
     wrap.appendChild(list);
@@ -554,6 +577,7 @@
     join.appendChild(icon("chev"));
     join.appendChild(el("span", null, "CHANNEL DECISION"));
     wrap.appendChild(join);
+    if (st.source) wrap.appendChild(SourceLine(st.source));
     return wrap;
   }
 
@@ -810,7 +834,8 @@
        on does not jump them. The phase carries a deterministic wobble for the
        same reason: people do not walk evenly spaced. */
     var N = 28, DUR = 11;
-    var redEvery = Math.max(1, Math.round(100 / (sc.channels[1].share || 4)));
+    var redShare = Number(sc.channels[1].share);
+    var redEvery = Math.max(1, Math.round(100 / (Number.isFinite(redShare) ? redShare : 4)));
     for (i = 0; i < N; i++) {
       var isRed = (i % redEvery) === 0;
       var dot = svgEl("circle", { r: DOT_R, cx: 0, cy: 0,
@@ -825,6 +850,7 @@
     stage.appendChild(svg);
     wrap.appendChild(stage);
     if (sc.note) wrap.appendChild(el("p", "ch-note", sc.note));
+    if (sc.source) wrap.appendChild(SourceLine(sc.source));
     return wrap;
   }
 
@@ -1374,6 +1400,7 @@
     }
     (p.metrics || []).forEach(function (m) { mHost.appendChild(Metric(m)); });
     if (p.motif && MOTIFS[p.motif]) panel.appendChild(MOTIFS[p.motif]());
+    if (p.source) panel.appendChild(SourceLine(p.source));
     return panel;
   }
 
@@ -1382,7 +1409,8 @@
     var card = el("div", "card glass");
     card.appendChild(el("div", "c-eyebrow", d.card.title));
     card.appendChild(el("h2", "c-title", d.headline));
-    card.appendChild(el("p", "c-text", d.support));
+    card.appendChild(el("div", "c-text evidence-line", d.support));
+    if (d.speakerNotes) card.appendChild(el("div", "sr-only", d.speakerNotes));
     if (d.hint) {
       var hint = el("p", "c-hint");
       hint.appendChild(icon("arrow"));
@@ -1392,6 +1420,7 @@
     if (def.key === "declaration" && D.meta.trsMethodology) {
       card.appendChild(el("p", "c-note", D.meta.trsFootnote));
     }
+    if (d.source) card.appendChild(SourceLine(d.source));
     return card;
   }
 
@@ -1446,7 +1475,8 @@
     var t = el("div", "sc-titles");
     t.appendChild(el("div", "c-eyebrow", d.eyebrow));
     t.appendChild(el("h2", "sc-title", d.headline));
-    t.appendChild(el("p", "sc-support", d.support));
+    t.appendChild(el("div", "sc-support evidence-line", d.support));
+    if (d.speakerNotes) t.appendChild(el("div", "sr-only", d.speakerNotes));
     head.appendChild(fx(t, 1));
     sec.appendChild(head);
     return sec;
@@ -1464,25 +1494,22 @@
     flow.appendChild(el("span", "cf-node", "Uzbekistan Customs"));
     sec.appendChild(fx(flow, 1.6));
     var grid = el("div", "coop-grid");
-    d.items.forEach(function (it, i) {
+    (d.outcomes || d.items).forEach(function (it, i) {
       var c = el("article", "coop-card");
       var head = el("div", "cc-head");
       head.appendChild(icon(it.icon));
       head.appendChild(el("span", "cc-tag", it.tag));
       c.appendChild(head);
       c.appendChild(el("h3", "cc-title", it.title));
-      c.appendChild(el("p", "cc-text", it.text));
+      c.appendChild(el("div", "cc-text", it.evidence || it.text));
       grid.appendChild(fx(c, 2 + i * 0.4));
     });
     sec.appendChild(grid);
-    var creds = el("div", "coop-creds");
-    D.meta.speakers.forEach(function (sp) {
-      var chip = el("span", "cred-chip");
-      chip.appendChild(icon("check"));
-      chip.appendChild(el("span", null, sp.credential));
-      creds.appendChild(chip);
-    });
-    sec.appendChild(fx(creds, 5));
+    /* Full source wording and credentials remain available to assistive
+       technology without competing with the four decisions on the canvas. */
+    var detail = d.items.map(function (it) { return it.tag + ": " + it.title + " — " + it.text; });
+    detail = detail.concat(D.meta.speakers.map(function (sp) { return sp.credential; }));
+    sec.appendChild(el("div", "sr-only", detail.join(". ")));
     return sec;
   }
 
@@ -1555,7 +1582,7 @@
   var HOST = {
     el: el, svgEl: svgEl, icon: icon, fx: fx,
     iconPath: function (n) { return ICONS[n] || ICONS.doc; },
-    Metric: Metric, Bullets: Bullets, richText: richText, screenShell: screenShell,
+    Metric: Metric, Bullets: Bullets, richText: richText, SourceLine: SourceLine, screenShell: screenShell,
     clamp: clamp, pct: pct, data: D,
     reduce: function () { return REDUCE; }
   };
@@ -1568,20 +1595,24 @@
   var SCREEN_BUILDERS = {
     cooperation: buildCooperationScreen,
     targeting: sceneScreen("targeting", buildTargetingScreen),
-    passengers: buildPassengerScreen
+    passengers: buildPassengerScreen,
+    aiRisk: sceneScreen("aiRisk", buildTargetingScreen)
   };
 
   function buildBeats() {
     var before = document.getElementById("screens-before");
     var after = document.getElementById("screens-after");
+    var lastCorridorSection = BEATS.reduce(function (n, b) {
+      return b.kind === "corridor" ? Math.max(n, b.section) : n;
+    }, 0);
     BEATS.forEach(function (def) {
-      var d = D.beats[def.key];
+      var d = D.beats[def.key] || D[def.key];
       if (!d) throw new Error("no data for beat " + def.key);
       if (def.kind === "corridor") {
         beatEls.push(buildCorridorRow(def, d));
       } else {
         var node = SCREEN_BUILDERS[def.key](def, d);
-        (def.section === SECTIONS[SECTIONS.length - 1].n ? after : before).appendChild(node);
+        (def.section > lastCorridorSection ? after : before).appendChild(node);
         beatEls.push(node);
       }
     });
@@ -1632,7 +1663,7 @@
   /* ---------------- tail ----------------
      The deck carries no bars: the page is the presentation surface, and the
      running order, the sections and the beats are all on the keyboard (ESC,
-     1-7, arrows). What is left of the page's own furniture is the closing
+     1-8, arrows). What is left of the page's own furniture is the closing
      statement at the foot. */
   function buildTail() {
     var tail = document.getElementById("tail");
@@ -1668,7 +1699,7 @@
       // one beat lists the others beneath, because that is what the presenter
       // will actually walk through
       var mine = BEATS.filter(function (b) { return b.section === s.n; });
-      var lead = D.beats[mine[0].key];
+      var lead = D.beats[mine[0].key] || D[mine[0].key];
       var card = el("button", "ov-card seg-" + (speakerOf(s.n) + 1));
       card.type = "button";
       card.appendChild(el("span", "ov-n", "SECTION " + s.n + " · " + s.short.toUpperCase()));
@@ -1676,7 +1707,10 @@
       card.appendChild(el("span", "ov-d", lead.overview));
       if (mine.length > 1) {
         var subs = el("span", "ov-beats");
-        mine.forEach(function (b) { subs.appendChild(el("span", "ov-beat", D.beats[b.key].rail)); });
+        mine.forEach(function (b) {
+          var bd = D.beats[b.key] || D[b.key];
+          subs.appendChild(el("span", "ov-beat", bd.rail));
+        });
         card.appendChild(subs);
       }
       card.appendChild(el("span", "ov-seg"));
@@ -1745,6 +1779,7 @@
       mw.appendChild(Metric(m.metric));
       body.appendChild(mw);
     }
+    if (m.source) body.appendChild(SourceLine(m.source));
   }
   function openModal(id, opener) {
     var m = D.meta.modals[id];
@@ -1813,8 +1848,8 @@
   }
 
   // Document-space centre of every beat. Measured on load and on resize rather
-  // than per scroll frame: nine getBoundingClientRect() calls inside the scroll
-  // handler is nine forced layouts a frame, and the layout does not move while
+  // than per scroll frame: ten getBoundingClientRect() calls inside the scroll
+  // handler is ten forced layouts a frame, and the layout does not move while
   // the page is only being scrolled.
   var centres = [];
   function measureBeats() {
@@ -1972,7 +2007,7 @@
       else if (engine.view === "overview" && (code === "ArrowLeft" || code === "ArrowUp")) setOvFocus(ovFocus - 1);
       else if (engine.view === "overview" && (code === "Enter" || code === "Space")) {
         closeOverlays(); goToSection(SECTIONS[ovFocus].n);
-      } else if (engine.view === "overview" && /^(Digit|Numpad)[1-7]$/.test(code)) {
+      } else if (engine.view === "overview" && /^(Digit|Numpad)[1-8]$/.test(code)) {
         closeOverlays(); goToSection(+code.slice(-1));
       } else handled = false;
       if (handled) e.preventDefault();
@@ -1986,7 +2021,7 @@
     else if (code === "End") goToBeat(BEATS.length - 1);
     else if (code === "Escape") openOverview();
     else if (code === "KeyR") replayBeat();
-    else if (/^(Digit|Numpad)[1-7]$/.test(code)) goToSection(+code.slice(-1));
+    else if (/^(Digit|Numpad)[1-8]$/.test(code)) goToSection(+code.slice(-1));
     else used = false;
     if (used) e.preventDefault();
   });

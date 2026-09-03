@@ -1,7 +1,7 @@
 /*
- * Verification suite for the three pictures.
+ * Verification suite for the four pictures.
  *
- * tools/verify.mjs guards the deck: the corridor, the nine beats, the
+ * tools/verify.mjs guards the deck: the corridor, the ten beats, the
  * contracts, the contrast, no network after load. This guards what a picture
  * can get wrong that a bullet list could not.
  *
@@ -54,7 +54,7 @@ const ok = (n, c, d = '') => results.push([c ? 'PASS' : 'FAIL', n, d]);
     readFileSync(new URL(f, dir), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '')
       .split('\n').forEach((line, i) => {
         const m = /^([^@\s/][^{]*)\{/.exec(line);
-        if (m && !/^\s*\.(scene|tgc|etx|cco|sc-)/.test(m[1])) cssBad.push(`${f}:${i + 1} ${m[1].trim()}`);
+    if (m && !/^\s*\.(scene|tgc|etx|cco|air|sc-)/.test(m[1])) cssBad.push(`${f}:${i + 1} ${m[1].trim()}`);
       });
   }
   ok('every picture CSS rule is scoped to a picture', cssBad.length === 0, cssBad.join(' | '));
@@ -130,6 +130,14 @@ const GEOM = (sel) => {
   });
   return out;
 };
+const MIN_TEXT = (root) => {
+  const host = document.querySelector(root), bad = [];
+  host.querySelectorAll('svg text').forEach(t => {
+    const px = t.getBoundingClientRect().height;
+    if (px < 12) bad.push('"' + t.textContent.slice(0, 24) + '" ' + px.toFixed(1) + 'px');
+  });
+  return bad;
+};
 /* Contrast: SVG text is painted with `fill`, not `color`, and the pictures
    sit on the deck's own white panel, so white is the ground. */
 const CONTRAST = (sels) => {
@@ -165,6 +173,17 @@ const p = await open();
      tgt.want.every(s => norm(tgt.text).includes(norm(s))),
      tgt.want.filter(s => !norm(tgt.text).includes(norm(s))).map(s => s.slice(0, 44)).join('; '));
 
+  const ai = await p.evaluate(() => {
+    const D = window.demoData.aiRisk;
+    return { text: document.getElementById('beat-aiRisk').textContent,
+      want: D.capabilities.flatMap(c => [c.title, c.action, c.maturity, c.source]).concat([D.oversight]) };
+  });
+  ok('every AI capability carries its action, maturity and source',
+     ai.want.every(s => norm(ai.text).includes(norm(s))),
+     ai.want.filter(s => !norm(ai.text).includes(norm(s))).join('; '));
+  ok('the AI beat states that authorized officers make customs decisions',
+     norm(ai.text).includes('authorized officers make customs decisions'), 'oversight wording missing');
+
   for (const [key, label] of PANELS) {
     const r = await panel(p, label, (key) => {
       const m = window.demoData.meta.modals[key];
@@ -198,6 +217,8 @@ const p = await open();
 {
   const t = await p.evaluate(HIDDEN, '.tgc-stage');
   ok('the whole targeting picture is on screen at once', t.length === 0, t.join(', '));
+  const ai = await p.evaluate(HIDDEN, '.air-stage');
+  ok('the whole AI risk picture is on screen at once', ai.length === 0, ai.join(', '));
   for (const [key, label] of PANELS) {
     const r = await panel(p, label, HIDDEN, '.modal-body');
     ok(`the whole ${key} picture is on screen at once`, r.length === 0, r.join(', '));
@@ -209,6 +230,8 @@ const p = await open();
   const t = await p.evaluate(GEOM, '.tgc-stage svg');
   ok('targeting: nothing is drawn outside the drawing', t.over.length === 0, t.over.join(', '));
   ok('targeting: no caption outgrows its chip', t.chips.length === 0, t.chips.join(', '));
+  const tt = await p.evaluate(MIN_TEXT, '.tgc-stage');
+  ok('targeting: projected labels are at least 12px', tt.length === 0, tt.join(', '));
   for (const [key, label] of PANELS) {
     const r = await panel(p, label, GEOM, '.modal-body .scene-stage svg');
     ok(`${key}: nothing is drawn outside the drawing`, r.over.length === 0, r.over.join(', '));
@@ -262,7 +285,7 @@ const p = await open();
      Object.entries(out).map(([k, v]) => `${k} ${v}`).join(', '));
 }
 
-ok('no console errors while opening all three pictures', p.__errs.length === 0,
+ok('no console errors while opening all four pictures', p.__errs.length === 0,
    p.__errs.slice(0, 3).join(' | '));
 await p.context().close();
 
@@ -303,9 +326,12 @@ await p.context().close();
     await sp.waitForTimeout(320);
     const fit = await sp.evaluate(async () => {
       const out = { modals: [] };
-      const sec = document.getElementById('beat-targeting');
-      const kids = [...sec.children].map(c => c.getBoundingClientRect());
-      out.page = Math.round(Math.max(...kids.map(k => k.bottom)) - Math.min(...kids.map(k => k.top)));
+      const sectionHeight = id => {
+        const kids = [...document.getElementById(id).children].map(c => c.getBoundingClientRect());
+        return Math.round(Math.max(...kids.map(k => k.bottom)) - Math.min(...kids.map(k => k.top)));
+      };
+      out.page = sectionHeight('beat-targeting');
+      out.ai = sectionHeight('beat-aiRisk');
       for (const label of ['e-transit', 'cargo']) {
         const pin = [...document.querySelectorAll('.pin.is-live')]
           .find(x => (x.getAttribute('aria-label') || '').toLowerCase().includes(label));
@@ -320,6 +346,7 @@ await p.context().close();
       return out;
     });
     ok(`the targeting picture fits the viewport at ${w}x${h}`, fit.page <= h - 8, `${fit.page} > ${h - 8}`);
+    ok(`the AI risk picture fits the viewport at ${w}x${h}`, fit.ai <= h - 8, `${fit.ai} > ${h - 8}`);
     ok(`both panels fit the viewport at ${w}x${h}`,
        fit.modals.every(([, hh]) => hh <= h * 0.94), fit.modals.map(m => m.join(':')).join(' '));
     /* A panel in this deck is read whole, from a lectern. If it scrolls inside

@@ -52,6 +52,7 @@
 
     /* ---- 1. the centre, and the six channels it watches at once ---- */
     var hub = S.put(svg, "g", { "class": "tgc-hub" });
+    S.text(hub, HUB.x + HUB.w / 2, HUB.y - 16, "tgc-cap", T.capabilityTitle, "middle");
     S.put(hub, "rect", { x: HUB.x, y: HUB.y, width: HUB.w, height: HUB.h, rx: 14 });
     S.text(hub, HUB.x + HUB.w / 2, HUB.y + 52, "tgc-hubt", d.hub.title, "middle");
     S.text(hub, HUB.x + HUB.w / 2, HUB.y + 74, "tgc-hubs", d.hub.sub, "middle");
@@ -60,7 +61,7 @@
     S.text(badge, HUB.x + HUB.w / 2, HUB.y + 105, "tgc-opent", T.open + " · " + T.openSub, "middle");
 
     var chan = S.put(svg, "g", { "class": "tgc-chan" });
-    S.text(chan, CHAN.x, CHAN.y - 16, "tgc-cap", d.monitoring.title.toUpperCase());
+    S.text(chan, CHAN.x, CHAN.y - 16, "tgc-cap", T.channelsTitle);
     S.put(chan, "path", { d: "M " + (HUB.x + HUB.w / 2) + " " + (HUB.y + HUB.h) +
                              " V " + (CHAN.y - 6), "class": "tgc-drop" });
     modes.forEach(function (m, i) {

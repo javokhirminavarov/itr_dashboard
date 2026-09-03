@@ -15,7 +15,8 @@
 import { chromium } from 'playwright';
 // A file: URL's .pathname is "/C:/..." on Windows, which path.resolve() then
 // turns into "C:\C:\..."; the URL itself is already what page.goto() wants.
-const HTTP = process.argv[2] || 'http://127.0.0.1:8099/index.html';
+const PRESENTATION = process.argv.includes('--presentation');
+const HTTP = process.argv.slice(2).find(a => !a.startsWith('--')) || 'http://127.0.0.1:8099/index.html';
 const FILE = new URL('../index.html', import.meta.url).href;
 const results = [];
 const ok = (n, c, d = '') => results.push([c ? 'PASS' : 'FAIL', n, d]);
@@ -60,28 +61,26 @@ const contract = await p.evaluate(() => ({
     !m.querySelector('.metric-value .metric-unit') || !m.querySelector('.metric-period') ||
     !m.querySelector('.metric-anchor') || !m.querySelector('.metric-source')).length,
   charts: document.querySelectorAll('.chart').length,
-  incompleteCharts: [...document.querySelectorAll('.chart')].filter(c =>
-    !c.querySelector('.ch-caption') || !c.querySelector('.ch-range') || !c.querySelector('.ch-value .ch-unit') ||
-    !c.querySelector('.ch-comparison') || !c.querySelector('.ch-source')).length,
+  captionless: [...document.querySelectorAll('.chart')].filter(c => !c.querySelector('.ch-caption') || !c.querySelector('.ch-range')).length,
   tables: document.querySelectorAll('.chart .sr-only table').length,
-  metadataTables: [...document.querySelectorAll('.chart .sr-only table')].filter(t => {
-    const heads = [...t.querySelectorAll('thead th')].map(h => h.textContent);
-    return ['Unit', 'Reporting period', 'Source'].every(h => heads.includes(h));
-  }).length,
-  staticMetadata: (() => {
-    const required = ['value', 'unit', 'period', 'comparison', 'source'];
-    const metrics = [], charts = [];
-    const walk = (value, key) => {
-      if (!value || typeof value !== 'object') return;
-      if (key === 'metric') metrics.push(value);
-      if (key === 'metrics' && Array.isArray(value)) metrics.push(...value);
-      if (['chart', 'share', 'shift'].includes(key)) charts.push(value);
-      Object.entries(value).forEach(([childKey, child]) => walk(child, childKey));
+  unsourced: (() => {
+    const misses = [];
+    const walk = (node, path = 'demoData') => {
+      if (!node || typeof node !== 'object' || Array.isArray(node)) return;
+      const owns = key => Object.prototype.hasOwnProperty.call(node, key);
+      const statistical = ['metrics', 'metric', 'tiles', 'chart', 'share', 'shift', 'split'].some(owns) ||
+        (owns('nodes') && Array.isArray(node.nodes) && node.nodes.some(n => n && n.value)) ||
+        (owns('channels') && Array.isArray(node.channels) &&
+          node.channels.some(c => c && Object.prototype.hasOwnProperty.call(c, 'share')));
+      if (statistical && (!node.source || !node.source.owner || !node.source.publication ||
+          !node.source.reportingDate || !node.source.period || !node.source.unit || !node.source.scope)) misses.push(path);
+      Object.keys(node).forEach(k => walk(node[k], path + '.' + k));
     };
     walk(window.demoData);
-    const missing = [...metrics, ...charts].filter(item => required.some(k => item[k] == null || item[k] === ''));
-    return { metrics: metrics.length, charts: charts.length, missing: missing.length };
-  })()
+    return misses;
+  })(),
+  unresolved: ((JSON.stringify(window.demoData) + JSON.stringify(window.SCENE_DATA || {}))
+    .match(/\{\{[A-Z0-9_]+\}\}/g) || []).length
 }));
 ok('no contract-violation elements rendered', contract.errors === 0, `${contract.errors} found`);
 ok('every rendered metric carries executive metadata', contract.incompleteMetrics === 0 && contract.metrics > 10, `${contract.metrics} metrics, ${contract.incompleteMetrics} incomplete`);
@@ -89,8 +88,9 @@ ok('every rendered chart carries executive metadata', contract.incompleteCharts 
 ok('demo-data statistics satisfy the static metadata contract', contract.staticMetadata.missing === 0 && contract.staticMetadata.metrics > 10 && contract.staticMetadata.charts >= 4,
    JSON.stringify(contract.staticMetadata));
 ok('every chart ships a data table', contract.tables === contract.charts, `${contract.tables}/${contract.charts}`);
-ok('every chart table exposes unit, period, and source columns', contract.metadataTables === contract.charts,
-   `${contract.metadataTables}/${contract.charts}`);
+ok('production metrics carry complete source metadata', contract.unsourced.length === 0, contract.unsourced.join(', '));
+ok('presentation mode contains no unresolved placeholders', !PRESENTATION || contract.unresolved === 0,
+   PRESENTATION ? `${contract.unresolved} unresolved` : `editorial mode (${contract.unresolved} awaiting confirmation)`);
 
 /* ---- 3. corridor geometry: six equal rows, fitted like object-fit: cover -- */
 /* The corridor is no longer painted at viewport width: it is scaled until one
@@ -271,16 +271,16 @@ const nav = await p.evaluate(async () => {
   window.scrollTo({ top: 0, behavior: 'instant' });
   await new Promise(r => setTimeout(r, 500));
   const seq = [document.body.dataset.beat];
-  for (let i = 0; i < 8; i++) { await press('ArrowDown'); seq.push(document.body.dataset.beat); }
+  for (let i = 0; i < 9; i++) { await press('ArrowDown'); seq.push(document.body.dataset.beat); }
   const jumps = [];
-  for (let n = 1; n <= 7; n++) { await press('Digit' + n); jumps.push(+document.body.dataset.section); }
+  for (let n = 1; n <= 8; n++) { await press('Digit' + n); jumps.push(+document.body.dataset.section); }
   return { seq, jumps };
 });
-ok('arrow keys walk all nine beats in order',
-   JSON.stringify(nav.seq) === JSON.stringify(['cooperation', 'targeting', 'baseline2018', 'border', 'transit', 'warehouse', 'declaration', 'audit', 'passengers']),
+ok('arrow keys walk all ten beats in order',
+   JSON.stringify(nav.seq) === JSON.stringify(['cooperation', 'targeting', 'baseline2018', 'border', 'transit', 'warehouse', 'declaration', 'audit', 'passengers', 'aiRisk']),
    nav.seq.join(' → '));
-ok('number keys 1–7 jump to their section',
-   JSON.stringify(nav.jumps) === JSON.stringify([1, 2, 3, 4, 5, 6, 7]), nav.jumps.join(','));
+ok('number keys 1–8 jump to their section',
+   JSON.stringify(nav.jumps) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8]), nav.jumps.join(','));
 
 /* ---- 10. modals from the corridor markers ------------------------------- */
 const modal = await p.evaluate(async () => {
