@@ -867,9 +867,9 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
   #corridor { position: fixed; inset: 0; z-index: 0; }
   #corridor::after { content: ""; position: absolute; inset: 0; background: var(--veil); }
   /* one mid-corridor section as a backdrop; the first is mostly sky */
-  #corridor img { position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  #corridor svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%;
     object-fit: cover; content-visibility: visible; display: none; }
-  #corridor img:nth-child(3) { display: block; }
+  #corridor svg:nth-child(3) { display: block; }
   /* no corridor overlay down here, so nothing is under the rows to click */
   #rows { position: static; display: block; pointer-events: auto; }
   #spine { display: none; }
