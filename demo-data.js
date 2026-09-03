@@ -2,11 +2,9 @@
    demoData — the single source of every word and figure on screen.
    Contract:
    - No figure may appear anywhere in the page that is not defined here.
-   - Every metric must carry an `anchor` (a 2018 baseline, a trend, or a
-     random-selection comparison). Metrics without one refuse to render.
-   - Every chart must carry a `caption` and a `range`. Charts without them
-     refuse to render, for the same reason: a number with nothing to measure it
-     against is decoration.
+   - Every metric and chart carries separate `value`, `unit`, `period`,
+     `comparison`, and `source` fields. Incomplete executive statistics refuse
+     to render: a number without provenance or context is decoration.
    - A value written as "{{TOKEN}}" is an awaiting-figure placeholder and
      renders as a visibly unfilled chip. `ETRANSIT_SHARE` is one: the presenter's
      own "we will add later", and it keeps that machinery visibly alive.
@@ -55,8 +53,10 @@ window.demoData = {
         /* The deck settles what E-Transit is; it does not say how much of the
            traffic already moves on it, which is the first thing anyone asks. */
         metric: {
-          value: "{{ETRANSIT_SHARE}}", label: "share of transit movements cleared on E-Transit",
-          anchor: { type: "context", text: "of 5.2 mln cargo and 1.2 mln railway transactions a year" }
+          value: "{{ETRANSIT_SHARE}}", unit: "%", period: "Awaiting reporting period",
+          comparison: "Baseline: 5.2 million cargo declarations and 1.2 million rail movements per year",
+          source: "Illustrative demo dataset",
+          label: "share of transit movements cleared on E-Transit"
         }
       },
       tcBorder: {
@@ -258,19 +258,22 @@ window.demoData = {
         source: { owner: "Uzbekistan Customs", publication: "Statistics at the border (supplied presentation)", reportingDate: "undated", period: "2025", unit: "counts and annual/daily transactions", scope: "national border network", status: "approved" },
         tiles: [
           { icon: "flag",      label: "Border",  value: "61",  unit: "customs posts" },
-          { icon: "car",       label: "Avto",    value: "4.5", unit: "mln transactions" },
-          { icon: "box",       label: "Cargo",   value: "5.2", unit: "mln transactions" },
-          { icon: "train",     label: "Railway", value: "1.2", unit: "mln transactions" }
+          { icon: "car",       label: "Road",    value: "4.5", unit: "million vehicle crossings" },
+          { icon: "box",       label: "Cargo",   value: "5.2", unit: "million cargo declarations" },
+          { icon: "train",     label: "Railway", value: "1.2", unit: "million rail movements" }
         ],
         metrics: [
-          { value: "30 k", label: "vehicles crossing the border a day", compact: true,
-            anchor: { type: "baseline2018", text: "×2.9 on 2018" } },
-          { value: "87 k", label: "transactions a day", compact: true,
-            anchor: { type: "baseline2018", text: "×3.2 on 2018" } },
+          { value: "30", unit: "thousand vehicles", period: "2025",
+            comparison: "×2.9 on 2018", source: "Illustrative demo dataset",
+            label: "vehicles crossing the border a day", compact: true },
+          { value: "87", unit: "thousand border movements", period: "2025",
+            comparison: "×3.2 on 2018", source: "Illustrative demo dataset",
+            label: "customs border movements processed per day", compact: true },
           /* The argument the whole talk rests on, in one line: the traffic
              nearly tripled and the establishment did not. */
-          { value: "3,184", label: "customs officers on daily duty", compact: true,
-            anchor: { type: "baseline2018", text: "+10% since 2018, against ×2.9 more vehicles" } }
+          { value: "3,184", unit: "officers", period: "2025",
+            comparison: "+10% since 2018, against ×2.9 more vehicles", source: "Illustrative demo dataset",
+            label: "customs officers on daily duty", compact: true }
         ]
       },
       rightPanel: {

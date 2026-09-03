@@ -57,7 +57,9 @@ await settle(p);
 const contract = await p.evaluate(() => ({
   errors: document.querySelectorAll('.metric-error').length,
   metrics: document.querySelectorAll('.metric').length,
-  anchorless: [...document.querySelectorAll('.metric')].filter(m => !m.querySelector('.metric-anchor')).length,
+  incompleteMetrics: [...document.querySelectorAll('.metric')].filter(m =>
+    !m.querySelector('.metric-value .metric-unit') || !m.querySelector('.metric-period') ||
+    !m.querySelector('.metric-anchor') || !m.querySelector('.metric-source')).length,
   charts: document.querySelectorAll('.chart').length,
   captionless: [...document.querySelectorAll('.chart')].filter(c => !c.querySelector('.ch-caption') || !c.querySelector('.ch-range')).length,
   tables: document.querySelectorAll('.chart .sr-only table').length,
@@ -81,8 +83,10 @@ const contract = await p.evaluate(() => ({
     .match(/\{\{[A-Z0-9_]+\}\}/g) || []).length
 }));
 ok('no contract-violation elements rendered', contract.errors === 0, `${contract.errors} found`);
-ok('every metric carries an anchor', contract.anchorless === 0 && contract.metrics > 10, `${contract.metrics} metrics, ${contract.anchorless} anchorless`);
-ok('every chart carries caption + range', contract.captionless === 0 && contract.charts >= 4, `${contract.charts} charts`);
+ok('every rendered metric carries executive metadata', contract.incompleteMetrics === 0 && contract.metrics > 10, `${contract.metrics} metrics, ${contract.incompleteMetrics} incomplete`);
+ok('every rendered chart carries executive metadata', contract.incompleteCharts === 0 && contract.charts >= 4, `${contract.charts} charts, ${contract.incompleteCharts} incomplete`);
+ok('demo-data statistics satisfy the static metadata contract', contract.staticMetadata.missing === 0 && contract.staticMetadata.metrics > 10 && contract.staticMetadata.charts >= 4,
+   JSON.stringify(contract.staticMetadata));
 ok('every chart ships a data table', contract.tables === contract.charts, `${contract.tables}/${contract.charts}`);
 ok('production metrics carry complete source metadata', contract.unsourced.length === 0, contract.unsourced.join(', '));
 ok('presentation mode contains no unresolved placeholders', !PRESENTATION || contract.unresolved === 0,
