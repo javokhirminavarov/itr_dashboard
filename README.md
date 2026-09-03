@@ -2,7 +2,7 @@
 
 Interactive presentation page for the WCO Secretary General visit: how
 Uzbekistan Customs targets and controls risk, from international cooperation
-through to passenger control. **Seven sections, nine beats.** Fully
+through passenger control to a dedicated AI risk-analysis beat. **Eight sections, ten beats.** Fully
 self-contained — **no network access after load** (enforced by CSP
 `connect-src 'none'`), so it runs from a local file or any static host.
 
@@ -17,6 +17,7 @@ self-contained — **no network access after load** (enforced by CSP
 | 5 | Customs declaration clearance | corridor beat |
 | 6 | Customs audit | corridor beat |
 | 7 | Passenger control | screen |
+| 8 | AI risk analysis — evidence-bounded capabilities and officer oversight | screen |
 
 A **section** is an item on the running order. A **beat** is one screenful of
 argument. They are not the same count, and forcing them to be would cost the
@@ -27,7 +28,7 @@ numbered. `window.BEATS` in `plates.js` is the list.
 
 ## The shape of the page
 
-Sections 1, 2 and 7 are **screens**: full-viewport panels that are not places on
+Sections 1, 2, 7 and 8 are **screens**: full-viewport panels that are not places on
 a road. Sections 3–6 are a **corridor** — one road running top to bottom, six
 rows deep, with the border checkpoint, the transit gantry, the customs
 warehouse, the declaration office and the importer's premises each sitting on
@@ -57,7 +58,7 @@ E-Transit and the targeting centre's role at the border (beside the gate), and
 the Customs and cargo operations system (at the warehouse). They are the pulsing
 blue pins; click, or tab to them and press Enter.
 
-## The three pictures
+## The four pictures
 
 Section 2 and the two information-system markers used to be what the source
 slides were: eight boxes, read all at once, remembered as none of them. Each is
@@ -71,6 +72,7 @@ reachable, and `tools/verify-scenes.mjs` checks that verbatim.
 |---|---|
 | **§2, the targeting centre** | What comes in on the left — WCO information and databases, other government agencies, operational intelligence. The centre in the middle, open around the clock, with the six channels it watches under it. What comes out on the right — a channel, the rules and the risks the standing profiles do not cover, and the assessment on site that follows a flagged one. |
 | **E-Transit** | The corridor a consignment travels, border to border, with each claim labelled where on it that thing happens: one lodgement, fees settled without a counter visit, one platform every agency is on, the RMS setting the channel, shorter queues, one step for the trader, and the targeting centre watching the whole route. |
+| **§8, AI risk analysis** | Four source- and maturity-labelled capabilities around a central human-oversight hub: cargo/image analysis, document integrity and extraction, classification/valuation controls, and legislation-grounded officer support. Models flag, compare or assist; authorized officers decide. |
 | **Customs and cargo operations** | Many warehouses becoming one platform, with `demo-data.js`'s own figure printed; three parties reading one record; and one consignment from arrival to release, with the RMS deciding who has to attend and 2018 against 2025 on one axis. |
 
 They live in `sections/`, which is loaded before `app.js` and registers itself
@@ -79,7 +81,7 @@ one entry in `SCREEN_BUILDERS`, and one branch in `openModal`. Both fall back to
 the card they replaced, so **deleting `sections/` leaves the deck exactly as it
 was**. The pictures bind no keys, hold no state and observe nothing, so the
 lectern keys behave exactly as they did before them. Every CSS rule in
-`sections/*.css` is scoped to `.scene`, `.tgc`, `.etx` or `.cco` —
+`sections/*.css` is scoped to `.scene`, `.tgc`, `.etx`, `.cco` or `.air` —
 `styles.css`, `plates.js` and `demo-data.js` are not touched by any of it, and
 the suite asserts that scoping rather than trusting it.
 
@@ -92,7 +94,7 @@ the suite asserts that scoping rather than trusting it.
   **covers** the viewport it is shown in from 1280 px wide upward — one section
   on screen at a time, with no sliver of its neighbours.
 - Keys, for driving from a lectern: `↓` `PageDown` `Space` next beat · `↑`
-  `PageUp` previous · `1`–`7` jump to a section · `Home`/`End` first/last ·
+  `PageUp` previous · `1`–`8` jump to a section · `Home`/`End` first/last ·
   `Esc` running order · `R` replay the current beat's reveal. Presenter clickers
   (PageUp/PageDown) work.
 - The page always opens on section 1, whatever the window shape. It carries no
@@ -123,7 +125,7 @@ the suite asserts that scoping rather than trusting it.
   separately from the statistics. Every chart also ships the same numbers as a
   visually-hidden table.
 - **Art**: `ASSETS.md` is the drawing contract; `plates.js` holds every
-  coordinate, and `styles.css` holds every colour. The three scenes hold their
+  coordinate, and `styles.css` holds every colour. The four scenes hold their
   own geometry at the head of their own file in `sections/`, and take every
   colour from `styles.css`'s tokens — they are the same drawing, in the same
   light palette, as the corridor they sit beside.
@@ -142,7 +144,7 @@ node tools/verify-scenes.mjs   # the three scenes: facts, keyboard, determinism
 `verify.mjs` guards what the page has always promised. `verify-scenes.mjs`
 guards what a picture can get wrong that a bullet list could not: it can drop a
 fact, it can hide one, and it can outgrow itself. So it checks every sentence in
-`demo-data.js` is still reachable verbatim; that nothing on any of the three is
+`demo-data.js` is still reachable verbatim; that nothing on any of the four is
 at zero opacity, hidden, or behind a control; that no caption has overflowed its
 chip and no label has walked off the edge of the drawing; that the deck still
 owns the keyboard; and that none of it animates or transitions at all.

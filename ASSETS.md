@@ -333,3 +333,13 @@ the source slide before presentation.
 
 **Do not** put risk rules, thresholds or scores anywhere. Channel outcomes stay
 the words green / yellow / red.
+
+## Section 8 — AI risk analysis
+
+Section 8 is a code-native, static SVG scene (`sections/ai-risk.js`) and needs no
+external image asset. Its four capability groups are read only from
+`demoData.aiRisk`; every group visibly carries both a source and a maturity
+label. The central hub preserves the deck's established composition while
+making the control boundary explicit: models flag, compare or assist, and
+authorized officers make customs decisions. The scene stylesheet is isolated
+under `.air` in `sections/ai-risk.css`.

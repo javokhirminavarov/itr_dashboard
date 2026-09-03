@@ -1,0 +1,18 @@
+/* Section 8 — scoped static AI risk-analysis drawing. */
+.air { display: flex; flex-direction: column; gap: .65em; align-items: center; }
+.air-stage { width: min(100%, calc(51vh * 1200 / 470)); aspect-ratio: 1200 / 470;
+  border: 1px solid var(--hair); background: var(--panel-solid); box-shadow: var(--shadow-soft); }
+.air-link { fill: none; stroke: var(--brand-line); stroke-width: 2; stroke-dasharray: 5 4; }
+.air-cap rect { fill: var(--panel-solid); stroke: var(--brand-line); stroke-width: 1.5; }
+.air-title { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; }
+.air-action { fill: var(--ink); font-family: var(--font-display); font-size: 12px; }
+.air-cap .air-maturity { fill: var(--brand-wash); stroke: var(--brand); }
+.air-status { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 9px; font-weight: 500; letter-spacing: .12em; }
+.air-source { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 8.5px; letter-spacing: .08em; }
+.air-hub rect { fill: var(--brand); }
+.air-hub-title { fill: #fff; font-family: var(--font-display); font-size: 27px; font-weight: 700; }
+.air-hub-sub { fill: rgba(255,255,255,.76); font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; }
+.air-officer { fill: #fff; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .14em; }
+.air-decision { fill: #fff; font-family: var(--font-mono); font-size: 9px; letter-spacing: .1em; }
+.air-oversight { margin: 0; color: var(--brand-ink); font-family: var(--font-mono); font-size: .78em; font-weight: 500; text-align: center; }
+@media (max-width: 1199px) { .air-stage { width: 100%; } }
