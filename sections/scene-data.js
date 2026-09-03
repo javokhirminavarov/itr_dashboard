@@ -21,13 +21,15 @@ window.SCENE_DATA = {
        section's own support line in demo-data.js and is said there, once. */
     open: "24/7",                                        /* functions[7] */
     openSub: "AROUND THE CLOCK",
-    feedsTitle: "WHAT COMES IN",
+    feedsTitle: "1 · INPUTS / DATA USAGE",
     feeds: [
       { t: "WCO INFORMATION", s: "databases · CENcomm", src: "functions[2]" },
       { t: "GOVERNMENT AGENCIES", s: "others at the border", src: "functions[3]" },
       { t: "OPERATIONAL INTELLIGENCE", s: "processed and analysed", src: "functions[1]" }
     ],
-    outTitle: "WHAT COMES OUT",
+    capabilityTitle: "2 · OPERATIONAL CAPABILITY",
+    channelsTitle: "3 · MONITORED CHANNELS",
+    outTitle: "4 · OUTPUTS",
     extras: [
       { t: "TAILORED RULES", s: "non-standard cases", src: "functions[5]" },
       { t: "ADDITIONAL RISKS", s: "detected and mitigated", src: "functions[4]" }

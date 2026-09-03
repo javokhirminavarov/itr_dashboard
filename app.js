@@ -1390,7 +1390,8 @@
     var card = el("div", "card glass");
     card.appendChild(el("div", "c-eyebrow", d.card.title));
     card.appendChild(el("h2", "c-title", d.headline));
-    card.appendChild(el("p", "c-text", d.support));
+    card.appendChild(el("div", "c-text evidence-line", d.support));
+    if (d.speakerNotes) card.appendChild(el("div", "sr-only", d.speakerNotes));
     if (d.hint) {
       var hint = el("p", "c-hint");
       hint.appendChild(icon("arrow"));
@@ -1455,7 +1456,8 @@
     var t = el("div", "sc-titles");
     t.appendChild(el("div", "c-eyebrow", d.eyebrow));
     t.appendChild(el("h2", "sc-title", d.headline));
-    t.appendChild(el("p", "sc-support", d.support));
+    t.appendChild(el("div", "sc-support evidence-line", d.support));
+    if (d.speakerNotes) t.appendChild(el("div", "sr-only", d.speakerNotes));
     head.appendChild(fx(t, 1));
     sec.appendChild(head);
     return sec;
@@ -1473,25 +1475,22 @@
     flow.appendChild(el("span", "cf-node", "Uzbekistan Customs"));
     sec.appendChild(fx(flow, 1.6));
     var grid = el("div", "coop-grid");
-    d.items.forEach(function (it, i) {
+    (d.outcomes || d.items).forEach(function (it, i) {
       var c = el("article", "coop-card");
       var head = el("div", "cc-head");
       head.appendChild(icon(it.icon));
       head.appendChild(el("span", "cc-tag", it.tag));
       c.appendChild(head);
       c.appendChild(el("h3", "cc-title", it.title));
-      c.appendChild(el("p", "cc-text", it.text));
+      c.appendChild(el("div", "cc-text", it.evidence || it.text));
       grid.appendChild(fx(c, 2 + i * 0.4));
     });
     sec.appendChild(grid);
-    var creds = el("div", "coop-creds");
-    D.meta.speakers.forEach(function (sp) {
-      var chip = el("span", "cred-chip");
-      chip.appendChild(icon("check"));
-      chip.appendChild(el("span", null, sp.credential));
-      creds.appendChild(chip);
-    });
-    sec.appendChild(fx(creds, 5));
+    /* Full source wording and credentials remain available to assistive
+       technology without competing with the four decisions on the canvas. */
+    var detail = d.items.map(function (it) { return it.tag + ": " + it.title + " — " + it.text; });
+    detail = detail.concat(D.meta.speakers.map(function (sp) { return sp.credential; }));
+    sec.appendChild(el("div", "sr-only", detail.join(". ")));
     return sec;
   }
 

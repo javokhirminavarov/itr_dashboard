@@ -97,8 +97,9 @@ window.demoData = {
     cooperation: {
       section: 1, rail: "WCO", eyebrow: "SECTION 1 · INTERNATIONAL COOPERATION",
       headline: "Built with the WCO.",
-      support: "Uzbekistan Customs built its risk management system with the World Customs " +
-               "Organization — and now helps other administrations build theirs.",
+      support: "WCO expertise in; Uzbek expertise out.",
+      speakerNotes: "Uzbekistan Customs built its risk management system with the World Customs " +
+                    "Organization — and now helps other administrations build theirs.",
       overview: "Accreditation, training, workshops, benchmarking, working group",
       card: { title: "WCO & Uzbekistan", icon: "shield" },
       items: [
@@ -114,6 +115,19 @@ window.demoData = {
                 "administration on risk management." },
         { icon: "loop", tag: "WORKING GROUP", title: "Risk management mini working group",
           text: "Uzbekistan organises the group's online sessions." }
+      ],
+      /* Four reciprocal outcomes are the audience-facing executive summary.
+         The complete five-item source account above remains the accessible
+         text equivalent and the presenter's notes. */
+      outcomes: [
+        { icon: "check", tag: "ACCREDITATION", title: "Trusted expertise",
+          evidence: "WCO-accredited experts serve on international missions." },
+        { icon: "person", tag: "TRAINING", title: "Skills transferred",
+          evidence: "Master Trainer and BACUDA learning returns to the service." },
+        { icon: "plane", tag: "REGIONAL SUPPORT", title: "Practice shared",
+          evidence: "Tashkent workshops and Malaysia benchmarking move knowledge both ways." },
+        { icon: "loop", tag: "CAPACITY BUILDING", title: "Capability multiplied",
+          evidence: "Uzbekistan convenes the risk-management working group." }
       ]
     },
 
@@ -121,7 +135,8 @@ window.demoData = {
     targeting: {
       section: 2, rail: "CENTRE", eyebrow: "SECTION 2 · TARGETING CENTRE",
       headline: "One centre. Every channel.",
-      support: "A key component of the risk management system, staffed around the clock.",
+      support: "24/7 decisions from shared border intelligence.",
+      speakerNotes: "A key component of the risk management system, staffed around the clock.",
       overview: "Eight functions, and the six channels it watches at once",
       card: { title: "Targeting centre", icon: "screen" },
       hub: { title: "Targeting Centre", sub: "STATE CUSTOMS COMMITTEE" },

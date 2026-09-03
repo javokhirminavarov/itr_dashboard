@@ -130,6 +130,14 @@ const GEOM = (sel) => {
   });
   return out;
 };
+const MIN_TEXT = (root) => {
+  const host = document.querySelector(root), bad = [];
+  host.querySelectorAll('svg text').forEach(t => {
+    const px = t.getBoundingClientRect().height;
+    if (px < 12) bad.push('"' + t.textContent.slice(0, 24) + '" ' + px.toFixed(1) + 'px');
+  });
+  return bad;
+};
 /* Contrast: SVG text is painted with `fill`, not `color`, and the pictures
    sit on the deck's own white panel, so white is the ground. */
 const CONTRAST = (sels) => {
@@ -209,6 +217,8 @@ const p = await open();
   const t = await p.evaluate(GEOM, '.tgc-stage svg');
   ok('targeting: nothing is drawn outside the drawing', t.over.length === 0, t.over.join(', '));
   ok('targeting: no caption outgrows its chip', t.chips.length === 0, t.chips.join(', '));
+  const tt = await p.evaluate(MIN_TEXT, '.tgc-stage');
+  ok('targeting: projected labels are at least 12px', tt.length === 0, tt.join(', '));
   for (const [key, label] of PANELS) {
     const r = await panel(p, label, GEOM, '.modal-body .scene-stage svg');
     ok(`${key}: nothing is drawn outside the drawing`, r.over.length === 0, r.over.join(', '));
