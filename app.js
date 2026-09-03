@@ -47,7 +47,14 @@
   var mqReduce = matchMedia("(prefers-reduced-motion: reduce)");
   var mqWide = matchMedia("(min-width: 1200px)");
   var REDUCE = mqReduce.matches;
-  mqReduce.addEventListener("change", function (e) { REDUCE = e.matches; });
+  function listenMedia(query, handler) {
+    // MediaQueryList.addEventListener is absent in older Safari and in a
+    // number of presentation webviews. Falling back to addListener keeps an
+    // unsupported resize API from aborting the whole deck during start-up.
+    if (query.addEventListener) query.addEventListener("change", handler);
+    else if (query.addListener) query.addListener(handler);
+  }
+  listenMedia(mqReduce, function (e) { REDUCE = e.matches; });
 
   /* ---------------- DOM refs ---------------- */
   var $journey = document.getElementById("journey");
@@ -318,7 +325,11 @@
     var body = el("div", "chart-awaiting");
     richText(body, "{{" + (spec.token || "CHART_DATA") + "}}");
     var fig = chartFrame(spec, body, null);
-    fig.appendChild(dataTable(["Status"], [["Awaiting an approved Customs figure"]], spec.caption));
+    // Keep the placeholder table on the same metadata contract as every
+    // resolved chart. Omitting `spec` here made dataTable dereference
+    // `undefined` as soon as it encountered the first awaiting-figure chart,
+    // aborting buildBeats and leaving the presentation only partly rendered.
+    fig.appendChild(dataTable(["Status"], [["Awaiting an approved Customs figure"]], spec.caption, spec));
     return fig;
   }
 
@@ -1863,7 +1874,6 @@
   }
   function setBeat(i) {
     revealAround(i);
-    if (i === engine.beat) return;
     engine.beat = i;
     var def = BEATS[i];
     document.body.dataset.beat = def.key;
@@ -2084,9 +2094,8 @@
     addEventListener("scroll", onScroll, { passive: true });
     addEventListener("resize", relayout);
     addEventListener("load", remeasure);
-    mqWide.addEventListener("change", relayout);
+    listenMedia(mqWide, relayout);
     onScrollFrame();
-    setBeat(0);
 
     if (deepLink) {
       var i = BEATS.map(function (b) { return b.key; }).indexOf(deepLink[1]);
