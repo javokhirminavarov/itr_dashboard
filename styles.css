@@ -421,6 +421,9 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
 .metric-error { border: 2px dashed var(--red); border-radius: 0.67em; padding: 0.67em 0.8em;
   font-family: var(--font-mono); font-size: 0.73em; color: var(--red); letter-spacing: 0.05em;
   margin-top: 0.8em; }
+.data-source { margin-top: 0.6em; padding-top: 0.5em; border-top: 1px solid var(--hair);
+  font-family: var(--font-mono); font-size: 0.6em; line-height: 1.4; color: var(--ink-faint); }
+.chart-awaiting { min-height: 5.2em; display: grid; place-items: center; }
 
 /* awaiting-figure placeholder chip */
 .ph-chip { display: inline-flex; flex-direction: column; gap: 0.2em;
