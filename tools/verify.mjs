@@ -245,16 +245,16 @@ const nav = await p.evaluate(async () => {
   window.scrollTo({ top: 0, behavior: 'instant' });
   await new Promise(r => setTimeout(r, 500));
   const seq = [document.body.dataset.beat];
-  for (let i = 0; i < 8; i++) { await press('ArrowDown'); seq.push(document.body.dataset.beat); }
+  for (let i = 0; i < 9; i++) { await press('ArrowDown'); seq.push(document.body.dataset.beat); }
   const jumps = [];
-  for (let n = 1; n <= 7; n++) { await press('Digit' + n); jumps.push(+document.body.dataset.section); }
+  for (let n = 1; n <= 8; n++) { await press('Digit' + n); jumps.push(+document.body.dataset.section); }
   return { seq, jumps };
 });
-ok('arrow keys walk all nine beats in order',
-   JSON.stringify(nav.seq) === JSON.stringify(['cooperation', 'targeting', 'baseline2018', 'border', 'transit', 'warehouse', 'declaration', 'audit', 'passengers']),
+ok('arrow keys walk all ten beats in order',
+   JSON.stringify(nav.seq) === JSON.stringify(['cooperation', 'targeting', 'baseline2018', 'border', 'transit', 'warehouse', 'declaration', 'audit', 'passengers', 'aiRisk']),
    nav.seq.join(' → '));
-ok('number keys 1–7 jump to their section',
-   JSON.stringify(nav.jumps) === JSON.stringify([1, 2, 3, 4, 5, 6, 7]), nav.jumps.join(','));
+ok('number keys 1–8 jump to their section',
+   JSON.stringify(nav.jumps) === JSON.stringify([1, 2, 3, 4, 5, 6, 7, 8]), nav.jumps.join(','));
 
 /* ---- 10. modals from the corridor markers ------------------------------- */
 const modal = await p.evaluate(async () => {

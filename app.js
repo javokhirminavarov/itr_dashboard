@@ -7,15 +7,16 @@
    space defined by plates.js. The truck, the glow trail behind it, its state
    and the current beat all derive from that one value.
 
-   The deck is NINE beats across SEVEN sections (see plates.js). Six beats are
-   rows of the corridor; three are full-viewport screens that are not places on
-   the road — WCO cooperation, the targeting centre, and passenger control.
+   The deck is TEN beats across EIGHT sections (see plates.js). Six beats are
+   rows of the corridor; four are full-viewport screens that are not places on
+   the road — WCO cooperation, the targeting centre, passenger control and AI
+   risk analysis.
    Both kinds are navigated identically: every beat is scrolled so that its own
    centre lands on the truck's focus line, and the current beat is whichever
    beat's centre is nearest that line.
 
    The page has no chrome of its own — no bars, no tabs. `Esc` opens the running
-   order, 1-7 jump to a section, the arrows step a beat.
+   order, 1-8 jump to a section, the arrows step a beat.
 
    Layout code holds no corridor coordinates (see plates.js) and no figures
    (see demo-data.js).
@@ -1550,20 +1551,24 @@
   var SCREEN_BUILDERS = {
     cooperation: buildCooperationScreen,
     targeting: sceneScreen("targeting", buildTargetingScreen),
-    passengers: buildPassengerScreen
+    passengers: buildPassengerScreen,
+    aiRisk: sceneScreen("aiRisk", buildTargetingScreen)
   };
 
   function buildBeats() {
     var before = document.getElementById("screens-before");
     var after = document.getElementById("screens-after");
+    var lastCorridorSection = BEATS.reduce(function (n, b) {
+      return b.kind === "corridor" ? Math.max(n, b.section) : n;
+    }, 0);
     BEATS.forEach(function (def) {
-      var d = D.beats[def.key];
+      var d = D.beats[def.key] || D[def.key];
       if (!d) throw new Error("no data for beat " + def.key);
       if (def.kind === "corridor") {
         beatEls.push(buildCorridorRow(def, d));
       } else {
         var node = SCREEN_BUILDERS[def.key](def, d);
-        (def.section === SECTIONS[SECTIONS.length - 1].n ? after : before).appendChild(node);
+        (def.section > lastCorridorSection ? after : before).appendChild(node);
         beatEls.push(node);
       }
     });
@@ -1614,7 +1619,7 @@
   /* ---------------- tail ----------------
      The deck carries no bars: the page is the presentation surface, and the
      running order, the sections and the beats are all on the keyboard (ESC,
-     1-7, arrows). What is left of the page's own furniture is the closing
+     1-8, arrows). What is left of the page's own furniture is the closing
      statement at the foot. */
   function buildTail() {
     var tail = document.getElementById("tail");
@@ -1650,7 +1655,7 @@
       // one beat lists the others beneath, because that is what the presenter
       // will actually walk through
       var mine = BEATS.filter(function (b) { return b.section === s.n; });
-      var lead = D.beats[mine[0].key];
+      var lead = D.beats[mine[0].key] || D[mine[0].key];
       var card = el("button", "ov-card seg-" + (speakerOf(s.n) + 1));
       card.type = "button";
       card.appendChild(el("span", "ov-n", "SECTION " + s.n + " · " + s.short.toUpperCase()));
@@ -1658,7 +1663,10 @@
       card.appendChild(el("span", "ov-d", lead.overview));
       if (mine.length > 1) {
         var subs = el("span", "ov-beats");
-        mine.forEach(function (b) { subs.appendChild(el("span", "ov-beat", D.beats[b.key].rail)); });
+        mine.forEach(function (b) {
+          var bd = D.beats[b.key] || D[b.key];
+          subs.appendChild(el("span", "ov-beat", bd.rail));
+        });
         card.appendChild(subs);
       }
       card.appendChild(el("span", "ov-seg"));
@@ -1795,8 +1803,8 @@
   }
 
   // Document-space centre of every beat. Measured on load and on resize rather
-  // than per scroll frame: nine getBoundingClientRect() calls inside the scroll
-  // handler is nine forced layouts a frame, and the layout does not move while
+  // than per scroll frame: ten getBoundingClientRect() calls inside the scroll
+  // handler is ten forced layouts a frame, and the layout does not move while
   // the page is only being scrolled.
   var centres = [];
   function measureBeats() {
@@ -1954,7 +1962,7 @@
       else if (engine.view === "overview" && (code === "ArrowLeft" || code === "ArrowUp")) setOvFocus(ovFocus - 1);
       else if (engine.view === "overview" && (code === "Enter" || code === "Space")) {
         closeOverlays(); goToSection(SECTIONS[ovFocus].n);
-      } else if (engine.view === "overview" && /^(Digit|Numpad)[1-7]$/.test(code)) {
+      } else if (engine.view === "overview" && /^(Digit|Numpad)[1-8]$/.test(code)) {
         closeOverlays(); goToSection(+code.slice(-1));
       } else handled = false;
       if (handled) e.preventDefault();
@@ -1968,7 +1976,7 @@
     else if (code === "End") goToBeat(BEATS.length - 1);
     else if (code === "Escape") openOverview();
     else if (code === "KeyR") replayBeat();
-    else if (/^(Digit|Numpad)[1-7]$/.test(code)) goToSection(+code.slice(-1));
+    else if (/^(Digit|Numpad)[1-8]$/.test(code)) goToSection(+code.slice(-1));
     else used = false;
     if (used) e.preventDefault();
   });

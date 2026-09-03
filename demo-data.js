@@ -30,7 +30,7 @@ window.demoData = {
     speakers: [
       { sections: [1, 2], credential: "WCO-accredited Risk Management Expert", short: "RISK MGMT EXPERT" },
       { sections: [3, 5], credential: "WCO BACUDA Scholar", short: "BACUDA SCHOLAR" },
-      { sections: [6, 7], credential: "WCO Master Trainer Programme Graduate", short: "MASTER TRAINER" }
+      { sections: [6, 8], credential: "WCO Master Trainer Programme Graduate", short: "MASTER TRAINER" }
     ],
     /* Modals opened from the mini markers pinned on the corridor. */
     modals: {
@@ -87,6 +87,29 @@ window.demoData = {
         ]
       }
     }
+  },
+
+  /* The AI material names these four capability groups and their maturity.
+     Keep this separate from illustrative operational statistics: these are
+     bounded capability claims, not performance claims. */
+  aiRisk: {
+    section: 8, rail: "AI", eyebrow: "SECTION 8 · AI RISK ANALYSIS",
+    headline: "Models assist. Officers decide.",
+    support: "Models flag, compare or assist; authorized officers make customs decisions.",
+    overview: "Four evidence-bounded AI capabilities, each labelled by maturity and source",
+    card: { title: "AI risk analysis", icon: "screen" },
+    hub: { title: "AI risk analysis", sub: "HUMAN-LED CUSTOMS CONTROL" },
+    oversight: "Models flag, compare or assist; authorized officers make customs decisions.",
+    capabilities: [
+      { key: "cargo", title: "Cargo / image analysis", action: "Flags cargo images for review.",
+        maturity: "DEPLOYED", source: "SUPPLIED AI MATERIAL" },
+      { key: "documents", title: "Document integrity & extraction", action: "Compares integrity; assists extraction.",
+        maturity: "PILOT", source: "SUPPLIED AI MATERIAL" },
+      { key: "classification", title: "Classification / valuation controls", action: "Flags classification or valuation anomalies.",
+        maturity: "PILOT", source: "SUPPLIED AI MATERIAL" },
+      { key: "legislation", title: "Legislation-grounded officer support", action: "Assists with legislation-grounded answers.",
+        maturity: "PLANNED", source: "SUPPLIED AI MATERIAL" }
+    ]
   },
 
   /* ------------------------------------------------------------------ beats */

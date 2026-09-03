@@ -105,8 +105,8 @@ window.JOURNEY = {
   ]
 };
 
-/* The seven sections the presenter speaks. These drive the header nav, the
-   1-7 keys and the overview grid.                                            */
+/* The eight sections the presenter speaks. These drive the header nav, the
+   1-8 keys and the overview grid.                                            */
 window.SECTIONS = [
   { n: 1, key: "cooperation", short: "Cooperation" },
   { n: 2, key: "targeting",   short: "Targeting centre" },
@@ -114,10 +114,11 @@ window.SECTIONS = [
   { n: 4, key: "warehouse",   short: "Warehouse" },
   { n: 5, key: "declaration", short: "Declaration" },
   { n: 6, key: "audit",       short: "Audit" },
-  { n: 7, key: "passengers",  short: "Passengers" }
+  { n: 7, key: "passengers",  short: "Passengers" },
+  { n: 8, key: "aiRisk",      short: "AI risk analysis" }
 ];
 
-/* The nine beats the reader actually scrolls through.
+/* The ten beats the reader actually scrolls through.
 
    A beat is one screenful of argument; a section is one item on the running
    order. They are not the same count, and forcing them to be would cost the
@@ -137,7 +138,8 @@ window.BEATS = [
   { key: "warehouse",    section: 4, kind: "corridor", row: 4 },
   { key: "declaration",  section: 5, kind: "corridor", row: 5 },
   { key: "audit",        section: 6, kind: "corridor", row: 6 },
-  { key: "passengers",   section: 7, kind: "screen" }
+  { key: "passengers",   section: 7, kind: "screen" },
+  { key: "aiRisk",       section: 8, kind: "screen" }
 ];
 
 /* Secondary scene — shown in the warehouse marker's modal. Instantiated at
