@@ -13,28 +13,28 @@
   border: 1px solid var(--hair); background: var(--panel-solid);
   box-shadow: var(--shadow-soft); }
 
-.tgc-cap { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 11px;
+.tgc-cap { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 14px;
   font-weight: 500; letter-spacing: 0.16em; }
-.tgc-t { fill: var(--ink); font-family: var(--font-mono); font-size: 12px;
+.tgc-t { fill: var(--ink); font-family: var(--font-mono); font-size: 14px;
   font-weight: 500; letter-spacing: 0.1em; }
-.tgc-s { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 10px;
+.tgc-s { fill: var(--ink-faint); font-family: var(--font-mono); font-size: 14px;
   letter-spacing: 0.06em; }
 
 /* ---- the centre ---------------------------------------------------------- */
 .tgc-hub rect { fill: var(--brand); }
 .tgc-hubt { fill: #fff; font-size: 25px; font-weight: 700; font-family: var(--font-display); }
-.tgc-hubs { fill: rgba(255, 255, 255, 0.78); font-family: var(--font-mono); font-size: 10px;
+.tgc-hubs { fill: rgba(255, 255, 255, 0.78); font-family: var(--font-mono); font-size: 14px;
   letter-spacing: 0.18em; }
 /* 24/7 is a state, not a sentence: it sits on the centre itself */
 .tgc-open rect { fill: rgba(255, 255, 255, 0.18); }
-.tgc-opent { fill: #fff; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; }
+.tgc-opent { fill: #fff; font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.08em; }
 
 /* ---- the six channels it watches at once -------------------------------- */
 .tgc-drop { stroke: var(--brand-line); stroke-width: 1.6; fill: none; stroke-dasharray: 4 3; }
 .tgc-mode rect { fill: var(--brand-wash); stroke: var(--stroke); stroke-width: 1; }
 .tgc-icon { fill: none; stroke: var(--brand); stroke-width: 1.8;
   stroke-linecap: round; stroke-linejoin: round; }
-.tgc-modet { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 9px;
+.tgc-modet { fill: var(--brand-ink); font-family: var(--font-mono); font-size: 14px;
   letter-spacing: 0.1em; }
 
 /* ---- what comes in, and what comes out ---------------------------------- */
@@ -47,7 +47,7 @@
 .tgc-ch.ch-green rect { stroke: var(--green); }
 .tgc-ch.ch-yellow rect { stroke: var(--yellow); }
 .tgc-ch.ch-red rect { stroke: var(--red); }
-.tgc-cht { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; }
+.tgc-cht { font-family: var(--font-mono); font-size: 14px; font-weight: 500; letter-spacing: 0.1em; }
 .tgc-ch.ch-green .tgc-cht { fill: var(--green-ink); }
 .tgc-ch.ch-yellow .tgc-cht { fill: var(--yellow-ink); }
 .tgc-ch.ch-red .tgc-cht { fill: var(--red); }

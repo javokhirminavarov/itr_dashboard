@@ -31,8 +31,8 @@
     /* Read by index. These arrays are section 4's arrays: an in-place sort or
        reverse here would silently reorder a chart in another section. */
     var TOTAL = wh.leftPanel.chart.rows[0].to;            /* 430            */
-    var attended = wh.rightPanel.share.parts[0];          /* 28, officer    */
-    var remote = wh.rightPanel.share.parts[1];            /* 72, remote     */
+    var attended = wh.rightPanel.share.parts[0];
+    var remote = wh.rightPanel.share.parts[1];
     var range = wh.rightPanel.share.range;                /* 2025           */
 
     var root = S.el("div", "cco");
@@ -115,22 +115,24 @@
     /* time and cost, as a before and an after on one axis rather than a claim */
     var gains = S.put(svg, "g", { "class": "cco-gains" });
     S.text(gains, 700, FLOW.y - 74, "cco-cap", T.gains);
-    [["2018", 100], [range, attended.value]].forEach(function (row, i) {
+    [["2018", "{{OFFICER_ATTENDANCE_2018}}"], [range, attended.value]].forEach(function (row, i) {
       var y = FLOW.y - 56 + i * 26;
       S.text(gains, 700, y + 9, "cco-ayear", row[0]);
       S.put(gains, "rect", { x: 748, y: y, width: 260, height: 12, rx: 6, "class": "cco-atrack" });
-      S.put(gains, "rect", { x: 748, y: y, width: 260 * row[1] / 100, height: 12, rx: 6,
+      var share = Number(row[1]);
+      S.put(gains, "rect", { x: 748, y: y, width: Number.isFinite(share) ? 260 * share / 100 : 0, height: 12, rx: 6,
                              "class": "cco-afill" + (i ? " is-now" : "") });
       S.text(gains, 1018, y + 10, "cco-aval", row[1] + "%");
     });
     S.text(gains, 700, FLOW.y + 4, "cco-s", T.gainsCaption);
 
     root.appendChild(stage);
+    if (m.source) root.appendChild(HOST.SourceLine(m.source));
     /* the same two figures as text, the way every chart in this deck ships a
        table of its own, and every bullet in the words demo-data.js holds */
     root.appendChild(S.srList(
       [m.lead].concat(m.bullets, [
-        "2018: 100% of placements attended by an officer in person",
+        "2018: {{OFFICER_ATTENDANCE_2018}} of placements attended by an officer in person",
         range + ": " + attended.value + "% attended, " + remote.value + "% controlled remotely"
       ]), m.title, "bullets md-bullets"));
     return root;

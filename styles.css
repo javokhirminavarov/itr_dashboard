@@ -421,6 +421,9 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
 .metric-error { border: 2px dashed var(--red); border-radius: 0.67em; padding: 0.67em 0.8em;
   font-family: var(--font-mono); font-size: 0.73em; color: var(--red); letter-spacing: 0.05em;
   margin-top: 0.8em; }
+.data-source { margin-top: 0.6em; padding-top: 0.5em; border-top: 1px solid var(--hair);
+  font-family: var(--font-mono); font-size: 0.6em; line-height: 1.4; color: var(--ink-faint); }
+.chart-awaiting { min-height: 5.2em; display: grid; place-items: center; }
 
 /* awaiting-figure placeholder chip */
 .ph-chip { display: inline-flex; flex-direction: column; gap: 0.2em;
@@ -587,17 +590,19 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
 .sc-title { font-size: clamp(25px, 2.5vw, 42px); line-height: 1.08; margin-top: 8px; }
 .sc-support { font-size: clamp(14px, 1.1vw, 17px); line-height: 1.5; color: var(--ink-soft);
   margin-top: 12px; text-wrap: pretty; }
+.evidence-line::before { content: "EVIDENCE · "; font-family: var(--font-mono);
+  font-size: 0.82em; font-weight: 500; letter-spacing: 0.1em; color: var(--brand-ink); }
 
 /* section 1 — international cooperation */
-.coop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); gap: 14px; }
+.coop-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .coop-card { background: var(--panel-solid); border: 1.5px solid var(--brand-line);
   border-radius: var(--card-radius); padding: 16px 17px; box-shadow: var(--shadow-soft); }
 .cc-head { display: flex; align-items: center; gap: 10px; }
 .cc-head svg { width: 17px; height: 17px; color: var(--brand); flex: none; }
-.cc-tag { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.16em;
+.cc-tag { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em;
   color: var(--brand-ink); }
 .cc-title { font-size: 16px; margin-top: 10px; line-height: 1.2; }
-.cc-text { font-size: 13px; line-height: 1.45; color: var(--ink-soft); margin-top: 8px;
+.cc-text { font-size: 14px; line-height: 1.4; color: var(--ink-soft); margin-top: 8px;
   text-wrap: pretty; }
 .coop-creds { display: flex; flex-wrap: wrap; gap: 10px; }
 .cred-chip { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono);
@@ -745,8 +750,10 @@ body[data-beat="baseline2018"] .route-line { opacity: 0; }
 .cf-link { display: inline-flex; align-items: center; gap: 8px; color: var(--brand); }
 .cf-link svg { width: 22px; height: 22px; }
 .cf-link .cf-a { transform: scaleX(-1); }
-.cf-word { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.16em;
+.cf-word { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;
   color: var(--brand-ink); }
+
+@media (max-width: 1100px) { .coop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* ---- reveal ---------------------------------------------------------------- */
 .fx { opacity: 0; transform: translateY(18px); }

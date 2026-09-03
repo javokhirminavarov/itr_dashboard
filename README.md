@@ -105,16 +105,15 @@ the suite asserts that scoping rather than trusting it.
 
 ## Editing before the visit
 
-- **Figures**: every number lives in `demo-data.js`. Most are still
-  **illustrative placeholders**. The exception is the border row: `61` customs
-  posts, the `4.5` / `5.2` / `1.2` mln transactions by mode, `30 k` vehicles and
-  `87 k` transactions a day, and `3,184` officers on daily duty all come off the
-  official *Statistics at the border* slide and are not to be re-invented. `ASSETS.md` lists all 47 to replace, flags the
-  three least plausible, and notes the one name to confirm. Figures written as
-  `{{TOKEN}}` render as dashed *awaiting figure* chips; the presenter's own
-  "we will add later" in the E-Transit panel is deliberately left as one, and
-  the two agency tokens in `sections/scene-data.js` are the same device applied
-  to a claim the deck makes without naming who is behind it.
+- **Figures**: every approved number or awaiting-figure token lives in
+  `demo-data.js`. The supplied *Statistics at the border* slide approves `61`
+  customs posts, `4.5` / `5.2` / `1.2` mln annual transactions by mode, `30 k`
+  vehicles and `87 k` transactions a day, and `3,184` officers on daily duty;
+  the presenter separately approved around `430` warehouses on the platform.
+  Every former illustration that lacks a dated Customs source is now a
+  `{{TOKEN}}` rendered as a dashed *awaiting figure* chip. `ASSETS.md` is the
+  field-level audit register, including period, reporting date, unit, scope and
+  required publication for each value.
 - **Copy**: headlines and support lines are also in `demo-data.js` (discipline:
   ≤6-word headline, ≤25-word support).
 - **Contracts that hold the page honest**, enforced in code rather than trusted:
@@ -138,7 +137,8 @@ Two suites, both headless, both needing only Playwright and Chromium:
 ```
 npx --no-install http-server -p 8099 -s .     # or any static server
 node tools/verify.mjs          # the deck: corridor, beats, contracts, contrast
-node tools/verify-scenes.mjs   # the four scenes: facts, keyboard, determinism
+node tools/verify.mjs --presentation # also fails if any {{TOKEN}} remains
+node tools/verify-scenes.mjs   # the three scenes: facts, keyboard, determinism
 ```
 
 `verify.mjs` guards what the page has always promised. `verify-scenes.mjs`
