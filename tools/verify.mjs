@@ -168,7 +168,38 @@ for (const [w, h] of [[1920, 1080], [1600, 900], [1440, 900], [1280, 800], [1280
      spill.map(b => `${b.beat} ${b.content}>${h}`).join('; '));
 }
 
-/* ---- 4c. cropping the art must never crop a marker or a caption away ------ */
+/* ---- 4c. every beat owns one masthead, including the 1280x720 projector -- */
+await p.setViewportSize({ width: 1280, height: 720 });
+await p.waitForTimeout(300);
+const mastheads = await p.evaluate(async () => {
+  const out = [];
+  const focus = window.JOURNEY.truck.focus;
+  for (const beat of document.querySelectorAll('[data-beat][id]')) {
+    const before = beat.getBoundingClientRect();
+    window.scrollTo({ top: Math.max(0, window.scrollY + before.top + before.height / 2 - innerHeight * focus), behavior: 'instant' });
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    const titles = [...beat.querySelectorAll('.masthead-title')].filter(title => {
+      const css = getComputedStyle(title), r = title.getBoundingClientRect();
+      return css.display !== 'none' && css.visibility !== 'hidden' && +css.opacity > 0 && r.width > 0 && r.height > 0;
+    });
+    const parts = [...beat.querySelectorAll('.masthead, .masthead-logo, .masthead-title, .masthead-beat')];
+    const outside = parts.filter(part => {
+      const r = part.getBoundingClientRect();
+      return r.left < -0.5 || r.right > innerWidth + 0.5 || r.top < -0.5 || r.bottom > innerHeight + 0.5;
+    });
+    out.push({ beat: beat.dataset.beat, titles: titles.length,
+      title: titles[0]?.textContent.trim() || '', outside: outside.map(x => x.className) });
+  }
+  return out;
+});
+ok('each beat has exactly one visible masthead title',
+   mastheads.every(m => m.titles === 1 && m.title),
+   mastheads.filter(m => m.titles !== 1).map(m => `${m.beat}:${m.titles}`).join('; '));
+ok('masthead elements remain within the 1280x720 viewport',
+   mastheads.every(m => m.outside.length === 0),
+   mastheads.filter(m => m.outside.length).map(m => `${m.beat}:${m.outside.join(',')}`).join('; '));
+
+/* ---- 4d. cropping the art must never crop a marker or a caption away ------ */
 for (const [w, h] of [[1920, 1080], [1440, 900], [1280, 1024], [1280, 1600]]) {
   await p.setViewportSize({ width: w, height: h });
   await p.waitForTimeout(300);
@@ -292,9 +323,12 @@ const modal = await p.evaluate(async () => {
     const openNow = document.getElementById('modal').classList.contains('is-open');
     const title = document.querySelector('.modal-body h2')?.textContent || '';
     const bullets = document.querySelectorAll('.md-bullets li').length;
+    const masthead = document.querySelectorAll('.modal-body > .masthead').length;
+    const mastheadOutside = [...document.querySelectorAll('.modal-body > .masthead, .modal-body > .masthead > *')]
+      .some(e => { const r = e.getBoundingClientRect(); return r.left < 0 || r.right > innerWidth || r.top < 0 || r.bottom > innerHeight; });
     window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Escape', bubbles: true }));
     await new Promise(r => setTimeout(r, 400));
-    out.push({ label: pin.getAttribute('aria-label'), openNow, title, bullets,
+    out.push({ label: pin.getAttribute('aria-label'), openNow, title, bullets, masthead, mastheadOutside,
                closed: !document.getElementById('modal').classList.contains('is-open'),
                refocused: document.activeElement === pin });
   }
@@ -304,6 +338,9 @@ ok('every marker opens its modal', modal.length === 3 && modal.every(m => m.open
    modal.map(m => `${m.title}(${m.bullets})`).join(', '));
 ok('escape closes the modal and returns focus to the marker',
    modal.every(m => m.closed && m.refocused), modal.map(m => m.closed + '/' + m.refocused).join(' '));
+ok('information-system views use one in-viewport masthead',
+   modal.every(m => m.masthead === 1 && !m.mastheadOutside),
+   modal.map(m => `${m.label}:${m.masthead}/${m.mastheadOutside}`).join('; '));
 
 /* ---- 10b. and a real pointer reaches them -------------------------------- */
 /* pin.click() dispatches on the element and so passes even when something is

@@ -1,5 +1,12 @@
 # The corridor: how it is drawn, and how to change it
 
+## Institutional marks
+
+The reusable masthead loads its two approved, transparent local marks from
+`assets/logos/`: `wco-logo.svg` and `uzbekistan-customs.svg`. Keep replacement
+art in those formats (rather than cropping a presentation screenshot), retain
+the transparent canvas, and do not change the image aspect ratio in CSS.
+
 The corridor, the arrivals hall and the warehouse floor plan are **drawn by the
 page**, as SVG, in the deck's own palette. They used to be generated art — a Python script that
 authored a daylight scene and a Playwright script that rasterised it to six
