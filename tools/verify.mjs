@@ -15,7 +15,8 @@
 import { chromium } from 'playwright';
 // A file: URL's .pathname is "/C:/..." on Windows, which path.resolve() then
 // turns into "C:\C:\..."; the URL itself is already what page.goto() wants.
-const HTTP = process.argv[2] || 'http://127.0.0.1:8099/index.html';
+const PRESENTATION = process.argv.includes('--presentation');
+const HTTP = process.argv.slice(2).find(a => !a.startsWith('--')) || 'http://127.0.0.1:8099/index.html';
 const FILE = new URL('../index.html', import.meta.url).href;
 const results = [];
 const ok = (n, c, d = '') => results.push([c ? 'PASS' : 'FAIL', n, d]);
@@ -59,12 +60,33 @@ const contract = await p.evaluate(() => ({
   anchorless: [...document.querySelectorAll('.metric')].filter(m => !m.querySelector('.metric-anchor')).length,
   charts: document.querySelectorAll('.chart').length,
   captionless: [...document.querySelectorAll('.chart')].filter(c => !c.querySelector('.ch-caption') || !c.querySelector('.ch-range')).length,
-  tables: document.querySelectorAll('.chart .sr-only table').length
+  tables: document.querySelectorAll('.chart .sr-only table').length,
+  unsourced: (() => {
+    const misses = [];
+    const walk = (node, path = 'demoData') => {
+      if (!node || typeof node !== 'object' || Array.isArray(node)) return;
+      const owns = key => Object.prototype.hasOwnProperty.call(node, key);
+      const statistical = ['metrics', 'metric', 'tiles', 'chart', 'share', 'shift', 'split'].some(owns) ||
+        (owns('nodes') && Array.isArray(node.nodes) && node.nodes.some(n => n && n.value)) ||
+        (owns('channels') && Array.isArray(node.channels) &&
+          node.channels.some(c => c && Object.prototype.hasOwnProperty.call(c, 'share')));
+      if (statistical && (!node.source || !node.source.owner || !node.source.publication ||
+          !node.source.reportingDate || !node.source.period || !node.source.unit || !node.source.scope)) misses.push(path);
+      Object.keys(node).forEach(k => walk(node[k], path + '.' + k));
+    };
+    walk(window.demoData);
+    return misses;
+  })(),
+  unresolved: ((JSON.stringify(window.demoData) + JSON.stringify(window.SCENE_DATA || {}))
+    .match(/\{\{[A-Z0-9_]+\}\}/g) || []).length
 }));
 ok('no contract-violation elements rendered', contract.errors === 0, `${contract.errors} found`);
 ok('every metric carries an anchor', contract.anchorless === 0 && contract.metrics > 10, `${contract.metrics} metrics, ${contract.anchorless} anchorless`);
 ok('every chart carries caption + range', contract.captionless === 0 && contract.charts >= 4, `${contract.charts} charts`);
 ok('every chart ships a data table', contract.tables === contract.charts, `${contract.tables}/${contract.charts}`);
+ok('production metrics carry complete source metadata', contract.unsourced.length === 0, contract.unsourced.join(', '));
+ok('presentation mode contains no unresolved placeholders', !PRESENTATION || contract.unresolved === 0,
+   PRESENTATION ? `${contract.unresolved} unresolved` : `editorial mode (${contract.unresolved} awaiting confirmation)`);
 
 /* ---- 3. corridor geometry: six equal rows, fitted like object-fit: cover -- */
 /* The corridor is no longer painted at viewport width: it is scaled until one

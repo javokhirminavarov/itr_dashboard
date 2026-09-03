@@ -16,16 +16,16 @@
    - Channel outcomes are the words green / yellow / red only. Passenger
      control uses the green / red subset.
 
-   FIGURES ARE ILLUSTRATIVE. Every value to be replaced before the visit is
-   listed in ASSETS.md.
+   UNCONFIRMED FIGURES USE {{TOKEN}} PLACEHOLDERS. Approved figures and the
+   complete audit register are documented in ASSETS.md.
    ========================================================================= */
 window.demoData = {
   meta: {
     title: "Risk management, end to end",
     subtitle: "Uzbekistan Customs · with the World Customs Organization",
     org: "UZBEKISTAN CUSTOMS",
-    trsMethodology: false, // true → section 5 prints the WCO Time Release Study footnote
-    trsFootnote: "Clearance times measured under WCO Time Release Study methodology.",
+    trsMethodology: false, // No supplied evidence that the clearance-time figure follows a TRS
+    trsFootnote: "Clearance time measured using the WCO Time Release Study methodology.",
     theme2026: "Customs protecting society through vigilance and commitment",
     speakers: [
       { sections: [1, 2], credential: "WCO-accredited Risk Management Expert", short: "RISK MGMT EXPERT" },
@@ -38,6 +38,7 @@ window.demoData = {
         icon: "doc",
         tag: "INFORMATION SYSTEM",
         title: "E-Transit AAT",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "percent of transit movements", scope: "E-Transit clearances", status: "unconfirmed" },
         lead: "Bill-of-lading data reaches Customs before the truck does, and the system clears " +
               "the vehicle at the border on it.",
         bullets: [
@@ -75,6 +76,7 @@ window.demoData = {
         icon: "box",
         tag: "INFORMATION SYSTEM",
         title: "Customs and cargo operations",
+        source: { owner: "Uzbekistan Customs presenter", publication: "figure supplied for the WCO visit", reportingDate: "undated", period: "current at presentation", unit: "warehouses", scope: "warehouses on the digital platform", status: "approved" },
         lead: "One digital platform for the whole customs warehouse network.",
         plate: "warehouseInterior",
         bullets: [
@@ -162,32 +164,36 @@ window.demoData = {
     /* --- section 3, beat one ------------------------------------------------ */
     baseline2018: {
       section: 3, rail: "2018", eyebrow: "SECTION 3 · THE 2018 BASELINE",
-      headline: "Every truck stopped.",
-      support: "Every consignment opened by hand. Days at the border. Almost nothing found.",
-      overview: "100% inspection in 2018, and the flows since",
+      headline: "Baseline awaiting confirmation.",
+      support: "Inspection share, finding rate and border wait require an authoritative Customs source.",
+      overview: "Inspection baseline awaiting confirmation, and the flows since",
       card: { title: "The 2018 baseline", icon: "clock" },
       leftPanel: {
         title: "2018 — before", icon: "clock",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         metrics: [
-          { value: "100%", label: "consignments physically inspected",
-            anchor: { type: "context", text: "2018 — every truck, every time" } },
-          { value: "~3%", label: "of inspections found a violation", compact: true,
-            anchor: { type: "context", text: "97 of 100 opened for nothing" } },
-          { value: "3–5 days", label: "typical wait at the border", compact: true,
+          { value: "{{BASELINE_INSPECTION_SHARE}}", label: "consignments physically inspected",
+            anchor: { type: "context", text: "2018 baseline · {{BASELINE_INSPECTION_ANCHOR}}" } },
+          { value: "{{BASELINE_VIOLATION_RATE}}", label: "of inspections found a violation", compact: true,
+            anchor: { type: "context", text: "2018 comparison · {{BASELINE_VIOLATION_ANCHOR}}" } },
+          { value: "{{BASELINE_BORDER_WAIT}}", label: "typical wait at the border", compact: true,
             anchor: { type: "context", text: "2018" } }
         ]
       },
       rightPanel: {
         title: "Flows since 2018", icon: "layers",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         chart: {
           kind: "line",
+          token: "BORDER_FLOW_SERIES",
           caption: "Transport and cargo flow, indexed to 2018 = 100",
+          source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
           range: "2018–2025",
           note: "Indexed so that one axis carries both. The 2025 multiple is printed on each line.",
           x: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
           series: [
-            { name: "Vehicles crossing", tone: "a", values: [100, 118, 96, 131, 168, 196, 224, 247], end: "×2.5" },
-            { name: "Cargo carried", tone: "b", values: [100, 112, 91, 124, 151, 173, 192, 208], end: "×2.1" }
+            { name: "Vehicles crossing", tone: "a", values: ["{{VEHICLE_FLOW_SERIES}}"], end: "{{VEHICLE_FLOW_MULTIPLE}}" },
+            { name: "Cargo carried", tone: "b", values: ["{{CARGO_FLOW_SERIES}}"], end: "{{CARGO_FLOW_MULTIPLE}}" }
           ]
         }
       }
@@ -206,11 +212,12 @@ window.demoData = {
          through. Counts, not rates — the rates are the metrics below. */
       channels: { options: ["green", "yellow", "red"], outcome: "green", note: "this consignment" },
       facts: [
-        { label: "Pre-arrival risk", value: "MEDIUM" },
-        { label: "Data sources consulted", value: "12" }
+        { label: "Pre-arrival risk", value: "{{PRE_ARRIVAL_RISK}}" },
+        { label: "Data sources consulted", value: "{{DATA_SOURCES_CONSULTED}}" }
       ],
       leftPanel: {
         title: "Traffic at the border, 2025", icon: "truck",
+        source: { owner: "Uzbekistan Customs", publication: "Statistics at the border (supplied presentation)", reportingDate: "undated", period: "2025", unit: "counts and annual/daily transactions", scope: "national border network", status: "approved" },
         tiles: [
           { icon: "flag",      label: "Border",  value: "61",  unit: "customs posts" },
           { icon: "car",       label: "Avto",    value: "4.5", unit: "mln transactions" },
@@ -230,13 +237,14 @@ window.demoData = {
       },
       rightPanel: {
         title: "Risk management at the gate", icon: "shield",
-        split: [{ name: "green", share: "71%" }, { name: "yellow", share: "24%" }, { name: "red", share: "5%" }],
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
+        split: [{ name: "green", share: "{{ROAD_GREEN_SHARE}}" }, { name: "yellow", share: "{{ROAD_YELLOW_SHARE}}" }, { name: "red", share: "{{ROAD_RED_SHARE}}" }],
         splitNote: "share of road consignments by channel, 2025",
         metrics: [
-          { value: "2.1 min", label: "decision at the gate",
-            anchor: { type: "baseline2018", text: "vs days of waiting in 2018" } },
-          { value: "1,860", label: "seizure cases at the border", compact: true,
-            anchor: { type: "trend", text: "+18% on 2024" } }
+          { value: "{{GATE_DECISION_TIME}}", label: "decision at the gate",
+            anchor: { type: "baseline2018", text: "vs 2018 · {{GATE_DECISION_BASELINE}}" } },
+          { value: "{{BORDER_SEIZURE_CASES}}", label: "seizure cases at the border", compact: true,
+            anchor: { type: "trend", text: "trend · {{BORDER_SEIZURE_TREND}}" } }
         ]
       }
     },
@@ -258,15 +266,16 @@ window.demoData = {
       },
       rightPanel: {
         title: "Transit monitoring", icon: "cam",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         facts: [
-          { label: "GPS electronic seal", value: "FITTED" },
-          { label: "Checkpoints passed", value: "7" },
-          { label: "Alerts raised", value: "0" }
+          { label: "GPS electronic seal", value: "{{GPS_SEAL_STATUS}}" },
+          { label: "Checkpoints passed", value: "{{TRANSIT_CHECKPOINTS}}" },
+          { label: "Alerts raised", value: "{{TRANSIT_ALERTS}}" }
         ],
         trace: ["GATE", "CP·1", "CP·2", "WAREHOUSE"],
         metrics: [
-          { value: "1,248", label: "seizures on supervised transit",
-            anchor: { type: "trend", text: "up ×2 since 2022" } }
+          { value: "{{TRANSIT_SEIZURES}}", label: "seizures on supervised transit",
+            anchor: { type: "trend", text: "trend since 2022 · {{TRANSIT_SEIZURE_TREND}}" } }
         ]
       }
     },
@@ -274,6 +283,7 @@ window.demoData = {
     /* --- section 4 --------------------------------------------------------- */
     warehouse: {
       section: 4, rail: "WAREHOUSE", eyebrow: "SECTION 4 · CUSTOMS WAREHOUSE INFORMATION SYSTEM",
+      source: { owner: "Uzbekistan Customs presenter", publication: "figure supplied for the WCO visit", reportingDate: "undated", period: "current at presentation", unit: "warehouses", scope: "warehouses on the digital platform", status: "approved" },
       headline: "430 warehouses, one platform.",
       support: "Operators and officers work the same system, and the RMS decides who has to attend.",
       overview: "One digital platform across the warehouse network",
@@ -281,32 +291,37 @@ window.demoData = {
       hint: "Open the marker on the corridor for the Customs and cargo operations system.",
       leftPanel: {
         title: "Growth against 2018", icon: "layers",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         chart: {
           kind: "growth",
+          token: "WAREHOUSE_GROWTH_SERIES",
           caption: "2018 compared with 2025",
+          source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
           range: "2018 vs 2025",
           note: "Four measures on four scales, so each pair is read against itself — both values printed.",
           rows: [
-            { name: "Customs warehouses", from: 264, to: 430, fromText: "264", toText: "430", mult: "×1.6" },
-            { name: "Shipments placed", from: 96, to: 412, fromText: "96 k", toText: "412 k", mult: "×4.3" },
-            { name: "Value of goods", from: 18.4, to: 71.9, fromText: "UZS 18.4 tn", toText: "UZS 71.9 tn", mult: "×3.9" },
-            { name: "Weight of goods", from: 1.9, to: 6.4, fromText: "1.9 m t", toText: "6.4 m t", mult: "×3.4" }
+            { name: "Customs warehouses", from: "{{WAREHOUSES_2018}}", to: 430, fromText: "{{WAREHOUSES_2018}}", toText: "430", mult: "{{WAREHOUSE_GROWTH}}" },
+            { name: "Shipments placed", from: "{{SHIPMENTS_2018}}", to: "{{SHIPMENTS_2025}}", fromText: "{{SHIPMENTS_2018}}", toText: "{{SHIPMENTS_2025}}", mult: "{{SHIPMENTS_GROWTH}}" },
+            { name: "Value of goods", from: "{{GOODS_VALUE_2018}}", to: "{{GOODS_VALUE_2025}}", fromText: "{{GOODS_VALUE_2018}}", toText: "{{GOODS_VALUE_2025}}", mult: "{{GOODS_VALUE_GROWTH}}" },
+            { name: "Weight of goods", from: "{{GOODS_WEIGHT_2018}}", to: "{{GOODS_WEIGHT_2025}}", fromText: "{{GOODS_WEIGHT_2018}}", toText: "{{GOODS_WEIGHT_2025}}", mult: "{{GOODS_WEIGHT_GROWTH}}" }
           ]
         }
       },
       rightPanel: {
         title: "Officer attendance, 2025", icon: "person",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         share: {
           caption: "Share of placements an officer attended in person",
+          source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
           range: "2025",
           parts: [
-            { name: "Officer attended", value: 28, tone: "a" },
-            { name: "Remote control only", value: 72, tone: "n" }
+            { name: "Officer attended", value: "{{OFFICER_ATTENDED_SHARE}}", tone: "a" },
+            { name: "Remote control only", value: "{{REMOTE_CONTROL_SHARE}}", tone: "n" }
           ]
         },
         metrics: [
-          { value: "28%", label: "placements with an officer attending",
-            anchor: { type: "baseline2018", text: "vs 100% in 2018" } }
+          { value: "{{OFFICER_ATTENDED_SHARE}}", label: "placements with an officer attending",
+            anchor: { type: "baseline2018", text: "vs 2018 · {{OFFICER_ATTENDANCE_2018}}" } }
         ]
       }
     },
@@ -322,45 +337,49 @@ window.demoData = {
       channels: { options: ["green", "yellow", "red"], outcome: "yellow", note: "documentary check" },
       structure: {
         caption: "Main structure of the risk management system",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "categories, criteria and profiles", scope: "production risk management system", status: "unconfirmed" },
         nodes: [
-          { icon: "person", title: "Categorisation of entities", value: "4 categories",
-            sub: "312 risk criteria applied to traders" },
-          { icon: "shield", title: "Risk profiles", value: "1,146 profiles",
-            sub: "186 undervaluation · 143 misclassification · 27 AI-based" },
-          { icon: "loop", title: "Random selection module", value: "3% of declarations",
+          { icon: "person", title: "Categorisation of entities", value: "{{RMS_CATEGORIES}}",
+            sub: "{{TRADER_RISK_CRITERIA}} risk criteria applied to traders" },
+          { icon: "shield", title: "Risk profiles", value: "{{RISK_PROFILES}} profiles",
+            sub: "{{UNDERVALUATION_PROFILES}} undervaluation · {{MISCLASSIFICATION_PROFILES}} misclassification · {{AI_PROFILES}} AI-based" },
+          { icon: "loop", title: "Random selection module", value: "{{RANDOM_SELECTION_SHARE}} of declarations",
             sub: "the control group everything else is measured against" }
         ]
       },
       leftPanel: {
         title: "Operational flow", icon: "layers", metricsGrid: true,
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         metrics: [
-          { value: "1.42 m", label: "customs declarations", compact: true,
-            anchor: { type: "baseline2018", text: "×2.6 on 2018" } },
-          { value: "USD 62.4 bn", label: "foreign trade turnover", compact: true,
-            anchor: { type: "baseline2018", text: "×2.2 on 2018" } },
-          { value: "3.86 m", label: "consignments declared", compact: true,
-            anchor: { type: "baseline2018", text: "×2.4 on 2018" } },
-          { value: "38,700", label: "traders on the register", compact: true,
-            anchor: { type: "baseline2018", text: "×1.9 on 2018" } }
+          { value: "{{CUSTOMS_DECLARATIONS}}", label: "customs declarations", compact: true,
+            anchor: { type: "baseline2018", text: "vs 2018 · {{DECLARATION_GROWTH}}" } },
+          { value: "{{FOREIGN_TRADE_TURNOVER}}", label: "foreign trade turnover", compact: true,
+            anchor: { type: "baseline2018", text: "vs 2018 · {{TRADE_TURNOVER_GROWTH}}" } },
+          { value: "{{CONSIGNMENTS_DECLARED}}", label: "consignments declared", compact: true,
+            anchor: { type: "baseline2018", text: "vs 2018 · {{CONSIGNMENT_GROWTH}}" } },
+          { value: "{{REGISTERED_TRADERS}}", label: "traders on the register", compact: true,
+            anchor: { type: "baseline2018", text: "vs 2018 · {{TRADER_GROWTH}}" } }
         ]
       },
       rightPanel: {
         title: "What the system produces", icon: "check",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         shift: {
           caption: "Declarations by risk channel",
+          source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
           range: "2018 vs 2025",
           rows: [
-            { year: "2018", parts: [{ name: "green", value: 0 }, { name: "yellow", value: 0 }, { name: "red", value: 100 }] },
-            { year: "2025", parts: [{ name: "green", value: 68 }, { name: "yellow", value: 26 }, { name: "red", value: 6 }] }
+            { year: "2018", parts: [{ name: "green", value: "{{DECLARATION_CHANNELS_2018}}" }] },
+            { year: "2025", parts: [{ name: "green", value: "{{DECLARATION_CHANNELS_2025}}" }] }
           ]
         },
         metrics: [
-          { value: "1.6 hrs", label: "average clearance time",
-            anchor: { type: "baseline2018", text: "vs 3–5 days in 2018" } },
-          { value: "18.6%", label: "risk confirmation rate on selected declarations", compact: true,
-            anchor: { type: "vsRandom", text: "vs 7.3% on random selection" } },
-          { value: "24,180", label: "customs violations detected", compact: true,
-            anchor: { type: "trend", text: "+14% on 2024" } }
+          { value: "{{AVERAGE_CLEARANCE_TIME}}", label: "average clearance time",
+            anchor: { type: "baseline2018", text: "vs 2018 · {{CLEARANCE_TIME_2018}}" } },
+          { value: "{{RISK_CONFIRMATION_RATE}}", label: "risk confirmation rate on selected declarations", compact: true,
+            anchor: { type: "vsRandom", text: "vs random selection · {{RANDOM_CONFIRMATION_RATE}}" } },
+          { value: "{{CUSTOMS_VIOLATIONS}}", label: "customs violations detected", compact: true,
+            anchor: { type: "trend", text: "trend vs 2024 · {{VIOLATION_TREND}}" } }
         ]
       }
     },
@@ -374,21 +393,23 @@ window.demoData = {
       card: { title: "Customs audit", icon: "loop" },
       leftPanel: {
         title: "Audit activity", icon: "doc", metricsGrid: true,
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         metrics: [
-          { value: "3,140", label: "customs audits conducted", compact: true,
-            anchor: { type: "trend", text: "+9% on the prior year" } },
-          { value: "1,982", label: "audits with findings", compact: true,
-            anchor: { type: "trend", text: "+14% on the prior year" } },
-          { value: "63%", label: "of audits found something", compact: true,
-            anchor: { type: "vsRandom", text: "vs 21% on randomly selected audits" } }
+          { value: "{{AUDITS_CONDUCTED}}", label: "customs audits conducted", compact: true,
+            anchor: { type: "trend", text: "trend vs prior year · {{AUDITS_TREND}}" } },
+          { value: "{{AUDITS_WITH_FINDINGS}}", label: "audits with findings", compact: true,
+            anchor: { type: "trend", text: "trend vs prior year · {{AUDIT_FINDINGS_TREND}}" } },
+          { value: "{{AUDIT_FINDING_RATE}}", label: "of audits found something", compact: true,
+            anchor: { type: "vsRandom", text: "vs random audits · {{RANDOM_AUDIT_FINDING_RATE}}" } }
         ]
       },
       rightPanel: {
         title: "Feedback to the RMS", icon: "loop", motif: "loop",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         factsNote: "risk profiles rebuilt from audit findings, latest month",
-        facts: [{ label: "Risk profiles updated", value: "243" }],
+        facts: [{ label: "Risk profiles updated", value: "{{RISK_PROFILES_UPDATED}}" }],
         metrics: [
-          { value: "UZS 214 bn", label: "additional revenue assessed", secondary: true, compact: true,
+          { value: "{{ADDITIONAL_REVENUE}}", label: "additional revenue assessed", secondary: true, compact: true,
             anchor: { type: "trend", text: "secondary to protection — seizures lead" } }
         ]
       }
@@ -404,6 +425,7 @@ window.demoData = {
       card: { title: "Passenger control", icon: "person" },
       schema: {
         caption: "Arrivals: passport control, then customs control",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "passenger channel share", scope: "arriving passengers", status: "unconfirmed" },
         note: "The system assigns the channel by analysing advance passenger information and other data.",
         nodes: [
           { key: "arrive", title: "Arrival", sub: "aircraft on stand" },
@@ -412,32 +434,36 @@ window.demoData = {
           { key: "customs", title: "Customs control", sub: "channel assigned" }
         ],
         channels: [
-          { name: "green", label: "Green channel", share: 96.4, shareText: "96.4%" },
-          { name: "red", label: "Red channel", share: 3.6, shareText: "3.6%" }
+          { name: "green", label: "Green channel", share: "{{PASSENGER_GREEN_SHARE}}", shareText: "{{PASSENGER_GREEN_SHARE}}" },
+          { name: "red", label: "Red channel", share: "{{PASSENGER_RED_SHARE}}", shareText: "{{PASSENGER_RED_SHARE}}" }
         ]
       },
       leftPanel: {
         title: "Passenger flow", icon: "plane",
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         chart: {
           kind: "line",
+          token: "PASSENGER_FLOW_SERIES",
           caption: "Passengers arriving, indexed to 2018 = 100",
+          source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
           range: "2018–2025",
           note: "One series, so the caption names it and no legend box is needed.",
           x: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"],
           series: [
-            { name: "Arriving passengers", tone: "a", values: [100, 121, 34, 62, 128, 174, 219, 264], end: "×2.6" }
+            { name: "Arriving passengers", tone: "a", values: ["{{PASSENGER_FLOW_SERIES}}"], end: "{{PASSENGER_FLOW_MULTIPLE}}" }
           ]
         }
       },
       rightPanel: {
         title: "Targeting passengers", icon: "person", metricsGrid: true,
+        source: { owner: "Uzbekistan Customs", publication: "confirmation required", reportingDate: "unconfirmed", period: "unconfirmed", unit: "see metric", scope: "see metric", status: "unconfirmed" },
         metrics: [
-          { value: "148", label: "passenger risk criteria in use", compact: true,
-            anchor: { type: "baseline2018", text: "from 26 in 2018" } },
-          { value: "34", label: "airlines providing API data", compact: true,
-            anchor: { type: "baseline2018", text: "from 6 in 2018" } },
-          { value: "11.4%", label: "hit rate on targeted selections",
-            anchor: { type: "vsRandom", text: "vs 0.8% on random checks" } }
+          { value: "{{PASSENGER_RISK_CRITERIA}}", label: "passenger risk criteria in use", compact: true,
+            anchor: { type: "baseline2018", text: "from 2018 · {{PASSENGER_CRITERIA_2018}}" } },
+          { value: "{{API_AIRLINES}}", label: "airlines providing API data", compact: true,
+            anchor: { type: "baseline2018", text: "from 2018 · {{API_AIRLINES_2018}}" } },
+          { value: "{{PASSENGER_TARGET_HIT_RATE}}", label: "hit rate on targeted selections",
+            anchor: { type: "vsRandom", text: "vs random checks · {{RANDOM_PASSENGER_HIT_RATE}}" } }
         ]
       }
     }
